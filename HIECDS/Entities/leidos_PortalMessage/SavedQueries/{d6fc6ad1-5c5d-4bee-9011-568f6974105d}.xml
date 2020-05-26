@@ -6,19 +6,19 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>1</isdefault>
-    <savedqueryid>{771ab7b5-b7ad-4859-8155-11e5b1350bb1}</savedqueryid>
+    <savedqueryid>{d6fc6ad1-5c5d-4bee-9011-568f6974105d}</savedqueryid>
     <layoutxml>
-      <grid name="leidos_clientmessages" jump="subject" select="1" icon="1" preview="1">
-        <row name="leidos_clientmessage" id="activityid">
+      <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
+        <row name="result" id="activityid">
           <cell name="subject" width="300" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
-    <querytype>2</querytype>
+    <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
-        <entity name="leidos_clientmessage">
+      <fetch version="1.0" mapping="logical" distinct="true">
+        <entity name="leidos_portalmessage">
           <attribute name="activityid" />
           <attribute name="subject" />
           <attribute name="createdon" />
@@ -29,12 +29,17 @@
               <value>3</value>
             </condition>
           </filter>
+          <link-entity name="activityparty" from="activityid" to="activityid" alias="aa">
+            <filter type="and">
+              <condition attribute="partyid" operator="eq-userid" />
+            </filter>
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.4.0.7</IntroducedVersion>
+    <IntroducedVersion>1.4.0.9</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Client Message Associated View" languagecode="1033" />
+      <LocalizedName description="My Open Portal Messages" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

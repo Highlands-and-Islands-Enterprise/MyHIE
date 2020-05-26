@@ -5,36 +5,36 @@
     <CanBeDeleted>0</CanBeDeleted>
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
-    <isdefault>0</isdefault>
-    <savedqueryid>{7c666e03-1f52-4b41-a530-9076bf8e3647}</savedqueryid>
+    <isdefault>1</isdefault>
+    <savedqueryid>{05f28a10-c4f1-4562-b853-83d44f0680f5}</savedqueryid>
     <layoutxml>
-      <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
-        <row name="result" id="activityid">
+      <grid name="leidos_portalmessages" jump="subject" select="1" icon="1" preview="1">
+        <row name="leidos_portalmessage" id="activityid">
           <cell name="subject" width="300" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
-    <querytype>0</querytype>
+    <querytype>2</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="leidos_clientmessage">
+        <entity name="leidos_portalmessage">
           <attribute name="activityid" />
           <attribute name="subject" />
           <attribute name="createdon" />
           <order attribute="subject" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="in">
-              <value>1</value>
-              <value>2</value>
+              <value>0</value>
+              <value>3</value>
             </condition>
           </filter>
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.4.0.7</IntroducedVersion>
+    <IntroducedVersion>1.4.0.9</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Closed Client Messages" languagecode="1033" />
+      <LocalizedName description="Portal Message Associated View" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

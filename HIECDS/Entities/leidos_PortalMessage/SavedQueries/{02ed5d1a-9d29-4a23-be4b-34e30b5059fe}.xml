@@ -5,8 +5,8 @@
     <CanBeDeleted>0</CanBeDeleted>
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
-    <isdefault>1</isdefault>
-    <savedqueryid>{37d2cd8f-2fae-4273-864a-d91bc331a4c0}</savedqueryid>
+    <isdefault>0</isdefault>
+    <savedqueryid>{02ed5d1a-9d29-4a23-be4b-34e30b5059fe}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
         <row name="result" id="activityid">
@@ -17,29 +17,21 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical" distinct="true">
-        <entity name="leidos_clientmessage">
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_portalmessage">
           <attribute name="activityid" />
           <attribute name="subject" />
           <attribute name="createdon" />
           <order attribute="subject" descending="false" />
           <filter type="and">
-            <condition attribute="statecode" operator="in">
-              <value>0</value>
-              <value>3</value>
-            </condition>
+            <condition attribute="statecode" operator="not-null" />
           </filter>
-          <link-entity name="activityparty" from="activityid" to="activityid" alias="aa">
-            <filter type="and">
-              <condition attribute="partyid" operator="eq-userid" />
-            </filter>
-          </link-entity>
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.4.0.7</IntroducedVersion>
+    <IntroducedVersion>1.4.0.9</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="My Open Client Messages" languagecode="1033" />
+      <LocalizedName description="All Portal Messages" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
