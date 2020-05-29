@@ -22,7 +22,6 @@
           <attribute name="activityid" />
           <attribute name="subject" />
           <attribute name="createdon" />
-          <order attribute="subject" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="in">
               <value>0</value>
@@ -34,6 +33,7 @@
               <condition attribute="partyid" operator="eq-userid" />
             </filter>
           </link-entity>
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
