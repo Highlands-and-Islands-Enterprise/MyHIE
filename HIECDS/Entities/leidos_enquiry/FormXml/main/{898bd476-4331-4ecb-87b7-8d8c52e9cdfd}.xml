@@ -399,10 +399,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell showlabel="true" locklevel="0" id="{f826119a-bfda-441a-a3cc-837dadae75e4}">
+                      <cell id="{eaa39ca3-0633-47d0-9128-814fd811c19a}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Create New Account from Enquiry" languagecode="1033" />
                         </labels>
+                        <control id="leidos_newaccountcreatedbyenquiry" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_newaccountcreatedbyenquiry" disabled="false" uniqueid="{12286320-f037-4e08-9ae7-51704d854781}" />
                       </cell>
                       <cell showlabel="true" locklevel="0" id="{6ba152bf-21b9-43f5-aef1-88f68dd5f9ed}">
                         <labels>
@@ -594,6 +595,28 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{12286320-f037-4e08-9ae7-51704d854781}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_newaccountcreatedbyenquiry</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_newaccountcreatedbyenquiry</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_newaccountcreatedbyenquiry</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_newaccountcreatedbyenquiry</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <events>
         <event name="onload" application="false" active="false">
@@ -604,7 +627,7 @@
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_newaccountcreatedbyenquiry">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8a4271d1-cea8-4948-927d-65d62117d25c" enabled="true" parameters="'Z1W:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8a4271d1-cea8-4948-927d-65d62117d25c" enabled="true" parameters="'Z1W:*:CreateUpdate::0:217890000:217890000:217890000:217890000','NlS:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_emailaddress">
@@ -623,15 +646,15 @@
           </Handlers>
         </event>
       </events>
-      <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="610f7386-e818-424e-911a-2757a069c077" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="ee324df5-8bfb-439b-8b07-31b02bf34dc9" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="ead3d1f8-199d-48f4-be7a-643f795e83d8" />
-        <Library name="leidos_common" libraryUniqueId="{58a0cd32-0128-27e5-31d9-01ea6e9ae70e}" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{58a0cd32-0128-27e5-31d9-01ea6e9ae70e}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="b1f574de-bd23-44d2-88ef-fc4c4cf770c6" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="019aa8c5-872a-4414-918e-196500dfe2ea" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="ce66054a-e2bc-4a26-b5ff-e03580dd57b2" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
