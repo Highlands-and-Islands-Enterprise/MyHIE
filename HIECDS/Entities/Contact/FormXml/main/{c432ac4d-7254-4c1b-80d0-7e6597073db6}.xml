@@ -5,7 +5,7 @@
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form showImage="true" headerdensity="HighWithControls">
+    <form showImage="true" headerdensity="HighWithControls" shownavigationbar="true" maxWidth="1920">
       <ancestor id="{1fed44d1-ae68-4a41-bd2b-f13acac4acfa}" />
       <hiddencontrols>
         <data id="fullname" datafieldname="fullname" classid="{5546E6CD-394C-4bee-94A8-4425E17EF6C6}" />
@@ -58,19 +58,19 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{215da2d0-2b64-3481-8d2d-16107d4d7e5b}" showlabel="true" labelid="{ba9d14aa-1e8b-4b3b-b267-aeb4bdcc5fae}">
+                      <cell id="{215da2d0-2b64-3481-8d2d-16107d4d7e5b}" showlabel="true" labelid="{ba9d14aa-1e8b-4b3b-b267-aeb4bdcc5fae}" locklevel="1">
                         <labels>
                           <label description="Business Phone" languagecode="1033" />
                         </labels>
-                        <control id="telephone1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="telephone1" disabled="false" />
+                        <control id="telephone1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="telephone1" disabled="false" uniqueid="{570c98a2-1b2d-cb44-8544-d316e3796b96}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{290b48ba-c0cc-7746-6dda-93e240e4cc78}" showlabel="true" labelid="{5d69ff19-bdcc-425b-b74f-05842ddbc121}">
+                      <cell id="{290b48ba-c0cc-7746-6dda-93e240e4cc78}" showlabel="true" labelid="{5d69ff19-bdcc-425b-b74f-05842ddbc121}" locklevel="1">
                         <labels>
                           <label description="Mobile Phone" languagecode="1033" />
                         </labels>
-                        <control id="mobilephone" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mobilephone" disabled="false" />
+                        <control id="mobilephone" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mobilephone" disabled="false" uniqueid="{e44b7a89-503a-20ce-61c8-2a712d0bab88}" />
                       </cell>
                     </row>
                     <row>
@@ -306,6 +306,22 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="3eaae01f-1bb1-4b8b-8b18-76394de8389c" enabled="true" parameters="'aSZ:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="telephone1">
+          <dependencies>
+            <dependency id="telephone1" />
+          </dependencies>
+          <Handlers>
+            <Handler functionName="Leidos.validatePhoneNumber" libraryName="leidos_common" handlerUniqueId="{8ba12c0a-61a3-dd63-915d-3b6aab443989}" enabled="true" parameters="&quot;telephone1&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="mobilephone">
+          <dependencies>
+            <dependency id="mobilephone" />
+          </dependencies>
+          <Handlers>
+            <Handler functionName="Leidos.validatePhoneNumber" libraryName="north52_/javascript/n52.json2" handlerUniqueId="{d26212be-1719-4950-1469-a390368b1689}" enabled="true" parameters="&quot;mobilephone&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <Navigation>
         <NavBar>
@@ -475,6 +491,46 @@
               <Title LCID="1033" Text="Social Profiles" />
             </Titles>
           </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="adx_webrole_contact" Sequence="1001" Area="Marketing" Id="nav_adx_webrole_contact">
+            <Titles>
+              <Title LCID="1033" Text="Web Roles" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="adx_contact_webpagelog" Sequence="1002" Area="Marketing" Id="nav_adx_contact_webpagelog">
+            <Titles>
+              <Title LCID="1033" Text="Web Page Logs" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="adx_changedcontact_webpagehistory" Sequence="1003" Area="Marketing" Id="nav_adx_changedcontact_webpagehistory">
+            <Titles>
+              <Title LCID="1033" Text="Web Page History" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="adx_contact_webfilelog" Sequence="1004" Area="Marketing" Id="nav_adx_contact_webfilelog">
+            <Titles>
+              <Title LCID="1033" Text="Web File Logs" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="adx_contact_pollsubmission" Sequence="1005" Area="Marketing" Id="nav_adx_contact_pollsubmission">
+            <Titles>
+              <Title LCID="1033" Text="Poll Submissions" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="adx_subscribercontact_pagealert" Sequence="1006" Area="Marketing" Id="nav_adx_subscribercontact_pagealert">
+            <Titles>
+              <Title LCID="1033" Text="Page Alerts" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="adx_contact_externalidentity" Sequence="1007" Area="Marketing" Id="nav_adx_contact_externalidentity">
+            <Titles>
+              <Title LCID="1033" Text="External Identities" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="hardcoded_{B7196B13-6B9D-42CD-BD58-B19A3953126F}navFeedback" Sequence="1008" Area="Marketing" Id="navFeedback" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Feedback" />
+            </Titles>
+          </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="hardcoded_{B7196B13-6B9D-42CD-BD58-B19A3953126F}navConnections" Sequence="8500" Area="Info" Id="navConnections" Show="false">
             <Titles>
               <Title LCID="1033" Text="Connections" />
@@ -578,46 +634,6 @@
               <Title LCID="1028" Text="對話方塊工作階段" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="adx_webrole_contact" Sequence="1001" Area="Marketing" Id="nav_adx_webrole_contact">
-            <Titles>
-              <Title LCID="1033" Text="Web Roles" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="adx_contact_webpagelog" Sequence="1002" Area="Marketing" Id="nav_adx_contact_webpagelog">
-            <Titles>
-              <Title LCID="1033" Text="Web Page Logs" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="adx_changedcontact_webpagehistory" Sequence="1003" Area="Marketing" Id="nav_adx_changedcontact_webpagehistory">
-            <Titles>
-              <Title LCID="1033" Text="Web Page History" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="adx_contact_webfilelog" Sequence="1004" Area="Marketing" Id="nav_adx_contact_webfilelog">
-            <Titles>
-              <Title LCID="1033" Text="Web File Logs" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="adx_contact_pollsubmission" Sequence="1005" Area="Marketing" Id="nav_adx_contact_pollsubmission">
-            <Titles>
-              <Title LCID="1033" Text="Poll Submissions" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="adx_subscribercontact_pagealert" Sequence="1006" Area="Marketing" Id="nav_adx_subscribercontact_pagealert">
-            <Titles>
-              <Title LCID="1033" Text="Page Alerts" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="adx_contact_externalidentity" Sequence="1007" Area="Marketing" Id="nav_adx_contact_externalidentity">
-            <Titles>
-              <Title LCID="1033" Text="External Identities" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="hardcoded_{B7196B13-6B9D-42CD-BD58-B19A3953126F}navFeedback" Sequence="1008" Area="Marketing" Id="navFeedback" Show="false">
-            <Titles>
-              <Title LCID="1033" Text="Feedback" />
-            </Titles>
-          </NavBarByRelationshipItem>
         </NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
@@ -669,14 +685,15 @@
           </row>
         </rows>
       </footer>
-      <DisplayConditions FallbackForm="true" Order="6">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="038b62a6-cb7a-4728-a577-ab9dff163e97" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="e4dffad4-a46d-4af3-8d90-9167f4d991ac" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="80017353-80e4-4d8a-ac04-e1b8b51fb739" />
+        <Library name="leidos_common" libraryUniqueId="{cd49127d-5036-e372-1242-685152eb7ea3}" />
       </formLibraries>
+      <DisplayConditions FallbackForm="true" Order="6">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

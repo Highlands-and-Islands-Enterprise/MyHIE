@@ -68,10 +68,17 @@
                         </labels>
                         <control id="leidos_projectedspend" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_projectedspend" disabled="false" />
                       </cell>
-                      <cell showlabel="false" locklevel="0" id="{6de80a7d-88e2-477c-82dd-c075482777e8}">
+                      <cell id="{f6df8d3f-f6e6-4d0c-bc66-cc117af2c7e9}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Programme" languagecode="1033" />
                         </labels>
+                        <control id="leidos_programme" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_programme" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{7E56AB1A-99A9-416F-8B73-B9A2310A4290}</DefaultViewId>
+                            <AvailableViewIds>{7E56AB1A-99A9-416F-8B73-B9A2310A4290},{5CFEE58B-5C1C-4228-ACA4-A679135F1923},{F88366D9-318E-4A59-A6F8-51115EAB50B4}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>
@@ -518,7 +525,23 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar>
+          <NavBarByRelationshipItem RelationshipName="bpf_leidos_project_new_bpfapplicationbusinessprocessflow" Sequence="9500" Area="ProcessCenter" Id="nav_bpf_leidos_project_new_bpfapplicationbusinessprocessflow">
+            <Titles>
+              <Title LCID="1033" Text="BPF - Application Business Process Flow" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="bpf_leidos_project_leidos_bpf_project" Sequence="9501" Area="ProcessCenter" Id="nav_bpf_leidos_project_leidos_bpf_project">
+            <Titles>
+              <Title LCID="1033" Text="BPF - Project" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="hardcoded_{B7196B13-6B9D-42CD-BD58-B19A3953126F}navAsyncOperations" Sequence="9502" Area="ProcessCenter" Id="navAsyncOperations">
+            <Titles>
+              <Title LCID="1033" Text="Background Processes" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>

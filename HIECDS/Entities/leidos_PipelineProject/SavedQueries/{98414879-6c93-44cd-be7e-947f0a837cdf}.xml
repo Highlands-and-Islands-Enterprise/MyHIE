@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{98414879-6c93-44cd-be7e-947f0a837cdf}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_pipelineprojects" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="leidos_pipelineproject" id="leidos_pipelineprojectid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_client" width="100" />
+          <cell name="leidos_anticipatedprojectcost" width="100" />
+          <cell name="leidos_anticipatedprojectfunding" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_pipelineproject">
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_client" />
+          <attribute name="leidos_anticipatedprojectfunding" />
+          <attribute name="leidos_anticipatedprojectcost" />
+          <attribute name="leidos_pipelineprojectid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.5.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Pipeline Project Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

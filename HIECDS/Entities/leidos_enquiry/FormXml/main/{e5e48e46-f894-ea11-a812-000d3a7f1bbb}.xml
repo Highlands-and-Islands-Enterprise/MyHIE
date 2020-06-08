@@ -5,7 +5,7 @@
     <IntroducedVersion>1.4.0.7</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls">
+    <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
         <tab verticallayout="true" id="{28d41d28-2711-4e9c-974f-b37fd8f27a78}" IsUserDefined="1" name="Enquiry" locklevel="0" expanded="true" showlabel="true" labelid="{4897e40d-9d55-49b4-a3f2-f497854d4769}">
           <labels>
@@ -107,11 +107,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{bcc83543-418a-4c55-7c0a-51d9e8aca054}" showlabel="true" locklevel="0" labelid="{0c9451b9-ceb8-4e9e-9ebd-05efa34c6393}">
+                      <cell id="{bcc83543-418a-4c55-7c0a-51d9e8aca054}" showlabel="true" locklevel="1" labelid="{0c9451b9-ceb8-4e9e-9ebd-05efa34c6393}">
                         <labels>
                           <label description="Telephone Number" languagecode="1033" />
                         </labels>
-                        <control id="leidos_telephonenumber" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_telephonenumber" disabled="false" />
+                        <control id="leidos_telephonenumber" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_telephonenumber" disabled="false" uniqueid="{8db881a3-b221-b170-05c8-57160b74281e}" />
                       </cell>
                     </row>
                   </rows>
@@ -518,11 +518,20 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8a4271d1-cea8-4948-927d-65d62117d25c" enabled="true" parameters="'Z1W:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_telephonenumber">
+          <dependencies>
+            <dependency id="leidos_telephonenumber" />
+          </dependencies>
+          <Handlers>
+            <Handler functionName="Leidos.validatePhoneNumber" libraryName="north52_/javascript/n52.json2" handlerUniqueId="{320d77b9-4b05-dc18-b4c0-a03303924151}" enabled="true" parameters="&quot;leidos_telephonenumber&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <formLibraries>
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="994013b2-e392-46bc-8a4c-f2103b2595a8" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="56fef016-6e5b-4340-a624-a97adeaacb3d" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="5850f0df-e437-4f82-9950-3e7d97bc20b0" />
+        <Library name="leidos_common" libraryUniqueId="{15dc6cb0-3edc-66c3-53e7-9c2a8561ed4a}" />
       </formLibraries>
       <DisplayConditions Order="3" FallbackForm="true">
         <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />

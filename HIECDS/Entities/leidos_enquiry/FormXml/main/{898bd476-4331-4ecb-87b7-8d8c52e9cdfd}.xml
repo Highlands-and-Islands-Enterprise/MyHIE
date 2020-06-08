@@ -188,7 +188,7 @@
                         <labels>
                           <label description="Telephone Number" languagecode="1033" />
                         </labels>
-                        <control id="leidos_telephonenumber" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_telephonenumber" disabled="false" />
+                        <control id="leidos_telephonenumber" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_telephonenumber" disabled="false" uniqueid="{e6b9cbcd-a54e-2135-6225-81495b64a3c1}" />
                       </cell>
                     </row>
                     <row>
@@ -263,7 +263,7 @@
                         <labels>
                           <label description="Product or Service" languagecode="1033" />
                         </labels>
-                        <control id="leidos_productorservice" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_productorservice" disabled="false" />
+                        <control id="leidos_productorservice" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_productorservice" disabled="true" />
                       </cell>
                     </row>
                   </rows>
@@ -387,9 +387,9 @@
                     <row>
                       <cell id="{e9aa1eb2-80a2-4f2c-bf8d-904bd3a2d718}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Equiry Outcome" languagecode="1033" />
+                          <label description="Enquiry Outcome" languagecode="1033" />
                         </labels>
-                        <control id="leidos_equiryoutcome" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_equiryoutcome" disabled="false" />
+                        <control id="leidos_equiryoutcome" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_equiryoutcome" disabled="false" uniqueid="{b5334d4a-1249-c52b-6165-5a53ce50a9e6}" />
                       </cell>
                       <cell id="{0b1c1fc9-f4a0-4141-b754-5cf44b4cf3d2}" showlabel="true" locklevel="0" visible="true">
                         <labels>
@@ -516,7 +516,7 @@
         </rows>
       </header>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -621,13 +621,12 @@
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="f5d3881c-1a93-4514-9251-2724a63d2a1c" enabled="true" parameters="'Z1W:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.ExpandBPF" libraryName="leidos_common" handlerUniqueId="{0b906a2d-53d0-7656-ceba-e200a87ea89a}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_newaccountcreatedbyenquiry">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8a4271d1-cea8-4948-927d-65d62117d25c" enabled="true" parameters="'Z1W:*:CreateUpdate::0:217890000:217890000:217890000:217890000','NlS:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8a4271d1-cea8-4948-927d-65d62117d25c" enabled="true" parameters="'NlS:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_emailaddress">
@@ -645,16 +644,22 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="fbb0c111-6085-4dc3-9fa7-eb46ec6f709b" enabled="true" parameters="'4It:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_telephonenumber">
+          <Handlers>
+            <Handler functionName="Leidos.validatePhoneNumber" libraryName="leidos_common" handlerUniqueId="{ea06329a-7c09-6be4-8b91-c29d6aa4081c}" enabled="true" parameters="&quot;leidos_telephonenumber&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{58a0cd32-0128-27e5-31d9-01ea6e9ae70e}" />
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="b1f574de-bd23-44d2-88ef-fc4c4cf770c6" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="019aa8c5-872a-4414-918e-196500dfe2ea" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="ce66054a-e2bc-4a26-b5ff-e03580dd57b2" />
+        <Library name="leidos_common" libraryUniqueId="{43a986bd-b948-1766-705d-1b94b02ad5d2}" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

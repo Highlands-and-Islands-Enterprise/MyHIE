@@ -10,7 +10,14 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_costitem" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectcostid">
+          <cell name="leidos_parentproject" width="287" />
           <cell name="leidos_costitem" width="300" />
+          <cell name="leidos_businessunit" width="100" />
+          <cell name="leidos_costcategory" width="100" />
+          <cell name="leidos_projectcostreference" width="100" />
+          <cell name="leidos_itemcost" width="100" />
+          <cell name="leidos_totalfundedamount" width="100" />
+          <cell name="leidos_anticipatedfinancialyear" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -22,10 +29,17 @@
           <attribute name="leidos_projectcostid" />
           <attribute name="leidos_costitem" />
           <attribute name="createdon" />
-          <order attribute="leidos_costitem" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="1" />
           </filter>
+          <attribute name="leidos_costcategory" />
+          <attribute name="leidos_itemcost" />
+          <attribute name="leidos_parentproject" />
+          <attribute name="leidos_projectcostreference" />
+          <attribute name="leidos_totalfundedamount" />
+          <attribute name="leidos_businessunit" />
+          <attribute name="leidos_anticipatedfinancialyear" />
+          <order attribute="leidos_costitem" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

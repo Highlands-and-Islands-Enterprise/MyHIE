@@ -5,7 +5,7 @@
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form showImage="true" headerdensity="HighWithControls">
+    <form showImage="true" headerdensity="HighWithControls" shownavigationbar="true" maxWidth="1920">
       <ancestor id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       <hiddencontrols>
         <data id="address1_addressid" datafieldname="address1_addressid" classid="{5546E6CD-394C-4bee-94A8-4425E17EF6C6}" />
@@ -33,11 +33,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{3441a91e-47c5-672c-7a20-902d6baa9036}" showlabel="true" labelid="{a997eca3-bb5f-461e-bdc9-6fabca7b54e4}">
+                      <cell id="{3441a91e-47c5-672c-7a20-902d6baa9036}" showlabel="true" labelid="{a997eca3-bb5f-461e-bdc9-6fabca7b54e4}" locklevel="1">
                         <labels>
                           <label description="Phone" languagecode="1033" />
                         </labels>
-                        <control id="telephone1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="telephone1" disabled="false" />
+                        <control id="telephone1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="telephone1" disabled="false" uniqueid="{db7483be-a14c-a1d9-744b-116312876088}" />
                       </cell>
                     </row>
                     <row>
@@ -825,6 +825,29 @@
           <columns>
             <column width="100%">
               <sections>
+                <section name="PipelineProjects" id="5afa04b0-4e5d-43b2-ba18-cbd4a3bc9ec4" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Pipeline Projects" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{edd620fd-fff8-45f0-9375-ad12e23c1dbd}" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Pipeline Projects" languagecode="1033" />
+                        </labels>
+                        <control id="PipelineProjects_Subgrid" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_pipelineproject</TargetEntityType>
+                            <ViewId>{7AAD8DA1-71A5-EA11-A812-000D3A7F1BBB}</ViewId>
+                            <ViewIds>{27AB1D7D-483A-4F64-864C-02E909220B55},{7AAD8DA1-71A5-EA11-A812-000D3A7F1BBB}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_PipelineProject_Client_Account</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
                 <section name="ActiveProjects" id="7f278a9d-5016-4336-8b3e-ed13ed2c8235" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Active Projects" languagecode="1033" />
@@ -1049,6 +1072,14 @@
         <event name="onchange" application="false" active="false" attribute="primarycontactid">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="18900847-1da4-4fd6-972c-01636366fbd9" enabled="true" parameters="'kDo:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="telephone1">
+          <dependencies>
+            <dependency id="telephone1" />
+          </dependencies>
+          <Handlers>
+            <Handler functionName="Leidos.validatePhoneNumber" libraryName="leidos_common" handlerUniqueId="{c24467c9-299c-336e-933e-d58e09842387}" enabled="true" parameters="&quot;telephone1&quot;" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -1310,39 +1341,39 @@
               <Title LCID="1033" Text="Account Management Records" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_BusinessReview_RelatedAccount_Acco_leidos_accountmanagementclientplan" Sequence="1001" Area="Sales" Id="nav_leidos_BusinessReview_RelatedAccount_Acco_leidos_accountmanagementclientplan">
+          <NavBarByRelationshipItem RelationshipName="leidos_BusinessReview_RelatedAccount_Acco_leidos_accountmanagementclientplan" Sequence="1002" Area="Sales" Id="nav_leidos_BusinessReview_RelatedAccount_Acco_leidos_accountmanagementclientplan">
             <Titles>
               <Title LCID="1033" Text="Account Management Client Plans" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_BusinessReviewActionPlan_ParentAcc_leidos_clientactionplan" Sequence="1002" Area="Sales" Id="nav_leidos_BusinessReviewActionPlan_ParentAcc_leidos_clientactionplan">
+          <NavBarByRelationshipItem RelationshipName="leidos_BusinessReviewActionPlan_ParentAcc_leidos_clientactionplan" Sequence="1003" Area="Sales" Id="nav_leidos_BusinessReviewActionPlan_ParentAcc_leidos_clientactionplan" Show="false">
             <Titles>
               <Title LCID="1033" Text="Client Action Plans" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_BusinessReview_RelatedAccount_Acco" Sequence="1003" Area="Sales" Id="nav_leidos_BusinessReview_RelatedAccount_Acco" Show="false">
+          <NavBarByRelationshipItem RelationshipName="leidos_account_leidos_enquiry_Account" Sequence="1004" Area="Service" Id="nav_leidos_account_leidos_enquiry_Account">
             <Titles>
-              <Title LCID="1033" Text="Business Reviews" />
+              <Title LCID="1033" Text="Enquiries" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="msa_account_managingpartner" Sequence="1004" Area="Service" Id="nav_msa_account_managingpartner">
+          <NavBarByRelationshipItem RelationshipName="leidos_PipelineProject_Client_Account" Sequence="1005" Area="Service" Id="nav_leidos_PipelineProject_Client_Account">
             <Titles>
-              <Title LCID="1033" Text="Managed Accounts" />
+              <Title LCID="1033" Text="Pipeline Projects" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_Account_leidos_SupportItem" Sequence="1004" Area="Sales" Id="nav_leidos_Account_leidos_SupportItem" Show="false">
+          <NavBarByRelationshipItem RelationshipName="leidos_Application_ParentAccount_Account" Sequence="1006" Area="Service" Id="nav_leidos_Application_ParentAccount_Account">
             <Titles>
-              <Title LCID="1033" Text="Support Items" />
+              <Title LCID="1033" Text="Applications" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="msa_contact_managingpartner" Sequence="1005" Area="Service" Id="nav_msa_contact_managingpartner">
-            <Titles>
-              <Title LCID="1033" Text="Managed Contacts" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="bpf_account_leidos_bpfaccountprocess" Sequence="1005" Area="Service" Id="nav_bpf_account_leidos_bpfaccountprocess">
+          <NavBarByRelationshipItem RelationshipName="bpf_account_leidos_bpfaccountprocess" Sequence="1006" Area="Service" Id="nav_bpf_account_leidos_bpfaccountprocess" Show="false">
             <Titles>
               <Title LCID="1033" Text="BPF Account Process" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_Project_ParentAccount_Account" Sequence="1007" Area="Service" Id="nav_leidos_Project_ParentAccount_Account">
+            <Titles>
+              <Title LCID="1033" Text="Projects" />
             </Titles>
           </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="adx_webrole_account" Sequence="1007" Area="Marketing" Id="nav_adx_webrole_account">
@@ -1350,9 +1381,19 @@
               <Title LCID="1033" Text="Web Roles" />
             </Titles>
           </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msa_account_managingpartner" Sequence="1008" Area="Service" Id="nav_msa_account_managingpartner" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Managed Accounts" />
+            </Titles>
+          </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="adx_invitation_assigntoaccount" Sequence="1008" Area="Marketing" Id="nav_adx_invitation_assigntoaccount">
             <Titles>
               <Title LCID="1033" Text="Invitations" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_Account_leidos_SupportItem" Sequence="1009" Area="Sales" Id="nav_leidos_Account_leidos_SupportItem" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Support Items" />
             </Titles>
           </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="hardcoded_{B7196B13-6B9D-42CD-BD58-B19A3953126F}navDocument" Sequence="1009" Area="Marketing" Id="navDocument">
@@ -1363,6 +1404,11 @@
           <NavBarByRelationshipItem RelationshipName="Account_SharepointDocument" Sequence="1010" Area="Marketing" Id="navSPDocuments">
             <Titles>
               <Title LCID="1033" Text="Documents" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msa_contact_managingpartner" Sequence="1010" Area="Service" Id="nav_msa_contact_managingpartner" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Managed Contacts" />
             </Titles>
           </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="hardcoded_{B7196B13-6B9D-42CD-BD58-B19A3953126F}navConnections" Sequence="8502" Area="Info" Id="navConnections" Show="false">
@@ -1473,19 +1519,14 @@
               <Title LCID="1028" Text="對話方塊工作階段" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_BusinessReviewActionPlan_ParentAcc" Sequence="10000" Area="Info" Id="nav_leidos_BusinessReviewActionPlan_ParentAcc" Show="false">
+          <NavBarByRelationshipItem RelationshipName="leidos_ProjectMeasure_ParentAccount_Accou" Sequence="10000" Area="Info" Id="nav_leidos_ProjectMeasure_ParentAccount_Accou" Show="false">
             <Titles>
-              <Title LCID="1033" Text="Business Review Action Plans" />
+              <Title LCID="1033" Text="Project Measures" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_account_leidos_enquiry_Account" Sequence="10003" Area="Info" Id="nav_leidos_account_leidos_enquiry_Account">
+          <NavBarByRelationshipItem RelationshipName="leidos_AccountManagementRecord_PartnerSig" Sequence="10000" Area="Info" Id="nav_leidos_AccountManagementRecord_PartnerSig" Show="false">
             <Titles>
-              <Title LCID="1033" Text="Enquiries" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_Application_ParentAccount_Account" Sequence="10005" Area="Info" Id="nav_leidos_Application_ParentAccount_Account">
-            <Titles>
-              <Title LCID="1033" Text="Applications" />
+              <Title LCID="1033" Text="Account Management Records" />
             </Titles>
           </NavBarByRelationshipItem>
         </NavBar>
@@ -1495,14 +1536,14 @@
               <Title LCID="1033" Text="Common" />
             </Titles>
           </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Intervention" />
+            </Titles>
+          </NavBarArea>
           <NavBarArea Id="Sales">
             <Titles>
               <Title LCID="1033" Text="Account Management" />
-            </Titles>
-          </NavBarArea>
-          <NavBarArea Id="Service">
-            <Titles>
-              <Title LCID="1033" Text="Reference" />
             </Titles>
           </NavBarArea>
           <NavBarArea Id="Marketing">
@@ -1738,14 +1779,15 @@
           </row>
         </rows>
       </footer>
-      <DisplayConditions FallbackForm="true" Order="4">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="c962755f-47dd-4731-9374-bd1dc5e44737" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="10885d5a-972f-4bd4-8c01-d022b165b79b" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="9cb8983a-b95e-4882-b0ec-492b65f3d060" />
+        <Library name="leidos_common" libraryUniqueId="{ba42d868-9440-990e-e86a-09b7e4757493}" />
       </formLibraries>
+      <DisplayConditions FallbackForm="true" Order="4">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
