@@ -45,6 +45,29 @@
                     </row>
                   </rows>
                 </section>
+                <section name="Project Basic Details" showlabel="false" showbar="false" locklevel="0" id="{a3cec716-5798-ca65-ce05-42bceab8088b}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Project Basic Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{318cee3b-1380-d3a6-c862-5c321554904c}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Anticipated Project Cost" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_anticipatedprojectcost" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_anticipatedprojectcost" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{574c017a-ebea-ead2-28a1-4db2ee4d9cee}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Anticipated Project Funding" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_anticipatedprojectfunding" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_anticipatedprojectfunding" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
                 <section name="Support Items" id="2430544f-1750-4c10-aa19-0b9a23721cc6" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Support Items" languagecode="1033" />
@@ -103,6 +126,29 @@
                     <row />
                     <row />
                     <row height="auto" />
+                  </rows>
+                </section>
+                <section name="Project" id="65725008-3514-477a-8257-c760eb3eb82d" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Project" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{38d59610-df02-4a95-b357-1e5937694e85}" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="New SG control 1591711894210" languagecode="1033" />
+                        </labels>
+                        <control id="Subgrid_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_project</TargetEntityType>
+                            <ViewId>{23B2FF62-C154-EA11-A813-000D3A0BAD17}</ViewId>
+                            <ViewIds>{8078ACE2-EAE7-45E6-86AA-E2A651FE5E68},{23B2FF62-C154-EA11-A813-000D3A0BAD17}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_Project_PreApplicationProcess_leid</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -266,22 +312,6 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{980da59d-1b66-4399-8a60-079e174b5313}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Anticipated Project Cost" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_anticipatedprojectcost" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_anticipatedprojectcost" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{840dd79f-1588-46e1-a2fc-bbd4bc29b611}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Anticipated HIE Funding" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_anticipatedhiefunding" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_anticipatedhiefunding" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{0137156c-0c5a-49d4-90fa-b559c9bd2b28}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Anticipated Outcomes" languagecode="1033" />
@@ -396,7 +426,6 @@
           </row>
         </rows>
       </footer>
-      <DisplayConditions Order="0" FallbackForm="true" />
       <formLibraries>
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="ef82526d-914d-4452-84f6-5faf083cf3ed" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="bdaa960b-a774-416f-8b64-0dea5d128531" />
@@ -426,6 +455,37 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
+      <Navigation>
+        <NavBar />
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <DisplayConditions Order="0" FallbackForm="true" />
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

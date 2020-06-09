@@ -17,7 +17,7 @@
             <label description="Summary" languagecode="1033" />
           </labels>
           <columns>
-            <column width="50%">
+            <column width="67%">
               <sections>
                 <section name="ACCOUNT_INFORMATION" showlabel="true" showbar="false" id="{0eb92e6c-bcb8-0d52-a188-d81543ddb7cd}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelposition="Left" labelid="{38244a5e-a23c-48b6-a168-65a6ba730b2c}">
                   <labels>
@@ -112,11 +112,74 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{4913500e-605a-809b-e99e-69e2710d09bd}" showlabel="false" locklevel="0" labelid="{4361849c-8b00-4ba9-a7a4-27a99a927bd3}">
+                      <cell id="{ab1e819d-02a0-47a0-7565-4d7a0e096077}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Address 1" languagecode="1033" />
+                          <label description="Street 1" languagecode="1033" />
                         </labels>
-                        <control id="address1_composite" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="address1_composite" disabled="false" />
+                        <control id="address1_line1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a7b72a3b-34b6-908c-1ac6-d3e002d11b52}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Street 2" languagecode="1033" />
+                        </labels>
+                        <control id="address1_line2" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4062a57b-4bac-a3db-01db-99107c4480cc}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Street 3" languagecode="1033" />
+                        </labels>
+                        <control id="address1_line3" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line3" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{31ce3881-2040-d99d-e871-d3d539590952}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="City" languagecode="1033" />
+                        </labels>
+                        <control id="address1_city" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_city" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d042be7a-dd97-1113-1e1e-6579d1280e57}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Country/Region" languagecode="1033" />
+                        </labels>
+                        <control id="address1_country" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_country" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{24768592-1d83-8c38-b5be-c0c612148049}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Postal Code" languagecode="1033" />
+                        </labels>
+                        <control id="address1_postalcode" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_postalcode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="section_companycontacts" id="31025934-dabd-4101-b2ef-eca60a878904" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Company Contacts" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{f9087bfb-5a65-42f4-b466-7de458a81783}" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Company Contacts" languagecode="1033" />
+                        </labels>
+                        <control id="subgrid_CompanyContacts" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>contact</TargetEntityType>
+                            <ViewId>{2C87047C-3DAA-EA11-A812-000D3A7F1BBB}</ViewId>
+                            <ViewIds>{00000000-0000-0000-00AA-000010001003},{00000000-0000-0000-00AA-000010001004},{2C87047C-3DAA-EA11-A812-000D3A7F1BBB}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>contact_customer_accounts</RelationshipName>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
@@ -158,9 +221,9 @@
                 </section>
               </sections>
             </column>
-            <column width="50%">
+            <column width="33%">
               <sections>
-                <section name="TAB_AccountManager" showlabel="true" showbar="false" locklevel="0" id="{d4c3ee9c-ba71-5cdb-31be-2aa505750472}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Top" labelid="{5ad8051a-ea91-41c7-808b-ffa33fa5144b}">
+                <section name="TAB_AccountManager" showlabel="false" showbar="false" locklevel="1" id="{d4c3ee9c-ba71-5cdb-31be-2aa505750472}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Top" labelid="{5ad8051a-ea91-41c7-808b-ffa33fa5144b}">
                   <labels>
                     <label description="ACCOUNT MANAGER" languagecode="1033" />
                   </labels>
@@ -176,6 +239,139 @@
                             <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="systemuser"&gt;ea38a0f6-dd40-ea11-a812-000d3a0bad17&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
                           </parameters>
                         </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_Profile" id="c3431d5e-a5f4-47b7-8d09-1597e7dc1c3f" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Profile" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section name="tab_Profile_Description" id="fa731d4e-cdb6-4fed-91b5-29f34889cd47" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Description" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{d3cdf0af-2443-40c4-84c1-5da6eaa51a3a}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Description" languagecode="1033" />
+                        </labels>
+                        <control id="description" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="description" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{64107116-161a-40b4-a3ce-05503c978e80}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description=" Main Activities, Products And Services" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_mainactivitiesproductsandservices" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_mainactivitiesproductsandservices" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{655d5660-8c0d-477e-a98b-f3c6002e0840}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Scale and Resources" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_scaleandresources" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_scaleandresources" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e076d88c-88ae-4198-a61b-585a6cf0055f}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Goals And Vision" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_goalsandvision" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_goalsandvision" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{483a4a1c-157b-4815-99a9-bbc7f1f10eaa}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Areas of Potential Support" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_proposedprojects" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_proposedprojects" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="tab_Profile_Registration" id="817907ef-1634-44c5-8684-cddc4e59e05b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Company Registration" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{b21d1ffb-bdc6-4808-b9bc-e679d12b5307}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Legal Entity" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_legalentity" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_legalentity" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{32005dda-8730-446a-ac5d-aa4659518b31}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Ownership" languagecode="1033" />
+                        </labels>
+                        <control id="ownershipcode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="ownershipcode" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b43ff494-df69-4042-8d4a-f71345bc2c1e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Company Registration Number" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_companyregistrationnumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_companyregistrationnumber" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d4cbe3fe-fb03-4c05-b1eb-321f23d3d4e4}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="SIC Code" languagecode="1033" />
+                        </labels>
+                        <control id="sic" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sic" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{90c9059e-e498-40d6-8286-00a7c5bc1512}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="VAT Number" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_vatnumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_vatnumber" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{05d18461-618c-425f-83fb-6cbcff6717f8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Date of Registration" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_dateofregistration" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_dateofregistration" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{243849c1-4513-4d54-890b-a5aa732a3863}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Date Started Trading " languagecode="1033" />
+                        </labels>
+                        <control id="leidos_datestartedtrading" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datestartedtrading" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{51e0f879-b802-4288-8553-2a563ddeaf74}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Financial Year End" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_financialyearend" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_financialyearend" disabled="false" />
                       </cell>
                     </row>
                   </rows>
