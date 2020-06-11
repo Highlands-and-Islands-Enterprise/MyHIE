@@ -1,0 +1,27 @@
+var Leidos = window.Leidos || {};
+
+Leidos.ExpandBPF = function(executionContext) {
+    "use strict";
+    var formContext = executionContext.getFormContext(); // get formContext
+    formContext.ui.process.setDisplayState("expanded");  
+}
+
+Leidos.validateRegEx = function(executionContext, fieldName, pattern, notificationText)
+{
+   "use strict";
+
+   var formContext = typeof executionContext != 'undefined' ? executionContext.getFormContext() : Xrm.Page; // get formContext
+   var currentValue = formContext.getAttribute(fieldName).getValue(); 
+   if (pattern.test(currentValue)) {
+     formContext.getControl(fieldName).clearNotification();
+   } else {
+     formContext.getControl(fieldName).setNotification(notificationText);
+   }
+}
+
+Leidos.validatePhoneNumber = function(executionContext, fieldName) {
+   "use strict";
+   var pattern = /(\+|0{2})*([0-9 \(\)]{6,20})/g;
+   var notificationText = "The phone number you have entered is invalid, a phone number may only contain numbers, + or ()";
+   Leidos.validateRegEx(executionContext, fieldName, pattern, notificationText);
+}
