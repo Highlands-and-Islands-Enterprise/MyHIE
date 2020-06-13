@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{53065dae-3ee3-4594-9f17-a4be045c6e58}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_turnoverbanding" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_turnoverid">
+          <cell name="leidos_turnoverbanding" width="300" />
+          <cell name="leidos_bandingminimumamount" width="100" />
+          <cell name="leidos_bandingmaximumamount" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_turnover">
+          <attribute name="leidos_turnoverid" />
+          <attribute name="leidos_turnoverbanding" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="leidos_turnoverbanding" operator="like" value="{0}" />
+          </filter>
+          <attribute name="leidos_bandingminimumamount" />
+          <order attribute="leidos_bandingminimumamount" descending="false" />
+          <attribute name="leidos_bandingmaximumamount" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.2.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active Turnovers" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

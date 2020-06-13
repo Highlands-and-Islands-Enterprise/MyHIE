@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{24a07ab0-235e-ea11-a811-000d3a0bad17}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_clientplanreviewresponseid">
+          <cell name="leidos_name" width="25" />
+          <cell name="leidos_category" width="100" />
+          <cell name="a_e93facc919f44b9da41d52bddb17f80a.leidos_statement" width="300" />
+          <cell name="leidos_notes" width="206" />
+          <cell name="leidos_previousratingvalue" width="100" />
+          <cell name="leidos_ratingvalue" width="100" />
+          <cell name="leidos_notapplicable" width="100" />
+          <cell name="a_e93facc919f44b9da41d52bddb17f80a.leidos_indicatorsofgoodpractice" width="300" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_clientplanreviewresponse">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_clientplanreviewresponseid" />
+          <link-entity alias="a_e93facc919f44b9da41d52bddb17f80a" name="leidos_clientplanquestion" to="leidos_question" from="leidos_clientplanquestionid" link-type="outer" visible="false">
+            <attribute name="leidos_statement" />
+            <attribute name="leidos_indicatorsofgoodpractice" />
+          </link-entity>
+          <attribute name="leidos_notes" />
+          <attribute name="leidos_previousratingvalue" />
+          <attribute name="leidos_ratingvalue" />
+          <attribute name="leidos_notapplicable" />
+          <attribute name="leidos_category" />
+          <attribute name="leidos_categoryindex" />
+          <order attribute="leidos_categoryindex" descending="false" />
+          <order attribute="leidos_name" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.3.0.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="AM Client Plan Grid View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

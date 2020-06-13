@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{e457823a-108b-4eff-844c-b6126020d45b}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_tradinggeographies" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="leidos_tradinggeography" id="leidos_tradinggeographyid">
+          <cell name="leidos_name" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_geography" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_percentageofsales" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_markets" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_tradinggeography">
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_markets" />
+          <attribute name="leidos_geography" />
+          <attribute name="leidos_percentageofsales" />
+          <attribute name="leidos_tradinggeographyid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Trading Geography Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

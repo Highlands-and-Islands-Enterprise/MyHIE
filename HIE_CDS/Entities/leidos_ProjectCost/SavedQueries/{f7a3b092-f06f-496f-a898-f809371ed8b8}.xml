@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{f7a3b092-f06f-496f-a898-f809371ed8b8}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_projectcosts" jump="leidos_costitem" select="1" icon="1" preview="1">
+        <row name="leidos_projectcost" id="leidos_projectcostid">
+          <cell name="leidos_parentproject" width="100" />
+          <cell name="leidos_projectcostreference" width="100" />
+          <cell name="leidos_costitem" width="300" />
+          <cell name="leidos_costcategory" width="245" />
+          <cell name="leidos_itemcost" width="191" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_projectcost">
+          <attribute name="leidos_projectcostid" />
+          <attribute name="leidos_costitem" />
+          <order attribute="leidos_costitem" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_costcategory" />
+          <attribute name="leidos_itemcost" />
+          <attribute name="leidos_parentproject" />
+          <attribute name="leidos_projectcostreference" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.2.0.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Project Cost Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

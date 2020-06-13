@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{9f22ad7d-76a5-4619-abd5-62388be2a292}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_projectid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_parentaccount" width="100" />
+          <cell name="leidos_projectreference" width="100" />
+          <cell name="leidos_projectpostcode" width="100" />
+          <cell name="createdon" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_project">
+          <attribute name="leidos_projectid" />
+          <attribute name="leidos_name" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="leidos_name" operator="like" value="{0}" />
+            <condition attribute="leidos_projectreference" operator="like" value="{0}" />
+            <condition attribute="leidos_projectpostcode" operator="like" value="{0}" />
+          </filter>
+          <attribute name="leidos_parentaccount" />
+          <attribute name="leidos_projectreference" />
+          <attribute name="leidos_projectpostcode" />
+          <attribute name="createdon" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.2.0.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active Projects" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

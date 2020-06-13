@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{a21ce402-274a-4966-9ae7-53a5210d2efa}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_enquiries" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="leidos_enquiry" id="leidos_enquiryid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_referencenumber" width="100" />
+          <cell name="leidos_account" width="100" />
+          <cell name="leidos_contact" width="100" />
+          <cell name="leidos_enquirysource" width="100" />
+          <cell name="leidos_natureofenquiry" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_enquiry">
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <order attribute="createdon" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_natureofenquiry" />
+          <attribute name="leidos_contact" />
+          <attribute name="leidos_account" />
+          <attribute name="leidos_enquirysource" />
+          <attribute name="leidos_enquiryid" />
+          <attribute name="leidos_referencenumber" />
+          <attribute name="statuscode" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Enquiry Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
