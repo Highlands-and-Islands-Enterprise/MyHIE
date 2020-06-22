@@ -7,7 +7,7 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls">
       <tabs>
-        <tab verticallayout="true" id="{518c951e-09e9-4ec1-90e7-e3cbd2107adb}" IsUserDefined="1">
+        <tab verticallayout="true" id="{518c951e-09e9-4ec1-90e7-e3cbd2107adb}" IsUserDefined="1" name="General">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
@@ -120,11 +120,19 @@
                         <control id="leidos_evidencenotes" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_evidencenotes" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{8c5064b4-fa58-4376-aa33-4248b59ed780}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Spend Profile Complete" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_spendprofilecomplete" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_spendprofilecomplete" disabled="true" uniqueid="{f49fcf89-7621-48af-91e4-90f27cee503b}" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
-                <section name="null_section_3" id="61adaed1-0329-4ffc-87fe-f33361c5aa88" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="SpendProfile" id="61adaed1-0329-4ffc-87fe-f33361c5aa88" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="Anticipated Funding Profile" languagecode="1033" />
+                    <label description="Spend Profile" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -248,10 +256,50 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <controlDescriptions />
+      <controlDescriptions>
+        <controlDescription forControl="{f49fcf89-7621-48af-91e4-90f27cee503b}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_spendprofilecomplete</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_spendprofilecomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_spendprofilecomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_spendprofilecomplete</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b76df092-a5bc-4089-a13f-857e73713f1e" enabled="true" parameters="'kVc:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_fundingsource">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="5edffad5-6c3f-4bd1-9edc-ee51fa518f2e" enabled="true" parameters="'kVc:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="2aa234e8-85e0-42f4-8743-ff10e01e97d4" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a6cde2cf-bc30-475c-a3e0-c3dad65ba69f" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="75a7017c-5b91-4287-a713-dee3562fae51" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

@@ -14,8 +14,6 @@
           <cell name="leidos_spendprofilereference" width="100" />
           <cell name="leidos_hiefinancialyear" width="100" />
           <cell name="leidos_fundingamount" width="100" />
-          <cell name="leidos_capital" width="100" />
-          <cell name="leidos_revenue" width="100" />
           <cell name="createdon" width="100" />
         </row>
       </grid>
@@ -24,18 +22,16 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_anticipatedspendprofile">
-          <attribute name="leidos_anticipatedspendprofileid" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <attribute name="leidos_parentproject" />
           <attribute name="leidos_hiefinancialyear" />
-          <attribute name="leidos_capital" />
-          <attribute name="leidos_revenue" />
           <attribute name="createdon" />
           <order attribute="leidos_hiefinancialyear" descending="false" />
           <attribute name="leidos_fundingamount" />
           <attribute name="leidos_spendprofilereference" />
+          <attribute name="leidos_anticipatedspendprofileid" />
         </entity>
       </fetch>
     </fetchxml>

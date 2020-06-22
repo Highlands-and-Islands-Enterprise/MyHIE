@@ -14,23 +14,22 @@
           <cell name="leidos_spendprofilereference" width="100" />
           <cell name="leidos_hiefinancialyear" width="100" />
           <cell name="leidos_fundingamount" width="100" />
-          <cell name="leidos_capital" width="100" />
-          <cell name="leidos_revenue" width="100" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="leidos_anticipatedspendprofile">
           <attribute name="leidos_name" />
           <attribute name="leidos_hiefinancialyear" />
-          <attribute name="leidos_capital" />
-          <attribute name="leidos_revenue" />
-          <order attribute="leidos_hiefinancialyear" descending="false" />
           <attribute name="leidos_fundingamount" />
-          <attribute name="leidos_anticipatedspendprofileid" />
           <attribute name="leidos_spendprofilereference" />
+          <order attribute="leidos_hiefinancialyear" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_anticipatedspendprofileid" />
         </entity>
       </fetch>
     </fetchxml>

@@ -126,6 +126,19 @@
                         </labels>
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{62548ad4-4042-4837-b24d-c384c9e2500a}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Date of Granting" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_dateofgranting" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_dateofgranting" disabled="false" />
+                      </cell>
+                      <cell showlabel="true" locklevel="0" id="{3bb8beda-bfe8-4144-897e-76cec81ec532}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
                   </rows>
                 </section>
                 <section name="CostandFundingSummary" id="a1d05b91-6e84-434e-b84e-00672616f964" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="111" labelwidth="250">
@@ -264,7 +277,7 @@
         </tab>
         <tab name="Costs" id="9319078d-3969-408d-a40b-ab98ac475cf2" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
-            <label description="Project Costs" languagecode="1033" />
+            <label description="Costs" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
@@ -351,7 +364,7 @@
         </tab>
         <tab name="Funding" id="31a5c69b-e656-4043-b3c8-10508195083f" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
-            <label description="Project Funding" languagecode="1033" />
+            <label description="Cost Funding" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
@@ -434,6 +447,48 @@
             </column>
           </columns>
         </tab>
+        <tab name="SpendProfile" id="5cd74dfc-003b-44e1-b5fb-1eeed2a05693" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Spend Profile" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="SpendProfile" id="b0a0a3da-2377-49a8-a517-193f13d67a67" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Spend Profile" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{d7db70b0-d6f1-4ce8-b5f1-8534415fc3bb}" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="New SG control 1582535419133" languagecode="1033" />
+                        </labels>
+                        <control id="Subgrid_3" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_anticipatedspendprofile</TargetEntityType>
+                            <ViewId>{EBC1563F-E556-EA11-A811-000D3A7F1BBB}</ViewId>
+                            <ViewIds>{81503CB9-4BCB-493F-8DD0-398BB659147B},{EBC1563F-E556-EA11-A811-000D3A7F1BBB}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_AnticipatedSpendProfile_ParentProj</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e10ea6f6-4b27-4db3-8bd6-7b87d6ebf5e8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Completed Spend Profile" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_completedspendprofile" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedspendprofile" disabled="false" uniqueid="{3e39136e-7bb3-4722-975e-767ac130aa0f}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
         <tab name="Measures" id="e266b00e-fd8e-4305-a74b-7baa33843899" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
             <label description="Measures" languagecode="1033" />
@@ -477,48 +532,6 @@
                     <row />
                     <row />
                     <row />
-                  </rows>
-                </section>
-              </sections>
-            </column>
-          </columns>
-        </tab>
-        <tab name="SpendProfile" id="5cd74dfc-003b-44e1-b5fb-1eeed2a05693" IsUserDefined="0" locklevel="0" showlabel="true">
-          <labels>
-            <label description="Spend Profile" languagecode="1033" />
-          </labels>
-          <columns>
-            <column width="100%">
-              <sections>
-                <section name="SpendProfile" id="b0a0a3da-2377-49a8-a517-193f13d67a67" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
-                  <labels>
-                    <label description="Spend Profile" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell showlabel="false" locklevel="0" id="{d7db70b0-d6f1-4ce8-b5f1-8534415fc3bb}" rowspan="1" colspan="1">
-                        <labels>
-                          <label description="New SG control 1582535419133" languagecode="1033" />
-                        </labels>
-                        <control id="Subgrid_3" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
-                          <parameters>
-                            <TargetEntityType>leidos_anticipatedspendprofile</TargetEntityType>
-                            <ViewId>{EBC1563F-E556-EA11-A811-000D3A7F1BBB}</ViewId>
-                            <ViewIds>{81503CB9-4BCB-493F-8DD0-398BB659147B},{EBC1563F-E556-EA11-A811-000D3A7F1BBB}</ViewIds>
-                            <EnableViewPicker>false</EnableViewPicker>
-                            <RelationshipName>leidos_AnticipatedSpendProfile_ParentProj</RelationshipName>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{e10ea6f6-4b27-4db3-8bd6-7b87d6ebf5e8}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Completed Spend Profile" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_completedspendprofile" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedspendprofile" disabled="false" uniqueid="{3e39136e-7bb3-4722-975e-767ac130aa0f}" />
-                      </cell>
-                    </row>
                   </rows>
                 </section>
               </sections>
