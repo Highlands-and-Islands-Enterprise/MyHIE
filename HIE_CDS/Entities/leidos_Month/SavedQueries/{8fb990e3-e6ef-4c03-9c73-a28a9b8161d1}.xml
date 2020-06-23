@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{8fb990e3-e6ef-4c03-9c73-a28a9b8161d1}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_monthid">
+          <cell name="leidos_monthnumber" width="100" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_financialyear" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_month">
+          <attribute name="leidos_monthid" />
+          <attribute name="leidos_name" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <attribute name="leidos_financialyear" />
+          <attribute name="leidos_monthnumber" />
+          <order attribute="leidos_monthnumber" descending="false" />
+          <order attribute="leidos_financialyear" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.5.0.20</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Months" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
