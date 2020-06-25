@@ -11,8 +11,6 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectmeasureid">
           <cell name="leidos_name" width="300" />
-          <cell name="leidos_parentproject" width="100" />
-          <cell name="a_20d9e2fa3f194d3480d287177abd7783.leidos_strategicpriority" width="100" />
           <cell name="leidos_measuretype" width="100" />
           <cell name="leidos_activity" width="100" />
           <cell name="leidos_output" width="100" />
@@ -25,7 +23,6 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_projectmeasure">
-          <attribute name="leidos_projectmeasureid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
@@ -33,13 +30,10 @@
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <attribute name="leidos_measuretype" />
-          <attribute name="leidos_parentproject" />
           <attribute name="leidos_output" />
           <attribute name="leidos_activity" />
-          <link-entity alias="a_20d9e2fa3f194d3480d287177abd7783" name="leidos_projectstrategicpriority" to="leidos_projectstrategicpriory" from="leidos_projectstrategicpriorityid" link-type="outer" visible="false">
-            <attribute name="leidos_strategicpriority" />
-          </link-entity>
           <attribute name="leidos_quantity" />
+          <attribute name="leidos_projectmeasureid" />
         </entity>
       </fetch>
     </fetchxml>
