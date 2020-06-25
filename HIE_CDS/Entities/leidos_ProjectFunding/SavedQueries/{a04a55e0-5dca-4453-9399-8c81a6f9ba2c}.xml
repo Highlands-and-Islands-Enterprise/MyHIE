@@ -11,10 +11,11 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectfundingid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_hieteam" width="100" />
+          <cell name="leidos_parentprojectcost" width="100" />
           <cell name="leidos_projectfundingreference" width="100" />
           <cell name="leidos_parentproject" width="100" />
           <cell name="leidos_fundingamount" width="100" />
-          <cell name="leidos_totalprofiled" width="100" />
           <cell name="leidos_fundingsource" width="100" />
           <cell name="leidos_funddetails" width="100" />
           <cell name="leidos_stateaidcategory" width="100" />
@@ -29,7 +30,6 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_projectfunding">
-          <attribute name="leidos_projectfundingid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
@@ -44,8 +44,10 @@
           <attribute name="leidos_stateaidcategory" />
           <attribute name="leidos_stateaidsubcategory" />
           <attribute name="leidos_projectfundingreference" />
-          <attribute name="leidos_totalprofiled" />
           <attribute name="statuscode" />
+          <attribute name="leidos_hieteam" />
+          <attribute name="leidos_parentprojectcost" />
+          <attribute name="leidos_projectfundingid" />
         </entity>
       </fetch>
     </fetchxml>

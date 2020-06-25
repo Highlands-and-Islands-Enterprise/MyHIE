@@ -5,7 +5,7 @@
     <IntroducedVersion>1.2.0.1</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls">
+    <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
         <tab verticallayout="true" id="{9ac75677-b966-4897-853e-fe698b64002b}" IsUserDefined="1">
           <labels>
@@ -28,6 +28,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{ad645f72-3af1-4e88-b22f-b1980340bbbe}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Project Strategic Priory" languagecode="1033" />
+                        </labels>
+                        <control id="header_leidos_projectstrategicpriory" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_projectstrategicpriory" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{f263bcf0-cfeb-457e-88e7-9f00de9e917f}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Measure Type" languagecode="1033" />
@@ -36,15 +44,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{1ec94bd0-cb31-488e-bc2c-8ea5b771b381}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Strategic Priority" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_strategicpriority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_strategicpriority" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{7cde55cb-377b-4259-84f1-358f7086fe86}" showlabel="true" locklevel="0">
+                      <cell id="{7cde55cb-377b-4259-84f1-358f7086fe86}" showlabel="true" locklevel="0" visible="false">
                         <labels>
                           <label description="Activity" languagecode="1033" />
                         </labels>
@@ -64,7 +64,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{f14ecff4-b9a1-49d3-9766-628686778238}" showlabel="true" locklevel="0">
+                      <cell id="{f14ecff4-b9a1-49d3-9766-628686778238}" showlabel="true" locklevel="0" visible="false">
                         <labels>
                           <label description="Output" languagecode="1033" />
                         </labels>
@@ -84,11 +84,19 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{83160501-2c87-4f38-adba-d9162e992abb}" showlabel="true" locklevel="0">
+                      <cell id="{83160501-2c87-4f38-adba-d9162e992abb}" showlabel="true" locklevel="0" visible="false">
                         <labels>
                           <label description="Quantity" languagecode="1033" />
                         </labels>
                         <control id="leidos_quantity" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_quantity" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fa2caba1-0528-4900-9372-a06545ec43f1}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Status Reason" languagecode="1033" />
+                        </labels>
+                        <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -150,6 +158,12 @@
               </labels>
               <control id="header_leidos_parentproject" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentproject" disabled="false" />
             </cell>
+            <cell id="{6ad07c07-9218-45e5-9044-5f943cd36865}" showlabel="true" locklevel="0">
+              <labels>
+                <label description="Parent Account" languagecode="1033" />
+              </labels>
+              <control id="header_leidos_parentaccount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentaccount" disabled="false" />
+            </cell>
             <cell id="{833861a5-b8a1-40db-b49a-b4d9d3ba987b}">
               <labels>
                 <label description="Owner" languagecode="1033" />
@@ -176,6 +190,12 @@
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
+            </cell>
+            <cell id="{a59aff40-5d86-4c4f-8192-5b23a6de9227}" showlabel="true" locklevel="0">
+              <labels>
+                <label description="Strategic Priority" languagecode="1033" />
+              </labels>
+              <control id="leidos_strategicpriority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_strategicpriority" disabled="true" />
             </cell>
           </row>
         </rows>
@@ -214,6 +234,18 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="leidos_measuretype">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="027a2236-f2b5-42ad-a2e8-c1248f4f8738" enabled="true" parameters="'ttX:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="8859729f-aef0-42ac-b5b5-1d4909949540" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="322bfeae-a9bb-4524-9b8f-fd50148e4f3a" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="22c01630-b769-4dba-a214-cdc6116d85b5" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

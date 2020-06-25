@@ -11,6 +11,8 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectmeasureid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_parentaccount" width="100" />
+          <cell name="leidos_parentproject" width="100" />
           <cell name="leidos_measuretype" width="100" />
           <cell name="leidos_strategicpriority" width="100" />
           <cell name="leidos_activity" width="100" />
@@ -25,7 +27,6 @@
         <entity name="leidos_projectmeasure">
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
@@ -34,6 +35,9 @@
           <attribute name="leidos_output" />
           <attribute name="leidos_activity" />
           <attribute name="leidos_projectmeasureid" />
+          <attribute name="leidos_parentaccount" />
+          <attribute name="leidos_parentproject" />
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{7b3296eb-380a-4eb2-b1c5-f52b9b6ba4e4}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_hieteams" jump="leidos_name" select="1" icon="1" preview="0">
+        <row name="leidos_hieteam" id="leidos_hieteamid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_parentbusinessunit" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_hieteam">
+          <attribute name="leidos_hieteamid" />
+          <attribute name="leidos_name" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_parentbusinessunit" />
+          <order attribute="leidos_name" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.5.0.20</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="HIE Team Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
