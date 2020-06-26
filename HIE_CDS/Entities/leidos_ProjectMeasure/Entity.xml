@@ -483,7 +483,7 @@
           </Descriptions>
         </attribute>
         <attribute PhysicalName="leidos_Quantity">
-          <Type>nvarchar</Type>
+          <Type>decimal</Type>
           <Name>leidos_quantity</Name>
           <LogicalName>leidos_quantity</LogicalName>
           <RequiredLevel>none</RequiredLevel>
@@ -495,7 +495,7 @@
           <IsCustomField>1</IsCustomField>
           <IsAuditEnabled>1</IsAuditEnabled>
           <IsSecured>0</IsSecured>
-          <IntroducedVersion>1.5.0.17</IntroducedVersion>
+          <IntroducedVersion>1.0</IntroducedVersion>
           <IsCustomizable>1</IsCustomizable>
           <IsRenameable>1</IsRenameable>
           <CanModifySearchSettings>1</CanModifySearchSettings>
@@ -512,9 +512,9 @@
           <IsFilterable>0</IsFilterable>
           <IsRetrievable>0</IsRetrievable>
           <IsLocalizable>0</IsLocalizable>
-          <Format>text</Format>
-          <MaxLength>10</MaxLength>
-          <Length>20</Length>
+          <MinValue>-100000000000</MinValue>
+          <MaxValue>100000000000</MaxValue>
+          <Accuracy>2</Accuracy>
           <displaynames>
             <displayname description="Quantity" languagecode="1033" />
           </displaynames>
@@ -526,7 +526,7 @@
           <Type>lookup</Type>
           <Name>leidos_strategicpriority</Name>
           <LogicalName>leidos_strategicpriority</LogicalName>
-          <RequiredLevel>none</RequiredLevel>
+          <RequiredLevel>required</RequiredLevel>
           <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
