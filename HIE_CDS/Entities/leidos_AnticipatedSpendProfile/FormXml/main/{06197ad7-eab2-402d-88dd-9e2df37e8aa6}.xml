@@ -28,39 +28,57 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{f1685a5a-b23a-425c-8dd4-0a2cd3d63dad}" showlabel="true" locklevel="0">
+                      <cell id="{8989d1e2-bdaf-47a5-9d91-5b777ff2317f}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="HIE Financial Year" languagecode="1033" />
+                          <label description="Cost Type" languagecode="1033" />
                         </labels>
-                        <control id="leidos_hiefinancialyear" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_hiefinancialyear" disabled="false" />
+                        <control id="leidos_costtype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_costtype" disabled="false" />
                       </cell>
                     </row>
+                  </rows>
+                </section>
+                <section name="ProfileDetails" id="a7a96eff-4de9-4b78-8e88-edc70ae371ca" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Profile Details" languagecode="1033" />
+                  </labels>
+                  <rows>
                     <row>
-                      <cell id="{2f5f233b-5b48-4ede-ba26-79041cbeeae6}" showlabel="true" locklevel="0">
+                      <cell showlabel="false" locklevel="0" id="{6344ca31-8925-4623-9ec1-89973dcf0cbe}" rowspan="6" colspan="1" auto="false">
                         <labels>
-                          <label description="Month" languagecode="1033" />
+                          <label description="New SG control 1593158735606" languagecode="1033" />
                         </labels>
-                        <control id="leidos_month" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_month" disabled="false" uniqueid="{e9526dce-86b9-be29-a865-7b56b4b180bd}">
+                        <control id="Subgrid_1" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" indicationOfSubgrid="true" uniqueid="{3aec03b8-7321-5120-bdae-97791a6e3a86}">
                           <parameters>
-                            <AutoResolve>true</AutoResolve>
-                            <DisableMru>false</DisableMru>
-                            <DisableQuickFind>false</DisableQuickFind>
-                            <DisableViewPicker>true</DisableViewPicker>
-                            <DefaultViewId>{8111D141-7238-4E07-8A07-2429EC58D071}</DefaultViewId>
-                            <FilterRelationshipName>leidos_Month_FinancialYear_leidos_Financi</FilterRelationshipName>
-                            <DependentAttributeName>leidos_anticipatedspendprofile.leidos_hiefinancialyear</DependentAttributeName>
-                            <DependentAttributeType>leidos_financialyear</DependentAttributeType>
-                            <AllowFilterOff>false</AllowFilterOff>
+                            <TargetEntityType>leidos_spendprofiledetail</TargetEntityType>
+                            <ViewId>{059910DD-566C-4912-AC13-32EEA6B9F534}</ViewId>
+                            <ViewIds>{059910DD-566C-4912-AC13-32EEA6B9F534}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_SpendProfileDetail_ParentSpendProf</RelationshipName>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <IsUserView>false</IsUserView>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
                           </parameters>
                         </control>
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                     <row>
-                      <cell id="{bdc4c9f9-8149-418b-860f-c315831ea76d}" showlabel="true" locklevel="0">
+                      <cell id="{561fd7ec-c4c6-49af-910f-1298bc5e7dba}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Funding Amount " languagecode="1033" />
+                          <label description="Total Amount Profiled" languagecode="1033" />
                         </labels>
-                        <control id="leidos_fundingamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_fundingamount" disabled="false" />
+                        <control id="leidos_totalamountprofiled" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalamountprofiled" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -160,7 +178,51 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <controlDescriptions />
+      <controlDescriptions>
+        <controlDescription forControl="{3aec03b8-7321-5120-bdae-97791a6e3a86}">
+          <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" formFactor="0">
+            <parameters />
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.Grid.GridControl">
+            <parameters>
+              <data-set name="Grid">
+                <ViewId>{059910DD-566C-4912-AC13-32EEA6B9F534}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>leidos_SpendProfileDetail_ParentSpendProf</RelationshipName>
+                <TargetEntityType>leidos_spendprofiledetail</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{059910DD-566C-4912-AC13-32EEA6B9F534}</FilteredViewIds>
+              </data-set>
+              <EnableGroupBy static="true" type="Enum">yes</EnableGroupBy>
+              <EnableEditing static="true" type="Enum">yes</EnableEditing>
+              <ReflowBehavior static="true" type="Enum">GridOnly</ReflowBehavior>
+              <ListLayoutDirection static="true" type="Enum">Vertical</ListLayoutDirection>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <HideNestedGridColumnHeader static="true" type="Enum">no</HideNestedGridColumnHeader>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.Grid.GridControl">
+            <parameters>
+              <data-set name="Grid">
+                <ViewId>{059910DD-566C-4912-AC13-32EEA6B9F534}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>leidos_SpendProfileDetail_ParentSpendProf</RelationshipName>
+                <TargetEntityType>leidos_spendprofiledetail</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{059910DD-566C-4912-AC13-32EEA6B9F534}</FilteredViewIds>
+              </data-set>
+              <EnableGroupBy static="true" type="Enum">yes</EnableGroupBy>
+              <EnableEditing static="true" type="Enum">yes</EnableEditing>
+              <ReflowBehavior static="true" type="Enum">GridOnly</ReflowBehavior>
+              <ListLayoutDirection static="true" type="Enum">Vertical</ListLayoutDirection>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <HideNestedGridColumnHeader static="true" type="Enum">no</HideNestedGridColumnHeader>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>

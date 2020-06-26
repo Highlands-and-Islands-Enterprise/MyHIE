@@ -6,40 +6,35 @@
     <isquickfindquery>1</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>1</isdefault>
-    <savedqueryid>{3feec7b3-bf3f-4478-9c3a-6a3f7f94824e}</savedqueryid>
+    <savedqueryid>{0aa97ed3-7bdd-4b19-8136-1a16a99daaef}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
-        <row name="result" id="leidos_anticipatedspendprofileid">
+        <row name="result" id="leidos_spendprofiledetailid">
           <cell name="leidos_name" width="300" />
-          <cell name="leidos_parentproject" width="100" />
-          <cell name="leidos_costtype" width="100" />
+          <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
     <querytype>4</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="leidos_anticipatedspendprofile">
+        <entity name="leidos_spendprofiledetail">
+          <attribute name="leidos_spendprofiledetailid" />
           <attribute name="leidos_name" />
+          <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <filter type="or" isquickfindfields="1">
-            <condition attribute="leidos_spendprofilereference" operator="like" value="{0}" />
-            <condition attribute="leidos_parentproject" operator="like" value="{0}" />
             <condition attribute="leidos_name" operator="like" value="{0}" />
-            <condition attribute="leidos_costtype" operator="like" value="{0}" />
           </filter>
-          <attribute name="leidos_parentproject" />
-          <attribute name="leidos_costtype" />
-          <attribute name="leidos_anticipatedspendprofileid" />
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.2.0.1</IntroducedVersion>
+    <IntroducedVersion>1.5.0.20</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Quick Find Active Anticipated Spend Profiles" languagecode="1033" />
+      <LocalizedName description="Quick Find Active Spend Profile Details" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
