@@ -10,10 +10,11 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_anticipatedspendprofileid">
-          <cell name="leidos_parentproject" width="100" />
+          <cell name="leidos_name" width="100" />
           <cell name="leidos_fundingsource" width="100" />
           <cell name="leidos_spendprofilereference" width="100" />
           <cell name="leidos_costtype" width="100" />
+          <cell name="leidos_spendprofileamount" width="100" />
           <cell name="leidos_totalamountprofiled" width="100" />
           <cell name="createdon" width="100" />
         </row>
@@ -27,13 +28,13 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="leidos_parentproject" />
           <attribute name="createdon" />
           <attribute name="leidos_fundingsource" />
-          <order attribute="leidos_parentproject" descending="false" />
           <attribute name="leidos_totalamountprofiled" />
           <attribute name="leidos_costtype" />
           <attribute name="leidos_anticipatedspendprofileid" />
+          <attribute name="leidos_name" />
+          <attribute name="leidos_spendprofileamount" />
         </entity>
       </fetch>
     </fetchxml>
