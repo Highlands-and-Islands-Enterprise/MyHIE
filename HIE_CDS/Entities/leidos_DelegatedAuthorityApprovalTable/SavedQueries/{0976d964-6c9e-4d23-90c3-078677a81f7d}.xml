@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{0976d964-6c9e-4d23-90c3-078677a81f7d}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_delegatedauthorityapprovaltableid">
+          <cell name="a_b842ccc41d92463ebb116490e1d6339c.fullname" width="100" />
+          <cell name="leidos_maximumsignoffamount" width="100" />
+          <cell name="leidos_gradee" width="100" />
+          <cell name="leidos_gradef" width="100" />
+          <cell name="leidos_executivegradestaff" width="100" />
+          <cell name="leidos_leadershipteam" width="100" />
+          <cell name="leidos_hieboard" width="100" />
+          <cell name="leidos_hiechiefexecutive" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_delegatedauthorityapprovaltable">
+          <attribute name="leidos_delegatedauthorityapprovaltableid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_maximumsignoffamount" />
+          <attribute name="leidos_gradee" />
+          <attribute name="leidos_gradef" />
+          <attribute name="leidos_leadershipteam" />
+          <attribute name="leidos_executivegradestaff" />
+          <attribute name="leidos_hieboard" />
+          <attribute name="leidos_hiechiefexecutive" />
+          <link-entity alias="a_b842ccc41d92463ebb116490e1d6339c" name="systemuser" to="leidos_userrecord" from="systemuserid" link-type="outer" visible="false">
+            <attribute name="fullname" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.6.0.8</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Delegated Authority Approval Tables" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

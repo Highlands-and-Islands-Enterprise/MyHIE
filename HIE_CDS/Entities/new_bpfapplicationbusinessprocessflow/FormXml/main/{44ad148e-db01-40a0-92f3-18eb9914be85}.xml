@@ -188,6 +188,14 @@
                   </labels>
                   <rows>
                     <row>
+                      <cell id="{e7c8155b-e1c4-4786-8171-b9208dd5181d}" showlabel="true" visible="true" labelid="{1088e2a4-2133-4a63-a41a-4fcf173a531b}">
+                        <labels>
+                          <label description="Application Delegated Authority " languagecode="1033" />
+                        </labels>
+                        <control id="bpf_leidos_application_new_bpfapplicationbusinessprocessflow:leidos_applicationdelegatedauthority" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="leidos_applicationdelegatedauthority" relationship="bpf_leidos_application_new_bpfapplicationbusinessprocessflow" isrequired="false" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{8363bce5-7e7e-4b0d-acc9-d260ac16dac6}" showlabel="true" visible="true" labelid="{5d715498-347f-4aea-83da-aae601743416}">
                         <labels>
                           <label description="Appraisal Document Link" languagecode="1033" />
@@ -228,6 +236,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{6f0dd3c7-e80d-45c0-8314-125b1b05023b}" showlabel="true" visible="true" labelid="{a9ebfe05-29bd-4ef9-b7d4-81feff92c0e0}">
+                        <labels>
+                          <label description="Recommendation" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_leidos_application_new_bpfapplicationbusinessprocessflow:leidos_recommendation" classid="{67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed}" datafieldname="leidos_recommendation" relationship="bpf_leidos_application_new_bpfapplicationbusinessprocessflow" isrequired="false" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{8b3410c1-c11f-4f6f-a2e9-0a251bcc8827}" showlabel="true" visible="true" labelid="{c55f4499-9796-4e1a-b6b2-181303cfd491}">
                         <labels>
                           <label description="Submit Application for Budget Approval" languagecode="1033" />
@@ -242,6 +258,23 @@
           </columns>
         </tab>
       </tabs>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="639e43bb-7365-4f25-9807-fdd9b566565a" enabled="true" parameters="'C52:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="bpf_leidos_application_new_bpfapplicationbusinessprocessflow:leidos_applicationdelegatedauthority">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="969f88a6-8a21-4d90-9b15-de1395ea7ab3" enabled="true" parameters="'C52:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="4ff3a6bf-454e-4497-952a-339146141c6e" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="c9edc819-bc5f-4a5c-9e1c-cf89ff25d30f" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="04eeae01-d45e-4d50-b090-a9e0016fea55" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

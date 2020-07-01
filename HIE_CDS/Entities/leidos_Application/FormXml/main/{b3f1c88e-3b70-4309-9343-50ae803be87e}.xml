@@ -127,6 +127,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{5cc9045d-8517-47f7-a663-da53d1964db4}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Application Delegated Authority " languagecode="1033" />
+                        </labels>
+                        <control id="leidos_applicationdelegatedauthority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_applicationdelegatedauthority" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{44258ad0-68c9-43c9-a2c2-5531402bceda}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Delegated Authority" languagecode="1033" />
@@ -156,6 +164,14 @@
                           <label description="Budget Approval Delegated Authority" languagecode="1033" />
                         </labels>
                         <control id="leidos_budgetapprovaldelegatedauthority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_budgetapprovaldelegatedauthority" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{994bb9b9-b473-4737-9423-1f63c6794a19}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Recommendation" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_recommendation" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_recommendation" disabled="false" uniqueid="{02ce8590-e263-41d7-af91-86ea49e2be16}" />
                       </cell>
                     </row>
                   </rows>
@@ -495,10 +511,45 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <controlDescriptions />
+      <controlDescriptions>
+        <controlDescription forControl="{02ce8590-e263-41d7-af91-86ea49e2be16}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_recommendation</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_recommendation</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_recommendation</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_recommendation</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="5d6f2b1a-ee17-4ea0-adf2-45abe650cfa2" enabled="true" parameters="'C52:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="ddb275af-ea80-404b-a4ed-cafad3f40da0" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="0e82b8ba-a4ec-4221-8f35-ff238bf89448" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="f24e560e-f94a-481b-ac16-372764f52089" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

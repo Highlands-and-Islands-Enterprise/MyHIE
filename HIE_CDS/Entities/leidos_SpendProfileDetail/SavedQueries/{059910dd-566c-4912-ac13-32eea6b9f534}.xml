@@ -14,9 +14,6 @@
           <cell name="a_4c455013385247a48fb7f2511ca49f35.leidos_parentproject" width="100" />
           <cell name="leidos_parentspendprofile" width="100" />
           <cell name="leidos_hiefinancialyear" width="100" />
-          <cell name="leidos_month" width="100" />
-          <cell name="leidos_anticipatedspenddate" width="100" />
-          <cell name="leidos_fundingamount" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -25,7 +22,6 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_spendprofiledetail">
-          <attribute name="leidos_spendprofiledetailid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
@@ -33,13 +29,11 @@
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <attribute name="leidos_hiefinancialyear" />
-          <attribute name="leidos_month" />
           <attribute name="leidos_parentspendprofile" />
-          <attribute name="leidos_anticipatedspenddate" />
-          <attribute name="leidos_fundingamount" />
           <link-entity alias="a_4c455013385247a48fb7f2511ca49f35" name="leidos_anticipatedspendprofile" to="leidos_parentspendprofile" from="leidos_anticipatedspendprofileid" link-type="outer" visible="false">
             <attribute name="leidos_parentproject" />
           </link-entity>
+          <attribute name="leidos_spendprofiledetailid" />
         </entity>
       </fetch>
     </fetchxml>
