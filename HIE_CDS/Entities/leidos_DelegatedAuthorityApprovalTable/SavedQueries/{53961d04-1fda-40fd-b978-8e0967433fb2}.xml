@@ -10,14 +10,8 @@
     <layoutxml>
       <grid name="leidos_delegatedauthorityapprovaltables" jump="leidos_name" select="1" icon="1" preview="0">
         <row name="leidos_delegatedauthorityapprovaltable" id="leidos_delegatedauthorityapprovaltableid">
-          <cell name="a_b842ccc41d92463ebb116490e1d6339c.fullname" width="100" />
+          <cell name="leidos_name" width="100" />
           <cell name="leidos_maximumsignoffamount" width="100" />
-          <cell name="leidos_gradee" width="100" />
-          <cell name="leidos_gradef" width="100" />
-          <cell name="leidos_executivegradestaff" width="100" />
-          <cell name="leidos_leadershipteam" width="100" />
-          <cell name="leidos_hieboard" width="100" />
-          <cell name="leidos_hiechiefexecutive" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -26,19 +20,12 @@
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_delegatedauthorityapprovaltable">
           <attribute name="leidos_delegatedauthorityapprovaltableid" />
+          <attribute name="leidos_maximumsignoffamount" />
+          <attribute name="leidos_name" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="leidos_userrecord" operator="ne-userid" />
           </filter>
-          <attribute name="leidos_maximumsignoffamount" />
-          <attribute name="leidos_gradee" />
-          <attribute name="leidos_gradef" />
-          <attribute name="leidos_leadershipteam" />
-          <attribute name="leidos_executivegradestaff" />
-          <attribute name="leidos_hieboard" />
-          <attribute name="leidos_hiechiefexecutive" />
-          <link-entity alias="a_b842ccc41d92463ebb116490e1d6339c" name="systemuser" to="leidos_userrecord" from="systemuserid" link-type="outer" visible="false">
-            <attribute name="fullname" />
-          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

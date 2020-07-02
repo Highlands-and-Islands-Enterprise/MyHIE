@@ -5,7 +5,7 @@
     <IntroducedVersion>1.5.0.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls">
+    <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
         <tab verticallayout="true" id="{e805f518-906e-4cd2-8a23-84ae0ec57fc9}" IsUserDefined="1" name="General">
           <labels>
@@ -22,7 +22,7 @@
                     <row>
                       <cell id="{8d21b719-dd5b-4c11-ad29-39961af2d2b9}">
                         <labels>
-                          <label description="Name" languagecode="1033" />
+                          <label description="Project Name" languagecode="1033" />
                         </labels>
                         <control id="leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" />
                       </cell>
@@ -67,11 +67,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{488addda-d476-48c9-ac37-1e1b81d46151}" showlabel="true" locklevel="0">
+                      <cell id="{10d9c16c-aea2-4f4e-b3af-e72f098725fe}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Anticipated Year Project Commences" languagecode="1033" />
+                          <label description="Anticipated Project Start Date" languagecode="1033" />
                         </labels>
-                        <control id="leidos_anticipatedyearprojectcommences" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_anticipatedyearprojectcommences" disabled="false" />
+                        <control id="leidos_anticipatedprojectstartdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_anticipatedprojectstartdate" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -214,14 +214,6 @@
                         <control id="leidos_preapplicationroute" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_preapplicationroute" disabled="false" />
                       </cell>
                     </row>
-                    <row>
-                      <cell id="{f52eb5e5-4304-47da-aa79-3546a5878e5e}" showlabel="true" locklevel="0" visible="false">
-                        <labels>
-                          <label description="Direct to Application Rationale" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_directtoapplicationrationale" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_directtoapplicationrationale" disabled="false" />
-                      </cell>
-                    </row>
                   </rows>
                 </section>
                 <section name="Record Details " id="331c4e84-65d1-4632-824d-f84a741ea124" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
@@ -245,6 +237,14 @@
                         <control id="leidos_areasforpotentialhieintervention" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_areasforpotentialhieintervention" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{f52eb5e5-4304-47da-aa79-3546a5878e5e}" showlabel="true" locklevel="0" visible="true">
+                        <labels>
+                          <label description="Direct to Application Rationale" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_directtoapplicationrationale" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_directtoapplicationrationale" disabled="false" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -257,11 +257,16 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{5a337b74-154c-4d73-b645-074b4d191f68}" showlabel="true" locklevel="0">
+                      <cell id="{4bf37d33-3669-4c0c-85fa-e263e671d01a}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="ISA Approval Delegated Authority" languagecode="1033" />
+                          <label description="Delegated Authority" languagecode="1033" />
                         </labels>
-                        <control id="leidos_isaapprovaldelegatedauthority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_isaapprovaldelegatedauthority" disabled="false" />
+                        <control id="leidos_delegatedauthority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_delegatedauthority" disabled="false">
+                          <parameters>
+                            <DisableMru>true</DisableMru>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>
@@ -336,6 +341,14 @@
                   </labels>
                   <rows>
                     <row>
+                      <cell id="{6aef68ef-a7a0-44aa-92f9-d82d8ac8e547}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Delegated Authority" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_delegatedauthority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_delegatedauthority" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{0137156c-0c5a-49d4-90fa-b559c9bd2b28}" showlabel="true" locklevel="0" rowspan="10">
                         <labels>
                           <label description="Anticipated Outcomes" languagecode="1033" />
@@ -396,16 +409,18 @@
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="4b696ca3-3dd6-4655-bb64-4fe1df6f5923" enabled="true" parameters="'Ee0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_client">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="52e3946b-069c-47d3-9b95-45860b184a9e" enabled="true" parameters="'4Uo:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{66dead25-4349-dcba-5a77-e90ce7a19191}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.SetPipelinePathControlViews" libraryName="leidos_PipelineContolView" handlerUniqueId="{15d63601-5655-9eeb-03a1-78b9dc4b71d0}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_preapplicationroute">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="507d47fe-1963-4945-abf2-280594dc5540" enabled="true" parameters="'Ee0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_team">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="6174eee5-664d-4033-93b7-d7a5d83613a6" enabled="true" parameters="'4Uo:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -517,12 +532,14 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <DisplayConditions Order="0" FallbackForm="true" />
       <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="f5686ebd-b600-4d06-ac1d-407f5e64d419" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="5a4f805a-bc6f-4c15-833a-1515ddcc7d46" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="05bd4240-8768-42a8-b6b1-cefae9bf99cc" />
+        <Library name="leidos_common" libraryUniqueId="{09b0e775-8089-4a72-cdb3-cd17c8048ce1}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="bb31d910-5282-40c9-823a-4197948768ab" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a12502c3-9c1b-4005-8c08-4999f47aeaa2" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="8da8efb6-a17b-4a71-b049-2a98f451fb5e" />
+        <Library name="leidos_PipelineContolView" libraryUniqueId="{74b97293-a920-2a74-b114-4210e65a2aa2}" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true" />
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

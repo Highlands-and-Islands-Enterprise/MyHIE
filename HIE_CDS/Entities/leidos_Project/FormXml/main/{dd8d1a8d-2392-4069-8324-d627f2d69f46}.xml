@@ -5,7 +5,7 @@
     <IntroducedVersion>1.2.0.1</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls">
+    <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
         <tab verticallayout="true" id="{97f7bb7f-e248-48e0-987c-475c9ad0bb44}" IsUserDefined="1" name="General">
           <labels>
@@ -752,26 +752,6 @@
       </footer>
       <Navigation>
         <NavBar>
-          <NavBarByRelationshipItem RelationshipName="bpf_leidos_project_leidos_bpf_pipelineproject" Sequence="9500" Area="ProcessCenter" Id="nav_bpf_leidos_project_leidos_bpf_pipelineproject">
-            <Titles>
-              <Title LCID="1033" Text="BPF - Pipeline Project" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="bpf_leidos_project_new_bpfapplicationbusinessprocessflow" Sequence="9501" Area="ProcessCenter" Id="nav_bpf_leidos_project_new_bpfapplicationbusinessprocessflow">
-            <Titles>
-              <Title LCID="1033" Text="BPF - Application Business Process Flow" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="bpf_leidos_project_leidos_bpf_project" Sequence="9502" Area="ProcessCenter" Id="nav_bpf_leidos_project_leidos_bpf_project">
-            <Titles>
-              <Title LCID="1033" Text="BPF - Project" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="hardcoded_{B7196B13-6B9D-42CD-BD58-B19A3953126F}navAsyncOperations" Sequence="9503" Area="ProcessCenter" Id="navAsyncOperations">
-            <Titles>
-              <Title LCID="1033" Text="Background Processes" />
-            </Titles>
-          </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="leidos_ProjectStrategicPriority_ParentPro" Sequence="1004" Area="Sales" Id="nav_leidos_ProjectStrategicPriority_ParentPro">
             <Titles>
               <Title LCID="1033" Text="Project Strategic Priorities" />
@@ -800,6 +780,26 @@
           <NavBarByRelationshipItem RelationshipName="leidos_AnticipatedSpendProfile_ParentProj" Sequence="1009" Area="Service" Id="nav_leidos_AnticipatedSpendProfile_ParentProj">
             <Titles>
               <Title LCID="1033" Text="Spend Profiles" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="bpf_leidos_project_leidos_bpf_pipelineproject" Sequence="9500" Area="ProcessCenter" Id="nav_bpf_leidos_project_leidos_bpf_pipelineproject">
+            <Titles>
+              <Title LCID="1033" Text="BPF - Pipeline Project" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="bpf_leidos_project_new_bpfapplicationbusinessprocessflow" Sequence="9501" Area="ProcessCenter" Id="nav_bpf_leidos_project_new_bpfapplicationbusinessprocessflow">
+            <Titles>
+              <Title LCID="1033" Text="BPF - Application Business Process Flow" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="bpf_leidos_project_leidos_bpf_project" Sequence="9502" Area="ProcessCenter" Id="nav_bpf_leidos_project_leidos_bpf_project">
+            <Titles>
+              <Title LCID="1033" Text="BPF - Project" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="hardcoded_{B7196B13-6B9D-42CD-BD58-B19A3953126F}navAsyncOperations" Sequence="9503" Area="ProcessCenter" Id="navAsyncOperations">
+            <Titles>
+              <Title LCID="1033" Text="Background Processes" />
             </Titles>
           </NavBarByRelationshipItem>
         </NavBar>
@@ -984,9 +984,27 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{690666b4-6da3-099c-393d-826d3147a1b7}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_projectpostcode">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="cb51fb93-8383-4226-9238-e895b84ca2cc" enabled="true" parameters="'I02:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{b5111e31-ad58-5b10-4216-347261e80896}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="2e96128a-f247-4407-87d0-2379569b024a" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="5b040227-2a52-4a95-ad89-0eafc221847b" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="61621033-ade9-49be-94b2-7798597f3196" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

@@ -10,7 +10,7 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_delegatedauthorityapprovaltableid">
-          <cell name="a_a23ed891100143e8b6acca9403a73dfa.fullname" width="100" />
+          <cell name="leidos_name" width="100" />
           <cell name="leidos_maximumsignoffamount" width="100" />
         </row>
       </grid>
@@ -22,12 +22,9 @@
           <attribute name="leidos_delegatedauthorityapprovaltableid" />
           <filter type="and">
             <condition attribute="leidos_userrecord" operator="ne-userid" />
-            <condition attribute="leidos_maximumsignoffamount" operator="ge" value="20000" />
           </filter>
-          <link-entity alias="a_a23ed891100143e8b6acca9403a73dfa" name="systemuser" to="leidos_userrecord" from="systemuserid" link-type="outer" visible="false">
-            <attribute name="fullname" />
-          </link-entity>
           <attribute name="leidos_maximumsignoffamount" />
+          <attribute name="leidos_name" />
         </entity>
       </fetch>
     </fetchxml>

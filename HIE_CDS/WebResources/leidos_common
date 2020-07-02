@@ -1,3 +1,8 @@
+if (typeof($) === 'undefined') {
+	$ = parent.$;
+	jQuery = parent.jQuery;
+}
+
 var Leidos = window.Leidos || {};
 
 Leidos.ExpandBPF = function(executionContext) {
@@ -24,4 +29,27 @@ Leidos.validatePhoneNumber = function(executionContext, fieldName) {
    var pattern = /(\+|0{2})*([0-9 \(\)]{6,20})/g;
    var notificationText = "The phone number you have entered is invalid, a phone number may only contain numbers, + or ()";
    Leidos.validateRegEx(executionContext, fieldName, pattern, notificationText);
+}
+
+Leidos.setLookupViewId = function(executionContext, controlName, viewId) {
+   "use strict";
+    var formContext = executionContext.getFormContext();
+    var control = formContext.getControl(controlName);
+    if(control){
+        formContext.getControl(controlName).setDefaultView(viewId); //include Curly Braces
+    }
+}
+
+Leidos.hideBPFFinishButtonNoWait = function() {
+    $("[title='Finish']").each(function(){ $(this).hide()} ); 
+}
+
+Leidos.hideBPFFinishButtonTimeout = function(executionContext) {
+    setTimeout(function(){ Leidos.hideBPFFinishButtonNoWait(); }, 250);
+}
+
+Leidos.hideBPFFinishButton = function(executionContext) {
+    var formContext = executionContext.getFormContext();
+    formContext.data.process.addOnStageSelected(Leidos.hideBPFFinishButtonTimeout);
+    formContext.data.process.addOnStageChange(Leidos.hideBPFFinishButtonTimeout);
 }
