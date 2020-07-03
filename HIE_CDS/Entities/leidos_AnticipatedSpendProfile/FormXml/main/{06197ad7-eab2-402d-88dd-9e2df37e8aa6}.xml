@@ -149,6 +149,12 @@
                 <label description="" languagecode="1033" />
               </labels>
             </cell>
+            <cell id="{d4c09f39-beef-4985-a0ca-275798a8b8b2}" showlabel="true" locklevel="0">
+              <labels>
+                <label description="Status Reason" languagecode="1033" />
+              </labels>
+              <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+            </cell>
           </row>
         </rows>
       </footer>
@@ -230,6 +236,28 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="85cb251c-b4d3-4834-a473-5b669d51dc14" enabled="true" parameters="'2hh:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_spendprofileamount">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="94f48596-4739-4c36-a224-d62620e1f3b5" enabled="true" parameters="'2hh:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_spenddetailtotal">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="41d84aa4-3830-414b-b82a-a315a821ef45" enabled="true" parameters="'2hh:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="3fee1eb7-9bbe-4bca-ab61-8ff1b75a1af6" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="4e53c6b9-6233-4c78-96a9-995fddc141f0" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="cd2d269a-e94b-4977-83c5-023953683622" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

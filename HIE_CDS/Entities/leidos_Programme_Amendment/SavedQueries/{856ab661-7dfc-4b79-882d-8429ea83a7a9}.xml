@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{856ab661-7dfc-4b79-882d-8429ea83a7a9}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_programme_amendments" jump="leidos_name" select="1" icon="1" preview="0">
+        <row name="leidos_programme_amendment" id="leidos_programme_amendmentid">
+          <cell name="leidos_name" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_programme_amendment">
+          <attribute name="leidos_programme_amendmentid" />
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.6.0.8</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Programme_Amendment Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
