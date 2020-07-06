@@ -21,19 +21,22 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="leidos_projectmeasure">
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="leidos_measuretype" />
           <attribute name="leidos_output" />
           <attribute name="leidos_activity" />
-          <attribute name="leidos_projectmeasureid" />
           <attribute name="leidos_qty" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <filter type="or">
+              <condition attribute="statecode" operator="eq" value="0" />
+              <condition attribute="statuscode" operator="eq" value="445260003" />
+            </filter>
+          </filter>
+          <attribute name="leidos_projectmeasureid" />
         </entity>
       </fetch>
     </fetchxml>

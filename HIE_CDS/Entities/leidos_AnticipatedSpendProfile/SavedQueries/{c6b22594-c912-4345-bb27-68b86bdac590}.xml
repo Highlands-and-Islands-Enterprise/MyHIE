@@ -24,22 +24,25 @@
     </layoutxml>
     <querytype>2</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="leidos_anticipatedspendprofile">
           <attribute name="createdon" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="leidos_spendprofilereference" />
           <attribute name="leidos_parentproject" />
           <attribute name="leidos_fundingsource" />
-          <order attribute="leidos_parentproject" descending="false" />
           <attribute name="leidos_totalamountprofiled" />
           <attribute name="leidos_costtype" />
-          <attribute name="leidos_anticipatedspendprofileid" />
           <attribute name="leidos_name" />
           <attribute name="leidos_spendprofileamount" />
           <attribute name="statuscode" />
+          <order attribute="leidos_parentproject" descending="false" />
+          <filter type="and">
+            <filter type="or">
+              <condition attribute="statecode" operator="eq" value="0" />
+              <condition attribute="statuscode" operator="eq" value="445260001" />
+            </filter>
+          </filter>
+          <attribute name="leidos_anticipatedspendprofileid" />
         </entity>
       </fetch>
     </fetchxml>

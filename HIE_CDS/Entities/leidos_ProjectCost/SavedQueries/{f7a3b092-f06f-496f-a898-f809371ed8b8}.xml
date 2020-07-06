@@ -20,18 +20,21 @@
     </layoutxml>
     <querytype>2</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="leidos_projectcost">
-          <attribute name="leidos_projectcostid" />
           <attribute name="leidos_costitem" />
-          <order attribute="leidos_costitem" descending="false" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="leidos_costcategory" />
           <attribute name="leidos_itemcost" />
           <attribute name="leidos_parentproject" />
           <attribute name="leidos_projectcostreference" />
+          <order attribute="leidos_costitem" descending="false" />
+          <filter type="and">
+            <filter type="or">
+              <condition attribute="statecode" operator="eq" value="0" />
+              <condition attribute="statuscode" operator="eq" value="445260001" />
+            </filter>
+          </filter>
+          <attribute name="leidos_projectcostid" />
         </entity>
       </fetch>
     </fetchxml>

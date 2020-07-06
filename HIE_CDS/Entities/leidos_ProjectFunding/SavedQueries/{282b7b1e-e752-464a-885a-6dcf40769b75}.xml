@@ -26,13 +26,10 @@
     </layoutxml>
     <querytype>2</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="leidos_projectfunding">
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="leidos_fundingamount" />
           <attribute name="leidos_parentproject" />
           <attribute name="leidos_fundingsource" />
@@ -43,6 +40,12 @@
           <attribute name="leidos_projectfundingreference" />
           <attribute name="statuscode" />
           <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <filter type="or">
+              <condition attribute="statecode" operator="eq" value="0" />
+              <condition attribute="statuscode" operator="eq" value="445260000" />
+            </filter>
+          </filter>
           <attribute name="leidos_projectfundingid" />
         </entity>
       </fetch>
