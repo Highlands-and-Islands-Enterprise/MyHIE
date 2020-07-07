@@ -7,12 +7,12 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
-        <tab verticallayout="true" id="{fa9bfb39-ce50-4a80-ba80-239cf7c86fa0}" IsUserDefined="1">
+        <tab verticallayout="true" id="{fa9bfb39-ce50-4a80-ba80-239cf7c86fa0}" IsUserDefined="1" name="General">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
                 <section showlabel="false" showbar="false" IsUserDefined="0" id="{c04a9a5e-7b10-4d31-9afb-38262d3beb5c}" name="General">
                   <labels>
@@ -52,7 +52,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="Amendment_section_3" id="fce4afee-029f-47e4-a8b0-72b7984633b1" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="Amendment" id="fce4afee-029f-47e4-a8b0-72b7984633b1" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Project Amendment" languagecode="1033" />
                   </labels>
@@ -175,6 +175,25 @@
                 </section>
               </sections>
             </column>
+            <column width="50%">
+              <sections>
+                <section name="AmendmentApproval" id="461421e6-39c7-404e-999b-2f8f7c25883a" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Project Amendment Approval" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{694e23b8-680c-4a6a-8af9-2d36d46de3e4}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Submit Project Amendment for Approval" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_submitprojectamendmentforapproval" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_submitprojectamendmentforapproval" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
           </columns>
         </tab>
       </tabs>
@@ -221,7 +240,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -254,18 +273,6 @@
         <Library name="leidos_common" libraryUniqueId="{078d2a0a-70b1-37c3-8405-61094871e6c1}" />
         <Library name="leidos_projectAmendment.js" libraryUniqueId="{94167ab6-7b43-1717-d341-29c6b0138ade}" />
       </formLibraries>
-      <events>
-        <event name="onload" application="false" active="false">
-          <Handlers>
-            <Handler functionName="Leidos.SetProjectAmendmentPathControlViews" libraryName="leidos_projectAmendment.js" handlerUniqueId="{51c4d280-6874-7956-7bae-479313937e2d}" enabled="true" parameters="" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_projectamendmentpath">
-          <Handlers>
-            <Handler functionName="Leidos.SetProjectAmendmentPathControlViews" libraryName="leidos_projectAmendment.js" handlerUniqueId="{62c671bb-c45c-ceeb-39ad-ac81be2537c1}" enabled="true" parameters="" passExecutionContext="true" />
-          </Handlers>
-        </event>
-      </events>
       <controlDescriptions />
       <externaldependencies>
         <dependency id="leidos_executivegradestaff" />

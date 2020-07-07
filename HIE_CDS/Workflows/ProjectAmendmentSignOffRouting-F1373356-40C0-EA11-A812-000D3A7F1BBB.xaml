@@ -35,6 +35,8 @@
           <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep7_condition" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep7_1" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep7_2" />
+          <Variable x:TypeArguments="x:Boolean" Default="False" Name="True" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep8_1" />
         </sco:Collection>
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
           <mxswa:GetEntityProperty Attribute="leidos_projectamendmentpath" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" Value="[ConditionBranchStep2_1]">
@@ -90,6 +92,9 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep5: Hide Leadership Team">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep5_48: Show Submission for Approval">
+                      <mcwc:SetVisibility ControlId="leidos_submitprojectamendmentforapproval" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -152,6 +157,9 @@
                     <Sequence DisplayName="SetVisibilityStep41: Hide Leadership Team">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep41_49: Show Submission for Approval">
+                      <mcwc:SetVisibility ControlId="leidos_submitprojectamendmentforapproval" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="True" />
+                    </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
@@ -212,6 +220,9 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep40: Hide Leadership Team">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep40_50: Show Submission for Approval">
+                      <mcwc:SetVisibility ControlId="leidos_submitprojectamendmentforapproval" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -274,6 +285,9 @@
                     <Sequence DisplayName="SetVisibilityStep39: Hide Leadership Team">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep39_51: Show Submission for Approval">
+                      <mcwc:SetVisibility ControlId="leidos_submitprojectamendmentforapproval" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="True" />
+                    </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
@@ -334,6 +348,9 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep38: Hide Leadership Team">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep38_52: Show Submission for Approval">
+                      <mcwc:SetVisibility ControlId="leidos_submitprojectamendmentforapproval" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -396,11 +413,61 @@
                     <Sequence DisplayName="SetVisibilityStep37: Show Leadership Team">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="True" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep37_53: Show Submission for Approval">
+                      <mcwc:SetVisibility ControlId="leidos_submitprojectamendmentforapproval" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="True" />
+                    </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
               <x:Null x:Key="Else" />
               <x:String x:Key="Description">Leadership Team</x:String>
+            </mxswa:ActivityReference.Properties>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "true" }]</InArgument>
+              <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep8_1]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep8">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[True]</InArgument>
+            </mxswa:ActivityReference.Arguments>
+            <mxswa:ActivityReference.Properties>
+              <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep8">
+                <mxswa:ActivityReference.Properties>
+                  <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
+                  <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetVisibilityStep43: Hide Grade E">
+                      <mcwc:SetVisibility ControlId="leidos_gradeestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep44: Hide Grade F">
+                      <mcwc:SetVisibility ControlId="leidos_gradefstaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep45: Hide Executive Grade">
+                      <mcwc:SetVisibility ControlId="leidos_executivegradestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep46: Hide HIE Board">
+                      <mcwc:SetVisibility ControlId="leidos_hieboard" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep47: Hide HIE Chief Executive">
+                      <mcwc:SetVisibility ControlId="leidos_hiechiefexecutive" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep48: Hide Leadership Team">
+                      <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep48_54: Hide Submission for Approval">
+                      <mcwc:SetVisibility ControlId="leidos_submitprojectamendmentforapproval" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectamendment" IsVisible="False" />
+                    </Sequence>
+                  </sco:Collection>
+                </mxswa:ActivityReference.Properties>
+              </mxswa:ActivityReference>
+              <x:Null x:Key="Else" />
+              <x:String x:Key="Description"></x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
         </sco:Collection>
