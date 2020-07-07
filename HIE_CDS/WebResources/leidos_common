@@ -15,7 +15,7 @@ Leidos.validateRegEx = function(executionContext, fieldName, pattern, notificati
 {
    "use strict";
 
-   var formContext = typeof executionContext != 'undefined' ? executionContext.getFormContext() : Xrm.Page; // get formContext
+   var formContext = executionContext.getFormContext();
    var currentValue = formContext.getAttribute(fieldName).getValue(); 
    if (pattern.test(currentValue)) {
      formContext.getControl(fieldName).clearNotification();
@@ -41,14 +41,17 @@ Leidos.setLookupViewId = function(executionContext, controlName, viewId) {
 }
 
 Leidos.hideBPFFinishButtonNoWait = function() {
+   "use strict";
     $("[title='Finish']").each(function(){ $(this).hide()} ); 
 }
 
 Leidos.hideBPFFinishButtonTimeout = function(executionContext) {
+   "use strict";
     setTimeout(function(){ Leidos.hideBPFFinishButtonNoWait(); }, 250);
 }
 
 Leidos.hideBPFFinishButton = function(executionContext) {
+   "use strict";
     var formContext = executionContext.getFormContext();
     formContext.data.process.addOnStageSelected(Leidos.hideBPFFinishButtonTimeout);
     formContext.data.process.addOnStageChange(Leidos.hideBPFFinishButtonTimeout);
