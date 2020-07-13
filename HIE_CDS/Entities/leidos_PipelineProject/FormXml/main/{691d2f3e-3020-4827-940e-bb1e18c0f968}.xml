@@ -107,33 +107,49 @@
                     </row>
                   </rows>
                 </section>
+              </sections>
+            </column>
+            <column width="66%">
+              <sections>
                 <section name="Support Items" id="2430544f-1750-4c10-aa19-0b9a23721cc6" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Support Items" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell showlabel="false" locklevel="0" id="{f3317677-ec10-4e38-bca4-d4f1338c29f3}" rowspan="1" colspan="1">
+                      <cell showlabel="false" locklevel="0" id="{f3317677-ec10-4e38-bca4-d4f1338c29f3}" rowspan="6" colspan="1" auto="false">
                         <labels>
                           <label description="New SG control 1591198794681" languagecode="1033" />
                         </labels>
-                        <control id="Subgrid_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                        <control id="Subgrid_1" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{26e63c8c-a4e3-1423-634d-0aecc500dc29}">
                           <parameters>
                             <TargetEntityType>leidos_supportitem</TargetEntityType>
-                            <ViewId>{BF0F6B2B-D56F-440F-9A9D-6EEE0EC841E6}</ViewId>
-                            <ViewIds>{BF0F6B2B-D56F-440F-9A9D-6EEE0EC841E6}</ViewIds>
+                            <ViewId>{09A0705D-AA4C-EA11-A812-000D3A0BAD17}</ViewId>
+                            <ViewIds>{09A0705D-AA4C-EA11-A812-000D3A0BAD17},{BF0F6B2B-D56F-440F-9A9D-6EEE0EC841E6}</ViewIds>
                             <EnableViewPicker>false</EnableViewPicker>
                             <RelationshipName>leidos_PipelineProject_leidos_SupportItem</RelationshipName>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <IsUserView>false</IsUserView>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RelationshipRoleOrdinal>2</RelationshipRoleOrdinal>
                           </parameters>
                         </control>
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
-              </sections>
-            </column>
-            <column width="66%">
-              <sections>
                 <section showlabel="false" showbar="false" id="{950a6efa-91bb-416d-bc08-4bf43f65eea8}" IsUserDefined="0" height="auto">
                   <labels>
                     <label description="Notes" languagecode="1033" />
@@ -405,25 +421,6 @@
           </columns>
         </tab>
       </tabs>
-      <events>
-        <event name="onload" application="false" active="false">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="4b696ca3-3dd6-4655-bb64-4fe1df6f5923" enabled="true" parameters="'Ee0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-            <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{66dead25-4349-dcba-5a77-e90ce7a19191}" enabled="true" parameters="" passExecutionContext="true" />
-            <Handler functionName="Leidos.SetPipelinePathControlViews" libraryName="leidos_PipelineContolView" handlerUniqueId="{15d63601-5655-9eeb-03a1-78b9dc4b71d0}" enabled="true" parameters="" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_preapplicationroute">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="507d47fe-1963-4945-abf2-280594dc5540" enabled="true" parameters="'Ee0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_team">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="6174eee5-664d-4033-93b7-d7a5d83613a6" enabled="true" parameters="'4Uo:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
-      </events>
       <header id="{d712cc01-7ba5-49ea-8562-4cf860fbbdaf}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
           <row>
@@ -503,7 +500,7 @@
         </controlDescription>
       </controlDescriptions>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -539,6 +536,25 @@
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="8da8efb6-a17b-4a71-b049-2a98f451fb5e" />
         <Library name="leidos_PipelineContolView" libraryUniqueId="{74b97293-a920-2a74-b114-4210e65a2aa2}" />
       </formLibraries>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="4b696ca3-3dd6-4655-bb64-4fe1df6f5923" enabled="true" parameters="'Ee0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{66dead25-4349-dcba-5a77-e90ce7a19191}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.SetPipelinePathControlViews" libraryName="leidos_PipelineContolView" handlerUniqueId="{15d63601-5655-9eeb-03a1-78b9dc4b71d0}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_preapplicationroute">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="507d47fe-1963-4945-abf2-280594dc5540" enabled="true" parameters="'Ee0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_team">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="6174eee5-664d-4033-93b7-d7a5d83613a6" enabled="true" parameters="'4Uo:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
       <DisplayConditions Order="0" FallbackForm="true" />
     </form>
     <IsCustomizable>1</IsCustomizable>
