@@ -40,7 +40,7 @@
                         <labels>
                           <label description="Client" languagecode="1033" />
                         </labels>
-                        <control id="leidos_client" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_client" disabled="false" />
+                        <control id="leidos_client" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_client" disabled="false" uniqueid="{a91c3e31-7041-11cc-5737-4b448b909ebd}" />
                       </cell>
                     </row>
                   </rows>
@@ -242,7 +242,7 @@
                         <labels>
                           <label description="Source Enquiry" languagecode="1033" />
                         </labels>
-                        <control id="leidos_sourceenquiry" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_sourceenquiry" disabled="false" />
+                        <control id="leidos_sourceenquiry" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_sourceenquiry" disabled="false" uniqueid="{1b66ac15-e744-a6e4-c46d-dbc6d9472d80}" />
                       </cell>
                     </row>
                     <row>
@@ -542,6 +542,8 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="4b696ca3-3dd6-4655-bb64-4fe1df6f5923" enabled="true" parameters="'Ee0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{66dead25-4349-dcba-5a77-e90ce7a19191}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.SetPipelinePathControlViews" libraryName="leidos_PipelineContolView" handlerUniqueId="{15d63601-5655-9eeb-03a1-78b9dc4b71d0}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.SetSourceEnquiryViews" libraryName="leidos_PipelineContolView" handlerUniqueId="{d5040c89-8b43-5e81-db11-ce82892d3ed1}" enabled="false" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterLookupEnquiry" libraryName="leidos_common" handlerUniqueId="{7c024347-b71a-a1e1-7654-e428376b4d5b}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_preapplicationroute">
@@ -555,7 +557,9 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true" />
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
