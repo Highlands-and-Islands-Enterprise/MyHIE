@@ -7,9 +7,9 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls">
       <tabs>
-        <tab verticallayout="true" id="{77ffc901-f999-48c5-b5b5-b292c0e1eab4}" IsUserDefined="1" name="General">
+        <tab verticallayout="true" id="{77ffc901-f999-48c5-b5b5-b292c0e1eab4}" IsUserDefined="1" name="AMR Data ">
           <labels>
-            <label description="General" languagecode="1033" />
+            <label description="AMR Data " languagecode="1033" />
           </labels>
           <columns>
             <column width="50%">
@@ -45,9 +45,56 @@
                     </row>
                   </rows>
                 </section>
-                <section name="General_section_4" id="b86438ae-d3f2-49f3-93be-0447ee75d4bc" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="AccountManagementData" id="643afc67-9a48-4d9f-a05c-96c649440eef" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="New Section" languagecode="1033" />
+                    <label description="Account Management Data" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{a12f6f92-0b82-4af1-9363-02f271bc4909}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Business or Social Enterprise" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_businessorsocialenterprise" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_businessorsocialenterprise" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2dd001d1-5e05-43e7-98c7-9d913f42ed00}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Proposed Segmentation" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_proposedsegmentation" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_proposedsegmentation" disabled="false" uniqueid="{5d9a9bdd-a78a-721a-55c0-b6ebba7dc8b9}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{7B8E37D4-78AA-4A55-A1FF-AEE40E3AEADB}</DefaultViewId>
+                            <FilterRelationshipName>leidos_Segmentation_BusinessorSocialEnter</FilterRelationshipName>
+                            <DependentAttributeName>leidos_accountmanagementrecord.leidos_businessorsocialenterprise</DependentAttributeName>
+                            <DependentAttributeType>leidos_businessorsocialenterprise</DependentAttributeType>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b76594ae-b084-40fe-844d-c96dfdc461ec}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Suggested Account Manager" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_suggestedaccountmanager" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_suggestedaccountmanager" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="Parent_Account" id="b86438ae-d3f2-49f3-93be-0447ee75d4bc" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Parent Account" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -58,43 +105,13 @@
                         <control id="leidos_parentaccount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentaccount" disabled="false" />
                       </cell>
                     </row>
-                    <row>
-                      <cell showlabel="false" locklevel="0" id="{ac1d7994-f45f-491d-ad46-eee8a79a195f}">
-                        <labels>
-                          <label description="New QV control 1594734301406" languagecode="1033" />
-                        </labels>
-                        <control id="QuickviewControl1594734301406" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="leidos_parentaccount" disabled="false">
-                          <parameters>
-                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
-                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;c19ef749-a13e-ea11-a812-000d3a0bad17&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
                   </rows>
                 </section>
-              </sections>
-            </column>
-            <column width="50%">
-              <sections>
                 <section name="TimeLine" id="744bd2d8-dd07-40c6-a6d8-d770e143b0c6" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="TimeLine" languagecode="1033" />
                   </labels>
                   <rows>
-                    <row>
-                      <cell showlabel="true" locklevel="0" id="{200babf0-ecf6-4054-96ea-5e6cb2106635}">
-                        <labels>
-                          <label description="Parent Account Card" languagecode="1033" />
-                        </labels>
-                        <control id="AccountQuickView" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="leidos_parentaccount" disabled="false">
-                          <parameters>
-                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
-                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;c19ef749-a13e-ea11-a812-000d3a0bad17&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
                     <row>
                       <cell showlabel="false" rowspan="1" auto="false" id="{cf6aed04-94ed-45ea-8b04-935406d74d3e}">
                         <labels>
@@ -195,40 +212,41 @@
                   </labels>
                   <rows>
                     <row>
+                      <cell id="{719967e4-b7f6-473a-bb17-5c150e8b416e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Link to Recommendation" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_linktorecommendation" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_linktorecommendation" disabled="false" />
+                      </cell>
+                      <cell id="{c3b7f219-1bea-49a3-a738-363cb387b217}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Area Manager Approval By" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_areamanagerapprovalby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_areamanagerapprovalby" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{b2831e5a-bbb0-44c7-b830-82dfd1ca4f4f}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Completed By" languagecode="1033" />
                         </labels>
                         <control id="leidos_completedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_completedby" disabled="true" />
                       </cell>
-                      <cell id="{fc5df407-9610-4a07-8b12-4683429e547f}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Completed on" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_completedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_completedon" disabled="true" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{f6a60d01-ea89-47f4-8bd8-309746d899e1}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Area Manager Approval By" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_areamanagerapprovalby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_areamanagerapprovalby" disabled="true" />
-                      </cell>
-                      <cell id="{32b27001-327c-458d-b093-e01542eb51b2}" showlabel="true" locklevel="0">
+                      <cell id="{3d9b84cc-7b3d-4918-b026-b910c527de7a}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Area Manager Approval On" languagecode="1033" />
                         </labels>
-                        <control id="leidos_areamanagerapprovalon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_areamanagerapprovalon" disabled="true" />
+                        <control id="leidos_areamanagerapprovalon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_areamanagerapprovalon" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell showlabel="true" locklevel="0" id="{18ba305d-2044-40f6-85cc-7917864de69d}">
+                      <cell id="{dca81e38-a4ed-42bf-9e78-bab0a8f11be9}" showlabel="true" locklevel="0" visible="false">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Submit AMR for Approval" languagecode="1033" />
                         </labels>
+                        <control id="leidos_submitamrforapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitamrforapproval" disabled="false" uniqueid="{66dd96e2-4c07-406e-b09c-f0c5834d43da}" />
                       </cell>
-                      <cell showlabel="true" locklevel="0" id="{f9f5623f-7217-4489-8c0c-040b63ed8ddb}">
+                      <cell showlabel="true" locklevel="0" id="{09161786-c31c-4e8a-b55b-de2fa1479457}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -354,17 +372,11 @@
               </labels>
               <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
             </cell>
-            <cell id="{177c10b2-ce06-4d56-8c8c-fbe65d9578a3}" showlabel="true" locklevel="0">
+            <cell id="{56b759a3-fdf2-44f7-941b-b84def734c01}" showlabel="true" locklevel="0">
               <labels>
-                <label description="AMR Start Date" languagecode="1033" />
+                <label description="AMR Reference " languagecode="1033" />
               </labels>
-              <control id="header_leidos_amrstartdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_amrstartdate" disabled="false" />
-            </cell>
-            <cell id="{dc3e8723-ece9-4549-a316-20852ea45866}" showlabel="true" locklevel="0">
-              <labels>
-                <label description="AMR End Date" languagecode="1033" />
-              </labels>
-              <control id="header_leidos_amrenddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_amrenddate" disabled="false" />
+              <control id="header_leidos_amrreference" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_amrreference" disabled="false" />
             </cell>
           </row>
         </rows>
@@ -454,10 +466,44 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{66dd96e2-4c07-406e-b09c-f0c5834d43da}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_submitamrforapproval</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitamrforapproval</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitamrforapproval</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitamrforapproval</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="leidos_proposedsegmentation">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="288b3627-4a6d-43a3-9ff5-e82c41fc7cbe" enabled="true" parameters="'5UD:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="58a5d1cb-c19e-44bb-b4b7-cf8cdee970be" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="09ceb12c-df6b-45b7-8d33-7a6390b94303" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="d2cff953-cf91-45c3-83a7-fa10a4db5121" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
