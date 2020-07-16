@@ -585,7 +585,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="GenderSplit" id="2d434b2b-f814-499e-a12e-7d23bb0327b3" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="111" labelwidth="115">
+                <section name="GenderSplit" id="2d434b2b-f814-499e-a12e-7d23bb0327b3" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="111" labelwidth="115" visible="false">
                   <labels>
                     <label description="Gender Split Of Workforce (%)" languagecode="1033" />
                   </labels>
@@ -690,13 +690,12 @@
                         <labels>
                           <label description="Are all employees (&gt;18) paid the Real Living Wage" languagecode="1033" />
                         </labels>
-                        <control id="leidos_livingwage" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_livingwage" disabled="false" />
+                        <control id="leidos_livingwage" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_livingwage" disabled="false" uniqueid="{78dff52a-b163-49d0-8f58-94f076b47f81}" />
                       </cell>
-                      <cell id="{549a031d-3442-4d67-8b0c-0f9b86890542}" showlabel="true" locklevel="0">
+                      <cell showlabel="true" locklevel="0" id="{2b87234d-81a7-47db-a4ab-e560364709ba}">
                         <labels>
-                          <label description="Total Number of FTE" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="leidos_totalnumberoffte" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="leidos_totalnumberoffte" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -786,9 +785,9 @@
                     </row>
                   </rows>
                 </section>
-                <section name="tab_4_section_1" id="42bc19b9-e5fd-4ad5-94d6-b2d5a34bbc96" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="111" labelwidth="115">
+                <section name="Administration" id="42bc19b9-e5fd-4ad5-94d6-b2d5a34bbc96" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="111" labelwidth="115">
                   <labels>
-                    <label description="Administraion" languagecode="1033" />
+                    <label description="Administration" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -886,11 +885,6 @@
       </footer>
       <Navigation>
         <NavBar>
-          <NavBarByRelationshipItem RelationshipName="bpf_leidos_accountmanagementclientplan_leidos_bpf_amclientplan" Sequence="9701" Area="ProcessCenter" Id="nav_bpf_leidos_accountmanagementclientplan_leidos_bpf_amclientplan">
-            <Titles>
-              <Title LCID="1033" Text="BPF - Account Management Client Plan" />
-            </Titles>
-          </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="leidos_leidos_clientplanreviewresponse_le" Sequence="1001" Area="Sales" Id="nav_leidos_leidos_clientplanreviewresponse_le">
             <Titles>
               <Title LCID="1033" Text="Client Plan Review Responses" />
@@ -914,6 +908,11 @@
           <NavBarByRelationshipItem RelationshipName="leidos_tradinggeography_ParentClientPlan_" Sequence="1005" Area="Service" Id="nav_leidos_tradinggeography_ParentClientPlan_">
             <Titles>
               <Title LCID="1033" Text="Trading Geographies" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="bpf_leidos_accountmanagementclientplan_leidos_bpf_amclientplan" Sequence="9701" Area="ProcessCenter" Id="nav_bpf_leidos_accountmanagementclientplan_leidos_bpf_amclientplan">
+            <Titles>
+              <Title LCID="1033" Text="BPF - Account Management Client Plan" />
             </Titles>
           </NavBarByRelationshipItem>
         </NavBar>
@@ -1228,6 +1227,28 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{78dff52a-b163-49d0-8f58-94f076b47f81}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_livingwage</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_livingwage</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_livingwage</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_livingwage</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <events>
         <event name="onrecordselect" application="false" active="false" relationship="" control="Subgrid_2">
@@ -1243,6 +1264,7 @@
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="df906753-633b-4344-be17-fcdd575a1b1b" enabled="true" parameters="'0LS:*:CreateUpdate::0:217890000:217890000:217890000:217890000','45z:*:CreateUpdate::0:217890000:217890000:217890000:217890000','ldW:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterSegmentationLookup" libraryName="leidos_AMRFilterLokup.js" handlerUniqueId="{33ae55de-06ce-2591-8c05-77bea88a688e}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_salesturnoverhi">
@@ -1286,15 +1308,16 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_/AMClientPlan/disableColumninGrid.js" libraryUniqueId="{b57b7b32-915c-c7a8-9c04-0ebbd5caa2e9}" />
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="03fcbc90-05a9-409f-aec3-335f5318f5cc" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="49325967-9185-457b-9f41-f962d3b9e87b" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="515a0776-b18d-4ef3-a6eb-4780221e6f22" />
+        <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{3068c7c0-9c4e-077e-7126-1017066c2a13}" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

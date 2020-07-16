@@ -529,13 +529,6 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{09b0e775-8089-4a72-cdb3-cd17c8048ce1}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="bb31d910-5282-40c9-823a-4197948768ab" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a12502c3-9c1b-4005-8c08-4999f47aeaa2" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="8da8efb6-a17b-4a71-b049-2a98f451fb5e" />
-        <Library name="leidos_PipelineContolView" libraryUniqueId="{74b97293-a920-2a74-b114-4210e65a2aa2}" />
-      </formLibraries>
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
@@ -551,15 +544,27 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="507d47fe-1963-4945-abf2-280594dc5540" enabled="true" parameters="'Ee0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_anticipatedprojectcost">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="3237a712-920a-4295-82de-c954a8b44193" enabled="true" parameters="'4Uo:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
         <event name="onchange" application="false" active="false" attribute="leidos_team">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="6174eee5-664d-4033-93b7-d7a5d83613a6" enabled="true" parameters="'4Uo:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="fb8eddc6-f2dc-477a-853c-913c7c3654bc" enabled="true" parameters="'4Uo:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{09b0e775-8089-4a72-cdb3-cd17c8048ce1}" />
+        <Library name="leidos_PipelineContolView" libraryUniqueId="{74b97293-a920-2a74-b114-4210e65a2aa2}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="2bde6620-aa7e-49a3-9fd4-2d9b956e76c1" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="6339d4a0-b59c-417b-8897-e186cb7dc594" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="8e297c4b-7b23-466d-9e7a-e6f882541fa8" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

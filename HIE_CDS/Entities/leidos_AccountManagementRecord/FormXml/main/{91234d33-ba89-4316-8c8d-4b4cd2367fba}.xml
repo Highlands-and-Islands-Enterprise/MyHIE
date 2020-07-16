@@ -5,7 +5,7 @@
     <IntroducedVersion>1.0.0.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls">
+    <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
         <tab verticallayout="true" id="{77ffc901-f999-48c5-b5b5-b292c0e1eab4}" IsUserDefined="1" name="AMR Data ">
           <labels>
@@ -218,11 +218,10 @@
                         </labels>
                         <control id="leidos_linktorecommendation" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_linktorecommendation" disabled="false" />
                       </cell>
-                      <cell id="{c3b7f219-1bea-49a3-a738-363cb387b217}" showlabel="true" locklevel="0">
+                      <cell showlabel="true" locklevel="0" id="{09161786-c31c-4e8a-b55b-de2fa1479457}">
                         <labels>
-                          <label description="Area Manager Approval By" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="leidos_areamanagerapprovalby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_areamanagerapprovalby" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -232,11 +231,23 @@
                         </labels>
                         <control id="leidos_completedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_completedby" disabled="true" />
                       </cell>
-                      <cell id="{3d9b84cc-7b3d-4918-b026-b910c527de7a}" showlabel="true" locklevel="0">
+                      <cell showlabel="true" locklevel="0" id="{e15dc6f6-7101-4783-b9c0-d7dfcffa0a52}">
                         <labels>
-                          <label description="Area Manager Approval On" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="leidos_areamanagerapprovalon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_areamanagerapprovalon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2ad636f1-2e41-474d-83e7-870549b16702}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Approval Requested By" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_approvalrequestedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_approvalrequestedby" disabled="true" />
+                      </cell>
+                      <cell showlabel="true" locklevel="0" id="{78e50c61-8f3f-4e84-b9f8-9bd4260b39c2}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
                       </cell>
                     </row>
                     <row>
@@ -246,7 +257,7 @@
                         </labels>
                         <control id="leidos_submitamrforapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitamrforapproval" disabled="false" uniqueid="{66dd96e2-4c07-406e-b09c-f0c5834d43da}" />
                       </cell>
-                      <cell showlabel="true" locklevel="0" id="{09161786-c31c-4e8a-b55b-de2fa1479457}">
+                      <cell showlabel="true" locklevel="0" id="{f1205cec-bc2f-485e-8f6f-d46ccd4c2e2d}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -489,13 +500,20 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <events>
         <event name="onchange" application="false" active="false" attribute="leidos_proposedsegmentation">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="288b3627-4a6d-43a3-9ff5-e82c41fc7cbe" enabled="true" parameters="'5UD:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="Leidos.filterSegmentationLookup" libraryName="leidos_AMRFilterLokup.js" handlerUniqueId="{a5857aa7-ab77-1cee-17ab-6c99037287bb}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_businessorsocialenterprise">
+          <Handlers>
+            <Handler functionName="Leidos.filterSegmentationLookup" libraryName="leidos_AMRFilterLokup.js" handlerUniqueId="{7a8c032b-6da3-46a1-619c-4329084c3343}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -503,7 +521,11 @@
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="58a5d1cb-c19e-44bb-b4b7-cf8cdee970be" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="09ceb12c-df6b-45b7-8d33-7a6390b94303" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="d2cff953-cf91-45c3-83a7-fa10a4db5121" />
+        <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{bbd609ac-43a5-3e59-ddcc-6a7aa596689e}" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
