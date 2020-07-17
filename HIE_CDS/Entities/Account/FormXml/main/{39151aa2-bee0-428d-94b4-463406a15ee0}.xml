@@ -855,6 +855,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{6fb518ec-9a97-433e-a668-a77b600bf016}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Completed Trading Geography Grids" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_completedtradinggeographygrids" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedtradinggeographygrids" disabled="false" uniqueid="{646fd5c2-20b8-4107-9052-607798668766}" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{70c6b933-fe54-4a48-afcc-ff51c4588bf7}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Current AMR Record" languagecode="1033" />
@@ -2049,6 +2057,28 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{646fd5c2-20b8-4107-9052-607798668766}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_completedtradinggeographygrids</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_completedtradinggeographygrids</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_completedtradinggeographygrids</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_completedtradinggeographygrids</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <footer id="{4b581373-d743-4c96-8ab8-0fcb3ebda5ad}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
@@ -2120,19 +2150,25 @@
         <event name="onchange" application="false" active="false" attribute="leidos_sic1">
           <Handlers>
             <Handler functionName="Leidos.filterSICLookup" libraryName="leidos_AccountPrimaryContactFilter" handlerUniqueId="{bd8b1a9b-27b2-40d1-5712-cad8689de213}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="536a3d72-5006-446d-8eb7-88bae54ea830" enabled="true" parameters="'5sz:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_sic2">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="ebb907a7-71c6-4dcf-b988-2c2c935b304b" enabled="true" parameters="'07m:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{ba42d868-9440-990e-e86a-09b7e4757493}" />
-        <Library name="leidos_AccountPrimaryContactFilter" libraryUniqueId="{abe68b47-3a8a-d371-7b3b-31aca1d5d3d5}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="20502b35-88bc-4107-bcb8-d12ebeac6649" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="9854dc14-fc3c-458e-861d-28f19115fb92" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="adaf8cd7-dc64-4280-81e2-b6debac13611" />
-      </formLibraries>
       <DisplayConditions FallbackForm="true" Order="4">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{ba42d868-9440-990e-e86a-09b7e4757493}" />
+        <Library name="leidos_AccountPrimaryContactFilter" libraryUniqueId="{abe68b47-3a8a-d371-7b3b-31aca1d5d3d5}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="b8aac5bc-dfc3-4bad-8685-71c9dd3b1ee7" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="f3087934-266a-42b9-8dac-cff86efbe0b7" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="f73fa6d0-47af-4b14-b463-3dc3cfdd57aa" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

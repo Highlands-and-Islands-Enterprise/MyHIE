@@ -15,7 +15,7 @@
           <cell name="leidos_productivity" width="100" />
           <cell name="leidos_valueaddedtonationalgrowth" width="100" />
           <cell name="leidos_totalincome" width="100" />
-          <cell name="leidos_totalnumberoffte" width="100" />
+          <cell name="leidos_ftetotal" width="100" />
           <cell name="leidos_actionplancomplete" width="100" />
           <cell name="leidos_growthplancomplete" width="100" />
           <cell name="leidos_reviewsummarycomplete" width="100" />
@@ -27,14 +27,12 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_accountmanagementclientplan">
-          <attribute name="leidos_accountmanagementclientplanid" />
           <attribute name="leidos_actionplancomplete" />
           <attribute name="leidos_growthplancomplete" />
           <attribute name="leidos_reviewsummarycomplete" />
           <attribute name="leidos_clientplandetailscomplete" />
           <attribute name="leidos_financialyear" />
           <attribute name="leidos_totalincome" />
-          <attribute name="leidos_totalnumberoffte" />
           <attribute name="leidos_productivity" />
           <attribute name="leidos_valueaddedtonationalgrowth" />
           <attribute name="leidos_relatedaccount" />
@@ -42,6 +40,8 @@
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="leidos_sharewithcustomer" operator="eq" value="1" />
           </filter>
+          <attribute name="leidos_ftetotal" />
+          <attribute name="leidos_accountmanagementclientplanid" />
         </entity>
       </fetch>
     </fetchxml>
