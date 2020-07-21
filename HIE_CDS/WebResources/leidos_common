@@ -1,58 +1,102 @@
 if (typeof($) === 'undefined') {
-	$ = parent.$;
-	jQuery = parent.jQuery;
+  $ = parent.$;
+  jQuery = parent.jQuery;
 }
 
 var Leidos = window.Leidos || {};
 
 Leidos.ExpandBPF = function(executionContext) {
-    "use strict";
-    var formContext = executionContext.getFormContext(); // get formContext
-    formContext.ui.process.setDisplayState("expanded");  
+  "use strict";
+  var formContext = executionContext.getFormContext(); // get formContext
+  formContext.ui.process.setDisplayState("expanded");
 }
 
-Leidos.validateRegEx = function(executionContext, fieldName, pattern, notificationText)
-{
-   "use strict";
+Leidos.validateRegEx = function(executionContext, fieldName, pattern, notificationText) {
+  "use strict";
 
-   var formContext = executionContext.getFormContext();
-   var currentValue = formContext.getAttribute(fieldName).getValue(); 
-   if (pattern.test(currentValue)) {
-     formContext.getControl(fieldName).clearNotification();
-   } else {
-     formContext.getControl(fieldName).setNotification(notificationText);
-   }
+  var formContext = executionContext.getFormContext();
+  var currentValue = formContext.getAttribute(fieldName).getValue();
+  if (pattern.test(currentValue)) {
+    formContext.getControl(fieldName).clearNotification();
+  } else {
+    formContext.getControl(fieldName).setNotification(notificationText);
+  }
 }
 
 Leidos.validatePhoneNumber = function(executionContext, fieldName) {
-   "use strict";
-   var pattern = /(\+|0{2})*([0-9 \(\)]{6,20})/g;
-   var notificationText = "The phone number you have entered is invalid, a phone number may only contain numbers, + or ()";
-   Leidos.validateRegEx(executionContext, fieldName, pattern, notificationText);
+  "use strict";
+  var pattern = /(\+|0{2})*([0-9 \(\)]{6,20})/g;
+  var notificationText = "The phone number you have entered is invalid, a phone number may only contain numbers, + or ()";
+  Leidos.validateRegEx(executionContext, fieldName, pattern, notificationText);
 }
 
 Leidos.setLookupViewId = function(executionContext, controlName, viewId) {
-   "use strict";
-    var formContext = executionContext.getFormContext();
-    var control = formContext.getControl(controlName);
-    if(control){
-        formContext.getControl(controlName).setDefaultView(viewId); //include Curly Braces
-    }
+  "use strict";
+  var formContext = executionContext.getFormContext();
+  var control = formContext.getControl(controlName);
+  if (control) {
+    formContext.getControl(controlName).setDefaultView(viewId); //include Curly Braces
+  }
 }
 
 Leidos.hideBPFFinishButtonNoWait = function() {
-   "use strict";
-    $("[title='Finish']").each(function(){ $(this).hide()} ); 
+  "use strict";
+  $("[title='Finish']").each(function() {
+    $(this).hide()
+  });
 }
 
 Leidos.hideBPFFinishButtonTimeout = function(executionContext) {
-   "use strict";
-    setTimeout(function(){ Leidos.hideBPFFinishButtonNoWait(); }, 250);
+  "use strict";
+  setTimeout(function() {
+    Leidos.hideBPFFinishButtonNoWait();
+  }, 250);
 }
 
 Leidos.hideBPFFinishButton = function(executionContext) {
-   "use strict";
-    var formContext = executionContext.getFormContext();
-    formContext.data.process.addOnStageSelected(Leidos.hideBPFFinishButtonTimeout);
-    formContext.data.process.addOnStageChange(Leidos.hideBPFFinishButtonTimeout);
+  "use strict";
+  var formContext = executionContext.getFormContext();
+  formContext.data.process.addOnStageSelected(Leidos.hideBPFFinishButtonTimeout);
+  formContext.data.process.addOnStageChange(Leidos.hideBPFFinishButtonTimeout);
+}
+
+Leidos.filterBpfLookup = function(executionContext, parentAttribute, childAttribute, filterXml) {
+  "use strict";
+
+  var formContext = executionContext.getFormContext();
+  var lookupField = formContext.getAttribute(parentAttribute);
+
+  if (lookupField != null) {
+    lookupField.controls.forEach(function(ctrl, i) {
+      ctrl.addPreSearch(
+        function() {
+          Leidos.filterDefinition(formContext, parentAttribute, childAttribute, ctrl, filterXml);
+        }
+      )
+    });
+  }
+}
+
+Leidos.filterDefinition = function(executionContext, childAttribute, bpfControlId, filterXml) {
+  "use strict";
+  var lookupId = null;
+  var lookupControl;
+  var filterBpf;
+
+  var formContext = executionContext.getFormContext();
+  if (formContext.getControl(bpfControlId) != null &&
+    formContext.getControl(bpfControlId).getAttribute().getValue() != null) {
+    lookupControl = formContext.getControl(bpfControlId).getAttribute().getValue();
+    lookupId = lookupControl[0].id;
+
+    if (lookupId != null || lookupId != undefined) {
+      filterBpf = filterXml.replace("{{id}}", lookupId);
+
+      if (formContext.getControl(childAttribute) != null) {
+        formContext.getControl(childAttribute).controls.forEach(function(a, i) {
+          a.addCustomFilter(filterBpf);
+        });
+      }
+    }
+  }
 }

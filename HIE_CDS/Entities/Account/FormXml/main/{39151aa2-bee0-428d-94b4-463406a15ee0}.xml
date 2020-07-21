@@ -835,7 +835,56 @@
                         <labels>
                           <label description="Sector" languagecode="1033" />
                         </labels>
-                        <control id="leidos_sector" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_sector" disabled="false" />
+                        <control id="leidos_sector" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_sector" disabled="false" uniqueid="{d3c990d9-e867-7802-d61c-60a8897b947d}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{16812161-48C8-46D3-A6CE-2610AB1CF433}</DefaultViewId>
+                            <AvailableViewIds>{16812161-48C8-46D3-A6CE-2610AB1CF433}</AvailableViewIds>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2f5f8d4e-a2b1-4702-9374-3aa5b7c1c04f}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="SubSector" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_subsector" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_subsector" disabled="false" uniqueid="{cc987947-5c60-039b-346c-92a5408916ae}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>true</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{14F88737-55CB-EA11-A812-000D3A7F1BBB}</DefaultViewId>
+                            <FilterRelationshipName>leidos_Sector_ParentSector_leidos_Sector</FilterRelationshipName>
+                            <DependentAttributeName>account.leidos_sector</DependentAttributeName>
+                            <DependentAttributeType>leidos_sector</DependentAttributeType>
+                            <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{14F88737-55CB-EA11-A812-000D3A7F1BBB}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7661d515-b601-4905-b3ad-857ecf0ac333}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Secondary Sector" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_secondarysector" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_secondarysector" disabled="false" uniqueid="{4ba5d963-2730-bcad-e4a3-4713aa89cc17}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{16812161-48C8-46D3-A6CE-2610AB1CF433}</DefaultViewId>
+                            <AvailableViewIds>{16812161-48C8-46D3-A6CE-2610AB1CF433}</AvailableViewIds>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>
@@ -2100,8 +2149,8 @@
           </InternalHandlers>
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="cb44a2b3-3ca4-444f-8730-7efaa1cc5b15" enabled="true" parameters="'9BT:*:CreateUpdate::0:217890000:217890000:217890000:217890000','kDo:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-            <Handler functionName="Leidos.filterLookupContact" libraryName="leidos_AccountPrimaryContactFilter" handlerUniqueId="{d36e7b6e-40d0-3701-95eb-dcecba916d0e}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{73a71abd-b333-dca5-c37e-bc19242eeaa6}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterLookupContact" libraryName="leidos_AccountPrimaryContactFilter" handlerUniqueId="{d36e7b6e-40d0-3701-95eb-dcecba916d0e}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.filterSICLookup" libraryName="leidos_AccountPrimaryContactFilter" handlerUniqueId="{d0b31ec7-c49b-1867-5c7e-160a1b0b9307}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.SetSIC1Views" libraryName="leidos_AccountPrimaryContactFilter" handlerUniqueId="{d7b360db-9819-eb10-dd91-d4b113895bd5}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
@@ -2150,17 +2199,22 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="ebb907a7-71c6-4dcf-b988-2c2c935b304b" enabled="true" parameters="'07m:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_sector">
+          <Handlers>
+            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{18706a64-943a-a31e-6461-9cb325707036}" enabled="true" parameters="&quot;header_process_leidos_sector&quot;, &quot;header_process_leidos_subsector&quot;, &quot;&lt;filter type='and'&gt;&lt;condition attribute='leidos_parentsector' operator='eq' value='{{id}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
-      <DisplayConditions FallbackForm="true" Order="4">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{ba42d868-9440-990e-e86a-09b7e4757493}" />
-        <Library name="leidos_AccountPrimaryContactFilter" libraryUniqueId="{abe68b47-3a8a-d371-7b3b-31aca1d5d3d5}" />
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="b8aac5bc-dfc3-4bad-8685-71c9dd3b1ee7" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="f3087934-266a-42b9-8dac-cff86efbe0b7" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="f73fa6d0-47af-4b14-b463-3dc3cfdd57aa" />
+        <Library name="leidos_AccountPrimaryContactFilter" libraryUniqueId="{abe68b47-3a8a-d371-7b3b-31aca1d5d3d5}" />
       </formLibraries>
+      <DisplayConditions FallbackForm="true" Order="4">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
