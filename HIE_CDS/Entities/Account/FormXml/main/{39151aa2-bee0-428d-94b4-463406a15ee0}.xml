@@ -661,8 +661,8 @@
                             <FilterRelationshipName>leidos_SICCode_parent_leidos_SICCode</FilterRelationshipName>
                             <DependentAttributeName>account.leidos_sic1</DependentAttributeName>
                             <DependentAttributeType>leidos_siccode</DependentAttributeType>
-                            <AllowFilterOff>true</AllowFilterOff>
-                            <AvailableViewIds>{08AE2211-58E2-4C61-8851-CAF3EBF2CDAC}</AvailableViewIds>
+                            <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{AAF712BB-30B7-4BF5-874A-C1A706F9C401}</AvailableViewIds>
                           </parameters>
                         </control>
                       </cell>
@@ -679,7 +679,7 @@
                             <DisableQuickFind>false</DisableQuickFind>
                             <DisableViewPicker>true</DisableViewPicker>
                             <DefaultViewId>{08AE2211-58E2-4C61-8851-CAF3EBF2CDAC}</DefaultViewId>
-                            <AvailableViewIds>{08AE2211-58E2-4C61-8851-CAF3EBF2CDAC}</AvailableViewIds>
+                            <AvailableViewIds>{AAF712BB-30B7-4BF5-874A-C1A706F9C401}</AvailableViewIds>
                             <FilterRelationshipName>leidos_SICCode_parent_leidos_SICCode</FilterRelationshipName>
                             <DependentAttributeName>account.leidos_sic2</DependentAttributeName>
                             <DependentAttributeType>leidos_siccode</DependentAttributeType>
@@ -700,7 +700,7 @@
                             <DisableQuickFind>false</DisableQuickFind>
                             <DisableViewPicker>true</DisableViewPicker>
                             <DefaultViewId>{08AE2211-58E2-4C61-8851-CAF3EBF2CDAC}</DefaultViewId>
-                            <AvailableViewIds>{08AE2211-58E2-4C61-8851-CAF3EBF2CDAC}</AvailableViewIds>
+                            <AvailableViewIds>{AAF712BB-30B7-4BF5-874A-C1A706F9C401}</AvailableViewIds>
                             <FilterRelationshipName>leidos_SICCode_parent_leidos_SICCode</FilterRelationshipName>
                             <DependentAttributeName>account.leidos_sic3</DependentAttributeName>
                             <DependentAttributeType>leidos_siccode</DependentAttributeType>
@@ -831,7 +831,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{0c894239-4dd0-44e5-9d55-b60663fe2eed}" showlabel="true" locklevel="0">
+                      <cell id="{0c894239-4dd0-44e5-9d55-b60663fe2eed}" showlabel="true" locklevel="1">
                         <labels>
                           <label description="Sector" languagecode="1033" />
                         </labels>
@@ -849,7 +849,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{2f5f8d4e-a2b1-4702-9374-3aa5b7c1c04f}" showlabel="true" locklevel="0">
+                      <cell id="{2f5f8d4e-a2b1-4702-9374-3aa5b7c1c04f}" showlabel="true" locklevel="1">
                         <labels>
                           <label description="SubSector" languagecode="1033" />
                         </labels>
@@ -2200,8 +2200,12 @@
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_sector">
+          <dependencies>
+            <dependency id="leidos_sector" />
+            <dependency id="leidos_subsector" />
+          </dependencies>
           <Handlers>
-            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{18706a64-943a-a31e-6461-9cb325707036}" enabled="true" parameters="&quot;header_process_leidos_sector&quot;, &quot;header_process_leidos_subsector&quot;, &quot;&lt;filter type='and'&gt;&lt;condition attribute='leidos_parentsector' operator='eq' value='{{id}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{18706a64-943a-a31e-6461-9cb325707036}" enabled="true" parameters="&quot;leidos_sector&quot;, &quot;leidos_subsector&quot;, &quot;14f88737-55cb-ea11-a812-000d3a7f1bbb&quot;, &quot;&lt;filter type='and'&gt;&lt;condition attribute='leidos_parentsector' operator='eq' value='{{id}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>

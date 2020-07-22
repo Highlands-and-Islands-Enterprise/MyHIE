@@ -60,42 +60,43 @@ Leidos.hideBPFFinishButton = function(executionContext) {
   formContext.data.process.addOnStageChange(Leidos.hideBPFFinishButtonTimeout);
 }
 
-Leidos.filterBpfLookup = function(executionContext, parentAttribute, childAttribute, filterXml) {
+Leidos.filterBpfLookup = function(executionContext, parentAttribute, childAttribute, defaultViewId, filterXml) {
   "use strict";
 
   var formContext = executionContext.getFormContext();
-  var lookupField = formContext.getAttribute(parentAttribute);
+  var lookupField = formContext.getAttribute(childAttribute);
 
   if (lookupField != null) {
     lookupField.controls.forEach(function(ctrl, i) {
+
+      ctrl.setDefaultView(defaultViewId);
       ctrl.addPreSearch(
         function() {
-          Leidos.filterDefinition(formContext, parentAttribute, childAttribute, ctrl, filterXml);
+          Leidos.filterDefinition(executionContext, parentAttribute, ctrl._controlName, filterXml);
         }
       )
     });
   }
 }
 
-Leidos.filterDefinition = function(executionContext, childAttribute, bpfControlId, filterXml) {
+Leidos.filterDefinition = function(executionContext, parentAttribute, childAttribute, filterXml) {
   "use strict";
   var lookupId = null;
   var lookupControl;
   var filterBpf;
 
   var formContext = executionContext.getFormContext();
-  if (formContext.getControl(bpfControlId) != null &&
-    formContext.getControl(bpfControlId).getAttribute().getValue() != null) {
-    lookupControl = formContext.getControl(bpfControlId).getAttribute().getValue();
+  if (formContext.getControl(parentAttribute) != null &&
+    formContext.getControl(parentAttribute).getAttribute().getValue() != null) {
+    lookupControl = formContext.getControl(parentAttribute).getAttribute().getValue();
     lookupId = lookupControl[0].id;
 
     if (lookupId != null || lookupId != undefined) {
       filterBpf = filterXml.replace("{{id}}", lookupId);
+      console.log(filterBpf);
 
       if (formContext.getControl(childAttribute) != null) {
-        formContext.getControl(childAttribute).controls.forEach(function(a, i) {
-          a.addCustomFilter(filterBpf);
-        });
+        formContext.getControl(childAttribute).addCustomFilter(filterBpf);
       }
     }
   }
