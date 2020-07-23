@@ -11,8 +11,8 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_accountmanagementactionplanid">
           <cell name="leidos_name" width="300" />
-          <cell name="a_ce146556f94647cda7e44973adaf8b03.leidos_relatedaccount" width="300" />
           <cell name="leidos_parentaccountmanagementclientplan" width="300" />
+          <cell name="leidos_account" width="100" />
           <cell name="ownerid" width="100" />
           <cell name="statuscode" width="100" />
           <cell name="createdon" width="125" />
@@ -31,11 +31,9 @@
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <attribute name="leidos_parentaccountmanagementclientplan" />
-          <link-entity alias="a_ce146556f94647cda7e44973adaf8b03" name="leidos_accountmanagementclientplan" to="leidos_parentaccountmanagementclientplan" from="leidos_accountmanagementclientplanid" link-type="outer" visible="false">
-            <attribute name="leidos_relatedaccount" />
-          </link-entity>
           <attribute name="statuscode" />
           <attribute name="ownerid" />
+          <attribute name="leidos_account" />
         </entity>
       </fetch>
     </fetchxml>

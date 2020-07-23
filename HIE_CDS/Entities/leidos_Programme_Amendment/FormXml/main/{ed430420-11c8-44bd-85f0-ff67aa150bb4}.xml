@@ -7,14 +7,14 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls">
       <tabs>
-        <tab verticallayout="true" id="{4bd9ae9c-3c84-4569-885b-45484b05b6df}" IsUserDefined="1">
+        <tab verticallayout="true" id="{4bd9ae9c-3c84-4569-885b-45484b05b6df}" IsUserDefined="1" name="General">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{25a96b6a-c866-4b71-943a-a290cf10ad01}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{25a96b6a-c866-4b71-943a-a290cf10ad01}" name="General">
                   <labels>
                     <label description="General" languagecode="1033" />
                   </labels>
@@ -51,11 +51,53 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{8486b3d8-2b82-40ec-9e6c-d23ee3d930bd}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Amendments Complete" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_amendmentscomplete" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_amendmentscomplete" disabled="false" uniqueid="{410927cb-48d7-4ee1-b8a9-8c22df88e2ad}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="Amendment" id="d5ececc5-a311-44aa-8c25-575dcfa50edc" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Amendment" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
                       <cell id="{98fc2bed-452e-45d8-b240-9fdbda50568e}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Recommendation" languagecode="1033" />
                         </labels>
-                        <control id="leidos_recommendation" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_recommendation" disabled="false" />
+                        <control id="leidos_recommendation" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_recommendation" disabled="false" uniqueid="{dd1c6d71-8110-4727-8146-03c7105b0299}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4f1c3d01-fb1e-4e3a-9bbc-1257b1ecdffd}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Submit Programme Amendment for Approval" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_submitprogrammeamendmentforapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitprogrammeamendmentforapproval" disabled="false" uniqueid="{036e1813-b840-4580-b1bd-f1b88383fa7a}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="Approval" id="a513599c-7d05-47f1-9f4d-eb5982f702d1" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Approval" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{d0511487-b6b4-445a-ad5f-fd54c8a9da2e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Amendment Document Link" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_amendmentdocumentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_amendmentdocumentlink" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -116,6 +158,74 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{dd1c6d71-8110-4727-8146-03c7105b0299}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_recommendation</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_recommendation</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_recommendation</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_recommendation</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{036e1813-b840-4580-b1bd-f1b88383fa7a}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_submitprogrammeamendmentforapproval</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitprogrammeamendmentforapproval</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitprogrammeamendmentforapproval</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitprogrammeamendmentforapproval</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{410927cb-48d7-4ee1-b8a9-8c22df88e2ad}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_amendmentscomplete</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_amendmentscomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_amendmentscomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_amendmentscomplete</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
