@@ -11,8 +11,8 @@
   <TriggerOnDelete>0</TriggerOnDelete>
   <AsyncAutodelete>0</AsyncAutodelete>
   <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
-  <StateCode>1</StateCode>
-  <StatusCode>2</StatusCode>
+  <StateCode>0</StateCode>
+  <StatusCode>1</StatusCode>
   <processorder>100</processorder>
   <processroleassignment>&lt;DisplayConditions&gt;&lt;Role Id="{627090ff-40a3-4053-8790-584edc5be201}" /&gt;&lt;Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" /&gt;&lt;/DisplayConditions&gt;</processroleassignment>
   <RunAs>1</RunAs>
@@ -83,4 +83,16 @@
       <label languagecode="1033" description="Automatically Send Disengagement Letter" />
     </steplabels>
   </labels>
+  <ProcessTriggers>
+    <ProcessTrigger processtriggerid="{e211a5f9-86cd-ea11-a812-000d3a7f1bbb}">
+      <controltype>1</controltype>
+      <methodid>{668b825f-ccf3-4280-811f-f01c39902a30}</methodid>
+      <scope>1</scope>
+      <controlname>statuscode</controlname>
+      <event>change</event>
+      <pipelinestage>0</pipelinestage>
+      <iscustomizable>1</iscustomizable>
+      <primaryentitytypecode>leidos_AccountManagementRecord</primaryentitytypecode>
+    </ProcessTrigger>
+  </ProcessTriggers>
 </Workflow>

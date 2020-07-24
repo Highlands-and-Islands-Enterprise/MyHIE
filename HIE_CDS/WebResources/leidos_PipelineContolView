@@ -1,84 +1,51 @@
 var Leidos = window.Leidos || {};
 
-Leidos.SetPipelinePathControlViews = function (executionContext) {
-   "use strict";
-    Leidos.setLookupViewId(executionContext, "header_process_leidos_fundingsource","{c8406a53-d4ba-ea11-a812-000d3a7f1bbb}");
+Leidos.SetPipelinePathControlViews = function(executionContext) {
+  "use strict";
+  Leidos.setLookupViewId(executionContext, "header_process_leidos_fundingsource", "{c8406a53-d4ba-ea11-a812-000d3a7f1bbb}");
 
 }
 
-Leidos.SetSourceEnquiryViews = function (executionContext) {
-    "use strict";
-     Leidos.setLookupViewId(executionContext, "header_process_leidos_sourceenquiry","{97b66e41-809a-ea11-a812-000d3a7f1bbb}");
- 
- }
+Leidos.SetSourceEnquiryViews = function(executionContext) {
+  "use strict";
+  Leidos.setLookupViewId(executionContext, "header_process_leidos_sourceenquiry", "{97b66e41-809a-ea11-a812-000d3a7f1bbb}");
 
- var Leidos = window.Leidos || {};
+}
 
+Leidos.filterLookupEnquiry = function(executionContext) {
+  "use strict";
+  var formContext = executionContext.getFormContext();
+  //Check if the control exist on the form
+  if (formContext.getControl("header_process_leidos_sourceenquiry") !== null) {
+    // add the event handler for PreSearch Event
+    formContext.getControl("header_process_leidos_sourceenquiry").addPreSearch(Leidos.addFilter);
+  }
+}
 
- Leidos.filterLookupEnquiry = function(executionContext) {
-
-    var formContext = executionContext.getFormContext();
-
-//Check if the control exist on the form
-
-            if (formContext.getControl("header_process_leidos_sourceenquiry") != null) {
-
-            // add the event handler for PreSearch Event
-
-            formContext.getControl("header_process_leidos_sourceenquiry").addPreSearch(Leidos.addFilter);
-
+Leidos.addFilter = function(executionContext) {
+  "use strict";
+  var formContext = executionContext.getFormContext();
+  var accountId = null;
+  var accountLookup;
+  var fetchQuery;
+  try {
+    //Check if control exist on form
+    if (formContext.getControl("leidos_client") !== null && formContext.getControl("leidos_client").getAttribute().getValue() !== null) {
+      //Get Account lookup value
+      accountLookup = formContext.getControl("leidos_client").getAttribute().getValue();
+      //Get the account id
+      accountId = accountLookup[0].id;
     }
-
-}
-
- Leidos.addFilter = function(executionContext) {
-
-    var formContext = executionContext.getFormContext();   
-
-        var accountId = null;
-
-        var accountLookup;
-
-        var fetchQuery;
-
-        try {
-
-                //Check if control exist on form
-
-                if (formContext.getControl("leidos_client") != null && formContext.getControl("leidos_client").getAttribute().getValue() != null) {
-
-                //Get Account lookup value
-
-                accountLookup = formContext.getControl("leidos_client").getAttribute().getValue();
-
-                //Get the account id
-
-                accountId = accountLookup[0].id;
-
-                }
-
-                //Build fetch
-
-                if (accountId != null || accountId != undefined) {
-
-                fetchQuery = "<filter type='and'>" +
-
-                "<condition attribute='statuscode' operator='eq' value='2' />" +
-
-                "<condition attribute='leidos_account' operator='eq' value='" + accountId + "' />" +
-
-                "</filter>";
-
-                //add custom filter
-
-                formContext.getControl("header_process_leidos_sourceenquiry").addCustomFilter(fetchQuery);
-
-                }
-
-        } catch (e) {
-
-        Xrm.Utility.alertDialog("addFilter Error: " + (e.description || e.message));
-
-}
-
+    //Build fetch
+    if (accountId !== null || accountId !== undefined) {
+      fetchQuery = "<filter type='and'>" +
+        "<condition attribute='statuscode' operator='eq' value='2' />" +
+        "<condition attribute='leidos_account' operator='eq' value='" + accountId + "' />" +
+        "</filter>";
+      //add custom filter
+      formContext.getControl("header_process_leidos_sourceenquiry").addCustomFilter(fetchQuery);
+    }
+  } catch (e) {
+    Xrm.Navigation.openAlertDialog("addFilter Error: " + (e.description || e.message));
+  }
 }

@@ -17,7 +17,7 @@ Leidos.addFilter = function(executionContext) {
   var accountId = formContext.data.entity.getId();
   var fetchQuery;
   //Build fetch
-  if (accountId != null || accountId != undefined) {
+  if (accountId !== null || accountId !== undefined) {
     fetchQuery = "<filter type='and'>" +
       "<condition attribute='statecode' operator='eq' value='0' />" +
       "<condition attribute='parentcustomerid' operator='eq' value='" + accountId + "' />" +
@@ -46,7 +46,7 @@ Leidos.addFilterSIC = function(executionContext) {
 
   try {
     //Check if control exist on form
-    if (formContext.getControl("leidos_sic1") != null && formContext.getControl("leidos_sic1").getAttribute().getValue() != null) {
+    if (formContext.getControl("leidos_sic1") !== null && formContext.getControl("leidos_sic1").getAttribute().getValue() !== null) {
       //Get Account lookup value
       parentlookup = formContext.getControl("leidos_sic1").getAttribute().getValue();
       //Get the account id
@@ -54,7 +54,7 @@ Leidos.addFilterSIC = function(executionContext) {
     }
 
     //Build fetch
-    if (parentId != null || parentId != undefined) {
+    if (parentId !== null || parentId !== undefined) {
       fetchQuery = "<filter type='and'>" +
         "<condition attribute='statecode' operator='eq' value='0' />" +
         "<condition attribute='leidos_parent' operator='eq' value='" + parentId + "' />" +
@@ -63,7 +63,7 @@ Leidos.addFilterSIC = function(executionContext) {
       formContext.getControl("header_process_leidos_sic2").addCustomFilter(fetchQuery);
     }
   } catch (e) {
-    Xrm.Utility.alertDialog("addFilter Error: " + (e.description || e.message));
+    Xrm.Navigation.openAlertDialog("addFilter Error: " + (e.description || e.message));
   }
 
 }

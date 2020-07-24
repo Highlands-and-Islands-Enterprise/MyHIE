@@ -66,7 +66,7 @@ Leidos.filterBpfLookup = function(executionContext, parentAttribute, childAttrib
   var formContext = executionContext.getFormContext();
   var lookupField = formContext.getAttribute(childAttribute);
 
-  if (lookupField != null) {
+  if (lookupField !== null) {
     lookupField.controls.forEach(function(ctrl, i) {
 
       ctrl.setDefaultView(defaultViewId);
@@ -86,14 +86,13 @@ Leidos.filterDefinition = function(executionContext, parentAttribute, childAttri
   var filterBpf;
 
   var formContext = executionContext.getFormContext();
-  if (formContext.getControl(parentAttribute) != null &&
-    formContext.getControl(parentAttribute).getAttribute().getValue() != null) {
+  if (formContext.getControl(parentAttribute) !== null &&
+    formContext.getControl(parentAttribute).getAttribute().getValue() !== null) {
     lookupControl = formContext.getControl(parentAttribute).getAttribute().getValue();
     lookupId = lookupControl[0].id;
 
-    if (lookupId != null || lookupId != undefined) {
+    if (lookupId != null || lookupId !== undefined) {
       filterBpf = filterXml.replace("{{id}}", lookupId);
-      console.log(filterBpf);
 
       if (formContext.getControl(childAttribute) != null) {
         formContext.getControl(childAttribute).addCustomFilter(filterBpf);
