@@ -11,6 +11,8 @@
       <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
         <row name="result" id="activityid">
           <cell name="subject" width="300" />
+          <cell name="to" width="100" />
+          <cell name="from" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -26,6 +28,8 @@
             <condition attribute="statecode" operator="not-null" />
           </filter>
           <order attribute="createdon" descending="true" />
+          <attribute name="from" />
+          <attribute name="to" />
         </entity>
       </fetch>
     </fetchxml>

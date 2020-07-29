@@ -11,6 +11,8 @@
       <grid name="leidos_portalmessages" jump="subject" select="1" icon="1" preview="1">
         <row name="leidos_portalmessage" id="activityid">
           <cell name="subject" width="300" />
+          <cell name="to" width="155" />
+          <cell name="from" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -22,13 +24,9 @@
           <attribute name="activityid" />
           <attribute name="subject" />
           <attribute name="createdon" />
-          <filter type="and">
-            <condition attribute="statecode" operator="in">
-              <value>0</value>
-              <value>3</value>
-            </condition>
-          </filter>
           <order attribute="createdon" descending="true" />
+          <attribute name="to" />
+          <attribute name="from" />
         </entity>
       </fetch>
     </fetchxml>
