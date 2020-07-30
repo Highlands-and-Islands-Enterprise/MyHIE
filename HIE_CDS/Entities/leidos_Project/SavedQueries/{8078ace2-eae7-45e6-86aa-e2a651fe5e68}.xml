@@ -18,8 +18,6 @@
           <cell name="leidos_topslice" width="100" />
           <cell name="leidos_totalcostscalculated" width="100" />
           <cell name="leidos_totalfundingcalcualted" width="100" />
-          <cell name="leidos_requestedbudget" width="100" />
-          <cell name="leidos_approvedbudget" width="100" />
           <cell name="leidos_dateofgranting" width="100" />
           <cell name="statuscode" width="100" />
           <cell name="createdon" width="125" />
@@ -35,19 +33,24 @@
           <attribute name="leidos_name" />
           <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="leidos_parentaccount" />
           <attribute name="leidos_parentapplication" />
           <attribute name="leidos_supportitemtype" />
           <attribute name="leidos_topslice" />
           <attribute name="leidos_totalcostscalculated" />
           <attribute name="leidos_totalfundingcalcualted" />
-          <attribute name="leidos_approvedbudget" />
-          <attribute name="leidos_requestedbudget" />
           <attribute name="statuscode" />
           <attribute name="leidos_dateofgranting" />
+          <filter type="and">
+            <filter type="or">
+              <condition attribute="statecode" operator="eq" value="0" />
+              <condition attribute="statuscode" operator="in">
+                <value>445260009</value>
+                <value>445260000</value>
+                <value>445260008</value>
+              </condition>
+            </filter>
+          </filter>
           <link-entity alias="a_c5ee1a30205d443491214a3ad17da6e5" name="leidos_application" to="leidos_parentapplication" from="leidos_applicationid" link-type="outer" visible="false">
             <attribute name="statuscode" />
             <attribute name="createdon" />

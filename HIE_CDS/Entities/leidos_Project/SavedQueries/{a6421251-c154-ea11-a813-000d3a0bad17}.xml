@@ -12,8 +12,6 @@
         <row name="result" id="leidos_projectid">
           <cell name="leidos_name" width="300" />
           <cell name="leidos_projectreference" width="100" />
-          <cell name="leidos_requestedbudget" width="100" />
-          <cell name="leidos_approvedbudget" width="100" />
           <cell name="leidos_parentapplication" width="100" />
           <cell name="leidos_supportitemtype" width="100" />
           <cell name="leidos_topslice" width="100" />
@@ -30,20 +28,24 @@
         <entity name="leidos_project">
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="leidos_parentapplication" />
           <attribute name="leidos_supportitemtype" />
           <attribute name="leidos_topslice" />
           <attribute name="leidos_totalcostscalculated" />
           <attribute name="leidos_totalfundingcalcualted" />
-          <attribute name="leidos_requestedbudget" />
-          <attribute name="leidos_approvedbudget" />
           <attribute name="statuscode" />
           <attribute name="leidos_projectreference" />
           <attribute name="leidos_projectid" />
+          <filter type="and">
+            <filter type="or">
+              <condition attribute="statecode" operator="eq" value="0" />
+              <condition attribute="statuscode" operator="in">
+                <value>445260009</value>
+                <value>445260008</value>
+              </condition>
+            </filter>
+          </filter>
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
