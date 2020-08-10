@@ -41,14 +41,17 @@
             <condition attribute="statuscode" operator="eq" value="2" />
             <condition attribute="ownerid" operator="eq-userid" />
           </filter>
-          <link-entity name="leidos_application" from="leidos_sourceenquiry" to="leidos_enquiryid" alias="aa" />
           <attribute name="leidos_enquiryid" />
+          <link-entity name="leidos_pipelineproject" alias="ab" link-type="outer" from="leidos_sourceenquiry" to="leidos_enquiryid" />
+          <filter type="and">
+            <condition attribute="leidos_sourceenquiry" operator="null" entityname="ab" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.7.0.1</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="My Progressed Enquiries with no Application" languagecode="1033" />
+      <LocalizedName description="My Progressed Enquiries with no Pipeline" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

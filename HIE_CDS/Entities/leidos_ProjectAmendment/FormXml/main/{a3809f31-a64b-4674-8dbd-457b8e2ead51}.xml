@@ -36,6 +36,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{ab55458d-eb59-2cc8-6487-32b28246c7c0}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Amendment Type" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_amendmenttype" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="leidos_amendmenttype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{b5a5ce2a-e410-43bd-adac-cf1c802e98be}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Project" languagecode="1033" />
@@ -56,29 +64,6 @@
                           <label description="Amendments Complete" languagecode="1033" />
                         </labels>
                         <control id="leidos_amendmentscomplete" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_amendmentscomplete" disabled="false" uniqueid="{aa07cc54-2c06-4eab-a74c-46965cea887f}" />
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-                <section name="Finance" id="8af805a2-aadf-4380-8699-0d326af27a10" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
-                  <labels>
-                    <label description="Finance changes" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{2c6f9f95-978d-4a5b-9a67-1bb5c734d5b8}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Cost Type" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_costtype" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_costtype" disabled="false" uniqueid="{2c59116c-0998-4434-825d-622012ede0a8}" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{005e5b8f-29f7-46b2-be5b-fc487cdd517d}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Top Slice" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_topslice" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_topslice" disabled="false" uniqueid="{f352214a-9037-4d2c-ab8d-619f0e6950c2}" />
                       </cell>
                     </row>
                   </rows>
@@ -339,7 +324,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -435,50 +420,6 @@
             </parameters>
           </customControl>
         </controlDescription>
-        <controlDescription forControl="{f352214a-9037-4d2c-ab8d-619f0e6950c2}">
-          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
-            <parameters>
-              <datafieldname>leidos_topslice</datafieldname>
-            </parameters>
-          </customControl>
-          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_topslice</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_topslice</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_topslice</value>
-            </parameters>
-          </customControl>
-        </controlDescription>
-        <controlDescription forControl="{2c59116c-0998-4434-825d-622012ede0a8}">
-          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
-            <parameters>
-              <datafieldname>leidos_costtype</datafieldname>
-            </parameters>
-          </customControl>
-          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_costtype</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_costtype</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_costtype</value>
-            </parameters>
-          </customControl>
-        </controlDescription>
       </controlDescriptions>
       <externaldependencies>
         <dependency id="leidos_executivegradestaff" />
@@ -489,9 +430,6 @@
         <dependency id="leidos_leadershipteam" />
         <dependency id="leidos_projectamendmentpath" />
       </externaldependencies>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <events>
         <event name="onchange" application="false" active="false" attribute="leidos_executivegradestaff">
           <Handlers>
@@ -536,6 +474,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="7c0c4c89-0f87-4128-af97-6b4d7f2e5d31" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="35de9f68-394e-4049-bad7-a575e31cf9c6" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

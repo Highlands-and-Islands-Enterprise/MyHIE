@@ -51,11 +51,17 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{a12f6f92-0b82-4af1-9363-02f271bc4909}" showlabel="true" locklevel="0">
+                      <cell id="{8923dae0-fdd6-4b40-9191-a9ab8d29cf9c}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Business or Social Enterprise" languagecode="1033" />
+                          <label description="Nature of Organisation" languagecode="1033" />
                         </labels>
-                        <control id="leidos_businessorsocialenterprise" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_businessorsocialenterprise" disabled="false" />
+                        <control id="leidos_natureoforganisation" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_natureoforganisation" disabled="false">
+                          <parameters>
+                            <DisableMru>true</DisableMru>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{1A3C4BED-954F-440C-B970-0EF045300F96}</DefaultViewId>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>
@@ -66,14 +72,15 @@
                         <control id="leidos_proposedsegmentation" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_proposedsegmentation" disabled="false" uniqueid="{5d9a9bdd-a78a-721a-55c0-b6ebba7dc8b9}">
                           <parameters>
                             <AutoResolve>true</AutoResolve>
-                            <DisableMru>false</DisableMru>
+                            <DisableMru>true</DisableMru>
                             <DisableQuickFind>false</DisableQuickFind>
-                            <DisableViewPicker>false</DisableViewPicker>
-                            <DefaultViewId>{7B8E37D4-78AA-4A55-A1FF-AEE40E3AEADB}</DefaultViewId>
-                            <FilterRelationshipName>leidos_Segmentation_BusinessorSocialEnter</FilterRelationshipName>
-                            <DependentAttributeName>leidos_accountmanagementrecord.leidos_businessorsocialenterprise</DependentAttributeName>
-                            <DependentAttributeType>leidos_businessorsocialenterprise</DependentAttributeType>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{9498E6BA-907F-4F55-BC16-6C8F26F78825}</DefaultViewId>
+                            <FilterRelationshipName>leidos_Segmentation_NatureofBusiness_leid</FilterRelationshipName>
+                            <DependentAttributeName>leidos_accountmanagementrecord.leidos_natureoforganisation</DependentAttributeName>
+                            <DependentAttributeType>leidos_organisationtype</DependentAttributeType>
                             <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{9498E6BA-907F-4F55-BC16-6C8F26F78825}</AvailableViewIds>
                           </parameters>
                         </control>
                       </cell>
@@ -394,11 +401,6 @@
       </footer>
       <Navigation>
         <NavBar>
-          <NavBarByRelationshipItem RelationshipName="leidos_BusinessReview_AccountManagementRe_leidos_accountmanagementclientplan" Sequence="10000" Area="Info" Id="nav_leidos_BusinessReview_AccountManagementRe_leidos_accountmanagementclientplan">
-            <Titles>
-              <Title LCID="1033" Text="Client Plans" />
-            </Titles>
-          </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="bpf_leidos_accountmanagementrecord_leidos_bpfaccountprocess" Sequence="10000" Area="Info" Id="nav_bpf_leidos_accountmanagementrecord_leidos_bpfaccountprocess" Show="false">
             <Titles>
               <Title LCID="1033" Text="BPF Account Process" />
@@ -407,6 +409,11 @@
           <NavBarByRelationshipItem RelationshipName="bpf_leidos_accountmanagementrecord_leidos_bpfamrdirectcreation" Sequence="10000" Area="Info" Id="nav_bpf_leidos_accountmanagementrecord_leidos_bpfamrdirectcreation" Show="false">
             <Titles>
               <Title LCID="1033" Text="BPF Account Management Record" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_BusinessReview_AccountManagementRe_leidos_accountmanagementclientplan" Sequence="10000" Area="Info" Id="nav_leidos_BusinessReview_AccountManagementRe_leidos_accountmanagementclientplan">
+            <Titles>
+              <Title LCID="1033" Text="Client Plans" />
             </Titles>
           </NavBarByRelationshipItem>
         </NavBar>
@@ -493,6 +500,7 @@
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="Leidos.filterSegmentationLookup" libraryName="leidos_AMRFilterLokup.js" handlerUniqueId="{a5857aa7-ab77-1cee-17ab-6c99037287bb}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c3bedb21-7d1f-4cb1-b5b6-e89e8918ce4f" enabled="true" parameters="'0Wi:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_businessorsocialenterprise">
@@ -501,15 +509,15 @@
           </Handlers>
         </event>
       </events>
-      <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="58a5d1cb-c19e-44bb-b4b7-cf8cdee970be" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="09ceb12c-df6b-45b7-8d33-7a6390b94303" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="d2cff953-cf91-45c3-83a7-fa10a4db5121" />
-        <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{bbd609ac-43a5-3e59-ddcc-6a7aa596689e}" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{bbd609ac-43a5-3e59-ddcc-6a7aa596689e}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="9bf49f8b-1567-4bdf-9450-521d1729152c" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a6a672b6-cb47-4caf-85d0-f3b49783c1bf" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="11030c87-189f-4f00-9682-0c563def467f" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
