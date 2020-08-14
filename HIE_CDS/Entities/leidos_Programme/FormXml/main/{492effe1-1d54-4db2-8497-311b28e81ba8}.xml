@@ -57,6 +57,85 @@
             </column>
           </columns>
         </tab>
+        <tab name="tab_cost" id="cbef305b-ee2a-4a5d-b812-e82a385a8e04" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Cost" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_cost_programme_costs" id="cdadd01b-7028-4b38-8de9-33903b3b8594" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Programme Costs" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{4b9f4a4c-b5e5-4a61-859e-f85549ebae49}" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="New SG control 1597396341467" languagecode="1033" />
+                        </labels>
+                        <control id="Subgrid_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_projectcost</TargetEntityType>
+                            <ViewId>{9CD0D738-59DD-EA11-A813-000D3A7F1BBB}</ViewId>
+                            <ViewIds>{EE1C9DB8-D142-46B2-9401-ACC6B4881AEC},{9CD0D738-59DD-EA11-A813-000D3A7F1BBB}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_ProjectCost_parentprogramme_leidos</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab_cost_section_3" id="e4b20931-a4b0-411b-8fb0-862673554701" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="111" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{518f2dda-8630-4b60-92fe-071b3182ebc2}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description=" Total Costs (Calculated)" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalcostscalculated" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalcostscalculated" disabled="true" />
+                      </cell>
+                      <cell id="{7c3cbb94-487e-44d4-ab97-e65ddc280213}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description=" Total Capital Costs (Calculated)" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalcapitalcostscalculated" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalcapitalcostscalculated" disabled="true" />
+                      </cell>
+                      <cell id="{097b10b8-8c34-46ce-bd10-edc7f52540c4}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Total Revenue Costs (Calculated)" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalrevenuecostscalculated" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalrevenuecostscalculated" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell showlabel="true" locklevel="0" id="{77c4d4be-8286-4f69-8c73-bb6125855c8e}">
+                        <labels>
+                          <label description="Completed Costs" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_completedcosts" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedcosts" disabled="false" uniqueid="{162a1527-1043-46da-91d3-a0c79dd9eb04}" />
+                      </cell>
+                      <cell showlabel="true" locklevel="0" id="{71fd5e0f-c9ec-4594-9bb5-d31d33ee7f01}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell showlabel="true" locklevel="0" id="{a17dac92-cca7-43b5-9ef1-0798b7795bad}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
         <tab name="Budget" id="96c3b23b-5d17-4bb9-8b6e-38acdd7fed4a" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
             <label description="Budget" languagecode="1033" />
@@ -261,7 +340,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -291,6 +370,30 @@
         </NavBarAreas>
       </Navigation>
       <DisplayConditions Order="0" FallbackForm="true" />
+      <controlDescriptions>
+        <controlDescription forControl="{162a1527-1043-46da-91d3-a0c79dd9eb04}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_completedcosts</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_completedcosts</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_completedcosts</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_completedcosts</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
