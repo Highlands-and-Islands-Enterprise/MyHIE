@@ -499,8 +499,8 @@
         </event>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="Leidos.filterSegmentationLookup" libraryName="leidos_AMRFilterLokup.js" handlerUniqueId="{a5857aa7-ab77-1cee-17ab-6c99037287bb}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c3bedb21-7d1f-4cb1-b5b6-e89e8918ce4f" enabled="true" parameters="'0Wi:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{a591c8d2-b6d2-0022-9eed-8a52d7b427bd}" enabled="true" parameters="'leidos_natureoforganisation' , 'leidos_proposedsegmentation', '5b7a5d04-bcdb-ea11-a813-000d3a7fedbe' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;1&quot; /&gt;      &lt;condition attribute=&quot;leidos_natureofbusiness&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;'&#xA;" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_businessorsocialenterprise">
@@ -511,18 +511,20 @@
         <event name="onchange" application="false" active="false" attribute="leidos_natureoforganisation">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="30d98abb-f635-4e21-8258-67379f9d31ac" enabled="true" parameters="'Fwq:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{2181602b-560d-0b88-7341-1b6a2b660c2a}" enabled="false" parameters="'leidos_natureoforganisation' , 'leidos_proposedsegmentation', '5b7a5d04-bcdb-ea11-a813-000d3a7fedbe' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;1&quot; /&gt;      &lt;condition attribute=&quot;leidos_natureofbusiness&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;'&#xA;" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{bbd609ac-43a5-3e59-ddcc-6a7aa596689e}" />
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="c632ccf8-3143-4811-bbf6-9f2f969b1608" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="a51e1753-79e0-43da-90bb-cec5c80ff978" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="4a625318-8232-4706-97b4-dc88bbff5610" />
+        <Library name="leidos_common" libraryUniqueId="{519ec06b-39a1-d0c6-c2aa-648b13d42c26}" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

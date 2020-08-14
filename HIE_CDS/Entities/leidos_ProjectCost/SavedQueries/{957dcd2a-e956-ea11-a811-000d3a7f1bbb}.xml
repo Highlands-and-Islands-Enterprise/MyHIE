@@ -29,13 +29,16 @@
           <attribute name="leidos_projectcostreference" />
           <attribute name="statuscode" />
           <attribute name="leidos_costtype" />
+          <attribute name="leidos_projectcostid" />
           <filter type="and">
             <filter type="or">
               <condition attribute="statecode" operator="eq" value="0" />
-              <condition attribute="statuscode" operator="eq" value="445260001" />
+              <condition attribute="statuscode" operator="in">
+                <value>445260001</value>
+                <value>445260003</value>
+              </condition>
             </filter>
           </filter>
-          <attribute name="leidos_projectcostid" />
         </entity>
       </fetch>
     </fetchxml>
