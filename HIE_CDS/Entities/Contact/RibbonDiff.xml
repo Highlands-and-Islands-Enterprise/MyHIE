@@ -1,14 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <CustomActions />
+  <CustomActions>
+    <CustomAction Id="leidos.adx.contact.form.CreateInvitation.Button.CustomAction" Location="Mscrm.Form.contact.MainTab.Save.Controls._children" Sequence="65">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:adx.contact.form.CreateInvitation.Button.Alt" Command="adx.contact.form.CreateInvitation.Command" Id="adx.contact.form.CreateInvitation.Button" Image32by32="$webresource:adx_icon_invitation_medium" Image16by16="$webresource:adx_icon_invitation_small" LabelText="$LocLabels:adx.contact.form.CreateInvitation.Button.LabelText" Sequence="65" TemplateAlias="isv" ToolTipTitle="$LocLabels:adx.contact.form.CreateInvitation.Button.ToolTipTitle" ToolTipDescription="$LocLabels:adx.contact.form.CreateInvitation.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
   <Templates>
     <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
   </Templates>
-  <CommandDefinitions />
+  <CommandDefinitions>
+    <CommandDefinition Id="adx.contact.form.CreateInvitation.Command">
+      <EnableRules>
+        <EnableRule Id="Mscrm.FormStateNotNew" />
+      </EnableRules>
+      <DisplayRules>
+        <DisplayRule Id="leidos.contact.DisplayRule0.DisplayRule" />
+      </DisplayRules>
+      <Actions>
+        <JavaScriptFunction FunctionName="openNewInvitationFromContactForm" Library="$webresource:adx_invitation_form.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
   <RuleDefinitions>
     <TabDisplayRules />
-    <DisplayRules />
-    <EnableRules />
+    <DisplayRules>
+      <DisplayRule Id="leidos.contact.DisplayRule0.DisplayRule">
+        <ValueRule Field="emailaddress1" Value="null" Default="true" InvertResult="true" />
+      </DisplayRule>
+    </DisplayRules>
+    <EnableRules>
+      <EnableRule Id="Mscrm.FormStateNotNew">
+        <FormStateRule State="Create" InvertResult="true" />
+      </EnableRule>
+    </EnableRules>
   </RuleDefinitions>
-  <LocLabels />
+  <LocLabels>
+    <LocLabel Id="adx.contact.form.CreateInvitation.Button.Alt">
+      <Titles>
+        <Title description="Create Invitation" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="adx.contact.form.CreateInvitation.Button.LabelText">
+      <Titles>
+        <Title description="Create Invitation" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="adx.contact.form.CreateInvitation.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Create an invitation to a portal." languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="adx.contact.form.CreateInvitation.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Create Invitation" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
 </RibbonDiffXml>

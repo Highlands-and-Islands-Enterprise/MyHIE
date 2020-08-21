@@ -31,15 +31,18 @@
           <attribute name="leidos_totalfundingcalcualted" />
           <attribute name="statuscode" />
           <attribute name="leidos_dateofgranting" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-            <condition attribute="statuscode" operator="not-in">
-              <value>445260004</value>
-              <value>445260009</value>
-              <value>445260008</value>
-            </condition>
-          </filter>
           <attribute name="leidos_name" />
+          <filter type="and">
+            <filter type="or">
+              <condition attribute="statuscode" operator="eq" value="445260000" />
+              <condition attribute="statuscode" operator="eq" value="445260010" />
+              <condition attribute="statuscode" operator="eq" value="445260002" />
+              <condition attribute="statuscode" operator="eq" value="445260001" />
+              <condition attribute="statuscode" operator="eq" value="445260009" />
+              <condition attribute="statuscode" operator="eq" value="445260007" />
+              <condition attribute="statuscode" operator="eq" value="445260011" />
+            </filter>
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
