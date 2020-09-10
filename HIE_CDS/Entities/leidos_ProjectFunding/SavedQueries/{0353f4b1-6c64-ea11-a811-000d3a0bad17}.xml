@@ -14,7 +14,7 @@
           <cell name="a_e218a45627d34ba68da01e2f84dba9a8.leidos_parentapplication" width="300" />
           <cell name="a_e218a45627d34ba68da01e2f84dba9a8.leidos_name" width="300" />
           <cell name="a_e218a45627d34ba68da01e2f84dba9a8.leidos_projectstartdate" width="145" />
-          <cell name="a_e218a45627d34ba68da01e2f84dba9a8.leidos_projectdurationmonths" width="300" />
+          <cell name="a_e218a45627d34ba68da01e2f84dba9a8.leidos_projectenddate" width="100" disableSorting="1" />
           <cell name="a_e218a45627d34ba68da01e2f84dba9a8.leidos_supportitemtype" width="100" />
           <cell name="a_e218a45627d34ba68da01e2f84dba9a8.leidos_topslice" width="285" />
           <cell name="a_e218a45627d34ba68da01e2f84dba9a8.leidos_grossgrantequivalence" width="100" />
@@ -32,19 +32,6 @@
     <fetchxml>
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_projectfunding">
-          <attribute name="leidos_projectfundingid" />
-          <link-entity alias="a_e218a45627d34ba68da01e2f84dba9a8" name="leidos_project" to="leidos_parentproject" from="leidos_projectid" link-type="outer" visible="false">
-            <attribute name="leidos_name" />
-            <attribute name="leidos_supportitemtype" />
-            <attribute name="leidos_topslice" />
-            <attribute name="leidos_grossgrantequivalence" />
-            <attribute name="leidos_dateofgranting" />
-            <attribute name="leidos_approvedbudget" />
-            <attribute name="leidos_parentaccount" />
-            <attribute name="leidos_parentapplication" />
-            <attribute name="leidos_projectstartdate" />
-            <attribute name="leidos_projectdurationmonths" />
-          </link-entity>
           <attribute name="leidos_funddetails" />
           <attribute name="leidos_fundingsource" />
           <attribute name="leidos_fundingamount" />
@@ -57,6 +44,19 @@
               </filter>
             </link-entity>
           </link-entity>
+          <link-entity alias="a_e218a45627d34ba68da01e2f84dba9a8" name="leidos_project" to="leidos_parentproject" from="leidos_projectid" link-type="outer" visible="false">
+            <attribute name="leidos_name" />
+            <attribute name="leidos_supportitemtype" />
+            <attribute name="leidos_topslice" />
+            <attribute name="leidos_grossgrantequivalence" />
+            <attribute name="leidos_dateofgranting" />
+            <attribute name="leidos_approvedbudget" />
+            <attribute name="leidos_parentaccount" />
+            <attribute name="leidos_parentapplication" />
+            <attribute name="leidos_projectstartdate" />
+            <attribute name="leidos_projectenddate" />
+          </link-entity>
+          <attribute name="leidos_projectfundingid" />
         </entity>
       </fetch>
     </fetchxml>

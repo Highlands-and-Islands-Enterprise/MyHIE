@@ -5,7 +5,7 @@
     <IntroducedVersion>1.2.0.1</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form>
+    <form headerdensity="HighWithControls">
       <tabs>
         <tab verticallayout="true" id="{c8d48dda-57a5-4cbd-8094-ade3ad00fd71}" IsUserDefined="1">
           <labels>
@@ -27,6 +27,14 @@
                         <control id="leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{884ef71f-0d3f-403e-bd79-48a30497ebfa}" locklevel="0">
+                        <labels>
+                          <label description="Available in Portal" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_availableinportal" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_availableinportal" disabled="false" uniqueid="{c2750aeb-13c2-4589-b979-405b63b22159}" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -37,6 +45,72 @@
       <DisplayConditions FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <header id="{d3882cd9-a0c1-4299-9fd9-7967547fbc6a}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{cd1f8b76-f1dd-4397-b411-cbc72e5e4613}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{bece0c5a-fc54-4070-829d-9072d1490f9f}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e2f46e84-eb22-4418-b45a-85c0b531965b}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{8cb7a2c9-90d4-498e-902a-c895ac618d32}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{20b4ae08-587a-48c1-b306-716a8cea0ab7}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{46d7d69f-1d87-4139-8d87-f9cd5f4cebbb}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{32decb47-c3ef-4afa-83c5-c694a48083f7}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <controlDescriptions>
+        <controlDescription forControl="{c2750aeb-13c2-4589-b979-405b63b22159}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_availableinportal</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_availableinportal</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_availableinportal</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_availableinportal</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
