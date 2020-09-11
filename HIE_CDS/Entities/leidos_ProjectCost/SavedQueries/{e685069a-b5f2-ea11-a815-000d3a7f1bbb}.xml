@@ -10,10 +10,8 @@
     <layoutxml>
       <grid name="leidos_projectcosts" jump="leidos_costitem" select="1" icon="1" preview="1">
         <row name="leidos_projectcost" id="leidos_projectcostid">
-          <cell name="leidos_parentproject" width="100" />
-          <cell name="leidos_projectcostreference" width="100" />
+          <cell name="leidos_parentproject" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="leidos_costitem" width="269" />
-          <cell name="leidos_costcategory" width="245" />
           <cell name="leidos_itemcost" width="191" />
         </row>
       </grid>
@@ -23,10 +21,8 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="leidos_projectcost">
           <attribute name="leidos_costitem" />
-          <attribute name="leidos_costcategory" />
           <attribute name="leidos_itemcost" />
           <attribute name="leidos_parentproject" />
-          <attribute name="leidos_projectcostreference" />
           <order attribute="leidos_costitem" descending="false" />
           <filter type="and">
             <filter type="or">

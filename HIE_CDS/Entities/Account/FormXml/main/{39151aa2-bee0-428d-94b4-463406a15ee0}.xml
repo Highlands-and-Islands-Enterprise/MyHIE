@@ -209,21 +209,37 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{8d8afc6a-9f8d-4104-a5a3-f41408dd48f0}" rowspan="1" colspan="1" showlabel="true">
+                      <cell id="{123d6dd8-ee42-c448-68c1-27be075c3d72}" showlabel="false" colspan="1" auto="false" rowspan="6">
                         <labels>
                           <label description="Authorised Signatories" languagecode="1033" />
                         </labels>
-                        <control id="Subgrid_Authorised_Signatories" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                        <control id="subgrid_authSigs" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
                           <parameters>
-                            <TargetEntityType>leidos_signatory</TargetEntityType>
-                            <ViewId>{6CD93DFB-8CF2-EA11-A815-000D3A7F1BBB}</ViewId>
-                            <ViewIds>{5DB98E41-897B-4D68-82D1-F9DD25F9572D},{6CD93DFB-8CF2-EA11-A815-000D3A7F1BBB}</ViewIds>
+                            <ViewId>{00000000-0000-0000-00AA-000010001004}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>leidos_Contact_Account_AuthorisedSignatory</RelationshipName>
+                            <TargetEntityType>contact</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
                             <EnableViewPicker>false</EnableViewPicker>
-                            <RelationshipName>leidos_Signatory_Account_Account</RelationshipName>
+                            <ViewIds>{00000000-0000-0000-00AA-000010001004},{00000000-0000-0000-00AA-000010001003}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId>{E365462F-1DB9-46A8-928D-BEAB1A7A2375}</VisualizationId>
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <RelationshipRoleOrdinal>1</RelationshipRoleOrdinal>
                           </parameters>
                         </control>
                       </cell>
                     </row>
+                    <row></row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                     <row>
                       <cell id="{bbbc9322-72ff-47ed-b597-1183bc9cd8a6}" showlabel="true" locklevel="0">
                         <labels>
@@ -1639,6 +1655,11 @@
           <NavBarByRelationshipItem RelationshipName="leidos_AccountManagementRecord_PartnerSig" Sequence="10000" Area="Info" Id="nav_leidos_AccountManagementRecord_PartnerSig" Show="false">
             <Titles>
               <Title LCID="1033" Text="Account Management Records" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_Contact_Account_AuthorisedSignatory" Sequence="10000" Area="Info" Id="nav_leidos_Contact_Account_AuthorisedSignatory">
+            <Titles>
+              <Title LCID="1033" Text="Authorised Signatories" />
             </Titles>
           </NavBarByRelationshipItem>
         </NavBar>
