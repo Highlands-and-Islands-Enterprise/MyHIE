@@ -33,8 +33,12 @@
           <filter type="and">
             <condition attribute="leidos_specialistinputrequest" operator="eq" value="1" />
             <condition attribute="statecode" operator="eq" value="0" />
-            <condition attribute="ownerid" operator="eq-userid" />
           </filter>
+          <link-entity name="leidos_project" from="leidos_projectid" to="regardingobjectid" alias="aa">
+            <filter type="and">
+              <condition attribute="ownerid" operator="eq-userid" />
+            </filter>
+          </link-entity>
           <attribute name="activityid" />
         </entity>
       </fetch>

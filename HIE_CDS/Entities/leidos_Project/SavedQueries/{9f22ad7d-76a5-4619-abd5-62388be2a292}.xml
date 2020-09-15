@@ -24,7 +24,6 @@
         <entity name="leidos_project">
           <attribute name="leidos_projectid" />
           <attribute name="leidos_name" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
@@ -32,11 +31,14 @@
             <condition attribute="leidos_name" operator="like" value="{0}" />
             <condition attribute="leidos_projectreference" operator="like" value="{0}" />
             <condition attribute="leidos_projectpostcode" operator="like" value="{0}" />
+            <condition attribute="leidos_parentaccount" operator="like" value="{0}" />
           </filter>
           <attribute name="leidos_parentaccount" />
           <attribute name="leidos_projectreference" />
           <attribute name="leidos_projectpostcode" />
           <attribute name="createdon" />
+          <order attribute="leidos_name" descending="false" />
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

@@ -22,16 +22,17 @@
         <entity name="leidos_pipelineproject">
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="leidos_name" operator="like" value="{0}" />
             <condition attribute="leidos_client" operator="like" value="{0}" />
+            <condition attribute="leidos_pipelineprojectreference" operator="like" value="{0}" />
           </filter>
           <attribute name="leidos_client" />
           <attribute name="leidos_pipelineprojectid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
