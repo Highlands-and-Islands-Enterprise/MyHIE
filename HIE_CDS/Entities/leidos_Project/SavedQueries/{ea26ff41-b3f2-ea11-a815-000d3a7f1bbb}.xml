@@ -12,7 +12,6 @@
         <row name="result" id="leidos_projectid">
           <cell name="leidos_name" width="200" />
           <cell name="leidos_supportitemtype" width="100" />
-          <cell name="leidos_projectedspend" width="100" />
           <cell name="leidos_totalcostscalculated" width="100" />
           <cell name="leidos_totalfundingcalcualted" width="100" />
           <cell name="leidos_dateofgranting" width="100" />
@@ -25,9 +24,7 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_project">
           <attribute name="leidos_name" />
-          <attribute name="leidos_projectid" />
           <attribute name="leidos_supportitemtype" />
-          <attribute name="leidos_projectedspend" />
           <attribute name="leidos_totalcostscalculated" />
           <attribute name="leidos_totalfundingcalcualted" />
           <attribute name="leidos_dateofgranting" />
@@ -39,6 +36,7 @@
               <condition attribute="statuscode" operator="eq" value="445260005" />
             </filter>
           </filter>
+          <attribute name="leidos_projectid" />
         </entity>
       </fetch>
     </fetchxml>

@@ -25,13 +25,21 @@
     <fetchxml>
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_projectfunding">
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
-          <link-entity alias="a_e218a45627d34ba68da01e2f84dba9a8" name="leidos_project" to="leidos_parentproject" from="leidos_projectid" link-type="outer" visible="false">
+          <link-entity alias="a_e218a45627d34ba68da01e2f84dba9a8" name="leidos_project" to="leidos_parentproject" from="leidos_projectid" link-type="inner">
             <attribute name="leidos_grossgrantequivalence" />
             <attribute name="leidos_dateofgranting" />
             <attribute name="leidos_parentaccount" />
+            <filter type="and">
+              <filter type="or">
+                <condition attribute="statuscode" operator="eq" value="445260009" />
+                <condition attribute="statuscode" operator="eq" value="445260002" />
+                <condition attribute="statuscode" operator="eq" value="445260001" />
+                <condition attribute="statuscode" operator="eq" value="445260010" />
+                <condition attribute="statuscode" operator="eq" value="445260007" />
+                <condition attribute="statuscode" operator="eq" value="445260011" />
+                <condition attribute="statuscode" operator="eq" value="2" />
+              </filter>
+            </filter>
           </link-entity>
           <attribute name="leidos_funddetails" />
           <attribute name="leidos_fundingsource" />
@@ -39,7 +47,7 @@
           <attribute name="leidos_stateaidcategory" />
           <attribute name="leidos_stateaidsubcategory" />
           <link-entity name="leidos_fundingsource" alias="aa" link-type="inner" from="leidos_fundingsourceid" to="leidos_fundingsource">
-            <link-entity name="leidos_projectfunding" alias="ad" link-type="inner" from="leidos_fundingsource" to="leidos_fundingsourceid">
+            <link-entity name="leidos_projectfunding" alias="ac" link-type="inner" from="leidos_fundingsource" to="leidos_fundingsourceid">
               <filter type="and">
                 <condition attribute="leidos_stateaidcategory" operator="not-null" />
               </filter>
