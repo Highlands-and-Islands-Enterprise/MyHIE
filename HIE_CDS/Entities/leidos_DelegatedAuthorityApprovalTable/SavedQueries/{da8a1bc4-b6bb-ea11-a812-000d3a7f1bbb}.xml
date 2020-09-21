@@ -12,6 +12,7 @@
         <row name="result" id="leidos_delegatedauthorityapprovaltableid">
           <cell name="a_ab00b1e042fe4468b7197db7a106474b.fullname" width="100" />
           <cell name="leidos_maximumsignoffamount" width="100" />
+          <cell name="leidos_name" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -19,7 +20,6 @@
     <fetchxml>
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_delegatedauthorityapprovaltable">
-          <attribute name="leidos_delegatedauthorityapprovaltableid" />
           <filter type="and">
             <condition attribute="leidos_userrecord" operator="ne-userid" />
             <condition attribute="leidos_maximumsignoffamount" operator="gt" value="25000" />
@@ -28,6 +28,9 @@
             <attribute name="fullname" />
           </link-entity>
           <attribute name="leidos_maximumsignoffamount" />
+          <attribute name="leidos_name" />
+          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_delegatedauthorityapprovaltableid" />
         </entity>
       </fetch>
     </fetchxml>
