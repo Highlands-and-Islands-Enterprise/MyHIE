@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{ef18e9eb-7d5c-41ef-b7c3-3705590a9c07}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_obligationperiodid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_qty" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_obligationperiod">
+          <attribute name="leidos_obligationperiodid" />
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_qty" />
+          <order attribute="leidos_name" descending="false" />
+          <order attribute="leidos_qty" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.7.0.997</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Obligation Periods" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
