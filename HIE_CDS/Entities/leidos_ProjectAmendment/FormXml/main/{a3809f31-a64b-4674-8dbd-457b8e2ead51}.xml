@@ -74,7 +74,7 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{89b3ecea-da90-45cf-82e9-c28ce5efbc38}" showlabel="true" locklevel="1">
+                      <cell id="{89b3ecea-da90-45cf-82e9-c28ce5efbc38}" showlabel="true" locklevel="1" visible="false">
                         <labels>
                           <label description="Project Amendment Path" languagecode="1033" />
                         </labels>
@@ -186,7 +186,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{0d7dac97-ba41-41b7-a108-4275845aa2ae}" showlabel="true" locklevel="0" visible="true">
+                      <cell id="{0d7dac97-ba41-41b7-a108-4275845aa2ae}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Recommendation" languagecode="1033" />
                         </labels>
@@ -396,12 +396,12 @@
       </Navigation>
       <controlDescriptions>
         <controlDescription forControl="{3838877b-c103-462b-9c49-5cba100b83f3}">
-          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+          <customControl id="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}">
             <parameters>
               <datafieldname>leidos_recommendation</datafieldname>
             </parameters>
           </customControl>
-          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
             <parameters>
               <value>leidos_recommendation</value>
             </parameters>
@@ -411,7 +411,7 @@
               <value>leidos_recommendation</value>
             </parameters>
           </customControl>
-          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
             <parameters>
               <value>leidos_recommendation</value>
             </parameters>
@@ -519,13 +519,18 @@
             <Handler functionName="Leidos.ValidateDelegatedAuthority" libraryName="leidos_projectAmendment.js" handlerUniqueId="{86212caa-1db7-8225-e731-d7469486a92e}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_amendmentscomplete">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b5e486eb-15be-499c-b3d8-6b1c14e3f93e" enabled="true" parameters="'gtH:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{078d2a0a-70b1-37c3-8405-61094871e6c1}" />
         <Library name="leidos_projectAmendment.js" libraryUniqueId="{94167ab6-7b43-1717-d341-29c6b0138ade}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="1d295df0-e755-4b3d-8d00-8457c0540827" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="0ed7579c-5e59-480b-be88-18db20d93f59" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="94fd839a-0eac-4e35-a274-84ef4ef96321" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="7957e76c-70de-4a79-9492-d21ff01c453e" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="3ce7ad11-cecf-49c7-9ead-459a011245c2" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="7091820e-74dd-4ae1-9af9-016b0c1e9094" />
       </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
