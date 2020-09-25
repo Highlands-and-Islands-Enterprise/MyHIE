@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{c3e4b7d1-d311-41a0-9f44-cc1390eb7d28}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_clientneedsolutions" jump="leidos_name" select="1" icon="1" preview="0">
+        <row name="leidos_clientneedsolution" id="leidos_clientneedsolutionid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_clientneed" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_clientneedsolution">
+          <attribute name="leidos_clientneedsolutionid" />
+          <attribute name="leidos_name" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_clientneed" />
+          <order attribute="leidos_name" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.7.0.1001</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Client Need Solution Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
