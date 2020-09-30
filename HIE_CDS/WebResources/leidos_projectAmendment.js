@@ -17,35 +17,44 @@ Leidos.ValidateDelegatedAuthority = function(executionContext) {
     var currentUser  = Xrm.Utility.getGlobalContext().userSettings.userName;
     var currentStatus = formContext.getAttribute('statuscode').getValue();
     var delegatedAuthority = null;
+    var amendmentsComplete = formContext.getAttribute('leidos_amendmentscomplete').getValue();
 
-    if(currentStatus === '445260000'){ /* Draft */
-		if (currentPath === '445260001') { /* Executive grade staff */
+    if(currentStatus == '445260000'){ /* Draft */
+		if (currentPath == '445260001') { /* Executive grade staff */
 			delegatedAuthority = formContext.getAttribute('leidos_executivegradestaff').getValue();	
-		} else if (currentPath === '445260000') { /* Grade E staff */
+		} else if (currentPath == '445260000') { /* Grade E staff */
 			delegatedAuthority = formContext.getAttribute('leidos_gradeestaff').getValue();	
-		} else if (currentPath === '445260006') { /* Grade F staff */
+		} else if (currentPath == '445260006') { /* Grade F staff */
 			delegatedAuthority = formContext.getAttribute('leidos_gradefstaff').getValue();	
-		} else if (currentPath === '445260003') { /* Leadership team */
+		} else if (currentPath == '445260003') { /* Leadership team */
 			delegatedAuthority = formContext.getAttribute('leidos_leadershipteam').getValue();
-		} else if (currentPath ==='445260005') { /* HIE Board */
+		} else if (currentPath =='445260005') { /* HIE Board */
 			delegatedAuthority = formContext.getAttribute('leidos_hieboard').getValue();
-		} else if (currentPath === '445260004') { /* HIE Chief Executive */
+		} else if (currentPath == '445260004') { /* HIE Chief Executive */
 			delegatedAuthority = formContext.getAttribute('leidos_hiechiefexecutive').getValue();	
-		} else if (currentPath === '445260002') { /* Finance */
+		} else if (currentPath == '445260002') { /* Finance */
 			delegatedAuthority = formContext.getAttribute('leidos_finance').getValue();	
-		} 
-		
+		}
+
 		if(delegatedAuthority === null || typeof(delegatedAuthority) === 'undefined'){
-			formContext.getControl('leidos_submitprojectamendmentforapproval').setVisible(true);
+                        formContext.getControl('leidos_submitprojectamendmentforapproval').setVisible(false);
 			formContext.ui.clearFormNotification('DAMsg1');
 		} else {
 			if ( delegatedAuthority[0].name === currentUser){ /* hide submit button and display warning */
-				formContext.getControl('leidos_submitprojectamendmentforapproval').setVisible(false);
+                                formContext.getControl('leidos_submitprojectamendmentforapproval').setVisible(false);
 				formContext.ui.setFormNotification('Delegated Authority can not be yourself.  Please amend before submitting', 'ERROR', 'DAMsg1');
-			} else { /* show submit button and clear warning */       
-				formContext.getControl('leidos_submitprojectamendmentforapproval').setVisible(true);
+			} else { /* show submit button and clear warning */      
+                                formContext.getControl('leidos_submitprojectamendmentforapproval').setVisible(true);
 				formContext.ui.clearFormNotification('DAMsg1');
 			}
 		}
 	}
 }
+
+Leidos.DelayedDACheck = function (executionContext) {
+    "use strict";
+    setTimeout(function() {
+        Leidos.ValidateDelegatedAuthority(executionContext);
+    }, 1000);
+}
+   
