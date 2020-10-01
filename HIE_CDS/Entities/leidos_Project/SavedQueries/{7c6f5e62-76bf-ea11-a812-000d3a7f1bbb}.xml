@@ -10,6 +10,7 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectid">
+          <cell name="leidos_projectreference" width="100" />
           <cell name="leidos_name" width="200" />
         </row>
       </grid>
@@ -20,7 +21,6 @@
         <entity name="leidos_project">
           <attribute name="leidos_name" />
           <attribute name="leidos_projectid" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statuscode" operator="in">
               <value>445260001</value>
@@ -28,6 +28,8 @@
               <value>445260009</value>
             </condition>
           </filter>
+          <attribute name="leidos_projectreference" />
+          <order attribute="leidos_projectreference" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
