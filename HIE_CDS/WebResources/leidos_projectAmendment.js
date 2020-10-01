@@ -57,4 +57,14 @@ Leidos.DelayedDACheck = function (executionContext) {
         Leidos.ValidateDelegatedAuthority(executionContext);
     }, 1000);
 }
+
+Leidos.refreshSave =  function (executionContext) {
+    "use strict";
+    window.parent.Xrm.Page.data.refresh(true).then(function() {
+        Leidos.ValidateDelegatedAuthority(executionContext);
+    }, 
+    function(error) {
+        alert(error.message);
+    })
+}
    
