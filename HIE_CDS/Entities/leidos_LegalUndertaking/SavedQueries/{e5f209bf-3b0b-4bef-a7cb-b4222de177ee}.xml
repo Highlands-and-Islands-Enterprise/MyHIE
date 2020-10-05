@@ -5,33 +5,33 @@
     <CanBeDeleted>0</CanBeDeleted>
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
-    <isdefault>1</isdefault>
-    <savedqueryid>{106f696a-70e7-40f3-bcfb-c533cd6cd9db}</savedqueryid>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e5f209bf-3b0b-4bef-a7cb-b4222de177ee}</savedqueryid>
     <layoutxml>
-      <grid name="leidos_legals" jump="leidos_name" select="1" icon="1" preview="1">
-        <row name="leidos_legal" id="leidos_legalid">
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_legalundertakingid">
           <cell name="leidos_name" width="300" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
-    <querytype>2</querytype>
+    <querytype>0</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="leidos_legal">
-          <attribute name="leidos_legalid" />
+        <entity name="leidos_legalundertaking">
+          <attribute name="leidos_legalundertakingid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
           <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="statecode" operator="eq" value="1" />
           </filter>
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.0</IntroducedVersion>
+    <IntroducedVersion>1.8.0.1047</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Legal Associated View" languagecode="1033" />
+      <LocalizedName description="Inactive Legal Undertakings" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

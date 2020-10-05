@@ -219,11 +219,11 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{b2831e5a-bbb0-44c7-b830-82dfd1ca4f4f}" showlabel="true" locklevel="0">
+                      <cell id="{2ad636f1-2e41-474d-83e7-870549b16702}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Completed By" languagecode="1033" />
+                          <label description="Approval Requested By" languagecode="1033" />
                         </labels>
-                        <control id="leidos_completedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_completedby" disabled="true" />
+                        <control id="leidos_approvalrequestedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_approvalrequestedby" disabled="true" />
                       </cell>
                       <cell id="{e6708899-45b7-4171-8014-9068b0832e90}" showlabel="true" locklevel="0">
                         <labels>
@@ -233,11 +233,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{2ad636f1-2e41-474d-83e7-870549b16702}" showlabel="true" locklevel="0">
+                      <cell id="{dca81e38-a4ed-42bf-9e78-bab0a8f11be9}" showlabel="true" locklevel="0" visible="true">
                         <labels>
-                          <label description="Approval Requested By" languagecode="1033" />
+                          <label description="Submit AMR for Approval" languagecode="1033" />
                         </labels>
-                        <control id="leidos_approvalrequestedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_approvalrequestedby" disabled="true" />
+                        <control id="leidos_submitamrforapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitamrforapproval" disabled="false" uniqueid="{be20f472-8bd8-482a-a4f5-3fb26730767f}" />
                       </cell>
                       <cell id="{f064afc6-92c8-4b85-bcd0-e760688aa9ae}" showlabel="true" locklevel="0">
                         <labels>
@@ -247,11 +247,10 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{dca81e38-a4ed-42bf-9e78-bab0a8f11be9}" showlabel="true" locklevel="0" visible="true">
+                      <cell showlabel="true" locklevel="0" id="{2ee5c67d-51ed-46b4-875e-b1356002ff52}">
                         <labels>
-                          <label description="Submit AMR for Approval" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="leidos_submitamrforapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitamrforapproval" disabled="false" uniqueid="{be20f472-8bd8-482a-a4f5-3fb26730767f}" />
                       </cell>
                       <cell id="{2b6c7960-1f13-4a55-94ab-c844db8e58dd}" showlabel="true" locklevel="0">
                         <labels>
@@ -261,7 +260,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell showlabel="true" locklevel="0" id="{2ee5c67d-51ed-46b4-875e-b1356002ff52}">
+                      <cell locklevel="0" id="{60b5ec93-4a46-456c-9a4d-1188a3d573bc}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -500,7 +499,8 @@
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c3bedb21-7d1f-4cb1-b5b6-e89e8918ce4f" enabled="true" parameters="'0Wi:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{a591c8d2-b6d2-0022-9eed-8a52d7b427bd}" enabled="true" parameters="'leidos_natureoforganisation' , 'leidos_proposedsegmentation', '5b7a5d04-bcdb-ea11-a813-000d3a7fedbe' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;1&quot; /&gt;      &lt;condition attribute=&quot;leidos_natureofbusiness&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;'&#xA;" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{a591c8d2-b6d2-0022-9eed-8a52d7b427bd}" enabled="true" parameters="'leidos_natureoforganisation' , 'leidos_proposedsegmentation', '5b7a5d04-bcdb-ea11-a813-000d3a7fedbe' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;1&quot; /&gt;      &lt;condition attribute=&quot;leidos_natureofbusiness&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;' " passExecutionContext="true" />
+            <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{25c4d85b-c151-a64c-09eb-8a388476402b}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_businessorsocialenterprise">
@@ -511,16 +511,16 @@
         <event name="onchange" application="false" active="false" attribute="leidos_natureoforganisation">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="30d98abb-f635-4e21-8258-67379f9d31ac" enabled="true" parameters="'Fwq:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-            <Handler functionName="leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{2181602b-560d-0b88-7341-1b6a2b660c2a}" enabled="false" parameters="'leidos_natureoforganisation' , 'leidos_proposedsegmentation', '5b7a5d04-bcdb-ea11-a813-000d3a7fedbe' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;1&quot; /&gt;      &lt;condition attribute=&quot;leidos_natureofbusiness&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;'&#xA;" passExecutionContext="true" />
+            <Handler functionName="leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{2181602b-560d-0b88-7341-1b6a2b660c2a}" enabled="false" parameters="'leidos_natureoforganisation' , 'leidos_proposedsegmentation', '5b7a5d04-bcdb-ea11-a813-000d3a7fedbe' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;1&quot; /&gt;      &lt;condition attribute=&quot;leidos_natureofbusiness&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;' " passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
       <formLibraries>
         <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{bbd609ac-43a5-3e59-ddcc-6a7aa596689e}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="c632ccf8-3143-4811-bbf6-9f2f969b1608" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a51e1753-79e0-43da-90bb-cec5c80ff978" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="4a625318-8232-4706-97b4-dc88bbff5610" />
         <Library name="leidos_common" libraryUniqueId="{519ec06b-39a1-d0c6-c2aa-648b13d42c26}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="d8c70787-0e4b-44a0-827f-a73354e68a9f" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="9016a7fa-9e26-483e-b1c2-c79d32ae7acb" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="70f0ecb1-53d0-4c29-af03-c3808ac8c6e9" />
       </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />

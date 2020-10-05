@@ -11,7 +11,19 @@
       <grid name="leidos_clientactions" jump="leidos_title" select="1" icon="1" preview="0">
         <row name="leidos_clientaction" id="leidos_clientactionid">
           <cell name="leidos_title" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="leidos_clientactionreference" width="100" />
+          <cell name="leidos_parentaccount" width="100" />
+          <cell name="leidos_clientneed" width="100" />
+          <cell name="leidos_solution" width="100" />
+          <cell name="leidos_actionby" width="100" />
+          <cell name="leidos_actiontype" width="100" />
+          <cell name="leidos_expectedcompletiondate" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="ownerid" width="100" />
+          <cell name="leidos_stateaidarticle" width="100" />
+          <cell name="leidos_stateaidtype" width="100" />
+          <cell name="leidos_stateaidvalue" width="100" />
+          <cell name="createdon" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -25,6 +37,19 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="leidos_clientneed" />
+          <attribute name="leidos_solution" />
+          <attribute name="leidos_actionby" />
+          <attribute name="leidos_actiontype" />
+          <attribute name="leidos_expectedcompletiondate" />
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
+          <attribute name="leidos_stateaidarticle" />
+          <attribute name="leidos_stateaidtype" />
+          <attribute name="leidos_stateaidvalue" />
+          <attribute name="leidos_parentaccount" />
+          <attribute name="leidos_clientactionreference" />
+          <order attribute="leidos_title" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

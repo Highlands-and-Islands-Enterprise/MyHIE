@@ -216,6 +216,19 @@
                         <control id="leidos_dateofgranting" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_dateofgranting" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell locklevel="0" id="{7da945e5-cfdf-425b-95f2-0bfa2ed1cb4a}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{9e64de96-e181-4e1e-99b8-f0bcfe5ad27c}" locklevel="1">
+                        <labels>
+                          <label description="Date of Sending State Aid Statement" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_dateofsendingstateaidstatement" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_dateofsendingstateaidstatement" disabled="false" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -284,7 +297,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -325,15 +338,25 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="58edb8cd-7538-4ead-a249-e7a4c07a219a" enabled="true" parameters="'Cbs:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_clientneed">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="315bb405-adf9-4f16-b9c1-e91ef94a2bea" enabled="true" parameters="'hTh:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_stateaidarticle">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="9574275e-af5b-4dbe-8076-0b7c7dffb2f7" enabled="true" parameters="'tYD:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
-      <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="aaec6fca-31b6-41ac-a4bc-c1d6626be6b2" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="8986da64-ca45-4791-9400-4a596cbdfe4f" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="bb0fd2f9-519f-433a-b472-6ecb818e7336" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="e3805e80-d905-4cc7-a978-663fe16956fe" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="8a7f6013-be1f-4dec-9696-0853b9122521" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="48da28df-176d-4f1c-b5ae-976468842644" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
