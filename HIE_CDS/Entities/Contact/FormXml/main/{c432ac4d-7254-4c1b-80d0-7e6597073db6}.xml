@@ -81,12 +81,67 @@
                         <control id="preferredcontactmethodcode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="preferredcontactmethodcode" disabled="false" />
                       </cell>
                     </row>
+                  </rows>
+                </section>
+                <section name="Address" id="9ac79283-97a9-4878-899a-193a39c93c2f" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Address" languagecode="1033" />
+                  </labels>
+                  <rows>
                     <row>
-                      <cell id="{133d09d6-c374-954a-315b-435e1eeb722c}" showlabel="true" locklevel="0" labelid="{e90f3bb8-ffd0-477e-add1-520c4ff8ab1a}">
+                      <cell id="{9747ef92-4b5d-4d2a-8fa5-09e98ed4fd82}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="Address" languagecode="1033" />
+                          <label description="Street 1" languagecode="1033" />
                         </labels>
-                        <control id="address1_composite" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="address1_composite" disabled="false" />
+                        <control id="address1_line1" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="address1_line1" disabled="false" uniqueid="{68a1d7a5-3635-217a-7d56-d736190c8100}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9080deee-8feb-4eab-994c-347a9521cfad}" locklevel="0">
+                        <labels>
+                          <label description="Street 2" languagecode="1033" />
+                        </labels>
+                        <control id="address1_line2" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="address1_line2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2291ad7c-3907-4a6b-8e11-989983ec95c2}" locklevel="0">
+                        <labels>
+                          <label description="Street 3" languagecode="1033" />
+                        </labels>
+                        <control id="address1_line3" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="address1_line3" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e3aa10e2-d687-5a6a-7b04-9d3519577004}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="City" languagecode="1033" />
+                        </labels>
+                        <control id="address1_city" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_city" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4f409a76-c328-4300-8739-648af3b0d3ac}" locklevel="0" visible="false">
+                        <labels>
+                          <label description="State/Province" languagecode="1033" />
+                        </labels>
+                        <control id="address1_stateorprovince" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="address1_stateorprovince" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2588549e-37ed-7573-4332-c1b0c3b4e6e2}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Postal Code" languagecode="1033" />
+                        </labels>
+                        <control id="address1_postalcode" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="address1_postalcode" disabled="false" uniqueid="{190166b1-1b90-5d37-35c0-772dd4e5a298}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5a724786-20a4-4b16-a9cd-b49483b0a07c}" locklevel="0" showlabel="true" visible="false">
+                        <labels>
+                          <label description="Data8" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_data8" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_data8" disabled="false" uniqueid="{6417eb0b-24be-c4cc-1568-2881466b9ab9}" />
                       </cell>
                     </row>
                   </rows>
@@ -375,6 +430,11 @@
           </dependencies>
           <Handlers>
             <Handler functionName="Leidos.validatePhoneNumber" libraryName="north52_/javascript/n52.json2" handlerUniqueId="{d26212be-1719-4950-1469-a390368b1689}" enabled="true" parameters="&quot;mobilephone&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_data8">
+          <Handlers>
+            <Handler functionName="data8_processAddress" libraryName="data8_predictiveaddress_ui.js" handlerUniqueId="{ea278a7a-81c2-7b39-60a7-58d4d844a47b}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -711,7 +771,60 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <controlDescriptions />
+      <controlDescriptions>
+        <controlDescription forControl="{68a1d7a5-3635-217a-7d56-d736190c8100}">
+          <customControl id="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>address1_line1</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="data8_Data8.PredictiveAddressControl">
+            <parameters>
+              <value>address1_line1</value>
+              <fieldName static="true" type="SingleLine.Text">address1_line1</fieldName>
+              <result>leidos_data8</result>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="data8_Data8.PredictiveAddressControl">
+            <parameters>
+              <value>address1_line1</value>
+              <fieldName static="true" type="SingleLine.Text">address1_line1</fieldName>
+              <result>leidos_data8</result>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="data8_Data8.PredictiveAddressControl">
+            <parameters>
+              <value>address1_line1</value>
+              <fieldName static="true" type="SingleLine.Text">address1_line1</fieldName>
+              <result>leidos_data8</result>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{190166b1-1b90-5d37-35c0-772dd4e5a298}">
+          <customControl id="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" formFactor="0">
+            <parameters>
+              <datafieldname>address1_postalcode</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl id="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" formFactor="1">
+            <parameters>
+              <datafieldname>address1_postalcode</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl id="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" formFactor="2">
+            <parameters>
+              <datafieldname>address1_postalcode</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl name="data8_Data8.PredictiveAddressControl" formFactor="-1">
+            <parameters>
+              <value>address1_postalcode</value>
+              <fieldName static="true" type="SingleLine.Text">address1_postalcode</fieldName>
+              <result>leidos_data8</result>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
       <footer id="{447c3f32-6d09-4d47-a223-c0352e3e5f54}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
           <row>
@@ -738,6 +851,7 @@
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="8a0ebc46-38ed-43f0-96c1-77d0937cd021" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="e32dc710-a66a-48b4-be6f-634f675f5ace" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="858c5cc9-0b36-404e-abb2-8aff9f0a3dd7" />
+        <Library name="data8_predictiveaddress_ui.js" libraryUniqueId="{e880a1de-d7a4-adab-43e8-3b294d18c3d1}" />
       </formLibraries>
       <DisplayConditions FallbackForm="true" Order="6">
         <Everyone />

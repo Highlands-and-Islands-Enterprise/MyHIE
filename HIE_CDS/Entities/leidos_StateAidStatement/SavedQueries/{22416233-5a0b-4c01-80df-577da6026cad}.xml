@@ -5,33 +5,33 @@
     <CanBeDeleted>0</CanBeDeleted>
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
-    <isdefault>0</isdefault>
-    <savedqueryid>{e5f209bf-3b0b-4bef-a7cb-b4222de177ee}</savedqueryid>
+    <isdefault>1</isdefault>
+    <savedqueryid>{22416233-5a0b-4c01-80df-577da6026cad}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
-        <row name="result" id="leidos_legalundertakingid">
+        <row name="result" id="leidos_stateaidstatementid">
           <cell name="leidos_name" width="300" />
-          <cell name="leidos_routetype" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="leidos_legalundertaking">
+        <entity name="leidos_stateaidstatement">
+          <attribute name="leidos_stateaidstatementid" />
           <attribute name="leidos_name" />
+          <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
           <filter type="and">
-            <condition attribute="statecode" operator="eq" value="1" />
+            <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="leidos_routetype" />
-          <attribute name="leidos_legalundertakingid" />
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.8.0.1047</IntroducedVersion>
+    <IntroducedVersion>1.8.0.1051</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Inactive Legal Undertakings" languagecode="1033" />
+      <LocalizedName description="Active State Aid Statements" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

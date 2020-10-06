@@ -117,7 +117,7 @@
                         <labels>
                           <label description="Street 1" languagecode="1033" />
                         </labels>
-                        <control id="leidos_street1" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_street1" disabled="false" />
+                        <control id="leidos_street1" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_street1" disabled="false" uniqueid="{00da508c-a48c-9272-1739-93a0155ab9d1}" />
                       </cell>
                     </row>
                     <row>
@@ -145,11 +145,27 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{ba5dab1f-66c3-408e-9be7-1bd0b07824df}" locklevel="0" visible="false">
+                        <labels>
+                          <label description="State" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_state" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_state" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{90a7f7f7-88cd-4cd9-a2c4-2f86b989f01f}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Post Code" languagecode="1033" />
                         </labels>
                         <control id="leidos_postcode" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_postcode" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f6272b81-d746-4016-a894-e479b145718d}" locklevel="0" showlabel="true" visible="false">
+                        <labels>
+                          <label description="Data8" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_data8" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_data8" disabled="false" uniqueid="{642dad37-aa56-5743-c8ed-659795d287b8}" />
                       </cell>
                     </row>
                   </rows>
@@ -608,6 +624,34 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{00da508c-a48c-9272-1739-93a0155ab9d1}">
+          <customControl id="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>leidos_street1</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="data8_Data8.PredictiveAddressControl">
+            <parameters>
+              <value>leidos_street1</value>
+              <fieldName static="true" type="SingleLine.Text">leidos_street1</fieldName>
+              <result>leidos_data8</result>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="data8_Data8.PredictiveAddressControl">
+            <parameters>
+              <value>leidos_street1</value>
+              <fieldName static="true" type="SingleLine.Text">leidos_street1</fieldName>
+              <result>leidos_data8</result>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="data8_Data8.PredictiveAddressControl">
+            <parameters>
+              <value>leidos_street1</value>
+              <fieldName static="true" type="SingleLine.Text">leidos_street1</fieldName>
+              <result>leidos_data8</result>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <events>
         <event name="onload" application="false" active="false">
@@ -636,17 +680,23 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c9306f36-1fda-4862-825c-fac7791e13cd" enabled="true" parameters="'4It:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_data8">
+          <Handlers>
+            <Handler functionName="data8_processAddress" libraryName="data8_predictiveaddress_ui.js" handlerUniqueId="{a478e777-ce8e-d726-d5d3-0d330e2e8e2b}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{58a0cd32-0128-27e5-31d9-01ea6e9ae70e}" />
         <Library name="leidos_common" libraryUniqueId="{43a986bd-b948-1766-705d-1b94b02ad5d2}" />
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="bdcf4000-de51-4181-97d9-1d71b2554f07" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="7834150a-a663-4150-be43-fe4c61ba2f92" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="7c3715f4-4091-4fd9-8ba8-3863107026fe" />
+        <Library name="data8_predictiveaddress_ui.js" libraryUniqueId="{592041c4-5be3-9b46-2c55-37573cdb2997}" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

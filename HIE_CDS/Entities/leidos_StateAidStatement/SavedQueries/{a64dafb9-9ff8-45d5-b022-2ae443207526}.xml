@@ -3,35 +3,38 @@
   <savedquery>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>0</CanBeDeleted>
-    <isquickfindquery>0</isquickfindquery>
+    <isquickfindquery>1</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>1</isdefault>
-    <savedqueryid>{5651c473-57e6-4b7f-b4b6-ed717f523c82}</savedqueryid>
+    <savedqueryid>{a64dafb9-9ff8-45d5-b022-2ae443207526}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
-        <row name="result" id="leidos_legalundertakingid">
+        <row name="result" id="leidos_stateaidstatementid">
           <cell name="leidos_name" width="300" />
-          <cell name="leidos_routetype" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
-    <querytype>0</querytype>
+    <querytype>4</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="leidos_legalundertaking">
+        <entity name="leidos_stateaidstatement">
+          <attribute name="leidos_stateaidstatementid" />
           <attribute name="leidos_name" />
+          <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="leidos_routetype" />
-          <attribute name="leidos_legalundertakingid" />
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="leidos_name" operator="like" value="{0}" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.8.0.1047</IntroducedVersion>
+    <IntroducedVersion>1.8.0.1051</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Active Legal Undertakings" languagecode="1033" />
+      <LocalizedName description="Quick Find Active State Aid Statements" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
