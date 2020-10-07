@@ -11,6 +11,12 @@
       <grid name="leidos_stateaidstatements" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="leidos_stateaidstatement" id="leidos_stateaidstatementid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_stateaidstatementreference" width="201" />
+          <cell name="leidos_parentclientaction" width="218" />
+          <cell name="leidos_stateaidarticle" width="162" />
+          <cell name="leidos_stateaidtype" width="100" />
+          <cell name="leidos_stateaidvalue" width="129" />
+          <cell name="leidos_dateofgranting" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -22,10 +28,16 @@
           <attribute name="leidos_stateaidstatementid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="leidos_parentclientaction" />
+          <attribute name="leidos_stateaidstatementreference" />
+          <attribute name="leidos_stateaidarticle" />
+          <attribute name="leidos_stateaidtype" />
+          <attribute name="leidos_stateaidvalue" />
+          <attribute name="leidos_dateofgranting" />
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

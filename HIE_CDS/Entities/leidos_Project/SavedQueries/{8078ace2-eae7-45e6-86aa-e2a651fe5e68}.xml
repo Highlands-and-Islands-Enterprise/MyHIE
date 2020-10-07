@@ -18,6 +18,7 @@
           <cell name="leidos_topslice" width="100" />
           <cell name="leidos_totalcostscalculated" width="100" />
           <cell name="leidos_totalfundingcalcualted" width="100" />
+          <cell name="a_c5ee1a30205d443491214a3ad17da6e5.leidos_budgetapprovedon" width="100" disableSorting="1" />
           <cell name="leidos_dateofgranting" width="100" />
           <cell name="statuscode" width="100" />
           <cell name="createdon" width="125" />
@@ -40,7 +41,6 @@
           <attribute name="leidos_totalcostscalculated" />
           <attribute name="leidos_totalfundingcalcualted" />
           <attribute name="statuscode" />
-          <attribute name="leidos_dateofgranting" />
           <filter type="and">
             <filter type="or">
               <condition attribute="statecode" operator="eq" value="0" />
@@ -51,11 +51,13 @@
               </condition>
             </filter>
           </filter>
+          <attribute name="leidos_projectreference" />
           <link-entity alias="a_c5ee1a30205d443491214a3ad17da6e5" name="leidos_application" to="leidos_parentapplication" from="leidos_applicationid" link-type="outer" visible="false">
             <attribute name="statuscode" />
             <attribute name="createdon" />
+            <attribute name="leidos_budgetapprovedon" />
           </link-entity>
-          <attribute name="leidos_projectreference" />
+          <attribute name="leidos_dateofgranting" />
           <attribute name="leidos_projectid" />
         </entity>
       </fetch>
