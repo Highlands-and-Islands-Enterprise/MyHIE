@@ -7,14 +7,14 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls">
       <tabs>
-        <tab verticallayout="true" id="{8fa56111-f600-4d0b-ae2b-53ef3003ba50}" IsUserDefined="1">
+        <tab verticallayout="true" id="{8fa56111-f600-4d0b-ae2b-53ef3003ba50}" IsUserDefined="1" name="General_tab">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{fbbadcb3-a996-4f16-9ab8-7992bd21811e}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{fbbadcb3-a996-4f16-9ab8-7992bd21811e}" name="General_section_1">
                   <labels>
                     <label description="General" languagecode="1033" />
                   </labels>
@@ -49,6 +49,70 @@
                           <label description="Route Type" languagecode="1033" />
                         </labels>
                         <control id="leidos_routetype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_routetype" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="HIE_Legal_Input_section_3" id="2e911559-c8b7-4c56-9a94-75ba910fd761" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
+                  <labels>
+                    <label description="HIE Legal Input" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{bfbf0ce3-8175-4ee8-b335-eae8a9566a87}" locklevel="0" visible="true">
+                        <labels>
+                          <label description="Do you require HIE Legal team input to documentation?" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_legalteaminputrequired" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_legalteaminputrequired" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2e2d91f7-5fe7-4baf-b070-11b5b768e297}" locklevel="0" visible="true">
+                        <labels>
+                          <label description="Input Type" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_legalteaminputtype" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="leidos_legalteaminputtype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{79bb03c1-3708-4d04-9c33-c2a421e738ed}" locklevel="0" visible="true">
+                        <labels>
+                          <label description="Additional Information" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_legalteaminputtypedescription" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_legalteaminputtypedescription" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="Legal" id="ab48260e-1d61-4277-a5d0-be01144cab6f" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Legal Engagement " languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{3091c40f-6be4-4bb5-bd3d-9b32fb035337}" locklevel="0">
+                        <labels>
+                          <label description="Date Sent to Legal" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_datesenttolegal" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datesenttolegal" disabled="false" />
+                      </cell>
+                      <cell showlabel="false" locklevel="0" id="{99815c9e-be75-4d81-aeda-76d0bbd86d18}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{abdb92a2-e1a4-486f-92d8-724e936e5079}" locklevel="0">
+                        <labels>
+                          <label description="Accepted by Legal" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_acceptedbylegal" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_acceptedbylegal" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{627a64ea-4c46-4a30-b313-cf7145833ee9}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
                       </cell>
                     </row>
                   </rows>
@@ -121,11 +185,33 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="da78ba21-bdbc-4660-96b6-26be56e69025" enabled="true" parameters="'Tnh:*:CreateUpdate:::217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onsave" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="37eeaded-97bf-41af-9e84-2b6357271e5a" enabled="true" parameters="'Tnh:*:CreateUpdate:::217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_routetype">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="86a93eaa-92de-4e63-ab98-d0885530ea73" enabled="true" parameters="'Tnh:*:CreateUpdate:::217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="4180237b-1165-4574-9a0f-dc87ed74b3d5" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="8c4b1eb1-62f8-40c1-8d6a-2399f4d7c92c" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="8417fd37-d12e-45ca-8bef-ecfe692d31dd" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
     <LocalizedNames>
-      <LocalizedName description="Information" languagecode="1033" />
+      <LocalizedName description="HIE Legal Undertaking" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
       <Description description="A form for this entity." languagecode="1033" />
