@@ -12,9 +12,9 @@
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{fbbadcb3-a996-4f16-9ab8-7992bd21811e}" name="General_section_1">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{fbbadcb3-a996-4f16-9ab8-7992bd21811e}" name="General_section_1" columns="1">
                   <labels>
                     <label description="General" languagecode="1033" />
                   </labels>
@@ -53,9 +53,9 @@
                     </row>
                   </rows>
                 </section>
-                <section name="HIE_Legal_Input_section_3" id="2e911559-c8b7-4c56-9a94-75ba910fd761" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
+                <section name="Legal_Review_section_3" id="2e911559-c8b7-4c56-9a94-75ba910fd761" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
                   <labels>
-                    <label description="HIE Legal Input" languagecode="1033" />
+                    <label description="Legal Review" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -82,9 +82,17 @@
                         <control id="leidos_legalteaminputtypedescription" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_legalteaminputtypedescription" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{3626bdf4-84b0-4ad1-833e-bae42ec721d3}" locklevel="0">
+                        <labels>
+                          <label description="Send to Legal for Review" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_sendtolegalforreview" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_sendtolegalforreview" disabled="false" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
-                <section name="Legal" id="ab48260e-1d61-4277-a5d0-be01144cab6f" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                <section name="Legal" id="ab48260e-1d61-4277-a5d0-be01144cab6f" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Legal Engagement " languagecode="1033" />
                   </labels>
@@ -96,11 +104,6 @@
                         </labels>
                         <control id="leidos_datesenttolegal" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datesenttolegal" disabled="false" />
                       </cell>
-                      <cell showlabel="false" locklevel="0" id="{99815c9e-be75-4d81-aeda-76d0bbd86d18}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
                     </row>
                     <row>
                       <cell id="{abdb92a2-e1a4-486f-92d8-724e936e5079}" locklevel="0">
@@ -109,10 +112,67 @@
                         </labels>
                         <control id="leidos_acceptedbylegal" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_acceptedbylegal" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{627a64ea-4c46-4a30-b313-cf7145833ee9}">
+                    </row>
+                  </rows>
+                </section>
+                <section name="Esign_routing" id="ef68d618-4597-47ed-a917-126ff0fe4410" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="e-Signature Routing" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{63a452fa-6c19-44f2-bbfd-76a912a5a247}" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Delegated Authority" languagecode="1033" />
                         </labels>
+                        <control id="leidos_delegatedauthority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_delegatedauthority" disabled="false">
+                          <parameters>
+                            <DefaultViewId>{824F07BE-3F0A-EB11-A813-000D3A7F1BBB}</DefaultViewId>
+                            <AvailableViewIds>{0976D964-6C9E-4D23-90C3-078677A81F7D},{EDFD18EC-B3BB-EA11-A812-000D3A7F1BBB},{53961D04-1FDA-40FD-B978-8E0967433FB2},{AB53A03A-B7BB-EA11-A812-000D3A7FEDBE},{8EF3343F-05CC-EA11-A812-000D3A7FEDBE},{AA3F26B8-B6BB-EA11-A812-000D3A7F1BBB},{DA8A1BC4-B6BB-EA11-A812-000D3A7F1BBB},{1359B25E-B7BB-EA11-A812-000D3A7FEDBE},{78B7A846-B7BB-EA11-A812-000D3A7FEDBE},{2D197E17-8FF7-4580-B20D-B335AA91B158},{21C34315-32BC-EA11-A812-000D3A7FEDBE},{824F07BE-3F0A-EB11-A813-000D3A7F1BBB}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="_section_279" id="5b7559a2-e754-4dc9-8a29-094d96f3f2fa" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{b2d4dd0d-5be8-4fd0-8f32-d8247a8e6191}" locklevel="0">
+                        <labels>
+                          <label description="Offer Letter URL" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_offerletterurl" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_offerletterurl" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="Tasks_section_5" showlabel="true" showbar="false" locklevel="0" id="{d0286c31-3be7-0e29-1bd3-d399015a1539}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Communications" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{f5858954-ef70-4b97-a48d-3e190c430df8}" showlabel="false" rowspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false">
+                          <parameters>
+                            <UClientActivities>appointment,email,fax,letter,phonecall,task,adx_portalcomment,leidos_portalmessage,recurringappointmentmaster,socialactivity</UClientActivities>
+                            <UClientDisplayActivityUsing>defaultfields</UClientDisplayActivityUsing>
+                            <UClientActivityCardMap>appointment:4201:,email:4202:,fax:4204:,letter:4207:,phonecall:4210:,recurringappointmentmaster:4251:,socialactivity:4216:,task:4212:,adx_alertsubscription:10042:,adx_inviteredemption:10045:,adx_portalcomment:10094:,leidos_portalmessage:10238:,</UClientActivityCardMap>
+                            <UClientActivitiesConfigurationJSON>{"adx_inviteredemption":{"showStatus":true,"canCreate":false},"adx_alertsubscription":{"showStatus":true,"canCreate":false},"socialactivity":{"showStatus":true,"canCreate":false},"recurringappointmentmaster":{"showStatus":true,"canCreate":false}}</UClientActivitiesConfigurationJSON>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
@@ -182,31 +242,71 @@
           </row>
         </rows>
       </footer>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="da78ba21-bdbc-4660-96b6-26be56e69025" enabled="true" parameters="'Tnh:*:CreateUpdate:::217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onsave" application="false" active="false">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="37eeaded-97bf-41af-9e84-2b6357271e5a" enabled="true" parameters="'Tnh:*:CreateUpdate:::217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="da78ba21-bdbc-4660-96b6-26be56e69025" enabled="true" parameters="'Tnh:*:CreateUpdate::0:217890000:217890000:217890000:217890000','Zz0:*:CreateUpdate::0:217890000:217890000:217890000:217890000','rpJ:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_routetype">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="86a93eaa-92de-4e63-ab98-d0885530ea73" enabled="true" parameters="'Tnh:*:CreateUpdate:::217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7151c45d-b52f-4850-9256-11113720e180" enabled="true" parameters="'Tnh:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_legalteaminputrequired">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="d77a9c43-f119-4f64-a754-5ab960c55610" enabled="true" parameters="'Zz0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_legalteaminputtype">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="3d8a0ed9-ebde-4a49-bcb3-8bba08238ebf" enabled="true" parameters="'rpJ:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_offerletterurl">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="cdd1c449-ac29-4d88-9f6f-20c1ebac19c5" enabled="true" parameters="'rpJ:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
       <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="4180237b-1165-4574-9a0f-dc87ed74b3d5" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="8c4b1eb1-62f8-40c1-8d6a-2399f4d7c92c" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="8417fd37-d12e-45ca-8bef-ecfe692d31dd" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="928370ab-6da2-4ded-a32e-0e3209649109" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="db4883cc-85c1-4677-ad20-1af4beb80052" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="cb3ff299-bba4-410f-a568-0ceef6c69c84" />
       </formLibraries>
+      <Navigation>
+        <NavBar />
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
