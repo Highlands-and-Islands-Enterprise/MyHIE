@@ -20,7 +20,7 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{a90055a7-6998-487f-aa24-82c0b168713d}">
+                      <cell id="{a90055a7-6998-487f-aa24-82c0b168713d}" visible="false">
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
@@ -44,6 +44,34 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{3f93bd55-fe5e-4828-9884-02fb1cbc9d0f}" locklevel="0" showlabel="true">
+                        <labels>
+                          <label description="Client Signatory Route" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_clientsignatoryroute" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_clientsignatoryroute" disabled="false" uniqueid="{3740c6d2-6257-c7c2-dc84-c53c2d737028}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bb5e6f39-f267-4b05-8f7c-6cc28be7416b}" locklevel="0" visible="false" showlabel="true">
+                        <labels>
+                          <label description="Authorised Signatory" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_authorisedsignatory" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_authorisedsignatory" disabled="false" uniqueid="{a09d52ad-195b-ec3e-5d18-48ae4abd892b}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{A2D479C5-53E3-4C69-ADDD-802327E67A0D}</DefaultViewId>
+                            <FilterRelationshipName>leidos_Account_AuthorisedSignatory_Contact</FilterRelationshipName>
+                            <DependentAttributeName>leidos_legalundertaking.leidos_parentaccount</DependentAttributeName>
+                            <DependentAttributeType>account</DependentAttributeType>
+                            <AllowFilterOff>true</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{94ccac57-2401-43a3-aed5-7a75cfa78bb3}" locklevel="0">
                         <labels>
                           <label description="Route Type" languagecode="1033" />
@@ -53,9 +81,9 @@
                     </row>
                   </rows>
                 </section>
-                <section name="Route1" id="d1d6702e-0e51-429d-ad07-c7a9cd235e3b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
+                <section name="Legal_Review_section_3" id="2e911559-c8b7-4c56-9a94-75ba910fd761" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
                   <labels>
-                    <label description="Route 1 Data" languagecode="1033" />
+                    <label description="Legal Review" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -80,21 +108,6 @@
                         <control id="leidos_submitfordaapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitfordaapproval" uniqueid="{52c12488-a37d-48c9-a8cc-627d3edac979}" />
                       </cell>
                     </row>
-                    <row>
-                      <cell id="{09ab4705-a099-4629-a996-782096d6f862}" locklevel="0">
-                        <labels>
-                          <label description="Approved On " languagecode="1033" />
-                        </labels>
-                        <control id="leidos_approvedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_approvedon" disabled="true" />
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-                <section name="Legal_Review_section_3" id="2e911559-c8b7-4c56-9a94-75ba910fd761" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
-                  <labels>
-                    <label description="Legal Review" languagecode="1033" />
-                  </labels>
-                  <rows>
                     <row>
                       <cell id="{bfbf0ce3-8175-4ee8-b335-eae8a9566a87}" locklevel="0" visible="true">
                         <labels>
@@ -125,6 +138,14 @@
                           <label description="Send to Legal for Review" languagecode="1033" />
                         </labels>
                         <control id="leidos_sendtolegalforreview" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_sendtolegalforreview" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{09ab4705-a099-4629-a996-782096d6f862}" locklevel="0">
+                        <labels>
+                          <label description="Approved On " languagecode="1033" />
+                        </labels>
+                        <control id="leidos_approvedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_approvedon" disabled="true" />
                       </cell>
                     </row>
                   </rows>
@@ -166,19 +187,37 @@
                   </labels>
                   <rows>
                     <row>
+                      <cell id="{40e3910c-67a5-46a1-b8a7-5523668feaa0}" locklevel="0" showlabel="true">
+                        <labels>
+                          <label description="HIE Contract Signatory" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_hiecontractsignatory" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_hiecontractsignatory" disabled="false" uniqueid="{de1a834a-9e1b-bcaa-8551-31a80202eead}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{824F07BE-3F0A-EB11-A813-000D3A7F1BBB}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{53961D04-1FDA-40FD-B978-8E0967433FB2}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{5408db43-5360-4a2e-89d2-db1b6c7c697a}" locklevel="0">
                         <labels>
                           <label description="Submit for E-Signature" languagecode="1033" />
                         </labels>
-                        <control id="leidos_submitforesignature" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitforesignature" uniqueid="{791aa2a8-db23-45ee-b76e-02dae916cd5b}" />
+                        <control id="leidos_submitforesignature" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitforesignature" uniqueid="{646448db-98dd-4e19-bd3b-a26bfad547c9}" />
                       </cell>
                     </row>
                     <row>
                       <cell id="{57c4b8fe-5182-4686-ba55-44f062377aed}" locklevel="0">
                         <labels>
-                          <label description="Attach Document to be signed" languagecode="1033" />
+                          <label description="Document to be signed has been attached" languagecode="1033" />
                         </labels>
-                        <control id="leidos_createanoteorsignature" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_createanoteorsignature" uniqueid="{079ade0d-482c-49d3-ae7e-581252e01dfe}" />
+                        <control id="leidos_createanoteorsignature" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_createanoteorsignature" uniqueid="{81749cf5-87cb-426d-899e-4d75a39cceea}" />
                       </cell>
                     </row>
                     <row>
@@ -275,7 +314,7 @@
               <labels>
                 <label description="Parent Account" languagecode="1033" />
               </labels>
-              <control id="header_leidos_parentaccount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentaccount" disabled="true" />
+              <control id="header_leidos_parentaccount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentaccount" disabled="true" uniqueid="{570a3223-9eca-b323-1d48-3c5dbc148388}" />
             </cell>
             <cell id="{7afa7bb1-64bb-4af7-acb2-cacc80abfc0f}" locklevel="0">
               <labels>
@@ -318,6 +357,8 @@
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="da78ba21-bdbc-4660-96b6-26be56e69025" enabled="true" parameters="'Zz0:*:CreateUpdate::0:217890000:217890000:217890000:217890000','rpJ:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{2693670b-ecd0-2938-15c4-61ce0bc79ac3}" enabled="true" parameters="&quot;header_process_leidos_delegatedauthority&quot;,&quot;{824f07be-3f0a-eb11-a813-000d3a7f1bbb}&quot;" passExecutionContext="true" />
+            <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{36ea0326-ce48-7130-2170-b1aa124cc254}" enabled="true" parameters="&quot;header_process_leidos_hiecontractsignatory&quot;,&quot;{824f07be-3f0a-eb11-a813-000d3a7f1bbb}&quot;" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterDefinition" libraryName="leidos_common" handlerUniqueId="{b94856a2-51c2-c956-68a1-bd46967647a4}" enabled="false" parameters="&quot;leidos_parentaccount&quot;,&quot;header_process_leidos_authorisedsignatory&quot;,&quot;4c21f7ce-370d-eb11-a813-000d3a7f1bbb&quot;,&quot;   &lt;filter type=&quot;and&quot;&gt;       &lt;condition attribute=&quot;parentcustomerid&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;     &lt;/filter&gt;&quot;" passExecutionContext="false" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_routetype">
@@ -377,9 +418,6 @@
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0051f7e5-028f-4943-8a08-caede5b93abf" />
         <Library name="leidos_common" libraryUniqueId="{1c3914a4-1e86-e32d-7b29-542a78d244d1}" />
       </formLibraries>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <controlDescriptions>
         <controlDescription forControl="{52c12488-a37d-48c9-a8cc-627d3edac979}">
           <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
@@ -400,28 +438,6 @@
           <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
             <parameters>
               <value>leidos_submitfordaapproval</value>
-            </parameters>
-          </customControl>
-        </controlDescription>
-        <controlDescription forControl="{791aa2a8-db23-45ee-b76e-02dae916cd5b}">
-          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
-            <parameters>
-              <datafieldname>leidos_submitforesignature</datafieldname>
-            </parameters>
-          </customControl>
-          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_submitforesignature</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_submitforesignature</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_submitforesignature</value>
             </parameters>
           </customControl>
         </controlDescription>
@@ -452,13 +468,45 @@
             </parameters>
           </customControl>
         </controlDescription>
-        <controlDescription forControl="{079ade0d-482c-49d3-ae7e-581252e01dfe}">
+        <controlDescription forControl="{646448db-98dd-4e19-bd3b-a26bfad547c9}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_submitforesignature</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitforesignature</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitforesignature</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitforesignature</value>
+            </parameters>
+          </customControl>
+          <customControl name="MscrmControls.FieldControls.ToggleControl" formFactor="-1">
+            <parameters>
+              <value>leidos_submitforesignature</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{81749cf5-87cb-426d-899e-4d75a39cceea}">
           <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
             <parameters>
               <datafieldname>leidos_createanoteorsignature</datafieldname>
             </parameters>
           </customControl>
           <customControl name="MscrmControls.FieldControls.ToggleControl" formFactor="-1">
+            <parameters>
+              <value>leidos_createanoteorsignature</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
             <parameters>
               <value>leidos_createanoteorsignature</value>
             </parameters>
@@ -473,13 +521,11 @@
               <value>leidos_createanoteorsignature</value>
             </parameters>
           </customControl>
-          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_createanoteorsignature</value>
-            </parameters>
-          </customControl>
         </controlDescription>
       </controlDescriptions>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
