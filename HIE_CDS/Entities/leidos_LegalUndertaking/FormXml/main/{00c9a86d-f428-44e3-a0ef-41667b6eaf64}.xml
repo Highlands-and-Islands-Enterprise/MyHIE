@@ -7,7 +7,7 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
-        <tab verticallayout="true" id="{8fa56111-f600-4d0b-ae2b-53ef3003ba50}" IsUserDefined="1" name="General_tab.Legal">
+        <tab verticallayout="true" id="{8fa56111-f600-4d0b-ae2b-53ef3003ba50}" IsUserDefined="1" name="General">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
@@ -81,7 +81,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="Legal_Review_section_3" id="2e911559-c8b7-4c56-9a94-75ba910fd761" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
+                <section name="Legal_Review" id="2e911559-c8b7-4c56-9a94-75ba910fd761" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
                   <labels>
                     <label description="Legal Review" languagecode="1033" />
                   </labels>
@@ -150,9 +150,9 @@
                     </row>
                   </rows>
                 </section>
-                <section name="Legal" id="ab48260e-1d61-4277-a5d0-be01144cab6f" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
+                <section name="Legal_Engagement" id="ab48260e-1d61-4277-a5d0-be01144cab6f" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
                   <labels>
-                    <label description="Legal Engagement " languagecode="1033" />
+                    <label description="Legal Engagement" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -181,7 +181,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="Esign_routing" id="ef68d618-4597-47ed-a917-126ff0fe4410" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="Esign_routing" id="ef68d618-4597-47ed-a917-126ff0fe4410" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
                   <labels>
                     <label description="e-Signature Routing" languagecode="1033" />
                   </labels>
@@ -226,6 +226,22 @@
                           <label description="Date Issued to Client" languagecode="1033" />
                         </labels>
                         <control id="leidos_dateissuedtoclient" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_dateissuedtoclient" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{90e0bea8-113b-4dde-9748-da84a5b973cd}" locklevel="0">
+                        <labels>
+                          <label description="Date Document Signed" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_datedocumentsigned" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datedocumentsigned" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1d7f80d2-da22-40c1-a625-f41e853947b5}" locklevel="0">
+                        <labels>
+                          <label description="Date Returned from Client" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_datereturnedfromclient" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datereturnedfromclient" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -355,7 +371,7 @@
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="da78ba21-bdbc-4660-96b6-26be56e69025" enabled="true" parameters="'Zz0:*:CreateUpdate::0:217890000:217890000:217890000:217890000','rpJ:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="da78ba21-bdbc-4660-96b6-26be56e69025" enabled="true" parameters="'Zz0:*:CreateUpdate::0:217890000:217890000:217890000:217890000','rpJ:*:Update::0:217890000:217890000:217890000:217890000','Ke2:*:CreateUpdate::0:217890000:217890000:217890000:217890000','gsC:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{2693670b-ecd0-2938-15c4-61ce0bc79ac3}" enabled="true" parameters="&quot;header_process_leidos_delegatedauthority&quot;,&quot;{824f07be-3f0a-eb11-a813-000d3a7f1bbb}&quot;" passExecutionContext="true" />
             <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{36ea0326-ce48-7130-2170-b1aa124cc254}" enabled="true" parameters="&quot;header_process_leidos_hiecontractsignatory&quot;,&quot;{824f07be-3f0a-eb11-a813-000d3a7f1bbb}&quot;" passExecutionContext="true" />
             <Handler functionName="Leidos.filterDefinition" libraryName="leidos_common" handlerUniqueId="{b94856a2-51c2-c956-68a1-bd46967647a4}" enabled="false" parameters="&quot;leidos_parentaccount&quot;,&quot;header_process_leidos_authorisedsignatory&quot;,&quot;4c21f7ce-370d-eb11-a813-000d3a7f1bbb&quot;,&quot;   &lt;filter type=&quot;and&quot;&gt;       &lt;condition attribute=&quot;parentcustomerid&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;     &lt;/filter&gt;&quot;" passExecutionContext="false" />
@@ -363,7 +379,7 @@
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_routetype">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7151c45d-b52f-4850-9256-11113720e180" enabled="true" parameters="'yU5:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7151c45d-b52f-4850-9256-11113720e180" enabled="true" parameters="'yU5:*:Create::0:217890000:217890000:217890000:217890000','Ke2:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_legalteaminputrequired">
@@ -379,6 +395,21 @@
         <event name="onchange" application="false" active="false" attribute="leidos_offerletterurl">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="cdd1c449-ac29-4d88-9f6f-20c1ebac19c5" enabled="true" parameters="'rpJ:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_approvedon">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="679f69e5-cebd-4f42-9169-b03730214a78" enabled="true" parameters="'gsC:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_documentationreceivedfromlegal">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="9f2ff6ec-66be-4603-94f0-c093cf6ecc7c" enabled="true" parameters="'gsC:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_datedocumentsigned">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="f03f9ac1-87f9-4c50-873b-3aea389a7e5d" enabled="true" parameters="'8uh:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -412,12 +443,6 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="e195f0ed-27b3-4b3d-90c0-706308fdcf31" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="ea411837-b4cf-4a92-9e0d-acf9af5ca7f9" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0051f7e5-028f-4943-8a08-caede5b93abf" />
-        <Library name="leidos_common" libraryUniqueId="{1c3914a4-1e86-e32d-7b29-542a78d244d1}" />
-      </formLibraries>
       <controlDescriptions>
         <controlDescription forControl="{52c12488-a37d-48c9-a8cc-627d3edac979}">
           <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
@@ -526,6 +551,12 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{1c3914a4-1e86-e32d-7b29-542a78d244d1}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="7305c78d-2c93-41c2-9a6b-6264ac62bbc5" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="9c74eb38-a06d-409f-9ada-1f32a73fb813" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="a766e766-94e9-46e0-878f-b898a0683250" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

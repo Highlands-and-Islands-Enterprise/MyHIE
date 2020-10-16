@@ -265,6 +265,14 @@
                     <row />
                     <row />
                     <row>
+                      <cell id="{07bb31b1-16c4-8d71-aa66-e940d3b88d6d}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Authorised Signatories Added" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_authorisedsignatoriesadded" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_authorisedsignatoriesadded" disabled="false" uniqueid="{cdc3e121-53e1-2baa-9460-17c0d6a3d4da}" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{bbbc9322-72ff-47ed-b597-1183bc9cd8a6}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="HIE Team Allocation" languagecode="1033" />
@@ -2130,6 +2138,28 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{cdc3e121-53e1-2baa-9460-17c0d6a3d4da}">
+          <customControl id="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_authorisedsignatoriesadded</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_authorisedsignatoriesadded</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_authorisedsignatoriesadded</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_authorisedsignatoriesadded</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <footer id="{4b581373-d743-4c96-8ab8-0fcb3ebda5ad}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
@@ -2236,9 +2266,6 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions FallbackForm="true" Order="4">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{ba42d868-9440-990e-e86a-09b7e4757493}" />
         <Library name="leidos_AccountPrimaryContactFilter" libraryUniqueId="{abe68b47-3a8a-d371-7b3b-31aca1d5d3d5}" />
@@ -2247,6 +2274,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="cf74d833-3b85-44e5-b21a-25fd91493dfb" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="67038f20-97be-4110-b2de-240c4c349d66" />
       </formLibraries>
+      <DisplayConditions FallbackForm="true" Order="4">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

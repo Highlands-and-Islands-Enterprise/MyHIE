@@ -20,7 +20,7 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{dd8051fb-d9b8-493e-a6a9-a714fb3a4800}">
+                      <cell id="{dd8051fb-d9b8-493e-a6a9-a714fb3a4800}" visible="false">
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
@@ -66,9 +66,17 @@
                     <row>
                       <cell id="{50a08bac-a312-47c1-b52c-cc035ec755a2}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Share with Customer" languagecode="1033" />
+                          <label description="Share Growth Plan with Customer" languagecode="1033" />
                         </labels>
                         <control id="leidos_sharewithcustomer" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_sharewithcustomer" disabled="false" uniqueid="{48b3f805-dc21-4f04-879f-77e8df9a46a1}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{46666dbd-d1e8-5db6-4231-59c3576854be}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Share Summary and Client Plan with Customer" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_sharesummaryandclientplanwithcustomer" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_sharesummaryandclientplanwithcustomer" disabled="false" uniqueid="{eb46ed96-65d9-e7e1-4070-589273b7ca18}" />
                       </cell>
                     </row>
                   </rows>
@@ -244,7 +252,7 @@
         </tab>
         <tab name="tab_3" id="b7349981-9d10-4f53-8c06-2ef7e92ae7f9" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
-            <label description="Client Plan" languagecode="1033" />
+            <label description="Business Review" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
@@ -665,7 +673,7 @@
                         </labels>
                         <control id="leidos_ftetotal" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="leidos_ftetotal" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{4294c40a-04c5-4624-a438-105acf8cba4b}">
+                      <cell locklevel="0" id="{4294c40a-04c5-4624-a438-105acf8cba4b}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -805,9 +813,9 @@
                         <control id="leidos_currentactionplan" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_currentactionplan" disabled="false" uniqueid="{65014637-3678-36ce-59de-752e8bb2e360}">
                           <parameters>
                             <AutoResolve>true</AutoResolve>
-                            <DisableMru>false</DisableMru>
+                            <DisableMru>true</DisableMru>
                             <DisableQuickFind>false</DisableQuickFind>
-                            <DisableViewPicker>false</DisableViewPicker>
+                            <DisableViewPicker>true</DisableViewPicker>
                             <DefaultViewId>{43D6D666-779C-4BE1-BFD9-7CF0BAA0A6DF}</DefaultViewId>
                             <DependentAttributeType>account</DependentAttributeType>
                             <AllowFilterOff>false</AllowFilterOff>
@@ -938,11 +946,6 @@
           <NavBarByRelationshipItem RelationshipName="leidos_tradinggeography_ParentClientPlan_" Sequence="1005" Area="Service" Id="nav_leidos_tradinggeography_ParentClientPlan_">
             <Titles>
               <Title LCID="1033" Text="Trading Geographies" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="bpf_leidos_accountmanagementclientplan_leidos_bpf_amclientplan" Sequence="9701" Area="ProcessCenter" Id="nav_bpf_leidos_accountmanagementclientplan_leidos_bpf_amclientplan" Show="false">
-            <Titles>
-              <Title LCID="1033" Text="BPF - Account Management Client Plan" />
             </Titles>
           </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="leidos_AccountManagementActionPlan_Parent" Sequence="10000" Area="Info" Id="nav_leidos_AccountManagementActionPlan_Parent">
@@ -1266,12 +1269,12 @@
           </customControl>
         </controlDescription>
         <controlDescription forControl="{48b3f805-dc21-4f04-879f-77e8df9a46a1}">
-          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+          <customControl id="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}">
             <parameters>
               <datafieldname>leidos_sharewithcustomer</datafieldname>
             </parameters>
           </customControl>
-          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
             <parameters>
               <value>leidos_sharewithcustomer</value>
             </parameters>
@@ -1281,7 +1284,7 @@
               <value>leidos_sharewithcustomer</value>
             </parameters>
           </customControl>
-          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
             <parameters>
               <value>leidos_sharewithcustomer</value>
             </parameters>
@@ -1397,6 +1400,28 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{eb46ed96-65d9-e7e1-4070-589273b7ca18}">
+          <customControl id="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_sharesummaryandclientplanwithcustomer</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_sharesummaryandclientplanwithcustomer</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_sharesummaryandclientplanwithcustomer</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_sharesummaryandclientplanwithcustomer</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <formLibraries>
         <Library name="leidos_/AMClientPlan/disableColumninGrid.js" libraryUniqueId="{b57b7b32-915c-c7a8-9c04-0ebbd5caa2e9}" />
@@ -1404,6 +1429,7 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="49325967-9185-457b-9f41-f962d3b9e87b" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="515a0776-b18d-4ef3-a6eb-4780221e6f22" />
         <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{3068c7c0-9c4e-077e-7126-1017066c2a13}" />
+        <Library name="leidos_common" libraryUniqueId="{b565ac88-300c-e2ac-d7ec-c0d68bcc6913}" />
       </formLibraries>
       <events>
         <event name="onrecordselect" application="false" active="false" relationship="" control="Subgrid_2">
@@ -1420,6 +1446,7 @@
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="df906753-633b-4344-be17-fcdd575a1b1b" enabled="true" parameters="'0LS:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.filterSegmentationLookup" libraryName="leidos_AMRFilterLokup.js" handlerUniqueId="{33ae55de-06ce-2591-8c05-77bea88a688e}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{6401533c-bd6d-03a7-9b0d-3bed8bde00c0}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_salesturnoverhi">

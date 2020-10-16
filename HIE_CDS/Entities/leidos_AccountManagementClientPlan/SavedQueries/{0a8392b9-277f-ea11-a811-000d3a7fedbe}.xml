@@ -24,7 +24,7 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="leidos_accountmanagementclientplan">
           <attribute name="leidos_actionplancomplete" />
           <attribute name="leidos_reviewsummarycomplete" />
@@ -34,11 +34,10 @@
           <attribute name="leidos_productivity" />
           <attribute name="leidos_valueaddedtonationalgrowth" />
           <attribute name="leidos_relatedaccount" />
+          <attribute name="leidos_ftetotal" />
           <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="leidos_sharewithcustomer" operator="eq" value="1" />
           </filter>
-          <attribute name="leidos_ftetotal" />
           <attribute name="leidos_accountmanagementclientplanid" />
         </entity>
       </fetch>
