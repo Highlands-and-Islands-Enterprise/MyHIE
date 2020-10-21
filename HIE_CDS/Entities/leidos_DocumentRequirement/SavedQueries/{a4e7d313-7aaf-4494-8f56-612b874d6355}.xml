@@ -12,22 +12,22 @@
         <row name="result" id="leidos_documentrequirementid">
           <cell name="leidos_name" width="200" />
           <cell name="leidos_description" width="300" />
-          <cell name="statuscode" width="100" />
+          <cell name="statuscode" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="leidos_documentrequirement">
-          <attribute name="leidos_documentrequirementid" />
           <attribute name="leidos_name" />
+          <attribute name="leidos_description" />
+          <attribute name="statuscode" />
           <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="leidos_description" />
-          <attribute name="statuscode" />
+          <attribute name="leidos_documentrequirementid" />
         </entity>
       </fetch>
     </fetchxml>
