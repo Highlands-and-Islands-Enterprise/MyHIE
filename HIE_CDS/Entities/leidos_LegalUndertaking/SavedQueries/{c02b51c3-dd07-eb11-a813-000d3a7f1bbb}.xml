@@ -10,8 +10,9 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_legalundertakingid">
-          <cell name="leidos_name" width="300" />
-          <cell name="leidos_routetype" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_legalundertakingsreference" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_hiecontractsignatory" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="statuscode" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
@@ -19,12 +20,13 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_legalundertaking">
-          <attribute name="leidos_name" />
-          <order attribute="leidos_name" descending="false" />
+          <order attribute="leidos_legalundertakingsreference" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="leidos_routetype" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_legalundertakingsreference" />
+          <attribute name="leidos_hiecontractsignatory" />
           <attribute name="leidos_legalundertakingid" />
         </entity>
       </fetch>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e1e07368-1a12-eb11-a813-000d3a7fedbe}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_legalundertakingid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_routetype" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_project" width="100" />
+          <cell name="leidos_clientcontact" width="100" />
+          <cell name="leidos_dateissuedtoclient" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_legalundertaking">
+          <attribute name="leidos_name" />
+          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_routetype" />
+          <attribute name="leidos_legalundertakingid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="leidos_dateissuedtoclient" operator="olderthan-x-days" value="21" />
+          </filter>
+          <attribute name="leidos_project" />
+          <attribute name="leidos_clientcontact" />
+          <attribute name="leidos_dateissuedtoclient" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.8.0.1085</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Overdue Legal Undertakings" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

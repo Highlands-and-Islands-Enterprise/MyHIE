@@ -130,18 +130,18 @@
                     <x:Boolean x:Key="IsProcessRequired">True</x:Boolean>
                   </mxswa:ActivityReference.Properties>
                 </mxswa:ActivityReference>
-                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionSequence, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionStep42">
+                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionSequence, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionStep50">
                   <mxswa:ActivityReference.Arguments>
                     <InArgument x:TypeArguments="x:Boolean" x:Key="Wait">False</InArgument>
                   </mxswa:ActivityReference.Arguments>
                   <mxswa:ActivityReference.Properties>
                     <sco:Collection x:TypeArguments="Variable" x:Key="Variables">
-                      <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep43_condition" />
-                      <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep43_1" />
-                      <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep43_2" />
+                      <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep51_condition" />
+                      <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep51_1" />
+                      <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep51_2" />
                     </sco:Collection>
                     <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                      <mxswa:GetEntityProperty Attribute="leidos_routetype" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_legalundertaking" Value="[ConditionBranchStep43_1]">
+                      <mxswa:GetEntityProperty Attribute="leidos_routetype" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_legalundertaking" Value="[ConditionBranchStep51_1]">
                         <mxswa:GetEntityProperty.TargetType>
                           <InArgument x:TypeArguments="s:Type">
                             <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
@@ -157,27 +157,27 @@
                           <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
                             <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:OptionSetValue" />
                           </InArgument>
-                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep43_2]</OutArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep51_2]</OutArgument>
                         </mxswa:ActivityReference.Arguments>
                       </mxswa:ActivityReference>
                       <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateCondition">
                         <mxswa:ActivityReference.Arguments>
                           <InArgument x:TypeArguments="mxsq:ConditionOperator" x:Key="ConditionOperator">NotEqual</InArgument>
-                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { ConditionBranchStep43_2 }]</InArgument>
-                          <InArgument x:TypeArguments="x:Object" x:Key="Operand">[ConditionBranchStep43_1]</InArgument>
-                          <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep43_condition]</OutArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { ConditionBranchStep51_2 }]</InArgument>
+                          <InArgument x:TypeArguments="x:Object" x:Key="Operand">[ConditionBranchStep51_1]</InArgument>
+                          <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep51_condition]</OutArgument>
                         </mxswa:ActivityReference.Arguments>
                       </mxswa:ActivityReference>
-                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep43">
+                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep51">
                         <mxswa:ActivityReference.Arguments>
-                          <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[ConditionBranchStep43_condition]</InArgument>
+                          <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[ConditionBranchStep51_condition]</InArgument>
                         </mxswa:ActivityReference.Arguments>
                         <mxswa:ActivityReference.Properties>
-                          <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep43">
+                          <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep51">
                             <mxswa:ActivityReference.Properties>
                               <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                               <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                                <Sequence DisplayName="SetNextStageStep44">
+                                <Sequence DisplayName="SetNextStageStep52">
                                   <mcwc:SetNextStage ParentStageId="0a00358f-d8a7-4d8c-ade4-563bcc25fd38" StageId="18853d84-ff45-4326-94be-080cf7cf2643" />
                                 </Sequence>
                               </sco:Collection>
@@ -187,16 +187,16 @@
                           <x:String x:Key="Description">Legal Undertaking Route</x:String>
                         </mxswa:ActivityReference.Properties>
                       </mxswa:ActivityReference>
-                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep45">
+                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep53">
                         <mxswa:ActivityReference.Arguments>
                           <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">True</InArgument>
                         </mxswa:ActivityReference.Arguments>
                         <mxswa:ActivityReference.Properties>
-                          <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep45">
+                          <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep53">
                             <mxswa:ActivityReference.Properties>
                               <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                               <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                                <Sequence DisplayName="SetNextStageStep46">
+                                <Sequence DisplayName="SetNextStageStep54">
                                   <mcwc:SetNextStage ParentStageId="0a00358f-d8a7-4d8c-ade4-563bcc25fd38" StageId="60264ead-1530-494c-b61c-2bed9a33192c" />
                                 </Sequence>
                               </sco:Collection>
@@ -216,7 +216,7 @@
               </sco:Collection>
               <x:String x:Key="StageId">0a00358f-d8a7-4d8c-ade4-563bcc25fd38</x:String>
               <x:String x:Key="StageCategory">-1</x:String>
-              <x:String x:Key="NextStageId">62564c00-4c88-44e7-bfbc-683e2ef2d32c</x:String>
+              <x:Null x:Key="NextStageId" />
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
         </sco:Collection>
@@ -336,7 +336,7 @@
       <mxswa:ActivityReference.Properties>
         <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StageComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StageStep25: Route 2">
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StageComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StageStep25: E Signature">
             <mxswa:ActivityReference.Properties>
               <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
               <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
@@ -345,6 +345,113 @@
                     <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                     <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
                       <Sequence DisplayName="ControlStep27">
+                        <mcwb:Control ClassId="270bd3db-d9af-4782-9025-509e298dec0a" ControlDisplayName="HIE Contract Signatory " ControlId="leidos_hiecontractsignatory" DataFieldName="leidos_hiecontractsignatory" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
+                          <mcwb:Control.Parameters>
+                            <InArgument x:TypeArguments="x:String">
+                              <Literal x:TypeArguments="x:String" Value="" />
+                            </InArgument>
+                          </mcwb:Control.Parameters>
+                        </mcwb:Control>
+                      </Sequence>
+                    </sco:Collection>
+                    <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
+                      <mcwo:StepLabel Description="HIE Contract Signatory " LabelId="3ef24341-7234-4d86-98f0-01d267963a9b" LanguageCode="1033" />
+                    </sco:Collection>
+                    <x:String x:Key="ProcessStepId">3ef24341-7234-4d86-98f0-01d267963a9b</x:String>
+                    <x:Boolean x:Key="IsProcessRequired">True</x:Boolean>
+                  </mxswa:ActivityReference.Properties>
+                </mxswa:ActivityReference>
+                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep28: New Step">
+                  <mxswa:ActivityReference.Properties>
+                    <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
+                    <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                      <Sequence DisplayName="ControlStep29">
+                        <mcwb:Control ClassId="270bd3db-d9af-4782-9025-509e298dec0a" ControlDisplayName="Client Contact" ControlId="leidos_clientcontact" DataFieldName="leidos_clientcontact" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
+                          <mcwb:Control.Parameters>
+                            <InArgument x:TypeArguments="x:String">
+                              <Literal x:TypeArguments="x:String" Value="" />
+                            </InArgument>
+                          </mcwb:Control.Parameters>
+                        </mcwb:Control>
+                      </Sequence>
+                    </sco:Collection>
+                    <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
+                      <mcwo:StepLabel Description="Selected Client Signatory" LabelId="06790aca-7c49-495c-a218-99d4ec2cfcd4" LanguageCode="1033" />
+                    </sco:Collection>
+                    <x:String x:Key="ProcessStepId">06790aca-7c49-495c-a218-99d4ec2cfcd4</x:String>
+                    <x:Boolean x:Key="IsProcessRequired">True</x:Boolean>
+                  </mxswa:ActivityReference.Properties>
+                </mxswa:ActivityReference>
+                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep30: New Step">
+                  <mxswa:ActivityReference.Properties>
+                    <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
+                    <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                      <Sequence DisplayName="ControlStep31">
+                        <mcwb:Control ClassId="67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed" ControlDisplayName="Create a Note and Attach Document to be signed" ControlId="leidos_createanoteorsignature" DataFieldName="leidos_createanoteorsignature" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
+                          <mcwb:Control.Parameters>
+                            <InArgument x:TypeArguments="x:String">
+                              <Literal x:TypeArguments="x:String" Value="" />
+                            </InArgument>
+                          </mcwb:Control.Parameters>
+                        </mcwb:Control>
+                      </Sequence>
+                    </sco:Collection>
+                    <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
+                      <mcwo:StepLabel Description="Create a Note and Attach Document to be signed" LabelId="349e7e22-5057-4819-a226-94a0cfe134e8" LanguageCode="1033" />
+                    </sco:Collection>
+                    <x:String x:Key="ProcessStepId">349e7e22-5057-4819-a226-94a0cfe134e8</x:String>
+                    <x:Boolean x:Key="IsProcessRequired">True</x:Boolean>
+                  </mxswa:ActivityReference.Properties>
+                </mxswa:ActivityReference>
+                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep32: New Step">
+                  <mxswa:ActivityReference.Properties>
+                    <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
+                    <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                      <Sequence DisplayName="ControlStep33">
+                        <mcwb:Control ClassId="67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed" ControlDisplayName="Submit for E-Signature" ControlId="leidos_submitforesignature" DataFieldName="leidos_submitforesignature" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
+                          <mcwb:Control.Parameters>
+                            <InArgument x:TypeArguments="x:String">
+                              <Literal x:TypeArguments="x:String" Value="" />
+                            </InArgument>
+                          </mcwb:Control.Parameters>
+                        </mcwb:Control>
+                      </Sequence>
+                    </sco:Collection>
+                    <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
+                      <mcwo:StepLabel Description="Submit for E-Signature" LabelId="a2dd39f0-61b4-48b0-ab26-c9aee4c698ae" LanguageCode="1033" />
+                    </sco:Collection>
+                    <x:String x:Key="ProcessStepId">a2dd39f0-61b4-48b0-ab26-c9aee4c698ae</x:String>
+                    <x:Boolean x:Key="IsProcessRequired">True</x:Boolean>
+                  </mxswa:ActivityReference.Properties>
+                </mxswa:ActivityReference>
+              </sco:Collection>
+              <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
+                <mcwo:StepLabel Description="E Signature" LabelId="62564c00-4c88-44e7-bfbc-683e2ef2d32c" LanguageCode="1033" />
+              </sco:Collection>
+              <x:String x:Key="StageId">62564c00-4c88-44e7-bfbc-683e2ef2d32c</x:String>
+              <x:String x:Key="StageCategory">-1</x:String>
+              <x:Null x:Key="NextStageId" />
+            </mxswa:ActivityReference.Properties>
+          </mxswa:ActivityReference>
+        </sco:Collection>
+        <x:Null x:Key="RelationshipName" />
+        <x:Null x:Key="AttributeName" />
+        <x:Boolean x:Key="IsClosedLoop">False</x:Boolean>
+      </mxswa:ActivityReference.Properties>
+    </mxswa:ActivityReference>
+    <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EntityComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EntityStep5: leidos_legalundertaking">
+      <mxswa:ActivityReference.Properties>
+        <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
+        <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StageComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StageStep35: Route 2">
+            <mxswa:ActivityReference.Properties>
+              <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
+              <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep36: New Step">
+                  <mxswa:ActivityReference.Properties>
+                    <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
+                    <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                      <Sequence DisplayName="ControlStep37">
                         <mcwb:Control ClassId="5b773807-9fb2-42db-97c3-7a91eff8adff" ControlDisplayName="Date Sent to Legal" ControlId="leidos_datesenttolegal" DataFieldName="leidos_datesenttolegal" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
                           <mcwb:Control.Parameters>
                             <InArgument x:TypeArguments="x:String">
@@ -361,11 +468,11 @@
                     <x:Boolean x:Key="IsProcessRequired">False</x:Boolean>
                   </mxswa:ActivityReference.Properties>
                 </mxswa:ActivityReference>
-                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep28: New Step">
+                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep38: New Step">
                   <mxswa:ActivityReference.Properties>
                     <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                     <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                      <Sequence DisplayName="ControlStep29">
+                      <Sequence DisplayName="ControlStep39">
                         <mcwb:Control ClassId="5b773807-9fb2-42db-97c3-7a91eff8adff" ControlDisplayName="Accepted by Legal" ControlId="leidos_acceptedbylegal" DataFieldName="leidos_acceptedbylegal" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
                           <mcwb:Control.Parameters>
                             <InArgument x:TypeArguments="x:String">
@@ -382,11 +489,11 @@
                     <x:Boolean x:Key="IsProcessRequired">False</x:Boolean>
                   </mxswa:ActivityReference.Properties>
                 </mxswa:ActivityReference>
-                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep30: New Step">
+                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep40: New Step">
                   <mxswa:ActivityReference.Properties>
                     <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                     <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                      <Sequence DisplayName="ControlStep31">
+                      <Sequence DisplayName="ControlStep41">
                         <mcwb:Control ClassId="67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed" ControlDisplayName="Documentation Received from Legal" ControlId="leidos_documentationreceivedfromlegal" DataFieldName="leidos_documentationreceivedfromlegal" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
                           <mcwb:Control.Parameters>
                             <InArgument x:TypeArguments="x:String">
@@ -409,7 +516,7 @@
               </sco:Collection>
               <x:String x:Key="StageId">60264ead-1530-494c-b61c-2bed9a33192c</x:String>
               <x:String x:Key="StageCategory">-1</x:String>
-              <x:String x:Key="NextStageId">62564c00-4c88-44e7-bfbc-683e2ef2d32c</x:String>
+              <x:String x:Key="NextStageId">16769d2f-8b04-46bc-8baa-dfb2f0fcf679</x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
         </sco:Collection>
@@ -418,20 +525,20 @@
         <x:Boolean x:Key="IsClosedLoop">False</x:Boolean>
       </mxswa:ActivityReference.Properties>
     </mxswa:ActivityReference>
-    <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EntityComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EntityStep5: leidos_legalundertaking">
+    <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EntityComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EntityStep6: leidos_legalundertaking">
       <mxswa:ActivityReference.Properties>
         <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StageComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StageStep33: E Signature">
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StageComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StageStep43: Route 2 Client Interactions">
             <mxswa:ActivityReference.Properties>
               <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
               <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep34: New Step">
+                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep44: New Step">
                   <mxswa:ActivityReference.Properties>
                     <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                     <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                      <Sequence DisplayName="ControlStep35">
-                        <mcwb:Control ClassId="270bd3db-d9af-4782-9025-509e298dec0a" ControlDisplayName="HIE Contract Signatory " ControlId="leidos_hiecontractsignatory" DataFieldName="leidos_hiecontractsignatory" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
+                      <Sequence DisplayName="ControlStep45">
+                        <mcwb:Control ClassId="5b773807-9fb2-42db-97c3-7a91eff8adff" ControlDisplayName="Date Issued to Client" ControlId="leidos_dateissuedtoclient" DataFieldName="leidos_dateissuedtoclient" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
                           <mcwb:Control.Parameters>
                             <InArgument x:TypeArguments="x:String">
                               <Literal x:TypeArguments="x:String" Value="" />
@@ -441,18 +548,18 @@
                       </Sequence>
                     </sco:Collection>
                     <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
-                      <mcwo:StepLabel Description="HIE Contract Signatory " LabelId="3ef24341-7234-4d86-98f0-01d267963a9b" LanguageCode="1033" />
+                      <mcwo:StepLabel Description="Date Issued to Client" LabelId="d4880bec-af12-4a3c-b02f-87f6312c4567" LanguageCode="1033" />
                     </sco:Collection>
-                    <x:String x:Key="ProcessStepId">3ef24341-7234-4d86-98f0-01d267963a9b</x:String>
+                    <x:String x:Key="ProcessStepId">d4880bec-af12-4a3c-b02f-87f6312c4567</x:String>
                     <x:Boolean x:Key="IsProcessRequired">True</x:Boolean>
                   </mxswa:ActivityReference.Properties>
                 </mxswa:ActivityReference>
-                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep36: New Step">
+                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep46: New Step">
                   <mxswa:ActivityReference.Properties>
                     <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                     <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                      <Sequence DisplayName="ControlStep37">
-                        <mcwb:Control ClassId="270bd3db-d9af-4782-9025-509e298dec0a" ControlDisplayName="Client Contact" ControlId="leidos_clientcontact" DataFieldName="leidos_clientcontact" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
+                      <Sequence DisplayName="ControlStep47">
+                        <mcwb:Control ClassId="5b773807-9fb2-42db-97c3-7a91eff8adff" ControlDisplayName="Date Document Signed" ControlId="leidos_datedocumentsigned" DataFieldName="leidos_datedocumentsigned" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
                           <mcwb:Control.Parameters>
                             <InArgument x:TypeArguments="x:String">
                               <Literal x:TypeArguments="x:String" Value="" />
@@ -462,18 +569,18 @@
                       </Sequence>
                     </sco:Collection>
                     <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
-                      <mcwo:StepLabel Description="Selected Client Signatory" LabelId="06790aca-7c49-495c-a218-99d4ec2cfcd4" LanguageCode="1033" />
+                      <mcwo:StepLabel Description="Date Document Signed" LabelId="a5d504e7-7eb7-41b7-ac6e-13e8f20b36dc" LanguageCode="1033" />
                     </sco:Collection>
-                    <x:String x:Key="ProcessStepId">06790aca-7c49-495c-a218-99d4ec2cfcd4</x:String>
+                    <x:String x:Key="ProcessStepId">a5d504e7-7eb7-41b7-ac6e-13e8f20b36dc</x:String>
                     <x:Boolean x:Key="IsProcessRequired">True</x:Boolean>
                   </mxswa:ActivityReference.Properties>
                 </mxswa:ActivityReference>
-                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep38: New Step">
+                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep48: New Step">
                   <mxswa:ActivityReference.Properties>
                     <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                     <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                      <Sequence DisplayName="ControlStep39">
-                        <mcwb:Control ClassId="67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed" ControlDisplayName="Create a Note and Attach Document to be signed" ControlId="leidos_createanoteorsignature" DataFieldName="leidos_createanoteorsignature" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
+                      <Sequence DisplayName="ControlStep49">
+                        <mcwb:Control ClassId="5b773807-9fb2-42db-97c3-7a91eff8adff" ControlDisplayName="Date Returned from Client" ControlId="leidos_datereturnedfromclient" DataFieldName="leidos_datereturnedfromclient" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
                           <mcwb:Control.Parameters>
                             <InArgument x:TypeArguments="x:String">
                               <Literal x:TypeArguments="x:String" Value="" />
@@ -483,38 +590,17 @@
                       </Sequence>
                     </sco:Collection>
                     <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
-                      <mcwo:StepLabel Description="Create a Note and Attach Document to be signed" LabelId="349e7e22-5057-4819-a226-94a0cfe134e8" LanguageCode="1033" />
+                      <mcwo:StepLabel Description="Date Returned from Client" LabelId="8b75f144-bc99-41f5-8db9-1b1949e43fcc" LanguageCode="1033" />
                     </sco:Collection>
-                    <x:String x:Key="ProcessStepId">349e7e22-5057-4819-a226-94a0cfe134e8</x:String>
-                    <x:Boolean x:Key="IsProcessRequired">True</x:Boolean>
-                  </mxswa:ActivityReference.Properties>
-                </mxswa:ActivityReference>
-                <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.StepComposite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="StepStep40: New Step">
-                  <mxswa:ActivityReference.Properties>
-                    <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
-                    <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                      <Sequence DisplayName="ControlStep41">
-                        <mcwb:Control ClassId="67fac785-cd58-4f9f-abb3-4b7ddc6ed5ed" ControlDisplayName="Submit for E-Signature" ControlId="leidos_submitforesignature" DataFieldName="leidos_submitforesignature" IsSystemControl="False" IsUnbound="False" SystemStepType="0">
-                          <mcwb:Control.Parameters>
-                            <InArgument x:TypeArguments="x:String">
-                              <Literal x:TypeArguments="x:String" Value="" />
-                            </InArgument>
-                          </mcwb:Control.Parameters>
-                        </mcwb:Control>
-                      </Sequence>
-                    </sco:Collection>
-                    <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
-                      <mcwo:StepLabel Description="Submit for E-Signature" LabelId="a2dd39f0-61b4-48b0-ab26-c9aee4c698ae" LanguageCode="1033" />
-                    </sco:Collection>
-                    <x:String x:Key="ProcessStepId">a2dd39f0-61b4-48b0-ab26-c9aee4c698ae</x:String>
+                    <x:String x:Key="ProcessStepId">8b75f144-bc99-41f5-8db9-1b1949e43fcc</x:String>
                     <x:Boolean x:Key="IsProcessRequired">True</x:Boolean>
                   </mxswa:ActivityReference.Properties>
                 </mxswa:ActivityReference>
               </sco:Collection>
               <sco:Collection x:TypeArguments="mcwo:StepLabel" x:Key="StepLabels">
-                <mcwo:StepLabel Description="E Signature" LabelId="62564c00-4c88-44e7-bfbc-683e2ef2d32c" LanguageCode="1033" />
+                <mcwo:StepLabel Description="Route 2 Client Interactions" LabelId="16769d2f-8b04-46bc-8baa-dfb2f0fcf679" LanguageCode="1033" />
               </sco:Collection>
-              <x:String x:Key="StageId">62564c00-4c88-44e7-bfbc-683e2ef2d32c</x:String>
+              <x:String x:Key="StageId">16769d2f-8b04-46bc-8baa-dfb2f0fcf679</x:String>
               <x:String x:Key="StageCategory">-1</x:String>
               <x:Null x:Key="NextStageId" />
             </mxswa:ActivityReference.Properties>

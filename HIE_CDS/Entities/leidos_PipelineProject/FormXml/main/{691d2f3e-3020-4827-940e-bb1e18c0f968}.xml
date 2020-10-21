@@ -43,6 +43,14 @@
                         <control id="leidos_client" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_client" disabled="false" uniqueid="{a91c3e31-7041-11cc-5737-4b448b909ebd}" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{ede121be-f75e-4757-8169-b044bfb20c0d}" locklevel="0">
+                        <labels>
+                          <label description="Support Item Type" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_supportitemtype" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_supportitemtype" disabled="false" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
                 <section name="Project Basic Details" showlabel="false" showbar="false" locklevel="0" id="{a3cec716-5798-ca65-ce05-42bceab8088b}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
@@ -564,7 +572,7 @@
             <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{66dead25-4349-dcba-5a77-e90ce7a19191}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.SetPipelinePathControlViews" libraryName="leidos_PipelineContolView" handlerUniqueId="{15d63601-5655-9eeb-03a1-78b9dc4b71d0}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.SetSourceEnquiryViews" libraryName="leidos_PipelineContolView" handlerUniqueId="{d5040c89-8b43-5e81-db11-ce82892d3ed1}" enabled="false" parameters="" passExecutionContext="true" />
-            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{547a9683-5725-44d2-d90b-46836b3564cc}" enabled="true" parameters="'leidos_client' , 'leidos_sourceenquiry', '97b66e41-809a-ea11-a812-000d3a7f1bbb' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;2&quot; /&gt;      &lt;condition attribute=&quot;leidos_account&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;'&#xA;" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{547a9683-5725-44d2-d90b-46836b3564cc}" enabled="true" parameters="'leidos_client' , 'leidos_sourceenquiry', '97b66e41-809a-ea11-a812-000d3a7f1bbb' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;2&quot; /&gt;      &lt;condition attribute=&quot;leidos_account&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;' " passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_preapplicationroute">
