@@ -253,7 +253,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="NFI_Data" id="3569b36c-857c-46d0-b549-63868f465fe8" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                <section name="NFI_Data" id="3569b36c-857c-46d0-b549-63868f465fe8" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="NFI Data" languagecode="1033" />
                   </labels>
@@ -264,12 +264,6 @@
                           <label description="Indicative Gross Cost" languagecode="1033" />
                         </labels>
                         <control id="leidos_indicativegrosscost" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_indicativegrosscost" disabled="false" />
-                      </cell>
-                      <cell id="{3f6f098b-d57f-459b-9349-8d4f0a62fad0}" locklevel="0" rowspan="7">
-                        <labels>
-                          <label description="Expected Outcomes" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_expectedoutcomes" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_expectedoutcomes" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -289,67 +283,19 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{4ff2dffb-c1cd-476e-b4b9-68d4c45e06e4}">
+                      <cell locklevel="0" id="{0fd0162f-9755-47a1-b82f-6c7c8c25d965}" rowspan="1" colspan="1" showlabel="false">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="New SG control 1603370976846" languagecode="1033" />
                         </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{eab512d1-9468-4dc3-9876-ff6b67fe336d}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{fa7449b5-7938-4866-b5ac-be62ff626a6a}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{e63752d5-835a-448a-90aa-2eb9fa54f65a}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{1167c1a0-a835-4cb8-87d0-1a6749c1d2d1}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                      <cell showlabel="false" locklevel="0" id="{796fb1fe-0aa6-40bd-9faa-db98355266ce}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{cd874de4-95bc-4885-ab46-41d940a442bd}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                      <cell locklevel="0" id="{c59e9bb9-e32d-4f1b-abfe-655dfb922725}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell locklevel="0" id="{9e01ad14-3a4b-4e23-9fdc-8133f53d3d97}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                      <cell locklevel="0" id="{4285c287-de7b-4bab-9b03-df6642812a60}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
+                        <control id="Subgrid_5" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_nfistateaid</TargetEntityType>
+                            <ViewId>{68263C83-6514-EB11-A813-0022483FAE82}</ViewId>
+                            <ViewIds>{123A4390-4845-406D-A5CF-F3BA8C413042},{68263C83-6514-EB11-A813-0022483FAE82}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_NFIStateAid_ParentProject_leidos_P</RelationshipName>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
@@ -1470,6 +1416,16 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="ffaafc53-a34c-443f-a5cd-c7a5a00aab4f" enabled="true" parameters="'Wl7:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_indicativegrosscost">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="d06f9a09-4088-4c07-b74b-5da5673cb18a" enabled="true" parameters="'vf9:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_anticipatedrecoveryamount">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="e7f48584-7cfe-40bc-a777-5d334f30c99b" enabled="true" parameters="'vf9:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
@@ -1477,9 +1433,9 @@
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{b5111e31-ad58-5b10-4216-347261e80896}" />
         <Library name="leidos_project.js" libraryUniqueId="{489b0ce2-29e5-80e1-5e95-c2152000628a}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="7f36daaa-b428-4227-a910-956cc0ee6beb" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="bb1a211c-125c-4ea9-8bc9-c4463fbd3795" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="a2bf1bf5-4992-4feb-ad72-8aaf945b88b5" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="cfc8df49-8879-4f88-83eb-c2b73815faa1" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="756ac0aa-ea37-49ea-9d50-06f27f768b81" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="434ce137-0160-4a0a-9613-1ea3e3ef2dc8" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
