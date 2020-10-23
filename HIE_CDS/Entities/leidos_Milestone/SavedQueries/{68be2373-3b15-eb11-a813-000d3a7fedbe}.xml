@@ -6,12 +6,12 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{76ae7340-20ba-ea11-a812-000d3a7fedbe}</savedqueryid>
+    <savedqueryid>{68be2373-3b15-eb11-a813-000d3a7fedbe}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_milestoneid">
-          <cell name="leidos_name" width="300" />
-          <cell name="leidos_performancemanagementoutcome" width="300" />
+          <cell name="leidos_name" width="200" />
+          <cell name="leidos_performancemanagementoutcome" width="100" />
           <cell name="leidos_expectedduedate" width="100" />
           <cell name="leidos_alertdate" width="100" />
           <cell name="leidos_markcompleted" width="100" />
@@ -21,26 +21,25 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_milestone">
           <attribute name="leidos_name" />
-          <order attribute="leidos_name" descending="false" />
-          <attribute name="leidos_expectedduedate" />
-          <attribute name="leidos_alertdate" />
-          <attribute name="leidos_performancemanagementoutcome" />
-          <attribute name="leidos_markcompleted" />
-          <attribute name="leidos_requiresevidence" />
           <attribute name="leidos_milestoneid" />
           <filter type="and">
+            <condition attribute="leidos_parentprogramme" operator="not-null" />
             <condition attribute="statecode" operator="eq" value="0" />
-            <condition attribute="leidos_parentproject" operator="not-null" />
           </filter>
+          <attribute name="leidos_performancemanagementoutcome" />
+          <attribute name="leidos_expectedduedate" />
+          <attribute name="leidos_alertdate" />
+          <attribute name="leidos_markcompleted" />
+          <attribute name="leidos_requiresevidence" />
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.6.0.7</IntroducedVersion>
+    <IntroducedVersion>1.9.0.1105</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Project Grid - Active Milestones" languagecode="1033" />
+      <LocalizedName description="Programme Grid - Active Milestones" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

@@ -281,6 +281,24 @@
                         <control id="leidos_directtoapplicationrationale" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_directtoapplicationrationale" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{d3a61453-2b56-a78d-1de7-a42d8783dc10}" showlabel="true" locklevel="0" visible="true">
+                        <labels>
+                          <label description="Programme Manager" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_programmemanager" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_programmemanager" disabled="false" uniqueid="{5cd44bb9-7c80-d36c-2bd6-0da31dd0bec0}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{88C56D5A-3A15-EB11-A813-0022483FAE82}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{0976D964-6C9E-4D23-90C3-078677A81F7D},{EDFD18EC-B3BB-EA11-A812-000D3A7F1BBB},{53961D04-1FDA-40FD-B978-8E0967433FB2},{AB53A03A-B7BB-EA11-A812-000D3A7FEDBE},{8EF3343F-05CC-EA11-A812-000D3A7FEDBE},{AA3F26B8-B6BB-EA11-A812-000D3A7F1BBB},{DA8A1BC4-B6BB-EA11-A812-000D3A7F1BBB},{1359B25E-B7BB-EA11-A812-000D3A7FEDBE},{78B7A846-B7BB-EA11-A812-000D3A7FEDBE},{2D197E17-8FF7-4580-B20D-B335AA91B158},{21C34315-32BC-EA11-A812-000D3A7FEDBE},{824F07BE-3F0A-EB11-A813-000D3A7F1BBB},{88C56D5A-3A15-EB11-A813-0022483FAE82}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -436,7 +454,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="Process_NFI_ISA" id="12562887-f744-4070-a44a-d11cc2d55808" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
+                <section name="Process_NFI_ISA" id="12562887-f744-4070-a44a-d11cc2d55808" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
                   <labels>
                     <label description="NFI ISA" languagecode="1033" />
                   </labels>
@@ -467,7 +485,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="Process_NFI_Email" id="afc4ed6e-1181-4641-9b51-5cae08c676a7" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
+                <section name="Process_NFI_Email" id="afc4ed6e-1181-4641-9b51-5cae08c676a7" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
                   <labels>
                     <label description="NFI Email" languagecode="1033" />
                   </labels>
@@ -682,6 +700,8 @@
             <Handler functionName="Leidos.SetPipelinePathControlViews" libraryName="leidos_PipelineContolView" handlerUniqueId="{15d63601-5655-9eeb-03a1-78b9dc4b71d0}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.SetSourceEnquiryViews" libraryName="leidos_PipelineContolView" handlerUniqueId="{d5040c89-8b43-5e81-db11-ce82892d3ed1}" enabled="false" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{547a9683-5725-44d2-d90b-46836b3564cc}" enabled="true" parameters="'leidos_client' , 'leidos_sourceenquiry', '97b66e41-809a-ea11-a812-000d3a7f1bbb' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;2&quot; /&gt;      &lt;condition attribute=&quot;leidos_account&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;' " passExecutionContext="true" />
+            <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{48aa37cb-8d87-3431-649e-ed665ad864db}" enabled="true" parameters="'header_process_leidos_programmemanager', '{88c56d5a-3a15-eb11-a813-0022483fae82}'" passExecutionContext="true" />
+            <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{b572b0d2-8a42-3927-2118-c95667d9bb0b}" enabled="true" parameters="'header_process_leidos_programmemanager_1', '{88c56d5a-3a15-eb11-a813-0022483fae82}'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_preapplicationroute">
@@ -710,9 +730,6 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{09b0e775-8089-4a72-cdb3-cd17c8048ce1}" />
         <Library name="leidos_PipelineContolView" libraryUniqueId="{74b97293-a920-2a74-b114-4210e65a2aa2}" />
@@ -720,6 +737,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="53996e61-d64a-466b-9bf4-ef26fca15c8c" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="a545d568-53d4-4b4d-86ca-8afc4d26ee2b" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
