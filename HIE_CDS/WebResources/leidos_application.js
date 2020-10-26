@@ -8,4 +8,5 @@ Leidos.SetApplicationPathControlViews = function (executionContext) {
     Leidos.setLookupViewId(executionContext, "header_process_leidos_leadershipteam","{21C34315-32BC-EA11-A812-000D3A7FEDBE}");
     Leidos.setLookupViewId(executionContext, "header_process_leidos_hiechiefexecutive","{78B7A846-B7BB-EA11-A812-000D3A7FEDBE}");
     Leidos.setLookupViewId(executionContext, "header_process_leidos_hieboard","{1359B25E-B7BB-EA11-A812-000D3A7FEDBE}");
+    Leidos.setLookupViewId(executionContext, "header_process_leidos_programmemanager","{88c56d5a-3a15-eb11-a813-0022483fae82}");
 }
