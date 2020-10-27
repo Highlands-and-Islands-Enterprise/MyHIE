@@ -38,7 +38,7 @@
                         <labels>
                           <label description="Support Item Type" languagecode="1033" />
                         </labels>
-                        <control id="leidos_supportitemnfi" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_supportitemnfi" disabled="false" />
+                        <control id="leidos_supportitemnfi" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_supportitemnfi" disabled="false" uniqueid="{b127da51-7394-1264-d733-b872656535a7}" />
                       </cell>
                       <cell id="{8f62e71b-decd-4b17-8b34-d74d4695b30a}" locklevel="0" showlabel="true">
                         <labels>
@@ -240,7 +240,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{51755dc8-d250-4242-947d-9ffd827a2dc3}">
+                      <cell locklevel="0" id="{51755dc8-d250-4242-947d-9ffd827a2dc3}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -1409,6 +1409,7 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="1629342e-4fe7-4cae-93a0-1edf12de46d8" enabled="true" parameters="'l3h:*:CreateUpdate::0:217890000:217890000:217890000:217890000','2Tg:*:Create::0:217890000:217890000:217890000:217890000','Wl7:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{18a1b722-a234-17a1-9285-266d805792a2}" enabled="true" parameters="&quot;leidos_sector&quot;, &quot;leidos_subsector&quot;, &quot;14f88737-55cb-ea11-a812-000d3a7f1bbb&quot;, &quot;&lt;filter type='and'&gt;&lt;condition attribute='leidos_parentsector' operator='eq' value='{{id}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
             <Handler functionName="OnLoad" libraryName="leidos_project.js" handlerUniqueId="{160aa65d-5813-de01-e820-5493793228a8}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{8e9e066c-229a-9d44-d341-a695c33098b1}" enabled="true" parameters="&quot;leidos_supportitemnfi&quot;, &quot;leidos_supportitemtype&quot;, &quot;bf0f6b2b-d56f-440f-9a9d-6eee0ec841e6&quot;, ' &lt;filter type=&quot;and&quot;&gt; &lt;condition attribute=&quot;leidos_supportitemtype&quot; operator=&quot;eq&quot;   value=&quot;{{id}}&quot; /&gt;  &lt;/filter&gt;'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_projectpostcode">
@@ -1439,6 +1440,7 @@
         <event name="onchange" application="false" active="false" attribute="leidos_supportitemnfi">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="ffaafc53-a34c-443f-a5cd-c7a5a00aab4f" enabled="true" parameters="'Wl7:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{57310a21-ca6e-1b61-b638-9cd659aaa64d}" enabled="true" parameters="&quot;leidos_supportitemnfi&quot;, &quot;leidos_supportitemtype&quot;, &quot;bf0f6b2b-d56f-440f-9a9d-6eee0ec841e6&quot;, ' &lt;filter type=&quot;and&quot;&gt; &lt;condition attribute=&quot;leidos_supportitemtype&quot; operator=&quot;eq&quot;   value=&quot;{{id}}&quot; /&gt;  &lt;/filter&gt;'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_indicativegrosscost">
@@ -1452,9 +1454,6 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{b5111e31-ad58-5b10-4216-347261e80896}" />
         <Library name="leidos_project.js" libraryUniqueId="{489b0ce2-29e5-80e1-5e95-c2152000628a}" />
@@ -1462,6 +1461,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="756ac0aa-ea37-49ea-9d50-06f27f768b81" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="434ce137-0160-4a0a-9613-1ea3e3ef2dc8" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
