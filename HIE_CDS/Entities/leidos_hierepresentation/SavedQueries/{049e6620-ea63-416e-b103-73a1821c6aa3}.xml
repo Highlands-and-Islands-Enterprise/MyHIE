@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{049e6620-ea63-416e-b103-73a1821c6aa3}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_hierepresentationid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_datefrom" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_dateto" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_hierepresentation">
+          <attribute name="leidos_name" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_dateto" />
+          <attribute name="leidos_datefrom" />
+          <attribute name="leidos_hierepresentationid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1113</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active HIE Representation" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

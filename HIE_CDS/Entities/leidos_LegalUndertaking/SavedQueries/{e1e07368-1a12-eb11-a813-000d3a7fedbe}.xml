@@ -11,10 +11,14 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_legalundertakingid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_legalundertakingsreference" width="100" />
           <cell name="leidos_routetype" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="leidos_project" width="100" />
-          <cell name="leidos_clientcontact" width="100" />
-          <cell name="leidos_dateissuedtoclient" width="100" />
+          <cell name="leidos_dateissuedtoclient" width="167" />
+          <cell name="leidos_datedocumentsigned" width="181" />
+          <cell name="leidos_datereturnedfromclient" width="100" />
+          <cell name="leidos_datesenttolegal" width="100" />
+          <cell name="statuscode" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -23,7 +27,6 @@
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_legalundertaking">
           <attribute name="leidos_name" />
-          <order attribute="leidos_name" descending="false" />
           <attribute name="leidos_routetype" />
           <attribute name="leidos_legalundertakingid" />
           <filter type="and">
@@ -31,8 +34,13 @@
             <condition attribute="leidos_dateissuedtoclient" operator="olderthan-x-days" value="21" />
           </filter>
           <attribute name="leidos_project" />
-          <attribute name="leidos_clientcontact" />
           <attribute name="leidos_dateissuedtoclient" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_datedocumentsigned" />
+          <attribute name="leidos_datereturnedfromclient" />
+          <attribute name="leidos_datesenttolegal" />
+          <attribute name="leidos_legalundertakingsreference" />
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

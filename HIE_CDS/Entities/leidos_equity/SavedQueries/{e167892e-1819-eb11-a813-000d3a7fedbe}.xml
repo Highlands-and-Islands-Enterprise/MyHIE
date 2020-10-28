@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e167892e-1819-eb11-a813-000d3a7fedbe}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_equityid">
+          <cell name="leidos_typeofholdingproject" width="100" />
+          <cell name="leidos_nominalpricepershareproject" width="100" />
+          <cell name="leidos_numberofsharesheldproject" width="100" />
+          <cell name="leidos_percentagecontrolproject" width="100" />
+          <cell name="leidos_valuepaidpershareproject" width="100" />
+          <cell name="leidos_valuepaidtotalproject" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_equity">
+          <order attribute="leidos_typeofholdingproject" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_valuepaidtotalproject" />
+          <attribute name="leidos_valuepaidpershareproject" />
+          <attribute name="leidos_typeofholdingproject" />
+          <attribute name="leidos_percentagecontrolproject" />
+          <attribute name="leidos_numberofsharesheldproject" />
+          <attribute name="leidos_nominalpricepershareproject" />
+          <attribute name="leidos_equityid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1113</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Project Equities" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
