@@ -40,7 +40,13 @@
                         <labels>
                           <label description="Project" languagecode="1033" />
                         </labels>
-                        <control id="leidos_project" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_project" disabled="false" />
+                        <control id="leidos_project" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_project" disabled="false" uniqueid="{a601e8b8-d7ed-6be5-1464-b8270e30010e}">
+                          <parameters>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{1732CE6F-11AF-EA11-A812-000D3A7F1BBB}</DefaultViewId>
+                            <AvailableViewIds>{8078ACE2-EAE7-45E6-86AA-E2A651FE5E68},{A6421251-C154-EA11-A813-000D3A0BAD17},{23B2FF62-C154-EA11-A813-000D3A0BAD17},{1732CE6F-11AF-EA11-A812-000D3A7F1BBB},{3543EF24-17AB-EA11-A812-000D3A7FEDBE},{FBAFE737-EE56-EA11-A811-000D3A0BAD17},{B740744E-4745-4A18-AA5A-27E1D0C15E39},{7C45FA10-09AB-EA11-A812-000D3A7FEDBE},{AF690613-17AB-EA11-A812-000D3A7FEDBE},{7C6F5E62-76BF-EA11-A812-000D3A7F1BBB},{44A80479-099A-478B-A3B8-E5AF2A3B2B90},{66279722-7AEE-EA11-A815-000D3A7F1BBB},{C7AF7026-6C7E-EA11-A811-000D3A7FEDBE},{EA26FF41-B3F2-EA11-A815-000D3A7F1BBB}</AvailableViewIds>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>
@@ -77,6 +83,14 @@
                           <label description="Route Type" languagecode="1033" />
                         </labels>
                         <control id="leidos_routetype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_routetype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f7580a3d-74d3-4345-bd0e-2dad38d9ac3b}" locklevel="0">
+                        <labels>
+                          <label description="Requires Delegated Authority Input" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_requiresdelegatedauthorityinput" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_requiresdelegatedauthorityinput" disabled="false" uniqueid="{010678f8-1ad1-4c46-8eee-43f860c0741c}" />
                       </cell>
                     </row>
                   </rows>
@@ -372,6 +386,7 @@
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="da78ba21-bdbc-4660-96b6-26be56e69025" enabled="true" parameters="'Zz0:*:CreateUpdate::0:217890000:217890000:217890000:217890000','rpJ:*:Update::0:217890000:217890000:217890000:217890000','Ke2:*:CreateUpdate::0:217890000:217890000:217890000:217890000','gsC:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{7154b17a-3b8a-eb42-66be-244924d0cc4a}" enabled="true" parameters="&quot;header_process_leidos_project&quot;,&quot;{1732ce6f-11af-ea11-a812-000d3a7f1bbb}&quot;" passExecutionContext="true" />
             <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{2693670b-ecd0-2938-15c4-61ce0bc79ac3}" enabled="true" parameters="&quot;header_process_leidos_delegatedauthority&quot;,&quot;{824f07be-3f0a-eb11-a813-000d3a7f1bbb}&quot;" passExecutionContext="true" />
             <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{36ea0326-ce48-7130-2170-b1aa124cc254}" enabled="true" parameters="&quot;header_process_leidos_hiecontractsignatory&quot;,&quot;{824f07be-3f0a-eb11-a813-000d3a7f1bbb}&quot;" passExecutionContext="true" />
             <Handler functionName="Leidos.filterDefinition" libraryName="leidos_common" handlerUniqueId="{b94856a2-51c2-c956-68a1-bd46967647a4}" enabled="false" parameters="&quot;leidos_parentaccount&quot;,&quot;header_process_leidos_authorisedsignatory&quot;,&quot;4c21f7ce-370d-eb11-a813-000d3a7f1bbb&quot;,&quot;   &lt;filter type=&quot;and&quot;&gt;       &lt;condition attribute=&quot;parentcustomerid&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;     &lt;/filter&gt;&quot;" passExecutionContext="false" />
@@ -424,7 +439,7 @@
         </event>
       </events>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -557,16 +572,38 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{010678f8-1ad1-4c46-8eee-43f860c0741c}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_requiresdelegatedauthorityinput</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_requiresdelegatedauthorityinput</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_requiresdelegatedauthorityinput</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_requiresdelegatedauthorityinput</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{1c3914a4-1e86-e32d-7b29-542a78d244d1}" />
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="3ee9a3c7-85c2-4e7d-afce-be89776edfa6" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="8a871ce1-2a53-4769-881d-8fc35409e29e" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="cb23bf35-c91f-41c6-8d64-4683d556f5e5" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

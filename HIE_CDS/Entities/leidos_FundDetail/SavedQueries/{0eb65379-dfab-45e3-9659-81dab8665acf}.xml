@@ -11,6 +11,7 @@
       <grid name="leidos_funddetails" jump="leidos_fund" select="1" icon="1" preview="0">
         <row name="leidos_funddetail" id="leidos_funddetailid">
           <cell name="leidos_fund" width="300" />
+          <cell name="leidos_typeoffunding" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
@@ -23,6 +24,8 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <order attribute="leidos_fund" descending="false" />
+          <attribute name="leidos_typeoffunding" />
         </entity>
       </fetch>
     </fetchxml>

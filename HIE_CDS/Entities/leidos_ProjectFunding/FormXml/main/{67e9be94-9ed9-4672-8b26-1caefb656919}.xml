@@ -78,7 +78,32 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell showlabel="false" locklevel="0" id="{b76e4f9e-1a08-4735-bb44-7fba5263be89}">
+                      <cell showlabel="false" locklevel="0" id="{5bb82e39-626f-49e2-8811-c5a0c335616d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7ea01792-d517-d116-3676-bec4121e83ce}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Equity" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_equityid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_equityid" disabled="false" uniqueid="{b911c9a4-aa4b-4081-3d1b-75c983ebd0a1}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{7AA25C20-14DE-45E1-98F4-FBA57582AD0D}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                            <FilterRelationshipName>leidos_leidos_project_leidos_equity</FilterRelationshipName>
+                            <DependentAttributeName>leidos_projectfunding.leidos_parentproject</DependentAttributeName>
+                            <DependentAttributeType>leidos_project</DependentAttributeType>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell showlabel="false" locklevel="0" id="{4addbd0f-e2c6-4f2d-abda-b7e3ccc3c092}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -100,7 +125,7 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell showlabel="false" locklevel="0" id="{5bb82e39-626f-49e2-8811-c5a0c335616d}">
+                      <cell showlabel="false" locklevel="0" id="{c146fe13-dff3-4d99-ae79-202312419db4}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -125,7 +150,7 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell showlabel="false" locklevel="0" id="{4addbd0f-e2c6-4f2d-abda-b7e3ccc3c092}">
+                      <cell showlabel="false" locklevel="0" id="{c725c15a-1cd2-4df1-8766-26d9c2056737}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -138,7 +163,7 @@
                         </labels>
                         <control id="leidos_fundingamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_fundingamount" disabled="false" />
                       </cell>
-                      <cell showlabel="false" locklevel="0" id="{c146fe13-dff3-4d99-ae79-202312419db4}">
+                      <cell showlabel="false" locklevel="0" id="{e95e3274-8377-4f80-b3c3-01d220e195f4}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -151,7 +176,7 @@
                         </labels>
                         <control id="leidos_recoveryamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_recoveryamount" disabled="false" />
                       </cell>
-                      <cell showlabel="false" locklevel="0" id="{c725c15a-1cd2-4df1-8766-26d9c2056737}">
+                      <cell id="{b560e51c-bb88-1c2b-0e2b-983e03b0a98b}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -164,7 +189,7 @@
                         </labels>
                         <control id="leidos_evidencenotes" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_evidencenotes" disabled="false" />
                       </cell>
-                      <cell showlabel="false" locklevel="0" id="{e95e3274-8377-4f80-b3c3-01d220e195f4}">
+                      <cell id="{d59e69cd-1415-d37d-a142-241c6d2dd4ae}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -295,7 +320,7 @@
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b76df092-a5bc-4089-a13f-857e73713f1e" enabled="true" parameters="'kVc:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b76df092-a5bc-4089-a13f-857e73713f1e" enabled="true" parameters="'ptu:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_fundingsource">
@@ -313,11 +338,16 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b0e3fa91-fe30-464e-ad56-03a477aae67d" enabled="true" parameters="'53C:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_funddetails">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7afe5ed2-b973-447f-9089-f54afa890026" enabled="true" parameters="'ptu:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="02d93f80-9065-400a-9265-f3fe2e5718c4" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="eb66c0b2-2a1d-4086-b0e4-ed3260cab32e" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="04934dbd-dc81-4046-a3d7-414efadbdbc2" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="060da5d6-fd09-45a5-9c3b-4acb8a2df2fd" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="19b4c728-2a3a-448a-8f17-4c58e2bbbd96" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="afe8f342-5c8b-497b-9de6-a5fa8efbac87" />
       </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />

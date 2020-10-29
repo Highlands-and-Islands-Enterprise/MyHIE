@@ -24,9 +24,17 @@
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep3_1" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep3_2" />
           <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep4_condition" />
-          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep4_1" />
-          <Variable x:TypeArguments="x:Boolean" Default="False" Name="True" />
-          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep5_1" />
+          <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep4_1" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep4_2" />
+          <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep4_3" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep4_4" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep4_5" />
+          <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep5_condition" />
+          <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep5_1" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep5_2" />
+          <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep5_3" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep5_4" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep5_5" />
         </sco:Collection>
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
           <mxswa:GetEntityProperty Attribute="statuscode" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" Value="[ConditionBranchStep2_1]">
@@ -65,8 +73,8 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                    <Sequence DisplayName="SetVisibilityStep1: Enable Complete Spend Profile">
-                      <mcwc:SetVisibility ControlId="leidos_completedspendprofile" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="True" />
+                    <Sequence DisplayName="SetDisplayModeStep10: Enable Complete Spend Profile">
+                      <mcwc:SetDisplayMode ControlId="leidos_completedspendprofile" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsReadOnly="False" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -111,17 +119,23 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                    <Sequence DisplayName="SetVisibilityStep3: Enable Pre Conditions Met">
-                      <mcwc:SetVisibility ControlId="leidos_preconditionsmet" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="True" />
+                    <Sequence DisplayName="SetDisplayModeStep9: Unlock preconditions met">
+                      <mcwc:SetDisplayMode ControlId="leidos_preconditionsmet" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep11: Lock date of granting">
+                      <mcwc:SetDisplayMode ControlId="leidos_dateofgranting" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep12: Lock Move to Clear to Pay">
+                      <mcwc:SetDisplayMode ControlId="leidos_movetocleartopay" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsReadOnly="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
               <x:Null x:Key="Else" />
-              <x:String x:Key="Description">Pre conditions != Yes</x:String>
+              <x:String x:Key="Description">Pre-conditions met != Yes</x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
-          <mxswa:GetEntityProperty Attribute="leidos_dateofgranting" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" Value="[ConditionBranchStep4_1]">
+          <mxswa:GetEntityProperty Attribute="leidos_dateofgranting" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" Value="[ConditionBranchStep4_2]">
             <mxswa:GetEntityProperty.TargetType>
               <InArgument x:TypeArguments="s:Type">
                 <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
@@ -134,7 +148,42 @@
             <mxswa:ActivityReference.Arguments>
               <InArgument x:TypeArguments="mxsq:ConditionOperator" x:Key="ConditionOperator">Null</InArgument>
               <x:Null x:Key="Parameters" />
-              <InArgument x:TypeArguments="x:Object" x:Key="Operand">[ConditionBranchStep4_1]</InArgument>
+              <InArgument x:TypeArguments="x:Object" x:Key="Operand">[ConditionBranchStep4_2]</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep4_1]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:GetEntityProperty Attribute="leidos_preconditionsmet" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" Value="[ConditionBranchStep4_4]">
+            <mxswa:GetEntityProperty.TargetType>
+              <InArgument x:TypeArguments="s:Type">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
+                  <x:Null />
+                </mxswa:ReferenceLiteral>
+              </InArgument>
+            </mxswa:GetEntityProperty.TargetType>
+          </mxswa:GetEntityProperty>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "1" }]</InArgument>
+              <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep4_5]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateCondition">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="mxsq:ConditionOperator" x:Key="ConditionOperator">Equal</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { ConditionBranchStep4_5 }]</InArgument>
+              <InArgument x:TypeArguments="x:Object" x:Key="Operand">[ConditionBranchStep4_4]</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep4_3]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateLogicalCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateLogicalCondition">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="mxsq:LogicalOperator" x:Key="LogicalOperator">And</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="LeftOperand">[ConditionBranchStep4_1]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="RightOperand">[ConditionBranchStep4_3]</InArgument>
               <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep4_condition]</OutArgument>
             </mxswa:ActivityReference.Arguments>
           </mxswa:ActivityReference>
@@ -147,11 +196,40 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                    <Sequence DisplayName="SetVisibilityStep5: Disable pre Conditions Met">
-                      <mcwc:SetVisibility ControlId="leidos_preconditionsmet" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="False" />
+                    <Sequence DisplayName="SetDisplayModeStep10926: Enable Pre Conditions Met">
+                      <mcwc:SetDisplayMode ControlId="leidos_preconditionsmet" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsReadOnly="False" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep6: Enable Date of Granting">
-                      <mcwc:SetVisibility ControlId="leidos_dateofgranting" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="True" />
+                    <Sequence DisplayName="SetDisplayModeStep10732: Enable date of granting">
+                      <mcwc:SetDisplayMode ControlId="leidos_dateofgranting" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsReadOnly="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep13: Disable move to clear to pay">
+                      <mcwc:SetDisplayMode ControlId="leidos_movetocleartopay" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsReadOnly="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep_SetDisplayModeStep13_14: Set move to clear to pay to no">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep_SetDisplayModeStep13_14_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_project&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+                        <mxswa:ActivityReference.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+                          <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "0" }]</InArgument>
+                          <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
+                          </InArgument>
+                          <OutArgument x:TypeArguments="x:Object" x:Key="Result">[SetAttributeValueStep_SetDisplayModeStep13_14_1]</OutArgument>
+                        </mxswa:ActivityReference.Arguments>
+                      </mxswa:ActivityReference>
+                      <mxswa:SetEntityProperty Attribute="leidos_movetocleartopay" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_project" Value="[SetAttributeValueStep_SetDisplayModeStep13_14_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep_SetDisplayModeStep13_14" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_project" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -160,39 +238,81 @@
               <x:String x:Key="Description">Date of Granting does not contain data</x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
+          <mxswa:GetEntityProperty Attribute="leidos_dateofgranting" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" Value="[ConditionBranchStep5_2]">
+            <mxswa:GetEntityProperty.TargetType>
+              <InArgument x:TypeArguments="s:Type">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
+                  <x:Null />
+                </mxswa:ReferenceLiteral>
+              </InArgument>
+            </mxswa:GetEntityProperty.TargetType>
+          </mxswa:GetEntityProperty>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateCondition">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="mxsq:ConditionOperator" x:Key="ConditionOperator">NotNull</InArgument>
+              <x:Null x:Key="Parameters" />
+              <InArgument x:TypeArguments="x:Object" x:Key="Operand">[ConditionBranchStep5_2]</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep5_1]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:GetEntityProperty Attribute="leidos_preconditionsmet" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" Value="[ConditionBranchStep5_4]">
+            <mxswa:GetEntityProperty.TargetType>
+              <InArgument x:TypeArguments="s:Type">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
+                  <x:Null />
+                </mxswa:ReferenceLiteral>
+              </InArgument>
+            </mxswa:GetEntityProperty.TargetType>
+          </mxswa:GetEntityProperty>
           <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
             <mxswa:ActivityReference.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
-              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "true" }]</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "1" }]</InArgument>
               <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
                 <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
               </InArgument>
-              <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep5_1]</OutArgument>
+              <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep5_5]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateCondition">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="mxsq:ConditionOperator" x:Key="ConditionOperator">Equal</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { ConditionBranchStep5_5 }]</InArgument>
+              <InArgument x:TypeArguments="x:Object" x:Key="Operand">[ConditionBranchStep5_4]</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep5_3]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateLogicalCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateLogicalCondition">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="mxsq:LogicalOperator" x:Key="LogicalOperator">And</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="LeftOperand">[ConditionBranchStep5_1]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="RightOperand">[ConditionBranchStep5_3]</InArgument>
+              <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep5_condition]</OutArgument>
             </mxswa:ActivityReference.Arguments>
           </mxswa:ActivityReference>
           <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.ConditionBranch, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep5">
             <mxswa:ActivityReference.Arguments>
-              <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[True]</InArgument>
+              <InArgument x:TypeArguments="x:Boolean" x:Key="Condition">[ConditionBranchStep5_condition]</InArgument>
             </mxswa:ActivityReference.Arguments>
             <mxswa:ActivityReference.Properties>
               <mxswa:ActivityReference x:Key="Then" AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.Composite, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="ConditionBranchStep5">
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                    <Sequence DisplayName="SetVisibilityStep7: Disable pre Conditions Met">
-                      <mcwc:SetVisibility ControlId="leidos_preconditionsmet" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="False" />
+                    <Sequence DisplayName="SetDisplayModeStep12229: Disable pre Conditions Met">
+                      <mcwc:SetDisplayMode ControlId="leidos_preconditionsmet" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsReadOnly="True" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep8: Enable Date of Granting">
-                      <mcwc:SetVisibility ControlId="leidos_dateofgranting" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="True" />
+                    <Sequence DisplayName="SetDisplayModeStep11769: Enable Date of Granting">
+                      <mcwc:SetDisplayMode ControlId="leidos_dateofgranting" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsReadOnly="False" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep9: Enable Move to Clear to pay">
-                      <mcwc:SetVisibility ControlId="leidos_movetocleartopay" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="True" />
+                    <Sequence DisplayName="SetDisplayModeStep10829: Enable Move to Clear to pay">
+                      <mcwc:SetDisplayMode ControlId="leidos_movetocleartopay" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsReadOnly="False" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
               <x:Null x:Key="Else" />
-              <x:String x:Key="Description"></x:String>
+              <x:String x:Key="Description">Date of Granting contains data</x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
         </sco:Collection>
