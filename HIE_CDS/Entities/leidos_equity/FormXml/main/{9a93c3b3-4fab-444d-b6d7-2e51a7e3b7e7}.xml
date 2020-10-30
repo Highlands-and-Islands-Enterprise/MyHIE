@@ -197,7 +197,7 @@
           </columns>
         </tab>
       </tabs>
-      <header id="{435a10ab-9e05-481f-9f1e-6051cd7fa41d}" columns="111">
+      <header id="{435a10ab-9e05-481f-9f1e-6051cd7fa41d}" columns="1111" labelwidth="130" celllabelalignment="Left" celllabelposition="Left">
         <rows>
           <row>
             <cell id="{04e0d976-1c3b-7d6b-59a1-1b999c329ca6}" showlabel="true" locklevel="0">
@@ -211,6 +211,12 @@
                 <label description="Parent Account" languagecode="1033" />
               </labels>
               <control id="header_leidos_parentaccountid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentaccountid" disabled="false" />
+            </cell>
+            <cell id="{e70d4a8a-2844-5873-7467-db4b45a0ee66}" showlabel="true" locklevel="0">
+              <labels>
+                <label description="Equity Reference" languagecode="1033" />
+              </labels>
+              <control id="header_leidos_equityreference" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_equityreference" disabled="false" />
             </cell>
             <cell id="{50e9a0e5-1d0a-d48a-785d-222accc40442}" showlabel="true" locklevel="0">
               <labels>
@@ -230,12 +236,12 @@
               </labels>
               <control id="footer_statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="true" />
             </cell>
-            <cell id="{0f73d6b4-f616-4e42-ad02-ea6317f2d38c}">
+            <cell id="{0f73d6b4-f616-4e42-ad02-ea6317f2d38c}" showlabel="false">
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
             </cell>
-            <cell id="{996ce9e3-e9c6-41f1-8c11-7c3a5a242c80}">
+            <cell id="{996ce9e3-e9c6-41f1-8c11-7c3a5a242c80}" showlabel="false">
               <labels>
                 <label description="" languagecode="1033" />
               </labels>
@@ -280,11 +286,16 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="12be8eac-d28d-4668-a8a5-725eb3abcd5e" enabled="true" parameters="'3U8:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onsave" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b6b1df1e-9bd3-4c30-9b94-e02bd13dcd4d" enabled="true" parameters="'oXN:*:Update:::217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="a99d4e35-c8e8-4d08-9d6f-6342d8d874d4" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a49713b0-e742-4185-84c3-40729f337394" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="44f9f2f5-9470-4e03-b2f6-33607b81b18b" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="d06d4833-ba59-4333-a3c5-d5bbe6407009" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a7fde1bd-4b95-457a-8c84-1352d8ca26db" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="189829f4-34f4-49c9-ad79-57364282a59f" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

@@ -11,7 +11,7 @@
       <grid name="leidos_equities" jump="leidos_name" select="1" icon="1" preview="0">
         <row name="leidos_equity" id="leidos_equityid">
           <cell name="leidos_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="leidos_typeofholdingproject" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
@@ -21,10 +21,11 @@
         <entity name="leidos_equity">
           <attribute name="leidos_equityid" />
           <attribute name="leidos_name" />
-          <attribute name="createdon" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_typeofholdingproject" />
         </entity>
       </fetch>
     </fetchxml>
