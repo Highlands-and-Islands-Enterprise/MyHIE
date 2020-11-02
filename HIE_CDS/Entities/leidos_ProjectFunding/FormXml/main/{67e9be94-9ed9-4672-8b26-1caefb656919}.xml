@@ -183,13 +183,26 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{7419e538-fc5e-418f-bdaf-6308ea72a3d3}" locklevel="0">
+                        <labels>
+                          <label description="Nett HIE Funding" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_netthiefunding" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_netthiefunding" disabled="false" />
+                      </cell>
+                      <cell id="{d59e69cd-1415-d37d-a142-241c6d2dd4ae}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{950f2563-8eff-43f7-adf9-102282486b8a}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Evidence Notes" languagecode="1033" />
                         </labels>
                         <control id="leidos_evidencenotes" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_evidencenotes" disabled="false" />
                       </cell>
-                      <cell id="{d59e69cd-1415-d37d-a142-241c6d2dd4ae}" showlabel="false">
+                      <cell locklevel="0" id="{2387e01d-3a62-408b-9088-def93e874871}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -207,13 +220,36 @@
                         <labels>
                           <label description="New SG control 1601472095136" languagecode="1033" />
                         </labels>
-                        <control id="Subgrid_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                        <control id="Subgrid_Recoveries" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
                           <parameters>
                             <TargetEntityType>leidos_recovery</TargetEntityType>
                             <ViewId>{DB73968C-1A03-EB11-A813-000D3A7F1BBB}</ViewId>
                             <ViewIds>{716CE58A-DC6A-4377-AD67-D3EF3B1A613F},{DB73968C-1A03-EB11-A813-000D3A7F1BBB}</ViewIds>
                             <EnableViewPicker>false</EnableViewPicker>
                             <RelationshipName>leidos_Recovery_ParentFunding_leidos_Proj</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="General_section_loans" id="cc72666d-37fe-49ea-8070-44c8cc98a286" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Loans" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{02a84cce-af65-4d00-8380-37090e029130}" rowspan="1" colspan="1" showlabel="false">
+                        <labels>
+                          <label description="New SG control 1604335092235" languagecode="1033" />
+                        </labels>
+                        <control id="Subgrid_Loans" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_loan</TargetEntityType>
+                            <ViewId>{4ADE8A78-291D-EB11-A813-0022483FAE82}</ViewId>
+                            <ViewIds>{AC3324A2-19A5-43BE-B910-A1582B1E1D99},{4ADE8A78-291D-EB11-A813-0022483FAE82}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_Loan_ParentFunding_leidos_ProjectF</RelationshipName>
                           </parameters>
                         </control>
                       </cell>
@@ -287,7 +323,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>

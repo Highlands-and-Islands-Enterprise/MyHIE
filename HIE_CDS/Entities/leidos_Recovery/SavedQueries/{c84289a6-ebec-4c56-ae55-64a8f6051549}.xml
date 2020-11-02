@@ -10,7 +10,10 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_recoveryid">
-          <cell name="leidos_name" width="300" />
+          <cell name="leidos_recoverypartner" width="300" />
+          <cell name="leidos_recoveryreference" width="100" />
+          <cell name="leidos_amount" width="100" />
+          <cell name="leidos_totalamountprofiled" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -20,9 +23,11 @@
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_recovery">
           <attribute name="leidos_recoveryid" />
-          <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_recoverypartner" />
+          <attribute name="leidos_recoveryreference" />
+          <attribute name="leidos_totalamountprofiled" />
+          <attribute name="leidos_amount" />
         </entity>
       </fetch>
     </fetchxml>
