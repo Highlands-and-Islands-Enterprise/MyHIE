@@ -170,7 +170,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{f4286b34-fdb7-4cc5-8059-299c04eb08c6}" locklevel="0">
+                      <cell id="{f4286b34-fdb7-4cc5-8059-299c04eb08c6}" locklevel="0" visible="false">
                         <labels>
                           <label description="Recovery Amount" languagecode="1033" />
                         </labels>
@@ -183,7 +183,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{7419e538-fc5e-418f-bdaf-6308ea72a3d3}" locklevel="0">
+                      <cell id="{7419e538-fc5e-418f-bdaf-6308ea72a3d3}" locklevel="0" visible="false">
                         <labels>
                           <label description="Nett HIE Funding" languagecode="1033" />
                         </labels>
@@ -210,7 +210,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="General_section_fundingrecoveries" id="c18fda5b-58a1-463d-80e9-c2180a4720fb" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="General_section_fundingrecoveries" id="c18fda5b-58a1-463d-80e9-c2180a4720fb" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
                   <labels>
                     <label description="Funding Recoveries" languagecode="1033" />
                   </labels>
@@ -233,7 +233,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="General_section_loans" id="cc72666d-37fe-49ea-8070-44c8cc98a286" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="General_section_loans" id="cc72666d-37fe-49ea-8070-44c8cc98a286" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
                   <labels>
                     <label description="Loans" languagecode="1033" />
                   </labels>
@@ -366,18 +366,23 @@
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_fundingamount">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b0e3fa91-fe30-464e-ad56-03a477aae67d" enabled="true" parameters="'53C:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b0e3fa91-fe30-464e-ad56-03a477aae67d" enabled="true" parameters="'53C:*:CreateUpdate::0:217890000:217890000:217890000:217890000','iOG:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="875764f9-9054-4c89-bd41-0289cdb27815" enabled="true" parameters="'ptu:*:CreateUpdate::0:217890000:217890000:217890000:217890000','pfR:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="875764f9-9054-4c89-bd41-0289cdb27815" enabled="true" parameters="'ptu:*:CreateUpdate::0:217890000:217890000:217890000:217890000','pfR:*:CreateUpdate::0:217890000:217890000:217890000:217890000','0Zm:*:CreateUpdate::0:217890000:217890000:217890000:217890000','iOG:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="setValsForQuickCreate" libraryName="leidos_projectfunding.js" handlerUniqueId="{b449827c-122b-e103-1688-beec710ee1a3}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_funddetails">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="ddcd656d-dadb-4743-8e2b-035e6bb1277f" enabled="true" parameters="'ptu:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="ddcd656d-dadb-4743-8e2b-035e6bb1277f" enabled="true" parameters="'ptu:*:CreateUpdate::0:217890000:217890000:217890000:217890000','0Zm:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_recoveryamount">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="314a2c71-e824-478b-a5ee-b790d60b5254" enabled="true" parameters="'iOG:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -386,9 +391,9 @@
       </DisplayConditions>
       <formLibraries>
         <Library name="leidos_projectfunding.js" libraryUniqueId="{e51a4cd3-08b1-654c-b755-ca0a01cb0386}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="c33eab19-2475-4525-8e49-615421ce158d" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="9b6f6a0e-b430-4994-95c4-f0bfb2eb7eaf" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="b625c6a6-490e-4dd1-ab8e-ae5834ecd2b2" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="c70500dc-9229-40d8-a523-2ba835d41e7d" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="929d6aaa-3be9-4ac1-9139-fce8056fb34e" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="468ef0f2-9d9c-4202-8eaf-1b49a72b79a8" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

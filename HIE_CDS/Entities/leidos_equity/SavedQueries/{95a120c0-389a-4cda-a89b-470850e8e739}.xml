@@ -11,6 +11,8 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_equityid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_parentprojectid" width="100" />
+          <cell name="leidos_parentaccountid" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -19,10 +21,12 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_equity">
-          <attribute name="leidos_equityid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_parentprojectid" />
+          <attribute name="leidos_parentaccountid" />
+          <attribute name="leidos_equityid" />
         </entity>
       </fetch>
     </fetchxml>

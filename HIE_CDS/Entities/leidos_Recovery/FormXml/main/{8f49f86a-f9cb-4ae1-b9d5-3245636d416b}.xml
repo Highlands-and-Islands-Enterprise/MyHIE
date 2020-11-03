@@ -32,7 +32,7 @@
                         <labels>
                           <label description="Recovery Partner" languagecode="1033" />
                         </labels>
-                        <control id="leidos_recoverypartner" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_recoverypartner" disabled="false">
+                        <control id="leidos_recoverypartneraccount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_recoverypartneraccount" disabled="false">
                           <parameters>
                             <DefaultViewId>{3B04C112-111D-EB11-A813-000D3A7FEDBE}</DefaultViewId>
                             <AvailableViewIds>{A9AF0AB8-861D-4CFA-92A5-C6281FED7FAB},{1E44C688-DF62-EA11-A811-000D3A0BAD17},{15C63745-0A6E-4322-8416-A62C84D90279},{CFBCD7AF-AEE5-4E45-8ECC-C040D4020581},{49FB9771-09E1-4E70-B193-198752493577},{00000000-0000-0000-00AA-000010001002},{65FFAF9A-E8C5-432D-860B-32F841B00D87},{00000000-0000-0000-00AA-000010001031},{00000000-0000-0000-00AA-000010001001},{D234426E-1F37-4944-9255-50E19B541C4C},{150ADB76-DF62-EA11-A811-000D3A0BAD17},{3B04C112-111D-EB11-A813-000D3A7FEDBE},{217061E1-853E-EA11-A812-000D3A0BAD17},{92298F8A-BDB6-EA11-A812-000D3A7F1BBB}</AvailableViewIds>
@@ -159,6 +159,23 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="leidos_amount">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="13d9dcf3-2e84-4f32-aa47-f44a70bf695d" enabled="true" parameters="'U6k:*:CreateUpdate::0:217890000:217890000:217890000:217890000','hzE:*:Update::0:217890000:217890000:217890000:217890000','gHT:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="11ee5bfe-d7c9-4640-8639-4358b26a88f9" enabled="true" parameters="'hzE:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="33eb9ca2-16fd-4298-aba2-02ebd6b80a63" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="ddd4836c-96f0-43aa-bc4f-1f27d5fcbf61" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0fb3f6a1-3a4f-43e6-9a08-054fd3ab2810" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
