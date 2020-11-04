@@ -1,5 +1,18 @@
 var Leidos = window.Leidos || {};
 
+Leidos.ShowProjectAmendmentError = function (error)
+{
+	"use strict";
+	Xrm.Navigation.openErrorDialog({ errorCode:"Error", details:error.message, message:error.message }).then(
+    function (success) {
+        console.log(success);        
+    },
+    function (error) {
+        console.log(error);
+    });
+}
+
+
 Leidos.SetProjectAmendmentPathControlViews = function (executionContext) {
    "use strict";
     Leidos.setLookupViewId(executionContext, "header_process_leidos_gradeestaff","{aa3f26b8-b6bb-ea11-a812-000d3a7f1bbb}");
@@ -19,20 +32,20 @@ Leidos.ValidateDelegatedAuthority = function(executionContext) {
     var delegatedAuthority = null;
     var amendmentsComplete = formContext.getAttribute('leidos_amendmentscomplete').getValue();
 
-    if(currentStatus == '445260000'){ /* Draft */
-		if (currentPath == '445260001') { /* Executive grade staff */
+    if(currentStatus === '445260000'){ /* Draft */
+		if (currentPath === '445260001') { /* Executive grade staff */
 			delegatedAuthority = formContext.getAttribute('leidos_executivegradestaff').getValue();	
-		} else if (currentPath == '445260000') { /* Grade E staff */
+		} else if (currentPath === '445260000') { /* Grade E staff */
 			delegatedAuthority = formContext.getAttribute('leidos_gradeestaff').getValue();	
-		} else if (currentPath == '445260006') { /* Grade F staff */
+		} else if (currentPath === '445260006') { /* Grade F staff */
 			delegatedAuthority = formContext.getAttribute('leidos_gradefstaff').getValue();	
-		} else if (currentPath == '445260003') { /* Leadership team */
+		} else if (currentPath === '445260003') { /* Leadership team */
 			delegatedAuthority = formContext.getAttribute('leidos_leadershipteam').getValue();
-		} else if (currentPath =='445260005') { /* HIE Board */
+		} else if (currentPath ==='445260005') { /* HIE Board */
 			delegatedAuthority = formContext.getAttribute('leidos_hieboard').getValue();
-		} else if (currentPath == '445260004') { /* HIE Chief Executive */
+		} else if (currentPath === '445260004') { /* HIE Chief Executive */
 			delegatedAuthority = formContext.getAttribute('leidos_hiechiefexecutive').getValue();	
-		} else if (currentPath == '445260002') { /* Finance */
+		} else if (currentPath === '445260002') { /* Finance */
 			delegatedAuthority = formContext.getAttribute('leidos_finance').getValue();	
 		}
 
@@ -60,11 +73,12 @@ Leidos.DelayedDACheck = function (executionContext) {
 
 Leidos.refreshSave =  function (executionContext) {
     "use strict";
-    window.parent.Xrm.Page.data.refresh(true).then(function() {
+	var formContext = executionContext.getFormContext();
+    formContext.data.refresh(true).then(function() {
         Leidos.ValidateDelegatedAuthority(executionContext);
     }, 
     function(error) {
-        alert(error.message);
+        Leidos.ShowProjectAmendmentError(error);
     })
 }
    

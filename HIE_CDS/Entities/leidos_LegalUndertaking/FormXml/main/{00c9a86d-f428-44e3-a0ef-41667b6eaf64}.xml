@@ -68,12 +68,10 @@
                             <AutoResolve>true</AutoResolve>
                             <DisableMru>false</DisableMru>
                             <DisableQuickFind>false</DisableQuickFind>
-                            <DisableViewPicker>false</DisableViewPicker>
+                            <DisableViewPicker>true</DisableViewPicker>
                             <DefaultViewId>{A2D479C5-53E3-4C69-ADDD-802327E67A0D}</DefaultViewId>
-                            <FilterRelationshipName>leidos_Account_AuthorisedSignatory_Contact</FilterRelationshipName>
-                            <DependentAttributeName>leidos_legalundertaking.leidos_parentaccount</DependentAttributeName>
                             <DependentAttributeType>account</DependentAttributeType>
-                            <AllowFilterOff>true</AllowFilterOff>
+                            <AllowFilterOff>false</AllowFilterOff>
                           </parameters>
                         </control>
                       </cell>
@@ -391,11 +389,12 @@
             <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{2693670b-ecd0-2938-15c4-61ce0bc79ac3}" enabled="true" parameters="&quot;header_process_leidos_delegatedauthority&quot;,&quot;{824f07be-3f0a-eb11-a813-000d3a7f1bbb}&quot;" passExecutionContext="true" />
             <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{36ea0326-ce48-7130-2170-b1aa124cc254}" enabled="true" parameters="&quot;header_process_leidos_hiecontractsignatory&quot;,&quot;{824f07be-3f0a-eb11-a813-000d3a7f1bbb}&quot;" passExecutionContext="true" />
             <Handler functionName="Leidos.filterDefinition" libraryName="leidos_common" handlerUniqueId="{b94856a2-51c2-c956-68a1-bd46967647a4}" enabled="false" parameters="&quot;leidos_parentaccount&quot;,&quot;header_process_leidos_authorisedsignatory&quot;,&quot;4c21f7ce-370d-eb11-a813-000d3a7f1bbb&quot;,&quot;   &lt;filter type=&quot;and&quot;&gt;       &lt;condition attribute=&quot;parentcustomerid&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;     &lt;/filter&gt;&quot;" passExecutionContext="false" />
+            <Handler functionName="Leidos.AuthSigFilterview" libraryName="leidos_legalundertaiking" handlerUniqueId="{3c5156de-e2a1-ac97-cbed-a5d9dab9e2c3}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_routetype">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7151c45d-b52f-4850-9256-11113720e180" enabled="true" parameters="'yU5:*:Create::0:217890000:217890000:217890000:217890000','Ke2:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7151c45d-b52f-4850-9256-11113720e180" enabled="true" parameters="'Ke2:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_datedocumentsigned">
@@ -438,9 +437,14 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="05aaa88f-c738-44ad-8780-5502adc46e92" enabled="true" parameters="'gsC:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_project">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="bcb00cd5-0aca-4ead-afb9-3762a7e1dd61" enabled="true" parameters="'yU5:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -598,9 +602,10 @@
       </controlDescriptions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{1c3914a4-1e86-e32d-7b29-542a78d244d1}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="3ee9a3c7-85c2-4e7d-afce-be89776edfa6" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="8a871ce1-2a53-4769-881d-8fc35409e29e" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="cb23bf35-c91f-41c6-8d64-4683d556f5e5" />
+        <Library name="leidos_legalundertaiking" libraryUniqueId="{55803621-d13a-eda5-72a4-522a972a6205}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="9a88a9a6-971d-4bfb-afef-a483040e222b" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a1b4df8b-7699-4f64-98a6-e8d224c8b4d7" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="51c8d4a0-ebaa-47ae-a293-0200297a4237" />
       </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />

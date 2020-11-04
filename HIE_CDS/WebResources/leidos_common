@@ -92,10 +92,10 @@ Leidos.filterDefinition = function(executionContext, parentAttribute, childAttri
     lookupControl = formContext.getControl(parentAttribute).getAttribute().getValue();
     lookupId = lookupControl[0].id;
 
-    if (lookupId != null || lookupId !== undefined) {
+    if (lookupId !== null || lookupId !== undefined) {
       filterBpf = filterXml.replace("{{id}}", lookupId);
 
-      if (formContext.getControl(childAttribute) != null) {
+      if (formContext.getControl(childAttribute) !== null) {
         formContext.getControl(childAttribute).addCustomFilter(filterBpf);
       }
     }

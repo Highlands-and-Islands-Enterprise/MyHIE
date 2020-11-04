@@ -1,0 +1,49 @@
+var Leidos = window.Leidos || {};
+
+
+Leidos.AuthSigFilterview = function(executionContext) {
+    "use strict";
+
+    var formContext = executionContext.getFormContext();   
+    var viewId= formContext.getControl("leidos_authorisedsignatory").getDefaultView();
+    var entityName = "contact";
+    var viewDisplayName = "Authorised Signatories";
+
+
+    var fetchData = {
+		leidos_legalundertakingid: formContext.data.entity.getId()
+	};
+	var fetchXml = [
+"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='true'>",
+"  <entity name='contact'>",
+"    <attribute name='fullname' />",
+"    <attribute name='telephone1' />",
+"    <attribute name='contactid' />",
+"    <order attribute='fullname' descending='false' />",
+"    <link-entity name='leidos_contact_account_authsig' from='contactid' to='contactid' visible='false' intersect='true'>",
+"      <link-entity name='account' from='accountid' to='accountid' alias='al'>",
+"        <link-entity name='leidos_project' from='leidos_parentaccount' to='accountid' link-type='inner' alias='am'>",
+"          <link-entity name='leidos_legalundertaking' from='leidos_project' to='leidos_projectid' link-type='inner' alias='an'>",
+"            <filter type='and'>",
+"              <condition attribute='leidos_legalundertakingid' operator='eq' value='", fetchData.leidos_legalundertakingid , "'/>",
+"            </filter>",
+"          </link-entity>",
+"        </link-entity>",
+"      </link-entity>",
+"    </link-entity>",
+"  </entity>",
+"</fetch>",
+	].join("");
+    
+
+
+    
+    var layoutXml = "<grid name='resultset' object='2' jump='fullname' select='1' icon='1' preview='1' >" 
+    +"<row name='result' id='contactid' >"
+    +"<cell name='fullname' width='300' />"
+    +"</row></grid>";
+
+
+
+    formContext.getControl("leidos_authorisedsignatory").addCustomView(viewId, entityName, viewDisplayName, fetchXml, layoutXml, true);
+}

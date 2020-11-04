@@ -1,11 +1,11 @@
 function setParentProject(eContext) {
-
+   "use strict";
     try {
         var formContext = eContext.getFormContext(); // get Form Context
         var parentProject = window.top.attributename; // get Parent Project
 
         // Set Parent Project on quick create form
-        if (parentProject != null) {
+        if (parentProject !== null) {
             var lookup = new Array();
             lookup[0] = new Object;
             lookup[0].id = parentProject.id;
@@ -23,6 +23,7 @@ function setParentProject(eContext) {
 }
 
 function onLoad(eContext) {
+   "use strict";
 
     setParentProject(eContext);
 

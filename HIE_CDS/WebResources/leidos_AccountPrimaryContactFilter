@@ -5,7 +5,7 @@ Leidos.filterLookupContact = function(executionContext) {
   "use strict";
   var formContext = executionContext.getFormContext();
   //Check if the control exist on the form
-  if (formContext.getControl("header_process_primarycontactid") != null) {
+  if (formContext.getControl("header_process_primarycontactid") !== null) {
     // add the event handler for PreSearch Event
     formContext.getControl("header_process_primarycontactid").addPreSearch(Leidos.addFilter);
   }
@@ -31,7 +31,7 @@ Leidos.filterSICLookup = function(executionContext) {
   "use strict";
   var formContext = executionContext.getFormContext();
   //Check if the control exist on the form
-  if (formContext.getControl("header_process_leidos_sic2") != null) {
+  if (formContext.getControl("header_process_leidos_sic2") !== null) {
     // add the event handler for PreSearch Event
     formContext.getControl("header_process_leidos_sic2").addPreSearch(Leidos.addFilterSIC);
   }
