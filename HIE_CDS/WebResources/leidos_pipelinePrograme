@@ -1,0 +1,50 @@
+var Leidos = window.Leidos || {};
+
+Leidos.SetFundingSourceView = function(executionContext) {
+    "use strict";
+    Leidos.setLookupViewId(executionContext, "header_process_leidos_fundingsource", "{c8406a53-d4ba-ea11-a812-000d3a7f1bbb}");
+  
+  }
+
+
+Leidos.DelegatedAuthFilterview = function(executionContext) {
+    "use strict";
+
+    var formContext = executionContext.getFormContext();   
+    var viewId= formContext.getControl("leidos_delegatedauthority").getDefaultView();
+    var entityName = "leidos_delegatedauthorityapprovaltable";
+    var viewDisplayName = "Delegated Authority";
+    var hieFundingAmount = formContext.getAttribute("leidos_anticipatedhiefunding").getValue();
+
+
+    var fetchData = {
+		leidos_maximumsignoffamount: hieFundingAmount
+	};
+	var fetchXml = [
+        "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>",
+        "  <entity name='leidos_delegatedauthorityapprovaltable'>",
+        "    <attribute name='leidos_delegatedauthorityapprovaltableid' />",
+        "    <attribute name='leidos_maximumsignoffamount' />",
+        "    <attribute name='leidos_name' />",
+        "    <filter type='and'>",
+        "      <condition attribute='leidos_maximumsignoffamount' operator='gt' value='", fetchData.leidos_maximumsignoffamount/*2000*/, "'/>",
+        "    </filter>",
+        "    <link-entity name='systemuser' from='systemuserid' to='leidos_userrecord' link-type='inner' alias='a_e4aebf5d60524d22abe09e0445d3d411'>",
+        "      <filter type='and'>",
+        "        <condition attribute='systemuserid' operator='ne-userid' />",
+        "      </filter>",
+        "    </link-entity>",
+        "  </entity>",
+        "</fetch>",
+            ].join("");
+
+    
+    var layoutXml = "<grid name='resultset' object='10267' jump='leidos_name' select='1' icon='1' preview='1' >" 
+    +"<row name='result' id='leidos_delegatedauthorityapprovaltableid' >"
+    +"<cell name='leidos_name' width='100' />"
+    +"</row></grid>";
+
+
+
+    formContext.getControl("leidos_delegatedauthority").addCustomView(viewId, entityName, viewDisplayName, fetchXml, layoutXml, true);
+}

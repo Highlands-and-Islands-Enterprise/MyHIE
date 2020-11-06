@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{3fa54253-5e1f-eb11-a813-0022483fae82}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_milestoneid">
+          <cell name="leidos_name" width="200" />
+          <cell name="leidos_parentprogramme" width="100" />
+          <cell name="leidos_performancemanagementoutcome" width="100" />
+          <cell name="leidos_expectedduedate" width="100" />
+          <cell name="leidos_alertdate" width="100" />
+          <cell name="leidos_markcompleted" width="100" />
+          <cell name="leidos_evidencerequirementtext" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_milestone">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_milestoneid" />
+          <filter type="and">
+            <condition attribute="leidos_parentprogramme" operator="not-null" />
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <attribute name="leidos_parentprogramme" />
+          <attribute name="leidos_expectedduedate" />
+          <attribute name="leidos_performancemanagementoutcome" />
+          <attribute name="leidos_alertdate" />
+          <attribute name="leidos_markcompleted" />
+          <attribute name="leidos_evidencerequirementtext" />
+          <order attribute="leidos_parentprogramme" descending="false" />
+          <order attribute="leidos_name" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1155</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Programme Milestones" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

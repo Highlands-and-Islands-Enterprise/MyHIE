@@ -11,6 +11,13 @@
       <grid name="leidos_pipelineprogrammes" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="leidos_pipelineprogramme" id="leidos_pipelineprogrammeid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_supportitemtype" width="100" />
+          <cell name="leidos_anticipatedhiefunding" width="100" />
+          <cell name="leidos_anticipatedprogrammecost" width="100" />
+          <cell name="leidos_costtype" width="100" />
+          <cell name="leidos_anticipatedstartdate" width="100" />
+          <cell name="leidos_fundingsource" width="100" />
+          <cell name="leidos_team" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -22,10 +29,17 @@
           <attribute name="leidos_pipelineprogrammeid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="leidos_anticipatedhiefunding" />
+          <attribute name="leidos_anticipatedprogrammecost" />
+          <attribute name="leidos_costtype" />
+          <attribute name="leidos_anticipatedstartdate" />
+          <attribute name="leidos_fundingsource" />
+          <attribute name="leidos_team" />
+          <attribute name="leidos_supportitemtype" />
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
