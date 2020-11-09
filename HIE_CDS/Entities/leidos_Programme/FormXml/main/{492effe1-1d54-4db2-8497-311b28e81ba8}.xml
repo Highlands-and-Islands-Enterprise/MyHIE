@@ -490,15 +490,18 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{57dd2e21-81c4-4c03-9405-62185a6b8bd3}" locklevel="0">
+                      <cell id="{8adece64-3c09-9be1-1c0b-eb17b8d82e80}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Finance Delegated Authority" languagecode="1033" />
+                          <label description="Leadership Team" languagecode="1033" />
                         </labels>
-                        <control id="leidos_financedelegatedauthority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_financedelegatedauthority" disabled="true">
+                        <control id="leidos_leadershipteam" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_leadershipteam" disabled="true" uniqueid="{48c6dad2-d44e-461b-5222-3bd449093ea1}">
                           <parameters>
-                            <DefaultViewId>{8EF3343F-05CC-EA11-A812-000D3A7FEDBE}</DefaultViewId>
-                            <AvailableViewIds>{0976D964-6C9E-4D23-90C3-078677A81F7D},{EDFD18EC-B3BB-EA11-A812-000D3A7F1BBB},{53961D04-1FDA-40FD-B978-8E0967433FB2},{AB53A03A-B7BB-EA11-A812-000D3A7FEDBE},{8EF3343F-05CC-EA11-A812-000D3A7FEDBE},{AA3F26B8-B6BB-EA11-A812-000D3A7F1BBB},{DA8A1BC4-B6BB-EA11-A812-000D3A7F1BBB},{1359B25E-B7BB-EA11-A812-000D3A7FEDBE},{78B7A846-B7BB-EA11-A812-000D3A7FEDBE},{2D197E17-8FF7-4580-B20D-B335AA91B158},{21C34315-32BC-EA11-A812-000D3A7FEDBE},{824F07BE-3F0A-EB11-A813-000D3A7F1BBB},{88C56D5A-3A15-EB11-A813-0022483FAE82}</AvailableViewIds>
-                            <DisableViewPicker>true</DisableViewPicker>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{53961D04-1FDA-40FD-B978-8E0967433FB2}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
                           </parameters>
                         </control>
                       </cell>
@@ -530,7 +533,7 @@
                         </labels>
                         <control id="leidos_recommendation" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_recommendation" disabled="false" uniqueid="{51c9ae83-08b3-4faa-815c-6a6e07940201}" />
                       </cell>
-                      <cell locklevel="0" id="{1b0ab6ef-3ef7-4400-8ee9-2db9c896a3dd}">
+                      <cell locklevel="0" id="{1b0ab6ef-3ef7-4400-8ee9-2db9c896a3dd}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -543,7 +546,7 @@
                         </labels>
                         <control id="leidos_submitforapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitforapproval" disabled="false" uniqueid="{4dea590b-cd40-4c59-b0d9-1803e4c21ec7}" />
                       </cell>
-                      <cell locklevel="0" id="{76997e97-85d1-418b-9cc7-d20559b4c14e}">
+                      <cell locklevel="0" id="{76997e97-85d1-418b-9cc7-d20559b4c14e}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -623,7 +626,28 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar>
+          <NavBarByRelationshipItem RelationshipName="leidos_Project_leidos_Programme_leidos_Pr" Sequence="1000" Area="Sales" Id="nav_leidos_Project_leidos_Programme_leidos_Pr">
+            <Titles>
+              <Title LCID="1033" Text="Projects" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_Programme_Amendment_Programme_leid" Sequence="1001" Area="Sales" Id="nav_leidos_Programme_Amendment_Programme_leid">
+            <Titles>
+              <Title LCID="1033" Text="Programme Amendments" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_LegalUndertaking_ProjectProgramme_" Sequence="1002" Area="Sales" Id="nav_leidos_LegalUndertaking_ProjectProgramme_">
+            <Titles>
+              <Title LCID="1033" Text="Legal Undertakings" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="bpf_leidos_programme_leidos_bpfprogramme" Sequence="1003" Area="Sales" Id="nav_bpf_leidos_programme_leidos_bpfprogramme" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="BPF - Programme" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -632,7 +656,7 @@
           </NavBarArea>
           <NavBarArea Id="Sales">
             <Titles>
-              <Title LCID="1033" Text="Sales" />
+              <Title LCID="1033" Text="Related Records" />
             </Titles>
           </NavBarArea>
           <NavBarArea Id="Service">
@@ -874,7 +898,6 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true" />
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{b732eaa7-0904-2035-74b0-1e754492539a}" />
         <Library name="leidos_Programme" libraryUniqueId="{82da978c-50b6-656a-53d4-e2cca6e8e84a}" />
@@ -882,6 +905,7 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="9125da95-28d4-40e3-995c-1ce039ff81cb" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="92d83470-a269-4347-9d9c-19a8c0b6350b" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true" />
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
