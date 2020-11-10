@@ -28,6 +28,23 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{a90d05ce-9d86-598d-128d-895aa7d244dd}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Parent Account" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_parentaccount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentaccount" disabled="false" uniqueid="{0ee99ed7-1888-0d3b-aeb3-e3aac299a208}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{A9AF0AB8-861D-4CFA-92A5-C6281FED7FAB}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{63a55a99-64fe-4e24-99bf-6e201175868d}">
                         <labels>
                           <label description="Owner" languagecode="1033" />
@@ -94,7 +111,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="Legal_Review" id="2e911559-c8b7-4c56-9a94-75ba910fd761" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
+                <section name="Legal_Review" id="2e911559-c8b7-4c56-9a94-75ba910fd761" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
                   <labels>
                     <label description="Legal Review" languagecode="1033" />
                   </labels>
@@ -118,7 +135,7 @@
                         <labels>
                           <label description="Submit for DA Approval" languagecode="1033" />
                         </labels>
-                        <control id="leidos_submitfordaapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitfordaapproval" uniqueid="{52c12488-a37d-48c9-a8cc-627d3edac979}" />
+                        <control id="leidos_submitfordaapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitfordaapproval" uniqueid="{48b75e63-beea-4629-ba58-123f65289118}" />
                       </cell>
                     </row>
                     <row>
@@ -150,15 +167,23 @@
                         <labels>
                           <label description="Send to Legal for Review" languagecode="1033" />
                         </labels>
-                        <control id="leidos_sendtolegalforreview" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_sendtolegalforreview" disabled="false" />
+                        <control id="leidos_sendtolegalforreview" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_sendtolegalforreview" disabled="false" uniqueid="{3a21a572-135a-4d15-990e-6896f1c49988}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{09ab4705-a099-4629-a996-782096d6f862}" locklevel="0">
+                      <cell id="{a8e7bedd-0972-4be7-9bd0-9c7897114953}" locklevel="0">
                         <labels>
-                          <label description="Approved On " languagecode="1033" />
+                          <label description="Delegated Authority Feedback Complete" languagecode="1033" />
                         </labels>
-                        <control id="leidos_approvedon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_approvedon" disabled="true" />
+                        <control id="leidos_delegatedauthorityfeedbackcomplete" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_delegatedauthorityfeedbackcomplete" disabled="false" uniqueid="{71a2a456-3f04-4681-be40-e3ad8fb87989}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2eb7089c-8a3a-741e-510d-6378d4ab0cd8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Legal Review Complete" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_legalreviewcomplete" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_legalreviewcomplete" disabled="false" uniqueid="{ca06f209-f83b-48e1-866c-74f9c8e5cc82}" />
                       </cell>
                     </row>
                   </rows>
@@ -385,10 +410,10 @@
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="da78ba21-bdbc-4660-96b6-26be56e69025" enabled="true" parameters="'Zz0:*:CreateUpdate::0:217890000:217890000:217890000:217890000','rpJ:*:Update::0:217890000:217890000:217890000:217890000','Ke2:*:CreateUpdate::0:217890000:217890000:217890000:217890000','gsC:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-            <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{7154b17a-3b8a-eb42-66be-244924d0cc4a}" enabled="true" parameters="&quot;header_process_leidos_project&quot;,&quot;{1732ce6f-11af-ea11-a812-000d3a7f1bbb}&quot;" passExecutionContext="true" />
+            <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{7154b17a-3b8a-eb42-66be-244924d0cc4a}" enabled="false" parameters="&quot;header_process_leidos_project&quot;,&quot;{1732ce6f-11af-ea11-a812-000d3a7f1bbb}&quot;" passExecutionContext="true" />
             <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{2693670b-ecd0-2938-15c4-61ce0bc79ac3}" enabled="true" parameters="&quot;header_process_leidos_delegatedauthority&quot;,&quot;{824f07be-3f0a-eb11-a813-000d3a7f1bbb}&quot;" passExecutionContext="true" />
             <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{36ea0326-ce48-7130-2170-b1aa124cc254}" enabled="true" parameters="&quot;header_process_leidos_hiecontractsignatory&quot;,&quot;{824f07be-3f0a-eb11-a813-000d3a7f1bbb}&quot;" passExecutionContext="true" />
-            <Handler functionName="Leidos.filterDefinition" libraryName="leidos_common" handlerUniqueId="{b94856a2-51c2-c956-68a1-bd46967647a4}" enabled="false" parameters="&quot;leidos_parentaccount&quot;,&quot;header_process_leidos_authorisedsignatory&quot;,&quot;4c21f7ce-370d-eb11-a813-000d3a7f1bbb&quot;,&quot;   &lt;filter type=&quot;and&quot;&gt;       &lt;condition attribute=&quot;parentcustomerid&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;     &lt;/filter&gt;&quot;" passExecutionContext="false" />
+            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{b94856a2-51c2-c956-68a1-bd46967647a4}" enabled="true" parameters="&quot;leidos_parentaccount&quot;,&quot;leidos_project&quot;,&quot;1732ce6f-11af-ea11-a812-000d3a7f1bbb&quot;, &quot;&lt;filter type='and'&gt;&lt;condition attribute='statuscode' operator='eq' value='445260001' /&gt;&lt;condition attribute='leidos_parentaccount' operator='eq'  value='{{id}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
             <Handler functionName="Leidos.AuthSigFilterview" libraryName="leidos_legalundertaiking" handlerUniqueId="{3c5156de-e2a1-ac97-cbed-a5d9dab9e2c3}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
@@ -427,11 +452,6 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="788788b3-02cc-4dee-a098-bdb8583a107d" enabled="true" parameters="'Zz0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_approvedon">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="23739cf0-9e96-49de-bb72-93abc1211fdf" enabled="true" parameters="'gsC:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
         <event name="onchange" application="false" active="false" attribute="leidos_documentationreceivedfromlegal">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="05aaa88f-c738-44ad-8780-5502adc46e92" enabled="true" parameters="'gsC:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
@@ -442,9 +462,14 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="bcb00cd5-0aca-4ead-afb9-3762a7e1dd61" enabled="true" parameters="'yU5:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_parentaccount">
+          <Handlers>
+            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{3d45b5c2-566c-5ed5-92c9-b1318d5b4be8}" enabled="true" parameters="&quot;leidos_parentaccount&quot;,&quot;leidos_project&quot;,&quot;1732ce6f-11af-ea11-a812-000d3a7f1bbb&quot;, &quot;&lt;filter type='and'&gt;&lt;condition attribute='statuscode' operator='eq' value='445260001' /&gt;&lt;condition attribute='leidos_parentaccount' operator='eq'  value='{{id}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -474,28 +499,6 @@
         </NavBarAreas>
       </Navigation>
       <controlDescriptions>
-        <controlDescription forControl="{52c12488-a37d-48c9-a8cc-627d3edac979}">
-          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
-            <parameters>
-              <datafieldname>leidos_submitfordaapproval</datafieldname>
-            </parameters>
-          </customControl>
-          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
-            <parameters>
-              <value>leidos_submitfordaapproval</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
-            <parameters>
-              <value>leidos_submitfordaapproval</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
-            <parameters>
-              <value>leidos_submitfordaapproval</value>
-            </parameters>
-          </customControl>
-        </controlDescription>
         <controlDescription forControl="{6feda937-fcf6-4c8a-8ddc-7c598bae7bde}">
           <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
             <parameters>
@@ -596,6 +599,99 @@
           <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
             <parameters>
               <value>leidos_requiresdelegatedauthorityinput</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{71a2a456-3f04-4681-be40-e3ad8fb87989}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_delegatedauthorityfeedbackcomplete</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_delegatedauthorityfeedbackcomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_delegatedauthorityfeedbackcomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_delegatedauthorityfeedbackcomplete</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{3a21a572-135a-4d15-990e-6896f1c49988}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_sendtolegalforreview</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_sendtolegalforreview</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_sendtolegalforreview</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_sendtolegalforreview</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{ca06f209-f83b-48e1-866c-74f9c8e5cc82}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_legalreviewcomplete</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_legalreviewcomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_legalreviewcomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_legalreviewcomplete</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{48b75e63-beea-4629-ba58-123f65289118}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_submitfordaapproval</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl name="MscrmControls.FieldControls.ToggleControl" formFactor="-1">
+            <parameters>
+              <value>leidos_submitfordaapproval</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitfordaapproval</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitfordaapproval</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_submitfordaapproval</value>
             </parameters>
           </customControl>
         </controlDescription>
