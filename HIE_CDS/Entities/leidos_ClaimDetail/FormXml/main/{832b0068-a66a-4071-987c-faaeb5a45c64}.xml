@@ -28,6 +28,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{7cec22d3-3445-5e58-d7cd-8ea452546247}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Invoice Date" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_invoicedate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="leidos_invoicedate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{24bc7961-947e-438b-888a-64923a0ef02a}" locklevel="0">
                         <labels>
                           <label description="Supplier" languagecode="1033" />
@@ -60,6 +68,30 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{5c81a729-abe7-22d2-8d9b-6a4326584424}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Invoice date eligible?" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_eligibleinvoicedate" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_eligibleinvoicedate" disabled="false" uniqueid="{ec098884-5624-018d-280d-e1446a9c213c}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c0a01ea9-1787-4ee4-83d0-06a7985f01d3}" locklevel="0">
+                        <labels>
+                          <label description="Evidence of Spend" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_evidenceofspend" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_evidenceofspend" disabled="false" uniqueid="{26cb0120-c891-49b5-a4ff-50ee88664915}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3ddf7c13-9670-47c2-a827-de8762e2ef32}" locklevel="0">
+                        <labels>
+                          <label description="Evidence of Payment" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_evidenceofpayment" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_evidenceofpayment" disabled="false" uniqueid="{9403c49a-ecdd-47cb-b2cf-a36ee1568db1}" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{0b888cd5-699d-4f75-b40c-adab26b95316}" locklevel="0">
                         <labels>
                           <label description="Eligible" languagecode="1033" />
@@ -68,19 +100,31 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{2b27307b-38ba-4983-85b4-4e775dc23be1}" locklevel="0">
-                        <labels>
-                          <label description="Invoice date eligible?" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_invoicedateeligible" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_invoicedateeligible" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{d087ce7c-7b5f-42d8-ab06-4631af45b40a}" locklevel="0">
                         <labels>
                           <label description="Reason if not eligible" languagecode="1033" />
                         </labels>
                         <control id="leidos_reasonifnoteligible" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_reasonifnoteligible" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="Notes" id="a49c8e81-03f1-4a9c-963a-174007dd13cb" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Upload Evidence" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{8e066627-1cf1-4a03-a032-1ce8596e6a60}" showlabel="false" rowspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false">
+                          <parameters>
+                            <UClientEnableSearch>false</UClientEnableSearch>
+                            <UClientShowFilterPane>false</UClientShowFilterPane>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
@@ -156,9 +200,119 @@
           </row>
         </rows>
       </footer>
+      <controlDescriptions>
+        <controlDescription forControl="{9403c49a-ecdd-47cb-b2cf-a36ee1568db1}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_evidenceofpayment</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_evidenceofpayment</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_evidenceofpayment</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_evidenceofpayment</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{26cb0120-c891-49b5-a4ff-50ee88664915}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_evidenceofspend</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_evidenceofspend</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_evidenceofspend</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_evidenceofspend</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{ec098884-5624-018d-280d-e1446a9c213c}">
+          <customControl id="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_eligibleinvoicedate</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_eligibleinvoicedate</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_eligibleinvoicedate</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_eligibleinvoicedate</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+      <Navigation>
+        <NavBar />
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="leidos_invoicedate">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8c6606d6-765e-41ae-8f42-5be0f2a013fe" enabled="true" parameters="'r1m:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="b97d8529-1731-4ab4-97e3-231dffab3392" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="12f09bbe-2e38-4d88-a3a8-138281196660" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="298a7d8b-12ad-464c-9b83-906aa385a71d" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

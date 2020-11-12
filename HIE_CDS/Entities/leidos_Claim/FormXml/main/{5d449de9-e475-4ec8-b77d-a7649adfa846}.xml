@@ -7,12 +7,12 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls">
       <tabs>
-        <tab verticallayout="true" id="{73a99ee0-3614-442b-abd7-0dc2176728ea}" IsUserDefined="1">
+        <tab verticallayout="true" id="{73a99ee0-3614-442b-abd7-0dc2176728ea}" IsUserDefined="1" name="ClaimSummary">
           <labels>
-            <label description="General" languagecode="1033" />
+            <label description="Claim Summary" languagecode="1033" />
           </labels>
           <columns>
-            <column width="33%">
+            <column width="50%">
               <sections>
                 <section showlabel="false" showbar="false" IsUserDefined="0" id="{519bfa73-9da3-4cf0-a913-0fe806bb88b6}">
                   <labels>
@@ -24,22 +24,75 @@
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
-                        <control id="leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" />
+                        <control id="header_leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{a8c48fed-b132-473b-be6f-6c9d35f4dadd}">
+                      <cell id="{59cfbbcb-35b8-4da3-8811-23244820ade5}" locklevel="0">
                         <labels>
-                          <label description="Owner" languagecode="1033" />
+                          <label description="Parent Account" languagecode="1033" />
                         </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                        <control id="leidos_parentaccount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentaccount" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{070cced2-07ab-842a-90ea-20dbe20c0183}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Parent Project" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_parentproject" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentproject" disabled="false" uniqueid="{aa49475c-6ce5-13e6-c989-ed6b0996d2ab}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>true</DisableQuickFind>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{15339326-3524-EB11-A813-0022483FAE82}</DefaultViewId>
+                            <FilterRelationshipName>leidos_Project_ParentAccount_Account</FilterRelationshipName>
+                            <DependentAttributeName>leidos_claim.leidos_parentaccount</DependentAttributeName>
+                            <DependentAttributeType>account</DependentAttributeType>
+                            <AllowFilterOff>true</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{589a7d8b-777c-4154-b73e-9f44474ae2f8}" showlabel="false">
+                        <labels>
+                          <label description="Account Details" languagecode="1033" />
+                        </labels>
+                        <control id="AccountDetails" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="leidos_parentaccount" disabled="false">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;b4379cb4-4124-eb11-a813-000d3a7fedbe&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="Funding" id="9428bcb9-d3b0-4cfa-956f-3d54b1d1a33b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Funding" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{0a54b748-6a86-46c3-bdb1-04438d4141bc}" showlabel="false">
+                        <labels>
+                          <label description="New QV control 1605089532043" languagecode="1033" />
+                        </labels>
+                        <control id="header_QuickviewControl1605089532043" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="leidos_parentproject" disabled="false">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="leidos_project"&gt;309b7083-0424-eb11-a813-000d3a7fedbe&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
                 </section>
               </sections>
             </column>
-            <column width="66%">
+            <column width="50%">
               <sections>
                 <section showlabel="false" showbar="false" id="{953c0082-7cb6-410a-8af4-59a1829c91d7}" IsUserDefined="0" height="auto">
                   <labels>
@@ -111,34 +164,34 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{45bbb102-d63b-44fe-b801-df3436752b9f}">
+                      <cell locklevel="0" id="{45bbb102-d63b-44fe-b801-df3436752b9f}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{e0275e94-772d-4438-bb5f-e454ec9efb2c}">
+                      <cell locklevel="0" id="{e0275e94-772d-4438-bb5f-e454ec9efb2c}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{fe624ffb-4dca-4756-a8d4-af6ee8fab8a2}">
+                      <cell locklevel="0" id="{fe624ffb-4dca-4756-a8d4-af6ee8fab8a2}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{af2c7416-a3c2-4a64-9511-c3bf4a03b646}">
+                      <cell locklevel="0" id="{af2c7416-a3c2-4a64-9511-c3bf4a03b646}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{3af558ca-2618-48e9-93a5-b30c2dcc1ef9}">
+                      <cell locklevel="0" id="{3af558ca-2618-48e9-93a5-b30c2dcc1ef9}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{e0baea1d-afa3-4556-a1d2-921b7838babe}">
+                      <cell locklevel="0" id="{e0baea1d-afa3-4556-a1d2-921b7838babe}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -146,9 +199,9 @@
                     </row>
                   </rows>
                 </section>
-                <section name="InvoiceSchedule_section_3" id="db9b141d-5a54-4558-8fb3-f2a4be832661" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="InvoiceList" id="db9b141d-5a54-4558-8fb3-f2a4be832661" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="New Section" languagecode="1033" />
+                    <label description="Invoice List" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -159,8 +212,8 @@
                         <control id="Subgrid_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
                           <parameters>
                             <TargetEntityType>leidos_claimdetail</TargetEntityType>
-                            <ViewId>{EFA6C43B-EC5C-4164-A7BE-9BA0226B0661}</ViewId>
-                            <ViewIds>{EFA6C43B-EC5C-4164-A7BE-9BA0226B0661}</ViewIds>
+                            <ViewId>{EFC6232C-0824-EB11-A813-000D3A7FEDBE}</ViewId>
+                            <ViewIds>{EFA6C43B-EC5C-4164-A7BE-9BA0226B0661},{EFC6232C-0824-EB11-A813-000D3A7FEDBE}</ViewIds>
                             <EnableViewPicker>false</EnableViewPicker>
                             <RelationshipName>leidos_ClaimDetail_ParentClaim_leidos_Cla</RelationshipName>
                           </parameters>
@@ -192,6 +245,24 @@
                 <label description="" languagecode="1033" />
               </labels>
             </cell>
+            <cell id="{c7dbdba7-7d39-4a50-9a37-d00574f282c0}" locklevel="0">
+              <labels>
+                <label description="Claim Reference" languagecode="1033" />
+              </labels>
+              <control id="header_leidos_claimreference" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_claimreference" disabled="false" />
+            </cell>
+            <cell id="{5d6c9b64-2701-4f64-81a8-ca8f02df6081}" locklevel="0">
+              <labels>
+                <label description="Status Reason" languagecode="1033" />
+              </labels>
+              <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+            </cell>
+            <cell id="{a8c48fed-b132-473b-be6f-6c9d35f4dadd}">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
           </row>
         </rows>
       </header>
@@ -216,6 +287,37 @@
           </row>
         </rows>
       </footer>
+      <Navigation>
+        <NavBar />
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <controlDescriptions />
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
@@ -223,7 +325,7 @@
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
     <LocalizedNames>
-      <LocalizedName description="Information" languagecode="1033" />
+      <LocalizedName description="Claim Summary" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
       <Description description="A form for this entity." languagecode="1033" />

@@ -11,6 +11,15 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_claimdetailid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_parentclaim" width="100" />
+          <cell name="leidos_invoicenumber" width="100" />
+          <cell name="leidos_invoicedate" width="100" />
+          <cell name="leidos_supplier" width="100" />
+          <cell name="leidos_expendituredescription" width="100" />
+          <cell name="leidos_invoicevalue" width="100" />
+          <cell name="leidos_netinvoicevalue" width="100" />
+          <cell name="leidos_eligible" width="100" />
+          <cell name="leidos_reasonifnoteligible" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -19,16 +28,25 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_claimdetail">
-          <attribute name="leidos_claimdetailid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="leidos_name" operator="like" value="{0}" />
           </filter>
+          <attribute name="leidos_invoicenumber" />
+          <attribute name="leidos_supplier" />
+          <attribute name="leidos_expendituredescription" />
+          <attribute name="leidos_invoicevalue" />
+          <attribute name="leidos_netinvoicevalue" />
+          <attribute name="leidos_parentclaim" />
+          <attribute name="leidos_invoicedate" />
+          <attribute name="leidos_reasonifnoteligible" />
+          <attribute name="leidos_eligible" />
+          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_claimdetailid" />
         </entity>
       </fetch>
     </fetchxml>

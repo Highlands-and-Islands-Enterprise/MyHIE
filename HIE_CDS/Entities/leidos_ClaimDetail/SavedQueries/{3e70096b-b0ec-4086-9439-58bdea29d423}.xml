@@ -11,7 +11,8 @@
       <grid name="leidos_claimdetails" jump="leidos_name" select="1" icon="1" preview="0">
         <row name="leidos_claimdetail" id="leidos_claimdetailid">
           <cell name="leidos_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="leidos_parentclaim" width="100" />
+          <cell name="leidos_invoicenumber" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -21,10 +22,12 @@
         <entity name="leidos_claimdetail">
           <attribute name="leidos_claimdetailid" />
           <attribute name="leidos_name" />
-          <attribute name="createdon" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="leidos_invoicenumber" />
+          <attribute name="leidos_parentclaim" />
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
