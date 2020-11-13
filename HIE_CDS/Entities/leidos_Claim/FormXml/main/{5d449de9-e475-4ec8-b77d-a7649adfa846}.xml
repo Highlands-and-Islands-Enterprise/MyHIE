@@ -70,6 +70,37 @@
                     </row>
                   </rows>
                 </section>
+                <section name="VAT" id="201967f1-2b50-449a-b92e-37794e535af3" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="VAT" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{ba0de96e-4747-4d6c-90ef-46e3c3cb6be1}" locklevel="0">
+                        <labels>
+                          <label description="Has there been any change to your VAT status" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_hastherebeenanychangetoyourvatstatus" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_hastherebeenanychangetoyourvatstatus" disabled="false" uniqueid="{51e60a70-94dc-4d8b-89a7-51bcea431f36}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5d8f2e23-10eb-4a05-b896-f1a2c0c72361}" locklevel="0" visible="false">
+                        <labels>
+                          <label description="VAT registered" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_vatregistered" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_vatregistered" disabled="false" uniqueid="{bbd44744-a8d0-4696-b543-d98eeffff156}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{63b1a5c3-c689-4bd7-b1bc-5f57243865da}" locklevel="0" visible="false">
+                        <labels>
+                          <label description="VAT Number" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_vatnumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_vatnumber" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
                 <section name="Funding" id="9428bcb9-d3b0-4cfa-956f-3d54b1d1a33b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Funding" languagecode="1033" />
@@ -317,7 +348,52 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <controlDescriptions />
+      <controlDescriptions>
+        <controlDescription forControl="{51e60a70-94dc-4d8b-89a7-51bcea431f36}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_hastherebeenanychangetoyourvatstatus</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_hastherebeenanychangetoyourvatstatus</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_hastherebeenanychangetoyourvatstatus</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_hastherebeenanychangetoyourvatstatus</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{bbd44744-a8d0-4696-b543-d98eeffff156}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_vatregistered</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_vatregistered</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_vatregistered</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_vatregistered</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
