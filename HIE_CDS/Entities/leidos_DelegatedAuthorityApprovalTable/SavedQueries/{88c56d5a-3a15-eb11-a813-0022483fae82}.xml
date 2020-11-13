@@ -19,6 +19,9 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="leidos_delegatedauthorityapprovaltable">
           <attribute name="leidos_name" />
+          <filter type="and">
+            <condition attribute="leidos_userrecord" operator="ne-userid" />
+          </filter>
           <link-entity name="systemuser" from="systemuserid" to="leidos_userrecord" alias="aa" link-type="inner">
             <link-entity name="systemuserroles" intersect="true" visible="false" from="systemuserid" to="systemuserid">
               <link-entity name="role" alias="ab" from="roleid" to="roleid">
