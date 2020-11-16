@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{341f5740-3228-eb11-a813-000d3a7fedbe}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_progressmilestonesid">
+          <cell name="a_fbe222c65d95456495b459e97c154e99.leidos_name" width="100" />
+          <cell name="a_fbe222c65d95456495b459e97c154e99.leidos_expectedduedate" width="100" />
+          <cell name="leidos_progress" width="100" />
+          <cell name="leidos_notes" width="100" />
+          <cell name="leidos_date" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_progressmilestones">
+          <attribute name="leidos_progressmilestonesid" />
+          <attribute name="leidos_progress" />
+          <attribute name="leidos_notes" />
+          <attribute name="leidos_date" />
+          <link-entity alias="a_fbe222c65d95456495b459e97c154e99" name="leidos_milestone" to="leidos_parentmilestone" from="leidos_milestoneid" link-type="outer" visible="false">
+            <attribute name="leidos_name" />
+            <attribute name="leidos_expectedduedate" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1202</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Progress Grid view" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

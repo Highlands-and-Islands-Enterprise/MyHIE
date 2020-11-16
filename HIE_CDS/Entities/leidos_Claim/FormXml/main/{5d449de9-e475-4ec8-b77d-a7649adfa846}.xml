@@ -162,6 +162,72 @@
             </column>
           </columns>
         </tab>
+        <tab name="ProgressReport" id="e2040fc8-3a53-403c-992b-613df63e6beb" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Progress Report" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="ApprovedMeasures" id="41ce96b4-d5b6-45a1-beb6-0c21eb5a040f" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Approved Measures" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{3ead24e8-0495-49d2-b2be-a2d1be158cb1}" rowspan="1" colspan="1" showlabel="true">
+                        <labels>
+                          <label description="Activities" languagecode="1033" />
+                        </labels>
+                        <control id="Activities_Grid" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_progressmeasure</TargetEntityType>
+                            <ViewId>{F5DCFFE4-2828-EB11-A813-0022483FAE82}</ViewId>
+                            <ViewIds>{2B1A3339-580D-4AC7-A760-A4FA68CE3A0D},{F5DCFFE4-2828-EB11-A813-0022483FAE82}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_leidos_progressmeasure_leidos_Pare</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{15918c76-08ef-4b82-bb47-8f8ddc1bc394}" rowspan="1" colspan="1" showlabel="true">
+                        <labels>
+                          <label description="Outputs" languagecode="1033" />
+                        </labels>
+                        <control id="Output_Grid" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_progressmeasure</TargetEntityType>
+                            <ViewId>{69A9E8F1-2828-EB11-A813-0022483FAE82}</ViewId>
+                            <ViewIds>{2B1A3339-580D-4AC7-A760-A4FA68CE3A0D},{69A9E8F1-2828-EB11-A813-0022483FAE82}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_leidos_progressmeasure_leidos_Pare</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{2fb20ec5-8e08-4c56-a80a-b863fe2c7164}" rowspan="1" colspan="1" showlabel="false">
+                        <labels>
+                          <label description="Milestones" languagecode="1033" />
+                        </labels>
+                        <control id="Milestones" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_progressmilestones</TargetEntityType>
+                            <ViewId>{341F5740-3228-EB11-A813-000D3A7FEDBE}</ViewId>
+                            <ViewIds>{1E4A54B2-2588-454B-AE56-02BEBDDBFB0D},{341F5740-3228-EB11-A813-000D3A7FEDBE}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_ProgressMilestones_ParentClaim_lei</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
         <tab name="InvoiceSchedule" id="4abcf454-ce5f-4eab-9aa6-9ca4baf6f0e7" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
             <label description="Invoice Schedule" languagecode="1033" />
@@ -249,6 +315,40 @@
                             <RelationshipName>leidos_ClaimDetail_ParentClaim_leidos_Cla</RelationshipName>
                           </parameters>
                         </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="Process" id="0576b43f-1693-4807-86f4-23fbbff4eeb0" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Process" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="ClaimProcess" id="8dffc98c-d5b3-4774-9656-6da860261af0" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Claim Process" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{5fde2430-b76c-4571-b982-560793e26df5}" locklevel="0">
+                        <labels>
+                          <label description="Client Submits Claim" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_clientsubmitsclaim" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="leidos_clientsubmitsclaim" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9fafc833-bf34-4f52-8ae0-8bbe46f6a7e5}" locklevel="0">
+                        <labels>
+                          <label description="Status of Claim form" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_statusofclaimform" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_statusofclaimform" disabled="false" />
                       </cell>
                     </row>
                   </rows>

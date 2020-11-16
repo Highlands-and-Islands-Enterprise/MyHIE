@@ -65,7 +65,7 @@
             </column>
           </columns>
         </tab>
-        <tab name="tab_cost" id="cbef305b-ee2a-4a5d-b812-e82a385a8e04" IsUserDefined="0" locklevel="0" showlabel="true">
+        <tab name="tab_cost" id="cbef305b-ee2a-4a5d-b812-e82a385a8e04" IsUserDefined="0" locklevel="0" showlabel="true" visible="true">
           <labels>
             <label description="Cost" languagecode="1033" />
           </labels>
@@ -80,9 +80,9 @@
                     <row>
                       <cell showlabel="false" locklevel="0" id="{4b9f4a4c-b5e5-4a61-859e-f85549ebae49}" rowspan="1" colspan="1">
                         <labels>
-                          <label description="New SG control 1597396341467" languagecode="1033" />
+                          <label description="Programme Costs" languagecode="1033" />
                         </labels>
-                        <control id="Subgrid_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                        <control id="Subgrid_ProgrammeCosts" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
                           <parameters>
                             <TargetEntityType>leidos_projectcost</TargetEntityType>
                             <ViewId>{9CD0D738-59DD-EA11-A813-000D3A7F1BBB}</ViewId>
@@ -95,23 +95,23 @@
                     </row>
                   </rows>
                 </section>
-                <section name="tab_cost_section_3" id="e4b20931-a4b0-411b-8fb0-862673554701" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="111" labelwidth="115">
+                <section name="tab_cost_section_Totals" id="e4b20931-a4b0-411b-8fb0-862673554701" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="111" labelwidth="115">
                   <labels>
-                    <label description="New Section" languagecode="1033" />
+                    <label description="Cost Totals" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{518f2dda-8630-4b60-92fe-071b3182ebc2}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description=" Total Costs (Calculated)" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_totalcostscalculated" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalcostscalculated" disabled="true" />
-                      </cell>
                       <cell id="{7c3cbb94-487e-44d4-ab97-e65ddc280213}" showlabel="true" locklevel="0">
                         <labels>
                           <label description=" Total Capital Costs (Calculated)" languagecode="1033" />
                         </labels>
                         <control id="leidos_totalcapitalcostscalculated" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalcapitalcostscalculated" disabled="true" />
+                      </cell>
+                      <cell id="{518f2dda-8630-4b60-92fe-071b3182ebc2}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description=" Total Costs (Calculated)" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalcostscalculated" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalcostscalculated" disabled="true" />
                       </cell>
                       <cell id="{097b10b8-8c34-46ce-bd10-edc7f52540c4}" showlabel="true" locklevel="0">
                         <labels>
@@ -121,13 +121,12 @@
                       </cell>
                     </row>
                     <row>
-                      <cell showlabel="true" locklevel="0" id="{77c4d4be-8286-4f69-8c73-bb6125855c8e}">
+                      <cell locklevel="0" id="{83aed614-7f2e-4af3-bf59-c8d821bdaf94}">
                         <labels>
-                          <label description="Completed Costs" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="leidos_completedcosts" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedcosts" disabled="true" uniqueid="{162a1527-1043-46da-91d3-a0c79dd9eb04}" />
                       </cell>
-                      <cell showlabel="true" locklevel="0" id="{71fd5e0f-c9ec-4594-9bb5-d31d33ee7f01}">
+                      <cell locklevel="0" id="{dc60d4a0-6734-4977-bdfe-8c62d90b5da1}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -202,6 +201,40 @@
                             <ViewIds>{A04A55E0-5DCA-4453-9399-8C81A6F9BA2C}</ViewIds>
                             <EnableViewPicker>false</EnableViewPicker>
                             <RelationshipName>leidos_ProjectFunding_leidos_Programme_le</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_SpendProfile" id="8b3b53a6-a9df-4b26-acdf-149b42d7728c" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Spend Profile" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_SpendProfile_section" id="8ff29e4e-19f9-47b1-b4be-8d6f1597bf39" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Spend Profile" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{5bf16c92-46c1-444b-8779-6c4f005c351a}" rowspan="1" colspan="1" showlabel="false">
+                        <labels>
+                          <label description="Spend Profile" languagecode="1033" />
+                        </labels>
+                        <control id="Subgrid_SpendProfile" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_anticipatedspendprofile</TargetEntityType>
+                            <ViewId>{0B416C58-0328-EB11-A813-0022483FAE82}</ViewId>
+                            <ViewIds>{81503CB9-4BCB-493F-8DD0-398BB659147B},{3B33EC59-AF25-EB11-A813-000D3A7FEDBE},{0B416C58-0328-EB11-A813-0022483FAE82},{EBC1563F-E556-EA11-A811-000D3A7F1BBB}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_AnticipatedSpendProfile_ParentProg</RelationshipName>
                           </parameters>
                         </control>
                       </cell>
@@ -425,11 +458,11 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{009cad41-0b6d-4edb-a448-e4544b15fdb9}" locklevel="0">
+                      <cell showlabel="true" locklevel="0" id="{77c4d4be-8286-4f69-8c73-bb6125855c8e}">
                         <labels>
-                          <label description="Completed Budget" languagecode="1033" />
+                          <label description="Completed Costs" languagecode="1033" />
                         </labels>
-                        <control id="leidos_completedbudget" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedbudget" disabled="false" uniqueid="{9b876110-c1d5-4c6e-9724-ce9efba0b4b8}" />
+                        <control id="leidos_completedcosts" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedcosts" disabled="true" uniqueid="{162a1527-1043-46da-91d3-a0c79dd9eb04}" />
                       </cell>
                       <cell id="{35a42fef-b462-4946-a936-813bf5cbb6ef}" locklevel="0">
                         <labels>
@@ -451,11 +484,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{1c31d408-a19b-4d2d-96c9-4b60bd51ccbc}" locklevel="0">
+                      <cell id="{009cad41-0b6d-4edb-a448-e4544b15fdb9}" locklevel="0">
                         <labels>
-                          <label description="Completed Strategic Priorities" languagecode="1033" />
+                          <label description="Completed Budget" languagecode="1033" />
                         </labels>
-                        <control id="leidos_completedstrategicpriorities" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedstrategicpriorities" disabled="false" uniqueid="{21edfb88-48f5-4ddb-a4f8-85f32369b8db}" />
+                        <control id="leidos_completedbudget" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedbudget" disabled="false" uniqueid="{9b876110-c1d5-4c6e-9724-ce9efba0b4b8}" />
                       </cell>
                       <cell id="{ecb69287-2c1b-4429-a69f-c1ef29a71831}" locklevel="0">
                         <labels>
@@ -477,10 +510,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{96e0a90d-3e26-48c3-8d6f-0bbe5f5072af}">
+                      <cell id="{1c31d408-a19b-4d2d-96c9-4b60bd51ccbc}" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Completed Strategic Priorities" languagecode="1033" />
                         </labels>
+                        <control id="leidos_completedstrategicpriorities" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedstrategicpriorities" disabled="false" uniqueid="{21edfb88-48f5-4ddb-a4f8-85f32369b8db}" />
                       </cell>
                       <cell locklevel="0" id="{079c6005-7fb3-4b8a-8da3-6e45ea5b85a0}">
                         <labels>
