@@ -34,12 +34,9 @@
             <condition attribute="accessmode" operator="ne" value="5" />
           </filter>
           <link-entity name="systemuserroles" from="systemuserid" to="systemuserid" visible="false" intersect="true">
-            <link-entity name="role" from="roleid" to="roleid" alias="aa">
+            <link-entity name="role" alias="ac" from="roleid" to="roleid">
               <filter type="and">
-                <condition attribute="roleid" operator="in">
-                  <value uiname="Account Manager" uitype="role">{BA7A6DCD-B736-EA11-A813-000D3A0BAD7C}</value>
-                  <value uiname="Project Manager" uitype="role">{890B7DD9-B736-EA11-A813-000D3A0BAD7C}</value>
-                </condition>
+                <condition attribute="roleid" operator="eq" value="{BA7A6DCD-B736-EA11-A813-000D3A0BAD7C}" uiname="Account Manager" uitype="role" />
               </filter>
             </link-entity>
           </link-entity>

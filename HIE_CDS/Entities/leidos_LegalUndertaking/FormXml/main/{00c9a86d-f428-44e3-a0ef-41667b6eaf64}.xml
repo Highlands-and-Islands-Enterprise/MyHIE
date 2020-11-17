@@ -147,19 +147,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{2e2d91f7-5fe7-4baf-b070-11b5b768e297}" locklevel="0" visible="true">
+                      <cell id="{79bb03c1-3708-4d04-9c33-c2a421e738ed}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="Input Type" languagecode="1033" />
+                          <label description="Brief details of Legal Input required" languagecode="1033" />
                         </labels>
-                        <control id="leidos_legalteaminputtype" classid="{4AA28AB7-9C13-4F57-A73D-AD894D048B5F}" datafieldname="leidos_legalteaminputtype" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{79bb03c1-3708-4d04-9c33-c2a421e738ed}" locklevel="0" visible="true">
-                        <labels>
-                          <label description="Additional Information" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_legalteaminputtypedescription" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_legalteaminputtypedescription" disabled="false" />
+                        <control id="leidos_legalteaminputtypedescription" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_legalteaminputtypedescription" disabled="false" uniqueid="{9b044a30-acc6-49ae-ca7d-354a655595be}" />
                       </cell>
                     </row>
                     <row>
@@ -437,11 +429,6 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="aeff2b16-c9b3-420c-9040-5889b46b996b" enabled="true" parameters="'whl:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_legalteaminputtype">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="e60e49f7-1495-4ac7-9e79-3a77087e4244" enabled="true" parameters="'rpJ:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
         <event name="onchange" application="false" active="false" attribute="leidos_offerletterurl">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="74cccfe8-69f3-46a7-b5d6-4189d5b1ed15" enabled="true" parameters="'rpJ:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
@@ -462,19 +449,19 @@
             <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{3d45b5c2-566c-5ed5-92c9-b1318d5b4be8}" enabled="true" parameters="&quot;leidos_parentaccount&quot;,&quot;leidos_project&quot;,&quot;1732ce6f-11af-ea11-a812-000d3a7f1bbb&quot;, &quot;&lt;filter type='and'&gt;&lt;condition attribute='statuscode' operator='eq' value='445260001' /&gt;&lt;condition attribute='leidos_parentaccount' operator='eq'  value='{{id}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
           </Handlers>
         </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_requiresdelegatedauthorityinput">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="d85bea00-aecb-49bf-818b-2266dadc8f0a" enabled="true" parameters="'yU5:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
         <event name="onchange" application="false" active="false" attribute="leidos_project">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="ae0011a2-cbdc-41eb-a4d8-7eb11a366707" enabled="true" parameters="'yU5:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="fc160102-bbb6-4ebc-9a11-5533021e8954" enabled="true" parameters="'yU5:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_requiresdelegatedauthorityinput">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b9584233-d746-4741-abf8-8da1766415ee" enabled="true" parameters="'6pQ:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -701,16 +688,16 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{1c3914a4-1e86-e32d-7b29-542a78d244d1}" />
         <Library name="leidos_legalundertaiking" libraryUniqueId="{55803621-d13a-eda5-72a4-522a972a6205}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="7c52353e-2776-478e-9ed9-bf838af9575f" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="36186b11-c086-4154-bf27-ce8f065d88fb" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="3e282198-434f-4bfa-8711-3c23b8f65fe6" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="6cc63e0d-896e-4cbe-aa24-b82deaad1c49" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="74b7ead6-2c0e-42cf-9b91-f65fba419b6c" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="4fa8ac87-710c-4a03-8f06-c3d21c3da3d5" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

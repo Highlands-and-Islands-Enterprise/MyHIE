@@ -292,6 +292,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{b9b9e315-7fff-4915-ac71-0b370054e81e}" locklevel="0">
+                        <labels>
+                          <label description="Validate Application" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_validateapplication" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_validateapplication" disabled="false" uniqueid="{7d46f500-1afa-42cc-8e7f-2ce66b1daea1}" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{bf8983a4-9827-401f-8b29-5f0fd7ee8647}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Submit Project for Budget Decision" languagecode="1033" />
@@ -768,6 +776,28 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{7d46f500-1afa-42cc-8e7f-2ce66b1daea1}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_validateapplication</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_validateapplication</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_validateapplication</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_validateapplication</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <externaldependencies>
         <dependency id="leidos_executivegradestaff" />
@@ -806,6 +836,11 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="bb84faa6-a56b-4e35-873b-41f24be5989f" enabled="true" parameters="'afK:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_validateapplication">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="fe5c6259-6044-4c95-9b52-e7fcea70581d" enabled="true" parameters="'Lal:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
@@ -813,9 +848,9 @@
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{58828cc5-4941-3267-41e5-16ee2a4ba698}" />
         <Library name="leidos_application.js" libraryUniqueId="{e1eab3b6-5483-7c94-42b4-d5e553da8180}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="7e9a4d85-354d-49b6-b7d2-95d37eccfb38" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="c2dfe98b-c06b-4b5d-9b85-e8aa9845b192" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="2cf810a2-8027-45a6-b945-175ed8a939c9" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="3be3bdfe-fe68-483a-b3a5-8fd4507efa7b" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="63538e88-e137-420e-996e-86d8f4bd5a02" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="afc1daf4-b2a3-4325-8e52-c27ed9944b23" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

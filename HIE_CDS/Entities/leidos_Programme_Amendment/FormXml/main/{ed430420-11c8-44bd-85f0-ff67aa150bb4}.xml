@@ -58,6 +58,14 @@
                         <control id="leidos_amendmentscomplete" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_amendmentscomplete" disabled="false" uniqueid="{410927cb-48d7-4ee1-b8a9-8c22df88e2ad}" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{fa7d55bc-759c-48ff-b6d6-0aa890271561}" locklevel="0" visible="true">
+                        <labels>
+                          <label description="Validate Programme" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_validateprogramme" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_validateprogramme" disabled="false" uniqueid="{d9698e6e-761d-4b9c-af8c-57b690b4390f}" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
                 <section name="Amendment" id="d5ececc5-a311-44aa-8c25-575dcfa50edc" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
@@ -361,6 +369,28 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{d9698e6e-761d-4b9c-af8c-57b690b4390f}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_validateprogramme</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_validateprogramme</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_validateprogramme</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_validateprogramme</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <events>
         <event name="onchange" application="false" active="false" attribute="leidos_executivegradestaff">
@@ -391,6 +421,11 @@
         <event name="onchange" application="false" active="false" attribute="leidos_leadershipteam">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7223274f-dd8d-435e-8c10-0efda019b29d" enabled="true" parameters="'J5m:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_validateprogramme">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="59f15c60-f0b8-468e-bccb-291196f8b2a3" enabled="true" parameters="'lmn:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -428,15 +463,15 @@
         <Everyone />
       </DisplayConditions>
       <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="3593ba47-a3c0-485d-82f4-e6928d48d423" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="78c881ac-75be-4855-ba2e-c8786821d488" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="6f1338d9-a1bd-45df-a84d-4344783aa71a" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="d0b37d60-7496-4954-8f6d-1722356bf684" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="48ce9a70-23ad-4f69-a538-c8894816a617" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="2644c380-b2e4-4bcb-9fd1-967c3d273af8" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
     <LocalizedNames>
-      <LocalizedName description="Information" languagecode="1033" />
+      <LocalizedName description="Programme Amendment Form" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
       <Description description="A form for this entity." languagecode="1033" />

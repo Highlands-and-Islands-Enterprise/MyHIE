@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e965719e-c728-eb11-a813-0022483fae82}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_claimid">
+          <cell name="a_b41ca122827f45d98219ad4bae4e02dd.name" width="100" />
+          <cell name="a_dd8a7808b21b4af7b9aba81cca1992c3.leidos_name" width="100" />
+          <cell name="a_dd8a7808b21b4af7b9aba81cca1992c3.leidos_projectreference" width="100" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_claimreference" width="100" />
+          <cell name="ownerid" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="leidos_claimsubmitteddate" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_claim">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_claimid" />
+          <attribute name="createdon" />
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
+          <attribute name="leidos_claimsubmitteddate" />
+          <attribute name="leidos_claimreference" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="in">
+              <value>1</value>
+              <value>445260002</value>
+            </condition>
+          </filter>
+          <link-entity alias="a_b41ca122827f45d98219ad4bae4e02dd" name="account" to="leidos_parentaccount" from="accountid" link-type="outer" visible="false">
+            <attribute name="name" />
+          </link-entity>
+          <link-entity alias="a_dd8a7808b21b4af7b9aba81cca1992c3" name="leidos_project" to="leidos_parentproject" from="leidos_projectid" link-type="outer" visible="false">
+            <attribute name="leidos_projectreference" />
+            <attribute name="leidos_name" />
+          </link-entity>
+          <order attribute="statuscode" descending="false" />
+          <order attribute="leidos_claimsubmitteddate" descending="true" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1206</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="New and Resubmitted Claims for Assignment" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
