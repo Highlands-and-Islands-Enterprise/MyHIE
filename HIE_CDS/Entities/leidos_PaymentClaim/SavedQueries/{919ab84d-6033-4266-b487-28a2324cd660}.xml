@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{919ab84d-6033-4266-b487-28a2324cd660}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_paymentclaimid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_paymentclaimreference" width="100" />
+          <cell name="leidos_parentclaim" width="100" />
+          <cell name="leidos_costfundingline" width="100" />
+          <cell name="leidos_netamount" width="100" />
+          <cell name="leidos_grossamount" width="100" />
+          <cell name="leidos_vatamountcalculated" width="100" disableSorting="1" />
+          <cell name="statuscode" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_paymentclaim">
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <attribute name="statuscode" />
+          <attribute name="leidos_paymentclaimreference" />
+          <attribute name="leidos_parentclaim" />
+          <attribute name="leidos_netamount" />
+          <attribute name="leidos_grossamount" />
+          <attribute name="leidos_costfundingline" />
+          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_vatamountcalculated" />
+          <attribute name="leidos_paymentclaimid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1211</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Payment Claims" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

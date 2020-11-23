@@ -1,0 +1,47 @@
+var Leidos = window.Leidos || {};
+
+
+
+Leidos.CostFundingLineFilterview = function(executionContext) {
+    "use strict";
+
+    var formContext = executionContext.getFormContext();   
+    var viewId = formContext.getControl("leidos_costfundingline").getDefaultView();
+    var entityName = "leidos_projectfunding";
+    var viewDisplayName = "Cost Funding";
+    var parentClaim = formContext.getAttribute("leidos_parentclaim").getValue()[0].id;
+    /* var id = formContext.data.entity.getId(); */
+
+    var fetchData = {
+		statuscode: "2",
+		leidos_claimid: parentClaim
+	};
+	var fetchXml = [
+"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='true'>",
+"  <entity name='leidos_projectfunding'>",
+"    <attribute name='leidos_name' />",
+"    <attribute name='leidos_projectfundingid' />",
+"    <order attribute='leidos_name' descending='false' />",
+"    <filter type='and'>",
+"      <condition attribute='statuscode' operator='ne' value='", fetchData.statuscode, "'/>",
+"    </filter>",
+"    <link-entity name='leidos_project' from='leidos_projectid' to='leidos_parentproject' link-type='inner' alias='be'>",
+"      <link-entity name='leidos_claim' from='leidos_parentproject' to='leidos_projectid' link-type='inner' alias='bf'>",
+"        <filter type='and'>",
+"          <condition attribute='leidos_claimid' operator='eq' value='", fetchData.leidos_claimid, "'/>",
+"        </filter>",
+"      </link-entity>",
+"    </link-entity>",
+"  </entity>",
+"</fetch>",
+	].join("");
+   
+    var layoutXml = "<grid name='resultset' object='10178' jump='leidos_name' select='1' icon='1' preview='1' >" 
+    +"<row name='result' id='leidos_projectfundingid' >"
+    +"<cell name='leidos_name' width='300' />"
+    +"</row></grid>";
+
+
+
+    formContext.getControl("leidos_costfundingline").addCustomView(viewId, entityName, viewDisplayName, fetchXml, layoutXml, true);
+}

@@ -718,6 +718,14 @@
                   </labels>
                   <rows>
                     <row>
+                      <cell id="{c6c03d8d-fc62-4f8d-8249-5ebded121ebf}" locklevel="0">
+                        <labels>
+                          <label description="Supplier Code" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_suppliercode" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_suppliercode" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{ed843f17-ac4b-4b46-84f2-7818ddd62bad}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Legal Entity" languagecode="1033" />
@@ -1030,6 +1038,20 @@
                     <row />
                     <row />
                     <row />
+                    <row>
+                      <cell id="{2635cc4a-a585-e867-1d2d-d1d5b4859c75}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Total Percentage Current Trading Geographies" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalpercentagecurrenttradinggeographies" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="leidos_totalpercentagecurrenttradinggeographies" disabled="false" uniqueid="{b18212a0-9bca-edd1-9ab2-bb07e63894a5}" />
+                      </cell>
+                      <cell id="{1439247c-070d-b02b-84b0-207e543ea10d}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Total Percentage Target Trading Geographies" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalpercentagetargettradinggeographies" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="leidos_totalpercentagetargettradinggeographies" disabled="false" uniqueid="{3d063907-d780-27b5-55a9-3d87b64eb0aa}" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -1862,11 +1884,6 @@
               <Title LCID="1033" Text="Accounts" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="new_account_account_SIC2" Sequence="10002" Area="Info" Id="nav_new_account_account_SIC2" Show="false">
-            <Titles>
-              <Title LCID="1033" Text="Accounts" />
-            </Titles>
-          </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="leidos_Signatory_Account_Account" Sequence="10003" Area="Info" Id="nav_leidos_Signatory_Account_Account">
             <Titles>
               <Title LCID="1033" Text="Signatories" />
@@ -2408,7 +2425,7 @@
             <Handler functionName="AppCommon.Account.Instance.ra_onload" libraryName="AppCommon/Account/Account_main_system_library.js" handlerUniqueId="7927DD68-5AC5-4E9A-B39A-44F62467656A" enabled="true" />
           </InternalHandlers>
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="cb44a2b3-3ca4-444f-8730-7efaa1cc5b15" enabled="true" parameters="'9BT:*:CreateUpdate::0:217890000:217890000:217890000:217890000','kDo:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="cb44a2b3-3ca4-444f-8730-7efaa1cc5b15" enabled="true" parameters="'9BT:*:CreateUpdate::0:217890000:217890000:217890000:217890000','kDo:*:CreateUpdate::0:217890000:217890000:217890000:217890000','9KL:*:Update:onload:0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{73a71abd-b333-dca5-c37e-bc19242eeaa6}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.filterLookupContact" libraryName="leidos_AccountPrimaryContactFilter" handlerUniqueId="{d36e7b6e-40d0-3701-95eb-dcecba916d0e}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.filterSICLookup" libraryName="leidos_AccountPrimaryContactFilter" handlerUniqueId="{d0b31ec7-c49b-1867-5c7e-160a1b0b9307}" enabled="true" parameters="" passExecutionContext="true" />
@@ -2485,18 +2502,38 @@
             <Handler functionName="data8_processAddress" libraryName="data8_predictiveaddress_ui.js" handlerUniqueId="{d7b100b4-90e2-329c-4e31-ec692a5d25a8}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onload" application="false" active="false" attribute="CurrentTradingGeography_subgrid">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="f9efc240-c18b-4910-bbb8-7691f11b2265" enabled="true" parameters="'9KL:*:Update:onload:0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onload" application="false" active="false" attribute="TargetTradingGeography_subgrid">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c92ea238-f3eb-4ffa-9acd-a52dbdee2ffc" enabled="true" parameters="'9KL:*:Update:onload:0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_totalpercentagecurrenttradinggeographies">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="f59af482-866a-47af-a16e-6942966a5ddc" enabled="true" parameters="'9KL:*:Update:onload:0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_totalpercentagetargettradinggeographies">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7f738c5b-7fe2-4a4e-b815-bc6c552c15d4" enabled="true" parameters="'9KL:*:Update:onload:0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
+      <DisplayConditions FallbackForm="true" Order="4">
+        <Everyone />
+      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{ba42d868-9440-990e-e86a-09b7e4757493}" />
         <Library name="leidos_AccountPrimaryContactFilter" libraryUniqueId="{abe68b47-3a8a-d371-7b3b-31aca1d5d3d5}" />
         <Library name="data8_predictiveaddress_ui.js" libraryUniqueId="{b1a36d5c-853b-2bd2-6d58-a34843681b82}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="aee85cc4-dd61-408b-a439-b911532516dd" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="cf74d833-3b85-44e5-b21a-25fd91493dfb" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="67038f20-97be-4110-b2de-240c4c349d66" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="91c6b4eb-38b1-4a13-ba72-5f219c0ce1ac" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="26b24355-c6cd-4f89-8d84-6ccb98f04c61" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="87849e37-009e-46c9-aab1-e99c66716902" />
       </formLibraries>
-      <DisplayConditions FallbackForm="true" Order="4">
-        <Everyone />
-      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

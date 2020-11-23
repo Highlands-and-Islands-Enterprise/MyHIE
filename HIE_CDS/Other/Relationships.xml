@@ -20,6 +20,7 @@
   <EntityRelationship Name="bpf_leidos_accountmanagementrecord_leidos_bpfaccountprocess" />
   <EntityRelationship Name="bpf_leidos_accountmanagementrecord_leidos_bpfamrdirectcreation" />
   <EntityRelationship Name="bpf_leidos_application_new_bpfapplicationbusinessprocessflow" />
+  <EntityRelationship Name="bpf_leidos_claim_leidos_bpf_claim" />
   <EntityRelationship Name="bpf_leidos_enquiry_leidos_enquirybusinessflow" />
   <EntityRelationship Name="bpf_leidos_legalundertaking_leidos_bpf_legalundertaking" />
   <EntityRelationship Name="bpf_leidos_pipelineprogramme_leidos_bpfpipelineprogramme" />
@@ -53,6 +54,7 @@
   <EntityRelationship Name="business_unit_leidos_loan" />
   <EntityRelationship Name="business_unit_leidos_milestone" />
   <EntityRelationship Name="business_unit_leidos_nfistateaid" />
+  <EntityRelationship Name="business_unit_leidos_paymentclaim" />
   <EntityRelationship Name="business_unit_leidos_pipelineprogramme" />
   <EntityRelationship Name="business_unit_leidos_pipelineproject" />
   <EntityRelationship Name="business_unit_leidos_portalpasswordresetrequest" />
@@ -152,10 +154,12 @@
   <EntityRelationship Name="leidos_BusinessReview_RelatedAccount_Acco_leidos_accountmanagementclientplan" />
   <EntityRelationship Name="leidos_BusinessReviewActionPlan_ParentAcc_leidos_clientactionplan" />
   <EntityRelationship Name="leidos_BusinessReviewActionPlan_Project_l_leidos_clientactionplan" />
+  <EntityRelationship Name="leidos_Claim_ClaimApprover_SystemUser" />
   <EntityRelationship Name="leidos_Claim_ClaimAuthorisedSignatory_Con" />
   <EntityRelationship Name="leidos_claim_leidos_PortalMessages" />
   <EntityRelationship Name="leidos_Claim_ParentAccount_Account" />
   <EntityRelationship Name="leidos_Claim_ParentProject_leidos_Project" />
+  <EntityRelationship Name="leidos_Claim_SubmittedBy_SystemUser" />
   <EntityRelationship Name="leidos_ClaimDetail_ParentClaim_leidos_Cla" />
   <EntityRelationship Name="leidos_ClientAction_ActionBy_leidos_Actio" />
   <EntityRelationship Name="leidos_ClientAction_ActionType_leidos_Act" />
@@ -219,6 +223,7 @@
   <EntityRelationship Name="leidos_leidos_geographies_leidos_tradinggeography_Geography" />
   <EntityRelationship Name="leidos_leidos_legalundertaking_leidos_Del" />
   <EntityRelationship Name="leidos_leidos_natureofenquiry_leidos_enquiry_NatureofEnquiry" />
+  <EntityRelationship Name="leidos_leidos_paymentclaim_leidos_CostFun" />
   <EntityRelationship Name="leidos_leidos_pipelineproject_leidos_Fund" />
   <EntityRelationship Name="leidos_leidos_progressmeasure_leidos_Pare" />
   <EntityRelationship Name="leidos_leidos_project_leidos_equity" />
@@ -237,6 +242,8 @@
   <EntityRelationship Name="leidos_NFIStateAid_ParentProject_leidos_P" />
   <EntityRelationship Name="leidos_NFIStateAid_StateAidArticle_leidos" />
   <EntityRelationship Name="leidos_NFIStateAid_StateAidType_leidos_St" />
+  <EntityRelationship Name="leidos_PaymentClaim_ParentClaim_leidos_Cl" />
+  <EntityRelationship Name="leidos_PaymentClaim_VATCode_leidos_VATCod" />
   <EntityRelationship Name="leidos_PipelineProgramme_FundingSource_le" />
   <EntityRelationship Name="leidos_pipelineprogramme_leidos_PortalMessages" />
   <EntityRelationship Name="leidos_PipelineProgramme_SupportItemType_" />
@@ -387,6 +394,10 @@
   <EntityRelationship Name="lk_leidos_bpf_amcp_clientplan_createdby" />
   <EntityRelationship Name="lk_leidos_bpf_amcp_clientplan_modifiedby" />
   <EntityRelationship Name="lk_leidos_bpf_amcp_clientplan_processid" />
+  <EntityRelationship Name="lk_leidos_bpf_claim_activestageid" />
+  <EntityRelationship Name="lk_leidos_bpf_claim_createdby" />
+  <EntityRelationship Name="lk_leidos_bpf_claim_modifiedby" />
+  <EntityRelationship Name="lk_leidos_bpf_claim_processid" />
   <EntityRelationship Name="lk_leidos_bpf_legalundertaking_activestageid" />
   <EntityRelationship Name="lk_leidos_bpf_legalundertaking_createdby" />
   <EntityRelationship Name="lk_leidos_bpf_legalundertaking_modifiedby" />
@@ -499,6 +510,8 @@
   <EntityRelationship Name="lk_leidos_obligationperiod_modifiedby" />
   <EntityRelationship Name="lk_leidos_organisationtype_createdby" />
   <EntityRelationship Name="lk_leidos_organisationtype_modifiedby" />
+  <EntityRelationship Name="lk_leidos_paymentclaim_createdby" />
+  <EntityRelationship Name="lk_leidos_paymentclaim_modifiedby" />
   <EntityRelationship Name="lk_leidos_pipelineprogramme_createdby" />
   <EntityRelationship Name="lk_leidos_pipelineprogramme_modifiedby" />
   <EntityRelationship Name="lk_leidos_pipelineproject_createdby" />
@@ -581,6 +594,8 @@
   <EntityRelationship Name="lk_leidos_typeofassistancerequestedfromhie_modifiedby" />
   <EntityRelationship Name="lk_leidos_typeofexporter_createdby" />
   <EntityRelationship Name="lk_leidos_typeofexporter_modifiedby" />
+  <EntityRelationship Name="lk_leidos_vatcode_createdby" />
+  <EntityRelationship Name="lk_leidos_vatcode_modifiedby" />
   <EntityRelationship Name="lk_new_bpfapplicationbusinessprocessflow_activestageid" />
   <EntityRelationship Name="lk_new_bpfapplicationbusinessprocessflow_createdby" />
   <EntityRelationship Name="lk_new_bpfapplicationbusinessprocessflow_modifiedby" />
@@ -601,6 +616,7 @@
   <EntityRelationship Name="organization_leidos_applicationquestiontypes" />
   <EntityRelationship Name="organization_leidos_areaoffice" />
   <EntityRelationship Name="organization_leidos_bpf_amcp_clientplan" />
+  <EntityRelationship Name="organization_leidos_bpf_claim" />
   <EntityRelationship Name="organization_leidos_bpf_legalundertaking" />
   <EntityRelationship Name="organization_leidos_bpf_pipelineproject" />
   <EntityRelationship Name="organization_leidos_bpf_project" />
@@ -648,6 +664,7 @@
   <EntityRelationship Name="organization_leidos_turnover" />
   <EntityRelationship Name="organization_leidos_typeofassistancerequestedfromhie" />
   <EntityRelationship Name="organization_leidos_typeofexporter" />
+  <EntityRelationship Name="organization_leidos_vatcode" />
   <EntityRelationship Name="organization_new_bpfapplicationbusinessprocessflow" />
   <EntityRelationship Name="owner_leidos_accountmanagementactionplan" />
   <EntityRelationship Name="owner_leidos_accountmanagementclientplan" />
@@ -674,6 +691,7 @@
   <EntityRelationship Name="owner_leidos_loan" />
   <EntityRelationship Name="owner_leidos_milestone" />
   <EntityRelationship Name="owner_leidos_nfistateaid" />
+  <EntityRelationship Name="owner_leidos_paymentclaim" />
   <EntityRelationship Name="owner_leidos_pipelineprogramme" />
   <EntityRelationship Name="owner_leidos_pipelineproject" />
   <EntityRelationship Name="owner_leidos_portalpasswordresetrequest" />
@@ -722,6 +740,7 @@
   <EntityRelationship Name="team_leidos_loan" />
   <EntityRelationship Name="team_leidos_milestone" />
   <EntityRelationship Name="team_leidos_nfistateaid" />
+  <EntityRelationship Name="team_leidos_paymentclaim" />
   <EntityRelationship Name="team_leidos_pipelineprogramme" />
   <EntityRelationship Name="team_leidos_pipelineproject" />
   <EntityRelationship Name="team_leidos_portalpasswordresetrequest" />
@@ -759,6 +778,7 @@
   <EntityRelationship Name="TransactionCurrency_leidos_equity" />
   <EntityRelationship Name="TransactionCurrency_leidos_Loan" />
   <EntityRelationship Name="TransactionCurrency_leidos_NFIStateAid" />
+  <EntityRelationship Name="TransactionCurrency_leidos_PaymentClaim" />
   <EntityRelationship Name="TransactionCurrency_leidos_PipelineProgramme" />
   <EntityRelationship Name="TransactionCurrency_leidos_PipelineProject" />
   <EntityRelationship Name="TransactionCurrency_leidos_Programme" />
@@ -796,6 +816,7 @@
   <EntityRelationship Name="user_leidos_loan" />
   <EntityRelationship Name="user_leidos_milestone" />
   <EntityRelationship Name="user_leidos_nfistateaid" />
+  <EntityRelationship Name="user_leidos_paymentclaim" />
   <EntityRelationship Name="user_leidos_pipelineprogramme" />
   <EntityRelationship Name="user_leidos_pipelineproject" />
   <EntityRelationship Name="user_leidos_portalpasswordresetrequest" />

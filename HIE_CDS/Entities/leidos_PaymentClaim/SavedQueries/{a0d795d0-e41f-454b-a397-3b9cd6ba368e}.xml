@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{a0d795d0-e41f-454b-a397-3b9cd6ba368e}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_paymentclaims" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="leidos_paymentclaim" id="leidos_paymentclaimid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_paymentclaimreference" width="100" />
+          <cell name="leidos_parentclaim" width="100" />
+          <cell name="leidos_costfundingline" width="100" />
+          <cell name="leidos_netamount" width="100" />
+          <cell name="leidos_grossamount" width="100" />
+          <cell name="leidos_vatamount" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_paymentclaim">
+          <attribute name="leidos_paymentclaimid" />
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="statuscode" />
+          <attribute name="leidos_paymentclaimreference" />
+          <attribute name="leidos_parentclaim" />
+          <attribute name="leidos_netamount" />
+          <attribute name="leidos_grossamount" />
+          <attribute name="leidos_vatamount" />
+          <attribute name="leidos_costfundingline" />
+          <order attribute="leidos_name" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1211</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Payment Claim Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

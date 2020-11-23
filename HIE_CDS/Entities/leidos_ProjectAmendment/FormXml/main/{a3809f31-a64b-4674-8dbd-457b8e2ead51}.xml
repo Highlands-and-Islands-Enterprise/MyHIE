@@ -559,7 +559,7 @@
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_amendmentscomplete">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b5e486eb-15be-499c-b3d8-6b1c14e3f93e" enabled="true" parameters="'gtH:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b5e486eb-15be-499c-b3d8-6b1c14e3f93e" enabled="true" parameters="'gtH:*:CreateUpdate::0:217890000:217890000:217890000:217890000','s0U:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onsave" application="false" active="false">
@@ -568,17 +568,22 @@
             <Handler functionName="Leidos.DelayedDACheck" libraryName="leidos_projectAmendment.js" handlerUniqueId="{c9b4b83a-6450-0add-9a1d-388c8c04640c}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_validateproject">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="00c08d28-514d-485c-afff-e16f9ea9e8e6" enabled="true" parameters="'dQ8:*:Update::0:217890000:217890000:217890000:217890000','s0U:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{078d2a0a-70b1-37c3-8405-61094871e6c1}" />
-        <Library name="leidos_projectAmendment.js" libraryUniqueId="{94167ab6-7b43-1717-d341-29c6b0138ade}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="7957e76c-70de-4a79-9492-d21ff01c453e" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="3ce7ad11-cecf-49c7-9ead-459a011245c2" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="7091820e-74dd-4ae1-9af9-016b0c1e9094" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{078d2a0a-70b1-37c3-8405-61094871e6c1}" />
+        <Library name="leidos_projectAmendment.js" libraryUniqueId="{94167ab6-7b43-1717-d341-29c6b0138ade}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="6391ebab-ba9f-44d1-99e2-088ef2bb11e9" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="d7118f36-a5bf-4a67-8e3e-25efcb370a99" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="ddb571b2-bd40-41e9-ad70-33612ef5581d" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

@@ -743,6 +743,20 @@
                     <row />
                     <row />
                     <row />
+                    <row>
+                      <cell id="{9c2868b1-c5b6-4b7a-e2a5-bb011a1864ab}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Total Percentage Current Trading Geographies" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalpercentagecurrenttgs" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="leidos_totalpercentagecurrenttgs" disabled="false" uniqueid="{72d60591-d6ea-5006-2b8d-45b746805ccd}" />
+                      </cell>
+                      <cell id="{bdb5702d-cda6-05ea-45e1-9e973873e1b5}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Total Percentage Target Trading Geographies" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalpercentagetargettgs" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="leidos_totalpercentagetargettgs" disabled="false" uniqueid="{b1533e71-186d-4e9c-7683-e169e6eaa050}" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
                 <section name="tab_4_section_9" id="86717754-ac44-492a-b265-50558d4f8b08" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
@@ -1437,14 +1451,6 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
-      <formLibraries>
-        <Library name="leidos_/AMClientPlan/disableColumninGrid.js" libraryUniqueId="{b57b7b32-915c-c7a8-9c04-0ebbd5caa2e9}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="03fcbc90-05a9-409f-aec3-335f5318f5cc" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="49325967-9185-457b-9f41-f962d3b9e87b" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="515a0776-b18d-4ef3-a6eb-4780221e6f22" />
-        <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{3068c7c0-9c4e-077e-7126-1017066c2a13}" />
-        <Library name="leidos_common" libraryUniqueId="{b565ac88-300c-e2ac-d7ec-c0d68bcc6913}" />
-      </formLibraries>
       <events>
         <event name="onrecordselect" application="false" active="false" relationship="" control="Subgrid_2">
           <Handlers>
@@ -1458,7 +1464,7 @@
         </event>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="df906753-633b-4344-be17-fcdd575a1b1b" enabled="true" parameters="'0LS:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="df906753-633b-4344-be17-fcdd575a1b1b" enabled="true" parameters="'0LS:*:CreateUpdate::0:217890000:217890000:217890000:217890000','oV4:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.filterSegmentationLookup" libraryName="leidos_AMRFilterLokup.js" handlerUniqueId="{33ae55de-06ce-2591-8c05-77bea88a688e}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{6401533c-bd6d-03a7-9b0d-3bed8bde00c0}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
@@ -1483,10 +1489,28 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="220f7e3f-2b72-4718-bffb-c4403b40731a" enabled="true" parameters="'0LS:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_totalpercentagecurrenttgs">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="810515a9-42a2-4e57-978d-2408e53b82ae" enabled="true" parameters="'oV4:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_totalpercentagetargettgs">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7de17102-ec85-4443-af61-d2c5fd480606" enabled="true" parameters="'oV4:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_/AMClientPlan/disableColumninGrid.js" libraryUniqueId="{b57b7b32-915c-c7a8-9c04-0ebbd5caa2e9}" />
+        <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{3068c7c0-9c4e-077e-7126-1017066c2a13}" />
+        <Library name="leidos_common" libraryUniqueId="{b565ac88-300c-e2ac-d7ec-c0d68bcc6913}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="faa01f69-cf0f-4cd7-b91b-8de7c0b57fae" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="bc9d096a-4878-4ecb-8a40-e83adeae0643" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="e6aa2125-33a3-4cc8-b982-97fee2a454ec" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

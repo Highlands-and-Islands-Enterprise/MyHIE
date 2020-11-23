@@ -10,8 +10,11 @@
     <layoutxml>
       <grid name="leidos_loans" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="leidos_loan" id="leidos_loanid">
-          <cell name="leidos_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="leidos_loanreference" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_capitaloutstanding" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_interestdue" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_dateofnextrepayment" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="statuscode" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -19,13 +22,16 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_loan">
-          <attribute name="leidos_loanid" />
-          <attribute name="leidos_name" />
-          <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
+          <order attribute="leidos_loanreference" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="statuscode" />
+          <attribute name="leidos_loanreference" />
+          <attribute name="leidos_interestdue" />
+          <attribute name="leidos_capitaloutstanding" />
+          <attribute name="leidos_dateofnextrepayment" />
+          <attribute name="leidos_loanid" />
         </entity>
       </fetch>
     </fetchxml>
