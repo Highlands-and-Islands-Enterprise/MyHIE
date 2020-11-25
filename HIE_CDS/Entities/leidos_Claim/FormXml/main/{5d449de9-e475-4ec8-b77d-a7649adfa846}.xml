@@ -804,7 +804,7 @@
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="Leidos.SetClaimPathControlViews" libraryName="leidos_Claim" handlerUniqueId="{b9773783-c1e3-0bb6-5a43-a316298798da}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.SetClaimPathControlViews" libraryName="leidos_Claim" handlerUniqueId="{b9773783-c1e3-0bb6-5a43-a316298798da}" enabled="false" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_parentaccount">
@@ -814,7 +814,17 @@
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_claimvalidationchecks">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c236e6a1-333e-4543-9610-2298d1a079fe" enabled="true" parameters="'eeS:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c236e6a1-333e-4543-9610-2298d1a079fe" enabled="true" parameters="'eeS:*:Update::0:217890000:217890000:217890000:217890000','Tw7:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_submitclaimforapproval">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7ae007fa-0f45-401d-89ee-8f0abf666ef3" enabled="true" parameters="'Tw7:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_claimapprover">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="d7e17a81-aa3c-469d-90cf-5c33bd5de8cf" enabled="true" parameters="'lsI:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -824,9 +834,9 @@
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{1259c156-5717-4b79-4183-6a0311c080e9}" />
         <Library name="leidos_Claim" libraryUniqueId="{8e01ea2b-53ee-d27d-22c5-4b74269d00a9}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="047b3327-6c43-4d3e-bcc7-cdc3fd524242" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="c355e69b-e789-49d1-8052-e8cdaa0b71ef" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="e051ea22-a7fb-4c37-88c2-6569e474d6ac" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="0a8d198b-7a17-4885-be7c-e1bd0b89367e" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="c33388b9-bc78-482f-837a-1d8585dbd8b1" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="fd9a074a-abab-4c58-b056-f99baecc4f22" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

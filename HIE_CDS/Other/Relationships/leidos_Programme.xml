@@ -204,6 +204,25 @@
       </EntityRelationshipRole>
     </EntityRelationshipRoles>
   </EntityRelationship>
+  <EntityRelationship Name="leidos_programme_leidos_PortalMessages">
+    <EntityRelationshipType>OneToMany</EntityRelationshipType>
+    <IsCustomizable>1</IsCustomizable>
+    <IntroducedVersion>1.9.0.1228</IntroducedVersion>
+    <IsHierarchical>0</IsHierarchical>
+    <ReferencingEntityName>leidos_PortalMessage</ReferencingEntityName>
+    <ReferencedEntityName>leidos_Programme</ReferencedEntityName>
+    <CascadeAssign>Cascade</CascadeAssign>
+    <CascadeDelete>Cascade</CascadeDelete>
+    <CascadeReparent>Cascade</CascadeReparent>
+    <CascadeShare>Cascade</CascadeShare>
+    <CascadeUnshare>Cascade</CascadeUnshare>
+    <ReferencingAttributeName>RegardingObjectId</ReferencingAttributeName>
+    <RelationshipDescription>
+      <Descriptions>
+        <Description description="Unique identifier of the object with which the activity is associated." languagecode="1033" />
+      </Descriptions>
+    </RelationshipDescription>
+  </EntityRelationship>
   <EntityRelationship Name="leidos_Project_leidos_Programme_leidos_Pr">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
@@ -408,10 +427,10 @@
       </EntityRelationshipRole>
     </EntityRelationshipRoles>
   </EntityRelationship>
-  <EntityRelationship Name="leidos_Theme_parent_programme_leidos_Prog">
+  <EntityRelationship Name="leidos_Theme_ParentProgramme_leidos_Progr">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>1.6.0.8</IntroducedVersion>
+    <IntroducedVersion>1.9.0.1228</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>leidos_Theme</ReferencingEntityName>
     <ReferencedEntityName>leidos_Programme</ReferencedEntityName>
@@ -422,10 +441,10 @@
     <CascadeUnshare>NoCascade</CascadeUnshare>
     <CascadeRollupView>NoCascade</CascadeRollupView>
     <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
-    <ReferencingAttributeName>leidos_parent_programme</ReferencingAttributeName>
+    <ReferencingAttributeName>leidos_ParentProgramme</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
-        <Description description="Parent Entity" languagecode="1033" />
+        <Description description="" languagecode="1033" />
       </Descriptions>
     </RelationshipDescription>
     <EntityRelationshipRoles>
@@ -433,11 +452,11 @@
         <NavPaneDisplayOption>UseCollectionName</NavPaneDisplayOption>
         <NavPaneArea>Details</NavPaneArea>
         <NavPaneOrder>10000</NavPaneOrder>
-        <NavigationPropertyName>leidos_parent_programme</NavigationPropertyName>
+        <NavigationPropertyName>leidos_ParentProgramme</NavigationPropertyName>
         <RelationshipRoleType>1</RelationshipRoleType>
       </EntityRelationshipRole>
       <EntityRelationshipRole>
-        <NavigationPropertyName>leidos_Theme_parent_programme_leidos_Prog</NavigationPropertyName>
+        <NavigationPropertyName>leidos_Theme_ParentProgramme_leidos_Progr</NavigationPropertyName>
         <RelationshipRoleType>0</RelationshipRoleType>
       </EntityRelationshipRole>
     </EntityRelationshipRoles>

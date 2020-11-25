@@ -83,7 +83,7 @@
                         <control id="leidos_authorisedsignatory" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_authorisedsignatory" disabled="false" uniqueid="{a09d52ad-195b-ec3e-5d18-48ae4abd892b}">
                           <parameters>
                             <AutoResolve>true</AutoResolve>
-                            <DisableMru>false</DisableMru>
+                            <DisableMru>true</DisableMru>
                             <DisableQuickFind>false</DisableQuickFind>
                             <DisableViewPicker>true</DisableViewPicker>
                             <DefaultViewId>{A2D479C5-53E3-4C69-ADDD-802327E67A0D}</DefaultViewId>
@@ -230,6 +230,21 @@
                             <DefaultViewId>{824F07BE-3F0A-EB11-A813-000D3A7F1BBB}</DefaultViewId>
                             <AllowFilterOff>false</AllowFilterOff>
                             <AvailableViewIds>{53961D04-1FDA-40FD-B978-8E0967433FB2}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3e4dd861-efc6-4d76-9a36-10c2204a9958}" locklevel="0">
+                        <labels>
+                          <label description="Client Contact" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_clientcontact" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_clientcontact" disabled="false">
+                          <parameters>
+                            <AvailableViewIds>{A2D479C5-53E3-4C69-ADDD-802327E67A0D},{4C21F7CE-370D-EB11-A813-000D3A7F1BBB}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DisableMru>true</DisableMru>
+                            <DefaultViewId>{4C21F7CE-370D-EB11-A813-000D3A7F1BBB}</DefaultViewId>
                           </parameters>
                         </control>
                       </cell>
@@ -411,7 +426,7 @@
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_routetype">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7151c45d-b52f-4850-9256-11113720e180" enabled="true" parameters="'Ke2:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7151c45d-b52f-4850-9256-11113720e180" enabled="true" parameters="'Ke2:*:CreateUpdate::0:217890000:217890000:217890000:217890000','6pQ:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_datedocumentsigned">
@@ -434,11 +449,6 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="74cccfe8-69f3-46a7-b5d6-4189d5b1ed15" enabled="true" parameters="'rpJ:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_legalteaminputrequired">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="788788b3-02cc-4dee-a098-bdb8583a107d" enabled="true" parameters="'Zz0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
         <event name="onchange" application="false" active="false" attribute="leidos_documentationreceivedfromlegal">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="05aaa88f-c738-44ad-8780-5502adc46e92" enabled="true" parameters="'gsC:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
@@ -449,19 +459,19 @@
             <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{3d45b5c2-566c-5ed5-92c9-b1318d5b4be8}" enabled="true" parameters="&quot;leidos_parentaccount&quot;,&quot;leidos_project&quot;,&quot;1732ce6f-11af-ea11-a812-000d3a7f1bbb&quot;, &quot;&lt;filter type='and'&gt;&lt;condition attribute='statuscode' operator='eq' value='445260001' /&gt;&lt;condition attribute='leidos_parentaccount' operator='eq'  value='{{id}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
           </Handlers>
         </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_project">
+        <event name="onchange" application="false" active="false" attribute="leidos_legalteaminputrequired">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="fc160102-bbb6-4ebc-9a11-5533021e8954" enabled="true" parameters="'yU5:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="185c5a87-80f6-42da-81dc-93f8afc15baa" enabled="true" parameters="'Zz0:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_requiresdelegatedauthorityinput">
+        <event name="onchange" application="false" active="false" attribute="leidos_project">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b9584233-d746-4741-abf8-8da1766415ee" enabled="true" parameters="'6pQ:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="3810bb1c-f8ec-47ef-9a51-a84ce6e296a4" enabled="true" parameters="'yU5:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -688,16 +698,16 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{1c3914a4-1e86-e32d-7b29-542a78d244d1}" />
-        <Library name="leidos_legalundertaiking" libraryUniqueId="{55803621-d13a-eda5-72a4-522a972a6205}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="6cc63e0d-896e-4cbe-aa24-b82deaad1c49" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="74b7ead6-2c0e-42cf-9b91-f65fba419b6c" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="4fa8ac87-710c-4a03-8f06-c3d21c3da3d5" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{1c3914a4-1e86-e32d-7b29-542a78d244d1}" />
+        <Library name="leidos_legalundertaiking" libraryUniqueId="{55803621-d13a-eda5-72a4-522a972a6205}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="e7fb429c-ba80-42c6-a4f3-1c8c367cd236" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="b3b0f9f7-fae4-45af-b076-4fca6d06762a" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="f0e20110-c892-4ad9-957c-e7e797599007" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

@@ -4,6 +4,7 @@ if (typeof ($) === 'undefined') {
 }
 
 var Leidos = window.Leidos || {};
+var lastModifiedOn = null;
 
 Leidos.ExpandBPF = function (executionContext) {
     "use strict";
@@ -102,30 +103,30 @@ Leidos.filterDefinition = function (executionContext, parentAttribute, childAttr
     }
 }
 
-Leidos.onLoadFormSubgrid = function (executionContext, subgridName) {
+Leidos.onLoadFormSubgrid = function (executionContext, subgrids) {
     debugger;
     "use strict";
     formContext = executionContext.getFormContext(); //get Form Context
-    var lastModifiedOn = null;
+    var subgridNames = subgrids.split(',');
 
     if (formContext.ui.getFormType() === 2) {
-        Xrm.WebApi.retrieveRecord(formContext.data.entity.getEntityName(), formContext.data.entity.getId(), "?$select=modifiedon").then(function (result) { Leidos.onRetrieveModifiedOn(formContext, subgridName, lastModifiedOn, result) });;
+        Xrm.WebApi.retrieveRecord(formContext.data.entity.getEntityName(), formContext.data.entity.getId(), "?$select=modifiedon").then(function (result) { Leidos.onRetrieveModifiedOn(formContext, result, subgridNames) });;
     }
 }
 
-Leidos.onSubgridLoad = function (formContext, subgridName, lastModifiedOn) {
+Leidos.onSubgridLoad = function (formContext) {
     "use strict";
-    debugger;
-    Xrm.WebApi.retrieveRecord(formContext.data.entity.getEntityName(), formContext.data.entity.getId(), "?$select=modifiedon").then(function (result) { Leidos.onRetrieveModifiedOn(formContext, subgridName, lastModifiedOn, result) });;
+    Xrm.WebApi.retrieveRecord(formContext.data.entity.getEntityName(), formContext.data.entity.getId(), "?$select=modifiedon").then(function (result) { Leidos.onRetrieveModifiedOn(formContext, result) });;
 }
 
-Leidos.onRetrieveModifiedOn = function (formContext, subgridName, lastModifiedOn, result) {
+Leidos.onRetrieveModifiedOn = function (formContext, result, subgridNames) {
     "use strict";
     if (lastModifiedOn !== result.modifiedon) {
-        debugger;
         var doRefresh = false;
         if (lastModifiedOn === null) {
-            formContext.getControl(subgridName).addOnLoad(Leidos.onSubgridLoad(formContext, subgridName, lastModifiedOn));
+            for (i = 0; i < subgridNames.length; i++) {
+                formContext.getControl(subgridNames[i]).addOnLoad(function () { Leidos.onSubgridLoad(formContext) });
+            }
         }
         else {
             doRefresh = true;

@@ -20,12 +20,17 @@
         <entity name="leidos_theme">
           <attribute name="leidos_name" />
           <attribute name="leidos_themeid" />
+          <filter type="and">
+            <condition attribute="leidos_parentprogramme" operator="not-null" />
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.6.0.8</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="programme_grid_view" languagecode="1033" />
+      <LocalizedName description="Programme_grid_view" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{30b0581f-462f-eb11-a813-0022483fae82}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_themeid">
+          <cell name="leidos_parentprogramme" width="100" />
+          <cell name="leidos_name" width="200" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_theme">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_themeid" />
+          <attribute name="leidos_parentprogramme" />
+          <filter type="and">
+            <condition attribute="leidos_parentprogramme" operator="not-null" />
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <order attribute="leidos_parentprogramme" descending="false" />
+          <order attribute="leidos_name" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1228</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Programme Themes" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
