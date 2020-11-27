@@ -634,7 +634,7 @@
         </tab>
         <tab name="Funding" id="31a5c69b-e656-4043-b3c8-10508195083f" IsUserDefined="0" locklevel="0" showlabel="true">
           <labels>
-            <label description="Cost Funding" languagecode="1033" />
+            <label description="Funding" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
@@ -931,7 +931,7 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell locklevel="0" id="{cb65a3d3-00e5-4954-84be-4fae1521b45c}">
+                      <cell locklevel="0" id="{cb65a3d3-00e5-4954-84be-4fae1521b45c}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -1013,6 +1013,14 @@
                         </control>
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{6913c0dd-3c83-ccbd-0c2a-848a71987ba9}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Completed Strategic Priority" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_completedstrategicpriority" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedstrategicpriority" disabled="false" uniqueid="{4c0586b6-53a1-ce69-1189-5084b6d129bd}" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -1026,20 +1034,6 @@
           <columns>
             <column width="100%">
               <sections>
-                <section name="Strategic Priorities" id="1e47d5b7-7aab-4eef-bd54-8f9f8d20cbc7" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
-                  <labels>
-                    <label description="Strategic Priorities" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell showlabel="false" locklevel="0" id="{5bd1ea08-6267-452d-885d-23df313e18ca}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
                 <section name="ActiveMeasures" id="09ab099e-ccf8-467e-8d45-e6f25246a38b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Active Measures" languagecode="1033" />
@@ -1720,6 +1714,28 @@
               <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
               <HideNestedGridColumnHeader static="true" type="Enum">no</HideNestedGridColumnHeader>
               <EnableJumpBar static="true" type="Enum">yes</EnableJumpBar>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{4c0586b6-53a1-ce69-1189-5084b6d129bd}">
+          <customControl id="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_completedstrategicpriority</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_completedstrategicpriority</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_completedstrategicpriority</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+            <parameters>
+              <value>leidos_completedstrategicpriority</value>
             </parameters>
           </customControl>
         </controlDescription>
