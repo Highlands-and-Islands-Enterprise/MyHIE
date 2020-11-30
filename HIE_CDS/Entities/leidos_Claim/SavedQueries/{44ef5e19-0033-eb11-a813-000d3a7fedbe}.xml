@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{44ef5e19-0033-eb11-a813-000d3a7fedbe}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_claimid">
+          <cell name="leidos_name" width="200" />
+          <cell name="leidos_claimreference" width="100" />
+          <cell name="a_735c4277f9fd4009a758ea0db9750c8f.leidos_name" width="100" />
+          <cell name="a_735c4277f9fd4009a758ea0db9750c8f.leidos_projectreference" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="leidos_claimsubmitteddate" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_claim">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_claimid" />
+          <link-entity alias="a_735c4277f9fd4009a758ea0db9750c8f" name="leidos_project" to="leidos_parentproject" from="leidos_projectid" link-type="outer" visible="false">
+            <attribute name="leidos_name" />
+            <attribute name="leidos_projectreference" />
+          </link-entity>
+          <attribute name="leidos_claimreference" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_claimsubmitteddate" />
+          <order attribute="leidos_claimreference" descending="true" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1240</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Portal Web View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

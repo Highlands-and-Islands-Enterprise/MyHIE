@@ -14,6 +14,7 @@
           <cell name="leidos_name" width="200" />
           <cell name="leidos_principal" width="100" />
           <cell name="leidos_annualinterestrate" width="100" />
+          <cell name="statuscode" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
@@ -22,7 +23,6 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_loan">
           <attribute name="leidos_name" />
-          <attribute name="leidos_loanid" />
           <attribute name="leidos_loanreference" />
           <attribute name="leidos_principal" />
           <attribute name="leidos_annualinterestrate" />
@@ -30,6 +30,8 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="statuscode" />
+          <attribute name="leidos_loanid" />
         </entity>
       </fetch>
     </fetchxml>
