@@ -7,7 +7,7 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
-        <tab verticallayout="true" id="{9ac75677-b966-4897-853e-fe698b64002b}" IsUserDefined="1">
+        <tab verticallayout="true" id="{9ac75677-b966-4897-853e-fe698b64002b}" IsUserDefined="1" name="General" locklevel="0" expanded="true" showlabel="true">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
@@ -45,9 +45,9 @@
                     </row>
                   </rows>
                 </section>
-                <section name="{9ac75677-b966-4897-853e-fe698b64002b}_section_2" showlabel="false" showbar="false" locklevel="0" id="{13ec7151-76b2-0e76-8283-7b28017a9b12}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115">
+                <section name="ActivityMain" showlabel="false" showbar="false" locklevel="0" id="{13ec7151-76b2-0e76-8283-7b28017a9b12}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
-                    <label description="Section" languagecode="1033" />
+                    <label description="Activity Main" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -58,7 +58,7 @@
                         <control id="leidos_activity" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_activity" disabled="false" uniqueid="{b6911751-26bb-e7a6-1285-2438c318852d}">
                           <parameters>
                             <AutoResolve>true</AutoResolve>
-                            <DisableMru>false</DisableMru>
+                            <DisableMru>true</DisableMru>
                             <DisableQuickFind>false</DisableQuickFind>
                             <DisableViewPicker>true</DisableViewPicker>
                             <DefaultViewId>{08BBAFD5-B8E9-4A5A-83EF-2DCFE4B366CF}</DefaultViewId>
@@ -66,6 +66,7 @@
                             <DependentAttributeName>leidos_projectmeasure.leidos_strategicpriority</DependentAttributeName>
                             <DependentAttributeType>leidos_strategicpriority</DependentAttributeType>
                             <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{08BBAFD5-B8E9-4A5A-83EF-2DCFE4B366CF}</AvailableViewIds>
                           </parameters>
                         </control>
                       </cell>
@@ -91,20 +92,20 @@
                     </row>
                   </rows>
                 </section>
-                <section name="{9ac75677-b966-4897-853e-fe698b64002b}_section_3" showlabel="false" showbar="false" locklevel="0" id="{d3907e0c-552a-a27b-e660-00ccad6d630b}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115">
+                <section name="OutputMain" showlabel="false" showbar="false" locklevel="0" id="{d3907e0c-552a-a27b-e660-00ccad6d630b}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
-                    <label description="Section" languagecode="1033" />
+                    <label description="Output Main" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{f14ecff4-b9a1-49d3-9766-628686778238}" showlabel="true" locklevel="0" visible="false">
+                      <cell id="{f14ecff4-b9a1-49d3-9766-628686778238}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Output" languagecode="1033" />
                         </labels>
                         <control id="leidos_output" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_output" disabled="false" uniqueid="{773e61b8-1501-aced-4110-33290eca9cb9}">
                           <parameters>
                             <AutoResolve>true</AutoResolve>
-                            <DisableMru>false</DisableMru>
+                            <DisableMru>true</DisableMru>
                             <DisableQuickFind>false</DisableQuickFind>
                             <DisableViewPicker>true</DisableViewPicker>
                             <DefaultViewId>{D497FB8B-AAC8-44C3-A330-B55313B01885}</DefaultViewId>
@@ -112,10 +113,11 @@
                             <DependentAttributeName>leidos_projectmeasure.leidos_strategicpriority</DependentAttributeName>
                             <DependentAttributeType>leidos_strategicpriority</DependentAttributeType>
                             <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{D497FB8B-AAC8-44C3-A330-B55313B01885}</AvailableViewIds>
                           </parameters>
                         </control>
                       </cell>
-                      <cell id="{cc36c5d8-be26-1cc3-7248-cc7a76ae2617}" showlabel="false" userspacer="true">
+                      <cell id="{5d1a083c-8a9c-0b41-ab8b-298d293e85e4}" showlabel="false" userspacer="true">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -124,22 +126,22 @@
                     <row>
                       <cell id="{940c3e1b-597d-4ede-b893-982300ae6f33}" locklevel="0" visible="false" showlabel="true">
                         <labels>
-                          <label description="Expected  Output Description" languagecode="1033" />
+                          <label description="Expected HIE Output Description" languagecode="1033" />
                         </labels>
                         <control id="leidos_projectspecificoutput" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_projectspecificoutput" disabled="false" uniqueid="{8db02a7a-3030-b04e-5686-32dd0aec6293}" />
                       </cell>
-                      <cell id="{5296e271-5daa-82d2-3301-336c273ba351}" showlabel="true" locklevel="0">
+                      <cell id="{5296e271-5daa-82d2-3301-336c273ba351}" showlabel="true" locklevel="0" visible="false">
                         <labels>
-                          <label description="Actual  Output Description" languagecode="1033" />
+                          <label description="Actual HIE Output Description" languagecode="1033" />
                         </labels>
                         <control id="leidos_actualprojectspecificoutput" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_actualprojectspecificoutput" disabled="false" uniqueid="{b7000dda-1097-4c0c-956b-edd3d428840d}" />
                       </cell>
                     </row>
                   </rows>
                 </section>
-                <section name="{9ac75677-b966-4897-853e-fe698b64002b}_section_5" showlabel="false" showbar="false" locklevel="0" id="{2ac77146-e744-0020-a4d2-0537582eb366}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115">
+                <section name="ActivityTypeDetails" showlabel="false" showbar="false" locklevel="0" id="{2ac77146-e744-0020-a4d2-0537582eb366}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
-                    <label description="Section" languagecode="1033" />
+                    <label description="Activity Type Details" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -147,13 +149,13 @@
                         <labels>
                           <label description="Expected Quantity " languagecode="1033" />
                         </labels>
-                        <control id="leidos_qty" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="leidos_qty" disabled="false" />
+                        <control id="leidos_qty" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="leidos_qty" disabled="false" uniqueid="{57520ab7-7e79-e517-00ed-c879023bb497}" />
                       </cell>
                       <cell id="{37deb54b-3e16-4727-a93a-46f8dca97f28}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Actual Quantity" languagecode="1033" />
                         </labels>
-                        <control id="leidos_actual" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="leidos_actual" disabled="false" />
+                        <control id="leidos_actual" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="leidos_actual" disabled="false" uniqueid="{9038bade-06c9-44b9-e0c2-4d6502b54ac8}" />
                       </cell>
                     </row>
                     <row>
@@ -161,12 +163,74 @@
                         <labels>
                           <label description="Actual Due Date" languagecode="1033" />
                         </labels>
-                        <control id="leidos_actualduedate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_actualduedate" disabled="false" />
+                        <control id="leidos_actualduedate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_actualduedate" disabled="false" uniqueid="{9862db67-e769-b639-7946-cbd9381eee9c}" />
                       </cell>
                       <cell id="{e14a01cb-c98e-be15-da45-6c37433d4b0e}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="OutputTypeDetails" showlabel="false" showbar="false" locklevel="0" id="{58a9cb28-e752-88a8-9420-72719009c013}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Output Type Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{0b24d28d-3332-4c95-0be4-1382a516681a}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Current Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_currentquantity" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="leidos_currentquantity" disabled="false" uniqueid="{1e6a8e9a-0384-85e5-1e57-5a263060be57}" />
+                      </cell>
+                      <cell id="{ea323e1e-8de7-abb5-d497-a6504d220d05}" showlabel="false" userspacer="true">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{51c4bc82-1137-2c24-71d8-bc36984019b2}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Basecase Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_basecasequantity" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="leidos_basecasequantity" disabled="false" uniqueid="{ac1086b8-d199-ae00-909c-1838934dcc04}" />
+                      </cell>
+                      <cell id="{7b6466b5-ede3-e80a-5b58-a181eb74628b}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Actual Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_actual" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="leidos_actual" disabled="false" uniqueid="{31d3a480-042c-6c37-bab3-4d4d6a91c5e6}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5268a191-1912-dc10-e348-cab11878e660}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Forecast Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_forecastquantity" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="leidos_forecastquantity" disabled="false" uniqueid="{96c807b7-4735-b935-3737-17730a23a13e}" />
+                      </cell>
+                      <cell id="{30d29719-4e73-9bc4-a7e4-ea1e18d0890b}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Actual Due Date" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_actualduedate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="leidos_actualduedate" disabled="false" uniqueid="{c1363034-76a8-532d-8e1d-11a956c94470}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{92b6377d-12e7-3567-4a0e-2d3294773e1c}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Expected HIE Output Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_expectedhieoutputquantity" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="leidos_expectedhieoutputquantity" disabled="false" uniqueid="{38697150-9753-7091-067d-352a0cba5c3b}" />
+                      </cell>
+                      <cell id="{72437387-91d6-58da-ae91-26d27b600c29}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Actual HIE Output Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_actualhieoutputquantity" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="leidos_actualhieoutputquantity" disabled="false" uniqueid="{a028c8e6-d25a-ad3d-1829-784cc67e4ea7}" />
                       </cell>
                     </row>
                   </rows>
@@ -290,14 +354,14 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="68d0134d-85a4-4d1e-89da-c2ce8caea72f" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="008eacc3-07a5-4c17-bfde-7fb7224562bc" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="a5969e8e-c0ff-4a3a-b5d3-38bd23e00c83" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

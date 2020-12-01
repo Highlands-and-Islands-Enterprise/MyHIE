@@ -2,17 +2,15 @@
 <savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <savedquery>
     <IsCustomizable>1</IsCustomizable>
-    <CanBeDeleted>0</CanBeDeleted>
+    <CanBeDeleted>1</CanBeDeleted>
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
-    <isdefault>1</isdefault>
-    <savedqueryid>{dbe1bb92-ea05-4e03-8fcd-959632fd620a}</savedqueryid>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e3f57ae3-c033-eb11-a813-0022483fae82}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_bankdetailsid">
-          <cell name="leidos_name" width="300" />
-          <cell name="leidos_parentclaim" width="100" />
-          <cell name="leidos_accountname" width="100" />
+          <cell name="leidos_name" width="200" />
           <cell name="leidos_accountnumber" width="100" />
           <cell name="leidos_sortcode" width="100" />
         </row>
@@ -20,24 +18,18 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_bankdetails">
-          <attribute name="leidos_bankdetailsid" />
           <attribute name="leidos_name" />
-          <order attribute="leidos_name" descending="false" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
-          <attribute name="leidos_accountname" />
+          <attribute name="leidos_bankdetailsid" />
           <attribute name="leidos_accountnumber" />
           <attribute name="leidos_sortcode" />
-          <attribute name="leidos_parentclaim" />
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.9.0.1240</IntroducedVersion>
+    <IntroducedVersion>1.9.0.1242</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Active Bank Details" languagecode="1033" />
+      <LocalizedName description="Claim Grid View" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

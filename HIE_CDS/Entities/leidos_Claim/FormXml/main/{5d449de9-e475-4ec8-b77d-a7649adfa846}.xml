@@ -136,6 +136,42 @@
             </column>
             <column width="50%">
               <sections>
+                <section name="AlternativePayee" id="46daf7c1-ea70-439e-bba1-e5fc770dec98" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Alternative Payee" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{b9b56303-0f90-4832-a9e3-6a45191f3170}" locklevel="0">
+                        <labels>
+                          <label description="Pay Alternative Account" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_payalternativeaccount" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_payalternativeaccount" disabled="false" uniqueid="{81ea30a5-f0e4-47ac-b1e3-5789b855411b}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{97af980a-bcd6-4b90-b164-bd2c2faf0c34}" locklevel="0" showlabel="true">
+                        <labels>
+                          <label description="Alternative Payee Account" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_alternativepayeeacount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_alternativepayeeacount" disabled="false" uniqueid="{5d2c43ca-c772-5016-88b2-30b715963b0a}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{A9AF0AB8-861D-4CFA-92A5-C6281FED7FAB}</DefaultViewId>
+                            <FilterRelationshipName>leidos_Project_Account_Account</FilterRelationshipName>
+                            <DependentAttributeName>leidos_claim.leidos_parentproject</DependentAttributeName>
+                            <DependentAttributeType>leidos_project</DependentAttributeType>
+                            <AllowFilterOff>true</AllowFilterOff>
+                            <AvailableViewIds>{A9AF0AB8-861D-4CFA-92A5-C6281FED7FAB}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
                 <section showlabel="false" showbar="false" id="{953c0082-7cb6-410a-8af4-59a1829c91d7}" IsUserDefined="0" height="auto">
                   <labels>
                     <label description="Notes" languagecode="1033" />
@@ -526,6 +562,14 @@
                         <control id="leidos_datepaidoncoda" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datepaidoncoda" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{008bbef3-409f-4cfd-ae6a-818c882a0440}" locklevel="0">
+                        <labels>
+                          <label description="Claim Number" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_claimnumber" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="leidos_claimnumber" disabled="true" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
               </sections>
@@ -594,7 +638,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -797,6 +841,28 @@
           <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
             <parameters>
               <value>leidos_submitclaimforapproval</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{81ea30a5-f0e4-47ac-b1e3-5789b855411b}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_payalternativeaccount</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_payalternativeaccount</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_payalternativeaccount</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_payalternativeaccount</value>
             </parameters>
           </customControl>
         </controlDescription>
