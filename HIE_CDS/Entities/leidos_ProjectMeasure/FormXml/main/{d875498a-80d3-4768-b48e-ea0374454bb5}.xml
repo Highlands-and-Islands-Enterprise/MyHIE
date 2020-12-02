@@ -139,7 +139,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="ActivityTypeDetails" showlabel="false" showbar="false" locklevel="0" id="{2ac77146-e744-0020-a4d2-0537582eb366}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="ActivityTypeDetails" showlabel="false" showbar="false" locklevel="0" id="{2ac77146-e744-0020-a4d2-0537582eb366}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" visible="false">
                   <labels>
                     <label description="Activity Type Details" languagecode="1033" />
                   </labels>
@@ -173,13 +173,13 @@
                     </row>
                   </rows>
                 </section>
-                <section name="OutputTypeDetails" showlabel="false" showbar="false" locklevel="0" id="{58a9cb28-e752-88a8-9420-72719009c013}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="OutputTypeDetails" showlabel="false" showbar="false" locklevel="0" id="{58a9cb28-e752-88a8-9420-72719009c013}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" visible="false">
                   <labels>
                     <label description="Output Type Details" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{0b24d28d-3332-4c95-0be4-1382a516681a}" showlabel="true" locklevel="0" visible="false">
+                      <cell id="{0b24d28d-3332-4c95-0be4-1382a516681a}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Current Quantity" languagecode="1033" />
                         </labels>
@@ -192,13 +192,13 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{51c4bc82-1137-2c24-71d8-bc36984019b2}" showlabel="true" locklevel="0" visible="false">
+                      <cell id="{51c4bc82-1137-2c24-71d8-bc36984019b2}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Basecase Quantity" languagecode="1033" />
                         </labels>
                         <control id="leidos_basecasequantity" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="leidos_basecasequantity" disabled="false" uniqueid="{ac1086b8-d199-ae00-909c-1838934dcc04}" />
                       </cell>
-                      <cell id="{7b6466b5-ede3-e80a-5b58-a181eb74628b}" showlabel="true" locklevel="0" visible="false">
+                      <cell id="{7b6466b5-ede3-e80a-5b58-a181eb74628b}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Actual Quantity" languagecode="1033" />
                         </labels>
@@ -206,13 +206,13 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{5268a191-1912-dc10-e348-cab11878e660}" showlabel="true" locklevel="0" visible="false">
+                      <cell id="{5268a191-1912-dc10-e348-cab11878e660}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Forecast Quantity" languagecode="1033" />
                         </labels>
                         <control id="leidos_forecastquantity" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="leidos_forecastquantity" disabled="false" uniqueid="{96c807b7-4735-b935-3737-17730a23a13e}" />
                       </cell>
-                      <cell id="{30d29719-4e73-9bc4-a7e4-ea1e18d0890b}" showlabel="true" locklevel="0" visible="false">
+                      <cell id="{30d29719-4e73-9bc4-a7e4-ea1e18d0890b}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Actual Due Date" languagecode="1033" />
                         </labels>
@@ -220,13 +220,13 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{92b6377d-12e7-3567-4a0e-2d3294773e1c}" showlabel="true" locklevel="0" visible="false">
+                      <cell id="{92b6377d-12e7-3567-4a0e-2d3294773e1c}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Expected HIE Output Quantity" languagecode="1033" />
                         </labels>
                         <control id="leidos_expectedhieoutputquantity" classid="{C3EFE0C3-0EC6-42be-8349-CBD9079DFD8E}" datafieldname="leidos_expectedhieoutputquantity" disabled="false" uniqueid="{38697150-9753-7091-067d-352a0cba5c3b}" />
                       </cell>
-                      <cell id="{72437387-91d6-58da-ae91-26d27b600c29}" showlabel="true" locklevel="0" visible="false">
+                      <cell id="{72437387-91d6-58da-ae91-26d27b600c29}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Actual HIE Output Quantity" languagecode="1033" />
                         </labels>
@@ -343,25 +343,40 @@
       </Navigation>
       <controlDescriptions />
       <events>
-        <event name="onchange" application="false" active="false" attribute="leidos_measuretype">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="027a2236-f2b5-42ad-a2e8-c1248f4f8738" enabled="true" parameters="'ttX:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
         <event name="onchange" application="false" active="false" attribute="leidos_strategicpriority">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="cf854b06-5cfc-4896-8540-82071529239c" enabled="true" parameters="'bGG:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8bd9181e-9eea-4820-9147-b3c9cc5cddb0" enabled="true" parameters="'i9b:*:CreateUpdate::0:217890000:217890000:217890000:217890000','txX:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_measuretype">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="4e128a60-a43b-492c-8787-3b18cd87356e" enabled="true" parameters="'i9b:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_activity">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="35a57e1a-492e-4444-a31d-82879dab71f3" enabled="true" parameters="'txX:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_output">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="e2ea0315-978f-45eb-b00b-518427dc5816" enabled="true" parameters="'txX:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
-      <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="68d0134d-85a4-4d1e-89da-c2ce8caea72f" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="008eacc3-07a5-4c17-bfde-7fb7224562bc" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="a5969e8e-c0ff-4a3a-b5d3-38bd23e00c83" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="33b9bf95-cf75-40ec-9a84-ba79afbca90c" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="0e655eb3-28a0-4cb4-bfa7-6d3073f4071b" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="132f1cc0-197b-41d6-951f-e6845b5a3a3b" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
