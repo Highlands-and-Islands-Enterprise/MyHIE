@@ -10,19 +10,18 @@
     <layoutxml>
       <grid name="leidos_claims" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="leidos_claim" id="leidos_claimid">
-          <cell name="a_adeb82254bc148c181393d58fbd96dc6.name" width="100" />
-          <cell name="a_7fed577ba8924ae4aace4990b2c3f66f.leidos_name" width="100" />
-          <cell name="a_7fed577ba8924ae4aace4990b2c3f66f.leidos_projectreference" width="100" />
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_codareference" width="100" />
+          <cell name="leidos_alternativepayeeacount" width="100" />
           <cell name="leidos_claimreference" width="100" />
-          <cell name="leidos_eligible" width="100" />
-          <cell name="leidos_grossinvoicevalue" width="100" />
+          <cell name="leidos_claimnumber" width="100" />
           <cell name="leidos_netinvoicevalue" width="100" />
+          <cell name="leidos_eligible" width="100" />
           <cell name="leidos_claimsubmitteddate" width="100" />
+          <cell name="leidos_dateofposting" width="100" />
+          <cell name="leidos_paymentdate" width="100" />
           <cell name="leidos_datepaidoncoda" width="100" />
-          <cell name="ownerid" width="100" />
           <cell name="statuscode" width="100" />
-          <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
@@ -32,26 +31,21 @@
         <entity name="leidos_claim">
           <attribute name="leidos_claimid" />
           <attribute name="leidos_name" />
-          <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <link-entity alias="a_adeb82254bc148c181393d58fbd96dc6" name="account" to="leidos_parentaccount" from="accountid" link-type="outer" visible="false">
-            <attribute name="name" />
-          </link-entity>
-          <link-entity alias="a_7fed577ba8924ae4aace4990b2c3f66f" name="leidos_project" to="leidos_parentproject" from="leidos_projectid" link-type="outer" visible="false">
-            <attribute name="leidos_name" />
-            <attribute name="leidos_projectreference" />
-          </link-entity>
           <attribute name="leidos_claimreference" />
           <attribute name="leidos_claimsubmitteddate" />
-          <attribute name="ownerid" />
           <attribute name="statuscode" />
           <attribute name="leidos_datepaidoncoda" />
           <attribute name="leidos_eligible" />
-          <attribute name="leidos_grossinvoicevalue" />
           <attribute name="leidos_netinvoicevalue" />
+          <attribute name="leidos_alternativepayeeacount" />
+          <attribute name="leidos_codareference" />
+          <attribute name="leidos_claimnumber" />
+          <attribute name="leidos_dateofposting" />
+          <attribute name="leidos_paymentdate" />
         </entity>
       </fetch>
     </fetchxml>
