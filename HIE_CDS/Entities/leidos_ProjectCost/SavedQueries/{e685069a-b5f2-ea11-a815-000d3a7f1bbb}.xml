@@ -11,8 +11,8 @@
       <grid name="leidos_projectcosts" jump="leidos_costitem" select="1" icon="1" preview="1">
         <row name="leidos_projectcost" id="leidos_projectcostid">
           <cell name="leidos_parentproject" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_costitem" width="269" />
-          <cell name="leidos_itemcost" width="191" />
+          <cell name="leidos_portalitem" width="200" />
+          <cell name="leidos_portalitemcost" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -20,10 +20,7 @@
     <fetchxml>
       <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="leidos_projectcost">
-          <attribute name="leidos_costitem" />
-          <attribute name="leidos_itemcost" />
           <attribute name="leidos_parentproject" />
-          <order attribute="leidos_costitem" descending="false" />
           <filter type="and">
             <filter type="or">
               <condition attribute="statecode" operator="eq" value="0" />
@@ -31,6 +28,8 @@
             </filter>
           </filter>
           <attribute name="leidos_projectcostid" />
+          <attribute name="leidos_portalitem" />
+          <attribute name="leidos_portalitemcost" />
         </entity>
       </fetch>
     </fetchxml>
