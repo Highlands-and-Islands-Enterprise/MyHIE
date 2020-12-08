@@ -105,11 +105,16 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{08623594-d620-4e45-ae40-297e2e8e2acf}" showlabel="true" locklevel="0">
+                      <cell locklevel="0" id="{53ee2119-7e2e-4b07-9002-a10eb4e63066}" showlabel="false">
                         <labels>
-                          <label description="Parent Account" languagecode="1033" />
+                          <label description="New QV control 1607331601903" languagecode="1033" />
                         </labels>
-                        <control id="leidos_parentaccount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentaccount" disabled="false" />
+                        <control id="QuickviewControl1607331601903" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="leidos_parentaccount" disabled="false">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;c1c3b01f-6a38-eb11-a813-0022483fae82&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
@@ -493,12 +498,12 @@
       <events>
         <event name="onchange" application="false" active="false" attribute="leidos_proposedsegmentation">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="288b3627-4a6d-43a3-9ff5-e82c41fc7cbe" enabled="true" parameters="'5UD:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="288b3627-4a6d-43a3-9ff5-e82c41fc7cbe" enabled="true" parameters="'5UD:*:Create::0:217890000:217890000:217890000:217890000','1sr:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c3bedb21-7d1f-4cb1-b5b6-e89e8918ce4f" enabled="true" parameters="'0Wi:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c3bedb21-7d1f-4cb1-b5b6-e89e8918ce4f" enabled="true" parameters="'0Wi:*:Create::0:217890000:217890000:217890000:217890000','1sr:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{a591c8d2-b6d2-0022-9eed-8a52d7b427bd}" enabled="true" parameters="'leidos_natureoforganisation' , 'leidos_proposedsegmentation', '5b7a5d04-bcdb-ea11-a813-000d3a7fedbe' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;1&quot; /&gt;      &lt;condition attribute=&quot;leidos_natureofbusiness&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;' " passExecutionContext="true" />
             <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{25c4d85b-c151-a64c-09eb-8a388476402b}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
@@ -515,16 +520,16 @@
           </Handlers>
         </event>
       </events>
-      <formLibraries>
-        <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{bbd609ac-43a5-3e59-ddcc-6a7aa596689e}" />
-        <Library name="leidos_common" libraryUniqueId="{519ec06b-39a1-d0c6-c2aa-648b13d42c26}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="d8c70787-0e4b-44a0-827f-a73354e68a9f" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="9016a7fa-9e26-483e-b1c2-c79d32ae7acb" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="70f0ecb1-53d0-4c29-af03-c3808ac8c6e9" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{bbd609ac-43a5-3e59-ddcc-6a7aa596689e}" />
+        <Library name="leidos_common" libraryUniqueId="{519ec06b-39a1-d0c6-c2aa-648b13d42c26}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="a04095aa-a5eb-43ac-8dda-76cbef360f3d" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="38fe64c0-8c89-469a-97d4-3b479831d4f1" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="d26085e4-a8a3-4e62-8ec6-abe15710bbcc" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

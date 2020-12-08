@@ -20,7 +20,7 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell showlabel="false" locklevel="0" id="{c2cb88ae-646c-4a22-a7be-8e95d1cc2a6b}">
+                      <cell showlabel="false" locklevel="0" id="{f715b419-4185-4636-a322-f28579c6c09a}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -40,11 +40,11 @@
                         </labels>
                         <control id="leidos_rag" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_rag" disabled="false" />
                       </cell>
-                      <cell id="{b3076e2b-fee3-4494-b6de-d79e4a38437e}" locklevel="0">
+                      <cell id="{4750ce25-283f-4373-a38d-444ca4678999}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="Security Taken" languagecode="1033" />
+                          <label description="All Securities Instructed?" languagecode="1033" />
                         </labels>
-                        <control id="leidos_securitytaken" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_securitytaken" disabled="false" />
+                        <control id="leidos_securityinstructed" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_securityinstructed" disabled="true" uniqueid="{1c6dae57-6ea4-c6d5-d3c4-29e728c67c76}" />
                       </cell>
                     </row>
                     <row>
@@ -54,11 +54,11 @@
                         </labels>
                         <control id="leidos_creditrating" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_creditrating" disabled="false" />
                       </cell>
-                      <cell id="{4750ce25-283f-4373-a38d-444ca4678999}" locklevel="0" showlabel="true">
+                      <cell id="{7f32383a-b193-4898-aae0-fdcb4e696f44}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="Security Instructed?" languagecode="1033" />
+                          <label description="Drawdown Notice Returned?" languagecode="1033" />
                         </labels>
-                        <control id="leidos_securityinstructed" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_securityinstructed" disabled="false" uniqueid="{1c6dae57-6ea4-c6d5-d3c4-29e728c67c76}" />
+                        <control id="leidos_drawdownnoticereturned" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_drawdownnoticereturned" disabled="false" uniqueid="{b94619c0-077b-e12e-3d72-2d7a95627ad4}" />
                       </cell>
                     </row>
                     <row>
@@ -68,11 +68,11 @@
                         </labels>
                         <control id="leidos_securityrating" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_securityrating" disabled="false" />
                       </cell>
-                      <cell id="{97463bc8-9e13-4158-ad13-4219bd613b33}" locklevel="0">
+                      <cell id="{7ca40c65-5d9c-48b5-8598-e7b9c257f92c}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="Date Security Signed" languagecode="1033" />
+                          <label description="All Securities Discharged?" languagecode="1033" />
                         </labels>
-                        <control id="leidos_datesecuritysigned" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datesecuritysigned" disabled="false" />
+                        <control id="leidos_securitiesdischarged" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_securitiesdischarged" disabled="true" uniqueid="{c6dbe623-e46b-2968-c1c6-e55ab982236b}" />
                       </cell>
                     </row>
                     <row>
@@ -82,11 +82,20 @@
                         </labels>
                         <control id="leidos_referencerate" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="leidos_referencerate" disabled="false" />
                       </cell>
-                      <cell id="{a81e169e-0b38-4160-a652-bf07e892dd6a}" locklevel="0">
+                      <cell locklevel="0" id="{a3a7e908-553d-4526-a0ec-a5fdc80e4686}" rowspan="1" colspan="1" showlabel="true" auto="false">
                         <labels>
-                          <label description="Date Security Registered" languagecode="1033" />
+                          <label description="Loan Securities" languagecode="1033" />
                         </labels>
-                        <control id="leidos_datesecurityregistered" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datesecurityregistered" disabled="false" />
+                        <control id="Subgrid_LoanSecurities" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_security</TargetEntityType>
+                            <ViewId>{2C43575C-2F39-EB11-A813-0022483FAE82}</ViewId>
+                            <ViewIds>{A5F4F378-FD99-42FE-8137-17957F2B3611},{2C43575C-2F39-EB11-A813-0022483FAE82}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_security_loan_leidos_Loan</RelationshipName>
+                            <AutoExpand>Fixed</AutoExpand>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>
@@ -96,11 +105,10 @@
                         </labels>
                         <control id="leidos_eucommercialproxy" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="leidos_eucommercialproxy" disabled="false" />
                       </cell>
-                      <cell id="{7f32383a-b193-4898-aae0-fdcb4e696f44}" locklevel="0" showlabel="true">
+                      <cell locklevel="0" id="{9eafad1d-bda5-4ec9-9ac0-bfd2a0ce61b1}" showlabel="false">
                         <labels>
-                          <label description="Drawdown Notice Returned?" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="leidos_drawdownnoticereturned" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_drawdownnoticereturned" disabled="false" uniqueid="{b94619c0-077b-e12e-3d72-2d7a95627ad4}" />
                       </cell>
                     </row>
                     <row>
@@ -110,11 +118,10 @@
                         </labels>
                         <control id="leidos_stateaidcategory" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_stateaidcategory" disabled="false" />
                       </cell>
-                      <cell id="{7ca40c65-5d9c-48b5-8598-e7b9c257f92c}" locklevel="0" showlabel="true">
+                      <cell locklevel="0" id="{9778f5df-8a60-4083-a829-79c9480aa58f}">
                         <labels>
-                          <label description="Securities Discharged?" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="leidos_securitiesdischarged" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_securitiesdischarged" disabled="false" uniqueid="{c6dbe623-e46b-2968-c1c6-e55ab982236b}" />
                       </cell>
                     </row>
                     <row>
@@ -124,7 +131,7 @@
                         </labels>
                         <control id="leidos_stateaidarticle" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_stateaidarticle" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{0b670d02-9b3f-4e36-a686-45cf92658ab6}" showlabel="false">
+                      <cell locklevel="0" id="{03ec222b-771a-4d76-a059-a936794c53b2}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -137,7 +144,19 @@
                         </labels>
                         <control id="leidos_gge" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_gge" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{9eafad1d-bda5-4ec9-9ac0-bfd2a0ce61b1}" showlabel="false">
+                      <cell locklevel="0" id="{82d43ec9-5671-468a-b4c9-8a053b677f71}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{aec1b805-bb3b-4676-a98c-04a31fada52e}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{742e4509-9120-454d-943d-749ca9bebe49}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -418,7 +437,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>

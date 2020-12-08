@@ -14,7 +14,7 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{cd1f55c0-cda9-4479-bd43-170fd07b7663}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{cd1f55c0-cda9-4479-bd43-170fd07b7663}" columns="11" name="General">
                   <labels>
                     <label description="General" languagecode="1033" />
                   </labels>
@@ -26,6 +26,12 @@
                         </labels>
                         <control id="leidos_projectoutput" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_projectoutput" />
                       </cell>
+                      <cell id="{afea6769-cce1-4605-8138-78fb1e96fc1c}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Output Primary In Year Measure" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_outputprimaryinyearmeasure" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_outputprimaryinyearmeasure" disabled="false" uniqueid="{ef25eec3-319c-4429-9715-07d7fd382c7c}" />
+                      </cell>
                     </row>
                     <row>
                       <cell id="{70120a29-4254-4271-8570-ba75c5816add}" showlabel="true" locklevel="0">
@@ -34,13 +40,35 @@
                         </labels>
                         <control id="leidos_strategicpriority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_strategicpriority" disabled="false" />
                       </cell>
+                      <cell id="{b7844976-d04a-44ac-a591-d81eed1b49b5}" locklevel="0">
+                        <labels>
+                          <label description="Productivity" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_productivity" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_productivity" disabled="false" uniqueid="{50fde8c6-a863-42cd-820e-b4325bb42e58}" />
+                      </cell>
                     </row>
                     <row>
-                      <cell id="{afea6769-cce1-4605-8138-78fb1e96fc1c}" showlabel="true" locklevel="0">
+                      <cell locklevel="0" id="{f40d9587-c4a2-467a-ae26-f565b02ed1e8}">
                         <labels>
-                          <label description="Output Primary In Year Measure" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="leidos_outputprimaryinyearmeasure" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_outputprimaryinyearmeasure" disabled="false" />
+                      </cell>
+                      <cell showlabel="false" locklevel="0" id="{8fb72373-dc06-4b05-92bf-ab6c06686aab}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{155f1f08-6e7d-4046-9a1f-abb666ef1f89}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell showlabel="false" locklevel="0" id="{c9a5d080-4d6e-4bbe-a78f-3c4bf9b43055}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
                       </cell>
                     </row>
                   </rows>
@@ -95,6 +123,52 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{50fde8c6-a863-42cd-820e-b4325bb42e58}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_productivity</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_productivity</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_productivity</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_productivity</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{ef25eec3-319c-4429-9715-07d7fd382c7c}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_outputprimaryinyearmeasure</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_outputprimaryinyearmeasure</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_outputprimaryinyearmeasure</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_outputprimaryinyearmeasure</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
