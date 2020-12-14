@@ -13,9 +13,9 @@
           <cell name="leidos_name" width="300" />
           <cell name="leidos_projectreference" width="100" />
           <cell name="leidos_supportitemtype" width="300" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_indicativegrosscost" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_actualvalue" width="100" />
+          <cell name="leidos_dateofdecision" width="100" />
           <cell name="statuscode" width="100" />
-          <cell name="a_0c5053d9b554ea11a813000d3a0bad17.leidos_budgetapprovedon" width="100" disableSorting="1" />
           <cell name="a_a2cb00d34daaea11a812000d3a7f1bbb.leidos_team" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
@@ -28,7 +28,6 @@
           <attribute name="leidos_supportitemtype" />
           <attribute name="statuscode" />
           <attribute name="leidos_projectreference" />
-          <attribute name="leidos_indicativegrosscost" />
           <order attribute="leidos_name" descending="true" />
           <filter type="and">
             <condition attribute="statuscode" operator="eq" value="2" />
@@ -41,10 +40,9 @@
               <condition attribute="leidos_nfihidefeilds" operator="eq" value="1" />
             </filter>
           </link-entity>
-          <link-entity alias="a_0c5053d9b554ea11a813000d3a0bad17" name="leidos_application" from="leidos_applicationid" to="leidos_parentapplication" link-type="outer" visible="false">
-            <attribute name="leidos_budgetapprovedon" />
-          </link-entity>
           <attribute name="leidos_projectid" />
+          <attribute name="leidos_actualvalue" />
+          <attribute name="leidos_dateofdecision" />
         </entity>
       </fetch>
     </fetchxml>

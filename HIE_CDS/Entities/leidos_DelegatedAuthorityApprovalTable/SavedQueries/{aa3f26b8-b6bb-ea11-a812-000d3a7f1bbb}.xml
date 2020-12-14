@@ -20,11 +20,12 @@
     <fetchxml>
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_delegatedauthorityapprovaltable">
+          <attribute name="leidos_name" />
           <filter type="and">
             <condition attribute="leidos_userrecord" operator="ne-userid" />
             <condition attribute="leidos_maximumsignoffamount" operator="gt" value="0" />
+            <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="leidos_name" />
           <link-entity alias="a_537a57f6a8bbea11a812000d3a7f1bbb" name="systemuser" from="systemuserid" to="leidos_userrecord" link-type="outer" visible="false">
             <attribute name="fullname" />
           </link-entity>

@@ -23,11 +23,12 @@
           <Variable x:TypeArguments="x:Boolean" Default="False" Name="ConditionBranchStep3_condition" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep3_1" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep3_2" />
+          <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep3_3" />
           <Variable x:TypeArguments="x:Boolean" Default="False" Name="True" />
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep4_1" />
         </sco:Collection>
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-          <mxswa:GetEntityProperty Attribute="leidos_topslice" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme" Value="[ConditionBranchStep2_1]">
+          <mxswa:GetEntityProperty Attribute="leidos_budgetsubtype" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme" Value="[ConditionBranchStep2_1]">
             <mxswa:GetEntityProperty.TargetType>
               <InArgument x:TypeArguments="s:Type">
                 <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
@@ -73,10 +74,10 @@
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
               <x:Null x:Key="Else" />
-              <x:String x:Key="Description">Top Slice</x:String>
+              <x:String x:Key="Description">Budget sub-type</x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
-          <mxswa:GetEntityProperty Attribute="leidos_topslice" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme" Value="[ConditionBranchStep3_1]">
+          <mxswa:GetEntityProperty Attribute="leidos_budgetsubtype" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme" Value="[ConditionBranchStep3_1]">
             <mxswa:GetEntityProperty.TargetType>
               <InArgument x:TypeArguments="s:Type">
                 <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
@@ -95,10 +96,20 @@
               <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep3_2]</OutArgument>
             </mxswa:ActivityReference.Arguments>
           </mxswa:ActivityReference>
+          <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
+            <mxswa:ActivityReference.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.OptionSetValue, "445260002", "Picklist" }]</InArgument>
+              <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
+                <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:OptionSetValue" />
+              </InArgument>
+              <OutArgument x:TypeArguments="x:Object" x:Key="Result">[ConditionBranchStep3_3]</OutArgument>
+            </mxswa:ActivityReference.Arguments>
+          </mxswa:ActivityReference>
           <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateCondition">
             <mxswa:ActivityReference.Arguments>
               <InArgument x:TypeArguments="mxsq:ConditionOperator" x:Key="ConditionOperator">Equal</InArgument>
-              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { ConditionBranchStep3_2 }]</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { ConditionBranchStep3_2, ConditionBranchStep3_3 }]</InArgument>
               <InArgument x:TypeArguments="x:Object" x:Key="Operand">[ConditionBranchStep3_1]</InArgument>
               <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep3_condition]</OutArgument>
             </mxswa:ActivityReference.Arguments>
@@ -122,7 +133,7 @@
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
               <x:Null x:Key="Else" />
-              <x:String x:Key="Description">New Condition</x:String>
+              <x:String x:Key="Description">Not top-slice</x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
           <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">

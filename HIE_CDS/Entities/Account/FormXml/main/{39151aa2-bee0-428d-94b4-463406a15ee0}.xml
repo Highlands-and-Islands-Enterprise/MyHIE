@@ -998,7 +998,7 @@
                         </labels>
                         <control id="numberofemployees" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="numberofemployees" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{ea3205cc-97c1-46ec-8373-0f28b46952d0}">
+                      <cell locklevel="0" id="{ea3205cc-97c1-46ec-8373-0f28b46952d0}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -1750,7 +1750,7 @@
               <Title LCID="1033" Text="Applications" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="adx_webrole_account" Sequence="1008" Area="Marketing" Id="nav_adx_webrole_account">
+          <NavBarByRelationshipItem RelationshipName="adx_webrole_account" Sequence="1009" Area="Marketing" Id="nav_adx_webrole_account">
             <Titles>
               <Title LCID="1033" Text="Web Roles" />
             </Titles>
@@ -1760,17 +1760,17 @@
               <Title LCID="1033" Text="Managed Accounts" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="bpf_account_leidos_bpfaccountprocess" Sequence="1009" Area="Service" Id="nav_bpf_account_leidos_bpfaccountprocess" Show="false">
+          <NavBarByRelationshipItem RelationshipName="bpf_account_leidos_bpfaccountprocess" Sequence="1010" Area="Service" Id="nav_bpf_account_leidos_bpfaccountprocess" Show="false">
             <Titles>
               <Title LCID="1033" Text="BPF Account Process" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_Project_ParentAccount_Account" Sequence="1010" Area="Service" Id="nav_leidos_Project_ParentAccount_Account">
+          <NavBarByRelationshipItem RelationshipName="leidos_Project_ParentAccount_Account" Sequence="1011" Area="Service" Id="nav_leidos_Project_ParentAccount_Account">
             <Titles>
               <Title LCID="1033" Text="Projects" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_Account_leidos_SupportItem" Sequence="1010" Area="Sales" Id="nav_leidos_Account_leidos_SupportItem" Show="false">
+          <NavBarByRelationshipItem RelationshipName="leidos_Account_leidos_SupportItem" Sequence="1012" Area="Sales" Id="nav_leidos_Account_leidos_SupportItem" Show="false">
             <Titles>
               <Title LCID="1033" Text="Support Items" />
             </Titles>
@@ -1790,12 +1790,17 @@
               <Title LCID="1033" Text="Project Amendments" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="msa_contact_managingpartner" Sequence="1012" Area="Service" Id="nav_msa_contact_managingpartner" Show="false">
+          <NavBarByRelationshipItem RelationshipName="leidos_Claim_ParentAccount_Account" Sequence="1012" Area="Service" Id="nav_leidos_Claim_ParentAccount_Account">
+            <Titles>
+              <Title LCID="1033" Text="Claims - Parent Account" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msa_contact_managingpartner" Sequence="1013" Area="Service" Id="nav_msa_contact_managingpartner" Show="false">
             <Titles>
               <Title LCID="1033" Text="Managed Contacts" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_PortalMessage_Company_Account" Sequence="1012" Area="Marketing" Id="nav_leidos_PortalMessage_Company_Account">
+          <NavBarByRelationshipItem RelationshipName="leidos_PortalMessage_Company_Account" Sequence="1014" Area="Marketing" Id="nav_leidos_PortalMessage_Company_Account">
             <Titles>
               <Title LCID="1033" Text="Portal Messages" />
             </Titles>
@@ -1906,6 +1911,16 @@
               <Title LCID="2052" Text="对话会话" />
               <Title LCID="3076" Text="對話方塊工作階段" />
               <Title LCID="1028" Text="對話方塊工作階段" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_Claim_AlternativePayeeAcount_Accou" Sequence="10000" Area="Info" Id="nav_leidos_Claim_AlternativePayeeAcount_Accou">
+            <Titles>
+              <Title LCID="1033" Text="Claims - Payee" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_Project_Account_Account" Sequence="10000" Area="Info" Id="nav_leidos_Project_Account_Account" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Approved Payee" />
             </Titles>
           </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="account_parent_account" Id="navSubAccts" Show="true" Sequence="10001" Area="Info">
@@ -2565,9 +2580,6 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions FallbackForm="true" Order="4">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{ba42d868-9440-990e-e86a-09b7e4757493}" />
         <Library name="leidos_AccountPrimaryContactFilter" libraryUniqueId="{abe68b47-3a8a-d371-7b3b-31aca1d5d3d5}" />
@@ -2576,6 +2588,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="bc82b337-79f6-4ba1-8e12-01e30aebe045" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="eed9c5e6-db76-4593-b540-38ad38b9093d" />
       </formLibraries>
+      <DisplayConditions FallbackForm="true" Order="4">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

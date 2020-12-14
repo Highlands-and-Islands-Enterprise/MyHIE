@@ -21,10 +21,11 @@
           <attribute name="leidos_name" />
           <filter type="and">
             <condition attribute="leidos_userrecord" operator="ne-userid" />
+            <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <link-entity name="systemuser" from="systemuserid" to="leidos_userrecord" alias="aa" link-type="inner">
             <link-entity name="systemuserroles" intersect="true" visible="false" from="systemuserid" to="systemuserid">
-              <link-entity name="role" alias="ab" from="roleid" to="roleid">
+              <link-entity name="role" alias="ac" from="roleid" to="roleid">
                 <filter type="and">
                   <condition attribute="roleid" operator="eq" value="{7D12F089-9ABB-EA11-A812-000D3A7F1BBB}" uiname="Programme Manager" uitype="role" />
                 </filter>

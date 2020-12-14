@@ -176,11 +176,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{d4a8f5d5-5a08-4dc7-a3eb-1a0af5e79dbb}" showlabel="true" locklevel="0">
+                      <cell id="{22a9aa13-ec3e-17d3-0091-71e49a1a1763}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Top Slice" languagecode="1033" />
+                          <label description="Budget sub-type" languagecode="1033" />
                         </labels>
-                        <control id="leidos_topslice" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_topslice" disabled="false" uniqueid="{73e89da4-1fb4-4c6a-a232-4035092e7811}" />
+                        <control id="leidos_budgetsubtype" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="leidos_budgetsubtype" disabled="false" />
                       </cell>
                       <cell id="{d34dee6f-d01a-43b2-a00a-359f95876ff2}" showlabel="true" locklevel="0">
                         <labels>
@@ -281,7 +281,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{cf329b4d-0aff-41a6-8c3c-55ac044e4491}" showlabel="false">
+                      <cell id="{288bceb4-56eb-4311-3e25-845c66018150}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -290,7 +290,7 @@
                         <labels>
                           <label description="Status Reason" languagecode="1033" />
                         </labels>
-                        <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+                        <control id="statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" uniqueid="{39940e1c-c5a0-1b63-106d-c9d2120d034a}" />
                       </cell>
                     </row>
                   </rows>
@@ -1585,28 +1585,6 @@
             </parameters>
           </customControl>
         </controlDescription>
-        <controlDescription forControl="{73e89da4-1fb4-4c6a-a232-4035092e7811}">
-          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
-            <parameters>
-              <datafieldname>leidos_topslice</datafieldname>
-            </parameters>
-          </customControl>
-          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_topslice</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_topslice</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_topslice</value>
-            </parameters>
-          </customControl>
-        </controlDescription>
         <controlDescription forControl="{b09a864a-d818-3c13-3c24-6b0ed926ea88}">
           <customControl id="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}">
             <parameters>
@@ -1854,32 +1832,32 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="508d2ff6-cdef-42a1-934d-5a09ce1ff471" enabled="true" parameters="'vf9:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_topslice">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="f6a779df-50b9-4493-9bda-a06e16d12ec9" enabled="true" parameters="'vBN:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_legalaction">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="843b9c31-fdb4-4148-87b4-ed8cda5dde84" enabled="true" parameters="'Eb6:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
         <event name="onchange" application="false" active="false" attribute="leidos_parentaccount">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="f96f2abe-934a-41a7-aef3-5eeea07d2250" enabled="true" parameters="'2Tg:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_budgetsubtype">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="1583fdf1-39cd-4a0f-9d2c-b070a8c23da2" enabled="true" parameters="'vBN:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_legalaction">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="90daa8f7-18ae-4c6c-9d59-0f5aaa6cdee2" enabled="true" parameters="'Eb6:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{b5111e31-ad58-5b10-4216-347261e80896}" />
-        <Library name="leidos_project.js" libraryUniqueId="{489b0ce2-29e5-80e1-5e95-c2152000628a}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="09234a0c-24f7-4722-a5f1-b0bbe66debe6" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="4f10541b-4f65-471b-9efc-aa0187bb6c87" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="8fe7e7ed-fe9d-417c-ba4a-476e2a63c1fc" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{b5111e31-ad58-5b10-4216-347261e80896}" />
+        <Library name="leidos_project.js" libraryUniqueId="{489b0ce2-29e5-80e1-5e95-c2152000628a}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="f6a30768-cdea-47a7-8ec0-26570ba1cb7f" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="b0238775-0f73-4d54-b1ba-92f4726a7ed1" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="11662fdf-7f70-4aa4-b5ec-97daf3b699c0" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
