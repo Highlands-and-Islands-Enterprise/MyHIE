@@ -6,14 +6,14 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{c2b83bb0-f13a-eb11-a813-0022483fae82}</savedqueryid>
+    <savedqueryid>{3697be46-bc3e-eb11-a813-0022483fae82}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
-        <row name="result" id="leidos_loanillustrationlineid">
+        <row name="result" id="leidos_loan_lineid">
           <cell name="leidos_period" width="100" />
           <cell name="leidos_date" width="100" />
           <cell name="leidos_linetype" width="100" />
-          <cell name="leidos_trans_id" width="100" />
+          <cell name="leidos_transid" width="100" />
           <cell name="leidos_expcaprec" width="100" />
           <cell name="leidos_expintrec" width="100" />
           <cell name="leidos_expcapos" width="100" />
@@ -35,10 +35,12 @@
     <querytype>0</querytype>
     <fetchxml>
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
-        <entity name="leidos_loanillustrationline">
-          <attribute name="leidos_loanillustrationlineid" />
+        <entity name="leidos_loan_line">
+          <attribute name="leidos_loan_lineid" />
           <attribute name="leidos_period" />
           <attribute name="leidos_date" />
+          <attribute name="leidos_linetype" />
+          <attribute name="leidos_transid" />
           <attribute name="leidos_expcaprec" />
           <attribute name="leidos_expintrec" />
           <attribute name="leidos_expcapos" />
@@ -54,14 +56,17 @@
           <attribute name="leidos_intos" />
           <attribute name="leidos_codaref" />
           <attribute name="leidos_subsort" />
-          <attribute name="leidos_trans_id" />
-          <attribute name="leidos_linetype" />
+          <order attribute="leidos_period" descending="false" />
+          <order attribute="leidos_subsort" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.9.0.1264</IntroducedVersion>
+    <IntroducedVersion>1.9.0.1276</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Loan view" languagecode="1033" />
+      <LocalizedName description="loan view" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

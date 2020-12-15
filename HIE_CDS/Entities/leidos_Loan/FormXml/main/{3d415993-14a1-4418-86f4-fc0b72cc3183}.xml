@@ -14,20 +14,6 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{52e888ad-3b4d-4913-a0dc-737ebccb8cc4}" labelid="{44582950-cde3-4ecd-a311-6ef26992bd7d}">
-                  <labels>
-                    <label description="General" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell showlabel="false" locklevel="0" id="{c2cb88ae-646c-4a22-a7be-8e95d1cc2a6b}" labelid="{f11a086c-dc07-42fe-bb5c-c38cd71beaa4}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
                 <section name="General_section" id="03e83457-250f-4d27-8cd0-3a1f28f7b18f" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" labelid="{5670b128-ed0c-457c-b81e-73363adbe1e1}" visible="false">
                   <labels>
                     <label description="General" languagecode="1033" />
@@ -319,6 +305,30 @@
                           <label description="Interest Arrears" languagecode="1033" />
                         </labels>
                         <control id="leidos_interestarrears" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="leidos_interestarrears" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="sec_LoanIllustration" id="59f930e3-4f4a-4010-aad4-94f1f88b8a57" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Loan Illustration" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{ffab7d87-ab40-46f8-80e0-ab40205ab904}" rowspan="1" colspan="1" showlabel="false">
+                        <labels>
+                          <label description="Loan Illustration" languagecode="1033" />
+                        </labels>
+                        <control id="sg_LoanLines" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_loan_line</TargetEntityType>
+                            <ViewId>{3697BE46-BC3E-EB11-A813-0022483FAE82}</ViewId>
+                            <ViewIds>{5EB243F3-0401-4A2F-A6CF-48C023B03704},{3697BE46-BC3E-EB11-A813-0022483FAE82}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_loan_line_loan_leidos_Loan</RelationshipName>
+                            <RecordsPerPage>36</RecordsPerPage>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>

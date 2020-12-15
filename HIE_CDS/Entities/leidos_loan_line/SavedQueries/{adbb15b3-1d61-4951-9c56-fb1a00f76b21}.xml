@@ -6,23 +6,22 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>1</isdefault>
-    <savedqueryid>{06e23632-8f73-41ad-8cb7-edc190af9360}</savedqueryid>
+    <savedqueryid>{adbb15b3-1d61-4951-9c56-fb1a00f76b21}</savedqueryid>
     <layoutxml>
-      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
-        <row name="result" id="leidos_loanillustrationlineid">
+      <grid name="leidos_loan_lines" jump="leidos_name" select="1" icon="1" preview="0">
+        <row name="leidos_loan_line" id="leidos_loan_lineid">
           <cell name="leidos_name" width="300" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
-    <querytype>0</querytype>
+    <querytype>64</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="leidos_loanillustrationline">
-          <attribute name="leidos_loanillustrationlineid" />
+        <entity name="leidos_loan_line">
+          <attribute name="leidos_loan_lineid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
@@ -31,7 +30,7 @@
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Active Loan Illustration Lines" languagecode="1033" />
+      <LocalizedName description="loan_line Lookup View" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

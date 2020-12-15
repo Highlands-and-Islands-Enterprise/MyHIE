@@ -3,38 +3,35 @@
   <savedquery>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>0</CanBeDeleted>
-    <isquickfindquery>1</isquickfindquery>
+    <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
-    <isdefault>1</isdefault>
-    <savedqueryid>{1ece0088-6862-485a-9045-62e409f592f8}</savedqueryid>
+    <isdefault>0</isdefault>
+    <savedqueryid>{7676043e-33fc-4225-b20a-8537341de6a5}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
-        <row name="result" id="leidos_loanillustrationlineid">
+        <row name="result" id="leidos_loan_lineid">
           <cell name="leidos_name" width="300" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
-    <querytype>4</querytype>
+    <querytype>0</querytype>
     <fetchxml>
       <fetch version="1.0" mapping="logical">
-        <entity name="leidos_loanillustrationline">
-          <attribute name="leidos_loanillustrationlineid" />
+        <entity name="leidos_loan_line">
+          <attribute name="leidos_loan_lineid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
           <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
-          <filter type="or" isquickfindfields="1">
-            <condition attribute="leidos_name" operator="like" value="{0}" />
+            <condition attribute="statecode" operator="eq" value="1" />
           </filter>
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Quick Find Active Loan Illustration Lines" languagecode="1033" />
+      <LocalizedName description="Inactive loan_lines" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
