@@ -223,22 +223,50 @@
                         </labels>
                         <control id="leidos_stateaidvalue" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_stateaidvalue" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{a9a5b9d4-9afd-4a9c-91cb-892fd5aa7f27}">
+                      <cell id="{d880a418-dea2-482e-85f7-a9a2f9b00dce}" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Generate State Aid Statement" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_generatestateaidstatement" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_generatestateaidstatement" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{7683af35-3e55-4759-bec7-30436771a3bc}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{02b1975c-2f2b-40c5-83ac-faf14f10d199}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
+                  </rows>
+                </section>
+                <section name="Project" id="41230ab8-da3c-4e06-b849-5f4028b294bd" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Project" languagecode="1033" />
+                  </labels>
+                  <rows>
                     <row>
-                      <cell locklevel="0" id="{7683af35-3e55-4759-bec7-30436771a3bc}">
+                      <cell id="{2b843156-6ddd-4cdc-84ce-fe235fd2a1dc}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Related Project" languagecode="1033" />
                         </labels>
-                      </cell>
-                      <cell locklevel="0" id="{02b1975c-2f2b-40c5-83ac-faf14f10d199}">
-                        <labels>
-                          <label description="" languagecode="1033" />
-                        </labels>
+                        <control id="leidos_relatedproject" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_relatedproject" disabled="false" uniqueid="{bad453a2-2628-4140-a098-388979bcb573}">
+                          <parameters>
+                            <DisableMru>true</DisableMru>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{44A80479-099A-478B-A3B8-E5AF2A3B2B90}</DefaultViewId>
+                            <FilterRelationshipName>leidos_Project_ParentAccount_Account</FilterRelationshipName>
+                            <DependentAttributeName>leidos_clientaction.leidos_parentaccount</DependentAttributeName>
+                            <DependentAttributeType>account</DependentAttributeType>
+                            <AllowFilterOff>true</AllowFilterOff>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
@@ -364,7 +392,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -411,14 +439,14 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="11912584-6224-47a2-8938-70ed82bfc5a9" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="1b92b7dc-13f2-493c-bd6e-8708ac387d04" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="604d07ce-2b7d-4e1a-8246-f3342c4aa1df" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
