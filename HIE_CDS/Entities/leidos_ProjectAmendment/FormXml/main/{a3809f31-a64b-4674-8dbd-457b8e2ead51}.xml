@@ -296,7 +296,14 @@
                         <labels>
                           <label description="Note Text" languagecode="1033" />
                         </labels>
-                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}" />
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}">
+                          <parameters>
+                            <UClientActivities>appointment,email,fax,letter,phonecall,recurringappointmentmaster,task,adx_alertsubscription,adx_inviteredemption,adx_portalcomment,leidos_portalmessage</UClientActivities>
+                            <UClientDisplayActivityUsing>defaultfields</UClientDisplayActivityUsing>
+                            <UClientActivityCardMap>appointment:4201:,email:4202:,fax:4204:,letter:4207:,phonecall:4210:,recurringappointmentmaster:4251:,socialactivity:4216:,task:4212:,adx_alertsubscription:10042:,adx_inviteredemption:10045:,adx_portalcomment:10094:,leidos_portalmessage:10238:,</UClientActivityCardMap>
+                            <UClientActivitiesConfigurationJSON>{"socialactivity":{"showStatus":false,"canCreate":false}}</UClientActivitiesConfigurationJSON>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row />
@@ -381,7 +388,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -574,16 +581,16 @@
           </Handlers>
         </event>
       </events>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{078d2a0a-70b1-37c3-8405-61094871e6c1}" />
-        <Library name="leidos_projectAmendment.js" libraryUniqueId="{94167ab6-7b43-1717-d341-29c6b0138ade}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="6391ebab-ba9f-44d1-99e2-088ef2bb11e9" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="d7118f36-a5bf-4a67-8e3e-25efcb370a99" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="ddb571b2-bd40-41e9-ad70-33612ef5581d" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{078d2a0a-70b1-37c3-8405-61094871e6c1}" />
+        <Library name="leidos_projectAmendment.js" libraryUniqueId="{94167ab6-7b43-1717-d341-29c6b0138ade}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="88928cd9-8801-47ff-a8e2-a1fe4c837915" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="6a42c84e-7e93-4a7a-9073-4733ff01b3da" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="ce1daab0-5df1-4bf7-82a0-d8598eea2185" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
