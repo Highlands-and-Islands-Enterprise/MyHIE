@@ -12,10 +12,10 @@
         <row name="result" id="leidos_projectid">
           <cell name="leidos_name" width="200" />
           <cell name="leidos_supportitemtype" width="100" />
-          <cell name="leidos_totalcostscalculated" width="100" />
-          <cell name="leidos_totalfundingcalcualted" width="100" />
-          <cell name="a_0c5053d9b554ea11a813000d3a0bad17.leidos_budgetapprovedon" width="100" disableSorting="1" />
-          <cell name="leidos_dateofdecision" width="100" />
+          <cell name="leidos_clientcoststotal" width="100" />
+          <cell name="leidos_clientprivatefundingtotal" width="100" />
+          <cell name="leidos_clientpublicfundingtotal" width="100" />
+          <cell name="leidos_dateofdecision" width="162" />
           <cell name="statuscode" width="100" />
         </row>
       </grid>
@@ -26,21 +26,20 @@
         <entity name="leidos_project">
           <attribute name="leidos_name" />
           <attribute name="leidos_supportitemtype" />
-          <attribute name="leidos_totalcostscalculated" />
-          <attribute name="leidos_totalfundingcalcualted" />
           <attribute name="statuscode" />
           <filter type="and">
             <filter type="or">
               <condition attribute="statuscode" operator="eq" value="445260006" />
-              <condition attribute="statuscode" operator="eq" value="445260000" />
+              <condition attribute="statuscode" operator="eq" value="445260004" />
               <condition attribute="statuscode" operator="eq" value="445260005" />
+              <condition attribute="statuscode" operator="eq" value="445260001" />
             </filter>
           </filter>
-          <link-entity alias="a_0c5053d9b554ea11a813000d3a0bad17" name="leidos_application" from="leidos_applicationid" to="leidos_parentapplication" link-type="outer" visible="false">
-            <attribute name="leidos_budgetapprovedon" />
-          </link-entity>
           <attribute name="leidos_dateofdecision" />
           <attribute name="leidos_projectid" />
+          <attribute name="leidos_clientcoststotal" />
+          <attribute name="leidos_clientprivatefundingtotal" />
+          <attribute name="leidos_clientpublicfundingtotal" />
         </entity>
       </fetch>
     </fetchxml>
