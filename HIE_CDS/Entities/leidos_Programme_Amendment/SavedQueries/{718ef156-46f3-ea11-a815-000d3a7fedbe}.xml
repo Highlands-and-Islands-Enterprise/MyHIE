@@ -10,9 +10,14 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_programme_amendmentid">
-          <cell name="leidos_name" width="200" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_programmeamendmentreference" width="100" />
+          <cell name="leidos_programmeamendmentpath" width="100" />
+          <cell name="a_8531e2f5380a4b398c3f749e289b08a7.leidos_programmereference" width="100" />
+          <cell name="a_8531e2f5380a4b398c3f749e289b08a7.leidos_startdate" width="100" />
+          <cell name="a_8531e2f5380a4b398c3f749e289b08a7.leidos_enddate" width="100" />
           <cell name="statuscode" width="100" />
-          <cell name="createdon" width="100" />
+          <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
@@ -24,6 +29,14 @@
           <attribute name="leidos_programme_amendmentid" />
           <attribute name="statuscode" />
           <attribute name="createdon" />
+          <attribute name="leidos_programmeamendmentreference" />
+          <attribute name="leidos_programmeamendmentpath" />
+          <link-entity alias="a_8531e2f5380a4b398c3f749e289b08a7" name="leidos_programme" to="leidos_programme" from="leidos_programmeid" link-type="outer" visible="false">
+            <attribute name="leidos_programmereference" />
+            <attribute name="leidos_startdate" />
+            <attribute name="leidos_enddate" />
+          </link-entity>
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

@@ -11,11 +11,14 @@
       <grid name="leidos_projectamendments" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="leidos_projectamendment" id="leidos_projectamendmentid">
           <cell name="leidos_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="leidos_projectamendmentreference" width="100" />
+          <cell name="a_8521ac272fd34da2b89285b5191c1257.leidos_projectreference" width="100" />
+          <cell name="leidos_parentaccount" width="100" />
           <cell name="statuscode" width="186" />
           <cell name="leidos_projectamendmentdecisionoutcome" width="100" />
           <cell name="leidos_projectamendmentapprovedon" width="100" />
           <cell name="leidos_projectamendmentapprovedby" width="100" />
+          <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
@@ -26,7 +29,6 @@
           <attribute name="leidos_projectamendmentid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
           <attribute name="leidos_projectamendmentapprovedby" />
           <attribute name="leidos_projectamendmentapprovedon" />
           <filter type="and">
@@ -37,6 +39,12 @@
           </filter>
           <attribute name="statuscode" />
           <attribute name="leidos_projectamendmentdecisionoutcome" />
+          <attribute name="leidos_projectamendmentreference" />
+          <attribute name="leidos_parentaccount" />
+          <link-entity alias="a_8521ac272fd34da2b89285b5191c1257" name="leidos_project" to="leidos_project" from="leidos_projectid" link-type="outer" visible="false">
+            <attribute name="leidos_projectreference" />
+          </link-entity>
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

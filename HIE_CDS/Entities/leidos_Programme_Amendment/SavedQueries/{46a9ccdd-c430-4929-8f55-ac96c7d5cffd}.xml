@@ -11,6 +11,7 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_programme_amendmentid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_programmeamendmentreference" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -28,7 +29,9 @@
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="leidos_name" operator="like" value="{0}" />
+            <condition attribute="leidos_programmeamendmentreference" operator="like" value="{0}" />
           </filter>
+          <attribute name="leidos_programmeamendmentreference" />
         </entity>
       </fetch>
     </fetchxml>
