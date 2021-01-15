@@ -1,6 +1,7 @@
 function setParentProject(eContext) {
    "use strict";
     try {
+
         var formContext = eContext.getFormContext(); // get Form Context
         var parentProject = window.top.attributename; // get Parent Project
 
