@@ -27,7 +27,10 @@
           <attribute name="leidos_strategicpriority" />
           <attribute name="leidos_primarystrategicpriority" />
           <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="statuscode" operator="in">
+              <value>1</value>
+              <value>445260000</value>
+            </condition>
             <condition attribute="leidos_parentproject" operator="not-null" />
           </filter>
         </entity>

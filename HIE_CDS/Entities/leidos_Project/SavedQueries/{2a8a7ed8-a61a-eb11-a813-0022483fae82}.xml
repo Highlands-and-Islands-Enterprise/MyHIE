@@ -14,9 +14,9 @@
           <cell name="leidos_projectreference" width="100" />
           <cell name="leidos_supportitemtype" width="300" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="leidos_indicativegrosscost" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="statuscode" width="100" />
           <cell name="a_0c5053d9b554ea11a813000d3a0bad17.leidos_budgetapprovedon" width="100" disableSorting="1" />
-          <cell name="a_a2cb00d34daaea11a812000d3a7f1bbb.leidos_team" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="statuscode" width="100" />
+          <cell name="leidos_hieteam" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -39,9 +39,6 @@
               </condition>
             </filter>
           </filter>
-          <link-entity name="leidos_pipelineproject" from="leidos_pipelineprojectid" to="leidos_preapplicationprocess" visible="false" link-type="outer" alias="a_a2cb00d34daaea11a812000d3a7f1bbb">
-            <attribute name="leidos_team" />
-          </link-entity>
           <link-entity name="leidos_supportitemtype" from="leidos_supportitemtypeid" to="leidos_supportitemnfi" alias="aa">
             <filter type="and">
               <condition attribute="leidos_nfihidefeilds" operator="eq" value="1" />
@@ -51,6 +48,7 @@
             <attribute name="leidos_budgetapprovedon" />
           </link-entity>
           <attribute name="leidos_projectid" />
+          <attribute name="leidos_hieteam" />
         </entity>
       </fetch>
     </fetchxml>

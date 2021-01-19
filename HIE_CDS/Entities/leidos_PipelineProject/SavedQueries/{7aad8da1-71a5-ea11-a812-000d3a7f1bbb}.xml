@@ -11,13 +11,11 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_pipelineprojectid">
           <cell name="leidos_name" width="200" />
-          <cell name="leidos_client" width="100" />
-          <cell name="leidos_anticipatedprojectcost" width="100" />
-          <cell name="leidos_anticipatedprojectfunding" width="100" />
-          <cell name="statuscode" width="100" />
-          <cell name="createdon" width="100" />
-          <cell name="leidos_sourceenquiry" width="100" />
-          <cell name="a_525e1cd760ac43539c237869397a2fc2.createdon" width="100" />
+          <cell name="leidos_pipelineprojectreference" width="100" />
+          <cell name="leidos_anticipatedprojectcost" width="200" />
+          <cell name="leidos_anticipatedprojectfunding" width="200" />
+          <cell name="statuscode" width="150" />
+          <cell name="leidos_team" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -26,17 +24,12 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_pipelineproject">
           <attribute name="leidos_name" />
-          <attribute name="createdon" />
           <attribute name="statuscode" />
-          <attribute name="leidos_client" />
-          <order attribute="createdon" descending="true" />
           <attribute name="leidos_anticipatedprojectfunding" />
           <attribute name="leidos_anticipatedprojectcost" />
           <attribute name="leidos_pipelineprojectid" />
-          <link-entity alias="a_525e1cd760ac43539c237869397a2fc2" name="leidos_enquiry" to="leidos_sourceenquiry" from="leidos_enquiryid" link-type="outer" visible="false">
-            <attribute name="createdon" />
-          </link-entity>
-          <attribute name="leidos_sourceenquiry" />
+          <attribute name="leidos_pipelineprojectreference" />
+          <attribute name="leidos_team" />
         </entity>
       </fetch>
     </fetchxml>

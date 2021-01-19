@@ -5,7 +5,7 @@
     <IntroducedVersion>1.2.0.1</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form>
+    <form maxWidth="400">
       <tabs>
         <tab verticallayout="true" id="{77c544c6-a4b8-4a89-8773-3f05f6e84ef4}" IsUserDefined="1">
           <labels>
@@ -14,25 +14,62 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{01f6e7a5-4695-489a-aa88-b2996229492c}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{01f6e7a5-4695-489a-aa88-b2996229492c}" name="General" columns="1" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
-                    <label description="GENERAL" languagecode="1033" />
+                    <label description="General" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{96ec7226-7876-4970-9603-44e11f3d2c16}">
+                      <cell id="{96ec7226-7876-4970-9603-44e11f3d2c16}" showlabel="true" locklevel="0" visible="false">
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
-                        <control id="leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" />
+                        <control id="leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" uniqueid="{85428b4d-05b7-4016-3241-1b13e56e7619}" disabled="false" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{5ef4ccaf-66a7-41df-a15e-e476dfbf2841}">
+                      <cell id="{5ef4ccaf-66a7-41df-a15e-e476dfbf2841}" showlabel="true" locklevel="1" visible="false">
                         <labels>
                           <label description="Owner" languagecode="1033" />
                         </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" uniqueid="{597018ab-cd1c-e827-ca4d-e9eae43a2376}" disabled="false">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5a529d00-d983-7787-a215-a36edb521a67}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Funding Source" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_fundingsource" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_fundingsource" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1024d195-a57b-1523-97ec-d4b07e795611}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Cost Type" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_costtype" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="leidos_costtype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2e18d0d8-7a08-33c6-a0c2-b850d2566451}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Spend Profile Amount" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_spendprofileamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_spendprofileamount" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ac11d80e-5c27-5154-31ac-bbd67722268b}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Total Amount Profiled" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalamountprofiled" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalamountprofiled" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -46,7 +83,7 @@
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
     <LocalizedNames>
-      <LocalizedName description="Information" languagecode="1033" />
+      <LocalizedName description="HIE Spend Profile Quick View form" languagecode="1033" />
     </LocalizedNames>
   </systemform>
 </forms>

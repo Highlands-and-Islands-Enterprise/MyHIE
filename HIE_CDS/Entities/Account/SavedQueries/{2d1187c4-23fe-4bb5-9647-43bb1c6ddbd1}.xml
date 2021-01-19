@@ -11,10 +11,8 @@
         <row name="result" id="accountid">
           <cell name="name" width="300" />
           <cell name="leidos_accountreference" width="100" />
-          <cell name="primarycontactid" width="150" />
           <cell name="address1_city" width="100" />
-          <cell name="telephone1" width="100" />
-          <cell name="emailaddress1" width="200" />
+          <cell name="leidos_hmsaccountid" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -23,22 +21,20 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="account">
           <attribute name="name" />
-          <attribute name="primarycontactid" />
           <attribute name="address1_city" />
-          <attribute name="telephone1" />
-          <attribute name="emailaddress1" />
           <order attribute="name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="address1_postalcode" operator="like" value="{0}" />
-            <condition attribute="emailaddress1" operator="like" value="{0}" />
             <condition attribute="name" operator="like" value="{0}" />
             <condition attribute="leidos_accountreference" operator="like" value="{0}" />
+            <condition attribute="leidos_hmsaccountid" operator="like" value="{0}" />
           </filter>
           <attribute name="accountid" />
           <attribute name="leidos_accountreference" />
+          <attribute name="leidos_hmsaccountid" />
         </entity>
       </fetch>
     </fetchxml>

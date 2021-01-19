@@ -13,10 +13,11 @@
           <cell name="leidos_name" width="300" />
           <cell name="leidos_projectreference" width="100" />
           <cell name="leidos_supportitemtype" width="300" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_actualvalue" width="100" />
+          <cell name="leidos_totalcostscalculated" width="100" />
+          <cell name="leidos_totalfundingcalcualted" width="100" />
           <cell name="leidos_dateofdecision" width="100" />
           <cell name="statuscode" width="100" />
-          <cell name="a_a2cb00d34daaea11a812000d3a7f1bbb.leidos_team" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_hieteam" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -32,17 +33,16 @@
           <filter type="and">
             <condition attribute="statuscode" operator="eq" value="2" />
           </filter>
-          <link-entity name="leidos_pipelineproject" from="leidos_pipelineprojectid" to="leidos_preapplicationprocess" visible="false" link-type="outer" alias="a_a2cb00d34daaea11a812000d3a7f1bbb">
-            <attribute name="leidos_team" />
-          </link-entity>
           <link-entity name="leidos_supportitemtype" from="leidos_supportitemtypeid" to="leidos_supportitemnfi" alias="aa">
             <filter type="and">
               <condition attribute="leidos_nfihidefeilds" operator="eq" value="1" />
             </filter>
           </link-entity>
           <attribute name="leidos_projectid" />
-          <attribute name="leidos_actualvalue" />
           <attribute name="leidos_dateofdecision" />
+          <attribute name="leidos_hieteam" />
+          <attribute name="leidos_totalcostscalculated" />
+          <attribute name="leidos_totalfundingcalcualted" />
         </entity>
       </fetch>
     </fetchxml>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{ccec34bf-5d5a-eb11-a813-00224840fa54}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_claimid">
+          <cell name="leidos_name" width="300" />
+          <cell name="ownerid" width="100" />
+          <cell name="a_dd8a7808b21b4af7b9aba81cca1992c3.leidos_parentaccount" width="100" />
+          <cell name="a_dd8a7808b21b4af7b9aba81cca1992c3.leidos_name" width="100" />
+          <cell name="a_dd8a7808b21b4af7b9aba81cca1992c3.leidos_projectreference" width="100" />
+          <cell name="leidos_claimreference" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="a_dd8a7808b21b4af7b9aba81cca1992c3.leidos_hiegrossfunding" width="100" />
+          <cell name="a_dd8a7808b21b4af7b9aba81cca1992c3.leidos_hiegrossfundingclaimed" width="100" />
+          <cell name="a_dd8a7808b21b4af7b9aba81cca1992c3.leidos_fundsremaining" width="100" />
+          <cell name="leidos_datepaidoncoda" width="100" />
+          <cell name="leidos_claimsubmitteddate" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="leidos_claim">
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
+          <attribute name="leidos_claimsubmitteddate" />
+          <attribute name="leidos_claimreference" />
+          <attribute name="leidos_datepaidoncoda" />
+          <order attribute="leidos_claimsubmitteddate" descending="true" />
+          <order attribute="createdon" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <link-entity name="leidos_project" from="leidos_projectid" to="leidos_parentproject" alias="a_dd8a7808b21b4af7b9aba81cca1992c3">
+            <attribute name="leidos_projectreference" />
+            <attribute name="leidos_name" />
+            <attribute name="leidos_parentaccount" />
+            <attribute name="leidos_fundsremaining" />
+            <attribute name="leidos_hiegrossfunding" />
+            <attribute name="leidos_hiegrossfundingclaimed" />
+            <link-entity name="account" from="accountid" to="leidos_parentaccount" alias="aa">
+              <filter type="and">
+                <condition attribute="leidos_suppliercode" operator="null" />
+              </filter>
+            </link-entity>
+          </link-entity>
+          <attribute name="leidos_claimid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.11.0.1399</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Claims missing Supplier Code" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

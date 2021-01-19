@@ -23,13 +23,16 @@
         <entity name="leidos_projectstrategicpriority">
           <attribute name="leidos_name" />
           <attribute name="leidos_projectstrategicpriorityid" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-            <condition attribute="leidos_parentprogramme" operator="not-null" />
-          </filter>
           <attribute name="leidos_primarystrategicpriority" />
           <attribute name="leidos_strategicpriority" />
           <attribute name="leidos_parentprogramme" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="in">
+              <value>1</value>
+              <value>445260000</value>
+            </condition>
+            <condition attribute="leidos_parentprogramme" operator="not-null" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>

@@ -14,6 +14,27 @@
           <columns>
             <column width="100%">
               <sections>
+                <section name="ParentSpendProfileDetails" showlabel="true" showbar="false" locklevel="0" id="{e4dd8252-c13d-8ce2-81d8-3d0914a85c37}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Parent Spend Profile Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{d17e01a0-2ec8-2c39-1c29-1cabb5eb0207}" showlabel="false" colspan="1" auto="false">
+                        <labels>
+                          <label description="Spend Profile Details" languagecode="1033" />
+                        </labels>
+                        <control id="SpendProfileDetails" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="leidos_parentspendprofile" disabled="false">
+                          <parameters>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="leidos_anticipatedspendprofile"&gt;d83a7c52-fe57-4236-9a0c-0b0d5702b463&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                            <ControlMode>Edit</ControlMode>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
                 <section showlabel="false" showbar="false" IsUserDefined="0" id="{e0e3549f-7a0b-473a-9b32-69f92244fa8a}" columns="11" name="General" visible="true">
                   <labels>
                     <label description="General" languagecode="1033" />
@@ -34,7 +55,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{9e0a0afa-d955-4f91-aa4c-f3f823c5e5ed}">
+                      <cell locklevel="0" id="{9e0a0afa-d955-4f91-aa4c-f3f823c5e5ed}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -47,12 +68,12 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{481c2819-8be2-4c35-8635-97d88e076253}">
+                      <cell locklevel="0" id="{481c2819-8be2-4c35-8635-97d88e076253}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{70cf1da7-6bc3-4aaf-b773-1a95b86c985e}">
+                      <cell locklevel="0" id="{70cf1da7-6bc3-4aaf-b773-1a95b86c985e}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -283,7 +304,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -313,9 +334,6 @@
         </NavBarAreas>
       </Navigation>
       <controlDescriptions />
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
@@ -333,6 +351,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="bdae9f49-7892-4655-acad-85179b29019f" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="5fada309-3b92-498a-9463-350d5e0db8bd" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
