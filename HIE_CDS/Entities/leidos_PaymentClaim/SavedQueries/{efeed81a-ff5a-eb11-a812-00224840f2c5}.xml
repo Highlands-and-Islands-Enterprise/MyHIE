@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{efeed81a-ff5a-eb11-a812-00224840f2c5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_paymentclaimid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_paymentclaimreference" width="100" />
+          <cell name="leidos_costfundingline" width="100" />
+          <cell name="leidos_netamount" width="100" />
+          <cell name="leidos_grossamount" width="100" />
+          <cell name="leidos_vatamount" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="leidos_paymentclaim">
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_paymentclaimreference" />
+          <attribute name="leidos_netamount" />
+          <attribute name="leidos_grossamount" />
+          <attribute name="leidos_vatamount" />
+          <attribute name="leidos_costfundingline" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="in">
+              <value>1</value>
+              <value>445260001</value>
+              <value>445260000</value>
+            </condition>
+          </filter>
+          <attribute name="leidos_paymentclaimid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.11.0.1403</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Payment Claims - Claim Grid" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
