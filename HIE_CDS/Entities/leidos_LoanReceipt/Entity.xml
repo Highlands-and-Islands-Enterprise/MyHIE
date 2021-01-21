@@ -1020,7 +1020,7 @@
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
           <ValidForReadApi>1</ValidForReadApi>
-          <ValidForCreateApi>0</ValidForCreateApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
           <IsCustomField>0</IsCustomField>
           <IsAuditEnabled>1</IsAuditEnabled>
           <IsSecured>0</IsSecured>
@@ -1052,12 +1052,12 @@
               <Description description="Status of the Loan Receipt" languagecode="1033" />
             </Descriptions>
             <states>
-              <state value="0" defaultstatus="1" invariantname="Active">
+              <state value="0" defaultstatus="100000000" invariantname="Active">
                 <labels>
                   <label description="Active" languagecode="1033" />
                 </labels>
               </state>
-              <state value="1" defaultstatus="2" invariantname="Inactive">
+              <state value="1" defaultstatus="100000005" invariantname="Inactive">
                 <labels>
                   <label description="Inactive" languagecode="1033" />
                 </labels>
@@ -1112,14 +1112,49 @@
               <Description description="Reason for the status of the Loan Receipt" languagecode="1033" />
             </Descriptions>
             <statuses>
-              <status value="1" state="0">
+              <status value="1" state="0" TransitionData="" Color="#0000ff">
                 <labels>
                   <label description="Active" languagecode="1033" />
                 </labels>
               </status>
-              <status value="2" state="1">
+              <status value="100000000" state="0" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="New" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="2" state="1" TransitionData="" Color="#0000ff">
                 <labels>
                   <label description="Inactive" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="100000005" state="1" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Deleted" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="100000006" state="1" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Pending Approval" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="100000007" state="1" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Passed for Payment" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="100000008" state="1" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Logged on CODA" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="100000009" state="1" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Paid in CODA" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="100000010" state="1" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Failed to log on CODA" languagecode="1033" />
                 </labels>
               </status>
             </statuses>

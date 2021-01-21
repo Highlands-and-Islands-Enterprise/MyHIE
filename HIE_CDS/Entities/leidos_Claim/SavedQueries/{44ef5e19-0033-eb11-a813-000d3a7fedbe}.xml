@@ -12,11 +12,9 @@
         <row name="result" id="leidos_claimid">
           <cell name="leidos_name" width="200" />
           <cell name="leidos_claimreference" width="100" />
-          <cell name="a_735c4277f9fd4009a758ea0db9750c8f.leidos_name" width="100" />
-          <cell name="a_735c4277f9fd4009a758ea0db9750c8f.leidos_projectreference" width="100" />
           <cell name="leidos_eligible" width="100" />
           <cell name="leidos_claimsubmitteddate" width="100" />
-          <cell name="leidos_datepaidoncoda" width="100" />
+          <cell name="leidos_datepaidoncoda" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="statuscode" width="100" />
         </row>
       </grid>
@@ -26,17 +24,13 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_claim">
           <attribute name="leidos_name" />
-          <attribute name="leidos_claimid" />
-          <link-entity alias="a_735c4277f9fd4009a758ea0db9750c8f" name="leidos_project" to="leidos_parentproject" from="leidos_projectid" link-type="outer" visible="false">
-            <attribute name="leidos_name" />
-            <attribute name="leidos_projectreference" />
-          </link-entity>
           <attribute name="leidos_claimreference" />
           <attribute name="statuscode" />
           <attribute name="leidos_claimsubmitteddate" />
           <order attribute="leidos_claimreference" descending="true" />
           <attribute name="leidos_datepaidoncoda" />
           <attribute name="leidos_eligible" />
+          <attribute name="leidos_claimid" />
         </entity>
       </fetch>
     </fetchxml>

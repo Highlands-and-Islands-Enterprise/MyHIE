@@ -343,22 +343,69 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell locklevel="0" id="{ab92f732-3168-47cf-b30e-9b22a5d279f3}" rowspan="1" colspan="1" showlabel="false" labelid="{9def810e-c555-49ca-a7f9-db5117ddd21d}">
+                      <cell locklevel="0" id="{ab92f732-3168-47cf-b30e-9b22a5d279f3}" rowspan="7" colspan="1" showlabel="true" labelid="{9def810e-c555-49ca-a7f9-db5117ddd21d}" auto="false">
                         <labels>
-                          <label description="Invoices" languagecode="1033" />
+                          <label description="Eligible Invoices" languagecode="1033" />
                         </labels>
-                        <control id="sg_ClaimInvoices" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                        <control id="sg_EligibleInvoices" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{753bd049-ccba-d85d-0878-1be6524d8523}">
                           <parameters>
                             <TargetEntityType>leidos_claimdetail</TargetEntityType>
-                            <ViewId>{BDDA9C5A-203F-EB11-A813-0022483FAE82}</ViewId>
-                            <ViewIds>{EFA6C43B-EC5C-4164-A7BE-9BA0226B0661},{EFC6232C-0824-EB11-A813-000D3A7FEDBE},{BDDA9C5A-203F-EB11-A813-0022483FAE82}</ViewIds>
+                            <ViewId>{28890424-E15B-EB11-A812-00224840F2C5}</ViewId>
+                            <ViewIds>{28890424-E15B-EB11-A812-00224840F2C5}</ViewIds>
                             <EnableViewPicker>false</EnableViewPicker>
                             <RelationshipName>leidos_ClaimDetail_ParentClaim_leidos_Cla</RelationshipName>
-                            <RecordsPerPage>10</RecordsPerPage>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <IsUserView>false</IsUserView>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
                           </parameters>
                         </control>
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{b5324217-209a-c2b2-8bd0-e85e962bea90}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Ineligible Invoices" languagecode="1033" />
+                        </labels>
+                        <control id="sg_IneligibleInvoices" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{1573a041-0763-babe-8c16-2342ba35a9db}">
+                          <parameters>
+                            <ViewId>{FED93730-E15B-EB11-A812-00224840F2C5}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>leidos_ClaimDetail_ParentClaim_leidos_Cla</RelationshipName>
+                            <TargetEntityType>leidos_claimdetail</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{EFA6C43B-EC5C-4164-A7BE-9BA0226B0661},{FED93730-E15B-EB11-A812-00224840F2C5}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -461,7 +508,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>

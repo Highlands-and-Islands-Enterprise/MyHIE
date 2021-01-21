@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{20faf908-ec5b-eb11-a812-00224840f2c5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_transactionid">
+          <cell name="leidos_transactionreference" width="100" />
+          <cell name="leidos_name" width="200" />
+          <cell name="leidos_transactiontype" width="100" />
+          <cell name="leidos_dateofposting" width="100" />
+          <cell name="leidos_grossamount" width="100" />
+          <cell name="leidos_codasentreference" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_transaction">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_transactionid" />
+          <attribute name="leidos_dateofposting" />
+          <attribute name="leidos_transactionreference" />
+          <attribute name="leidos_grossamount" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_codasentreference" />
+          <attribute name="leidos_transactiontype" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.11.0.1412</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Project View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
