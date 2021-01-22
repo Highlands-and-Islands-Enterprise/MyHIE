@@ -28,11 +28,11 @@
           <attribute name="leidos_dateofposting" />
           <attribute name="leidos_transactionreference" />
           <attribute name="leidos_grossamount" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="leidos_codasentreference" />
           <attribute name="leidos_transactiontype" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="ne" value="100000001" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>

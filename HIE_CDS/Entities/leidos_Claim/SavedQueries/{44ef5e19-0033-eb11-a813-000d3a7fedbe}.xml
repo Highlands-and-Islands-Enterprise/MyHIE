@@ -10,10 +10,8 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_claimid">
-          <cell name="leidos_name" width="200" />
-          <cell name="leidos_claimreference" width="100" />
-          <cell name="leidos_eligible" width="100" />
-          <cell name="leidos_claimsubmitteddate" width="100" />
+          <cell name="leidos_claimreference" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_paymentclaimnettotal" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="leidos_datepaidoncoda" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="statuscode" width="100" />
         </row>
@@ -23,13 +21,11 @@
     <fetchxml>
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_claim">
-          <attribute name="leidos_name" />
           <attribute name="leidos_claimreference" />
           <attribute name="statuscode" />
-          <attribute name="leidos_claimsubmitteddate" />
           <order attribute="leidos_claimreference" descending="true" />
           <attribute name="leidos_datepaidoncoda" />
-          <attribute name="leidos_eligible" />
+          <attribute name="leidos_paymentclaimnettotal" />
           <attribute name="leidos_claimid" />
         </entity>
       </fetch>
