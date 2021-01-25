@@ -537,7 +537,7 @@
           <Name>leidos_name</Name>
           <LogicalName>leidos_name</LogicalName>
           <RequiredLevel>required</RequiredLevel>
-          <DisplayMask>PrimaryName|ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
+          <DisplayMask>ActivityPointerRegardingName|PrimaryName|ValidForAdvancedFind|ValidForForm|ValidForGrid|RequiredForForm</DisplayMask>
           <ImeMode>auto</ImeMode>
           <ValidForUpdateApi>1</ValidForUpdateApi>
           <ValidForReadApi>1</ValidForReadApi>
@@ -1464,19 +1464,29 @@
               <Description description="Reason for the status of the Loan Receipt" languagecode="1033" />
             </Descriptions>
             <statuses>
-              <status value="1" state="0" TransitionData="" Color="#0000ff">
-                <labels>
-                  <label description="Active" languagecode="1033" />
-                </labels>
-              </status>
               <status value="100000000" state="0" TransitionData="" Color="#0000ff">
                 <labels>
                   <label description="New" languagecode="1033" />
                 </labels>
               </status>
-              <status value="2" state="1" TransitionData="" Color="#0000ff">
+              <status value="1" state="0" TransitionData="" Color="#0000ff">
                 <labels>
-                  <label description="Inactive" languagecode="1033" />
+                  <label description="In Progress" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="445260001" state="0" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Returned to Client" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="445260002" state="0" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Resubmitted" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="445260000" state="1" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Cancelled" languagecode="1033" />
                 </labels>
               </status>
               <status value="100000005" state="1" TransitionData="" Color="#0000ff">
@@ -1492,6 +1502,11 @@
               <status value="100000007" state="1" TransitionData="" Color="#0000ff">
                 <labels>
                   <label description="Passed for Payment" languagecode="1033" />
+                </labels>
+              </status>
+              <status value="2" state="1" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Transferring to CODA" languagecode="1033" />
                 </labels>
               </status>
               <status value="100000008" state="1" TransitionData="" Color="#0000ff">
@@ -1684,6 +1699,7 @@
       <IsCollaboration>0</IsCollaboration>
       <AutoRouteToOwnerQueue>0</AutoRouteToOwnerQueue>
       <IsConnectionsEnabled>0</IsConnectionsEnabled>
+      <EntityColor></EntityColor>
       <IsDocumentManagementEnabled>0</IsDocumentManagementEnabled>
       <AutoCreateAccessTeams>0</AutoCreateAccessTeams>
       <IsOneNoteIntegrationEnabled>0</IsOneNoteIntegrationEnabled>
@@ -1692,7 +1708,8 @@
       <IsDocumentRecommendationsEnabled>0</IsDocumentRecommendationsEnabled>
       <IsBPFEntity>0</IsBPFEntity>
       <OwnershipTypeMask>UserOwned</OwnershipTypeMask>
-      <IsAuditEnabled>0</IsAuditEnabled>
+      <EntityMask>ActivityPointer</EntityMask>
+      <IsAuditEnabled>1</IsAuditEnabled>
       <IsRetrieveAuditEnabled>0</IsRetrieveAuditEnabled>
       <IsRetrieveMultipleAuditEnabled>0</IsRetrieveMultipleAuditEnabled>
       <IsActivity>0</IsActivity>
@@ -1733,10 +1750,13 @@
       <EnforceStateTransitions>0</EnforceStateTransitions>
       <CanChangeHierarchicalRelationship>1</CanChangeHierarchicalRelationship>
       <EntityHelpUrlEnabled>0</EntityHelpUrlEnabled>
-      <ChangeTrackingEnabled>0</ChangeTrackingEnabled>
+      <EntityHelpUrl></EntityHelpUrl>
+      <ChangeTrackingEnabled>1</ChangeTrackingEnabled>
       <CanChangeTrackingBeEnabled>1</CanChangeTrackingBeEnabled>
       <IsEnabledForExternalChannels>0</IsEnabledForExternalChannels>
       <IsSolutionAware>0</IsSolutionAware>
+      <HasRelatedNotes>True</HasRelatedNotes>
+      <HasRelatedActivities>True</HasRelatedActivities>
     </entity>
   </EntityInfo>
   <FormXml />
