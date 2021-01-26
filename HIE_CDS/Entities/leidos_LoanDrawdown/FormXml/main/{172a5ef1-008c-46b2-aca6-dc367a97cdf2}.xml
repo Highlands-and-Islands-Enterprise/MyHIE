@@ -12,7 +12,7 @@
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
                 <section showlabel="false" showbar="false" IsUserDefined="0" id="{65e54737-5bf4-4c8d-9d1d-7a18e704f88f}">
                   <labels>
@@ -57,6 +57,32 @@
                           <label description="Status" languagecode="1033" />
                         </labels>
                         <control id="statecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statecode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="_section_timeline" id="424926e5-f907-4d57-b829-f2318445543b" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Timeline" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{f128c54e-1eb9-4434-af07-5bce7ffe6974}" rowspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false">
+                          <parameters>
+                            <UClientActivities>task,leidos_portalmessage,email,fax,letter,phonecall,recurringappointmentmaster,socialactivity,adx_alertsubscription,adx_inviteredemption,adx_portalcomment</UClientActivities>
+                            <UClientDisplayActivityUsing>defaultfields</UClientDisplayActivityUsing>
+                            <UClientActivityCardMap>appointment:4201:,email:4202:,fax:4204:,letter:4207:,phonecall:4210:,recurringappointmentmaster:4251:,socialactivity:4216:,task:4212:,adx_alertsubscription:10042:,adx_inviteredemption:10045:,adx_portalcomment:10094:,leidos_portalmessage:10238:,</UClientActivityCardMap>
+                            <UClientActivitiesConfigurationJSON>{"socialactivity":{"showStatus":false,"canCreate":false},"adx_alertsubscription":{"showStatus":true,"canCreate":true},"adx_inviteredemption":{"showStatus":true,"canCreate":true},"adx_portalcomment":{"showStatus":true,"canCreate":true},"recurringappointmentmaster":{"showStatus":true,"canCreate":false},"phonecall":{"showStatus":true,"canCreate":true},"letter":{"showStatus":true,"canCreate":false},"fax":{"showStatus":true,"canCreate":false},"appointment":{"showStatus":true,"canCreate":true},"email":{"showStatus":true,"canCreate":true}}</UClientActivitiesConfigurationJSON>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
@@ -116,10 +142,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{3de8a14d-a472-475f-8876-9c79d3ce10af}">
+                      <cell id="{f8dd8bb7-d696-436e-868c-cdd775eb9de2}" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Drawdown Validation Checks" languagecode="1033" />
                         </labels>
+                        <control id="leidos_drawdownvalidationchecks" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_drawdownvalidationchecks" disabled="false" uniqueid="{36f68ada-7cf3-4b17-8952-59afad2a9cda}" />
                       </cell>
                       <cell id="{aba4ca88-f31f-4679-8d1c-2f7985f03dd1}" locklevel="0">
                         <labels>
@@ -234,7 +261,41 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{36f68ada-7cf3-4b17-8952-59afad2a9cda}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_drawdownvalidationchecks</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_drawdownvalidationchecks</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_drawdownvalidationchecks</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_drawdownvalidationchecks</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="leidos_drawdownvalidationchecks">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="f44247d6-b579-44a6-896d-b56a8a0f0294" enabled="true" parameters="'SiU:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="1420ab4d-39ad-4bd6-bcff-0475c52484d1" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="35452d3c-5c16-4cc7-be4e-4b2be6298469" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="593105e8-c8f9-4078-a62c-c26ecc6a5f31" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

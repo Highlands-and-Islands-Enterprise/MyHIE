@@ -12,7 +12,7 @@
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
-            <column width="100%">
+            <column width="50%">
               <sections>
                 <section showlabel="false" showbar="false" IsUserDefined="0" id="{9215927a-8c49-4581-b8d9-dd665d0127b9}">
                   <labels>
@@ -57,6 +57,25 @@
                           <label description="Status" languagecode="1033" />
                         </labels>
                         <control id="statecode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statecode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="_section_timeline" id="9c695798-1251-4dbf-97d1-fc34a1a524ec" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Timeline" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{7ee53911-5ddd-470e-b5fb-63da0a567196}" rowspan="1">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-C143-495E-A496-C962E5B4488E}" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -116,10 +135,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{790bf56c-f1ae-4c11-82c1-3151f15d52db}">
+                      <cell id="{0946329c-fcf4-4165-a4ee-efabf77f1981}" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Adjustment Validation Checks" languagecode="1033" />
                         </labels>
+                        <control id="leidos_adjustmentvalidationchecks" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_adjustmentvalidationchecks" disabled="false" uniqueid="{20854b46-96b9-42f1-90fb-9dfda9e79501}" />
                       </cell>
                       <cell id="{1fe1efc0-4b29-4110-9d97-905cc39a5092}" locklevel="0">
                         <labels>
@@ -234,6 +254,28 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{20854b46-96b9-42f1-90fb-9dfda9e79501}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_adjustmentvalidationchecks</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_adjustmentvalidationchecks</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_adjustmentvalidationchecks</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_adjustmentvalidationchecks</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <events>
         <event name="onchange" application="false" active="false" attribute="leidos_adjustmentapprover">
@@ -241,11 +283,16 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="e472f8bd-5326-40b3-8a07-74d223185fc7" enabled="true" parameters="'t1J:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_adjustmentvalidationchecks">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="6470dcfd-8edf-45dd-b63b-d860b5a90c0f" enabled="true" parameters="'29R:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="93391bae-2ab4-48a4-960e-aa48ef09e936" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="8a4071d2-981b-4c53-8cf2-69211c512233" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="564a515e-cc72-428c-8006-2a7c06b0310e" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="1e82807d-e46a-42eb-bd82-79b1c1d93ab3" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="8ddff287-f8ff-4fe4-a4c6-09c9a371ca25" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0885e4e3-7225-4f21-a8f8-464f65e940d8" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

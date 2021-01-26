@@ -12,7 +12,7 @@
         <row name="result" id="leidos_transactionlineid">
           <cell name="leidos_name" width="200" />
           <cell name="leidos_transactionlinereference" width="100" />
-          <cell name="leidos_fundingtype" width="100" />
+          <cell name="leidos_budgettype" width="100" />
           <cell name="leidos_fundingsource" width="100" />
           <cell name="leidos_grossamount" width="100" />
         </row>
@@ -25,13 +25,13 @@
           <attribute name="leidos_name" />
           <attribute name="leidos_transactionlineid" />
           <attribute name="leidos_transactionlinereference" />
-          <attribute name="leidos_fundingtype" />
           <attribute name="leidos_fundingsource" />
           <attribute name="leidos_grossamount" />
           <filter type="and">
             <condition attribute="statuscode" operator="eq" value="1" />
           </filter>
           <order attribute="leidos_transactionlinereference" descending="false" />
+          <attribute name="leidos_budgettype" />
         </entity>
       </fetch>
     </fetchxml>

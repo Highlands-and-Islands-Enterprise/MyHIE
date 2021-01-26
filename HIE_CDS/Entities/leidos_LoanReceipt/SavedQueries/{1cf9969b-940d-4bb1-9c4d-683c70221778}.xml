@@ -12,6 +12,7 @@
         <row name="leidos_loanreceipt" id="leidos_loanreceiptid">
           <cell name="leidos_name" width="300" />
           <cell name="createdon" width="125" />
+          <cell name="statuscode" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -24,7 +25,16 @@
           <attribute name="createdon" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="statuscode" operator="in">
+              <value>100000010</value>
+              <value>100000008</value>
+              <value>100000009</value>
+              <value>100000007</value>
+              <value>100000006</value>
+              <value>2</value>
+            </condition>
           </filter>
+          <attribute name="statuscode" />
         </entity>
       </fetch>
     </fetchxml>
