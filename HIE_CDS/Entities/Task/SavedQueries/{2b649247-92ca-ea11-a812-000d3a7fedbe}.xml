@@ -10,11 +10,10 @@
     <layoutxml>
       <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
         <row name="result" id="activityid">
-          <cell name="subject" width="200" />
-          <cell name="description" width="245" />
-          <cell name="leidos_specialistinputrequest" width="100" />
-          <cell name="scheduledend" width="100" />
-          <cell name="createdon" width="100" />
+          <cell name="subject" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="description" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="regardingobjectid" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="scheduledend" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
@@ -23,21 +22,21 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="task">
           <attribute name="subject" />
-          <attribute name="activityid" />
           <filter type="and">
             <condition attribute="ownerid" operator="eq-userid" />
             <condition attribute="scheduledend" operator="this-month" />
           </filter>
-          <attribute name="leidos_specialistinputrequest" />
           <attribute name="scheduledend" />
-          <attribute name="createdon" />
           <attribute name="description" />
+          <attribute name="regardingobjectid" />
+          <order attribute="scheduledend" descending="false" />
+          <attribute name="activityid" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.7.0.5</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="My task due this Month" languagecode="1033" />
+      <LocalizedName description="My tasks due this month" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

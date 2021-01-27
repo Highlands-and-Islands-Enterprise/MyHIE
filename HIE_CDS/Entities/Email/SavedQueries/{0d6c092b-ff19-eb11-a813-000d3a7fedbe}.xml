@@ -11,24 +11,24 @@
       <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
         <row name="result" id="activityid">
           <cell name="subject" width="200" />
-          <cell name="regardingobjectid" width="100" />
-          <cell name="to" width="100" />
+          <cell name="regardingobjectid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="to" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="email">
           <attribute name="subject" />
-          <attribute name="activityid" />
           <attribute name="regardingobjectid" />
           <attribute name="to" />
           <filter type="and">
             <condition attribute="ownerid" operator="eq-userid" />
             <condition attribute="statuscode" operator="eq" value="1" />
           </filter>
-          <link-entity name="account" alias="aa" link-type="inner" from="accountid" to="regardingobjectid" />
+          <order attribute="regardingobjectid" descending="false" />
+          <attribute name="activityid" />
         </entity>
       </fetch>
     </fetchxml>

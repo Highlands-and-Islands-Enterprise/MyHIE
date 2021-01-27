@@ -6,37 +6,38 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{42952591-92ca-ea11-a812-000d3a7fedbe}</savedqueryid>
+    <savedqueryid>{acff3588-c160-eb11-a812-000d3ad5cbb0}</savedqueryid>
     <layoutxml>
-      <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
+      <grid name="resultset" jump="subject" select="1" preview="1" icon="1">
         <row name="result" id="activityid">
           <cell name="subject" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="description" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="regardingobjectid" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="description" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="regardingobjectid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="scheduledend" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="task">
           <attribute name="subject" />
           <attribute name="scheduledend" />
+          <attribute name="regardingobjectid" />
           <attribute name="description" />
+          <order attribute="scheduledend" descending="false" />
           <filter type="and">
             <condition attribute="ownerid" operator="eq-userid" />
-            <condition attribute="scheduledend" operator="next-month" />
+            <condition attribute="scheduledend" operator="olderthan-x-minutes" value="1" />
+            <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="regardingobjectid" />
-          <order attribute="scheduledend" descending="false" />
           <attribute name="activityid" />
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.7.0.5</IntroducedVersion>
+    <IntroducedVersion>1.13.0.1437</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="My tasks due next month" languagecode="1033" />
+      <LocalizedName description="My overdue tasks" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
