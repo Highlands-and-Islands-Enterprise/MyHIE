@@ -10,13 +10,11 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_milestoneid">
-          <cell name="leidos_name" width="300" />
-          <cell name="leidos_parentproject" width="300" />
-          <cell name="leidos_performancemanagementoutcome" width="300" />
-          <cell name="leidos_expectedduedate" width="100" />
-          <cell name="leidos_alertdate" width="100" />
-          <cell name="leidos_markcompleted" width="100" />
-          <cell name="leidos_requiresevidence" width="100" />
+          <cell name="leidos_name" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="a_46fbc5cc1bbaea11a812000d3a7fedbe.leidos_parentaccount" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_parentproject" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_expectedduedate" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_alertdate" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
@@ -28,15 +26,15 @@
           <attribute name="leidos_expectedduedate" />
           <attribute name="leidos_alertdate" />
           <attribute name="leidos_parentproject" />
-          <attribute name="leidos_performancemanagementoutcome" />
-          <attribute name="leidos_markcompleted" />
-          <attribute name="leidos_requiresevidence" />
-          <order attribute="leidos_name" descending="false" />
+          <order attribute="leidos_alertdate" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="ownerid" operator="eq-userid" />
             <condition attribute="leidos_expectedduedate" operator="next-x-weeks" value="6" />
           </filter>
+          <link-entity alias="a_46fbc5cc1bbaea11a812000d3a7fedbe" name="leidos_project" from="leidos_projectid" to="leidos_parentproject" link-type="outer" visible="false">
+            <attribute name="leidos_parentaccount" />
+          </link-entity>
           <attribute name="leidos_milestoneid" />
         </entity>
       </fetch>

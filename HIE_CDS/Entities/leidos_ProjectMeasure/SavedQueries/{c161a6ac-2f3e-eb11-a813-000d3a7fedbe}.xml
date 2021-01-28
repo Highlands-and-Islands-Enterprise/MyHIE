@@ -10,14 +10,11 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectmeasureid">
-          <cell name="leidos_name" width="300" />
-          <cell name="leidos_measuretype" width="100" />
+          <cell name="leidos_name" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="a_7b02fe59f8b6ea11a812002248012503.leidos_parentaccount" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_parentproject" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="a_7b02fe59f8b6ea11a812002248012503.leidos_projectreference" width="125" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="leidos_actualduedate" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_strategicpriority" width="100" />
-          <cell name="leidos_activity" width="100" />
-          <cell name="leidos_output" width="100" />
-          <cell name="leidos_qty" width="100" />
-          <cell name="statuscode" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -26,14 +23,8 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
         <entity name="leidos_projectmeasure">
           <attribute name="leidos_name" />
-          <attribute name="leidos_measuretype" />
-          <attribute name="leidos_strategicpriority" />
-          <attribute name="leidos_output" />
-          <attribute name="leidos_activity" />
-          <attribute name="statuscode" />
-          <attribute name="leidos_qty" />
           <attribute name="leidos_actualduedate" />
-          <order attribute="leidos_name" descending="false" />
+          <order attribute="leidos_actualduedate" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="leidos_actualduedate" operator="olderthan-x-minutes" value="1" />
@@ -52,6 +43,11 @@
             </filter>
             <condition attribute="ownerid" operator="eq-userid" />
           </filter>
+          <attribute name="leidos_parentproject" />
+          <link-entity alias="a_7b02fe59f8b6ea11a812002248012503" name="leidos_project" from="leidos_projectid" to="leidos_parentproject" link-type="outer" visible="false">
+            <attribute name="leidos_projectreference" />
+            <attribute name="leidos_parentaccount" />
+          </link-entity>
           <attribute name="leidos_projectmeasureid" />
         </entity>
       </fetch>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report>
+  <name>Loan Statement</name>
+  <defaultfilter>
+    <ReportFilter>
+      <ReportEntity paramname="CRM_Filteredleidos_Loan" donotconvert="1">
+        <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+          <entity name="leidos_loan">
+            <all-attributes />
+          </entity>
+        </fetch>
+      </ReportEntity>
+      <ReportEntity paramname="CRM_Filteredleidos_loan_line" donotconvert="1">
+        <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+          <entity name="leidos_loan_line">
+            <all-attributes />
+            <filter type="and">
+              <condition attribute="leidos_date" operator="on-or-after" />
+              <condition attribute="leidos_date" operator="on-or-before" />
+            </filter>
+          </entity>
+        </fetch>
+      </ReportEntity>
+    </ReportFilter>
+  </defaultfilter>
+  <iscustomreport>0</iscustomreport>
+  <filename>Loan Statement.rdl</filename>
+  <languagecode>1033</languagecode>
+  <reportid>{ede7f176-6b61-eb11-a812-000d3ad5cd62}</reportid>
+  <reporttypecode>1</reporttypecode>
+  <IntroducedVersion>1.13.0.1441</IntroducedVersion>
+  <createdinmajorversion>9</createdinmajorversion>
+  <iscustomizable>1</iscustomizable>
+  <ExportedFileName>/Reports/LoanStatementrdlede7f176-6b61-eb11-a812-000d3ad5cd62</ExportedFileName>
+  <ReportCategories />
+  <ReportVisibilities>
+    <ReportVisbility>2</ReportVisbility>
+    <ReportVisbility>3</ReportVisbility>
+    <ReportVisbility>1</ReportVisbility>
+  </ReportVisibilities>
+  <ReportEntities>
+    <ReportEntity>leidos_loan</ReportEntity>
+  </ReportEntities>
+</Report>
