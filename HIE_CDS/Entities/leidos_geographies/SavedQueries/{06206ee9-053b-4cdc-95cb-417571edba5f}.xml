@@ -11,6 +11,7 @@
       <grid name="resultset" jump="leidos_geography" select="1" icon="1" preview="1">
         <row name="result" id="leidos_geographiesid">
           <cell name="leidos_geography" width="300" />
+          <cell name="leidos_overseasregionid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
@@ -18,15 +19,17 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_geographies">
-          <attribute name="leidos_geographiesid" />
           <attribute name="leidos_geography" />
           <order attribute="leidos_geography" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <filter type="or" isquickfindfields="1">
+            <condition attribute="leidos_overseasregionid" operator="like" value="{0}" />
             <condition attribute="leidos_geography" operator="like" value="{0}" />
           </filter>
+          <attribute name="leidos_overseasregionid" />
+          <attribute name="leidos_geographiesid" />
         </entity>
       </fetch>
     </fetchxml>

@@ -11,7 +11,8 @@
       <grid name="leidos_tradinggeographies" jump="leidos_name" select="1" icon="1" preview="0">
         <row name="leidos_tradinggeography" id="leidos_tradinggeographyid">
           <cell name="leidos_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="leidos_geography" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_overseasregionid" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
@@ -21,10 +22,12 @@
         <entity name="leidos_tradinggeography">
           <attribute name="leidos_tradinggeographyid" />
           <attribute name="leidos_name" />
-          <attribute name="createdon" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <order attribute="leidos_geography" descending="false" />
+          <attribute name="leidos_overseasregionid" />
+          <attribute name="leidos_geography" />
         </entity>
       </fetch>
     </fetchxml>

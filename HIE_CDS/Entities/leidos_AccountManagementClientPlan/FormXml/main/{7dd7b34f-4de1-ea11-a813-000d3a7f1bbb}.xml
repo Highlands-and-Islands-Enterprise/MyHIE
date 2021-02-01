@@ -317,7 +317,7 @@
                     <row>
                       <cell showlabel="true" locklevel="0" id="{a30400e9-e7c5-49d1-8ddc-dbbf3bcc6a66}" rowspan="7" colspan="1" auto="false" labelid="{44c16581-8f94-4d9e-b9d6-eb7253e99cc1}">
                         <labels>
-                          <label description="Current Trading Geography" languagecode="1033" />
+                          <label description="Existing Trading Geographies" languagecode="1033" />
                         </labels>
                         <control id="TradingGeography" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" indicationOfSubgrid="true" uniqueid="{d11c6504-6ee5-3a1b-704d-aabe5a28e154}">
                           <parameters>
@@ -341,7 +341,7 @@
                       </cell>
                       <cell showlabel="true" locklevel="0" id="{653a42c9-3cb1-48f2-a76a-1264b34f9a93}" rowspan="7" colspan="1" auto="false" labelid="{52540347-1898-4b47-beed-f7e7689a3d6e}">
                         <labels>
-                          <label description="Target Trading Geography" languagecode="1033" />
+                          <label description="Aspiring Trading Geographies" languagecode="1033" />
                         </labels>
                         <control id="TargetTradingGeography" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" indicationOfSubgrid="true" uniqueid="{1a5eed71-da98-b34b-27b2-48be8a8b6905}">
                           <parameters>
@@ -373,15 +373,15 @@
                     <row>
                       <cell id="{1426f265-5086-41ce-b249-68219ac5d7a9}" showlabel="true" locklevel="0" labelid="{456e83ac-8bcc-4753-a253-74296204ca40}">
                         <labels>
-                          <label description="Count of Current Trading Geography" languagecode="1033" />
+                          <label description="Count of Existing Trading Geography" languagecode="1033" />
                         </labels>
-                        <control id="leidos_countofcurrenttradinggeography" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="leidos_countofcurrenttradinggeography" disabled="false" />
+                        <control id="leidos_countofcurrenttradinggeography" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="leidos_countofcurrenttradinggeography" disabled="false" uniqueid="{d2205477-7cd4-5aec-b7c8-4b1801132d31}" />
                       </cell>
                       <cell id="{41c9e5fd-877c-47a9-8eda-b4536a1c34b5}" showlabel="true" locklevel="0" labelid="{554c03f4-dc7f-40f5-b608-477484fa4e27}">
                         <labels>
-                          <label description="Count of Target Trading Geography" languagecode="1033" />
+                          <label description="Count of Aspiring Trading Geography" languagecode="1033" />
                         </labels>
-                        <control id="leidos_countoftargettradinggeography" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="leidos_countoftargettradinggeography" disabled="false" />
+                        <control id="leidos_countoftargettradinggeography" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="leidos_countoftargettradinggeography" disabled="false" uniqueid="{3deee079-1822-56e8-49b5-25d440d15053}" />
                       </cell>
                     </row>
                   </rows>
@@ -634,8 +634,11 @@
               <EnableGroupBy static="true" type="Enum">no</EnableGroupBy>
               <EnableEditing static="true" type="Enum">yes</EnableEditing>
               <ReflowBehavior static="true" type="Enum">GridOnly</ReflowBehavior>
+              <ListLayoutDirection static="true" type="Enum">Vertical</ListLayoutDirection>
+              <EnableSubGridAutoCollapse static="true" type="Enum">false</EnableSubGridAutoCollapse>
               <EnableFiltering static="true" type="Enum">no</EnableFiltering>
               <HideNestedGridColumnHeader static="true" type="Enum">no</HideNestedGridColumnHeader>
+              <EnableJumpBar static="true" type="Enum">yes</EnableJumpBar>
             </parameters>
           </customControl>
           <customControl formFactor="2" name="MscrmControls.Grid.GridControl">
@@ -652,8 +655,11 @@
               <EnableGroupBy static="true" type="Enum">no</EnableGroupBy>
               <EnableEditing static="true" type="Enum">yes</EnableEditing>
               <ReflowBehavior static="true" type="Enum">GridOnly</ReflowBehavior>
+              <ListLayoutDirection static="true" type="Enum">Vertical</ListLayoutDirection>
+              <EnableSubGridAutoCollapse static="true" type="Enum">false</EnableSubGridAutoCollapse>
               <EnableFiltering static="true" type="Enum">no</EnableFiltering>
               <HideNestedGridColumnHeader static="true" type="Enum">no</HideNestedGridColumnHeader>
+              <EnableJumpBar static="true" type="Enum">yes</EnableJumpBar>
             </parameters>
           </customControl>
         </controlDescription>
@@ -681,12 +687,21 @@
               <EnableGroupBy static="true" type="Enum">no</EnableGroupBy>
               <EnableEditing static="true" type="Enum">yes</EnableEditing>
               <ReflowBehavior static="true" type="Enum">GridOnly</ReflowBehavior>
+              <ListLayoutDirection static="true" type="Enum">Vertical</ListLayoutDirection>
+              <EnableSubGridAutoCollapse static="true" type="Enum">false</EnableSubGridAutoCollapse>
               <EnableFiltering static="true" type="Enum">no</EnableFiltering>
               <HideNestedGridColumnHeader static="true" type="Enum">no</HideNestedGridColumnHeader>
+              <EnableJumpBar static="true" type="Enum">yes</EnableJumpBar>
             </parameters>
           </customControl>
         </controlDescription>
       </controlDescriptions>
+      <formLibraries>
+        <Library name="leidos_/AMClientPlan/disableColumninGrid.js" libraryUniqueId="{b57b7b32-915c-c7a8-9c04-0ebbd5caa2e9}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="183ffe29-2958-4626-94d3-8e25df08c739" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="252985dc-e309-4650-8bb7-b9c552ab2107" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="6a11dbcc-f585-4c48-9769-2ee1aa124f95" />
+      </formLibraries>
       <events>
         <event name="onrecordselect" application="false" active="false" relationship="" control="Subgrid_2">
           <Handlers>
@@ -744,12 +759,6 @@
           </Handlers>
         </event>
       </events>
-      <formLibraries>
-        <Library name="leidos_/AMClientPlan/disableColumninGrid.js" libraryUniqueId="{b57b7b32-915c-c7a8-9c04-0ebbd5caa2e9}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="183ffe29-2958-4626-94d3-8e25df08c739" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="252985dc-e309-4650-8bb7-b9c552ab2107" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="6a11dbcc-f585-4c48-9769-2ee1aa124f95" />
-      </formLibraries>
       <DisplayConditions Order="3" FallbackForm="true">
         <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
         <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />

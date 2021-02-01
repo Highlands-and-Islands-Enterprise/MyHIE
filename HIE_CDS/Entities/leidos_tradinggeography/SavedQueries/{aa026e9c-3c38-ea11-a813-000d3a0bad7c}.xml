@@ -11,7 +11,8 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_tradinggeographyid">
           <cell name="leidos_geography" width="258" />
-          <cell name="leidos_percentageofsales" width="100" />
+          <cell name="leidos_overseasregionid" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_percentageofsales" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="leidos_markets" width="201" />
         </row>
       </grid>
@@ -20,11 +21,12 @@
     <fetchxml>
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_tradinggeography">
-          <attribute name="leidos_tradinggeographyid" />
           <attribute name="leidos_geography" />
           <attribute name="leidos_percentageofsales" />
           <attribute name="leidos_markets" />
-          <order attribute="leidos_percentageofsales" descending="true" />
+          <order attribute="leidos_geography" descending="false" />
+          <attribute name="leidos_overseasregionid" />
+          <attribute name="leidos_tradinggeographyid" />
         </entity>
       </fetch>
     </fetchxml>
