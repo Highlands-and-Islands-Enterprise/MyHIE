@@ -15,8 +15,6 @@
           <cell name="leidos_clientcoststotal" width="100" />
           <cell name="leidos_clientprivatefundingtotal" width="100" />
           <cell name="leidos_clientpublicfundingtotal" width="100" />
-          <cell name="leidos_dateofdecision" width="162" />
-          <cell name="statuscode" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -26,8 +24,12 @@
         <entity name="leidos_project">
           <attribute name="leidos_name" />
           <attribute name="leidos_supportitemtype" />
-          <attribute name="statuscode" />
+          <attribute name="leidos_projectid" />
+          <attribute name="leidos_clientcoststotal" />
+          <attribute name="leidos_clientprivatefundingtotal" />
+          <attribute name="leidos_clientpublicfundingtotal" />
           <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
             <filter type="or">
               <condition attribute="statuscode" operator="eq" value="445260006" />
               <condition attribute="statuscode" operator="eq" value="445260004" />
@@ -35,11 +37,6 @@
               <condition attribute="statuscode" operator="eq" value="445260001" />
             </filter>
           </filter>
-          <attribute name="leidos_dateofdecision" />
-          <attribute name="leidos_projectid" />
-          <attribute name="leidos_clientcoststotal" />
-          <attribute name="leidos_clientprivatefundingtotal" />
-          <attribute name="leidos_clientpublicfundingtotal" />
         </entity>
       </fetch>
     </fetchxml>
