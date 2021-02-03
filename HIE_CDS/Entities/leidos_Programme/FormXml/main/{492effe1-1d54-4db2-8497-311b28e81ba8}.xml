@@ -388,33 +388,66 @@
           <columns>
             <column width="100%">
               <sections>
-                <section name="tab_SpendProfile_section" id="8ff29e4e-19f9-47b1-b4be-8d6f1597bf39" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="tab_SpendProfile_section" id="8ff29e4e-19f9-47b1-b4be-8d6f1597bf39" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1111" labelwidth="115">
                   <labels>
                     <label description="Spend Profile" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
-                      <cell locklevel="0" id="{5bf16c92-46c1-444b-8779-6c4f005c351a}" rowspan="1" colspan="1" showlabel="false">
+                      <cell locklevel="0" id="{5bf16c92-46c1-444b-8779-6c4f005c351a}" rowspan="6" colspan="4" showlabel="false" auto="false">
                         <labels>
                           <label description="Spend Profile" languagecode="1033" />
                         </labels>
-                        <control id="Subgrid_SpendProfile" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                        <control id="Subgrid_SpendProfile" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{50253785-eee2-c4d8-8e43-83d43ba309d0}">
                           <parameters>
                             <TargetEntityType>leidos_anticipatedspendprofile</TargetEntityType>
                             <ViewId>{0B416C58-0328-EB11-A813-0022483FAE82}</ViewId>
                             <ViewIds>{81503CB9-4BCB-493F-8DD0-398BB659147B},{3B33EC59-AF25-EB11-A813-000D3A7FEDBE},{0B416C58-0328-EB11-A813-0022483FAE82},{EBC1563F-E556-EA11-A811-000D3A7F1BBB}</ViewIds>
                             <EnableViewPicker>false</EnableViewPicker>
                             <RelationshipName>leidos_AnticipatedSpendProfile_ParentProg</RelationshipName>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <IsUserView>false</IsUserView>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
                           </parameters>
                         </control>
                       </cell>
                     </row>
+                    <row></row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                     <row>
                       <cell id="{966ee6c5-e1d9-56c6-0a87-95a5967e90a6}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Total programme and project costs" languagecode="1033" />
                         </labels>
                         <control id="leidos_totalprogrammeandprojectcosts" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalprogrammeandprojectcosts" disabled="true" uniqueid="{b51887bd-d7ed-06a1-6be0-99aa5ab96783}" />
+                      </cell>
+                      <cell id="{2de2e5d0-9e67-dbb1-5d07-9d6173dda7d3}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Total Project Capital Costs" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalprojectcapitalcosts" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalprojectcapitalcosts" disabled="true" uniqueid="{1dc2aed8-39b1-1ba9-8a9b-64b04358913a}" />
+                      </cell>
+                      <cell id="{257b95ea-81c1-baa5-98ba-350a3b2d4206}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Total Project Revenue Costs" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalprojectrevenuecosts" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalprojectrevenuecosts" disabled="true" uniqueid="{03e24394-d772-b461-ac5b-6412d4313708}" />
+                      </cell>
+                      <cell id="{589cc43b-81b3-7d8d-3448-1122b842a310}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Total Project Financial Transaction Costs" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalprojectfinancialtransactioncosts" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalprojectfinancialtransactioncosts" disabled="true" uniqueid="{032cee62-d74e-0810-514c-a0a11a53ddc5}" />
                       </cell>
                     </row>
                   </rows>
@@ -1266,15 +1299,16 @@
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{b732eaa7-0904-2035-74b0-1e754492539a}" />
         <Library name="leidos_Programme" libraryUniqueId="{82da978c-50b6-656a-53d4-e2cca6e8e84a}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="293e5773-4d0b-4c76-b442-c066dbb98ef3" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="88f20eaa-8a66-437f-9f72-512015d5208e" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="3ba57a4b-dbc9-492a-9358-326d908099e6" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="34cc34c2-e28f-4b1c-826c-9f238f40c865" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="c1a77d09-b2ab-4525-8ad1-6340b04fda09" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="230627ee-0e1c-4fab-adcc-e6dcb4907596" />
       </formLibraries>
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="Leidos.SetfinancedelegatedauthorityView" libraryName="leidos_Programme" handlerUniqueId="{54e156b2-2590-6556-dda7-e399712d89a1}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.DelegatedAuthFilterview" libraryName="leidos_Programme" handlerUniqueId="{90356135-4741-4d80-b0cd-0de0c0507b84}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="a53a0408-5803-4215-9faa-9b4e34408c30" enabled="true" parameters="'Pyy:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_approvalamount">

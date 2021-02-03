@@ -10,8 +10,14 @@
     <layoutxml>
       <grid name="leidos_transactions" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="leidos_transaction" id="leidos_transactionid">
+          <cell name="leidos_transactionreference" width="100" />
           <cell name="leidos_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="leidos_dateofposting" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="leidos_grossamount" width="100" />
+          <cell name="leidos_vatamount" width="100" />
+          <cell name="leidos_netamount" width="100" />
+          <cell name="leidos_codasentreference" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -21,11 +27,22 @@
         <entity name="leidos_transaction">
           <attribute name="leidos_transactionid" />
           <attribute name="leidos_name" />
-          <attribute name="createdon" />
           <filter type="and">
-            <condition attribute="statuscode" operator="ne" value="100000001" />
+            <condition attribute="statuscode" operator="in">
+              <value>100000003</value>
+              <value>100000004</value>
+              <value>100000005</value>
+              <value>100000006</value>
+            </condition>
           </filter>
-          <order attribute="createdon" descending="true" />
+          <attribute name="leidos_transactionreference" />
+          <attribute name="leidos_dateofposting" />
+          <attribute name="leidos_netamount" />
+          <order attribute="leidos_dateofposting" descending="true" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_grossamount" />
+          <attribute name="leidos_vatamount" />
+          <attribute name="leidos_codasentreference" />
         </entity>
       </fetch>
     </fetchxml>

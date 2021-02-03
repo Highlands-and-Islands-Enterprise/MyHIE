@@ -10,9 +10,9 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_loan_lineid">
-          <cell name="leidos_period" width="100" />
+          <cell name="leidos_period" width="50" />
           <cell name="leidos_date" width="100" />
-          <cell name="leidos_linetype" width="100" />
+          <cell name="leidos_linetype" width="50" />
           <cell name="leidos_transid" width="100" />
           <cell name="leidos_expcaprec" width="100" />
           <cell name="leidos_expintrec" width="100" />
@@ -28,7 +28,6 @@
           <cell name="leidos_caparrears" width="100" />
           <cell name="leidos_intos" width="100" />
           <cell name="leidos_codaref" width="100" />
-          <cell name="leidos_subsort" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -55,12 +54,10 @@
           <attribute name="leidos_caparrears" />
           <attribute name="leidos_intos" />
           <attribute name="leidos_codaref" />
-          <attribute name="leidos_subsort" />
-          <order attribute="leidos_period" descending="false" />
-          <order attribute="leidos_subsort" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <order attribute="leidos_date" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

@@ -28,16 +28,19 @@
           <attribute name="leidos_processingdate" />
           <attribute name="leidos_receiptamount" />
           <attribute name="leidos_receiptdate" />
-          <order attribute="leidos_receiptdate" descending="true" />
           <filter type="and">
-            <condition attribute="statuscode" operator="ne" value="100000005" />
+            <condition attribute="statuscode" operator="not-in">
+              <value>100000005</value>
+              <value>445260000</value>
+            </condition>
           </filter>
+          <order attribute="leidos_processingdate" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.11.0.1337</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Project Loan Receipts" languagecode="1033" />
+      <LocalizedName description="Loan Receipts" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

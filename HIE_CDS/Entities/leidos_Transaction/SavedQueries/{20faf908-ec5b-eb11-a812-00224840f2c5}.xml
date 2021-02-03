@@ -14,8 +14,11 @@
           <cell name="leidos_name" width="200" />
           <cell name="leidos_transactiontype" width="100" />
           <cell name="leidos_dateofposting" width="100" />
+          <cell name="statuscode" width="100" />
           <cell name="leidos_grossamount" width="100" />
-          <cell name="leidos_codasentreference" width="100" />
+          <cell name="leidos_vatamount" width="100" />
+          <cell name="leidos_netamount" width="100" />
+          <cell name="leidos_codasentreference" width="177" />
         </row>
       </grid>
     </layoutxml>
@@ -31,8 +34,16 @@
           <attribute name="leidos_codasentreference" />
           <attribute name="leidos_transactiontype" />
           <filter type="and">
-            <condition attribute="statuscode" operator="ne" value="100000001" />
+            <condition attribute="statuscode" operator="in">
+              <value>100000003</value>
+              <value>100000005</value>
+              <value>100000004</value>
+              <value>100000006</value>
+            </condition>
           </filter>
+          <attribute name="statuscode" />
+          <attribute name="leidos_netamount" />
+          <attribute name="leidos_vatamount" />
         </entity>
       </fetch>
     </fetchxml>
