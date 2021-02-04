@@ -1035,7 +1035,7 @@
         </tab>
         <tab name="Strategic Priority" id="1bcbe86f-e579-4201-8853-44abe114ed49" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true">
           <labels>
-            <label description="Strategic Priority" languagecode="1033" />
+            <label description="Priories and Themes" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
@@ -1067,6 +1067,29 @@
                           <label description="Completed Strategic Priority" languagecode="1033" />
                         </labels>
                         <control id="leidos_completedstrategicpriority" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedstrategicpriority" disabled="false" uniqueid="{4c0586b6-53a1-ce69-1189-5084b6d129bd}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="Strategic Priority_section_3" id="6f8b9d65-6912-4045-9886-7f7603cf8029" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Project Theme" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{9e66ff8a-7588-4c8d-910c-debca64c0cff}" locklevel="0">
+                        <labels>
+                          <label description="Primary Theme" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_primarytheme" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_primarytheme" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{47915c35-c2fd-4e0e-aa6a-c3a9687388bb}" locklevel="0">
+                        <labels>
+                          <label description="Completed Project Themes" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_completedprojectthemes" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedprojectthemes" disabled="false" uniqueid="{1f7c4dcf-2e7b-41c7-a93d-a592664bc522}" />
                       </cell>
                     </row>
                   </rows>
@@ -1159,48 +1182,6 @@
                             <RelationshipName>leidos_Milestone_ParentProject_leidos_Pro</RelationshipName>
                           </parameters>
                         </control>
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-              </sections>
-            </column>
-          </columns>
-        </tab>
-        <tab name="tab_Themes" id="796c4867-2155-4124-b851-0fb4357db429" IsUserDefined="0" locklevel="0" showlabel="true">
-          <labels>
-            <label description="Themes" languagecode="1033" />
-          </labels>
-          <columns>
-            <column width="100%">
-              <sections>
-                <section name="tab_Themes_section_Theme" id="9b22de7a-d8ff-4260-a349-6be5285391f7" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
-                  <labels>
-                    <label description="Themes" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell locklevel="0" id="{454f321a-7d95-49d9-94de-1744fe7491c4}" rowspan="1" colspan="1" showlabel="false">
-                        <labels>
-                          <label description="SG Control Themes" languagecode="1033" />
-                        </labels>
-                        <control id="Subgrid_Themes" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
-                          <parameters>
-                            <TargetEntityType>leidos_projecttheme</TargetEntityType>
-                            <ViewId>{5D4A62FA-CC2F-EB11-A813-0022483FAE82}</ViewId>
-                            <ViewIds>{C0253DE1-27C9-4784-856C-8683EB27C2DC},{5D4A62FA-CC2F-EB11-A813-0022483FAE82}</ViewIds>
-                            <EnableViewPicker>false</EnableViewPicker>
-                            <RelationshipName>leidos_ProjectTheme_leidos_ParentProject_</RelationshipName>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{cf33888e-481c-4359-bf92-ed3938fa4ac5}" locklevel="0">
-                        <labels>
-                          <label description="Completed Project Themes" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_completedprojectthemes" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_completedprojectthemes" disabled="false" uniqueid="{8427dc8c-f3e9-42e9-8e6f-d54d7301b276}" />
                       </cell>
                     </row>
                   </rows>
@@ -1420,12 +1401,22 @@
               <Title LCID="1033" Text="Milestones" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_ProjectTheme_leidos_ParentProject_" Sequence="1007" Area="Sales" Id="nav_leidos_ProjectTheme_leidos_ParentProject_">
+          <NavBarByRelationshipItem RelationshipName="leidos_Project_leidos_Theme_Major" Sequence="1007" Area="Sales" Id="nav_leidos_Project_leidos_Theme_Major">
+            <Titles>
+              <Title LCID="1033" Text="Major Themes" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_Project_leidos_Theme_Minor" Sequence="1008" Area="Sales" Id="nav_leidos_Project_leidos_Theme_Minor">
+            <Titles>
+              <Title LCID="1033" Text="Minor Themes" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_ProjectTheme_leidos_ParentProject_" Sequence="1009" Area="Sales" Id="nav_leidos_ProjectTheme_leidos_ParentProject_" Show="false">
             <Titles>
               <Title LCID="1033" Text="Themes" />
             </Titles>
           </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_ProjectCost_ParentProject_leidos_P" Sequence="1008" Area="Service" Id="nav_leidos_ProjectCost_ParentProject_leidos_P">
+          <NavBarByRelationshipItem RelationshipName="leidos_ProjectCost_ParentProject_leidos_P" Sequence="1010" Area="Service" Id="nav_leidos_ProjectCost_ParentProject_leidos_P">
             <Titles>
               <Title LCID="1033" Text="Costs" />
             </Titles>
@@ -1827,7 +1818,30 @@
             </parameters>
           </customControl>
         </controlDescription>
-        <controlDescription forControl="{8427dc8c-f3e9-42e9-8e6f-d54d7301b276}">
+        <controlDescription forControl="{324f57e4-f95d-434b-be0a-a6fba9551343}">
+          <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" formFactor="2">
+            <parameters />
+          </customControl>
+          <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" formFactor="0">
+            <parameters />
+          </customControl>
+          <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" formFactor="1">
+            <parameters />
+          </customControl>
+          <customControl name="MscrmControls.Grid.GridControl" formFactor="-1">
+            <parameters>
+              <EnableGroupBy type="Enum" static="true">yes</EnableGroupBy>
+              <EnableEditing type="Enum" static="true">yes</EnableEditing>
+              <ReflowBehavior type="Enum" static="true">GridOnly</ReflowBehavior>
+              <ListLayoutDirection type="Enum" static="true">Vertical</ListLayoutDirection>
+              <EnableSubGridAutoCollapse type="Enum" static="true">false</EnableSubGridAutoCollapse>
+              <EnableFiltering type="Enum" static="true">yes</EnableFiltering>
+              <HideNestedGridColumnHeader type="Enum" static="true">no</HideNestedGridColumnHeader>
+              <EnableJumpBar type="Enum" static="true">yes</EnableJumpBar>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{e87c03ca-1504-4133-9d0e-7d0296cde0ad}">
           <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
             <parameters>
               <datafieldname>leidos_completedprojectthemes</datafieldname>
@@ -1849,26 +1863,25 @@
             </parameters>
           </customControl>
         </controlDescription>
-        <controlDescription forControl="{324f57e4-f95d-434b-be0a-a6fba9551343}">
-          <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" formFactor="2">
-            <parameters />
-          </customControl>
-          <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" formFactor="0">
-            <parameters />
-          </customControl>
-          <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" formFactor="1">
-            <parameters />
-          </customControl>
-          <customControl name="MscrmControls.Grid.GridControl" formFactor="-1">
+        <controlDescription forControl="{1f7c4dcf-2e7b-41c7-a93d-a592664bc522}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
             <parameters>
-              <EnableGroupBy type="Enum" static="true">yes</EnableGroupBy>
-              <EnableEditing type="Enum" static="true">yes</EnableEditing>
-              <ReflowBehavior type="Enum" static="true">GridOnly</ReflowBehavior>
-              <ListLayoutDirection type="Enum" static="true">Vertical</ListLayoutDirection>
-              <EnableSubGridAutoCollapse type="Enum" static="true">false</EnableSubGridAutoCollapse>
-              <EnableFiltering type="Enum" static="true">yes</EnableFiltering>
-              <HideNestedGridColumnHeader type="Enum" static="true">no</HideNestedGridColumnHeader>
-              <EnableJumpBar type="Enum" static="true">yes</EnableJumpBar>
+              <datafieldname>leidos_completedprojectthemes</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_completedprojectthemes</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_completedprojectthemes</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_completedprojectthemes</value>
             </parameters>
           </customControl>
         </controlDescription>

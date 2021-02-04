@@ -43,6 +43,21 @@
                         <control id="leidos_amrenddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_amrenddate" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{fe6b7f2c-2d89-47c1-9b90-53bd7948292c}" locklevel="0">
+                        <labels>
+                          <label description="Area Manager - for Approval" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_areamanager" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_areamanager" disabled="false" uniqueid="{902665e1-6b21-6888-41cc-7a3303adce02}">
+                          <parameters>
+                            <AvailableViewIds>{53961D04-1FDA-40FD-B978-8E0967433FB2},{F6ECC93B-F366-EB11-A812-00224841783C}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{F6ECC93B-F366-EB11-A812-00224841783C}</DefaultViewId>
+                            <DisableMru>true</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
                   </rows>
                 </section>
                 <section name="AccountManagementData" id="643afc67-9a48-4d9f-a05c-96c649440eef" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
@@ -90,7 +105,7 @@
                         <labels>
                           <label description="Suggested Account Manager" languagecode="1033" />
                         </labels>
-                        <control id="leidos_suggestedaccountmanager" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_suggestedaccountmanager" disabled="false" />
+                        <control id="leidos_suggestedaccountmanager" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_suggestedaccountmanager" disabled="false" uniqueid="{76a2ae35-4d5a-9044-924c-ad6239759c19}" />
                       </cell>
                     </row>
                   </rows>
@@ -252,10 +267,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell showlabel="true" locklevel="0" id="{2ee5c67d-51ed-46b4-875e-b1356002ff52}">
+                      <cell id="{a64dffae-0125-4154-8419-b91661774982}" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Area Manager Approval By" languagecode="1033" />
                         </labels>
+                        <control id="leidos_areamanagerapprovalby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_areamanagerapprovalby" disabled="true" />
                       </cell>
                       <cell id="{2b6c7960-1f13-4a55-94ab-c844db8e58dd}" showlabel="true" locklevel="0">
                         <labels>
@@ -265,10 +281,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{60b5ec93-4a46-456c-9a4d-1188a3d573bc}" showlabel="false">
+                      <cell id="{60f4368c-2a7b-4b3b-9cd5-1f62ab35ef57}" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Area Manager Approval On" languagecode="1033" />
                         </labels>
+                        <control id="leidos_areamanagerapprovalon" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_areamanagerapprovalon" disabled="true" />
                       </cell>
                       <cell id="{edfa3ee4-2d34-4e39-894a-789567735048}" showlabel="true" locklevel="0">
                         <labels>
@@ -512,6 +529,7 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c3bedb21-7d1f-4cb1-b5b6-e89e8918ce4f" enabled="true" parameters="'0Wi:*:Create::0:217890000:217890000:217890000:217890000','1sr:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{a591c8d2-b6d2-0022-9eed-8a52d7b427bd}" enabled="true" parameters="'leidos_natureoforganisation' , 'leidos_proposedsegmentation', '5b7a5d04-bcdb-ea11-a813-000d3a7fedbe' , '&lt;filter type=&quot;and&quot;&gt;      &lt;condition attribute=&quot;statuscode&quot; operator=&quot;eq&quot; value=&quot;1&quot; /&gt;      &lt;condition attribute=&quot;leidos_natureofbusiness&quot; operator=&quot;eq&quot;  value=&quot;{{id}}&quot; /&gt;&lt;/filter&gt;' " passExecutionContext="true" />
             <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{25c4d85b-c151-a64c-09eb-8a388476402b}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.setLookupViewId" libraryName="leidos_common" handlerUniqueId="{4a5a1698-dd21-e275-44c9-a08624db20ea}" enabled="true" parameters="'header_process_leidos_areamanager'  , '{f6ecc93b-f366-eb11-a812-00224841783c}'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_businessorsocialenterprise">
@@ -532,9 +550,9 @@
       <formLibraries>
         <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{bbd609ac-43a5-3e59-ddcc-6a7aa596689e}" />
         <Library name="leidos_common" libraryUniqueId="{519ec06b-39a1-d0c6-c2aa-648b13d42c26}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="a04095aa-a5eb-43ac-8dda-76cbef360f3d" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="38fe64c0-8c89-469a-97d4-3b479831d4f1" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="d26085e4-a8a3-4e62-8ec6-abe15710bbcc" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="7943a71e-05d9-4af2-943d-dd146aee527a" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="aee60806-8d13-4d6a-a576-2858e6c9dff9" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="123cfb05-9ccc-4e40-b832-b238cd3fd94b" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
