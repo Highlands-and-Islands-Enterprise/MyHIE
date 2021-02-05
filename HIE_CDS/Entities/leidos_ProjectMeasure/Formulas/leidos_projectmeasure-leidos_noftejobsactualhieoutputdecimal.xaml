@@ -24,7 +24,7 @@
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep2_4" />
         </sco:Collection>
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-          <mxswa:GetEntityProperty Attribute="leidos_noftejobsbasecase" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" Value="[ConditionBranchStep2_2]">
+          <mxswa:GetEntityProperty Attribute="leidos_noftejobsactualdecimal" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" Value="[ConditionBranchStep2_2]">
             <mxswa:GetEntityProperty.TargetType>
               <InArgument x:TypeArguments="s:Type">
                 <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
@@ -41,7 +41,7 @@
               <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[ConditionBranchStep2_1]</OutArgument>
             </mxswa:ActivityReference.Arguments>
           </mxswa:ActivityReference>
-          <mxswa:GetEntityProperty Attribute="leidos_noftejobsactual" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" Value="[ConditionBranchStep2_4]">
+          <mxswa:GetEntityProperty Attribute="leidos_noftejobsbasecasedecimal" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" Value="[ConditionBranchStep2_4]">
             <mxswa:GetEntityProperty.TargetType>
               <InArgument x:TypeArguments="s:Type">
                 <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
@@ -85,10 +85,10 @@
                       </Sequence.Variables>
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_projectmeasure&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mxswa:GetEntityProperty Attribute="leidos_noftejobsactual" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" Value="[SetAttributeValueStep4_3]">
+                      <mxswa:GetEntityProperty Attribute="leidos_noftejobsactualdecimal" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" Value="[SetAttributeValueStep4_3]">
                         <mxswa:GetEntityProperty.TargetType>
                           <InArgument x:TypeArguments="s:Type">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Int32" />
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Decimal" />
                           </InArgument>
                         </mxswa:GetEntityProperty.TargetType>
                       </mxswa:GetEntityProperty>
@@ -97,15 +97,15 @@
                           <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">SelectFirstNonNull</InArgument>
                           <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { SetAttributeValueStep4_3 }]</InArgument>
                           <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Int32" />
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Decimal" />
                           </InArgument>
                           <OutArgument x:TypeArguments="x:Object" x:Key="Result">[SetAttributeValueStep4_2]</OutArgument>
                         </mxswa:ActivityReference.Arguments>
                       </mxswa:ActivityReference>
-                      <mxswa:GetEntityProperty Attribute="leidos_noftejobsbasecase" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" Value="[SetAttributeValueStep4_5]">
+                      <mxswa:GetEntityProperty Attribute="leidos_noftejobsbasecasedecimal" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" Value="[SetAttributeValueStep4_5]">
                         <mxswa:GetEntityProperty.TargetType>
                           <InArgument x:TypeArguments="s:Type">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Int32" />
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Decimal" />
                           </InArgument>
                         </mxswa:GetEntityProperty.TargetType>
                       </mxswa:GetEntityProperty>
@@ -114,7 +114,7 @@
                           <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">SelectFirstNonNull</InArgument>
                           <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { SetAttributeValueStep4_5 }]</InArgument>
                           <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Int32" />
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Decimal" />
                           </InArgument>
                           <OutArgument x:TypeArguments="x:Object" x:Key="Result">[SetAttributeValueStep4_4]</OutArgument>
                         </mxswa:ActivityReference.Arguments>
@@ -124,15 +124,15 @@
                           <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">Subtract</InArgument>
                           <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { SetAttributeValueStep4_2, SetAttributeValueStep4_4 }]</InArgument>
                           <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Int32" />
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Decimal" />
                           </InArgument>
                           <OutArgument x:TypeArguments="x:Object" x:Key="Result">[SetAttributeValueStep4_1]</OutArgument>
                         </mxswa:ActivityReference.Arguments>
                       </mxswa:ActivityReference>
-                      <mxswa:SetEntityProperty Attribute="leidos_noftejobsactualhieoutput" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_projectmeasure" Value="[SetAttributeValueStep4_1]">
+                      <mxswa:SetEntityProperty Attribute="leidos_noftejobsactualhieoutputdecimal" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_projectmeasure" Value="[SetAttributeValueStep4_1]">
                         <mxswa:SetEntityProperty.TargetType>
                           <InArgument x:TypeArguments="s:Type">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Int32" />
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Decimal" />
                           </InArgument>
                         </mxswa:SetEntityProperty.TargetType>
                       </mxswa:SetEntityProperty>

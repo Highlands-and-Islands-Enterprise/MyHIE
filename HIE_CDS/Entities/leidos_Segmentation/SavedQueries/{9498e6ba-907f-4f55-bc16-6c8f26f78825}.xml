@@ -11,7 +11,6 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_segmentationid">
           <cell name="leidos_name" width="300" />
-          <cell name="leidos_natureofbusiness" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -19,13 +18,12 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_segmentation">
-          <attribute name="leidos_segmentationid" />
           <attribute name="leidos_name" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <order attribute="leidos_name" descending="false" />
-          <attribute name="leidos_natureofbusiness" />
+          <attribute name="leidos_segmentationid" />
         </entity>
       </fetch>
     </fetchxml>

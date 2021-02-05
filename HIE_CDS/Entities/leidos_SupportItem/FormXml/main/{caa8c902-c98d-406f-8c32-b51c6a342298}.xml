@@ -14,7 +14,7 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{114429d9-82be-45d9-a21b-c1b372cd88cf}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{114429d9-82be-45d9-a21b-c1b372cd88cf}" name="{114429d9-82be-45d9-a21b-c1b372cd88cf}" columns="1" locklevel="0" labelwidth="250" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="General" languagecode="1033" />
                   </labels>
@@ -36,19 +36,35 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{1bd4447a-56b3-4202-bfb8-c5b63024241b}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Allocation of Funding" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_fundingallocation" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_fundingallocation" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{3733439e-7fc8-4c0d-8f7c-471c6acf7f52}" locklevel="0">
                         <labels>
                           <label description="Support Item Type" languagecode="1033" />
                         </labels>
                         <control id="leidos_supportitemtype" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_supportitemtype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1bd4447a-56b3-4202-bfb8-c5b63024241b}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Product Value (Gross Approval Amount)" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_fundingallocation" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_fundingallocation" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e654ca53-8bc4-4f2d-b10f-e0b1faf75a2b}" locklevel="0">
+                        <labels>
+                          <label description="Committed Value" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_committedvalue" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_committedvalue" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a55f2ea7-cb6f-4e69-8b6f-9384aedfce08}" locklevel="0">
+                        <labels>
+                          <label description="Spend Value" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_spendvalue" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_spendvalue" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -101,7 +117,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -130,7 +146,6 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <DisplayConditions Order="0" FallbackForm="true" />
       <events>
         <event name="onchange" application="false" active="false" attribute="leidos_fundingallocation">
           <Handlers>
@@ -143,6 +158,7 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="d5c3c5a9-198d-4117-b964-5594d0bf79bf" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="085b4dcb-b5c1-4d3d-b6a4-98c517a86c00" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true" />
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
