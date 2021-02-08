@@ -34,11 +34,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{286d841e-993c-49a0-b72b-b22f47bc2eb5}" showlabel="true" locklevel="0">
+                      <cell id="{a54e6451-0e0c-465f-b2c3-82a499c649c0}" locklevel="0" visible="false">
                         <labels>
-                          <label description="Cost Type" languagecode="1033" />
+                          <label description="Product Cost" languagecode="1033" />
                         </labels>
-                        <control id="leidos_costcategory" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_costcategory" disabled="false" />
+                        <control id="leidos_productcost" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_productcost" disabled="false" uniqueid="{00b8cda8-3495-4a1e-aa23-19172a1d37bb}" />
                       </cell>
                       <cell id="{1d7c616d-e109-7777-d7d6-c9a7e1a997e6}" showlabel="false" userspacer="true">
                         <labels>
@@ -47,11 +47,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{02dc19fe-d000-4df9-a2e2-9a0af8993d7a}" showlabel="true" locklevel="0">
+                      <cell id="{286d841e-993c-49a0-b72b-b22f47bc2eb5}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Budget Type" languagecode="1033" />
+                          <label description="Cost Type" languagecode="1033" />
                         </labels>
-                        <control id="leidos_costtype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_costtype" disabled="false" />
+                        <control id="leidos_costcategory" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_costcategory" disabled="false" />
                       </cell>
                       <cell id="{18f3a488-72e3-4ef8-a652-610a6fa793e0}" locklevel="0" showlabel="true">
                         <labels>
@@ -70,17 +70,30 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{e33b85d0-e178-4ed0-ad3f-cd6f5508d135}" showlabel="true" locklevel="0">
+                      <cell id="{02dc19fe-d000-4df9-a2e2-9a0af8993d7a}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Item Cost" languagecode="1033" />
+                          <label description="Budget Type" languagecode="1033" />
                         </labels>
-                        <control id="leidos_itemcost" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_itemcost" disabled="false" />
+                        <control id="leidos_costtype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_costtype" disabled="false" />
                       </cell>
                       <cell id="{ca345e6d-4093-46e3-993a-7267c7bd9b35}" locklevel="0" showlabel="true">
                         <labels>
                           <label description="Client Cost" languagecode="1033" />
                         </labels>
                         <control id="leidos_portalitemcost" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_portalitemcost" disabled="true" uniqueid="{8a5c2709-ea14-d7e3-5c26-02309d5eb9a5}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e33b85d0-e178-4ed0-ad3f-cd6f5508d135}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Item Cost" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_itemcost" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_itemcost" disabled="false" />
+                      </cell>
+                      <cell locklevel="0" id="{23809fba-74ba-49e0-b96b-cb1c6cad1b82}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
                       </cell>
                     </row>
                   </rows>
@@ -231,10 +244,50 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <controlDescriptions />
+      <controlDescriptions>
+        <controlDescription forControl="{00b8cda8-3495-4a1e-aa23-19172a1d37bb}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_productcost</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_productcost</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_productcost</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value>leidos_productcost</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="134e3e44-c3cb-464e-9aee-b1653a6078d7" enabled="true" parameters="'wpk:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_productcost">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="386e1de6-c7ad-48e2-837b-19fa22329b29" enabled="true" parameters="'wpk:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="778128c5-f780-43a1-bdf9-ef2e578af1bd" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="bc8d6ff4-91a4-48da-9895-fac62ec22318" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="e567046a-fc48-4547-9765-9d6c03d9a898" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

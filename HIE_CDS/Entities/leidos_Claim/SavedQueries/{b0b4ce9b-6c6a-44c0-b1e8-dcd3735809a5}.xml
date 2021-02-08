@@ -15,6 +15,7 @@
           <cell name="leidos_alternativepayeeacount" width="100" />
           <cell name="leidos_claimreference" width="100" />
           <cell name="leidos_claimnumber" width="100" />
+          <cell name="leidos_paymentclaimnettotal" width="100" />
           <cell name="leidos_netinvoicevalue" width="100" />
           <cell name="leidos_eligible" width="100" />
           <cell name="leidos_claimsubmitteddate" width="100" />
@@ -32,9 +33,6 @@
           <attribute name="leidos_claimid" />
           <attribute name="leidos_name" />
           <order attribute="leidos_name" descending="false" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="leidos_claimreference" />
           <attribute name="leidos_claimsubmitteddate" />
           <attribute name="statuscode" />
@@ -46,6 +44,10 @@
           <attribute name="leidos_claimnumber" />
           <attribute name="leidos_dateofposting" />
           <attribute name="leidos_paymentdate" />
+          <attribute name="leidos_paymentclaimnettotal" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="ne" value="445260005" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
