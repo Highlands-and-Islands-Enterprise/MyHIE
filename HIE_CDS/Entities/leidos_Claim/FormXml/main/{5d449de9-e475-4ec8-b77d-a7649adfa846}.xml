@@ -742,7 +742,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -998,6 +998,7 @@
           <Handlers>
             <Handler functionName="Leidos.SetClaimPathControlViews" libraryName="leidos_Claim" handlerUniqueId="{b9773783-c1e3-0bb6-5a43-a316298798da}" enabled="false" parameters="" passExecutionContext="true" />
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8b16c867-879d-4c61-8cbe-1b17b10572ab" enabled="true" parameters="'6eL:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{35484690-627b-3b10-d958-b781219d9c19}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_parentaccount">
@@ -1018,6 +1019,11 @@
         <event name="onchange" application="false" active="false" attribute="leidos_claimapprover">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="d7e17a81-aa3c-469d-90cf-5c33bd5de8cf" enabled="true" parameters="'lsI:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_claimformrouting">
+          <Handlers>
+            <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{3c8cb938-2134-528d-65e5-151cb5a638c1}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>

@@ -47,7 +47,10 @@
           <attribute name="leidos_aug" />
           <attribute name="leidos_spendprofiledetailid" />
           <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
+            <filter type="or">
+              <condition attribute="statecode" operator="eq" value="0" />
+              <condition attribute="statuscode" operator="eq" value="445260000" />
+            </filter>
           </filter>
         </entity>
       </fetch>

@@ -12,7 +12,6 @@ Leidos.ShowProjectAmendmentError = function (error)
     });
 }
 
-
 Leidos.SetProjectAmendmentPathControlViews = function (executionContext) {
    "use strict";
     Leidos.setLookupViewId(executionContext, "header_process_leidos_gradeestaff","{aa3f26b8-b6bb-ea11-a812-000d3a7f1bbb}");
@@ -81,4 +80,14 @@ Leidos.refreshSave =  function (executionContext) {
         Leidos.ShowProjectAmendmentError(error);
     })
 }
-   
+
+Leidos.ProjectFilterView = function (executionContext) {
+    "use strict";
+    var formContext = executionContext.getFormContext();  
+    var amendmentType = formContext.getAttribute("leidos_amendmenttype").getValue();
+    if (amendmentType === 445260003) { /* Revert to Claims Complete */      
+        Leidos.setLookupViewId(executionContext, "leidos_project","{C8C594CF-D06A-EB11-A812-0022483F8BCB}");
+    } else {
+        Leidos.setLookupViewId(executionContext, "leidos_project","{F9F463C8-1DE2-456D-848B-9EEB0AAEDF3F}");
+    }
+}   

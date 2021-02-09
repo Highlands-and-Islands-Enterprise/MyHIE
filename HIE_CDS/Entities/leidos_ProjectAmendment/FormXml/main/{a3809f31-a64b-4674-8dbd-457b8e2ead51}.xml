@@ -388,7 +388,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -580,10 +580,12 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="00c08d28-514d-485c-afff-e16f9ea9e8e6" enabled="true" parameters="'s0U:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_amendmenttype">
+          <Handlers>
+            <Handler functionName="Leidos.ProjectFilterView" libraryName="leidos_projectAmendment.js" handlerUniqueId="{10c026eb-6843-a503-423c-b2922b8b0861}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{078d2a0a-70b1-37c3-8405-61094871e6c1}" />
         <Library name="leidos_projectAmendment.js" libraryUniqueId="{94167ab6-7b43-1717-d341-29c6b0138ade}" />
@@ -591,6 +593,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="ad739409-49c3-46ce-bbd3-669a16c0d2f4" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="883d85a7-fe34-4211-ae76-afd01025e13b" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
