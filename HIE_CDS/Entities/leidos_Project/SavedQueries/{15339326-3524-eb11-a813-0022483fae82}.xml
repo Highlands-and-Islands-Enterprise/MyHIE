@@ -28,13 +28,15 @@
           <filter type="and">
             <condition attribute="statuscode" operator="eq" value="445260013" />
           </filter>
-          <link-entity name="leidos_projectfunding" alias="aa" link-type="inner" from="leidos_parentproject" to="leidos_projectid">
-            <filter type="and">
-              <condition attribute="leidos_funddetails" operator="in">
-                <value uiname="GIA - Grant" uitype="leidos_funddetail">{3e224dbb-495a-ea11-a811-000d3a0bad17}</value>
-                <value uiname="GIA - Loan" uitype="leidos_funddetail">{cb93ea9a-0e1a-eb11-a813-000d3a7fedbe}</value>
-              </condition>
-            </filter>
+          <link-entity name="leidos_projectfunding" alias="ab" link-type="inner" from="leidos_parentproject" to="leidos_projectid">
+            <link-entity name="leidos_funddetail" alias="aa" link-type="inner" from="leidos_funddetailid" to="leidos_funddetails">
+              <filter type="and">
+                <condition attribute="leidos_funddetailid" operator="in">
+                  <value uiname="GIA - Grant" uitype="leidos_funddetail">{ae309239-7461-eb11-a812-000d3ad5cd62}</value>
+                  <value uiname="GIA - Loan" uitype="leidos_funddetail">{32056f7b-7461-eb11-a812-000d3ad5cd62}</value>
+                </condition>
+              </filter>
+            </link-entity>
           </link-entity>
         </entity>
       </fetch>
