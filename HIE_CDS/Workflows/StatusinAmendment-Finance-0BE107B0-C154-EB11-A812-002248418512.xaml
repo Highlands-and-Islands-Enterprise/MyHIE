@@ -22,7 +22,7 @@
           <Variable x:TypeArguments="x:Object" Name="ConditionBranchStep2_2" />
         </sco:Collection>
         <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-          <mxswa:GetEntityProperty Attribute="statuscode" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectcost" Value="[ConditionBranchStep2_1]">
+          <mxswa:GetEntityProperty Attribute="statuscode" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_anticipatedspendprofile" Value="[ConditionBranchStep2_1]">
             <mxswa:GetEntityProperty.TargetType>
               <InArgument x:TypeArguments="s:Type">
                 <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
@@ -58,20 +58,17 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                    <Sequence DisplayName="SetDisplayModeStep1: Cost Description">
-                      <mcwc:SetDisplayMode ControlId="leidos_costitem" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectcost" IsReadOnly="True" />
+                    <Sequence DisplayName="SetDisplayModeStep_ConditionBranchStep2_3: Lock spend profile amount">
+                      <mcwc:SetDisplayMode ControlId="leidos_spendprofileamount" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_anticipatedspendprofile" IsReadOnly="True" />
                     </Sequence>
-                    <Sequence DisplayName="SetDisplayModeStep4: Budget Type">
-                      <mcwc:SetDisplayMode ControlId="leidos_costtype" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectcost" IsReadOnly="True" />
-                    </Sequence>
-                    <Sequence DisplayName="SetDisplayModeStep3: Item Cost">
-                      <mcwc:SetDisplayMode ControlId="leidos_itemcost" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectcost" IsReadOnly="True" />
+                    <Sequence DisplayName="SetDisplayModeStep_ConditionBranchStep2_3_4: Lock new project end date">
+                      <mcwc:SetDisplayMode ControlId="leidos_newprojectenddate" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_anticipatedspendprofile" IsReadOnly="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
               </mxswa:ActivityReference>
               <x:Null x:Key="Else" />
-              <x:String x:Key="Description">If status : In Amendment - Finance</x:String>
+              <x:String x:Key="Description">if status is In Amendment - Finance</x:String>
             </mxswa:ActivityReference.Properties>
           </mxswa:ActivityReference>
         </sco:Collection>

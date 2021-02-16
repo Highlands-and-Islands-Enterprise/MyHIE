@@ -1,4 +1,4 @@
-<Activity x:Class="XrmWorkflow00000000000000000000000000000000" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mcwc="clr-namespace:Microsoft.Crm.Workflow.ClientActivities;assembly=Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mcwo="clr-namespace:Microsoft.Crm.Workflow.ObjectModel;assembly=Microsoft.Crm, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mxs="clr-namespace:Microsoft.Xrm.Sdk;assembly=Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mxsq="clr-namespace:Microsoft.Xrm.Sdk.Query;assembly=Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mxswa="clr-namespace:Microsoft.Xrm.Sdk.Workflow.Activities;assembly=Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:s="clr-namespace:System;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:srs="clr-namespace:System.Runtime.Serialization;assembly=System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:this="clr-namespace:" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity x:Class="XrmWorkflow00000000000000000000000000000000" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mcwc="clr-namespace:Microsoft.Crm.Workflow.ClientActivities;assembly=Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mxs="clr-namespace:Microsoft.Xrm.Sdk;assembly=Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mxsq="clr-namespace:Microsoft.Xrm.Sdk.Query;assembly=Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:mxswa="clr-namespace:Microsoft.Xrm.Sdk.Workflow.Activities;assembly=Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" xmlns:s="clr-namespace:System;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:srs="clr-namespace:System.Runtime.Serialization;assembly=System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" xmlns:this="clr-namespace:" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="InputEntities" Type="InArgument(scg:IDictionary(x:String, mxs:Entity))" />
     <x:Property Name="CreatedEntities" Type="InArgument(scg:IDictionary(x:String, mxs:Entity))" />
@@ -78,6 +78,22 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetAttributeValueStep_ConditionBranchStep2_153: Nullify Finance">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep_ConditionBranchStep2_153_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_finance" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep_ConditionBranchStep2_153_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep_ConditionBranchStep2_153" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep129: Nullify Grade E Staff">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep129_1" />
@@ -158,6 +174,9 @@
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep105" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetAttributeValueStep105_154: Hide Finance">
+                      <mcwc:SetVisibility ControlId="leidos_finance" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep6: Show Executive Grade Staff">
                       <mcwc:SetVisibility ControlId="leidos_executivegradestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="True" />
                     </Sequence>
@@ -175,6 +194,11 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep5: Hide Leadership Board">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep5_155: Finance - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_finance" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep5_155" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetFieldRequiredLevelStep7: Executive Grade Staff Business Required">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
@@ -205,6 +229,9 @@
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
                       <mcwc:SetFieldRequiredLevel ControlId="leidos_leadershipteam" ControlType="standard" DisplayName="SetFieldRequiredLevelStep14" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetFieldRequiredLevelStep14_174: Show Decision Date">
+                      <mcwc:SetVisibility ControlId="leidos_dateofdecision" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -249,6 +276,22 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetAttributeValueStep_ConditionBranchStep3_156: Nullify Finance">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep_ConditionBranchStep3_156_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_finance" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep_ConditionBranchStep3_156_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep_ConditionBranchStep3_156" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep136: Nullify Executive Grade Staff">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep136_1" />
@@ -329,6 +372,9 @@
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep106" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetAttributeValueStep106_162: Hide Finance">
+                      <mcwc:SetVisibility ControlId="leidos_finance" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep98: Hide Executive Grade Staff">
                       <mcwc:SetVisibility ControlId="leidos_executivegradestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
                     </Sequence>
@@ -346,6 +392,11 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep68: Hide Leadership Board">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep68_168: Finance - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_finance" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep68_168" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetFieldRequiredLevelStep50: Executive Grade Staff Not Business Required">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
@@ -376,6 +427,9 @@
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
                       <mcwc:SetFieldRequiredLevel ControlId="leidos_leadershipteam" ControlType="standard" DisplayName="SetFieldRequiredLevelStep20" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetFieldRequiredLevelStep20_175: Show Decision Date">
+                      <mcwc:SetVisibility ControlId="leidos_dateofdecision" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -420,6 +474,22 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetAttributeValueStep_ConditionBranchStep4_157: Nullify Finance">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep_ConditionBranchStep4_157_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_finance" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep_ConditionBranchStep4_157_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep_ConditionBranchStep4_157" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep137: Nullify Executive Grade Staff">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep137_1" />
@@ -450,22 +520,6 @@
                         </mxswa:SetEntityProperty.TargetType>
                       </mxswa:SetEntityProperty>
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep135" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
-                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
-                    </Sequence>
-                    <Sequence DisplayName="SetAttributeValueStep130: Nullify Grade E Staff">
-                      <Sequence.Variables>
-                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep130_1" />
-                      </Sequence.Variables>
-                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
-                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mxswa:SetEntityProperty Attribute="leidos_gradeestaff" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep130_1]">
-                        <mxswa:SetEntityProperty.TargetType>
-                          <InArgument x:TypeArguments="s:Type">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
-                          </InArgument>
-                        </mxswa:SetEntityProperty.TargetType>
-                      </mxswa:SetEntityProperty>
-                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep130" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep119: Nullify HIE Board">
@@ -516,6 +570,9 @@
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep107" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetAttributeValueStep107_163: Hide Finance">
+                      <mcwc:SetVisibility ControlId="leidos_finance" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep99: Hide Executive Grade Staff">
                       <mcwc:SetVisibility ControlId="leidos_executivegradestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
                     </Sequence>
@@ -533,6 +590,11 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep69: Hide Leadership Board">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep69_169: Finance - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_finance" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep69_169" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetFieldRequiredLevelStep51: Executive Grade Staff Not Business Required">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
@@ -563,6 +625,9 @@
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
                       <mcwc:SetFieldRequiredLevel ControlId="leidos_leadershipteam" ControlType="standard" DisplayName="SetFieldRequiredLevelStep21" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetFieldRequiredLevelStep21_176: Show Decision Date">
+                      <mcwc:SetVisibility ControlId="leidos_dateofdecision" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -607,6 +672,22 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetAttributeValueStep_ConditionBranchStep5_158: Nullify Finance">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep_ConditionBranchStep5_158_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_finance" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep_ConditionBranchStep5_158_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep_ConditionBranchStep5_158" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep138: Nullify Executive Grade Staff">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep138_1" />
@@ -687,6 +768,9 @@
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep108" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetAttributeValueStep108_164: Hide Finance">
+                      <mcwc:SetVisibility ControlId="leidos_finance" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep100: Hide Executive Grade Staff">
                       <mcwc:SetVisibility ControlId="leidos_executivegradestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
                     </Sequence>
@@ -704,6 +788,11 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep70: Hide Leadership Board">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep70_170: Finance - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_finance" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep70_170" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetFieldRequiredLevelStep52: Executive Grade Staff Not Business Required">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
@@ -734,6 +823,9 @@
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
                       <mcwc:SetFieldRequiredLevel ControlId="leidos_leadershipteam" ControlType="standard" DisplayName="SetFieldRequiredLevelStep22" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetFieldRequiredLevelStep22_177: Show Decision Date">
+                      <mcwc:SetVisibility ControlId="leidos_dateofdecision" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -778,6 +870,22 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetAttributeValueStep_ConditionBranchStep6_159: Nullify Finance">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep_ConditionBranchStep6_159_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_finance" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep_ConditionBranchStep6_159_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep_ConditionBranchStep6_159" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep139: Nullify Executive Grade Staff">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep139_1" />
@@ -858,6 +966,9 @@
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep109" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetAttributeValueStep109_165: Hide Finance">
+                      <mcwc:SetVisibility ControlId="leidos_finance" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep101: Hide Executive Grade Staff">
                       <mcwc:SetVisibility ControlId="leidos_executivegradestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
                     </Sequence>
@@ -875,6 +986,11 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep71: Hide Leadership Board">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep71_171: Finance - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_finance" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep71_171" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetFieldRequiredLevelStep53: Executive Grade Staff Not Business Required">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
@@ -905,6 +1021,9 @@
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
                       <mcwc:SetFieldRequiredLevel ControlId="leidos_leadershipteam" ControlType="standard" DisplayName="SetFieldRequiredLevelStep23" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetFieldRequiredLevelStep23_178: Show Decision Date">
+                      <mcwc:SetVisibility ControlId="leidos_dateofdecision" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -949,6 +1068,22 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetAttributeValueStep_ConditionBranchStep7_160: Nullify Finance">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep_ConditionBranchStep7_160_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_finance" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep_ConditionBranchStep7_160_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep_ConditionBranchStep7_160" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep140: Nullify Executive Grade Staff">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep140_1" />
@@ -1029,6 +1164,9 @@
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep115" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetAttributeValueStep115_166: Hide Finance">
+                      <mcwc:SetVisibility ControlId="leidos_finance" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep102: Hide Executive Grade Staff">
                       <mcwc:SetVisibility ControlId="leidos_executivegradestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
                     </Sequence>
@@ -1046,6 +1184,11 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep72: Show Leadership Board">
                       <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep72_172: Finance - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_finance" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep72_172" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetFieldRequiredLevelStep54: Executive Grade Staff Not Business Required">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
@@ -1076,6 +1219,9 @@
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
                       <mcwc:SetFieldRequiredLevel ControlId="leidos_leadershipteam" ControlType="standard" DisplayName="SetFieldRequiredLevelStep24" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="Required" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetFieldRequiredLevelStep24_179: Show Decision Date">
+                      <mcwc:SetVisibility ControlId="leidos_dateofdecision" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -1120,28 +1266,160 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                    <Sequence DisplayName="SetMessageStep161: Finance Path Error message">
-                      <mcwc:SetMessage ControlId="leidos_programmeamendmentpath" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" Level="[Nothing]">
-                        <mcwc:SetMessage.StepLabels>
-                          <mcwo:StepLabel Description="Finance is not a valid Delegated Authority path option for Programme Amendments.  Please re-select the Delegated Authority Path" LabelId="22b57a55-0b4e-4fd4-a510-1d3601f96e1b" LanguageCode="1033" />
-                        </mcwc:SetMessage.StepLabels>
-                      </mcwc:SetMessage>
+                    <Sequence DisplayName="SetAttributeValueStep137840: Nullify Grade E Staff">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep137840_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_gradeestaff" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep137840_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep137840" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
-                    <Sequence DisplayName="SetAttributeValueStep162: Nullify Delegated Authority Path">
+                    <Sequence DisplayName="SetAttributeValueStep136419: Nullify Grade F Staff">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep136419_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_gradefstaff" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep136419_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep136419" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep135542: Nullify Executive Grade Staff">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep135542_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_executivegradestaff" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep135542_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep135542" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep134: Nullify HIE Board">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep134_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_hieboard" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep134_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep134" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep133362: Nullify HIE Chief Executive">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep133362_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_hiechiefexecutive" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep133362_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep133362" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep162: Nullify Leadership Team">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep162_1" />
                       </Sequence.Variables>
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mxswa:SetEntityProperty Attribute="leidos_programmeamendmentpath" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep162_1]">
+                      <mxswa:SetEntityProperty Attribute="leidos_leadershipteam" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep162_1]">
                         <mxswa:SetEntityProperty.TargetType>
                           <InArgument x:TypeArguments="s:Type">
-                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:OptionSetValue" />
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
                           </InArgument>
                         </mxswa:SetEntityProperty.TargetType>
                       </mxswa:SetEntityProperty>
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep162" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetAttributeValueStep162_143: Show Finance">
+                      <mcwc:SetVisibility ControlId="leidos_finance" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep139: Hide Grade E Staff">
+                      <mcwc:SetVisibility ControlId="leidos_gradeestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep140: Hide Grade F Staff">
+                      <mcwc:SetVisibility ControlId="leidos_gradefstaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep141: Hide Executive Grade Staff">
+                      <mcwc:SetVisibility ControlId="leidos_executivegradestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep142: Hide HIE Board">
+                      <mcwc:SetVisibility ControlId="leidos_hieboard" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep143: Hide HIE Chief Executive">
+                      <mcwc:SetVisibility ControlId="leidos_hiechiefexecutive" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep144: Hide Leadership Team">
+                      <mcwc:SetVisibility ControlId="leidos_leadershipteam" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144: Finance - Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_finance" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="Required" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145: Grade E Staff - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_gradeestaff" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145_146: Grade F Staff - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_gradefstaff" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145_146" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145_146_147: Executive Grade Staff - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_executivegradestaff" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145_146_147" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145_146_147_148: HIE Board - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_hieboard" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145_146_147_148" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145_146_147_148_149: Chief Executive - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_hiechiefexecutive" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145_146_147_148_149" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145_146_147_148_149_150: Leadership Team - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_leadershipteam" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep144_144_145_146_147_148_149_150" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep144_144_145_146_147_148_149_150_152: Show Decision Date">
+                      <mcwc:SetVisibility ControlId="leidos_dateofdecision" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -1169,6 +1447,22 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
+                    <Sequence DisplayName="SetAttributeValueStep_ConditionBranchStep8_161: Nullify Finance">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep_ConditionBranchStep8_161_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_finance" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep_ConditionBranchStep8_161_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep_ConditionBranchStep8_161" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
+                    </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep141: Nullify Executive Grade Staff">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep141_1" />
@@ -1185,20 +1479,20 @@
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep141" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
-                    <Sequence DisplayName="SetAttributeValueStep134: Nullify Grade E Staff">
+                    <Sequence DisplayName="SetAttributeValueStep134591: Nullify Grade E Staff">
                       <Sequence.Variables>
-                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep134_1" />
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep134591_1" />
                       </Sequence.Variables>
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mxswa:SetEntityProperty Attribute="leidos_gradeestaff" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep134_1]">
+                      <mxswa:SetEntityProperty Attribute="leidos_gradeestaff" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" Value="[SetAttributeValueStep134591_1]">
                         <mxswa:SetEntityProperty.TargetType>
                           <InArgument x:TypeArguments="s:Type">
                             <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:EntityReference" />
                           </InArgument>
                         </mxswa:SetEntityProperty.TargetType>
                       </mxswa:SetEntityProperty>
-                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep134" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep134591" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep128: Nullify Grade F Staff">
@@ -1291,6 +1585,9 @@
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep157" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_programme_amendment" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetAttributeValueStep157_167: Hide Finance">
+                      <mcwc:SetVisibility ControlId="leidos_finance" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep156: Hide Executive Grade Staff">
                       <mcwc:SetVisibility ControlId="leidos_executivegradestaff" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
                     </Sequence>
@@ -1314,6 +1611,11 @@
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep149: Hide Submit for Approval">
                       <mcwc:SetVisibility ControlId="leidos_submitprogrammeamendmentforapproval" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep149_173: Finance - Not Business Required">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_finance" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep149_173" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetFieldRequiredLevelStep148: Executive Grade Staff Not Business Required">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
@@ -1344,6 +1646,9 @@
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_programme_amendment&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
                       <mcwc:SetFieldRequiredLevel ControlId="leidos_leadershipteam" ControlType="standard" DisplayName="SetFieldRequiredLevelStep143" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetFieldRequiredLevelStep143_180: Hide Decision Date">
+                      <mcwc:SetVisibility ControlId="leidos_dateofdecision" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_programme_amendment" IsVisible="False" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>

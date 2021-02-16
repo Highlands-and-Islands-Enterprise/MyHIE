@@ -46,22 +46,22 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{070cced2-07ab-842a-90ea-20dbe20c0183}" showlabel="true" locklevel="0">
+                      <cell id="{ee59fccf-a6f7-47c0-9720-f0fe9dd3042d}" locklevel="0" showlabel="true">
                         <labels>
                           <label description="Parent Project" languagecode="1033" />
                         </labels>
-                        <control id="leidos_parentproject" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentproject" disabled="false" uniqueid="{aa49475c-6ce5-13e6-c989-ed6b0996d2ab}">
+                        <control id="leidos_parentproject" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentproject" disabled="false" uniqueid="{31b532d2-ee18-28ed-7909-d0bcc431aebd}">
                           <parameters>
+                            <DefaultViewId>{526F08BC-6870-EB11-A812-00224840EE66}</DefaultViewId>
+                            <AvailableViewIds>{44A80479-099A-478B-A3B8-E5AF2A3B2B90}</AvailableViewIds>
+                            <DisableViewPicker>true</DisableViewPicker>
                             <AutoResolve>true</AutoResolve>
                             <DisableMru>true</DisableMru>
-                            <DisableQuickFind>true</DisableQuickFind>
-                            <DisableViewPicker>true</DisableViewPicker>
-                            <DefaultViewId>{15339326-3524-EB11-A813-0022483FAE82}</DefaultViewId>
-                            <DependentAttributeType>account</DependentAttributeType>
+                            <DisableQuickFind>false</DisableQuickFind>
                             <AllowFilterOff>false</AllowFilterOff>
-                            <AvailableViewIds>{44A80479-099A-478B-A3B8-E5AF2A3B2B90},{15339326-3524-EB11-A813-0022483FAE82}</AvailableViewIds>
                             <FilterRelationshipName>leidos_Project_ParentAccount_Account</FilterRelationshipName>
                             <DependentAttributeName>leidos_claim.leidos_parentaccount</DependentAttributeName>
+                            <DependentAttributeType>account</DependentAttributeType>
                           </parameters>
                         </control>
                       </cell>
@@ -742,7 +742,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -1003,7 +1003,7 @@
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_parentaccount">
           <Handlers>
-            <Handler functionName="Leidos.ParentProjectFilterview" libraryName="leidos_Claim" handlerUniqueId="{530b3905-d995-0a64-8025-8322e4c7acd7}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.ParentProjectFilterview" libraryName="leidos_Claim" handlerUniqueId="{530b3905-d995-0a64-8025-8322e4c7acd7}" enabled="false" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_claimvalidationchecks">
@@ -1027,9 +1027,6 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{1259c156-5717-4b79-4183-6a0311c080e9}" />
         <Library name="leidos_Claim" libraryUniqueId="{8e01ea2b-53ee-d27d-22c5-4b74269d00a9}" />
@@ -1037,6 +1034,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="41913267-fce7-4988-aacb-daa19f4bf8d6" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="aad9710e-5878-442d-a08d-d638b252bcff" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

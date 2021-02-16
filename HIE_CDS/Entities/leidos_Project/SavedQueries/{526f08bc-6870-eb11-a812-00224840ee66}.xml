@@ -6,11 +6,11 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{15339326-3524-eb11-a813-0022483fae82}</savedqueryid>
+    <savedqueryid>{526f08bc-6870-eb11-a812-00224840ee66}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectid">
-          <cell name="leidos_name" width="300" />
+          <cell name="leidos_name" width="200" />
           <cell name="leidos_projectreference" width="100" />
           <cell name="leidos_parentaccount" width="100" />
         </row>
@@ -18,22 +18,21 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_project">
           <attribute name="leidos_name" />
+          <attribute name="leidos_projectid" />
           <attribute name="leidos_parentaccount" />
           <attribute name="leidos_projectreference" />
-          <order attribute="leidos_name" descending="false" />
-          <attribute name="leidos_projectid" />
           <filter type="and">
             <condition attribute="statuscode" operator="eq" value="445260013" />
           </filter>
-          <link-entity name="leidos_projectfunding" alias="ab" link-type="inner" from="leidos_parentproject" to="leidos_projectid">
-            <link-entity name="leidos_funddetail" alias="aa" link-type="inner" from="leidos_funddetailid" to="leidos_funddetails">
+          <link-entity name="leidos_projectfunding" alias="ad" link-type="inner" from="leidos_parentproject" to="leidos_projectid">
+            <link-entity name="leidos_funddetail" alias="ae" link-type="inner" from="leidos_funddetailid" to="leidos_funddetails">
               <filter type="and">
                 <condition attribute="leidos_funddetailid" operator="in">
-                  <value uiname="GIA - Grant" uitype="leidos_funddetail">{ae309239-7461-eb11-a812-000d3ad5cd62}</value>
                   <value uiname="GIA - Loan" uitype="leidos_funddetail">{32056f7b-7461-eb11-a812-000d3ad5cd62}</value>
+                  <value uiname="GIA - Grant" uitype="leidos_funddetail">{ae309239-7461-eb11-a812-000d3ad5cd62}</value>
                 </condition>
               </filter>
             </link-entity>
@@ -41,9 +40,9 @@
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.9.0.1177</IntroducedVersion>
+    <IntroducedVersion>1.14.0.1525</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Projects Clear to Pay Claims" languagecode="1033" />
+      <LocalizedName description="Claim Grid Project Clear to Pay" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
