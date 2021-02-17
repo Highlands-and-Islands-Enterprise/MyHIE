@@ -11,7 +11,6 @@
       <grid name="leidos_ladderquestions" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="leidos_ladderquestion" id="leidos_ladderquestionid">
           <cell name="leidos_name" width="300" />
-          <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
@@ -19,13 +18,12 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_ladderquestion">
-          <attribute name="leidos_ladderquestionid" />
           <attribute name="leidos_name" />
-          <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="leidos_ladderquestionid" />
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
