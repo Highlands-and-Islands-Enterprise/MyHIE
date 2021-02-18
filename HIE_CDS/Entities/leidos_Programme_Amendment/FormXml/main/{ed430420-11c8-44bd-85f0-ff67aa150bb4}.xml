@@ -36,6 +36,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{6b063587-c1cc-2c45-2ac1-04c991503b19}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Budget sub-type" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_budgetsubtype" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="leidos_budgetsubtype" disabled="false" uniqueid="{33b67d3a-09b9-4ade-c6ee-ecd76821a462}" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{6fb56b66-cc44-4e44-9ec7-32077c60f36a}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Programme" languagecode="1033" />
@@ -189,6 +197,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{d0511487-b6b4-445a-ad5f-fd54c8a9da2e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Amendment Document Link" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_amendmentdocumentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_amendmentdocumentlink" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{98fc2bed-452e-45d8-b240-9fdbda50568e}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Recommendation" languagecode="1033" />
@@ -215,14 +231,6 @@
                     <label description="Approval" languagecode="1033" />
                   </labels>
                   <rows>
-                    <row>
-                      <cell id="{d0511487-b6b4-445a-ad5f-fd54c8a9da2e}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Amendment Document Link" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_amendmentdocumentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_amendmentdocumentlink" disabled="false" />
-                      </cell>
-                    </row>
                     <row>
                       <cell id="{8b053791-df53-4f54-9946-1c86d45b3b56}" showlabel="true" locklevel="0">
                         <labels>
@@ -505,12 +513,22 @@
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_validateprogramme">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="59f15c60-f0b8-468e-bccb-291196f8b2a3" enabled="true" parameters="'Nfn:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="59f15c60-f0b8-468e-bccb-291196f8b2a3" enabled="true" parameters="'Nfn:*:CreateUpdate::0:217890000:217890000:217890000:217890000','Fne:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_amendmentscomplete">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7f080bea-9bb3-4d54-8a72-e47f1abe1014" enabled="true" parameters="'Nfn:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="e0514f37-130a-42af-af69-c17f7698f065" enabled="true" parameters="'Fne:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_amendmentdocumentlink">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="62bd2571-2c1c-4c5d-a364-6acbfbddf89b" enabled="true" parameters="'Fne:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -545,9 +563,9 @@
         </NavBarAreas>
       </Navigation>
       <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="a04871c8-45db-4753-9671-4a408b2101b6" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a49b3fa8-fa70-4c73-87fa-dbebf2aecfd4" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="c163bd8a-c3d5-401d-8d92-cf73761010e8" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="a17daf0c-00d9-4f7e-bfb9-e4a9e9a7ed1a" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="f425dd66-4df9-4098-a2a3-3b92d74ec426" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="71ddb1d1-07ba-4bdf-9e9a-7b6c23b95401" />
       </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />

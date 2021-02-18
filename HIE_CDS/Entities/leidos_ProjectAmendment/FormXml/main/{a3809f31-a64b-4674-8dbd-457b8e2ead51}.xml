@@ -560,6 +560,7 @@
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="Leidos.ValidateDelegatedAuthority" libraryName="leidos_projectAmendment.js" handlerUniqueId="{86212caa-1db7-8225-e731-d7469486a92e}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c1c61644-56cc-4b0e-ba2e-77fd326cfffc" enabled="true" parameters="'pLH:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_amendmentscomplete">
@@ -575,7 +576,7 @@
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_validateproject">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="00c08d28-514d-485c-afff-e16f9ea9e8e6" enabled="true" parameters="'s0U:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="00c08d28-514d-485c-afff-e16f9ea9e8e6" enabled="true" parameters="'s0U:*:CreateUpdate::0:217890000:217890000:217890000:217890000','pLH:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_amendmenttype">
@@ -583,17 +584,22 @@
             <Handler functionName="Leidos.ProjectFilterView" libraryName="leidos_projectAmendment.js" handlerUniqueId="{10c026eb-6843-a503-423c-b2922b8b0861}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_amendmentdocumentlink">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="de98904c-34e4-46e2-9641-8fd3426c248b" enabled="true" parameters="'pLH:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{078d2a0a-70b1-37c3-8405-61094871e6c1}" />
-        <Library name="leidos_projectAmendment.js" libraryUniqueId="{94167ab6-7b43-1717-d341-29c6b0138ade}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="b4a678a3-ad96-4f77-b3a6-fefa4b79ceb5" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="ad739409-49c3-46ce-bbd3-669a16c0d2f4" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="883d85a7-fe34-4211-ae76-afd01025e13b" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{078d2a0a-70b1-37c3-8405-61094871e6c1}" />
+        <Library name="leidos_projectAmendment.js" libraryUniqueId="{94167ab6-7b43-1717-d341-29c6b0138ade}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="12dd0b38-858b-4fdc-be51-6f162b8defb3" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="dc390e15-23f3-4791-8368-da78c3964a19" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="b7d3b2f8-39df-4e8c-bd0b-3aff797e5a2f" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

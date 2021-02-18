@@ -20,15 +20,11 @@
       <Sequence DisplayName="Target">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Boolean" Default="False" Name="RollupRuleStep1_1" />
-          <Variable x:TypeArguments="x:Boolean" Default="False" Name="RollupRuleStep1_2" />
+          <Variable x:TypeArguments="x:Object" Name="RollupRuleStep1_2" />
           <Variable x:TypeArguments="x:Object" Name="RollupRuleStep1_3" />
-          <Variable x:TypeArguments="x:Object" Name="RollupRuleStep1_4" />
-          <Variable x:TypeArguments="x:Boolean" Default="False" Name="RollupRuleStep1_5" />
-          <Variable x:TypeArguments="x:Object" Name="RollupRuleStep1_6" />
-          <Variable x:TypeArguments="x:Object" Name="RollupRuleStep1_7" />
         </Sequence.Variables>
         <mcwc:SetAttributeValue DisplayName="leidos_projectcost.leidos_parentprogramme.leidos_ProjectCost_parentprogramme_leidos" Entity="[CreatedEntities(&quot;relatedlinked_leidos_ProjectCost_parentprogramme_leidos#leidos_parentprogramme#leidos_projectcost#Temp&quot;)]" EntityName="leidos_projectcost" />
-        <mxswa:GetEntityProperty Attribute="statuscode" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectcost" Value="[RollupRuleStep1_3]">
+        <mxswa:GetEntityProperty Attribute="statuscode" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectcost" Value="[RollupRuleStep1_2]">
           <mxswa:GetEntityProperty.TargetType>
             <InArgument x:TypeArguments="s:Type">
               <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
@@ -44,59 +40,24 @@
             <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
               <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:OptionSetValue" />
             </InArgument>
-            <OutArgument x:TypeArguments="x:Object" x:Key="Result">[RollupRuleStep1_4]</OutArgument>
+            <OutArgument x:TypeArguments="x:Object" x:Key="Result">[RollupRuleStep1_3]</OutArgument>
           </mxswa:ActivityReference.Arguments>
         </mxswa:ActivityReference>
         <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateCondition">
           <mxswa:ActivityReference.Arguments>
             <InArgument x:TypeArguments="mxsq:ConditionOperator" x:Key="ConditionOperator">NotEqual</InArgument>
-            <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { RollupRuleStep1_4 }]</InArgument>
-            <InArgument x:TypeArguments="x:Object" x:Key="Operand">[RollupRuleStep1_3]</InArgument>
-            <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[RollupRuleStep1_2]</OutArgument>
-          </mxswa:ActivityReference.Arguments>
-        </mxswa:ActivityReference>
-        <mxswa:GetEntityProperty Attribute="leidos_productcost" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectcost" Value="[RollupRuleStep1_6]">
-          <mxswa:GetEntityProperty.TargetType>
-            <InArgument x:TypeArguments="s:Type">
-              <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
-                <x:Null />
-              </mxswa:ReferenceLiteral>
-            </InArgument>
-          </mxswa:GetEntityProperty.TargetType>
-        </mxswa:GetEntityProperty>
-        <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
-          <mxswa:ActivityReference.Arguments>
-            <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
-            <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Boolean, "1" }]</InArgument>
-            <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
-              <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="x:Boolean" />
-            </InArgument>
-            <OutArgument x:TypeArguments="x:Object" x:Key="Result">[RollupRuleStep1_7]</OutArgument>
-          </mxswa:ActivityReference.Arguments>
-        </mxswa:ActivityReference>
-        <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateCondition">
-          <mxswa:ActivityReference.Arguments>
-            <InArgument x:TypeArguments="mxsq:ConditionOperator" x:Key="ConditionOperator">NotEqual</InArgument>
-            <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { RollupRuleStep1_7 }]</InArgument>
-            <InArgument x:TypeArguments="x:Object" x:Key="Operand">[RollupRuleStep1_6]</InArgument>
-            <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[RollupRuleStep1_5]</OutArgument>
-          </mxswa:ActivityReference.Arguments>
-        </mxswa:ActivityReference>
-        <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateLogicalCondition, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateLogicalCondition">
-          <mxswa:ActivityReference.Arguments>
-            <InArgument x:TypeArguments="mxsq:LogicalOperator" x:Key="LogicalOperator">And</InArgument>
-            <InArgument x:TypeArguments="x:Boolean" x:Key="LeftOperand">[RollupRuleStep1_2]</InArgument>
-            <InArgument x:TypeArguments="x:Boolean" x:Key="RightOperand">[RollupRuleStep1_5]</InArgument>
+            <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { RollupRuleStep1_3 }]</InArgument>
+            <InArgument x:TypeArguments="x:Object" x:Key="Operand">[RollupRuleStep1_2]</InArgument>
             <OutArgument x:TypeArguments="x:Boolean" x:Key="Result">[RollupRuleStep1_1]</OutArgument>
           </mxswa:ActivityReference.Arguments>
         </mxswa:ActivityReference>
       </Sequence>
       <Sequence DisplayName="Aggregate">
         <Sequence.Variables>
-          <Variable x:TypeArguments="x:Object" Name="RollupRuleStep1_8" />
-          <Variable x:TypeArguments="x:Object" Name="RollupRuleStep1_9" />
+          <Variable x:TypeArguments="x:Object" Name="RollupRuleStep1_4" />
+          <Variable x:TypeArguments="x:Object" Name="RollupRuleStep1_5" />
         </Sequence.Variables>
-        <mxswa:GetEntityProperty Attribute="leidos_itemcost" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectcost" Value="[RollupRuleStep1_9]">
+        <mxswa:GetEntityProperty Attribute="leidos_itemcost" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectcost" Value="[RollupRuleStep1_5]">
           <mxswa:GetEntityProperty.TargetType>
             <InArgument x:TypeArguments="s:Type">
               <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
@@ -108,13 +69,13 @@
         <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
           <mxswa:ActivityReference.Arguments>
             <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">Sum</InArgument>
-            <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { RollupRuleStep1_9 }]</InArgument>
+            <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { RollupRuleStep1_5 }]</InArgument>
             <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
               <mxswa:ReferenceLiteral x:TypeArguments="s:Type">
                 <x:Null />
               </mxswa:ReferenceLiteral>
             </InArgument>
-            <OutArgument x:TypeArguments="x:Object" x:Key="Result">[RollupRuleStep1_8]</OutArgument>
+            <OutArgument x:TypeArguments="x:Object" x:Key="Result">[RollupRuleStep1_4]</OutArgument>
           </mxswa:ActivityReference.Arguments>
         </mxswa:ActivityReference>
       </Sequence>

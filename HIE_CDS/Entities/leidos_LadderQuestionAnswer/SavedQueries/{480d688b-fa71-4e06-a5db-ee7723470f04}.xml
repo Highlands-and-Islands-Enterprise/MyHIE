@@ -10,7 +10,7 @@
     <layoutxml>
       <grid name="leidos_ladderquestionanswers" jump="leidos_name" select="1" icon="1" preview="0">
         <row name="leidos_ladderquestionanswer" id="leidos_ladderquestionanswerid">
-          <cell name="leidos_name" width="300" />
+          <cell name="leidos_answertext" width="300" />
         </row>
       </grid>
     </layoutxml>
@@ -19,11 +19,10 @@
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_ladderquestionanswer">
           <attribute name="leidos_ladderquestionanswerid" />
-          <attribute name="leidos_name" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_answertext" />
         </entity>
       </fetch>
     </fetchxml>

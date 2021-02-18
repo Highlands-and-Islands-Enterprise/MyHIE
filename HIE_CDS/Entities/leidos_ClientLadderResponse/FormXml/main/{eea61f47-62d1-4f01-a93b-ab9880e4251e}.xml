@@ -28,23 +28,6 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{246e2af3-4efc-41cd-976c-6ec868de324f}" locklevel="0" showlabel="true">
-                        <labels>
-                          <label description="Question" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_question" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_question" disabled="false" uniqueid="{759156da-7e28-d906-1072-05b45c67a23b}">
-                          <parameters>
-                            <AutoResolve>true</AutoResolve>
-                            <DisableMru>false</DisableMru>
-                            <DisableQuickFind>false</DisableQuickFind>
-                            <DisableViewPicker>false</DisableViewPicker>
-                            <DefaultViewId>{2B7E1455-EAC2-4CF3-BB4F-12F42072181F}</DefaultViewId>
-                            <AllowFilterOff>false</AllowFilterOff>
-                          </parameters>
-                        </control>
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{5ba6d1ba-91ee-0b3a-5ad3-bc9ebcad7378}" showlabel="false" colspan="1" auto="false">
                         <labels>
                           <label description="Question Text Quick View" languagecode="1033" />
@@ -59,11 +42,24 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{03d0bc84-1a9b-47ea-b522-58999ba0a43e}" locklevel="0">
+                      <cell id="{03d0bc84-1a9b-47ea-b522-58999ba0a43e}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="Question Answer" languagecode="1033" />
+                          <label description="Answer" languagecode="1033" />
                         </labels>
-                        <control id="leidos_questionanswer" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_questionanswer" disabled="false" />
+                        <control id="leidos_questionanswer" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_questionanswer" disabled="false" uniqueid="{9a74293d-7c7c-5252-62c3-5031d1c1ae68}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                            <DisableQuickFind>true</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{480D688B-FA71-4E06-A5DB-EE7723470F04}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                            <FilterRelationshipName>leidos_LadderQuestionAnswer_LadderQuestio</FilterRelationshipName>
+                            <DependentAttributeName>leidos_clientladderresponse.leidos_question</DependentAttributeName>
+                            <DependentAttributeType>leidos_ladderquestion</DependentAttributeType>
+                            <AvailableViewIds>{480D688B-FA71-4E06-A5DB-EE7723470F04}</AvailableViewIds>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
@@ -98,6 +94,23 @@
                           <label description="Owner" languagecode="1033" />
                         </labels>
                         <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{246e2af3-4efc-41cd-976c-6ec868de324f}" locklevel="0" showlabel="true">
+                        <labels>
+                          <label description="Question" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_question" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_question" disabled="false" uniqueid="{759156da-7e28-d906-1072-05b45c67a23b}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{2B7E1455-EAC2-4CF3-BB4F-12F42072181F}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>
@@ -195,7 +208,7 @@
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
     <LocalizedNames>
-      <LocalizedName description="Information" languagecode="1033" />
+      <LocalizedName description="HIE Information" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
       <Description description="A form for this entity." languagecode="1033" />

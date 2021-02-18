@@ -270,12 +270,6 @@
         </NavBarAreas>
       </Navigation>
       <controlDescriptions />
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{1c3914a4-1e86-e32d-7b29-542a78d244d1}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="08d1b4c4-e382-4936-9e53-77dc4786f819" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="62c0814e-c920-4561-8d77-be4cbf04f45a" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="63ebdf97-0703-4cc1-92f8-a5cbf3a43fe8" />
-      </formLibraries>
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
@@ -295,9 +289,24 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="698e256a-b1fa-4e1e-8985-91fd6aba21a8" enabled="true" parameters="'b23:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onsave" application="false" active="false" attribute="leidos_datedocumentsigned">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="497156ed-9577-4669-b926-27fa9a53ca75" enabled="true" parameters="'8uh:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onsave" application="false" active="false" attribute="leidos_datereturnedfromclient">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7b242215-4fcd-4283-96dd-267d077efa8d" enabled="true" parameters="'whl:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
         <event name="onchange" application="false" active="false" attribute="leidos_datereturnedfromclient">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="aeff2b16-c9b3-420c-9040-5889b46b996b" enabled="true" parameters="'whl:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="3f00f152-ff03-41be-b394-ae9363b2f1c8" enabled="true" parameters="'whl:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onsave" application="false" active="false" attribute="leidos_dateissuedtoclient">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="97a98483-a1e5-412f-a949-262785d6a5c4" enabled="true" parameters="'b23:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -305,6 +314,12 @@
         <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
         <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{1c3914a4-1e86-e32d-7b29-542a78d244d1}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="80b7259f-c528-4558-b52d-a0dd038447fc" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="ecb56f0e-cd84-4844-8668-1d589de814b8" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="60426ded-1960-48e6-87d4-442fbfdea6b9" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

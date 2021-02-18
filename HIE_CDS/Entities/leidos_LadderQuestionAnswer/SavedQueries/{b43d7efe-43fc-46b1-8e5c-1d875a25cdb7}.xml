@@ -19,14 +19,13 @@
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_ladderquestionanswer">
           <attribute name="leidos_ladderquestionanswerid" />
-          <attribute name="leidos_name" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="leidos_name" operator="like" value="{0}" />
           </filter>
-          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_name" />
         </entity>
       </fetch>
     </fetchxml>
