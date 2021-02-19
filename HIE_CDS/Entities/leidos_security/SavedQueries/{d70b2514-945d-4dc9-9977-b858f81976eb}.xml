@@ -11,7 +11,14 @@
       <grid name="leidos_securities" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="leidos_security" id="leidos_securityid">
           <cell name="leidos_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="leidos_securityreference" width="100" />
+          <cell name="leidos_datesenttolegal" width="100" />
+          <cell name="leidos_datesecuritysigned" width="100" />
+          <cell name="leidos_datesecurityregistered" width="100" />
+          <cell name="leidos_datesecuritydischarged" width="100" />
+          <cell name="leidos_securityinstructed" width="100" />
+          <cell name="leidos_securitytaken" width="100" />
+          <cell name="leidos_securitiesdischarged" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -21,17 +28,24 @@
         <entity name="leidos_security">
           <attribute name="leidos_securityid" />
           <attribute name="leidos_name" />
-          <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_securityreference" />
+          <attribute name="leidos_securityinstructed" />
+          <attribute name="leidos_datesenttolegal" />
+          <attribute name="leidos_datesecuritysigned" />
+          <attribute name="leidos_datesecurityregistered" />
+          <attribute name="leidos_datesecuritydischarged" />
+          <attribute name="leidos_securitytaken" />
+          <attribute name="leidos_securitiesdischarged" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.0</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="security Associated View" languagecode="1033" />
+      <LocalizedName description="Security Associated View" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>

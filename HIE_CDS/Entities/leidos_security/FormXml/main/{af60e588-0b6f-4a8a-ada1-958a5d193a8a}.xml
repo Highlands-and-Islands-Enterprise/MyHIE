@@ -14,7 +14,7 @@
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{9de9702a-a835-46a1-b853-68be70c78759}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{9de9702a-a835-46a1-b853-68be70c78759}" columns="11">
                   <labels>
                     <label description="General" languagecode="1033" />
                   </labels>
@@ -26,16 +26,34 @@
                         </labels>
                         <control id="leidos_securitytaken" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_securitytaken" disabled="false" />
                       </cell>
+                      <cell id="{f8ecf1dc-66a0-4977-bb71-43120563c03d}" locklevel="0">
+                        <labels>
+                          <label description="Date Sent to Legal" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_datesenttolegal" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datesenttolegal" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3dc53ba1-0981-491c-a514-d1efa812e240}" locklevel="0">
+                        <labels>
+                          <label description="Send to Legal for Review" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_sendtolegalforreview" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_sendtolegalforreview" disabled="false" uniqueid="{8459889e-fee0-4cbb-ae8c-55abf87934bb}" />
+                      </cell>
+                      <cell id="{c96bc151-edd3-469f-96ba-469dacaa8c43}" locklevel="0">
+                        <labels>
+                          <label description="Date Security Instructed" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_datesecurityinstructed" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datesecurityinstructed" disabled="false" />
+                      </cell>
                     </row>
                     <row>
                       <cell id="{62a80c29-67ab-4ecf-9fa7-6d1913ef847c}" locklevel="0">
                         <labels>
                           <label description="Security Instructed" languagecode="1033" />
                         </labels>
-                        <control id="leidos_securityinstructed" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_securityinstructed" disabled="false" />
+                        <control id="leidos_securityinstructed" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_securityinstructed" disabled="false" uniqueid="{fe8ea9f4-e997-4bbd-a2c3-29d17c5018be}" />
                       </cell>
-                    </row>
-                    <row>
                       <cell id="{7e0d1857-8945-4818-9a5d-af7c577620cf}" locklevel="0">
                         <labels>
                           <label description="Date Security Signed" languagecode="1033" />
@@ -44,6 +62,12 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{8e829c7f-81e1-4265-b244-fa0c9a5c11cc}" locklevel="0">
+                        <labels>
+                          <label description="Securities Discharged" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_securitiesdischarged" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_securitiesdischarged" disabled="false" uniqueid="{5efffa47-5dbf-46cc-be1e-ceae341cf97a}" />
+                      </cell>
                       <cell id="{1c799363-4506-435e-912d-91fbd7fcec0a}" locklevel="0">
                         <labels>
                           <label description="Date Security Registered" languagecode="1033" />
@@ -52,19 +76,17 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{8e829c7f-81e1-4265-b244-fa0c9a5c11cc}" locklevel="0">
-                        <labels>
-                          <label description="Securities Discharged" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_securitiesdischarged" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_securitiesdischarged" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{13da3493-4e1f-474a-afd6-75e51f2319a9}" visible="false">
                         <labels>
                           <label description="Name" languagecode="1033" />
                         </labels>
                         <control id="header_leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" />
+                      </cell>
+                      <cell id="{ecb8496e-4cfd-4fc7-8e35-21e84fc2e44d}" locklevel="0">
+                        <labels>
+                          <label description="Date Security Discharged" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_datesecuritydischarged" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_datesecuritydischarged" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -155,11 +177,79 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="ac2bb41a-16cd-4294-95a4-4941964df785" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="ff322d2f-df8c-4789-b9b4-f85c5eb9101b" />
       </formLibraries>
+      <controlDescriptions>
+        <controlDescription forControl="{fe8ea9f4-e997-4bbd-a2c3-29d17c5018be}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_securityinstructed</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_securityinstructed</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_securityinstructed</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_securityinstructed</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{5efffa47-5dbf-46cc-be1e-ceae341cf97a}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_securitiesdischarged</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_securitiesdischarged</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_securitiesdischarged</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_securitiesdischarged</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{8459889e-fee0-4cbb-ae8c-55abf87934bb}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_sendtolegalforreview</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_sendtolegalforreview</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_sendtolegalforreview</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_sendtolegalforreview</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
     <LocalizedNames>
-      <LocalizedName description="Information" languagecode="1033" />
+      <LocalizedName description="HIE Security Form" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
       <Description description="A form for this entity." languagecode="1033" />

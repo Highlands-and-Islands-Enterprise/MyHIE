@@ -10,9 +10,7 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_securityid">
-          <cell name="leidos_securitytaken" width="100" />
-          <cell name="leidos_securityinstructed" width="100" />
-          <cell name="leidos_securitiesdischarged" width="100" />
+          <cell name="leidos_name" width="300" />
         </row>
       </grid>
     </layoutxml>
@@ -21,18 +19,17 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_security">
           <attribute name="leidos_securityid" />
-          <attribute name="leidos_securitytaken" />
-          <attribute name="leidos_securityinstructed" />
-          <attribute name="leidos_securitiesdischarged" />
           <filter type="and">
             <condition attribute="statuscode" operator="eq" value="1" />
           </filter>
+          <attribute name="leidos_name" />
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
     <IntroducedVersion>1.9.0.1262</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="loan lookup" languagecode="1033" />
+      <LocalizedName description="Loan Lookup" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
