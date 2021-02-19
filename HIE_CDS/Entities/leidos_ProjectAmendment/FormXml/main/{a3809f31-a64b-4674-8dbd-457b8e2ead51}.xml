@@ -36,6 +36,14 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{72b48c9a-c2b0-e0e6-7492-92b04455c604}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Budget sub-type" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_budgetsubtype" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="leidos_budgetsubtype" disabled="false" uniqueid="{7956e2ed-d5e6-c0a2-4aba-08ee696cbc98}" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{b5a5ce2a-e410-43bd-adac-cf1c802e98be}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Project" languagecode="1033" />
@@ -46,6 +54,20 @@
                             <DisableViewPicker>true</DisableViewPicker>
                             <DefaultViewId>{7C6F5E62-76BF-EA11-A812-000D3A7F1BBB}</DefaultViewId>
                             <DisableMru>true</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{67372dc2-7052-1bab-a727-0ebd546b513b}" showlabel="false" colspan="1" auto="false">
+                        <labels>
+                          <label description="Budget Sub Type" languagecode="1033" />
+                        </labels>
+                        <control id="quickview_budgetsubtype" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="leidos_project" disabled="false">
+                          <parameters>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="leidos_project"&gt;10667106-9a69-4cea-9089-c7cdeaa63340&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                            <ControlMode>Edit</ControlMode>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
                           </parameters>
                         </control>
                       </cell>
@@ -386,7 +408,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -560,7 +582,7 @@
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="Leidos.ValidateDelegatedAuthority" libraryName="leidos_projectAmendment.js" handlerUniqueId="{86212caa-1db7-8225-e731-d7469486a92e}" enabled="true" parameters="" passExecutionContext="true" />
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c1c61644-56cc-4b0e-ba2e-77fd326cfffc" enabled="true" parameters="'pLH:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c1c61644-56cc-4b0e-ba2e-77fd326cfffc" enabled="true" parameters="'pLH:*:Update::0:217890000:217890000:217890000:217890000','owa:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_amendmentscomplete">
@@ -582,6 +604,7 @@
         <event name="onchange" application="false" active="false" attribute="leidos_amendmenttype">
           <Handlers>
             <Handler functionName="Leidos.ProjectFilterView" libraryName="leidos_projectAmendment.js" handlerUniqueId="{10c026eb-6843-a503-423c-b2922b8b0861}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="d46dac89-4315-48d8-9105-52117fa05e49" enabled="true" parameters="'owa:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_amendmentdocumentlink">
@@ -596,9 +619,9 @@
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{078d2a0a-70b1-37c3-8405-61094871e6c1}" />
         <Library name="leidos_projectAmendment.js" libraryUniqueId="{94167ab6-7b43-1717-d341-29c6b0138ade}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="12dd0b38-858b-4fdc-be51-6f162b8defb3" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="dc390e15-23f3-4791-8368-da78c3964a19" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="b7d3b2f8-39df-4e8c-bd0b-3aff797e5a2f" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="ae1b469e-b7f9-4290-985a-bf459e66ecba" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="8e3431e4-e171-46b1-b5c4-9eb1bb0c646e" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="83173b9b-29f5-4345-8cc8-9053e65dd9f2" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

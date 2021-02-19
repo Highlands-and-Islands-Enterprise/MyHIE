@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{40c60f14-9972-eb11-a812-00224840eabd}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_securityid">
+          <cell name="leidos_securityreference" width="100" />
+          <cell name="leidos_securitytaken" width="100" />
+          <cell name="leidos_sendtolegalforreview" width="100" />
+          <cell name="leidos_securityinstructed" width="100" />
+          <cell name="leidos_securitiesdischarged" width="100" />
+          <cell name="leidos_datesenttolegal" width="100" />
+          <cell name="leidos_datesecurityinstructed" width="100" />
+          <cell name="leidos_datesecuritysigned" width="100" />
+          <cell name="leidos_datesecurityregistered" width="100" />
+          <cell name="leidos_datesecuritydischarged" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_security">
+          <attribute name="leidos_securityid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_datesenttolegal" />
+          <attribute name="leidos_securityinstructed" />
+          <attribute name="leidos_datesecuritysigned" />
+          <attribute name="leidos_datesecurityregistered" />
+          <attribute name="leidos_datesecuritydischarged" />
+          <attribute name="leidos_securitiesdischarged" />
+          <attribute name="leidos_securityreference" />
+          <attribute name="leidos_securitytaken" />
+          <attribute name="leidos_datesecurityinstructed" />
+          <order attribute="leidos_securityreference" descending="false" />
+          <attribute name="leidos_sendtolegalforreview" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.14.0.1547</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Loan -Grid View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

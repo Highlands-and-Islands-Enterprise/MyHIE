@@ -10,7 +10,10 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_ladderquestionid">
+          <cell name="leidos_ladder" width="100" />
+          <cell name="leidos_category" width="100" />
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_displayorder" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -26,7 +29,12 @@
           <filter type="or" isquickfindfields="1">
             <condition attribute="leidos_name" operator="like" value="{0}" />
           </filter>
-          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_displayorder" />
+          <attribute name="leidos_ladder" />
+          <attribute name="leidos_category" />
+          <order attribute="leidos_ladder" descending="false" />
+          <order attribute="leidos_category" descending="false" />
+          <order attribute="leidos_displayorder" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

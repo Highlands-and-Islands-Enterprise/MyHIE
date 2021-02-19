@@ -10,7 +10,10 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_ladderquestionid">
+          <cell name="leidos_ladder" width="100" />
+          <cell name="leidos_category" width="100" />
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_displayorder" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -23,7 +26,12 @@
             <condition attribute="statecode" operator="eq" value="1" />
           </filter>
           <attribute name="leidos_ladderquestionid" />
-          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_displayorder" />
+          <attribute name="leidos_category" />
+          <attribute name="leidos_ladder" />
+          <order attribute="leidos_ladder" descending="false" />
+          <order attribute="leidos_category" descending="false" />
+          <order attribute="leidos_displayorder" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

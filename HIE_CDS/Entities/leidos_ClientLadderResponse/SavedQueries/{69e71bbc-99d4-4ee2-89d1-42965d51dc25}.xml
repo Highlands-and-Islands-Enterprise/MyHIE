@@ -11,6 +11,7 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_clientladderresponseid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_displayorder" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -20,10 +21,10 @@
         <entity name="leidos_clientladderresponse">
           <attribute name="leidos_clientladderresponseid" />
           <attribute name="leidos_name" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="leidos_displayorder" />
         </entity>
       </fetch>
     </fetchxml>
