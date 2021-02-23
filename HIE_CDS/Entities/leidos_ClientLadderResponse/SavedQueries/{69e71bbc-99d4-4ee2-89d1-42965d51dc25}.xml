@@ -11,7 +11,14 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_clientladderresponseid">
           <cell name="leidos_name" width="300" />
+          <cell name="a_400800847f3c40119cffc34dbd97f445.leidos_client" width="100" />
           <cell name="leidos_displayorder" width="100" />
+          <cell name="leidos_clientladder" width="100" />
+          <cell name="leidos_questionanswer" width="100" />
+          <cell name="leidos_question" width="100" />
+          <cell name="leidos_weightingscore" width="100" />
+          <cell name="a_400800847f3c40119cffc34dbd97f445.leidos_step" width="100" />
+          <cell name="createdon" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -25,7 +32,17 @@
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <attribute name="leidos_displayorder" />
-          <order attribute="leidos_displayorder" descending="false" />
+          <attribute name="leidos_clientladder" />
+          <attribute name="leidos_questionanswer" />
+          <attribute name="leidos_question" />
+          <attribute name="leidos_weightingscore" />
+          <link-entity alias="a_400800847f3c40119cffc34dbd97f445" name="leidos_clientladder" to="leidos_clientladder" from="leidos_clientladderid" link-type="outer" visible="false">
+            <attribute name="leidos_step" />
+            <attribute name="leidos_client" />
+          </link-entity>
+          <attribute name="createdon" />
+          <order attribute="createdon" descending="true" />
+          <order attribute="leidos_displayorder" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

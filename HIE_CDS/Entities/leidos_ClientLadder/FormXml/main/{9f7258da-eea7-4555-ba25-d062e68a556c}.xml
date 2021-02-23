@@ -7,14 +7,14 @@
     <FormActivationState>1</FormActivationState>
     <form headerdensity="HighWithControls">
       <tabs>
-        <tab verticallayout="true" id="{0cf4053e-01a9-4413-9b62-f0e3fe4560ce}" IsUserDefined="1">
+        <tab verticallayout="true" id="{0cf4053e-01a9-4413-9b62-f0e3fe4560ce}" IsUserDefined="1" name="General">
           <labels>
             <label description="General" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
               <sections>
-                <section showlabel="false" showbar="false" IsUserDefined="0" id="{2c0d3339-4ac8-43f3-998c-7c14c1c52508}">
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{2c0d3339-4ac8-43f3-998c-7c14c1c52508}" name="general" columns="11">
                   <labels>
                     <label description="General" languagecode="1033" />
                   </labels>
@@ -26,6 +26,12 @@
                         </labels>
                         <control id="leidos_client" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_client" disabled="false" />
                       </cell>
+                      <cell id="{3a04f39e-ead4-42ff-9654-ac84e4528fef}" locklevel="0">
+                        <labels>
+                          <label description="Step" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_step" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_step" disabled="true" uniqueid="{0da49a92-77c0-431c-2b1a-553676436697}" />
+                      </cell>
                     </row>
                     <row>
                       <cell id="{9d8f5713-e2d3-47f1-ae8d-2d6f01219782}" locklevel="0">
@@ -34,16 +40,6 @@
                         </labels>
                         <control id="leidos_ladder" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_ladder" disabled="false" />
                       </cell>
-                    </row>
-                    <row>
-                      <cell id="{3a04f39e-ead4-42ff-9654-ac84e4528fef}" locklevel="0">
-                        <labels>
-                          <label description="Step" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_step" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_step" disabled="false" uniqueid="{0da49a92-77c0-431c-2b1a-553676436697}" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{899b5971-a10c-5d58-1192-c21702c523ed}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Ladder Score Rollup" languagecode="1033" />
@@ -52,20 +48,51 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{1b4bec9e-ed37-b052-6ca4-1d53778c0b11}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                      <cell locklevel="0" id="{64e55808-1918-49e7-b94c-515538b37a71}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell showlabel="false" locklevel="0" id="{0e46199f-80a0-40a0-b473-582a5194b187}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{4b910890-0280-46f4-bf77-c1669c298006}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell showlabel="false" locklevel="0" id="{b2d5ad84-f7fd-4321-b6fe-02d36742edee}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="ClientResponses" id="c268cfb8-bc8c-4abb-96e9-a4ef8670ed24" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Client Responses" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1b4bec9e-ed37-b052-6ca4-1d53778c0b11}" showlabel="true" colspan="1" auto="true" rowspan="1">
                         <labels>
                           <label description="Client Ladder Responses (Client Ladder)" languagecode="1033" />
                         </labels>
                         <control id="ClientLadderResponses" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{88a1aab2-c567-e446-ddb4-24b86b729de4}">
                           <parameters>
-                            <ViewId>{69E71BBC-99D4-4EE2-89D1-42965D51DC25}</ViewId>
+                            <ViewId>{2544D85E-C575-EB11-A812-002248414CC3}</ViewId>
                             <IsUserView>false</IsUserView>
                             <RelationshipName>leidos_ClientLadderResponse_ClientLadder_</RelationshipName>
                             <TargetEntityType>leidos_clientladderresponse</TargetEntityType>
-                            <AutoExpand>Fixed</AutoExpand>
+                            <AutoExpand>Auto</AutoExpand>
                             <EnableQuickFind>false</EnableQuickFind>
                             <EnableViewPicker>false</EnableViewPicker>
-                            <ViewIds>{69E71BBC-99D4-4EE2-89D1-42965D51DC25}</ViewIds>
+                            <ViewIds>{69E71BBC-99D4-4EE2-89D1-42965D51DC25},{2544D85E-C575-EB11-A812-002248414CC3}</ViewIds>
                             <EnableJumpBar>false</EnableJumpBar>
                             <ChartGridMode>All</ChartGridMode>
                             <VisualizationId />
@@ -77,12 +104,6 @@
                         </control>
                       </cell>
                     </row>
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                    <row />
-                    <row />
                   </rows>
                 </section>
               </sections>
@@ -107,14 +128,6 @@
                           <label description="Name" languagecode="1033" />
                         </labels>
                         <control id="leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" uniqueid="{b5d96509-1d66-3628-19db-06848283e0d5}" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{5039e065-bd5b-4cd1-b69e-5af0e6057f45}">
-                        <labels>
-                          <label description="Owner" languagecode="1033" />
-                        </labels>
-                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
                       </cell>
                     </row>
                     <row>
@@ -150,6 +163,24 @@
                 <label description="" languagecode="1033" />
               </labels>
             </cell>
+            <cell id="{5039e065-bd5b-4cd1-b69e-5af0e6057f45}">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+            <cell id="{a2cf5152-d07f-4968-a0bf-a60f61a7dce0}" locklevel="0">
+              <labels>
+                <label description="Client Ladder Reference" languagecode="1033" />
+              </labels>
+              <control id="header_leidos_clientladderreference" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_clientladderreference" disabled="false" />
+            </cell>
+            <cell id="{e4a408cd-cf89-412f-9637-f1c89c959cf0}" locklevel="0">
+              <labels>
+                <label description="Status Reason" languagecode="1033" />
+              </labels>
+              <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+            </cell>
           </row>
         </rows>
       </header>
@@ -175,7 +206,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>

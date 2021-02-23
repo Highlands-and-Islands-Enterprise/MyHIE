@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{2544d85e-c575-eb11-a812-002248414cc3}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_clientladderresponseid">
+          <cell name="a_cf62e1a7eb624abc984dac0c85596c16.leidos_category" width="100" />
+          <cell name="leidos_name" width="300" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_clientladderresponse">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_clientladderresponseid" />
+          <attribute name="leidos_displayorder" />
+          <order attribute="leidos_displayorder" descending="false" />
+          <link-entity alias="a_cf62e1a7eb624abc984dac0c85596c16" name="leidos_ladderquestion" to="leidos_question" from="leidos_ladderquestionid" link-type="outer" visible="false">
+            <attribute name="leidos_category" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.14.0.1570</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Client Ladder - Grid View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
