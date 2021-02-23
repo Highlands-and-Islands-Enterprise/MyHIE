@@ -531,7 +531,7 @@
             </column>
           </columns>
         </tab>
-        <tab name="EmploymentData" id="7d880f88-2deb-46e9-ab67-eebac0d3f850" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" visible="true">
+        <tab name="EmploymentData" id="7d880f88-2deb-46e9-ab67-eebac0d3f850" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" visible="false">
           <labels>
             <label description="Employment Data" languagecode="1033" />
           </labels>
@@ -815,6 +815,40 @@
             </column>
           </columns>
         </tab>
+        <tab name="Connections" id="907fb694-c20e-4fbf-bcc7-627d3ffd786c" IsUserDefined="0" locklevel="0" showlabel="true" visible="false">
+          <labels>
+            <label description="Connections" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_4_section_1" id="6d4f6341-05e5-4242-ba6f-71fa26767345" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{4d632b43-ca67-43dc-95be-5a5b7c1d4458}" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Connected From" languagecode="1033" />
+                        </labels>
+                        <control id="Subgrid_ConnectedFrom" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>connection</TargetEntityType>
+                            <ViewId>{7C0E0725-CCD9-4525-9313-665FD075652F}</ViewId>
+                            <ViewIds>{7C0E0725-CCD9-4525-9313-665FD075652F}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_projectmeasure_connections1</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
       </tabs>
       <header id="{8d4e8f0e-8c7f-43fd-9208-9e208fdeaabe}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
@@ -888,7 +922,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -926,7 +960,7 @@
         </event>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8bd9181e-9eea-4820-9147-b3c9cc5cddb0" enabled="true" parameters="'i9b:*:CreateUpdate::0:217890000:217890000:217890000:217890000','txX:*:CreateUpdate::0:217890000:217890000:217890000:217890000','Gye:*:CreateUpdate::0:217890000:217890000:217890000:217890000','6hB:*:CreateUpdate::0:217890000:217890000:217890000:217890000','LLs:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8bd9181e-9eea-4820-9147-b3c9cc5cddb0" enabled="true" parameters="'i9b:*:CreateUpdate::0:217890000:217890000:217890000:217890000','txX:*:CreateUpdate::0:217890000:217890000:217890000:217890000','Gye:*:CreateUpdate::0:217890000:217890000:217890000:217890000','6hB:*:CreateUpdate::0:217890000:217890000:217890000:217890000','LLs:*:CreateUpdate::0:217890000:217890000:217890000:217890000','sqb:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_activity">
@@ -954,9 +988,9 @@
         <Everyone />
       </DisplayConditions>
       <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="f2fdc917-c772-47e7-bc46-f7a712e99216" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="2cdb0bcc-c89a-4472-8a9c-dc472912ff26" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="c0d01e63-34fb-48cd-acf2-e78fbaa1cf17" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="b6c1cac3-0847-4971-80ca-1e4c4f991f43" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="09ab4cf8-3c5a-4858-88ac-a7ced30c27ce" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="f43b636d-3343-4907-a7d2-ed351baae431" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

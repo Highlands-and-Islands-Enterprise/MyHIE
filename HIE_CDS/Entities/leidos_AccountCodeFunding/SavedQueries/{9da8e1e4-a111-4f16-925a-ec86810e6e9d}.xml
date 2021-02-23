@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{9da8e1e4-a111-4f16-925a-ec86810e6e9d}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_accountcodefundingid">
+          <cell name="leidos_transactiontype" width="100" />
+          <cell name="leidos_fundingsource" width="100" />
+          <cell name="leidos_codaref" width="100" />
+          <cell name="createdon" width="125" />
+          <cell name="statecode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_accountcodefunding">
+          <attribute name="leidos_accountcodefundingid" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_codaref" />
+          <attribute name="leidos_fundingsource" />
+          <attribute name="leidos_transactiontype" />
+          <attribute name="statecode" />
+          <order attribute="leidos_transactiontype" descending="false" />
+          <order attribute="leidos_fundingsource" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Account Code Fundings" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
