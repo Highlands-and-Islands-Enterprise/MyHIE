@@ -14,7 +14,6 @@
           <cell name="leidos_loan" width="100" />
           <cell name="leidos_securityreference" width="100" />
           <cell name="leidos_securitytaken" width="100" />
-          <cell name="leidos_datesenttolegal" width="100" />
           <cell name="leidos_datesecurityinstructed" width="100" />
           <cell name="leidos_securityinstructed" width="100" />
           <cell name="leidos_datesecuritysigned" width="100" />
@@ -29,14 +28,12 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_security">
-          <attribute name="leidos_securityid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="leidos_datesenttolegal" />
           <attribute name="leidos_securityinstructed" />
           <attribute name="leidos_datesecuritysigned" />
           <attribute name="leidos_datesecurityregistered" />
@@ -46,6 +43,7 @@
           <attribute name="leidos_securitytaken" />
           <attribute name="leidos_loan" />
           <attribute name="leidos_datesecurityinstructed" />
+          <attribute name="leidos_securityid" />
         </entity>
       </fetch>
     </fetchxml>
