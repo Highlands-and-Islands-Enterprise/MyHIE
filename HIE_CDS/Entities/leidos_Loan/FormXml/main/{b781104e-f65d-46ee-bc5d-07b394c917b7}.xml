@@ -676,11 +676,11 @@
                 <label description="" languagecode="1033" />
               </labels>
             </cell>
-            <cell id="{56181fd8-d7e2-4916-a1a2-67f313eb4905}" locklevel="0">
+            <cell id="{18d54e09-c27a-4c3c-b8b1-e165feb60883}" locklevel="0">
               <labels>
-                <label description="Parent Funding" languagecode="1033" />
+                <label description="project" languagecode="1033" />
               </labels>
-              <control id="header_leidos_parentfunding" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentfunding" disabled="true" />
+              <control id="header_leidos_project" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_project" disabled="false" />
             </cell>
             <cell id="{d372eefe-5df6-4407-9f00-feb539f2e7bf}" locklevel="0">
               <labels>
@@ -688,17 +688,23 @@
               </labels>
               <control id="header_leidos_loanreference" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_loanreference" disabled="true" />
             </cell>
-            <cell id="{425c2843-f246-4160-a2ce-b0055dc0ecd5}">
-              <labels>
-                <label description="Owner" languagecode="1033" />
-              </labels>
-              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="true" />
-            </cell>
             <cell id="{e8cf62be-7e52-4f0c-b363-dbd9d9888c1e}" locklevel="0">
               <labels>
                 <label description="Status Reason" languagecode="1033" />
               </labels>
               <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+            </cell>
+            <cell id="{56181fd8-d7e2-4916-a1a2-67f313eb4905}" locklevel="0">
+              <labels>
+                <label description="Parent Funding" languagecode="1033" />
+              </labels>
+              <control id="header_leidos_parentfunding" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentfunding" disabled="true" />
+            </cell>
+            <cell id="{425c2843-f246-4160-a2ce-b0055dc0ecd5}">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="true" />
             </cell>
           </row>
         </rows>
@@ -725,7 +731,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -831,7 +837,7 @@
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7c62d2d8-8798-447a-84bd-a26cbe76097d" enabled="true" parameters="'NVo:*:Update::0:217890000:217890000:217890000:217890000','rrb:*:CreateUpdate::0:217890000:217890000:217890000:217890000','NX7:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7c62d2d8-8798-447a-84bd-a26cbe76097d" enabled="true" parameters="'NVo:*:Update::0:217890000:217890000:217890000:217890000','rrb:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{61da9802-6990-20bd-9cc8-d1d919155269}" enabled="true" parameters="&quot;leidos_stateaidcategory&quot; , &quot;leidos_stateaidsubcategory&quot; , &quot;47b60d3b-097f-437c-afed-43bf190b9a80&quot; , &quot;&lt;filter type='and'&gt;&lt;condition attribute='leidos_stateaidcategory' operator='eq'  value='{{id}}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
           </Handlers>
         </event>
@@ -851,15 +857,15 @@
           </Handlers>
         </event>
       </events>
-      <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="1f501c4c-c103-492b-9c13-1947b867f2e1" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="e69a70e4-097b-41c5-86c9-3bc0b0478caa" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="9bab5d3c-a64e-411b-bf98-a5fdf1e8e463" />
-        <Library name="leidos_common" libraryUniqueId="{730987a3-20db-db2c-e340-888b878ce17b}" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{730987a3-20db-db2c-e340-888b878ce17b}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="bf23497d-f646-48cc-91f5-8666365e1821" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a934dbe7-a490-4780-a94d-e44ef437b587" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="ec1faa3f-bd78-453f-90b5-090db544225c" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

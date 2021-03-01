@@ -1974,13 +1974,6 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{b5111e31-ad58-5b10-4216-347261e80896}" />
-        <Library name="leidos_project.js" libraryUniqueId="{489b0ce2-29e5-80e1-5e95-c2152000628a}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="f6a30768-cdea-47a7-8ec0-26570ba1cb7f" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="b0238775-0f73-4d54-b1ba-92f4726a7ed1" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="11662fdf-7f70-4aa4-b5ec-97daf3b699c0" />
-      </formLibraries>
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
@@ -2052,10 +2045,22 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="90daa8f7-18ae-4c6c-9d59-0f5aaa6cdee2" enabled="true" parameters="'Eb6:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_investment">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7ca31042-41de-4273-85bb-1ef8ebc8572a" enabled="true" parameters="'Vtb:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{b5111e31-ad58-5b10-4216-347261e80896}" />
+        <Library name="leidos_project.js" libraryUniqueId="{489b0ce2-29e5-80e1-5e95-c2152000628a}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="3f7a2fae-dfdf-4b8f-a787-bd9b03bea80d" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="32314417-4b3f-4935-8972-c92b90d0c450" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="d711e343-adaa-475c-a327-87d4932633a7" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
