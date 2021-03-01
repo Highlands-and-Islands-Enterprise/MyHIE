@@ -11,15 +11,12 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_clientplansummaryid">
           <cell name="leidos_name" width="300" />
-          <cell name="leidos_parentclientplan" width="100" />
-          <cell name="leidos_category" width="100" />
           <cell name="leidos_categoryaverage" width="100" />
-          <cell name="leidos_priority" width="100" />
           <cell name="leidos_missingscores" width="100" />
+          <cell name="leidos_priority" width="100" />
           <cell name="leidos_majorissuesandopportunities" width="100" />
           <cell name="leidos_specialistvisitrequired" width="100" />
           <cell name="leidos_comments" width="100" />
-          <cell name="createdon" width="125" />
         </row>
       </grid>
     </layoutxml>
@@ -28,17 +25,14 @@
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_clientplansummary">
           <attribute name="leidos_name" />
-          <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <attribute name="leidos_category" />
           <attribute name="leidos_missingscores" />
           <attribute name="leidos_majorissuesandopportunities" />
           <attribute name="leidos_priority" />
           <attribute name="leidos_specialistvisitrequired" />
-          <attribute name="leidos_parentclientplan" />
           <attribute name="leidos_comments" />
           <attribute name="leidos_categoryaverage" />
           <attribute name="leidos_clientplansummaryid" />

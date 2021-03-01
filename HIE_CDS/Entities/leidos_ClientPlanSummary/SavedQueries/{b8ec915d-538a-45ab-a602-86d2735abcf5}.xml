@@ -11,7 +11,12 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_clientplansummaryid">
           <cell name="leidos_name" width="300" />
-          <cell name="createdon" width="125" />
+          <cell name="leidos_categoryaverage" width="100" />
+          <cell name="leidos_missingscores" width="100" />
+          <cell name="leidos_priority" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_majorissuesandopportunities" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_specialistvisitrequired" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_comments" width="100" disableSorting="1" />
         </row>
       </grid>
     </layoutxml>
@@ -19,9 +24,7 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_clientplansummary">
-          <attribute name="leidos_clientplansummaryid" />
           <attribute name="leidos_name" />
-          <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
@@ -29,6 +32,13 @@
           <filter type="or" isquickfindfields="1">
             <condition attribute="leidos_name" operator="like" value="{0}" />
           </filter>
+          <attribute name="leidos_specialistvisitrequired" />
+          <attribute name="leidos_categoryaverage" />
+          <attribute name="leidos_missingscores" />
+          <attribute name="leidos_majorissuesandopportunities" />
+          <attribute name="leidos_priority" />
+          <attribute name="leidos_comments" />
+          <attribute name="leidos_clientplansummaryid" />
         </entity>
       </fetch>
     </fetchxml>
