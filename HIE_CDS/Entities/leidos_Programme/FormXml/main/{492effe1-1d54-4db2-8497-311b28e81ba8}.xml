@@ -26,25 +26,25 @@
                         </labels>
                         <control id="leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" />
                       </cell>
-                      <cell id="{df9b6929-5e7f-4ae6-b126-c5c4accedbf8}" showlabel="true" locklevel="0">
+                      <cell id="{fedf1458-7950-4d99-80f4-52e2e526a3e2}" locklevel="0">
                         <labels>
-                          <label description="Anticipated Gross Funding" languagecode="1033" />
+                          <label description="Approval Amount (HIE Gross Funding)" languagecode="1033" />
                         </labels>
-                        <control id="leidos_approvalamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_approvalamount" disabled="false" uniqueid="{d8588a7d-9a2b-bcab-495e-91c4a50567c7}" />
+                        <control id="leidos_hiegrossfunding" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_hiegrossfunding" disabled="true" />
                       </cell>
                     </row>
                     <row>
                       <cell id="{5d32e2cd-189e-4695-90c5-c730fad0772f}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Start Date" languagecode="1033" />
+                          <label description="Estimated date of decision" languagecode="1033" />
                         </labels>
-                        <control id="leidos_startdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_startdate" disabled="false" />
+                        <control id="leidos_startdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_startdate" disabled="false" uniqueid="{58ad9a55-8a0a-0cda-9eb5-cac00749552a}" />
                       </cell>
-                      <cell id="{62ed3dd4-4dc5-4d4e-926a-8703cc1eca2f}" locklevel="0">
+                      <cell id="{0aed855f-722b-4d44-b1e5-fe362610f14a}" locklevel="0">
                         <labels>
-                          <label description="Anticipated Recovery Amount" languagecode="1033" />
+                          <label description="HIE Nett Amount (Total Net GIA)" languagecode="1033" />
                         </labels>
-                        <control id="leidos_anticipatedrecoveryamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_anticipatedrecoveryamount" disabled="false" />
+                        <control id="leidos_totalnetgia" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalnetgia" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -54,11 +54,10 @@
                         </labels>
                         <control id="leidos_enddate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="leidos_enddate" disabled="false" />
                       </cell>
-                      <cell id="{81cf64ab-0892-40d1-94eb-13115585434b}" locklevel="0">
+                      <cell locklevel="0" id="{a6e46d01-24ca-4b9d-9249-84dfaec281c2}">
                         <labels>
-                          <label description="Anticipated Net Funding" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="leidos_anticipatednetfunding" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_anticipatednetfunding" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -68,7 +67,7 @@
                         </labels>
                         <control id="leidos_hieteam" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_hieteam" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{62744481-96c9-4d79-81b7-204631597006}" showlabel="false">
+                      <cell locklevel="0" id="{061a2f28-8d79-40f2-95e8-fad65f60f02c}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -85,7 +84,7 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell locklevel="0" id="{5d71542e-ea3b-4ccc-b967-2860f113fc4f}" showlabel="false">
+                      <cell locklevel="0" id="{e4ff836f-b7c3-4561-8a6d-e05670cb7762}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -654,7 +653,7 @@
           <columns>
             <column width="100%">
               <sections>
-                <section name="tab_10_section_1" id="2d5c7af1-4a15-41cd-96c3-910bd9a7c9b8" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="tab_10_section_1" id="2d5c7af1-4a15-41cd-96c3-910bd9a7c9b8" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
                   <labels>
                     <label description="New Section" languagecode="1033" />
                   </labels>
@@ -665,6 +664,38 @@
                           <label description="Parent Pipeline Programme" languagecode="1033" />
                         </labels>
                         <control id="header_leidos_parentpipelineprogramme" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentpipelineprogramme" disabled="true" />
+                      </cell>
+                      <cell id="{df9b6929-5e7f-4ae6-b126-c5c4accedbf8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Anticipated Gross Funding" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_approvalamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_approvalamount" disabled="false" uniqueid="{d8588a7d-9a2b-bcab-495e-91c4a50567c7}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{7d54a452-d53e-48cf-abdb-90ccda01deb4}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{81cf64ab-0892-40d1-94eb-13115585434b}" locklevel="0">
+                        <labels>
+                          <label description="Anticipated Net Funding" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_anticipatednetfunding" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_anticipatednetfunding" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{db41b649-a2e6-49e7-8d56-ad0deca0323d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{62ed3dd4-4dc5-4d4e-926a-8703cc1eca2f}" locklevel="0">
+                        <labels>
+                          <label description="Anticipated Recovery Amount" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_anticipatedrecoveryamount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_anticipatedrecoveryamount" disabled="false" />
                       </cell>
                     </row>
                   </rows>
