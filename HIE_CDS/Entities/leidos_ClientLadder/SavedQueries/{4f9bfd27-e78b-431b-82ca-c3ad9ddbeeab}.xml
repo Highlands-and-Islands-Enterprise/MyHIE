@@ -10,13 +10,13 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_clientladderid">
-          <cell name="leidos_name" width="300" />
           <cell name="leidos_client" width="100" />
+          <cell name="leidos_name" width="300" />
           <cell name="leidos_clientladderreference" width="100" />
           <cell name="leidos_ladder" width="100" />
-          <cell name="leidos_ladderscorerollup" width="100" />
           <cell name="leidos_step" width="100" />
-          <cell name="createdon" width="100" />
+          <cell name="a_23ccb341dd4945e3b264aa6d3dc94544.leidos_ladderstepdescription" width="100" />
+          <cell name="leidos_dateladdersteprecorded" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -31,11 +31,13 @@
           <attribute name="leidos_client" />
           <attribute name="leidos_clientladderreference" />
           <attribute name="leidos_ladder" />
-          <attribute name="leidos_ladderscorerollup" />
           <attribute name="leidos_step" />
-          <attribute name="createdon" />
-          <order attribute="createdon" descending="true" />
           <attribute name="leidos_clientladderid" />
+          <link-entity alias="a_23ccb341dd4945e3b264aa6d3dc94544" name="leidos_ladderstep" to="leidos_step" from="leidos_ladderstepid" link-type="outer" visible="false">
+            <attribute name="leidos_ladderstepdescription" />
+          </link-entity>
+          <attribute name="leidos_dateladdersteprecorded" />
+          <order attribute="leidos_clientladderreference" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

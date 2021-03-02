@@ -11,6 +11,7 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_ladderstepid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_ladder" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -25,8 +26,10 @@
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="leidos_name" operator="like" value="{0}" />
+            <condition attribute="leidos_ladder" operator="like" value="{0}" />
           </filter>
           <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_ladder" />
         </entity>
       </fetch>
     </fetchxml>

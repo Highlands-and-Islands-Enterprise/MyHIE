@@ -10,7 +10,13 @@
     <layoutxml>
       <grid name="leidos_clientladders" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="leidos_clientladder" id="leidos_clientladderid">
+          <cell name="leidos_client" width="100" />
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_clientladderreference" width="100" />
+          <cell name="leidos_ladder" width="100" />
+          <cell name="leidos_step" width="100" />
+          <cell name="a_3dda7023758c4f5bb09cf8606cc0e481.leidos_ladderstepdescription" width="100" />
+          <cell name="leidos_dateladdersteprecorded" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -23,7 +29,15 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_client" />
+          <attribute name="leidos_clientladderreference" />
+          <attribute name="leidos_ladder" />
+          <attribute name="leidos_step" />
+          <link-entity alias="a_3dda7023758c4f5bb09cf8606cc0e481" name="leidos_ladderstep" to="leidos_step" from="leidos_ladderstepid" link-type="outer" visible="false">
+            <attribute name="leidos_ladderstepdescription" />
+          </link-entity>
+          <attribute name="leidos_dateladdersteprecorded" />
+          <order attribute="leidos_clientladderreference" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

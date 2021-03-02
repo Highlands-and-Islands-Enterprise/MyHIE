@@ -11,6 +11,7 @@
       <grid name="leidos_clientladderresponses" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="leidos_clientladderresponse" id="leidos_clientladderresponseid">
           <cell name="leidos_name" width="300" />
+          <cell name="a_8a61b42e61684bd28ff8b5863d99aac8.leidos_category" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -23,7 +24,11 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <order attribute="leidos_name" descending="false" />
+          <link-entity alias="a_8a61b42e61684bd28ff8b5863d99aac8" name="leidos_ladderquestion" to="leidos_question" from="leidos_ladderquestionid" link-type="outer" visible="false">
+            <attribute name="leidos_category" />
+          </link-entity>
+          <attribute name="leidos_displayorder" />
+          <order attribute="leidos_displayorder" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
