@@ -169,7 +169,7 @@
                     <row>
                       <cell id="{518f2dda-8630-4b60-92fe-071b3182ebc2}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Total Direct Costs" languagecode="1033" />
+                          <label description="Total Programme Costs" languagecode="1033" />
                         </labels>
                         <control id="leidos_totalcostscalculated" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalcostscalculated" disabled="true" uniqueid="{59be9029-0375-4a91-0b82-02c0a0d5d95b}" />
                       </cell>
@@ -188,7 +188,7 @@
                 </section>
                 <section name="totalprogrammeandprojectcosts" showlabel="true" showbar="false" locklevel="0" id="{ce6a1b7a-3ebe-b085-b4b3-d0e074b47a6c}" IsUserDefined="0" layout="varwidth" columns="111" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
-                    <label description="Programme and Project Cost Totals" languagecode="1033" />
+                    <label description="Related Project Cost Totals" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -1398,19 +1398,12 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{b732eaa7-0904-2035-74b0-1e754492539a}" />
-        <Library name="leidos_Programme" libraryUniqueId="{82da978c-50b6-656a-53d4-e2cca6e8e84a}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="34cc34c2-e28f-4b1c-826c-9f238f40c865" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="c1a77d09-b2ab-4525-8ad1-6340b04fda09" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="230627ee-0e1c-4fab-adcc-e6dcb4907596" />
-      </formLibraries>
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="Leidos.SetfinancedelegatedauthorityView" libraryName="leidos_Programme" handlerUniqueId="{54e156b2-2590-6556-dda7-e399712d89a1}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.DelegatedAuthFilterview" libraryName="leidos_Programme" handlerUniqueId="{90356135-4741-4d80-b0cd-0de0c0507b84}" enabled="true" parameters="" passExecutionContext="true" />
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="a53a0408-5803-4215-9faa-9b4e34408c30" enabled="true" parameters="'Pyy:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="89b73ea3-8914-42ba-b897-70c13f61dcef" enabled="true" parameters="'Pyy:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_approvalamount">
@@ -1426,6 +1419,13 @@
         </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true" />
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{b732eaa7-0904-2035-74b0-1e754492539a}" />
+        <Library name="leidos_Programme" libraryUniqueId="{82da978c-50b6-656a-53d4-e2cca6e8e84a}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="a9eb46c3-5dff-4ece-aa28-b52536c36bfa" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="4240cf73-4baa-4016-b85e-2f27e8c59df4" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="996a935a-4d35-43ee-97ea-0806d96d9096" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

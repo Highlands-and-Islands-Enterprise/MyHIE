@@ -6,14 +6,13 @@
     <isquickfindquery>0</isquickfindquery>
     <isprivate>0</isprivate>
     <isdefault>0</isdefault>
-    <savedqueryid>{fbae2bca-0ade-ea11-a813-000d3a7fedbe}</savedqueryid>
+    <savedqueryid>{f2e9d7d6-427c-eb11-a812-00224840506e}</savedqueryid>
     <layoutxml>
       <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
         <row name="result" id="activityid">
           <cell name="leidos_contact" width="100" />
           <cell name="subject" width="300" />
           <cell name="regardingobjectid" width="100" />
-          <cell name="ownerid" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -24,20 +23,27 @@
         <entity name="leidos_portalmessage">
           <attribute name="subject" />
           <attribute name="createdon" />
-          <filter type="and">
-            <condition attribute="leidos_origin" operator="eq" value="445260001" />
-          </filter>
           <attribute name="leidos_contact" />
           <attribute name="regardingobjectid" />
-          <attribute name="ownerid" />
           <order attribute="createdon" descending="true" />
           <attribute name="activityid" />
+          <filter type="and">
+            <condition attribute="leidos_origin" operator="eq" value="445260000" />
+          </filter>
+          <link-entity name="account" alias="aa" link-type="inner" from="accountid" to="regardingobjectid">
+            <filter type="and">
+              <condition attribute="ownerid" operator="eq-userid" />
+            </filter>
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>
-    <IntroducedVersion>1.7.0.862</IntroducedVersion>
+    <IntroducedVersion>1.14.0.1651</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="Received Messages" languagecode="1033" />
+      <LocalizedName description="Sent from Client Portal from My Accounts" languagecode="1033" />
     </LocalizedNames>
+    <Descriptions>
+      <Description description="Dashboard View" languagecode="1033" />
+    </Descriptions>
   </savedquery>
 </savedqueries>

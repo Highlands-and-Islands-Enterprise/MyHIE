@@ -10,7 +10,11 @@
     <layoutxml>
       <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
         <row name="result" id="activityid">
+          <cell name="leidos_contact" width="100" />
           <cell name="subject" width="300" />
+          <cell name="leidos_origin" width="100" />
+          <cell name="regardingobjectid" width="100" />
+          <cell name="ownerid" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -26,6 +30,10 @@
             <condition attribute="statecode" operator="not-null" />
           </filter>
           <order attribute="createdon" descending="true" />
+          <attribute name="leidos_origin" />
+          <attribute name="leidos_contact" />
+          <attribute name="regardingobjectid" />
+          <attribute name="ownerid" />
         </entity>
       </fetch>
     </fetchxml>

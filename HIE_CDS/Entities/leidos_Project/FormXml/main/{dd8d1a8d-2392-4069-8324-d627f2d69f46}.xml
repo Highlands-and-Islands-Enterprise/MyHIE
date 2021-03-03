@@ -68,7 +68,7 @@
                       </cell>
                       <cell id="{8f62e71b-decd-4b17-8b34-d74d4695b30a}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="Project Completion Date" languagecode="1033" />
+                          <label description="Final Claim by Date" languagecode="1033" />
                         </labels>
                         <control id="leidos_projectenddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_projectenddate" disabled="false" uniqueid="{5b0d2554-501b-04a4-14b2-c91325b898a9}" />
                       </cell>
@@ -613,7 +613,7 @@
                         </labels>
                         <control id="leidos_anticipatedhienettfunding" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_anticipatedhienettfunding" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{693d8017-72ad-4e47-9a80-b9b0fc8735e3}">
+                      <cell locklevel="0" id="{693d8017-72ad-4e47-9a80-b9b0fc8735e3}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -626,7 +626,7 @@
                         </labels>
                         <control id="leidos_nfiprojectapprovalroute" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_nfiprojectapprovalroute" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{11d4b9d5-0ae3-428d-9b54-d91fd44bf010}">
+                      <cell locklevel="0" id="{11d4b9d5-0ae3-428d-9b54-d91fd44bf010}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -639,19 +639,19 @@
                         </labels>
                         <control id="leidos_parentaccount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentaccount" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{e42d1bed-22ec-4020-a229-5cfc18b3de71}">
+                      <cell locklevel="0" id="{e42d1bed-22ec-4020-a229-5cfc18b3de71}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{a6598505-2e0a-4346-a3b0-76fad89d7a24}">
+                      <cell locklevel="0" id="{a6598505-2e0a-4346-a3b0-76fad89d7a24}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{fe506c48-9cac-4ccb-8135-4b811e844e47}">
+                      <cell locklevel="0" id="{fe506c48-9cac-4ccb-8135-4b811e844e47}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -1499,6 +1499,11 @@
               <Title LCID="1033" Text="Minor Themes" />
             </Titles>
           </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_ProjectFunding_ParentProject_leido" Sequence="1009" Area="Service" Id="nav_leidos_ProjectFunding_ParentProject_leido">
+            <Titles>
+              <Title LCID="1033" Text="Cost Fundings" />
+            </Titles>
+          </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="leidos_ProjectTheme_leidos_ParentProject_" Sequence="1009" Area="Sales" Id="nav_leidos_ProjectTheme_leidos_ParentProject_" Show="false">
             <Titles>
               <Title LCID="1033" Text="Themes" />
@@ -1507,11 +1512,6 @@
           <NavBarByRelationshipItem RelationshipName="leidos_ProjectCost_ParentProject_leidos_P" Sequence="1010" Area="Service" Id="nav_leidos_ProjectCost_ParentProject_leidos_P">
             <Titles>
               <Title LCID="1033" Text="Costs" />
-            </Titles>
-          </NavBarByRelationshipItem>
-          <NavBarByRelationshipItem RelationshipName="leidos_ProjectFunding_ParentProject_leido" Sequence="1009" Area="Service" Id="nav_leidos_ProjectFunding_ParentProject_leido">
-            <Titles>
-              <Title LCID="1033" Text="Cost Fundings" />
             </Titles>
           </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="leidos_AnticipatedSpendProfile_ParentProj" Sequence="1010" Area="Service" Id="nav_leidos_AnticipatedSpendProfile_ParentProj">
@@ -2051,9 +2051,6 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{b5111e31-ad58-5b10-4216-347261e80896}" />
         <Library name="leidos_project.js" libraryUniqueId="{489b0ce2-29e5-80e1-5e95-c2152000628a}" />
@@ -2061,6 +2058,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="32314417-4b3f-4935-8972-c92b90d0c450" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="d711e343-adaa-475c-a327-87d4932633a7" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
