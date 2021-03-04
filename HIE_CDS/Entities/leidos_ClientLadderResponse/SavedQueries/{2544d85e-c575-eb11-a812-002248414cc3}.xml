@@ -10,7 +10,8 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_clientladderresponseid">
-          <cell name="leidos_name" width="300" />
+          <cell name="leidos_name" width="300" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_questionanswer" width="100" />
           <cell name="a_cf62e1a7eb624abc984dac0c85596c16.leidos_category" width="200" />
         </row>
       </grid>
@@ -20,12 +21,12 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_clientladderresponse">
           <attribute name="leidos_name" />
-          <attribute name="leidos_clientladderresponseid" />
-          <attribute name="leidos_displayorder" />
           <order attribute="leidos_displayorder" descending="false" />
           <link-entity alias="a_cf62e1a7eb624abc984dac0c85596c16" name="leidos_ladderquestion" to="leidos_question" from="leidos_ladderquestionid" link-type="outer" visible="false">
             <attribute name="leidos_category" />
           </link-entity>
+          <attribute name="leidos_questionanswer" />
+          <attribute name="leidos_clientladderresponseid" />
         </entity>
       </fetch>
     </fetchxml>

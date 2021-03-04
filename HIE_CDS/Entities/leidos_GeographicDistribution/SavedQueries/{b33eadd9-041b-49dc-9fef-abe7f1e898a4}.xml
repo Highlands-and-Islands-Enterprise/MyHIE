@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{b33eadd9-041b-49dc-9fef-abe7f1e898a4}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_location" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_geographicdistributionid">
+          <cell name="leidos_location" width="300" />
+          <cell name="modifiedon" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_geographicdistribution">
+          <attribute name="leidos_geographicdistributionid" />
+          <attribute name="leidos_location" />
+          <order attribute="leidos_location" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <attribute name="modifiedon" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.14.0.1659</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Geographic Distributions" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

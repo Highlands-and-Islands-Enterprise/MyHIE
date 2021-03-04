@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{0880f082-b6c0-4cc9-ae83-43e13d1f7555}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_location" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_geographicdistributionid">
+          <cell name="leidos_location" width="300" />
+          <cell name="leidos_parentlocation" width="300" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_geographicdistribution">
+          <attribute name="leidos_geographicdistributionid" />
+          <attribute name="leidos_location" />
+          <order attribute="leidos_location" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="leidos_location" operator="like" value="{0}" />
+            <condition attribute="leidos_parentlocation" operator="like" value="{0}" />
+          </filter>
+          <attribute name="leidos_parentlocation" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.14.0.1659</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active Geographic Distributions" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

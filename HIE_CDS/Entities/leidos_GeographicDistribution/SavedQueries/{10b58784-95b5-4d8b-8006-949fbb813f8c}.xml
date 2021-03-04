@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{10b58784-95b5-4d8b-8006-949fbb813f8c}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_geographicdistributions" jump="leidos_location" select="1" icon="1" preview="1">
+        <row name="leidos_geographicdistribution" id="leidos_geographicdistributionid">
+          <cell name="leidos_location" width="300" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_geographicdistribution">
+          <attribute name="leidos_geographicdistributionid" />
+          <attribute name="leidos_location" />
+          <order attribute="leidos_location" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.14.0.1659</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Geographic Distribution Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

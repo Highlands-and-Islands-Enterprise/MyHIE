@@ -43,6 +43,23 @@
                         <control id="leidos_measuretype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_measuretype" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{e4ac4c72-97ca-c2b8-468e-e1048aa63781}" showlabel="true" locklevel="0" visible="false">
+                        <labels>
+                          <label description="Geographic Location of Output" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_geographicdistribution" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_geographicdistribution" disabled="false" uniqueid="{a0d98373-331c-d344-0206-d57130b19e5c}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{29998704-7470-40A0-8A4F-DE97F019637D}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
                   </rows>
                 </section>
                 <section name="ActivityMain" showlabel="false" showbar="false" locklevel="0" id="{13ec7151-76b2-0e76-8283-7b28017a9b12}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" visible="false">
@@ -955,7 +972,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -1008,7 +1025,7 @@
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_measuretype">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="460cedfb-3d57-4ffe-a034-708047c94d4a" enabled="true" parameters="'i9b:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="460cedfb-3d57-4ffe-a034-708047c94d4a" enabled="true" parameters="'i9b:*:CreateUpdate::0:217890000:217890000:217890000:217890000','GB5:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="statuscode">
@@ -1021,9 +1038,9 @@
         <Everyone />
       </DisplayConditions>
       <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="4c90004e-cc4a-47fe-a3ae-99f184e3129a" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="0a7afae0-f54e-419d-b6bd-0330f28c4f4d" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="ba91d215-eb68-4211-aadc-15f687fc0a02" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="e3251224-2499-4830-b5a8-9032bc035c8b" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="13919454-17e8-490e-b383-072bcf846095" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="9d173079-d0ea-4d92-b009-6e6f2b301926" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
