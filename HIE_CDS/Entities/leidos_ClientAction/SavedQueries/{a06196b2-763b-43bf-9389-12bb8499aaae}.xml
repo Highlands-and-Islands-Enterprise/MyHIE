@@ -13,7 +13,6 @@
           <cell name="leidos_title" width="300" />
           <cell name="leidos_clientactionreference" width="100" />
           <cell name="leidos_parentaccount" width="100" />
-          <cell name="createdon" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -21,9 +20,7 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_clientaction">
-          <attribute name="leidos_clientactionid" />
           <attribute name="leidos_title" />
-          <attribute name="createdon" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
@@ -34,6 +31,7 @@
           <attribute name="leidos_parentaccount" />
           <attribute name="leidos_clientactionreference" />
           <order attribute="leidos_title" descending="false" />
+          <attribute name="leidos_clientactionid" />
         </entity>
       </fetch>
     </fetchxml>
