@@ -97,8 +97,11 @@
                       <mcwc:SetDefaultValue DisplayName="SetDefaultValueStep6" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_pipelineproject" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep_SetDefaultValueStep6_11: Lock Support item Type">
+                      <mcwc:SetDisplayMode ControlId="leidos_supportitemtype" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_pipelineproject" IsReadOnly="True" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep7: Hide Support Item Type">
-                      <mcwc:SetVisibility ControlId="leidos_supportitemtype" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_pipelineproject" IsVisible="False" />
+                      <mcwc:SetVisibility ControlId="leidos_supportitemtype" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_pipelineproject" IsVisible="True" />
                     </Sequence>
                     <Sequence DisplayName="SetDefaultValueStep8: Potential Support Items to Yes">
                       <Sequence.Variables>
@@ -132,8 +135,8 @@
                     <Sequence DisplayName="SetVisibilityStep3: Hide Source Enquiry">
                       <mcwc:SetVisibility ControlId="leidos_sourceenquiry" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_pipelineproject" IsVisible="False" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep3_9: Hide Own Hand">
-                      <mcwc:SetVisibility ControlId="leidos_ownhandclient" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_pipelineproject" IsVisible="True" />
+                    <Sequence DisplayName="SetVisibilityStep9: Hide Own Hand">
+                      <mcwc:SetVisibility ControlId="leidos_ownhandclient" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_pipelineproject" IsVisible="False" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -167,10 +170,13 @@
                     <Sequence DisplayName="SetVisibilityStep6: Show Potential Support Items">
                       <mcwc:SetVisibility ControlId="leidos_potentialsupportitemsadded" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_pipelineproject" IsVisible="True" />
                     </Sequence>
+                    <Sequence DisplayName="SetDisplayModeStep_SetVisibilityStep6_12: Unlock Support item Type">
+                      <mcwc:SetDisplayMode ControlId="leidos_supportitemtype" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_pipelineproject" IsReadOnly="False" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep8: Show Support Item">
                       <mcwc:SetVisibility ControlId="leidos_supportitemtype" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_pipelineproject" IsVisible="True" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep8_10: Hide Own Hand">
+                    <Sequence DisplayName="SetVisibilityStep10: Hide Own Hand">
                       <mcwc:SetVisibility ControlId="leidos_ownhandclient" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_pipelineproject" IsVisible="False" />
                     </Sequence>
                   </sco:Collection>
