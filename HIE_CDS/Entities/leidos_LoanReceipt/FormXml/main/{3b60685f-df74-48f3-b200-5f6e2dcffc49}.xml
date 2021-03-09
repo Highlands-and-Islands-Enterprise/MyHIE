@@ -36,14 +36,6 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{a4a1d800-8730-4154-b74c-d3266d9d7d1f}" locklevel="0">
-                        <labels>
-                          <label description="Processing Date" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_processingdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_processingdate" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{c152536f-517d-4fa0-a852-f8f2485464cd}" locklevel="0" visible="false">
                         <labels>
                           <label description="Status" languagecode="1033" />
@@ -293,11 +285,6 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="dc2da10a-da90-4437-902b-ca16d589648d" enabled="true" parameters="'1Ir:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
-        <event name="onchange" application="false" active="false" attribute="leidos_processingdate">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="ebe67d6c-a567-4b03-a96f-9ed817a5a5c7" enabled="true" parameters="'5SE:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
         <event name="onchange" application="false" active="false" attribute="leidos_receiptapprover">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b1087abf-a772-4c45-826c-ed18084516c0" enabled="true" parameters="'9q2:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
@@ -314,6 +301,11 @@
           </dependencies>
           <Handlers>
             <Handler functionName="Leidos.SetReceiptApproverControlViews" libraryName="leidos_LoanReceipt" handlerUniqueId="{c5c79197-8987-e3a4-1297-be5112e5a687}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_receiptdate">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="4f8b291f-886d-4382-a61c-64144a7b3cf4" enabled="true" parameters="'5SE:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -385,13 +377,6 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
-      <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="3aaf4e87-e671-468d-9e90-ef522103abf2" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="306fa9b3-a1ed-4d95-8cde-bbf702890792" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="8aaba78c-6062-46bf-9a10-ae3024aada59" />
-        <Library name="leidos_common" libraryUniqueId="{8a28dbb0-a687-1259-d1c8-9d6176ad7249}" />
-        <Library name="leidos_LoanReceipt" libraryUniqueId="{49771e11-98d5-079a-dbbe-83a1e4c96ee7}" />
-      </formLibraries>
       <Navigation>
         <NavBar />
         <NavBarAreas>
@@ -425,6 +410,13 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{8a28dbb0-a687-1259-d1c8-9d6176ad7249}" />
+        <Library name="leidos_LoanReceipt" libraryUniqueId="{49771e11-98d5-079a-dbbe-83a1e4c96ee7}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="9d7e0ab2-51ba-4d17-84c2-d5e440dc0894" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="85171eb5-a286-473f-a74a-10fd1945e5e7" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="6c62e768-dae8-4899-96bc-6f2a5e3b4e66" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

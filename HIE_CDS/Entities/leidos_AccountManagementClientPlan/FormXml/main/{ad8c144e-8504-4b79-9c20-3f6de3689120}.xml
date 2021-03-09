@@ -909,6 +909,41 @@
             </column>
           </columns>
         </tab>
+        <tab name="Ladders" id="5343bf1f-86e9-410f-be43-0192e599820a" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Ladders" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_6_section_1" id="339a00ef-64a0-4326-bf15-3af642a74b37" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Client Ladders" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{01ab1dc9-58be-48f0-92e2-948c0805c967}" rowspan="1" colspan="1" showlabel="false" auto="true">
+                        <labels>
+                          <label description="Client Ladders Grid" languagecode="1033" />
+                        </labels>
+                        <control id="ClientLaddersGrid" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_clientladder</TargetEntityType>
+                            <ViewId>{787DDBA5-2380-EB11-A812-000D3AD48DD8}</ViewId>
+                            <EnableViewPicker>true</EnableViewPicker>
+                            <RelationshipName>leidos_ClientLadder_ClientPlan_leidos_Acc</RelationshipName>
+                            <RecordsPerPage>10</RecordsPerPage>
+                            <AutoExpand>Auto</AutoExpand>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
       </tabs>
       <header id="{f1091baf-8b8b-4301-9e77-5e56d69a8fa7}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
         <rows>
@@ -1498,7 +1533,7 @@
         </event>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="df906753-633b-4344-be17-fcdd575a1b1b" enabled="true" parameters="'0LS:*:CreateUpdate::0:217890000:217890000:217890000:217890000','oV4:*:Update::0:217890000:217890001:217890000:217890000','elU:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="df906753-633b-4344-be17-fcdd575a1b1b" enabled="true" parameters="'0LS:*:CreateUpdate::0:217890000:217890000:217890000:217890000','oV4:*:Update::0:217890000:217890001:217890000:217890000','elU:*:Create::0:217890000:217890000:217890000:217890000','XwL:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.filterSegmentationLookup" libraryName="leidos_AMRFilterLokup.js" handlerUniqueId="{33ae55de-06ce-2591-8c05-77bea88a688e}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{6401533c-bd6d-03a7-9b0d-3bed8bde00c0}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.onLoadFormSubgrid" libraryName="leidos_common" handlerUniqueId="{77541dc5-350b-1200-2ed8-3e517a128a71}" enabled="true" parameters="'CurrentTradingGeography,TargetTradingGeography'" passExecutionContext="true" />
@@ -1534,6 +1569,11 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c90e1e15-4f6a-4553-a50b-a082d3e4250e" enabled="true" parameters="'oV4:*:Update::0:217890000:217890001:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_accountmanagementrecord">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="612f1fdd-7341-4318-9b9d-53cd8d94755a" enabled="true" parameters="'XwL:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
@@ -1542,9 +1582,9 @@
         <Library name="leidos_/AMClientPlan/disableColumninGrid.js" libraryUniqueId="{b57b7b32-915c-c7a8-9c04-0ebbd5caa2e9}" />
         <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{3068c7c0-9c4e-077e-7126-1017066c2a13}" />
         <Library name="leidos_common" libraryUniqueId="{b565ac88-300c-e2ac-d7ec-c0d68bcc6913}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="79cf6927-205d-467a-87bd-57ebde1a08bc" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="bd27b6c8-05ce-4783-b9a8-7fc581a35fb7" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="6ed078cb-2bba-4cb4-80db-c04504fc56ca" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="9c010e6c-4ce5-4cde-bc5d-7e124820b7a2" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="1abf92f4-e0af-4688-8dc4-dd0f597073ea" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="1f174426-b9ef-4d8d-866b-2709912cf978" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
