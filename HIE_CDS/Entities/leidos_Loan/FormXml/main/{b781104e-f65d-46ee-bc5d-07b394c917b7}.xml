@@ -156,7 +156,7 @@
                     <row>
                       <cell id="{453e1cbd-90c9-43a6-babe-7919e1cc54de}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="State Aid Category" languagecode="1033" />
+                          <label description="Subsidy Control" languagecode="1033" />
                         </labels>
                         <control id="leidos_stateaidcategory" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_stateaidcategory" disabled="false" uniqueid="{250dd5a7-2890-d5ac-035d-953b346080bb}">
                           <parameters>
@@ -178,7 +178,7 @@
                     <row>
                       <cell id="{2208efde-548d-434e-9a19-e81443ed3bbb}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="State Aid Article" languagecode="1033" />
+                          <label description="Subsidy Measure" languagecode="1033" />
                         </labels>
                         <control id="leidos_stateaidarticle" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_stateaidarticle" disabled="false" uniqueid="{140a3cb7-c86a-79e6-50e1-265aeb31233e}">
                           <parameters>
@@ -731,7 +731,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -837,7 +837,7 @@
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7c62d2d8-8798-447a-84bd-a26cbe76097d" enabled="true" parameters="'NVo:*:Update::0:217890000:217890000:217890000:217890000','rrb:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="7c62d2d8-8798-447a-84bd-a26cbe76097d" enabled="true" parameters="'NVo:*:Update::0:217890000:217890000:217890000:217890000','rrb:*:CreateUpdate::0:217890000:217890000:217890000:217890000','neJ:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{61da9802-6990-20bd-9cc8-d1d919155269}" enabled="true" parameters="&quot;leidos_stateaidcategory&quot; , &quot;leidos_stateaidsubcategory&quot; , &quot;47b60d3b-097f-437c-afed-43bf190b9a80&quot; , &quot;&lt;filter type='and'&gt;&lt;condition attribute='leidos_stateaidcategory' operator='eq'  value='{{id}}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
           </Handlers>
         </event>
@@ -856,16 +856,21 @@
             <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{b898d144-214a-7046-10eb-03c81aece7e4}" enabled="true" parameters="&quot;leidos_stateaidcategory&quot; , &quot;leidos_stateaidarticle&quot; , &quot;47b60d3b-097f-437c-afed-43bf190b9a80&quot; , &quot;&lt;filter type='and'&gt;&lt;condition attribute='leidos_stateaidcategory' operator='eq'  value='{{id}}' /&gt;&lt;/filter&gt;&quot;" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_drawdownnoticereturned">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b2ba2c2c-5e43-42c4-be81-7725cd3a8e6f" enabled="true" parameters="'neJ:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{730987a3-20db-db2c-e340-888b878ce17b}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="f55853d4-ea47-46b1-a164-edff69cd565e" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="ebfcbdb1-2e3e-49c8-90e9-17951e96e568" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="a0ecb58c-07c2-4a94-8da3-b262f29c15be" />
+      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{730987a3-20db-db2c-e340-888b878ce17b}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="bf23497d-f646-48cc-91f5-8666365e1821" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="a934dbe7-a490-4780-a94d-e44ef437b587" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="ec1faa3f-bd78-453f-90b5-090db544225c" />
-      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
