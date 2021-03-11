@@ -533,7 +533,7 @@
           <CanChangeDateTimeBehavior>1</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="Anticipated Start Date" languagecode="1033" />
+            <displayname description="Estimated Date of Decision" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -634,10 +634,49 @@
           <LookupStyle>single</LookupStyle>
           <LookupTypes />
           <displaynames>
-            <displayname description="Approval Submitted By" languagecode="1033" />
+            <displayname description="Decision Requested By" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="Used in Flow for requester, populated by N52" languagecode="1033" />
+          </Descriptions>
+        </attribute>
+        <attribute PhysicalName="leidos_BudgetSubType">
+          <Type>picklist</Type>
+          <Name>leidos_budgetsubtype</Name>
+          <LogicalName>leidos_budgetsubtype</LogicalName>
+          <RequiredLevel>required</RequiredLevel>
+          <DisplayMask>ValidForAdvancedFind|ValidForForm|ValidForGrid</DisplayMask>
+          <ImeMode>auto</ImeMode>
+          <ValidForUpdateApi>1</ValidForUpdateApi>
+          <ValidForReadApi>1</ValidForReadApi>
+          <ValidForCreateApi>1</ValidForCreateApi>
+          <IsCustomField>1</IsCustomField>
+          <IsAuditEnabled>1</IsAuditEnabled>
+          <IsSecured>0</IsSecured>
+          <IntroducedVersion>1.15.0.1691</IntroducedVersion>
+          <IsCustomizable>1</IsCustomizable>
+          <IsRenameable>1</IsRenameable>
+          <CanModifySearchSettings>1</CanModifySearchSettings>
+          <CanModifyRequirementLevelSettings>1</CanModifyRequirementLevelSettings>
+          <CanModifyAdditionalSettings>1</CanModifyAdditionalSettings>
+          <SourceType>0</SourceType>
+          <IsGlobalFilterEnabled>0</IsGlobalFilterEnabled>
+          <IsSortableEnabled>0</IsSortableEnabled>
+          <CanModifyGlobalFilterSettings>1</CanModifyGlobalFilterSettings>
+          <CanModifyIsSortableSettings>1</CanModifyIsSortableSettings>
+          <IsDataSourceSecret>0</IsDataSourceSecret>
+          <AutoNumberFormat></AutoNumberFormat>
+          <IsSearchable>0</IsSearchable>
+          <IsFilterable>0</IsFilterable>
+          <IsRetrievable>0</IsRetrievable>
+          <IsLocalizable>0</IsLocalizable>
+          <AppDefaultValue>-1</AppDefaultValue>
+          <OptionSetName>leidos_budgetsubtype</OptionSetName>
+          <displaynames>
+            <displayname description="Budget Sub Type" languagecode="1033" />
+          </displaynames>
+          <Descriptions>
+            <Description description="" languagecode="1033" />
           </Descriptions>
         </attribute>
         <attribute PhysicalName="leidos_CostType">
@@ -673,7 +712,7 @@
           <AppDefaultValue>-1</AppDefaultValue>
           <OptionSetName>leidos_costtype</OptionSetName>
           <displaynames>
-            <displayname description="Cost Type" languagecode="1033" />
+            <displayname description="Budget Type" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -840,12 +879,12 @@
               <Description description="" languagecode="1033" />
             </Descriptions>
             <options>
-              <option value="1">
+              <option value="1" Color="#0000ff">
                 <labels>
-                  <label description="Yes" languagecode="1033" />
+                  <label description="Submit for Decision" languagecode="1033" />
                 </labels>
               </option>
-              <option value="0">
+              <option value="0" Color="#0000ff">
                 <labels>
                   <label description="No" languagecode="1033" />
                 </labels>
@@ -853,7 +892,7 @@
             </options>
           </optionset>
           <displaynames>
-            <displayname description="Generate Email Submission " languagecode="1033" />
+            <displayname description="Generate Email Submission" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -973,7 +1012,7 @@
           <CanChangeDateTimeBehavior>1</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="ISA Approval Requested on" languagecode="1033" />
+            <displayname description="Decision Requested On" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -1013,7 +1052,7 @@
           <CanChangeDateTimeBehavior>1</CanChangeDateTimeBehavior>
           <Behavior>1</Behavior>
           <displaynames>
-            <displayname description="ISA Approved On" languagecode="1033" />
+            <displayname description="Decision Made On" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -1357,12 +1396,12 @@
               <Description description="" languagecode="1033" />
             </Descriptions>
             <options>
-              <option value="1">
+              <option value="1" Color="#0000ff">
                 <labels>
-                  <label description="Submit for Approval" languagecode="1033" />
+                  <label description="Submit for Decision" languagecode="1033" />
                 </labels>
               </option>
-              <option value="0">
+              <option value="0" Color="#0000ff">
                 <labels>
                   <label description="No" languagecode="1033" />
                 </labels>
@@ -1370,7 +1409,7 @@
             </options>
           </optionset>
           <displaynames>
-            <displayname description="Submit ISA" languagecode="1033" />
+            <displayname description="Submit ISA for Decision" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -1470,7 +1509,7 @@
             </options>
           </optionset>
           <displaynames>
-            <displayname description="Validate Pipeline Project" languagecode="1033" />
+            <displayname description="Validate Pipeline Programme" languagecode="1033" />
           </displaynames>
           <Descriptions>
             <Description description="" languagecode="1033" />
@@ -1907,7 +1946,7 @@
               <Description description="Status of the Pipeline Programme" languagecode="1033" />
             </Descriptions>
             <states>
-              <state value="0" defaultstatus="1" invariantname="Active">
+              <state value="0" defaultstatus="445260003" invariantname="Active">
                 <labels>
                   <label description="Active" languagecode="1033" />
                 </labels>
@@ -1972,9 +2011,14 @@
                   <label description="Draft" languagecode="1033" />
                 </labels>
               </status>
+              <status value="445260003" state="0" TransitionData="" Color="#0000ff">
+                <labels>
+                  <label description="Pipeline" languagecode="1033" />
+                </labels>
+              </status>
               <status value="2" state="1" TransitionData="" Color="#0000ff">
                 <labels>
-                  <label description="Submit for Approval" languagecode="1033" />
+                  <label description="Awaiting Decision" languagecode="1033" />
                 </labels>
               </status>
               <status value="445260000" state="1" TransitionData="" Color="#0000ff">
