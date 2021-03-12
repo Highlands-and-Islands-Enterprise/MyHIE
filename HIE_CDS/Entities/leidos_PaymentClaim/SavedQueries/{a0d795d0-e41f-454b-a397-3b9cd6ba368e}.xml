@@ -29,9 +29,6 @@
           <attribute name="leidos_paymentclaimid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="statuscode" />
           <attribute name="leidos_paymentclaimreference" />
           <attribute name="leidos_parentclaim" />
@@ -40,6 +37,9 @@
           <attribute name="leidos_vatamount" />
           <attribute name="leidos_costfundingline" />
           <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="ne" value="2" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>

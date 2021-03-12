@@ -11,6 +11,7 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_pipelineprojectid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_pipelineprojectreference" width="100" />
           <cell name="leidos_client" width="100" />
           <cell name="leidos_anticipatedprojectcost" width="100" />
           <cell name="leidos_anticipatedprojectfunding" width="100" />
@@ -29,11 +30,12 @@
             <condition attribute="statecode" operator="eq" value="1" />
           </filter>
           <attribute name="leidos_client" />
-          <attribute name="leidos_pipelineprojectid" />
           <attribute name="leidos_anticipatedprojectcost" />
           <attribute name="leidos_anticipatedprojectfunding" />
-          <order attribute="leidos_name" descending="false" />
+          <order attribute="leidos_pipelineprojectreference" descending="true" />
           <attribute name="leidos_team" />
+          <attribute name="leidos_pipelineprojectreference" />
+          <attribute name="leidos_pipelineprojectid" />
         </entity>
       </fetch>
     </fetchxml>

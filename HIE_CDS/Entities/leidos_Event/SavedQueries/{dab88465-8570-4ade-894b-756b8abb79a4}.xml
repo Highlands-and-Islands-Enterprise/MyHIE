@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{dab88465-8570-4ade-894b-756b8abb79a4}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_eventid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_eventreference" width="100" />
+          <cell name="leidos_eventtype" width="100" />
+          <cell name="leidos_startdate" width="100" />
+          <cell name="leidos_enddate" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="overriddencreatedon" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_event">
+          <attribute name="leidos_eventid" />
+          <attribute name="leidos_name" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="leidos_name" operator="like" value="{0}" />
+          </filter>
+          <attribute name="leidos_eventreference" />
+          <attribute name="leidos_eventtype" />
+          <attribute name="leidos_startdate" />
+          <attribute name="leidos_enddate" />
+          <attribute name="statuscode" />
+          <attribute name="overriddencreatedon" />
+          <order attribute="overriddencreatedon" descending="true" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.15.0.1695</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active Events" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
