@@ -5,7 +5,7 @@
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="Low">
+    <form headerdensity="HighWithControls">
       <tabs>
         <tab verticallayout="true" id="{5a688fd3-828e-4e51-a3fc-af9143c12519}" IsUserDefined="1">
           <labels>
@@ -20,22 +20,6 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{2a818ad1-8ba5-440e-88be-0ce7a3d6eddb}">
-                        <labels>
-                          <label description="Name" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{65f1a5a9-42f4-4b4d-8c1e-f5266a0c20eb}" locklevel="0">
-                        <labels>
-                          <label description="Participation" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_participation" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_participation" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
                       <cell id="{c6142281-ddfd-412c-a861-9c0f670b9e30}" locklevel="0">
                         <labels>
                           <label description="Attendee" languagecode="1033" />
@@ -49,6 +33,14 @@
                           <label description="Account" languagecode="1033" />
                         </labels>
                         <control id="leidos_account" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_account" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{65f1a5a9-42f4-4b4d-8c1e-f5266a0c20eb}" locklevel="0">
+                        <labels>
+                          <label description="Participation" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_participation" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_participation" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -88,6 +80,12 @@
               </labels>
               <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
             </cell>
+            <cell id="{2a818ad1-8ba5-440e-88be-0ce7a3d6eddb}">
+              <labels>
+                <label description="Name" languagecode="1033" />
+              </labels>
+              <control id="header_leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" />
+            </cell>
           </row>
         </rows>
       </header>
@@ -115,6 +113,18 @@
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="leidos_attendee">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="4f835d0b-8f14-4b04-a41f-44a83aeb9de8" enabled="true" parameters="'hDy:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="6e58eed3-9d0f-4af6-83df-103be847e409" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="c62401ba-99c2-4213-a6e8-f87deac60f39" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0dfd517a-f3ac-43a4-959b-cdc5066679d8" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
