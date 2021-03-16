@@ -10,11 +10,11 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectmeasureid">
-          <cell name="leidos_name" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_actualduedate" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="a_7b02fe59f8b6ea11a812002248012503.leidos_parentaccount" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="leidos_parentproject" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="a_7b02fe59f8b6ea11a812002248012503.leidos_projectreference" width="125" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_actualduedate" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_name" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
         </row>
       </grid>
     </layoutxml>
@@ -25,25 +25,13 @@
           <attribute name="leidos_name" />
           <attribute name="leidos_actualduedate" />
           <order attribute="leidos_actualduedate" descending="false" />
+          <attribute name="leidos_parentproject" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="leidos_actualduedate" operator="olderthan-x-minutes" value="1" />
-            <filter type="or">
-              <filter type="and">
-                <condition attribute="leidos_measuretype" operator="eq" value="445260001" />
-                <condition attribute="leidos_activityname" operator="like" value="%Project Specific%" />
-                <condition attribute="leidos_actualprojectspecificactivity" operator="null" />
-              </filter>
-              <filter type="and">
-                <condition attribute="leidos_measuretype" operator="eq" value="445260002" />
-                <condition attribute="leidos_outputname" operator="like" value="%Project Specific%" />
-                <condition attribute="leidos_actualprojectspecificoutput" operator="null" />
-              </filter>
-              <condition attribute="leidos_actual" operator="null" />
-            </filter>
             <condition attribute="ownerid" operator="eq-userid" />
+            <condition attribute="leidos_actual" operator="null" />
           </filter>
-          <attribute name="leidos_parentproject" />
           <link-entity alias="a_7b02fe59f8b6ea11a812002248012503" name="leidos_project" from="leidos_projectid" to="leidos_parentproject" link-type="outer" visible="false">
             <attribute name="leidos_projectreference" />
             <attribute name="leidos_parentaccount" />
@@ -54,7 +42,7 @@
     </fetchxml>
     <IntroducedVersion>1.9.0.1270</IntroducedVersion>
     <LocalizedNames>
-      <LocalizedName description="My active overdue Measures" languagecode="1033" />
+      <LocalizedName description="My Active Overdue Measures" languagecode="1033" />
     </LocalizedNames>
   </savedquery>
 </savedqueries>
