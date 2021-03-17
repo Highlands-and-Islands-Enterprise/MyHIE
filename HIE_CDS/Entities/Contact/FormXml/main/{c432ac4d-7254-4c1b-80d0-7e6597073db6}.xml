@@ -320,6 +320,37 @@
                     </row>
                   </rows>
                 </section>
+                <section name="Details_SpecialistAdvice" id="7761310c-b71b-44d2-83f5-d6d6e6b27e83" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Specialist Advice" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{8ba50805-f280-4984-8865-b9bc31965858}" locklevel="0">
+                        <labels>
+                          <label description="Specialist Advice Provider " languagecode="1033" />
+                        </labels>
+                        <control id="leidos_specialistadviceprovider" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_specialistadviceprovider" disabled="false" uniqueid="{ad9cd8fe-bd46-4ac3-829a-63006e6ccdbf}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{d3f35f97-472a-43ed-824c-e81cf2ee8c3f}" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Specialist Advice" languagecode="1033" />
+                        </labels>
+                        <control id="Subgrid_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_projectspecialistadvice</TargetEntityType>
+                            <ViewId>{EEBEF90F-0487-EB11-A812-002248419738}</ViewId>
+                            <ViewIds>{3E3ED820-A515-4D80-B5FD-5FEB3144C342},{EEBEF90F-0487-EB11-A812-002248419738}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_ProjectSpecialistAdvice_Advisor_Co</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
               </sections>
             </column>
             <column width="50%">
@@ -852,6 +883,28 @@
               <value>address1_postalcode</value>
               <fieldName static="true" type="SingleLine.Text">address1_postalcode</fieldName>
               <result>leidos_data8</result>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{ad9cd8fe-bd46-4ac3-829a-63006e6ccdbf}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_specialistadviceprovider</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_specialistadviceprovider</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_specialistadviceprovider</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_specialistadviceprovider</value>
             </parameters>
           </customControl>
         </controlDescription>
