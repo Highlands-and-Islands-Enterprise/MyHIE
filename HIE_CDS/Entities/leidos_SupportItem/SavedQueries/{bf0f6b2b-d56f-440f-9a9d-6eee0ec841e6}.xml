@@ -11,7 +11,7 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_supportitemid">
           <cell name="leidos_name" width="300" />
-          <cell name="leidos_supportitemtype" width="100" />
+          <cell name="leidos_supportitemtype" width="150" />
           <cell name="leidos_programme" width="100" />
           <cell name="leidos_fundingallocation" width="100" />
           <cell name="leidos_grossgrantequivalence" width="100" />
@@ -20,18 +20,24 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" mapping="logical">
+      <fetch count="50">
         <entity name="leidos_supportitem">
-          <attribute name="leidos_supportitemid" />
           <attribute name="leidos_name" />
-          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_programme" />
+          <attribute name="leidos_supportitemtype" />
+          <attribute name="leidos_fundingallocation_base" />
+          <attribute name="leidos_fundingallocation" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
+            <filter type="or">
+              <condition attribute="leidos_programme" operator="null" />
+              <filter type="and">
+                <condition attribute="leidos_programme" operator="not-null" />
+                <condition entityname="prog" attribute="statuscode" operator="eq" value="445260009" />
+              </filter>
+            </filter>
           </filter>
-          <attribute name="leidos_grossgrantequivalence" />
-          <attribute name="leidos_supportitemtype" />
-          <attribute name="leidos_programme" />
-          <attribute name="leidos_fundingallocation" />
+          <link-entity name="leidos_programme" from="leidos_programmeid" to="leidos_programme" link-type="outer" alias="prog" />
         </entity>
       </fetch>
     </fetchxml>
