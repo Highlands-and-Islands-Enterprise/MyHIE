@@ -134,24 +134,10 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell id="{5d1a083c-8a9c-0b41-ab8b-298d293e85e4}" showlabel="false" userspacer="true">
+                      <cell id="{6793431b-5aa2-bb54-74cc-8dd027026cc1}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{940c3e1b-597d-4ede-b893-982300ae6f33}" locklevel="0" visible="false" showlabel="true">
-                        <labels>
-                          <label description="Expected Output Description" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_projectspecificoutput" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_projectspecificoutput" disabled="false" uniqueid="{8db02a7a-3030-b04e-5686-32dd0aec6293}" />
-                      </cell>
-                      <cell id="{5296e271-5daa-82d2-3301-336c273ba351}" showlabel="true" locklevel="0" visible="false">
-                        <labels>
-                          <label description="Actual Output Description" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_actualprojectspecificoutput" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_actualprojectspecificoutput" disabled="false" uniqueid="{b7000dda-1097-4c0c-956b-edd3d428840d}" />
                       </cell>
                     </row>
                   </rows>
@@ -182,7 +168,7 @@
                         </labels>
                         <control id="leidos_actualduedate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_actualduedate" disabled="false" uniqueid="{9862db67-e769-b639-7946-cbd9381eee9c}" />
                       </cell>
-                      <cell id="{e14a01cb-c98e-be15-da45-6c37433d4b0e}" showlabel="false">
+                      <cell id="{613d42c4-6104-9abd-89be-1bb9b6207bb5}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -588,7 +574,7 @@
           <columns>
             <column width="100%">
               <sections>
-                <section name="NumberJobsSupported" showlabel="true" showbar="false" locklevel="0" id="{55743bd1-9370-3197-8bba-3bc011276341}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                <section name="NumberJobsSupported" showlabel="true" showbar="false" locklevel="0" id="{55743bd1-9370-3197-8bba-3bc011276341}" IsUserDefined="0" layout="varwidth" columns="11" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
                   <labels>
                     <label description="Number of Jobs Supported" languagecode="1033" />
                   </labels>
@@ -600,6 +586,17 @@
                         </labels>
                         <control id="leidos_expectedhieoutputdescription" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_expectedhieoutputdescription" disabled="false" />
                       </cell>
+                      <cell locklevel="0" id="{fb66aecc-697b-435b-954d-3570b2f8860a}" showlabel="false">
+                        <labels>
+                          <label description="Total for Project" languagecode="1033" />
+                        </labels>
+                        <control id="ProjectFTEMeasure" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="leidos_parentproject" disabled="false">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="leidos_project"&gt;5c648343-078b-eb11-b1ac-000d3ad51b39&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
+                      </cell>
                     </row>
                     <row>
                       <cell id="{9cdb9ee7-a6c3-b04a-ac66-54add51206ae}" showlabel="true" locklevel="0">
@@ -608,6 +605,11 @@
                         </labels>
                         <control id="leidos_actualduedate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="leidos_actualduedate" disabled="false" />
                       </cell>
+                      <cell showlabel="false" locklevel="0" id="{1547a3ae-dc37-4009-95f6-a0fddfe6d7f7}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
                     </row>
                     <row>
                       <cell id="{7a1a7cdb-b774-d98b-b710-185e92567470}" showlabel="true" locklevel="0">
@@ -615,6 +617,11 @@
                           <label description="Actual HIE Output Description" languagecode="1033" />
                         </labels>
                         <control id="leidos_actualhieoutputdescription" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_actualhieoutputdescription" disabled="false" />
+                      </cell>
+                      <cell showlabel="false" locklevel="0" id="{1c2e5a21-5b39-4e62-bc5a-d98f0a32a8f4}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
                       </cell>
                     </row>
                   </rows>
@@ -972,7 +979,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -1034,14 +1041,14 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="1bb0cd27-90d0-4347-9cd2-9cc2c9a16f2b" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="942629da-9db8-46cd-a7be-628e3487717e" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="fbf31fda-84b6-4e98-a30f-85dfa4b3a6e0" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

@@ -37,19 +37,7 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="leidos_actualduedate" operator="next-x-months" value="1" />
-            <filter type="or">
-              <filter type="and">
-                <condition attribute="leidos_measuretype" operator="eq" value="445260001" />
-                <condition attribute="leidos_activityname" operator="like" value="%Project Specific%" />
-                <condition attribute="leidos_actualprojectspecificactivity" operator="null" />
-              </filter>
-              <filter type="and">
-                <condition attribute="leidos_measuretype" operator="eq" value="445260002" />
-                <condition attribute="leidos_outputname" operator="like" value="%Project Specific%" />
-                <condition attribute="leidos_actualprojectspecificoutput" operator="null" />
-              </filter>
-              <condition attribute="leidos_actual" operator="null" />
-            </filter>
+            <condition attribute="leidos_actual" operator="null" />
           </filter>
           <attribute name="leidos_projectmeasureid" />
         </entity>

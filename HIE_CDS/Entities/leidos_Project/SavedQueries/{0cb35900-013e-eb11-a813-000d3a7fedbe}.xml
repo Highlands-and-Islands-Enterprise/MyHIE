@@ -53,22 +53,10 @@
             <attribute name="createdon" />
             <attribute name="leidos_budgetapprovedon" />
           </link-entity>
-          <link-entity name="leidos_projectmeasure" from="leidos_parentproject" to="leidos_projectid" alias="aa">
+          <link-entity name="leidos_projectmeasure" from="leidos_parentproject" to="leidos_projectid" alias="aa" link-type="inner">
             <filter type="and">
               <condition attribute="leidos_actualduedate" operator="olderthan-x-minutes" value="1" />
-              <filter type="or">
-                <filter type="and">
-                  <condition attribute="leidos_measuretype" operator="eq" value="445260001" />
-                  <condition attribute="leidos_activityname" operator="like" value="%Project specific%" />
-                  <condition attribute="leidos_actualprojectspecificactivity" operator="null" />
-                </filter>
-                <filter type="and">
-                  <condition attribute="leidos_measuretype" operator="eq" value="445260002" />
-                  <condition attribute="leidos_outputname" operator="like" value="%Project specific%" />
-                  <condition attribute="leidos_actualprojectspecificoutput" operator="null" />
-                </filter>
-                <condition attribute="leidos_actual" operator="null" />
-              </filter>
+              <condition attribute="leidos_actual" operator="null" />
             </filter>
           </link-entity>
           <attribute name="leidos_projectid" />
