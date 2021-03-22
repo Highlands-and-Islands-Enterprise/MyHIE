@@ -88,6 +88,6 @@ Leidos.ProjectFilterView = function (executionContext) {
     if (amendmentType === 445260003) { /* Revert to Claims Complete */      
         Leidos.setLookupViewId(executionContext, "leidos_project","{C8C594CF-D06A-EB11-A812-0022483F8BCB}");
     } else {
-        Leidos.setLookupViewId(executionContext, "leidos_project","{F9F463C8-1DE2-456D-848B-9EEB0AAEDF3F}");
+        Leidos.setLookupViewId(executionContext, "leidos_project","{7c6f5e62-76bf-ea11-a812-000d3a7f1bbb}");
     }
 }   
