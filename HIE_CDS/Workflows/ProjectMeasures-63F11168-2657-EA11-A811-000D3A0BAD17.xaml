@@ -430,16 +430,16 @@
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
                       <mcwc:SetFieldRequiredLevel ControlId="leidos_currentquantity" ControlType="standard" DisplayName="SetFieldRequiredLevelStep32" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" RequiredLevel="None" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep42: New Action">
+                    <Sequence DisplayName="SetVisibilityStep42: Current Qty">
                       <mcwc:SetVisibility ControlId="leidos_currentquantity" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" IsVisible="False" />
                     </Sequence>
                     <Sequence DisplayName="SetFieldRequiredLevelStep33: Basecase quantity">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_projectmeasure&quot;)]" />
                       <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
-                      <mcwc:SetFieldRequiredLevel ControlId="leidos_basecasequantity" ControlType="standard" DisplayName="SetFieldRequiredLevelStep33" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" RequiredLevel="None" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_basecasequantity" ControlType="standard" DisplayName="SetFieldRequiredLevelStep33" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" RequiredLevel="Required" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep43908: New Action">
-                      <mcwc:SetVisibility ControlId="leidos_basecasequantity" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" IsVisible="False" />
+                    <Sequence DisplayName="SetVisibilityStep43908: Basecase">
+                      <mcwc:SetVisibility ControlId="leidos_basecasequantity" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" IsVisible="True" />
                     </Sequence>
                     <Sequence DisplayName="SetFieldRequiredLevelStep34: Forecast Quantity">
                       <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_projectmeasure&quot;)]" />
@@ -463,7 +463,7 @@
                       <mcwc:SetVisibility ControlId="leidos_actual" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" IsVisible="False" />
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep50: Expected HIE Qty">
-                      <mcwc:SetVisibility ControlId="leidos_expectedhieoutputquantity" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" IsVisible="False" />
+                      <mcwc:SetVisibility ControlId="leidos_expectedhieoutputquantity" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" IsVisible="True" />
                     </Sequence>
                     <Sequence DisplayName="SetVisibilityStep51: Actual HIE out Hidden">
                       <mcwc:SetVisibility ControlId="leidos_actualhieoutputquantity" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectmeasure" IsVisible="False" />
