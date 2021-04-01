@@ -21,11 +21,14 @@
         <entity name="leidos_programme">
           <attribute name="leidos_name" />
           <attribute name="leidos_programmeid" />
-          <filter type="and">
-            <condition attribute="statuscode" operator="eq" value="445260004" />
-          </filter>
           <attribute name="leidos_programmereference" />
           <order attribute="leidos_programmereference" descending="false" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="in">
+              <value>445260004</value>
+              <value>445260009</value>
+            </condition>
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
