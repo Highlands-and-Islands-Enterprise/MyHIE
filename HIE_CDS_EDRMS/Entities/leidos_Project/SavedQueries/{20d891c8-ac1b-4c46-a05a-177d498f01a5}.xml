@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{20d891c8-ac1b-4c46-a05a-177d498f01a5}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_projects" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="leidos_project" id="leidos_projectid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_projectdescription" width="100" />
+          <cell name="leidos_projectedspend" width="100" />
+          <cell name="leidos_supportitemtype" width="100" />
+          <cell name="leidos_budgetsubtype" width="100" />
+          <cell name="leidos_totalcostscalculated" width="100" />
+          <cell name="leidos_totalfundingcalcualted" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="createdon" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_project">
+          <attribute name="leidos_name" />
+          <order attribute="createdon" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_projectdescription" />
+          <attribute name="leidos_projectedspend" />
+          <attribute name="leidos_supportitemtype" />
+          <attribute name="leidos_totalcostscalculated" />
+          <attribute name="leidos_totalfundingcalcualted" />
+          <attribute name="createdon" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_budgetsubtype" />
+          <attribute name="leidos_projectid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.2.0.1</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Project Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

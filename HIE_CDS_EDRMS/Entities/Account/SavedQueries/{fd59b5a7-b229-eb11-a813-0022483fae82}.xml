@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{fd59b5a7-b229-eb11-a813-0022483fae82}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="name" select="1" icon="1" preview="1">
+        <row name="result" id="accountid">
+          <cell name="name" width="300" />
+          <cell name="leidos_accountreference" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_hieteamallocation" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="primarycontactid" width="150" />
+          <cell name="leidos_projectofficerallocation" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_organisationtype" width="100" />
+          <cell name="leidos_segmentation" width="100" />
+          <cell name="telephone1" width="100" />
+          <cell name="address1_city" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="createdon" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="account">
+          <attribute name="name" />
+          <attribute name="address1_city" />
+          <order attribute="name" descending="false" />
+          <attribute name="primarycontactid" />
+          <attribute name="telephone1" />
+          <attribute name="leidos_projectofficerallocation" />
+          <attribute name="leidos_hieteamallocation" />
+          <attribute name="leidos_accountreference" />
+          <attribute name="leidos_organisationtype" />
+          <attribute name="leidos_segmentation" />
+          <attribute name="accountid" />
+          <attribute name="statuscode" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <link-entity name="leidos_project" alias="ad" link-type="inner" from="leidos_parentaccount" to="accountid">
+            <filter type="and">
+              <condition attribute="statuscode" operator="eq" value="445260013" />
+            </filter>
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1211</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Accounts Clear to Pay" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
