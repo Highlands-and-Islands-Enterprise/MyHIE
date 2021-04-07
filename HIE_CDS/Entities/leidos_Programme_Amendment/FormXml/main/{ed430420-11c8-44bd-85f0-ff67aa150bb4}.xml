@@ -5,7 +5,7 @@
     <IntroducedVersion>1.6.0.8</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls">
+    <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
         <tab verticallayout="true" id="{4bd9ae9c-3c84-4569-885b-45484b05b6df}" IsUserDefined="1" name="General">
           <labels>
@@ -561,6 +561,7 @@
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="e0514f37-130a-42af-af69-c17f7698f065" enabled="true" parameters="'Fne:*:Update::0:217890000:217890000:217890000:217890000','DhA:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.ProgrammeFilterView" libraryName="leidos_ProgrammeAmendment.js" handlerUniqueId="{c7c9388e-371a-2d45-c078-bd2bb1761403}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_amendmentdocumentlink">
@@ -571,6 +572,7 @@
         <event name="onchange" application="false" active="false" attribute="leidos_amendmenttype">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="2c8e37d0-d03a-429b-a6d9-1e049c2fad9b" enabled="true" parameters="'DhA:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.ProgrammeFilterView" libraryName="leidos_ProgrammeAmendment.js" handlerUniqueId="{de7b06ad-84e6-e999-6cd4-1487b66d1c02}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -604,14 +606,16 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{cc2c5845-6508-01dd-dcbc-e4696923431d}" />
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="1723742d-6f28-44f6-ae09-c61f960d4285" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="833be888-a3d2-43dc-9145-927d4bc2a5b3" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="48acd3bc-c1b5-4f1b-a68f-b48ab8d8cfc1" />
+        <Library name="leidos_ProgrammeAmendment.js" libraryUniqueId="{2e9036ea-4364-ee4b-7d79-97aaa76b676c}" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
