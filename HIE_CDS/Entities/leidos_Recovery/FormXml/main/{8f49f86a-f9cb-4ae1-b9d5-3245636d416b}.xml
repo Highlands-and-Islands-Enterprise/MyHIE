@@ -59,21 +59,36 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell locklevel="0" id="{aa900de9-de04-4c13-a692-2209ad6a4919}" rowspan="1" colspan="1" showlabel="false">
+                      <cell locklevel="0" id="{aa900de9-de04-4c13-a692-2209ad6a4919}" rowspan="6" colspan="1" showlabel="false" auto="false">
                         <labels>
                           <label description="New SG control 1604328433059" languagecode="1033" />
                         </labels>
-                        <control id="Subgrid_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                        <control id="Subgrid_1" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" indicationOfSubgrid="true" uniqueid="{60debb5a-44c5-de12-a9a1-cc7947807c63}">
                           <parameters>
                             <TargetEntityType>leidos_spendprofiledetail</TargetEntityType>
                             <ViewId>{084EC806-ACB7-EA11-A812-000D3A7FEDBE}</ViewId>
                             <ViewIds>{059910DD-566C-4912-AC13-32EEA6B9F534},{084EC806-ACB7-EA11-A812-000D3A7FEDBE}</ViewIds>
                             <EnableViewPicker>false</EnableViewPicker>
                             <RelationshipName>leidos_SpendProfileDetail_ParentRecovery_</RelationshipName>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <IsUserView>false</IsUserView>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
                           </parameters>
                         </control>
                       </cell>
                     </row>
+                    <row></row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                     <row>
                       <cell id="{b287efc8-9f52-4fdc-850c-d4760ceb663c}" locklevel="0">
                         <labels>
@@ -149,9 +164,41 @@
           </row>
         </rows>
       </footer>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
+      <Navigation>
+        <NavBar></NavBar>
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <formLibraries>
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="33eb9ca2-16fd-4298-aba2-02ebd6b80a63" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="ddd4836c-96f0-43aa-bc4f-1f27d5fcbf61" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0fb3f6a1-3a4f-43e6-9a08-054fd3ab2810" />
+      </formLibraries>
       <events>
         <event name="onchange" application="false" active="false" attribute="leidos_amount">
           <Handlers>
@@ -164,11 +211,58 @@
           </Handlers>
         </event>
       </events>
-      <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="33eb9ca2-16fd-4298-aba2-02ebd6b80a63" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="ddd4836c-96f0-43aa-bc4f-1f27d5fcbf61" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0fb3f6a1-3a4f-43e6-9a08-054fd3ab2810" />
-      </formLibraries>
+      <controlDescriptions>
+        <controlDescription forControl="{60debb5a-44c5-de12-a9a1-cc7947807c63}">
+          <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" formFactor="0">
+            <parameters />
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.Grid.GridControl">
+            <parameters>
+              <data-set name="Grid">
+                <ViewId>{084EC806-ACB7-EA11-A812-000D3A7FEDBE}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>leidos_SpendProfileDetail_ParentRecovery_</RelationshipName>
+                <TargetEntityType>leidos_spendprofiledetail</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{059910DD-566C-4912-AC13-32EEA6B9F534},{084EC806-ACB7-EA11-A812-000D3A7FEDBE}</FilteredViewIds>
+              </data-set>
+              <EnableGroupBy static="true" type="Enum">yes</EnableGroupBy>
+              <EnableEditing static="true" type="Enum">yes</EnableEditing>
+              <ReflowBehavior static="true" type="Enum">GridOnly</ReflowBehavior>
+              <ListLayoutDirection static="true" type="Enum">Vertical</ListLayoutDirection>
+              <EnableSubGridAutoCollapse static="true" type="Enum">false</EnableSubGridAutoCollapse>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <HideNestedGridColumnHeader static="true" type="Enum">no</HideNestedGridColumnHeader>
+              <EnableJumpBar static="true" type="Enum">yes</EnableJumpBar>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.Grid.GridControl">
+            <parameters>
+              <data-set name="Grid">
+                <ViewId>{084EC806-ACB7-EA11-A812-000D3A7FEDBE}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>leidos_SpendProfileDetail_ParentRecovery_</RelationshipName>
+                <TargetEntityType>leidos_spendprofiledetail</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{059910DD-566C-4912-AC13-32EEA6B9F534},{084EC806-ACB7-EA11-A812-000D3A7FEDBE}</FilteredViewIds>
+              </data-set>
+              <EnableGroupBy static="true" type="Enum">yes</EnableGroupBy>
+              <EnableEditing static="true" type="Enum">yes</EnableEditing>
+              <ReflowBehavior static="true" type="Enum">GridOnly</ReflowBehavior>
+              <ListLayoutDirection static="true" type="Enum">Vertical</ListLayoutDirection>
+              <EnableSubGridAutoCollapse static="true" type="Enum">false</EnableSubGridAutoCollapse>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <HideNestedGridColumnHeader static="true" type="Enum">no</HideNestedGridColumnHeader>
+              <EnableJumpBar static="true" type="Enum">yes</EnableJumpBar>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
