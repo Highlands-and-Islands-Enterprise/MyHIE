@@ -32,17 +32,14 @@
           <attribute name="leidos_netinvoicevalue" />
           <attribute name="leidos_invoicedate" />
           <attribute name="leidos_eligible" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-            <filter type="or">
-              <condition attribute="leidos_costitemeligible" operator="eq" value="0" />
-              <condition attribute="leidos_evidenceofpayment" operator="eq" value="0" />
-              <condition attribute="leidos_evidenceofspend" operator="eq" value="0" />
-              <condition attribute="leidos_eligibleinvoicedate" operator="eq" value="0" />
-            </filter>
+          <attribute name="leidos_reasonifnoteligible" />
+          <filter type="or">
+            <condition attribute="leidos_costitemeligible" operator="eq" value="0" />
+            <condition attribute="leidos_evidenceofpayment" operator="eq" value="0" />
+            <condition attribute="leidos_evidenceofspend" operator="eq" value="0" />
+            <condition attribute="leidos_eligibleinvoicedate" operator="eq" value="0" />
           </filter>
           <attribute name="leidos_claimdetailid" />
-          <attribute name="leidos_reasonifnoteligible" />
         </entity>
       </fetch>
     </fetchxml>
@@ -50,5 +47,8 @@
     <LocalizedNames>
       <LocalizedName description="Ineligible Invoices" languagecode="1033" />
     </LocalizedNames>
+    <Descriptions>
+      <Description description="Web view" languagecode="1033" />
+    </Descriptions>
   </savedquery>
 </savedqueries>
