@@ -10,6 +10,8 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_transactionlineid">
+          <cell name="leidos_transactionlinereference" width="100" />
+          <cell name="leidos_netamount" width="100" />
           <cell name="leidos_name" width="300" />
           <cell name="createdon" width="125" />
         </row>
@@ -22,10 +24,12 @@
           <attribute name="leidos_transactionlineid" />
           <attribute name="leidos_name" />
           <attribute name="createdon" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="leidos_transactionlinereference" />
+          <attribute name="leidos_netamount" />
+          <order attribute="leidos_transactionlinereference" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
