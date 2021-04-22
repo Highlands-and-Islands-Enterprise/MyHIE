@@ -26,11 +26,11 @@
                         </labels>
                         <control id="leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" uniqueid="{b8aa357b-6b9a-65d6-012e-7be971620a51}" disabled="false" />
                       </cell>
-                      <cell id="{fedf1458-7950-4d99-80f4-52e2e526a3e2}" locklevel="0">
+                      <cell id="{518f2dda-8630-4b60-92fe-071b3182ebc2}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Total Approval Amount (HIE Gross Funding)" languagecode="1033" />
+                          <label description="Total Programme Costs" languagecode="1033" />
                         </labels>
-                        <control id="leidos_hiegrossfunding" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_hiegrossfunding" disabled="true" />
+                        <control id="leidos_totalcostscalculated" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalcostscalculated" disabled="true" uniqueid="{59be9029-0375-4a91-0b82-02c0a0d5d95b}" />
                       </cell>
                     </row>
                     <row>
@@ -40,11 +40,11 @@
                         </labels>
                         <control id="leidos_startdate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_startdate" disabled="false" uniqueid="{58ad9a55-8a0a-0cda-9eb5-cac00749552a}" />
                       </cell>
-                      <cell id="{0aed855f-722b-4d44-b1e5-fe362610f14a}" locklevel="0">
+                      <cell id="{fedf1458-7950-4d99-80f4-52e2e526a3e2}" locklevel="0">
                         <labels>
-                          <label description="HIE Nett Amount (Total Net GIA)" languagecode="1033" />
+                          <label description="Total Approval Amount (HIE Gross Funding)" languagecode="1033" />
                         </labels>
-                        <control id="leidos_totalnetgia" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalnetgia" disabled="true" />
+                        <control id="leidos_hiegrossfunding" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_hiegrossfunding" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -54,10 +54,11 @@
                         </labels>
                         <control id="leidos_enddate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="leidos_enddate" disabled="false" uniqueid="{72827079-a904-7868-66cd-4ea212d91000}" />
                       </cell>
-                      <cell locklevel="0" id="{a6e46d01-24ca-4b9d-9249-84dfaec281c2}" showlabel="false">
+                      <cell id="{41b5bdec-a623-00ee-8429-0b385c9c03d1}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Recoveries" languagecode="1033" />
                         </labels>
+                        <control id="leidos_recoveries" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_recoveries" disabled="true" uniqueid="{71a2e1c6-6434-946a-aec1-31b124604e8c}" />
                       </cell>
                     </row>
                     <row>
@@ -76,10 +77,11 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell locklevel="0" id="{061a2f28-8d79-40f2-95e8-fad65f60f02c}" showlabel="false">
+                      <cell id="{0aed855f-722b-4d44-b1e5-fe362610f14a}" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="HIE Nett Amount " languagecode="1033" />
                         </labels>
+                        <control id="leidos_totalnetgia" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalnetgia" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -93,10 +95,24 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell locklevel="0" id="{e4ff836f-b7c3-4561-8a6d-e05670cb7762}" showlabel="false">
+                      <cell id="{d7413d29-1422-52e3-8bcc-d5ed61a3594d}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Total Spend (Associated Projects)" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalprogrammespend" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalprogrammespend" disabled="true" uniqueid="{c8d96346-1044-035d-6892-29887ad69553}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{7931310b-659a-44b9-88f9-587ad6db2010}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
+                      </cell>
+                      <cell id="{3420e6c9-9bd8-17ba-dbae-1b51badbb04e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Total Approvals (Associated Projects)" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_totalapprovalsassociatedprojects" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalapprovalsassociatedprojects" disabled="true" uniqueid="{15e017d7-b22a-6509-2a07-5abb706e066e}" />
                       </cell>
                     </row>
                   </rows>
@@ -156,11 +172,10 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{518f2dda-8630-4b60-92fe-071b3182ebc2}" showlabel="true" locklevel="0">
+                      <cell id="{a14e54b3-d590-3abb-66b4-77dd9331395a}" showlabel="false">
                         <labels>
-                          <label description="Total Programme Costs" languagecode="1033" />
+                          <label description="" languagecode="1033" />
                         </labels>
-                        <control id="leidos_totalcostscalculated" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalcostscalculated" disabled="true" uniqueid="{59be9029-0375-4a91-0b82-02c0a0d5d95b}" />
                       </cell>
                       <cell id="{7c3cbb94-487e-44d4-ab97-e65ddc280213}" showlabel="true" locklevel="0">
                         <labels>
@@ -170,7 +185,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{a14e54b3-d590-3abb-66b4-77dd9331395a}" showlabel="false">
+                      <cell id="{02dc57b9-b929-6209-2d93-4284ed2dc59d}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -183,7 +198,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{02dc57b9-b929-6209-2d93-4284ed2dc59d}" showlabel="false">
+                      <cell locklevel="0" id="{6f6aebda-618b-4028-ab6d-7fc811b74917}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -394,33 +409,6 @@
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
-                      </cell>
-                    </row>
-                  </rows>
-                </section>
-                <section name="tab_cost_section_4" showlabel="false" showbar="false" locklevel="0" id="{c2ce0c11-5d41-1782-69e0-7ee75e919133}" IsUserDefined="0" layout="varwidth" columns="111" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
-                  <labels>
-                    <label description="Section" languagecode="1033" />
-                  </labels>
-                  <rows>
-                    <row>
-                      <cell id="{41b5bdec-a623-00ee-8429-0b385c9c03d1}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Recoveries" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_recoveries" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_recoveries" disabled="true" uniqueid="{71a2e1c6-6434-946a-aec1-31b124604e8c}" />
-                      </cell>
-                      <cell id="{d7413d29-1422-52e3-8bcc-d5ed61a3594d}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Total Spend (Associated Projects)" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_totalprogrammespend" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalprogrammespend" disabled="true" uniqueid="{c8d96346-1044-035d-6892-29887ad69553}" />
-                      </cell>
-                      <cell id="{3420e6c9-9bd8-17ba-dbae-1b51badbb04e}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Total Approvals (Associated Projects)" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_totalapprovalsassociatedprojects" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_totalapprovalsassociatedprojects" disabled="true" uniqueid="{15e017d7-b22a-6509-2a07-5abb706e066e}" />
                       </cell>
                     </row>
                   </rows>
