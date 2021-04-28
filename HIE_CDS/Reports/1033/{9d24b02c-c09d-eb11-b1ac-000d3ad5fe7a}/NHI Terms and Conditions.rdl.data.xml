@@ -1,6 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Report>
   <name>NHI Terms and Conditions</name>
+  <defaultfilter>
+    <ReportFilter>
+      <ReportEntity paramname="CRM_Filteredleidos_Project" donotconvert="1">
+        <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+          <entity name="leidos_project">
+            <all-attributes />
+            <filter type="and">
+              <condition attribute="leidos_projectid" operator="eq" uiname="Application Validation testing SP" uitype="leidos_project" value="{96A37B88-F587-EB11-A812-002248419EC4}" />
+            </filter>
+            <link-entity name="leidos_application" from="leidos_applicationid" to="leidos_parentapplication" alias="aa" />
+            <link-entity name="account" from="accountid" to="leidos_parentaccount" alias="ab" />
+          </entity>
+        </fetch>
+      </ReportEntity>
+    </ReportFilter>
+  </defaultfilter>
   <iscustomreport>0</iscustomreport>
   <filename>NHI Terms and Conditions.rdl</filename>
   <languagecode>1033</languagecode>
