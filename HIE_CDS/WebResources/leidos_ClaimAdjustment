@@ -1,0 +1,51 @@
+var Leidos = window.Leidos || {};
+
+
+
+Leidos.PaymentClaimilterview = function(executionContext) {
+    "use strict";
+
+    var formContext = executionContext.getFormContext();   
+    var viewId = formContext.getControl("leidos_paymentclaim").getDefaultView();
+    var entityName = "leidos_paymentclaim";
+    var viewDisplayName = "Payment Claim Selection";
+    var parentProjectID = formContext.getAttribute("leidos_project").getValue()[0].id;
+    /* var id = formContext.data.entity.getId(); */
+
+    var fetchData = {
+		statuscode: "2",
+		leidos_projectid: parentProjectID
+	};
+	var fetchXml = [
+"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='false'>",
+"  <entity name='leidos_paymentclaim'>",
+"    <attribute name='leidos_paymentclaimid' />",
+"    <attribute name='leidos_name' />",
+"    <order attribute='leidos_name' descending='false' />",
+"    <filter type='and'>",
+"      <condition attribute='statuscode' operator='ne' value='", fetchData.statuscode/*2*/, "'/>",
+"    </filter>",
+"    <link-entity name='leidos_projectfunding' from='leidos_projectfundingid' to='leidos_costfundingline' link-type='inner' alias='av'>",
+"      <link-entity name='leidos_projectcost' from='leidos_projectcostid' to='leidos_parentprojectcost' link-type='inner' alias='aw'>",
+"        <link-entity name='leidos_project' from='leidos_projectid' to='leidos_parentproject' link-type='inner' alias='ax'>",
+"          <filter type='and'>",
+"            <condition attribute='leidos_projectid' operator='eq' value='", fetchData.leidos_projectid, "'/>",
+"          </filter>",
+"        </link-entity>",
+"      </link-entity>",
+"    </link-entity>",
+"  </entity>",
+"</fetch>",
+	].join("");
+
+ 
+   
+    var layoutXml = "<grid name='resultset' object='10360' jump='leidos_name' select='1' icon='1' preview='1' >" 
+    +"<row name='result' id='leidos_paymentclaimid' >"
+    +"<cell name='leidos_name' width='300' />"
+    +"</row></grid>";
+
+
+
+    setTimeout(function() {formContext.getControl("leidos_paymentclaim").addCustomView(viewId, entityName, viewDisplayName, fetchXml, layoutXml, true)}, 1000);
+}
