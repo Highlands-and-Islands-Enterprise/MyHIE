@@ -21,7 +21,6 @@
         <entity name="leidos_geographicdistribution">
           <attribute name="leidos_geographicdistributionid" />
           <attribute name="leidos_location" />
-          <order attribute="leidos_location" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
@@ -30,6 +29,7 @@
             <condition attribute="leidos_parentlocation" operator="like" value="{0}" />
           </filter>
           <attribute name="leidos_parentlocation" />
+          <order attribute="leidos_location" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
