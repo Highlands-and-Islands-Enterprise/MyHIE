@@ -11,7 +11,7 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_loanid">
           <cell name="leidos_loanreference" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="a_c2f18ff41f1deb11a8130022483fae82.leidos_parentproject" width="125" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_project" width="100" />
           <cell name="leidos_capitaloutstanding" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="leidos_interestdue" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="leidos_dateofnextrepayment" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
@@ -32,11 +32,9 @@
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="statuscode" operator="ne" value="100000000" />
           </filter>
-          <link-entity alias="a_c2f18ff41f1deb11a8130022483fae82" name="leidos_projectfunding" from="leidos_projectfundingid" to="leidos_parentfunding" link-type="outer" visible="false">
-            <attribute name="leidos_parentproject" />
-          </link-entity>
           <attribute name="leidos_dateofnextrepayment" />
           <attribute name="leidos_loanid" />
+          <attribute name="leidos_project" />
         </entity>
       </fetch>
     </fetchxml>

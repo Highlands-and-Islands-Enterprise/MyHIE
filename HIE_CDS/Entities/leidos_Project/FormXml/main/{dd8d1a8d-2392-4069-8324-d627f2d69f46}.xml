@@ -1481,7 +1481,7 @@
         </tab>
         <tab name="LegalUndertakings" id="{7d92a395-c8e2-44ce-e471-e15db0799b58}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true">
           <labels>
-            <label description="Legal Undertakings" languagecode="1033" />
+            <label description="Legal Undertakings/Loans" languagecode="1033" />
           </labels>
           <columns>
             <column width="100%">
@@ -1492,7 +1492,7 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell id="{e2c9dc81-c4ab-49c3-6ed1-42b791d49417}" showlabel="false" colspan="3" auto="false" rowspan="6">
+                      <cell id="{e2c9dc81-c4ab-49c3-6ed1-42b791d49417}" showlabel="true" colspan="3" auto="false" rowspan="6">
                         <labels>
                           <label description="Legal Undertakings (Project)" languagecode="1033" />
                         </labels>
@@ -1540,6 +1540,29 @@
                           <label description="Move to Clear to pay" languagecode="1033" />
                         </labels>
                         <control id="leidos_movetocleartopay" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_movetocleartopay" disabled="true" uniqueid="{6e539b57-7b70-4d5d-a16a-215bedf586fd}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="LegalUndertakings_section_loans" id="70e6c569-e70f-4407-98a4-5bb97a8c94c3" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
+                  <labels>
+                    <label description="Loans" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{be8828f9-a14f-4c82-a8db-bbd8fdcebd54}" rowspan="1" colspan="1" showlabel="false">
+                        <labels>
+                          <label description="Loans" languagecode="1033" />
+                        </labels>
+                        <control id="Subgrid_loans" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_loan</TargetEntityType>
+                            <ViewId>{87EAE0EB-89AD-EB11-8236-000D3AD5CE74}</ViewId>
+                            <ViewIds>{AC3324A2-19A5-43BE-B910-A1582B1E1D99},{4ADE8A78-291D-EB11-A813-0022483FAE82},{87EAE0EB-89AD-EB11-8236-000D3AD5CE74}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_Loan_project_leidos_Project</RelationshipName>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                   </rows>
