@@ -30,13 +30,16 @@
           <attribute name="leidos_activity" />
           <attribute name="statuscode" />
           <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_projectmeasureid" />
           <filter type="and">
             <filter type="or">
               <condition attribute="statecode" operator="eq" value="0" />
-              <condition attribute="statuscode" operator="eq" value="445260003" />
+              <condition attribute="statuscode" operator="in">
+                <value>445260003</value>
+                <value>2</value>
+              </condition>
             </filter>
           </filter>
-          <attribute name="leidos_projectmeasureid" />
         </entity>
       </fetch>
     </fetchxml>

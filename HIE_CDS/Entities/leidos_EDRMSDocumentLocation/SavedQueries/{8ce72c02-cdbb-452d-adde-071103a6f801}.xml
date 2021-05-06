@@ -11,6 +11,9 @@
       <grid name="resultset" jump="leidos_edrmsdocumentlocationname" select="1" icon="1" preview="1">
         <row name="result" id="leidos_edrmsdocumentlocationid">
           <cell name="leidos_edrmsdocumentlocationname" width="300" />
+          <cell name="leidos_edrmsid" width="100" />
+          <cell name="leidos_edrmsparentid" width="150" />
+          <cell name="leidos_edrmsurl" width="300" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -26,6 +29,9 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="leidos_edrmsparentid" />
+          <attribute name="leidos_edrmsurl" />
+          <attribute name="leidos_edrmsid" />
         </entity>
       </fetch>
     </fetchxml>
