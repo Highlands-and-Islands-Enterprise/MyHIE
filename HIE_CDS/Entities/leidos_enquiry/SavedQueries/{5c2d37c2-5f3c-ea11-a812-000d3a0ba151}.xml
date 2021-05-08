@@ -10,11 +10,14 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_enquiryid">
-          <cell name="leidos_referencenumber" width="100" />
-          <cell name="leidos_name" width="200" />
+          <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="leidos_account" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_contact" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_natureofenquiry" width="200" />
           <cell name="statuscode" width="150" />
-          <cell name="createdon" width="150" />
-          <cell name="ownerid" width="200" />
         </row>
       </grid>
     </layoutxml>
@@ -27,8 +30,12 @@
           <attribute name="statuscode" />
           <attribute name="createdon" />
           <attribute name="ownerid" />
+          <attribute name="leidos_account" />
+          <attribute name="leidos_contact" />
+          <attribute name="statecode" />
+          <attribute name="leidos_natureofenquiry" />
           <order attribute="createdon" descending="true" />
-          <attribute name="leidos_referencenumber" />
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

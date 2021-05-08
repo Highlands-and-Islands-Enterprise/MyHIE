@@ -10,12 +10,20 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_pipelineprojectid">
-          <cell name="leidos_name" width="300" />
-          <cell name="leidos_pipelineprojectreference" width="100" />
-          <cell name="leidos_client" width="100" />
-          <cell name="leidos_anticipatedprojectcost" width="100" />
-          <cell name="leidos_anticipatedprojectfunding" width="100" />
           <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="leidos_client" width="100" />
+          <cell name="leidos_pipelineprojectreference" width="200" />
+          <cell name="leidos_name" width="300" />
+          <cell name="statuscode" width="125" />
+          <cell name="leidos_anticipatedprojectcost" width="200" />
+          <cell name="leidos_anticipatedprojectfunding" width="200" />
+          <cell name="leidos_costtype" width="100" />
+          <cell name="leidos_fundingsource" width="125" />
+          <cell name="leidos_anticipatedprojectstartdate" width="125" />
+          <cell name="leidos_team" width="100" />
+          <cell name="leidos_sourceenquiry" width="150" />
         </row>
       </grid>
     </layoutxml>
@@ -28,7 +36,6 @@
           <attribute name="leidos_client" />
           <attribute name="leidos_anticipatedprojectcost" />
           <attribute name="leidos_anticipatedprojectfunding" />
-          <order attribute="createdon" descending="true" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="ownerid" operator="eq-userid" />
@@ -36,6 +43,15 @@
           </filter>
           <attribute name="leidos_pipelineprojectreference" />
           <attribute name="leidos_pipelineprojectid" />
+          <attribute name="leidos_costtype" />
+          <attribute name="leidos_fundingsource" />
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
+          <attribute name="leidos_team" />
+          <attribute name="statecode" />
+          <attribute name="leidos_sourceenquiry" />
+          <attribute name="leidos_anticipatedprojectstartdate" />
+          <order attribute="leidos_pipelineprojectreference" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

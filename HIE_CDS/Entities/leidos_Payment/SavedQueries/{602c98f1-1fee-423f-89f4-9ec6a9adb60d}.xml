@@ -10,8 +10,13 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_paymentid">
-          <cell name="leidos_name" width="300" />
           <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="a_e892fb2216754b8a8e57224d5e78f8e5.name" width="125" />
+          <cell name="a_43313a4939be48969b8400e1f6f732eb.leidos_name" width="125" />
+          <cell name="a_43313a4939be48969b8400e1f6f732eb.leidos_projectreference" width="125" />
+          <cell name="leidos_name" width="300" />
         </row>
       </grid>
     </layoutxml>
@@ -26,6 +31,15 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="ownerid" />
+          <attribute name="statuscode" />
+          <link-entity alias="a_e892fb2216754b8a8e57224d5e78f8e5" name="account" to="leidos_parentaccount" from="accountid" link-type="outer" visible="false">
+            <attribute name="name" />
+          </link-entity>
+          <link-entity alias="a_43313a4939be48969b8400e1f6f732eb" name="leidos_project" to="leidos_parentproject" from="leidos_projectid" link-type="outer" visible="false">
+            <attribute name="leidos_name" />
+            <attribute name="leidos_projectreference" />
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

@@ -10,9 +10,19 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectid">
-          <cell name="leidos_name" width="200" />
-          <cell name="leidos_supportitemtype" width="100" />
-          <cell name="leidos_clientpublicfundingtotal" width="150" />
+          <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="leidos_parentaccount" width="125" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_projectreference" width="125" />
+          <cell name="statuscode" width="150" />
+          <cell name="leidos_parentapplication" width="125" />
+          <cell name="leidos_totalcostscalculated" width="150" />
+          <cell name="leidos_totalhiefunding" width="150" />
+          <cell name="leidos_dateofdecision" width="150" />
+          <cell name="leidos_projectenddate" width="150" />
+          <cell name="leidos_hieteam" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -21,8 +31,6 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="leidos_project">
           <attribute name="leidos_name" />
-          <attribute name="leidos_supportitemtype" />
-          <attribute name="leidos_clientpublicfundingtotal" />
           <attribute name="leidos_projectid" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
@@ -33,6 +41,19 @@
               <condition attribute="statuscode" operator="eq" value="445260001" />
             </filter>
           </filter>
+          <attribute name="createdon" />
+          <attribute name="leidos_parentaccount" />
+          <attribute name="leidos_parentapplication" />
+          <attribute name="leidos_totalcostscalculated" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_projectreference" />
+          <attribute name="leidos_dateofdecision" />
+          <attribute name="leidos_hieteam" />
+          <attribute name="ownerid" />
+          <attribute name="statecode" />
+          <attribute name="leidos_totalhiefunding" />
+          <attribute name="leidos_projectenddate" />
+          <order attribute="leidos_projectreference" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

@@ -9,12 +9,16 @@
     <layoutxml>
       <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
         <row name="result" id="activityid" multiobjectidfield="activitytypecode">
-          <cell name="activitytypecode" width="100" />
-          <cell name="subject" width="300" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="150" />
+          <cell name="scheduledend" width="100" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="regardingobjectid" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="actualend" width="100" />
+          <cell name="subject" width="300" />
+          <cell name="activitytypecode" width="110" />
           <cell name="instancetypecode" width="100" ishidden="1" />
           <cell name="community" width="100" ishidden="1" />
+          <cell name="prioritycode" width="100" />
+          <cell name="modifiedon" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -28,7 +32,6 @@
           <attribute name="actualend" />
           <attribute name="instancetypecode" />
           <attribute name="community" />
-          <order attribute="actualend" descending="true" />
           <filter type="and">
             <condition attribute="statecode" operator="in">
               <value>2</value>
@@ -47,6 +50,12 @@
             <attribute name="delayedemailsendtime" />
           </link-entity>
           <attribute name="activityid" />
+          <attribute name="statecode" />
+          <attribute name="scheduledend" />
+          <attribute name="ownerid" />
+          <attribute name="prioritycode" />
+          <attribute name="modifiedon" />
+          <order attribute="subject" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

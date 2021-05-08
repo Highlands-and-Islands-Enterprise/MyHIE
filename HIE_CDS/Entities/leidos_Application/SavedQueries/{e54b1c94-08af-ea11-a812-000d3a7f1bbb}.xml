@@ -10,10 +10,16 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_applicationid">
+          <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="leidos_parentaccount" width="125" />
           <cell name="leidos_name" width="300" />
-          <cell name="leidos_parentaccount" width="100" />
-          <cell name="leidos_applicationreference" width="100" />
-          <cell name="statuscode" width="100" />
+          <cell name="leidos_applicationreference" width="150" />
+          <cell name="statuscode" width="125" />
+          <cell name="leidos_budgetapprovaldecisionoutcome" width="200" />
+          <cell name="leidos_projectsapprovedbudgettotal" width="200" />
+          <cell name="leidos_sourceenquiry" width="125" />
         </row>
       </grid>
     </layoutxml>
@@ -36,6 +42,13 @@
               <condition attribute="statuscode" operator="eq" value="445260009" />
             </filter>
           </filter>
+          <attribute name="createdon" />
+          <attribute name="ownerid" />
+          <attribute name="statecode" />
+          <attribute name="leidos_budgetapprovaldecisionoutcome" />
+          <attribute name="leidos_sourceenquiry" />
+          <attribute name="leidos_projectsapprovedbudgettotal" />
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

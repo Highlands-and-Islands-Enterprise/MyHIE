@@ -10,13 +10,19 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectid">
-          <cell name="leidos_parentaccount" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_name" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_projectreference" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_anticipatedhiefunding" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_totalcostscalculated" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="statuscode" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_dateofdecision" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="leidos_parentaccount" width="125" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_projectreference" width="125" />
+          <cell name="statuscode" width="150" />
+          <cell name="leidos_parentapplication" width="125" />
+          <cell name="leidos_totalcostscalculated" width="150" />
+          <cell name="leidos_totalhiefunding" width="150" />
+          <cell name="leidos_dateofdecision" width="150" />
+          <cell name="leidos_projectenddate" width="150" />
+          <cell name="leidos_hieteam" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -29,14 +35,20 @@
           <attribute name="leidos_totalcostscalculated" />
           <attribute name="statuscode" />
           <attribute name="leidos_projectreference" />
-          <attribute name="leidos_anticipatedhiefunding" />
           <attribute name="leidos_dateofdecision" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="ownerid" operator="eq-userid" />
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
           <attribute name="leidos_projectid" />
+          <attribute name="createdon" />
+          <attribute name="leidos_parentapplication" />
+          <attribute name="leidos_hieteam" />
+          <attribute name="ownerid" />
+          <attribute name="statecode" />
+          <attribute name="leidos_totalhiefunding" />
+          <attribute name="leidos_projectenddate" />
+          <order attribute="leidos_projectreference" descending="true" />
         </entity>
       </fetch>
     </fetchxml>

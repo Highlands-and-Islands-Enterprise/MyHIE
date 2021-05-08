@@ -10,14 +10,17 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_projectamendmentid">
-          <cell name="leidos_name" width="300" />
-          <cell name="leidos_projectamendmentreference" width="100" />
-          <cell name="a_fd7a929b10c1460e993e9c88e6df2625.leidos_projectreference" width="100" />
-          <cell name="leidos_amendmenttype" width="100" />
-          <cell name="leidos_budgetsubtype" width="100" />
-          <cell name="leidos_project" width="100" />
-          <cell name="statuscode" width="100" />
           <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="leidos_parentaccount" width="125" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_projectamendmentreference" width="150" />
+          <cell name="leidos_amendmenttype" width="150" />
+          <cell name="statuscode" width="125" />
+          <cell name="leidos_project" width="100" />
+          <cell name="leidos_projectamendmentdecisionoutcome" width="150" />
+          <cell name="leidos_dateofdecision" width="125" />
         </row>
       </grid>
     </layoutxml>
@@ -32,14 +35,15 @@
             <condition attribute="statecode" operator="eq" value="1" />
           </filter>
           <attribute name="leidos_amendmenttype" />
-          <attribute name="leidos_budgetsubtype" />
           <attribute name="leidos_project" />
           <attribute name="statuscode" />
           <attribute name="leidos_projectamendmentreference" />
+          <attribute name="ownerid" />
+          <attribute name="statecode" />
+          <attribute name="leidos_parentaccount" />
+          <attribute name="leidos_projectamendmentdecisionoutcome" />
+          <attribute name="leidos_dateofdecision" />
           <order attribute="createdon" descending="true" />
-          <link-entity alias="a_fd7a929b10c1460e993e9c88e6df2625" name="leidos_project" to="leidos_project" from="leidos_projectid" link-type="outer" visible="false">
-            <attribute name="leidos_projectreference" />
-          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

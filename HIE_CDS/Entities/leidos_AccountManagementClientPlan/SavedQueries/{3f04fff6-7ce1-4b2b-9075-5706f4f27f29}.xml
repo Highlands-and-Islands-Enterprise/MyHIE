@@ -10,23 +10,19 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_accountmanagementclientplanid">
-          <cell name="leidos_name" width="300" />
-          <cell name="leidos_relatedaccount" width="100" />
-          <cell name="leidos_accountmanagementrecord" width="100" />
-          <cell name="leidos_financialyear" width="100" />
-          <cell name="leidos_amcpreference" width="100" />
-          <cell name="statuscode" width="100" />
-          <cell name="leidos_productivity" width="100" />
-          <cell name="leidos_valueaddedtonationalgrowth" width="100" />
-          <cell name="leidos_totalincome" width="100" />
-          <cell name="leidos_ftetotal" width="100" />
-          <cell name="leidos_countofcurrenttradinggeography" width="100" />
-          <cell name="leidos_countoftargettradinggeography" width="100" />
-          <cell name="leidos_actionplancomplete" width="100" />
-          <cell name="leidos_reviewsummarycomplete" width="100" />
-          <cell name="leidos_clientplandetailscomplete" width="100" />
-          <cell name="leidos_sharewithcustomer" width="100" />
           <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="leidos_relatedaccount" width="125" />
+          <cell name="leidos_amcpreference" width="125" />
+          <cell name="leidos_accountmanagementrecord" width="150" />
+          <cell name="leidos_financialyear" width="125" />
+          <cell name="leidos_growthplancomplete" width="150" />
+          <cell name="leidos_clientplandetailscomplete" width="150" />
+          <cell name="leidos_actionplancomplete" width="125" />
+          <cell name="leidos_ladderscomplete" width="100" />
+          <cell name="leidos_submittedon" width="125" />
+          <cell name="leidos_clientplanapprovedon" width="125" />
         </row>
       </grid>
     </layoutxml>
@@ -34,28 +30,23 @@
     <fetchxml>
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_accountmanagementclientplan">
-          <attribute name="leidos_name" />
           <attribute name="createdon" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
-          <order attribute="leidos_name" descending="false" />
           <attribute name="leidos_actionplancomplete" />
-          <attribute name="leidos_reviewsummarycomplete" />
           <attribute name="leidos_clientplandetailscomplete" />
           <attribute name="leidos_accountmanagementrecord" />
           <attribute name="leidos_financialyear" />
-          <attribute name="leidos_sharewithcustomer" />
-          <attribute name="leidos_totalincome" />
-          <attribute name="leidos_countofcurrenttradinggeography" />
-          <attribute name="leidos_countoftargettradinggeography" />
-          <attribute name="leidos_productivity" />
-          <attribute name="leidos_valueaddedtonationalgrowth" />
           <attribute name="leidos_relatedaccount" />
-          <attribute name="statuscode" />
           <attribute name="leidos_amcpreference" />
-          <attribute name="leidos_ftetotal" />
           <attribute name="leidos_accountmanagementclientplanid" />
+          <attribute name="ownerid" />
+          <attribute name="statecode" />
+          <attribute name="leidos_growthplancomplete" />
+          <attribute name="leidos_ladderscomplete" />
+          <attribute name="leidos_submittedon" />
+          <attribute name="leidos_clientplanapprovedon" />
         </entity>
       </fetch>
     </fetchxml>

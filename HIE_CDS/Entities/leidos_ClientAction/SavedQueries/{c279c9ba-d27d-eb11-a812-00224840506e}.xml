@@ -10,17 +10,18 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_title" select="1" icon="1" preview="1">
         <row name="result" id="leidos_clientactionid">
-          <cell name="leidos_title" width="300" />
-          <cell name="leidos_clientactionreference" width="100" />
+          <cell name="createdon" width="100" />
+          <cell name="ownerid" width="100" />
+          <cell name="statuscode" width="150" />
           <cell name="leidos_parentaccount" width="100" />
+          <cell name="leidos_title" width="300" />
           <cell name="leidos_clientneed" width="100" />
           <cell name="leidos_solution" width="100" />
+          <cell name="leidos_relatedproject" width="125" />
           <cell name="leidos_actionby" width="100" />
           <cell name="leidos_actiontype" width="100" />
-          <cell name="leidos_expectedcompletiondate" width="100" />
-          <cell name="leidos_stateaidarticle" width="100" />
-          <cell name="leidos_stateaidtype" width="100" />
-          <cell name="leidos_stateaidvalue" width="100" />
+          <cell name="leidos_expectedcompletiondate" width="150" />
+          <cell name="leidos_actualcompletiondate" width="150" />
         </row>
       </grid>
     </layoutxml>
@@ -34,17 +35,18 @@
           <attribute name="leidos_actionby" />
           <attribute name="leidos_actiontype" />
           <attribute name="leidos_expectedcompletiondate" />
-          <attribute name="leidos_stateaidarticle" />
-          <attribute name="leidos_stateaidtype" />
-          <attribute name="leidos_stateaidvalue" />
           <attribute name="leidos_parentaccount" />
-          <attribute name="leidos_clientactionreference" />
-          <order attribute="leidos_title" descending="false" />
           <filter type="and">
             <condition attribute="statuscode" operator="eq" value="445260000" />
             <condition attribute="ownerid" operator="eq-userid" />
           </filter>
           <attribute name="leidos_clientactionid" />
+          <attribute name="statuscode" />
+          <attribute name="ownerid" />
+          <attribute name="createdon" />
+          <attribute name="leidos_relatedproject" />
+          <attribute name="leidos_actualcompletiondate" />
+          <order attribute="leidos_title" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

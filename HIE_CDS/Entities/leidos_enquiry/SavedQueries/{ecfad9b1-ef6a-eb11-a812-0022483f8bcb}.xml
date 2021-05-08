@@ -10,15 +10,14 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_enquiryid">
-          <cell name="leidos_name" width="300" />
-          <cell name="leidos_referencenumber" width="143" />
+          <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
           <cell name="leidos_account" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
           <cell name="leidos_contact" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_enquiryroutingtopersonorteam" width="100" />
-          <cell name="leidos_enquirymessage" width="300" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
-          <cell name="leidos_enquirysource" width="100" />
-          <cell name="statuscode" width="100" />
-          <cell name="createdon" width="125" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_natureofenquiry" width="200" />
+          <cell name="statuscode" width="150" />
         </row>
       </grid>
     </layoutxml>
@@ -30,13 +29,7 @@
           <attribute name="createdon" />
           <attribute name="leidos_account" />
           <attribute name="leidos_contact" />
-          <attribute name="leidos_enquirymessage" />
           <attribute name="statuscode" />
-          <attribute name="leidos_enquirysource" />
-          <attribute name="leidos_referencenumber" />
-          <attribute name="leidos_enquiryroutingtopersonorteam" />
-          <order attribute="createdon" descending="true" />
-          <order attribute="leidos_name" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
             <condition attribute="statuscode" operator="in">
@@ -45,6 +38,11 @@
             </condition>
           </filter>
           <attribute name="leidos_enquiryid" />
+          <attribute name="ownerid" />
+          <attribute name="statecode" />
+          <attribute name="leidos_natureofenquiry" />
+          <order attribute="createdon" descending="true" />
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
