@@ -1007,7 +1007,7 @@
           <columns>
             <column width="100%">
               <sections>
-                <section name="FinanceInformation" id="ec8c61f0-5cd8-4fcb-8ad4-3c0ed5a38372" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                <section name="FinanceInformation" id="ec8c61f0-5cd8-4fcb-8ad4-3c0ed5a38372" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" visible="false">
                   <labels>
                     <label description="Finance Information for last two Years" languagecode="1033" />
                   </labels>
@@ -1083,7 +1083,28 @@
                     </row>
                   </rows>
                 </section>
-                <section name="TradingGeographies" id="5f2a4f95-5cbc-4e42-adbf-38c7ac8408e9" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                <section name="Details_section_Finance" id="6155fc19-b21c-414b-9a53-52640d816a21" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115">
+                  <labels>
+                    <label description="Finance Information" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{2626a42b-8596-4b1b-accb-2b6c1d34f5f2}" locklevel="0">
+                        <labels>
+                          <label description="Turnover" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_turnover" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_turnover" disabled="false" />
+                      </cell>
+                      <cell id="{e6f4d151-6463-43db-a0b3-0b1977de3d34}" locklevel="0">
+                        <labels>
+                          <label description="No of Employees" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_noofemployees" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_noofemployees" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="TradingGeographies" id="5f2a4f95-5cbc-4e42-adbf-38c7ac8408e9" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" visible="false">
                   <labels>
                     <label description="Trading Geographies" languagecode="1033" />
                   </labels>
@@ -2602,6 +2623,7 @@
             <Handler functionName="Leidos.filterLookupContact" libraryName="leidos_AccountPrimaryContactFilter" handlerUniqueId="{d36e7b6e-40d0-3701-95eb-dcecba916d0e}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.filterSICLookup" libraryName="leidos_AccountPrimaryContactFilter" handlerUniqueId="{d0b31ec7-c49b-1867-5c7e-160a1b0b9307}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.SetSIC1Views" libraryName="leidos_AccountPrimaryContactFilter" handlerUniqueId="{d7b360db-9819-eb10-dd91-d4b113895bd5}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.filterBpfLookup" libraryName="leidos_common" handlerUniqueId="{9a20086a-8db8-4964-90df-6abeed2d7b81}" enabled="true" parameters="&quot;leidos_sector&quot;, &quot;leidos_subsector&quot;, &quot;14f88737-55cb-ea11-a812-000d3a7f1bbb&quot;, &quot;&lt;filter type='and'&gt;&lt;condition attribute='leidos_parentsector' operator='eq' value='{{id}}' /&gt;&lt;/filter&gt;&quot; " passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_supplierorginisation">
