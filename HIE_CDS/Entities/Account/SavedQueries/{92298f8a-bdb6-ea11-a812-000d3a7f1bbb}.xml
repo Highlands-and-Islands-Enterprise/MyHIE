@@ -10,20 +10,12 @@
     <layoutxml>
       <grid name="resultset" jump="name" select="1" icon="1" preview="1">
         <row name="result" id="accountid">
-          <cell name="createdon" width="100" />
-          <cell name="ownerid" width="100" />
-          <cell name="statecode" width="100" />
           <cell name="name" width="300" />
           <cell name="primarycontactid" width="150" />
-          <cell name="leidos_organisationtype" width="150" />
-          <cell name="leidos_sector" width="100" />
-          <cell name="leidos_segmentation" width="125" />
-          <cell name="leidos_areaoffice" width="100" />
-          <cell name="leidos_currentamrrecord" width="175" />
-          <cell name="statuscode" width="125" />
-          <cell name="leidos_financialyearend" width="150" />
-          <cell name="modifiedon" width="100" />
-          <cell name="leidos_hmsaccountid" width="150" />
+          <cell name="leidos_accountreference" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_hieteamallocation" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_projectofficerallocation" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="statuscode" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -32,24 +24,16 @@
       <fetch version="1.0" output-format="xml-platform" mapping="logical">
         <entity name="account">
           <attribute name="name" />
+          <order attribute="name" descending="false" />
           <attribute name="primarycontactid" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="leidos_projectofficerallocation" />
+          <attribute name="leidos_hieteamallocation" />
+          <attribute name="leidos_accountreference" />
           <attribute name="accountid" />
           <attribute name="statuscode" />
-          <attribute name="leidos_organisationtype" />
-          <attribute name="leidos_segmentation" />
-          <attribute name="createdon" />
-          <attribute name="ownerid" />
-          <attribute name="statecode" />
-          <attribute name="leidos_sector" />
-          <attribute name="leidos_areaoffice" />
-          <attribute name="leidos_currentamrrecord" />
-          <attribute name="leidos_financialyearend" />
-          <attribute name="modifiedon" />
-          <attribute name="leidos_hmsaccountid" />
-          <order attribute="name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
