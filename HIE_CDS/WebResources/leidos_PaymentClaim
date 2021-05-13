@@ -9,12 +9,32 @@ Leidos.CostFundingLineFilterview = function(executionContext) {
     var viewId = formContext.getControl("leidos_costfundingline").getDefaultView();
     var entityName = "leidos_projectfunding";
     var viewDisplayName = "Cost Funding";
-    /*var parentClaim = formContext.getAttribute("leidos_parentclaim").getValue()[0].id;*/
-    var id = formContext.data.entity.getId();
+    var parentId = null;
+	
+    var parentClaimField = formContext.getAttribute("leidos_parentclaim");
+	if (parentClaimField != null)
+	{
+		var claimValue = parentClaimField.getValue();
+		if (claimValue != null)
+		{
+			parentId = claimValue[0].id;
+		}
+	}
+	
+    var parentPaymentField = formContext.getAttribute("leidos_parentpayment");
+	if (parentPaymentField != null)
+	{
+		var paymentValue = parentPaymentField.getValue();
+		if (paymentValue != null)
+		{
+			parentId = paymentValue[0].id;
+		}
+	}
+    //var id = formContext.data.entity.getId();
 
     var fetchData = {
 		statuscode: "2",
-		leidos_paymentclaimid: id
+		leidos_parentid: parentId
 	};
 	var fetchXml = [
 "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='true'>",
@@ -25,21 +45,15 @@ Leidos.CostFundingLineFilterview = function(executionContext) {
 "    <filter type='and'>",
 "      <condition attribute='statuscode' operator='ne' value='", fetchData.statuscode, "'/>",
 " 	  <filter type='or' >",
-"		<condition attribute='leidos_paymentclaimid' operator='eq' value='", fetchData.leidos_paymentclaimid, "' entityname='pc1'/>",
-"		<condition attribute='leidos_paymentclaimid' operator='eq' value='", fetchData.leidos_paymentclaimid, "' entityname='pc2'/>",
+"		<condition attribute='leidos_claimid' operator='eq' value='", fetchData.leidos_parentid, "' entityname='claim1'/>",
+"		<condition attribute='leidos_paymentid' operator='eq' value='", fetchData.leidos_parentid, "' entityname='payment2'/>",
 "	  </filter>",
 "    </filter>",
 "    <link-entity name='leidos_project' from='leidos_projectid' to='leidos_parentproject' link-type='outer' alias='proj1'>",
-"      <link-entity name='leidos_claim' from='leidos_parentproject' to='leidos_projectid' link-type='outer' alias='claim1'>",
-"		<link-entity name='leidos_paymentclaim' from='leidos_parentclaim' to='leidos_claimid' link-type='outer' alias='pc1'>",
-"		</link-entity>",
-"      </link-entity>",
+"      <link-entity name='leidos_claim' from='leidos_parentproject' to='leidos_projectid' link-type='outer' alias='claim1' />",
 "    </link-entity>",
 "    <link-entity name='leidos_project' from='leidos_projectid' to='leidos_parentproject' link-type='outer' alias='proj2'>",
-"      <link-entity name='leidos_payment' from='leidos_parentproject' to='leidos_projectid' link-type='outer' alias='claim2'>",
-"		<link-entity name='leidos_paymentclaim' from='leidos_parentpayment' to='leidos_paymentid' link-type='outer' alias='pc2'>",
-"		</link-entity>",
-"     </link-entity>",
+"      <link-entity name='leidos_payment' from='leidos_parentproject' to='leidos_projectid' link-type='outer' alias='payment2' />",
 "    </link-entity>",
 "  </entity>",
 "</fetch>",
