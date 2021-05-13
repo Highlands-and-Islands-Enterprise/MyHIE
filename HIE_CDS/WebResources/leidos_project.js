@@ -3,7 +3,6 @@ var lastModifiedOn = null;
 
 function OnLoad(executionContext)
 {
-debugger;
    "use strict";
   formContext = executionContext.getFormContext(); //get Form Context
   if(formContext.ui.getFormType() === 2){
