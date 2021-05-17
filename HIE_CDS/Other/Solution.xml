@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3002</Version>
+    <Version>1.18.0.3017</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -565,6 +565,7 @@
       <RootComponent type="29" id="{d04ccdb2-23af-ea11-a812-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{d1adc77c-c772-eb11-a812-00224840eabd}" behavior="0" />
       <RootComponent type="29" id="{d1f6ba55-913e-ea11-a812-000d3a0bad17}" behavior="0" />
+      <RootComponent type="29" id="{d4c67bc0-f3b6-eb11-8236-002248016921}" behavior="0" />
       <RootComponent type="29" id="{d773ee53-2a9d-eb11-b1ac-000d3ad5fa1c}" behavior="0" />
       <RootComponent type="29" id="{d7748e98-a972-eb11-a812-00224840ee66}" behavior="0" />
       <RootComponent type="29" id="{da2a03f7-c547-43ae-b136-cfbc0f89eb5b}" behavior="0" />
@@ -1083,6 +1084,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="adx_identity_username" displayName="User Name" parentSchemaName="contact" parentDisplayName="Contact" solution="MicrosoftIdentity (9.2.2103.1)" />
+        <Dependent type="2" schemaName="adx_identity_username" displayName="User Name" parentSchemaName="contact" parentDisplayName="Contact" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="adx_identity_username" displayName="User Name" parentSchemaName="contact" parentDisplayName="Contact" solution="MicrosoftIdentity (9.2.2103.1)" />
         <Dependent type="60" displayName="HIE Contact Form" parentDisplayName="Contact" id="{c432ac4d-7254-4c1b-80d0-7e6597073db6}" />
       </MissingDependency>
       <MissingDependency>
@@ -1203,11 +1208,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Email_main_system_library.js" displayName="Activities/SystemLibraries/Email_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
-        <Dependent type="60" displayName="Information" parentDisplayName="Email" id="{394ca387-4777-457c-b5ae-c7a3e632be41}" />
+        <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Email_main_system_library.js" displayName="Activities/SystemLibraries/Email_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
-        <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Email" id="{394ca387-4777-457c-b5ae-c7a3e632be41}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Task_main_system_library.js" displayName="Activities/SystemLibraries/Task_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
@@ -1275,7 +1280,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
-        <Dependent type="60" displayName="Web - Account Financial Assistance" parentDisplayName="Account" id="{431d1a95-ff55-46d9-9bd5-6caa578216c9}" />
+        <Dependent type="60" displayName="Web - Account Details" parentDisplayName="Account" id="{4afa4550-1f3d-ea11-a812-000d3a0bad17}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Contact/Contact_main_system_library.js" displayName="AppCommon/Contact/Contact_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
@@ -2440,6 +2445,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnAMR" solution="Active" id.connectionreferencelogicalname="leidos_ConnAMR" />
         <Dependent type="29" displayName="AMR-Flow - AMR Approval Process" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnAMR" solution="Active" id.connectionreferencelogicalname="leidos_ConnAMR" />
+        <Dependent type="29" displayName="AMR - Flow - Populate Process Dates" id="{d4c67bc0-f3b6-eb11-8236-002248016921}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnApplication" solution="Active" id.connectionreferencelogicalname="leidos_ConnApplication" />
