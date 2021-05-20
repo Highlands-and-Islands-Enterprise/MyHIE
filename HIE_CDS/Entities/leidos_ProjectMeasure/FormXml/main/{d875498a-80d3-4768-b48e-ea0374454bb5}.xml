@@ -32,7 +32,11 @@
                         <labels>
                           <label description="Strategic Priority" languagecode="1033" />
                         </labels>
-                        <control id="leidos_strategicpriority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_strategicpriority" disabled="false" uniqueid="{51c26ac4-1dae-8b31-c315-204cb63a4d08}" />
+                        <control id="leidos_strategicpriority" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_strategicpriority" disabled="true" uniqueid="{51c26ac4-1dae-8b31-c315-204cb63a4d08}">
+                          <parameters>
+                            <DisableMru>true</DisableMru>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>
@@ -999,7 +1003,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -1030,11 +1034,6 @@
       </Navigation>
       <controlDescriptions />
       <events>
-        <event name="onchange" application="false" active="false" attribute="leidos_strategicpriority">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="cf854b06-5cfc-4896-8540-82071529239c" enabled="true" parameters="'bGG:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8bd9181e-9eea-4820-9147-b3c9cc5cddb0" enabled="true" parameters="'i9b:*:CreateUpdate::0:217890000:217890000:217890000:217890000','txX:*:CreateUpdate::0:217890000:217890000:217890000:217890000','Gye:*:CreateUpdate::0:217890000:217890000:217890000:217890000','6hB:*:CreateUpdate::0:217890000:217890000:217890000:217890000','LLs:*:CreateUpdate::0:217890000:217890000:217890000:217890000','sqb:*:CreateUpdate::0:217890000:217890000:217890000:217890000','GB5:*:CreateUpdate::0:217890000:217890000:217890000:217890000','dwh:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
@@ -1060,14 +1059,19 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="89c99e5a-155f-4cd5-a50d-0ac04d97bdb9" enabled="true" parameters="'6hB:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="true" active="true" attribute="leidos_strategicpriority">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="{3736bceb-c9fc-46e0-959f-e644f8e79ed7}" enabled="true" parameters="'bGG:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
       <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="5b596558-8976-4436-97fc-16dd5fe3986d" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="213b93d0-6a30-47a0-9e9c-cdeb52bf4485" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="688db228-7746-45c7-9981-9e7e805d7b3b" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="85d657f7-c939-465c-9db4-563bfc525505" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="8a6efaf8-05e9-483d-8ca6-9ec1407772ba" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="02bc29ff-8995-4aaa-bc95-d77fc52fba04" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

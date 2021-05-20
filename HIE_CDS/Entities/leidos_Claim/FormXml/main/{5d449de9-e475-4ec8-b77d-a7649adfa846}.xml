@@ -679,10 +679,11 @@
                         </labels>
                         <control id="leidos_codapaidreference" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_codapaidreference" disabled="true" />
                       </cell>
-                      <cell locklevel="0" id="{8eb0c380-8a3d-4daa-954c-e5093285903d}">
+                      <cell id="{3c1cb661-b9d0-4e5b-a8d9-7ef6c2e9c456}" locklevel="0" visible="true">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Re-set Claim for Approval" languagecode="1033" />
                         </labels>
+                        <control id="leidos_resetclaimforapproval" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_resetclaimforapproval" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -1066,17 +1067,22 @@
             <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{3c8cb938-2134-528d-65e5-151cb5a638c1}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_resetclaimforapproval">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="9a38a72a-c795-485c-9352-10aedec60959" enabled="true" parameters="'ghk:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{1259c156-5717-4b79-4183-6a0311c080e9}" />
-        <Library name="leidos_Claim" libraryUniqueId="{8e01ea2b-53ee-d27d-22c5-4b74269d00a9}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="d3dcf3db-e6ca-4857-aafb-065fd9792b2e" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="9cba4bce-fa66-45e8-85b5-2f66582d186d" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="a701fdd4-bdee-44ff-a11d-8c1751fa2b37" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{1259c156-5717-4b79-4183-6a0311c080e9}" />
+        <Library name="leidos_Claim" libraryUniqueId="{8e01ea2b-53ee-d27d-22c5-4b74269d00a9}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="9364f0d0-44e7-48be-b9b8-a7ca1d0e5e04" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="1ec04cfe-b233-47a6-baaa-510b0684e620" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="69cd4333-85bb-4283-966a-a37759a42e08" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
