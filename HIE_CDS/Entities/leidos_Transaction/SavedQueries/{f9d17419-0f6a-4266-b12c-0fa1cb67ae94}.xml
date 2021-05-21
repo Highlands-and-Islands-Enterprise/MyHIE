@@ -11,6 +11,7 @@
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_transactionid">
           <cell name="leidos_name" width="300" />
+          <cell name="leidos_transactionreference" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -23,12 +24,19 @@
           <attribute name="leidos_name" />
           <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="leidos_name" operator="like" value="{0}" />
+            <condition attribute="leidos_claim" operator="like" value="{0}" />
+            <condition attribute="leidos_hmsid" operator="like" value="{0}" />
+            <condition attribute="leidos_transactionreference" operator="like" value="{0}" />
           </filter>
+          <filter type="and">
+            <condition attribute="statuscode" operator="not-in">
+              <value>100000001</value>
+              <value>2</value>
+            </condition>
+          </filter>
+          <attribute name="leidos_transactionreference" />
         </entity>
       </fetch>
     </fetchxml>
