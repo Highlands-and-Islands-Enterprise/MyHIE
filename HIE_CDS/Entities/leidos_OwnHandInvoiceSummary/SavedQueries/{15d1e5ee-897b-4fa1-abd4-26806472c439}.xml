@@ -11,6 +11,13 @@
       <grid name="leidos_ownhandinvoicesummaries" jump="leidos_description" select="1" icon="1" preview="1">
         <row name="leidos_ownhandinvoicesummary" id="leidos_ownhandinvoicesummaryid">
           <cell name="leidos_description" width="300" />
+          <cell name="leidos_supplier" width="100" />
+          <cell name="leidos_invoicedate" width="100" />
+          <cell name="leidos_invoicenumber" width="100" />
+          <cell name="leidos_invoicetype" width="100" />
+          <cell name="leidos_netinvoice" width="100" />
+          <cell name="leidos_vatvalue" width="100" />
+          <cell name="leidos_totalinvoicevalue" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -22,10 +29,17 @@
           <attribute name="leidos_ownhandinvoicesummaryid" />
           <attribute name="leidos_description" />
           <attribute name="createdon" />
-          <order attribute="leidos_description" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="leidos_invoicedate" />
+          <attribute name="leidos_invoicenumber" />
+          <attribute name="leidos_invoicetype" />
+          <attribute name="leidos_supplier" />
+          <attribute name="leidos_netinvoice" />
+          <attribute name="leidos_vatvalue" />
+          <attribute name="leidos_totalinvoicevalue" />
+          <order attribute="leidos_description" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
