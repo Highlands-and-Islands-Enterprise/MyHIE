@@ -83,7 +83,7 @@
           <mxswa:ActivityReference AssemblyQualifiedName="Microsoft.Crm.Workflow.Activities.EvaluateExpression, Microsoft.Crm.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" DisplayName="EvaluateExpression">
             <mxswa:ActivityReference.Arguments>
               <InArgument x:TypeArguments="x:String" x:Key="ExpressionOperator">CreateCrmType</InArgument>
-              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Guid, "{6E7AB9F8-485A-EA11-A811-000D3A0BAD17}", "UniqueIdentifier" }]</InArgument>
+              <InArgument x:TypeArguments="s:Object[]" x:Key="Parameters">[New Object() { Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.Guid, "6e7ab9f8-485a-ea11-a811-000d3a0bad17", "UniqueIdentifier" }]</InArgument>
               <InArgument x:TypeArguments="s:Type" x:Key="TargetType">
                 <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="s:Guid" />
               </InArgument>
@@ -127,11 +127,21 @@
                 <mxswa:ActivityReference.Properties>
                   <sco:Collection x:TypeArguments="Variable" x:Key="Variables" />
                   <sco:Collection x:TypeArguments="Activity" x:Key="Activities">
-                    <Sequence DisplayName="SetVisibilityStep1: Hide State Aid">
+                    <Sequence DisplayName="SetVisibilityStep1: Hide Subsidy Control">
                       <mcwc:SetVisibility ControlId="leidos_stateaidcategory" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" IsVisible="False" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep1_11: Hide state aid article">
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep1_12: Subsidy Control Optional">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_projectfunding&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_stateaidcategory" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep1_12" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" RequiredLevel="None" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep11: Hide Subsidy measure">
                       <mcwc:SetVisibility ControlId="leidos_stateaidsubcategory" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep11_13: Subsidy Measure optional">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_projectfunding&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_stateaidsubcategory" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep11_13" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep7: Clear State Aid">
                       <Sequence.Variables>
@@ -201,8 +211,18 @@
                     <Sequence DisplayName="SetVisibilityStep3: Show State Aid">
                       <mcwc:SetVisibility ControlId="leidos_stateaidcategory" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" IsVisible="True" />
                     </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep3_14: Subsidy Control">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_projectfunding&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_stateaidcategory" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep3_14" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" RequiredLevel="Required" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep4: Show State Aid Sub">
                       <mcwc:SetVisibility ControlId="leidos_stateaidsubcategory" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep4_15: Subsidy Measure">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_projectfunding&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_stateaidsubcategory" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep4_15" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" RequiredLevel="Required" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -233,8 +253,18 @@
                     <Sequence DisplayName="SetVisibilityStep8: Hide State Aid">
                       <mcwc:SetVisibility ControlId="leidos_stateaidcategory" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" IsVisible="False" />
                     </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep8_16: Subsidy Control Optional">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_projectfunding&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_stateaidcategory" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep8_16" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" RequiredLevel="None" />
+                    </Sequence>
                     <Sequence DisplayName="SetVisibilityStep9: Hide State Aid Sub">
                       <mcwc:SetVisibility ControlId="leidos_stateaidsubcategory" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep9_17: Subsidy Measure optional">
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_projectfunding&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mcwc:SetFieldRequiredLevel ControlId="leidos_stateaidsubcategory" ControlType="standard" DisplayName="SetFieldRequiredLevelStep_SetVisibilityStep9_17" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_projectfunding" RequiredLevel="None" />
                     </Sequence>
                     <Sequence DisplayName="SetAttributeValueStep11: Clear State Aid">
                       <Sequence.Variables>

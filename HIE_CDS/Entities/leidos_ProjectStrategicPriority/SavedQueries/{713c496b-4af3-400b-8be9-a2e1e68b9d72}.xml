@@ -27,13 +27,13 @@
           <attribute name="leidos_name" />
           <attribute name="createdon" />
           <order attribute="leidos_name" descending="false" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="leidos_parentproject" />
           <attribute name="leidos_primarystrategicpriority" />
           <attribute name="leidos_strategicpriority" />
           <attribute name="leidos_parentprogramme" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="ne" value="2" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>

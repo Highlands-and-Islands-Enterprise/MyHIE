@@ -11,6 +11,7 @@
       <grid name="resultset" jump="leidos_invoicetype" select="1" icon="1" preview="1">
         <row name="result" id="leidos_invoicetypeid">
           <cell name="leidos_invoicetype" width="300" />
+          <cell name="leidos_invoicetypecode" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -25,8 +26,10 @@
           </filter>
           <filter type="or" isquickfindfields="1">
             <condition attribute="leidos_invoicetype" operator="like" value="{0}" />
+            <condition attribute="leidos_invoicetypecode" operator="like" value="{0}" />
           </filter>
           <order attribute="leidos_invoicetype" descending="false" />
+          <attribute name="leidos_invoicetypecode" />
         </entity>
       </fetch>
     </fetchxml>
