@@ -29,10 +29,6 @@
         <entity name="leidos_programme_amendment">
           <attribute name="leidos_name" />
           <attribute name="leidos_programme_amendmentid" />
-          <filter type="and">
-            <condition attribute="statuscode" operator="eq" value="445260001" />
-            <condition attribute="leidos_amendmentapprovedon" operator="null" />
-          </filter>
           <attribute name="leidos_amendmentapprovedon" />
           <attribute name="leidos_programme" />
           <attribute name="leidos_programmeamendmentreference" />
@@ -42,6 +38,10 @@
           <attribute name="createdon" />
           <attribute name="leidos_amendmenttype" />
           <attribute name="leidos_amendmentdecisionoutcome" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="eq" value="445260001" />
+            <condition attribute="leidos_dateofdecision" operator="null" />
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
