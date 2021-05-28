@@ -5,7 +5,7 @@
     <IntroducedVersion>1.5.0.13</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls">
+    <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
         <tab verticallayout="true" id="{c03d591a-4d7e-4860-9e42-c0fe32b58605}" IsUserDefined="1">
           <labels>
@@ -20,6 +20,14 @@
                   </labels>
                   <rows>
                     <row>
+                      <cell id="{6b1e2fbf-99a5-47a1-a8d8-dd88e26e4412}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Requirement Type" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_requirementtype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_requirementtype" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{99861d59-f3fb-4a44-ba58-00da0ff2074a}">
                         <labels>
                           <label description="Name" languagecode="1033" />
@@ -33,14 +41,6 @@
                           <label description="Description" languagecode="1033" />
                         </labels>
                         <control id="leidos_description" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_description" disabled="false" />
-                      </cell>
-                    </row>
-                    <row>
-                      <cell id="{6b1e2fbf-99a5-47a1-a8d8-dd88e26e4412}" showlabel="true" locklevel="0">
-                        <labels>
-                          <label description="Requirement Type" languagecode="1033" />
-                        </labels>
-                        <control id="leidos_requirementtype" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_requirementtype" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -137,12 +137,44 @@
           </row>
         </rows>
       </footer>
-      <DisplayConditions Order="0" FallbackForm="true" />
+      <Navigation>
+        <NavBar />
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
     <LocalizedNames>
-      <LocalizedName description="Information" languagecode="1033" />
+      <LocalizedName description="HIE Document Requirement" languagecode="1033" />
     </LocalizedNames>
     <Descriptions>
       <Description description="A form for this entity." languagecode="1033" />
