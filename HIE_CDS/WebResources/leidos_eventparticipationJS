@@ -1,0 +1,49 @@
+var Leidos = window.Leidos || {};
+
+
+
+Leidos.AccountFilterview = function(executionContext) {
+    "use strict";
+
+    var formContext = executionContext.getFormContext();   
+    var viewId = formContext.getControl("leidos_account").getDefaultView();
+    var entityName = "account";
+    var viewDisplayName = "Releated Accounts";
+    var parentContact = formContext.getAttribute("leidos_attendee").getValue()[0].id;
+    /* var id = formContext.data.entity.getId(); */
+
+    var fetchData = {		
+		leidos_contactid: parentContact
+	};
+	var fetchXml = [
+        "<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='true'>",
+        "  <entity name='account'>",
+        "    <attribute name='name' />",
+        "    <attribute name='accountid' />",
+        "    <filter type='and'>",
+        "      <filter type='or'>",
+        "        <condition entityname='ak' attribute='contactid' operator='eq' value='", fetchData.leidos_contactid, "' />",
+        "        <condition entityname='aj' attribute='contactid' operator='eq' value='", fetchData.leidos_contactid, "' />",
+        "      </filter>",
+        "    </filter>",
+        "    <order attribute='name' descending='false' />",
+        "    <link-entity name='contact' from='parentcustomerid' to='accountid' link-type='inner' alias='aj' />",
+        "    <link-entity name='leidos_contact_account_authsig' from='accountid' to='accountid' link-type='inner' alias='ak' intersect='true' />",
+        "  </entity>",
+        "</fetch>",
+            ].join("");
+   
+    var layoutXml = "<grid name='resultset'  jump='name' select='1' icon='1' preview='1' >" 
+    +"<row name='result' id='accountid' >"
+    +"<cell name='name' width='300' />"
+    +"</row></grid>";
+
+
+    if (parentContact != null)
+    {
+    setTimeout(function()
+     {formContext.getControl("leidos_account").addCustomView(viewId, entityName, viewDisplayName, fetchXml, layoutXml, true)},
+     1000);
+    }
+}
+
