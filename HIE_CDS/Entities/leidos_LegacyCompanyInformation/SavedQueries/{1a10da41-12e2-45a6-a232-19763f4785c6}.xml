@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{1a10da41-12e2-45a6-a232-19763f4785c6}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_legacycompanyinformationid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_legacyaccountreference" width="100" />
+          <cell name="leidos_addressline1" width="231" />
+          <cell name="leidos_addressline2" width="181" />
+          <cell name="leidos_addressline3" width="186" />
+          <cell name="leidos_towncity" width="100" />
+          <cell name="leidos_county" width="100" />
+          <cell name="leidos_postcode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_legacycompanyinformation">
+          <attribute name="leidos_legacycompanyinformationid" />
+          <attribute name="leidos_name" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="leidos_name" operator="like" value="{0}" />
+            <condition attribute="leidos_legacyaccountreference" operator="like" value="{0}" />
+            <condition attribute="leidos_addressline1" operator="like" value="{0}" />
+            <condition attribute="leidos_addressline2" operator="like" value="{0}" />
+            <condition attribute="leidos_addressline3" operator="like" value="{0}" />
+            <condition attribute="leidos_county" operator="like" value="{0}" />
+            <condition attribute="leidos_towncity" operator="like" value="{0}" />
+            <condition attribute="leidos_postcode" operator="like" value="{0}" />
+          </filter>
+          <attribute name="leidos_legacyaccountreference" />
+          <attribute name="leidos_addressline1" />
+          <attribute name="leidos_postcode" />
+          <attribute name="leidos_addressline2" />
+          <attribute name="leidos_addressline3" />
+          <attribute name="leidos_county" />
+          <attribute name="leidos_towncity" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.18.0.3345</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active Legacy Company Informations" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,136 +1,204 @@
-if (typeof ($) === 'undefined') {
-    $ = parent.$;
-    jQuery = parent.jQuery;
+if (typeof($) === 'undefined') {
+  $ = parent.$;
+  jQuery = parent.jQuery;
 }
 
 var Leidos = window.Leidos || {};
 var lastModifiedOn = null;
 
-Leidos.ExpandBPF = function (executionContext) {
-    "use strict";
-    var formContext = executionContext.getFormContext(); // get formContext
-    formContext.ui.process.setDisplayState("expanded");
+Leidos.ExpandBPF = function(executionContext) {
+  "use strict";
+  var formContext = executionContext.getFormContext(); // get formContext
+  formContext.ui.process.setDisplayState("expanded");
 }
 
-Leidos.validateRegEx = function (executionContext, fieldName, pattern, notificationText) {
-    "use strict";
+Leidos.validateRegEx = function(executionContext, fieldName, pattern, notificationText) {
+  "use strict";
 
-    var formContext = executionContext.getFormContext();
-    var currentValue = formContext.getAttribute(fieldName).getValue();
-    if (pattern.test(currentValue)) {
-        formContext.getControl(fieldName).clearNotification();
-    } else {
-        formContext.getControl(fieldName).setNotification(notificationText);
-    }
+  var formContext = executionContext.getFormContext();
+  var currentValue = formContext.getAttribute(fieldName).getValue();
+  if (pattern.test(currentValue)) {
+    formContext.getControl(fieldName).clearNotification();
+  } else {
+    formContext.getControl(fieldName).setNotification(notificationText);
+  }
 }
 
-Leidos.validatePhoneNumber = function (executionContext, fieldName) {
-    "use strict";
-    var pattern = /(\+|0{2})*([0-9 \(\)]{6,20})/g;
-    var notificationText = "The phone number you have entered is invalid, a phone number may only contain numbers, + or ()";
-    Leidos.validateRegEx(executionContext, fieldName, pattern, notificationText);
+Leidos.validatePhoneNumber = function(executionContext, fieldName) {
+  "use strict";
+  var pattern = /(\+|0{2})*([0-9 \(\)]{6,20})/g;
+  var notificationText = "The phone number you have entered is invalid, a phone number may only contain numbers, + or ()";
+  Leidos.validateRegEx(executionContext, fieldName, pattern, notificationText);
 }
 
-Leidos.setLookupViewId = function (executionContext, controlName, viewId) {
-    "use strict";
-    var formContext = executionContext.getFormContext();
-    var control = formContext.getControl(controlName);
-    if (control) {
-        formContext.getControl(controlName).setDefaultView(viewId); //include Curly Braces
-    }
+Leidos.setLookupViewId = function(executionContext, controlName, viewId) {
+  "use strict";
+  var formContext = executionContext.getFormContext();
+  var control = formContext.getControl(controlName);
+  if (control) {
+    formContext.getControl(controlName).setDefaultView(viewId); //include Curly Braces
+  }
 }
 
-Leidos.hideBPFFinishButtonNoWait = function () {
-    "use strict";
-    $("[title='Finish']").each(function () {
-        $(this).hide()
+Leidos.hideBPFFinishButtonNoWait = function() {
+  "use strict";
+  $("[title='Finish']").each(function() {
+    $(this).hide()
+  });
+}
+
+Leidos.hideBPFFinishButtonTimeout = function(executionContext) {
+  "use strict";
+  setTimeout(function() {
+    Leidos.hideBPFFinishButtonNoWait();
+  }, 250);
+}
+
+Leidos.hideBPFFinishButton = function(executionContext) {
+  "use strict";
+  var formContext = executionContext.getFormContext();
+  formContext.data.process.addOnStageSelected(Leidos.hideBPFFinishButtonTimeout);
+  formContext.data.process.addOnStageChange(Leidos.hideBPFFinishButtonTimeout);
+  Leidos.hideBPFFinishButtonTimeout();
+}
+
+Leidos.filterBpfLookup = function(executionContext, parentAttribute, childAttribute, defaultViewId, filterXml) {
+  "use strict";
+
+  var formContext = executionContext.getFormContext();
+  var lookupField = formContext.getAttribute(childAttribute);
+
+  if (lookupField !== null) {
+    lookupField.controls.forEach(function(ctrl, i) {
+
+      ctrl.setDefaultView(defaultViewId);
+      ctrl.addPreSearch(
+        function() {
+          Leidos.filterDefinition(executionContext, parentAttribute, ctrl._controlName, filterXml);
+        }
+      )
     });
+  }
 }
 
-Leidos.hideBPFFinishButtonTimeout = function (executionContext) {
-    "use strict";
-    setTimeout(function () {
-        Leidos.hideBPFFinishButtonNoWait();
-    }, 250);
+Leidos.filterDefinition = function(executionContext, parentAttribute, childAttribute, filterXml) {
+  "use strict";
+  var lookupId = null;
+  var lookupControl;
+  var filterBpf;
+
+  var formContext = executionContext.getFormContext();
+  if (formContext.getControl(parentAttribute) !== null &&
+    formContext.getControl(parentAttribute).getAttribute().getValue() !== null) {
+    lookupControl = formContext.getControl(parentAttribute).getAttribute().getValue();
+    lookupId = lookupControl[0].id;
+
+    if (lookupId !== null || lookupId !== undefined) {
+      filterBpf = filterXml.replace("{{id}}", lookupId);
+
+      if (formContext.getControl(childAttribute) !== null) {
+        formContext.getControl(childAttribute).addCustomFilter(filterBpf);
+      }
+    }
+  }
 }
 
-Leidos.hideBPFFinishButton = function (executionContext) {
-    "use strict";
-    var formContext = executionContext.getFormContext();
-    formContext.data.process.addOnStageSelected(Leidos.hideBPFFinishButtonTimeout);
-    formContext.data.process.addOnStageChange(Leidos.hideBPFFinishButtonTimeout);
-    Leidos.hideBPFFinishButtonTimeout();
+Leidos.onLoadFormSubgrid = function(executionContext, subgrids) {
+  "use strict";
+  var formContext = executionContext.getFormContext(); //get Form Context
+  var subgridNames = subgrids.split(',');
+
+  if (formContext.ui.getFormType() === 2) {
+    Xrm.WebApi.retrieveRecord(formContext.data.entity.getEntityName(), formContext.data.entity.getId(), "?$select=modifiedon").then(function(result) {
+      Leidos.onRetrieveModifiedOn(formContext, result, subgridNames)
+    });
+  }
 }
 
-Leidos.filterBpfLookup = function (executionContext, parentAttribute, childAttribute, defaultViewId, filterXml) {
-    "use strict";
+Leidos.onSubgridLoad = function(formContext) {
+  "use strict";
+  Xrm.WebApi.retrieveRecord(formContext.data.entity.getEntityName(), formContext.data.entity.getId(), "?$select=modifiedon").then(function(result) {
+    Leidos.onRetrieveModifiedOn(formContext, result)
+  });
+}
 
-    var formContext = executionContext.getFormContext();
-    var lookupField = formContext.getAttribute(childAttribute);
-
-    if (lookupField !== null) {
-        lookupField.controls.forEach(function (ctrl, i) {
-
-            ctrl.setDefaultView(defaultViewId);
-            ctrl.addPreSearch(
-                function () {
-                    Leidos.filterDefinition(executionContext, parentAttribute, ctrl._controlName, filterXml);
-                }
-            )
+Leidos.onRetrieveModifiedOn = function(formContext, result, subgridNames) {
+  "use strict";
+  if (lastModifiedOn !== result.modifiedon) {
+    var doRefresh = false;
+    if (lastModifiedOn === null) {
+      for (i = 0; i < subgridNames.length; i++) {
+        formContext.getControl(subgridNames[i]).addOnLoad(function() {
+          Leidos.onSubgridLoad(formContext)
         });
+      }
+    } else {
+      doRefresh = true;
     }
+    lastModifiedOn = result.modifiedon;
+    if (doRefresh) formContext.data.refresh();
+  }
 }
 
-Leidos.filterDefinition = function (executionContext, parentAttribute, childAttribute, filterXml) {
-    "use strict";
-    var lookupId = null;
-    var lookupControl;
-    var filterBpf;
+Leidos.setNullableValue = function(fieldVal) {
+  "use strict";
+  if (typeof(fieldVal) === 'undefined' || fieldVal === null) {
+    return '';
+  }
+  return fieldVal;
+}
 
-    var formContext = executionContext.getFormContext();
-    if (formContext.getControl(parentAttribute) !== null &&
-        formContext.getControl(parentAttribute).getAttribute().getValue() !== null) {
-        lookupControl = formContext.getControl(parentAttribute).getAttribute().getValue();
-        lookupId = lookupControl[0].id;
+Leidos.writeAddress = function(formContext, result) {
+  "use strict";
+  formContext.getAttribute("address1_line1").setValue(Leidos.setNullableValue(result.leidos_addressline1));
+  formContext.getAttribute("address1_line2").setValue(Leidos.setNullableValue(result.leidos_addressline2));
+  formContext.getAttribute("address1_line3").setValue(Leidos.setNullableValue(result.leidos_addressline3));
+  formContext.getAttribute("address1_city").setValue(Leidos.setNullableValue(result.leidos_towncity));
+  formContext.getAttribute("address1_county").setValue(Leidos.setNullableValue(result.leidos_county));
+  formContext.getAttribute("address1_postalcode").setValue(Leidos.setNullableValue(result.leidos_postcode));
+}
 
-        if (lookupId !== null || lookupId !== undefined) {
-            filterBpf = filterXml.replace("{{id}}", lookupId);
 
-            if (formContext.getControl(childAttribute) !== null) {
-                formContext.getControl(childAttribute).addCustomFilter(filterBpf);
-            }
+Leidos.confirmAddressOverwrite = function(formContext, result) {
+  "use strict";
+  var confirmStrings = {
+    text: "The organisation already contains address information, do you want to overwrite it?",
+    title: "Overwrite address?"
+  };
+  var confirmOptions = {
+    height: 200,
+    width: 450
+  };
+
+  Xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(function(success) {
+    if (success.confirmed) {
+      Leidos.writeAddress(formContext, result);
+    }
+  });
+
+}
+
+Leidos.onLinkToLegacyCompany = function(executionContext) {
+
+  var formContext = executionContext.getFormContext();
+  var legacyCoInfoVal = formContext.getAttribute("leidos_linktolegacycompany").getValue();
+  if (legacyCoInfoVal !== null) {
+    var legacyCoInfoId = legacyCoInfoVal[0].id;
+    Xrm.WebApi.retrieveRecord('leidos_legacycompanyinformation', legacyCoInfoId, "?$select=leidos_name,leidos_addressline1,leidos_addressline2,leidos_addressline3,leidos_towncity,leidos_county,leidos_postcode,leidos_legacyaccountreference").then(
+      function success(result) {
+        formContext.getAttribute("leidos_hmsaccountid").setValue(result.leidos_legacyaccountreference);
+        var postCode = formContext.getAttribute("leidos_hmsaccountid").getValue();
+        if (postCode !== null && postCode !== result.leidos_postcode) {
+          Leidos.confirmAddressOverwrite(formContext, result);
+        } else {
+          Leidos.writeAddress(formContext, result);
         }
-    }
+      },
+      function(error) {
+        console.log(error.message);
+        // handle error conditions
+      }
+    );
+  }
+
 }
-
-Leidos.onLoadFormSubgrid = function (executionContext, subgrids) {
-    "use strict";
-    var formContext = executionContext.getFormContext(); //get Form Context
-    var subgridNames = subgrids.split(',');
-
-    if (formContext.ui.getFormType() === 2) {
-        Xrm.WebApi.retrieveRecord(formContext.data.entity.getEntityName(), formContext.data.entity.getId(), "?$select=modifiedon").then(function (result) { Leidos.onRetrieveModifiedOn(formContext, result, subgridNames) });;
-    }
-}
-
-Leidos.onSubgridLoad = function (formContext) {
-    "use strict";
-    Xrm.WebApi.retrieveRecord(formContext.data.entity.getEntityName(), formContext.data.entity.getId(), "?$select=modifiedon").then(function (result) { Leidos.onRetrieveModifiedOn(formContext, result) });;
-}
-
-Leidos.onRetrieveModifiedOn = function (formContext, result, subgridNames) {
-    "use strict";
-    if (lastModifiedOn !== result.modifiedon) {
-        var doRefresh = false;
-        if (lastModifiedOn === null) {
-            for (i = 0; i < subgridNames.length; i++) {
-                formContext.getControl(subgridNames[i]).addOnLoad(function () { Leidos.onSubgridLoad(formContext) });
-            }
-        }
-        else {
-            doRefresh = true;
-        }
-        lastModifiedOn = result.modifiedon;
-        if (doRefresh) formContext.data.refresh();
-    }
-} 
