@@ -36,10 +36,6 @@
           <attribute name="statuscode" />
           <attribute name="leidos_projectreference" />
           <attribute name="leidos_dateofdecision" />
-          <filter type="and">
-            <condition attribute="ownerid" operator="eq-userid" />
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="leidos_projectid" />
           <attribute name="createdon" />
           <attribute name="leidos_parentapplication" />
@@ -49,6 +45,16 @@
           <attribute name="leidos_totalhiefunding" />
           <attribute name="leidos_projectenddate" />
           <order attribute="leidos_projectreference" descending="true" />
+          <filter type="and">
+            <condition attribute="ownerid" operator="eq-userid" />
+            <condition attribute="statuscode" operator="not-in">
+              <value>445260003</value>
+              <value>445260012</value>
+              <value>445260014</value>
+              <value>445260015</value>
+              <value>2</value>
+            </condition>
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
