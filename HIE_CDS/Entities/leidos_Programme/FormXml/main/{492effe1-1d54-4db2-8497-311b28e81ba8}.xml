@@ -772,7 +772,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{db41b649-a2e6-49e7-8d56-ad0deca0323d}" showlabel="false">
+                      <cell locklevel="0" id="{922d129b-db44-43ea-9d6d-0fc416248b1a}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -926,11 +926,11 @@
                           </parameters>
                         </control>
                       </cell>
-                      <cell id="{cd524249-df29-4d0d-9aed-87dcda0c4253}" locklevel="0">
+                      <cell id="{f7d79b38-fdec-4f0e-adbb-eaf8586f05e1}" locklevel="0">
                         <labels>
-                          <label description="Date of Decision" languagecode="1033" />
+                          <label description="Recommendation" languagecode="1033" />
                         </labels>
-                        <control id="leidos_dateofdecision" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_dateofdecision" disabled="false" />
+                        <control id="leidos_recommendation" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_recommendation" disabled="false" uniqueid="{51c9ae83-08b3-4faa-815c-6a6e07940201}" />
                       </cell>
                     </row>
                     <row>
@@ -940,11 +940,11 @@
                         </labels>
                         <control id="leidos_appraisallink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_appraisallink" disabled="false" />
                       </cell>
-                      <cell id="{f7d79b38-fdec-4f0e-adbb-eaf8586f05e1}" locklevel="0">
+                      <cell id="{cd524249-df29-4d0d-9aed-87dcda0c4253}" locklevel="0">
                         <labels>
-                          <label description="Recommendation" languagecode="1033" />
+                          <label description="Date of Decision" languagecode="1033" />
                         </labels>
-                        <control id="leidos_recommendation" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_recommendation" disabled="false" uniqueid="{51c9ae83-08b3-4faa-815c-6a6e07940201}" />
+                        <control id="leidos_dateofdecision" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_dateofdecision" disabled="false" />
                       </cell>
                     </row>
                     <row>
@@ -954,10 +954,11 @@
                         </labels>
                         <control id="leidos_validateprogramme" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_validateprogramme" disabled="false" uniqueid="{45702659-7157-4b3a-ac4f-2ee67fd9b0f0}" />
                       </cell>
-                      <cell id="{b388eccc-43dd-67e3-95d4-5b629acda94a}" showlabel="false">
+                      <cell id="{42c53f9b-dccc-4250-b333-5601588e6d2d}" locklevel="0" visible="true" showlabel="true">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Move to Clear to Pay" languagecode="1033" />
                         </labels>
+                        <control id="leidos_movetocleartopay" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_movetocleartopay" disabled="false" uniqueid="{30136777-5dc3-4cb8-a116-e2a47b9dcdf0}" />
                       </cell>
                     </row>
                     <row>
@@ -967,10 +968,24 @@
                         </labels>
                         <control id="leidos_submitforapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitforapproval" disabled="false" uniqueid="{4dea590b-cd40-4c59-b0d9-1803e4c21ec7}" />
                       </cell>
-                      <cell locklevel="0" id="{69f5f2dd-e20b-47b8-8a20-da50db6dbcf4}" showlabel="false">
+                      <cell id="{85e5704c-1f60-4547-9793-1d5a0fac9ea8}" locklevel="0" visible="true">
+                        <labels>
+                          <label description="Move to Programme Closed" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_movetoprogrammeclosed" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_movetoprogrammeclosed" disabled="false" uniqueid="{3248691e-a69b-436e-8d01-fa731c3840fa}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{a315c963-4362-4945-bf93-19881777d789}">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
+                      </cell>
+                      <cell id="{856c6424-bb11-4661-95c9-7114c8091632}" locklevel="0" visible="true">
+                        <labels>
+                          <label description="Move to Programme Complete" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_movetoprogrammecomplete" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_movetoprogrammecomplete" disabled="false" uniqueid="{0e108fcd-a10b-4db0-bf1e-55758b0a8aa0}" />
                       </cell>
                     </row>
                   </rows>
@@ -1437,13 +1452,79 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{30136777-5dc3-4cb8-a116-e2a47b9dcdf0}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_movetocleartopay</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_movetocleartopay</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_movetocleartopay</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_movetocleartopay</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{0e108fcd-a10b-4db0-bf1e-55758b0a8aa0}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_movetoprogrammecomplete</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_movetoprogrammecomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_movetoprogrammecomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_movetoprogrammecomplete</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{3248691e-a69b-436e-8d01-fa731c3840fa}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_movetoprogrammeclosed</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_movetoprogrammeclosed</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_movetoprogrammeclosed</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_movetoprogrammeclosed</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="Leidos.SetfinancedelegatedauthorityView" libraryName="leidos_Programme" handlerUniqueId="{54e156b2-2590-6556-dda7-e399712d89a1}" enabled="true" parameters="" passExecutionContext="true" />
             <Handler functionName="Leidos.DelegatedAuthFilterview" libraryName="leidos_Programme" handlerUniqueId="{90356135-4741-4d80-b0cd-0de0c0507b84}" enabled="true" parameters="" passExecutionContext="true" />
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="74b467d4-b446-432d-be9b-f76c786e516f" enabled="true" parameters="'ziG:*:Update::0:217890000:217890000:217890000:217890000','aZ8:*:Update::0:217890000:217890000:217890000:217890000','uKZ:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="74b467d4-b446-432d-be9b-f76c786e516f" enabled="true" parameters="'ziG:*:Update::0:217890000:217890000:217890000:217890000','aZ8:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_approvalamount">
@@ -1462,14 +1543,19 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b1f19a0f-a299-4535-b3f2-7660f33bb7ab" enabled="true" parameters="'MJ0:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_movetoprogrammecomplete">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="bf465dcb-999f-4dd2-ba00-42dc7afa1be9" enabled="true" parameters="'CH9:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true" />
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{b732eaa7-0904-2035-74b0-1e754492539a}" />
         <Library name="leidos_Programme" libraryUniqueId="{82da978c-50b6-656a-53d4-e2cca6e8e84a}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="821bf178-0c60-4b3e-afa3-599c9b3167fb" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="5b2835ce-f02e-48ce-9afd-d4135a960f49" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="d062a6f0-b429-453c-8417-51406947827c" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="13578008-285e-4a55-8fed-a05c949e4e76" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="adb74c01-3d0d-41cd-9cac-c316fa1638f3" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0fcee4b6-ab14-4902-8f6f-2057b42b554e" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

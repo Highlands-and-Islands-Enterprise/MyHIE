@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{7c45fa10-09ab-ea11-a812-000d3a7fedbe}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_projectid">
+          <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="leidos_parentaccount" width="125" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_projectreference" width="125" />
+          <cell name="statuscode" width="150" />
+          <cell name="leidos_parentapplication" width="125" />
+          <cell name="leidos_totalcostscalculated" width="150" />
+          <cell name="leidos_totalhiefunding" width="150" />
+          <cell name="leidos_dateofdecision" width="150" />
+          <cell name="leidos_projectenddate" width="150" />
+          <cell name="leidos_hieteam" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="leidos_project">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_parentaccount" />
+          <attribute name="leidos_totalcostscalculated" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_projectreference" />
+          <attribute name="leidos_dateofdecision" />
+          <attribute name="leidos_projectid" />
+          <attribute name="createdon" />
+          <attribute name="leidos_parentapplication" />
+          <attribute name="leidos_hieteam" />
+          <attribute name="ownerid" />
+          <attribute name="statecode" />
+          <attribute name="leidos_totalhiefunding" />
+          <attribute name="leidos_projectenddate" />
+          <order attribute="leidos_projectreference" descending="true" />
+          <filter type="and">
+            <condition attribute="ownerid" operator="eq-userid" />
+            <condition attribute="statuscode" operator="not-in">
+              <value>445260003</value>
+              <value>445260012</value>
+              <value>445260014</value>
+              <value>445260015</value>
+              <value>2</value>
+            </condition>
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.5.0.6</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="My Active Projects" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
