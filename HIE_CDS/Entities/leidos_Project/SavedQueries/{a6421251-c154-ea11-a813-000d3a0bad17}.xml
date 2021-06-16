@@ -44,7 +44,6 @@
           <attribute name="statecode" />
           <attribute name="leidos_totalhiefunding" />
           <attribute name="leidos_projectenddate" />
-          <order attribute="leidos_projectreference" descending="true" />
           <filter type="and">
             <filter type="or">
               <condition attribute="statuscode" operator="not-in">
@@ -56,6 +55,7 @@
               </condition>
             </filter>
           </filter>
+          <order attribute="createdon" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
