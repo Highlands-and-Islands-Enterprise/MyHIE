@@ -284,11 +284,19 @@
                   </labels>
                   <rows>
                     <row>
+                      <cell id="{d0467158-2e10-4d17-a0ba-e579a59c104b}" locklevel="0">
+                        <labels>
+                          <label description="Appraisal Document Reference " languagecode="1033" />
+                        </labels>
+                        <control id="leidos_appraisaldocumentreference" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_appraisaldocumentreference" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{e9a945f8-356d-4b54-a7f4-196363303a36}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Appraisal Document Link" languagecode="1033" />
                         </labels>
-                        <control id="leidos_appraisaldocumentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_appraisaldocumentlink" disabled="false" />
+                        <control id="leidos_appraisaldocumentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_appraisaldocumentlink" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -823,11 +831,6 @@
         <dependency id="leidos_projectjustificationpath" />
       </externaldependencies>
       <events>
-        <event name="onchange" application="false" active="false" attribute="leidos_appraisaldocumentlink">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="56d5c010-384d-4212-8eb3-f39887c3faba" enabled="true" parameters="'m2A:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
         <event name="onload" application="false" active="false">
           <Handlers>
             <Handler functionName="Leidos.SetApplicationPathControlViews" libraryName="leidos_application.js" handlerUniqueId="{87586c38-b00e-3e28-5c57-76e9a5266c08}" enabled="true" parameters="" passExecutionContext="true" />
@@ -860,6 +863,11 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="a6f63574-8bff-40b0-8ee9-2153f3916761" enabled="true" parameters="'wpg:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_appraisaldocumentreference">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="05b10f39-d1ee-44c5-bc12-231e2f650c51" enabled="true" parameters="'SaT:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
@@ -867,9 +875,9 @@
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{58828cc5-4941-3267-41e5-16ee2a4ba698}" />
         <Library name="leidos_application.js" libraryUniqueId="{e1eab3b6-5483-7c94-42b4-d5e553da8180}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="9505bce1-c512-49bb-b4d6-b059983741cd" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="944a02d9-ae15-4bcd-9bd8-315385ab61a0" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0ac558f3-bc1d-47df-8bee-1a3b8bfeaa3f" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="f6724e67-e6b4-4f4d-8148-3403cbf17e40" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="c779fde8-b30d-4267-9923-60c71003f997" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="f547362a-d314-4dd7-bd18-5931bd787af1" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

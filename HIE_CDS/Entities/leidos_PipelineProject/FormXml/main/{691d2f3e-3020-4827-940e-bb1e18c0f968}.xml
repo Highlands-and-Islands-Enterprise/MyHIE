@@ -348,11 +348,19 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{3d3f3f4a-cfef-4337-b4a2-2e0b969b1d92}" locklevel="0">
+                        <labels>
+                          <label description="ISA Document Reference" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_isadocumentreference" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_isadocumentreference" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{13750002-d6a9-4ea8-a9d8-a7d243103af7}" showlabel="true" locklevel="0">
                         <labels>
                           <label description="Initial Strategic Assessment Link" languagecode="1033" />
                         </labels>
-                        <control id="leidos_initialstrategicassessmentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_initialstrategicassessmentlink" disabled="false" />
+                        <control id="leidos_initialstrategicassessmentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_initialstrategicassessmentlink" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -478,7 +486,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="Process_NFI_ISA" id="12562887-f744-4070-a44a-d11cc2d55808" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
+                <section name="Process_NFI_ISA" id="12562887-f744-4070-a44a-d11cc2d55808" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
                   <labels>
                     <label description="NFI ISA" languagecode="1033" />
                   </labels>
@@ -496,7 +504,7 @@
                         <labels>
                           <label description="Initial Strategic Assessment Link" languagecode="1033" />
                         </labels>
-                        <control id="leidos_initialstrategicassessmentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_initialstrategicassessmentlink" disabled="false" />
+                        <control id="leidos_initialstrategicassessmentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_initialstrategicassessmentlink" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -525,7 +533,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="Process_NFI_Email" id="afc4ed6e-1181-4641-9b51-5cae08c676a7" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
+                <section name="Process_NFI_Email" id="afc4ed6e-1181-4641-9b51-5cae08c676a7" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="false">
                   <labels>
                     <label description="NFI Email" languagecode="1033" />
                   </labels>
@@ -821,6 +829,11 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="b840aecd-757b-4280-b99d-49562ca2c28c" enabled="true" parameters="'AB7:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_isadocumentreference">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="78e56a2f-2e53-47c3-843f-4a138ff8677d" enabled="true" parameters="'Wa4:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
@@ -828,9 +841,9 @@
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{09b0e775-8089-4a72-cdb3-cd17c8048ce1}" />
         <Library name="leidos_PipelineContolView" libraryUniqueId="{74b97293-a920-2a74-b114-4210e65a2aa2}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="459a9c84-9f61-42e0-9992-e570e90e93bc" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="505b639d-2f63-4ec4-a925-2496172c8d40" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="4535ed62-7d6a-48b8-9d04-d9cf67ba43dd" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="6e8dfbad-1d54-4ce7-84c9-db342a0a2182" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="f4ab7ced-2ecd-40ce-8c36-5457a56839b9" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="e8860e2a-7650-44da-911c-5705c13b982f" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

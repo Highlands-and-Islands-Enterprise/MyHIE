@@ -934,11 +934,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{114353c3-9b40-4eb9-ae95-74ffc250ba1a}" locklevel="0">
+                      <cell id="{41e23c00-0ce9-4fed-bd9a-e7ea1167316f}" locklevel="0">
                         <labels>
-                          <label description="Appraisal Link" languagecode="1033" />
+                          <label description="Appraisal Document Reference" languagecode="1033" />
                         </labels>
-                        <control id="leidos_appraisallink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_appraisallink" disabled="false" />
+                        <control id="leidos_appraisaldocumentreference" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_appraisaldocumentreference" disabled="false" />
                       </cell>
                       <cell id="{cd524249-df29-4d0d-9aed-87dcda0c4253}" locklevel="0">
                         <labels>
@@ -948,11 +948,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{71db75fc-fb15-46b7-9de6-9c9a78e97569}" locklevel="0">
+                      <cell id="{114353c3-9b40-4eb9-ae95-74ffc250ba1a}" locklevel="0">
                         <labels>
-                          <label description="Validate Programme" languagecode="1033" />
+                          <label description="Appraisal Link" languagecode="1033" />
                         </labels>
-                        <control id="leidos_validateprogramme" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_validateprogramme" disabled="false" uniqueid="{45702659-7157-4b3a-ac4f-2ee67fd9b0f0}" />
+                        <control id="leidos_appraisallink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_appraisallink" disabled="true" />
                       </cell>
                       <cell id="{42c53f9b-dccc-4250-b333-5601588e6d2d}" locklevel="0" visible="true" showlabel="true">
                         <labels>
@@ -962,11 +962,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell id="{41199385-2643-4bb8-b98f-f073a3cae96f}" locklevel="0">
+                      <cell id="{71db75fc-fb15-46b7-9de6-9c9a78e97569}" locklevel="0">
                         <labels>
-                          <label description="Submit for Approval" languagecode="1033" />
+                          <label description="Validate Programme" languagecode="1033" />
                         </labels>
-                        <control id="leidos_submitforapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitforapproval" disabled="false" uniqueid="{4dea590b-cd40-4c59-b0d9-1803e4c21ec7}" />
+                        <control id="leidos_validateprogramme" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_validateprogramme" disabled="false" uniqueid="{45702659-7157-4b3a-ac4f-2ee67fd9b0f0}" />
                       </cell>
                       <cell id="{85e5704c-1f60-4547-9793-1d5a0fac9ea8}" locklevel="0" visible="true">
                         <labels>
@@ -976,10 +976,11 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{a315c963-4362-4945-bf93-19881777d789}">
+                      <cell id="{41199385-2643-4bb8-b98f-f073a3cae96f}" locklevel="0">
                         <labels>
-                          <label description="" languagecode="1033" />
+                          <label description="Submit for Approval" languagecode="1033" />
                         </labels>
+                        <control id="leidos_submitforapproval" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_submitforapproval" disabled="false" uniqueid="{4dea590b-cd40-4c59-b0d9-1803e4c21ec7}" />
                       </cell>
                       <cell id="{856c6424-bb11-4661-95c9-7114c8091632}" locklevel="0" visible="true">
                         <labels>
@@ -1548,14 +1549,19 @@
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="aa1b01ff-6bb7-4449-923d-ed56ba0fbb49" enabled="true" parameters="'zCi:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_appraisaldocumentreference">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="c851e695-f4f9-45ba-9c8a-4e544472bf44" enabled="true" parameters="'h7S:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions Order="0" FallbackForm="true" />
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{b732eaa7-0904-2035-74b0-1e754492539a}" />
         <Library name="leidos_Programme" libraryUniqueId="{82da978c-50b6-656a-53d4-e2cca6e8e84a}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="7df22631-4da7-4f27-8672-04c956f2de80" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="aa48f18a-e324-4af2-a990-494b4965ea06" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="71b48efb-f79d-4597-8cfd-98235e403696" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="62e2bc38-db4b-4db5-acca-610f1f2c7b28" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="bb3a44be-032e-4541-a0f1-51e3594cb406" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="806a8391-c4be-41fb-9617-1906fd3a8a57" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>

@@ -254,11 +254,19 @@
                   </labels>
                   <rows>
                     <row>
+                      <cell id="{0d97a741-02a6-4ff9-811f-d3816cf0548a}" locklevel="0">
+                        <labels>
+                          <label description="ISA Document Reference" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_isadocumentreference" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_isadocumentreference" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{5a837855-83c5-4e2a-8d59-116889d012ef}" locklevel="0">
                         <labels>
                           <label description="Initial Strategic Assessment Link" languagecode="1033" />
                         </labels>
-                        <control id="leidos_initialstrategicassessmentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_initialstrategicassessmentlink" disabled="false" />
+                        <control id="leidos_initialstrategicassessmentlink" classid="{71716B6C-711E-476C-8AB8-5D11542BFB47}" datafieldname="leidos_initialstrategicassessmentlink" disabled="true" />
                       </cell>
                     </row>
                     <row>
@@ -360,7 +368,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -405,6 +413,11 @@
         <event name="onchange" application="false" active="false" attribute="leidos_validatepipelineproject">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="41154697-b834-4df2-a848-56d60f462f4c" enabled="true" parameters="'M2T:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_isadocumentreference">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="ccd98fe1-4863-41c8-ab0d-c93295ac035a" enabled="true" parameters="'iNk:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
@@ -482,9 +495,9 @@
       <formLibraries>
         <Library name="leidos_pipelinePrograme" libraryUniqueId="{7553bbe5-8ed1-7178-55de-38020ccd48ec}" />
         <Library name="leidos_common" libraryUniqueId="{8e74850c-830d-2738-6c53-3878b9e492c1}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="f7f86a5b-cbfb-4e29-bc5b-4b9716e98d7b" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="4a8a317e-c6d5-4945-8052-e333412c7b8f" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="298119de-50ac-4d7f-a280-321f80b8d977" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="0467bc3e-78ad-46c5-8c63-6a85929a8796" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="dd84f897-96c8-468c-85e8-6657839aac21" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="99e24234-0885-450b-bd36-a8b84b00140e" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
