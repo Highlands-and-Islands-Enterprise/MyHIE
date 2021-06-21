@@ -18,6 +18,36 @@ Leidos.CostFundingLineFilterview = function(executionContext) {
 		if (claimValue != null)
 		{
 			parentId = claimValue[0].id;
+			var fetchData = {
+				statuscode: "2",
+				leidos_claimid: parentId ,
+				leidos_spendprofilerequired: "1"
+			};
+			var fetchXml = [
+			"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='true'>",
+			"  <entity name='leidos_projectfunding'>",
+			"    <attribute name='leidos_name' />",
+			"    <attribute name='leidos_projectfundingid' />",
+			"    <order attribute='leidos_name' descending='false' />",
+			"    <filter type='and'>",
+			"      <condition attribute='statuscode' operator='ne' value='", fetchData.statuscode, "'/>",
+			"    </filter>",
+			"    <link-entity name='leidos_project' from='leidos_projectid' to='leidos_parentproject' link-type='inner' alias='ba'>",
+			"      <link-entity name='leidos_claim' from='leidos_parentproject' to='leidos_projectid' link-type='inner' alias='bb'>",
+			"        <filter type='and'>",
+			"          <condition attribute='leidos_claimid' operator='eq' value='", fetchData.leidos_claimid, "'/>",
+			"        </filter>",
+			"      </link-entity>",
+			"    </link-entity>",
+			"    <link-entity name='leidos_fundingsource' from='leidos_fundingsourceid' to='leidos_fundingsource' link-type='inner' alias='bc'>",
+			"      <filter type='and'>",
+			"        <condition attribute='leidos_spendprofilerequired' operator='eq' value='", fetchData.leidos_spendprofilerequired, "'/>",
+			"      </filter>",
+			"    </link-entity>",
+			"  </entity>",
+			"</fetch>",
+			].join("");
+
 		}
 	}
 	
@@ -28,36 +58,38 @@ Leidos.CostFundingLineFilterview = function(executionContext) {
 		if (paymentValue != null)
 		{
 			parentId = paymentValue[0].id;
+			var fetchData = {
+				statuscode: "2",
+				leidos_paymentid: parentId,
+				leidos_spendprofilerequired: "1"
+			};
+			var fetchXml = [
+			"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='true'>",
+			"  <entity name='leidos_projectfunding'>",
+			"    <attribute name='leidos_name' />",
+			"    <attribute name='leidos_projectfundingid' />",
+			"    <order attribute='leidos_name' descending='false' />",
+			"    <filter type='and'>",
+			"      <condition attribute='statuscode' operator='ne' value='", fetchData.statuscode, "'/>",
+			"    </filter>",
+			"    <link-entity name='leidos_project' from='leidos_projectid' to='leidos_parentproject' link-type='inner' alias='bg'>",
+			"      <link-entity name='leidos_payment' from='leidos_parentproject' to='leidos_projectid' link-type='inner' alias='bh'>",
+			"        <filter type='and'>",
+			"          <condition attribute='leidos_paymentid' operator='eq' value='", fetchData.leidos_paymentid, "'/>",
+			"        </filter>",
+			"      </link-entity>",
+			"    </link-entity>",
+			"    <link-entity name='leidos_fundingsource' from='leidos_fundingsourceid' to='leidos_fundingsource' link-type='inner' alias='bi'>",
+			"      <filter type='and'>",
+			"        <condition attribute='leidos_spendprofilerequired' operator='eq' value='", fetchData.leidos_spendprofilerequired, "'/>",
+			"      </filter>",
+			"    </link-entity>",
+			"  </entity>",
+			"</fetch>",
+			].join("");
 		}
 	}
-    //var id = formContext.data.entity.getId();
 
-    var fetchData = {
-		statuscode: "2",
-		leidos_parentid: parentId
-	};
-	var fetchXml = [
-"<fetch version='1.0' output-format='xml-platform' mapping='logical' distinct='true'>",
-"  <entity name='leidos_projectfunding'>",
-"    <attribute name='leidos_name' />",
-"    <attribute name='leidos_projectfundingid' />",
-"    <order attribute='leidos_name' descending='false' />",
-"    <filter type='and'>",
-"      <condition attribute='statuscode' operator='ne' value='", fetchData.statuscode, "'/>",
-" 	  <filter type='or' >",
-"		<condition attribute='leidos_claimid' operator='eq' value='", fetchData.leidos_parentid, "' entityname='claim1'/>",
-"		<condition attribute='leidos_paymentid' operator='eq' value='", fetchData.leidos_parentid, "' entityname='payment2'/>",
-"	  </filter>",
-"    </filter>",
-"    <link-entity name='leidos_project' from='leidos_projectid' to='leidos_parentproject' link-type='outer' alias='proj1'>",
-"      <link-entity name='leidos_claim' from='leidos_parentproject' to='leidos_projectid' link-type='outer' alias='claim1' />",
-"    </link-entity>",
-"    <link-entity name='leidos_project' from='leidos_projectid' to='leidos_parentproject' link-type='outer' alias='proj2'>",
-"      <link-entity name='leidos_payment' from='leidos_parentproject' to='leidos_projectid' link-type='outer' alias='payment2' />",
-"    </link-entity>",
-"  </entity>",
-"</fetch>",
-	].join("");
    
     var layoutXml = "<grid name='resultset' object='10178' jump='leidos_name' select='1' icon='1' preview='1' >" 
     +"<row name='result' id='leidos_projectfundingid' >"
