@@ -1115,6 +1115,20 @@
                         <control id="leidos_noofemployees" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_noofemployees" disabled="false" />
                       </cell>
                     </row>
+                    <row>
+                      <cell id="{dffe5503-a171-4b8c-be7a-e870e59d208b}" locklevel="0">
+                        <labels>
+                          <label description="Source of information " languagecode="1033" />
+                        </labels>
+                        <control id="leidos_sourceofinformation" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_sourceofinformation" disabled="false" />
+                      </cell>
+                      <cell id="{d761782c-4d47-4304-a6b5-10f616199032}" locklevel="0">
+                        <labels>
+                          <label description="Date of information" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_dateofinformation" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_dateofinformation" disabled="false" />
+                      </cell>
+                    </row>
                   </rows>
                 </section>
                 <section name="TradingGeographies" id="5f2a4f95-5cbc-4e42-adbf-38c7ac8408e9" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="11" labelwidth="115" visible="false">
@@ -2706,6 +2720,16 @@
             <Handler functionName="Leidos.onLinkToLegacyCompany" libraryName="leidos_common" handlerUniqueId="{052ef24c-c6fb-482c-8216-5625e1488700}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_turnover">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="a15c0fdd-afac-4bf8-bdb8-957158b5b2d3" enabled="true" parameters="'GbS:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="leidos_noofemployees">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="adf0f400-cb62-4d4f-9ac8-0a738c5069c2" enabled="true" parameters="'GbS:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
       </events>
       <DisplayConditions FallbackForm="true" Order="4">
         <Everyone />
@@ -2714,9 +2738,9 @@
         <Library name="leidos_common" libraryUniqueId="{ba42d868-9440-990e-e86a-09b7e4757493}" />
         <Library name="leidos_AccountPrimaryContactFilter" libraryUniqueId="{abe68b47-3a8a-d371-7b3b-31aca1d5d3d5}" />
         <Library name="data8_predictiveaddress_ui.js" libraryUniqueId="{b1a36d5c-853b-2bd2-6d58-a34843681b82}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="6f7ca42f-7099-4c1c-a21e-3de8b20deafa" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="6be87683-f519-48ec-b06b-0c70e4cae0f0" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="b1dabfe2-d81b-4075-86c2-66ce14de74e3" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="e59ae24d-9a13-4660-be04-87eb72bf4292" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="4b0d2269-5193-42e3-973d-dcf0844183a4" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="660ecc87-4596-4516-acb2-eb1c3afc8b81" />
       </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
