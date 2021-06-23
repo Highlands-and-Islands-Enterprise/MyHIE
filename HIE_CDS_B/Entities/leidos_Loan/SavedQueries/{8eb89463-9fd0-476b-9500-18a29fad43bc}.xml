@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{8eb89463-9fd0-476b-9500-18a29fad43bc}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_loanid">
+          <cell name="leidos_loanreference" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_capitaloutstanding" width="100" />
+          <cell name="leidos_dateofnextrepayment" width="100" />
+          <cell name="leidos_interestdue" width="100" />
+          <cell name="statuscode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_loan">
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="leidos_name" operator="like" value="{0}" />
+          </filter>
+          <order attribute="leidos_loanreference" descending="false" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_loanreference" />
+          <attribute name="leidos_interestdue" />
+          <attribute name="leidos_dateofnextrepayment" />
+          <attribute name="leidos_capitaloutstanding" />
+          <attribute name="leidos_loanid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active Loans" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

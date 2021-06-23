@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{ac3324a2-19a5-43be-b910-a1582b1e1d99}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_loanid">
+          <cell name="leidos_loanreference" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="a_d94ca0994978eb11a812002248414cc3.leidos_name" width="100" disableSorting="1" />
+          <cell name="leidos_capitaloutstanding" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_interestdue" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_dateofnextrepayment" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="statuscode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_loan">
+          <order attribute="leidos_loanreference" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="statuscode" />
+          <attribute name="leidos_loanreference" />
+          <attribute name="leidos_interestdue" />
+          <attribute name="leidos_dateofnextrepayment" />
+          <attribute name="leidos_capitaloutstanding" />
+          <link-entity alias="a_d94ca0994978eb11a812002248414cc3" name="leidos_project" from="leidos_projectid" to="leidos_project" link-type="outer" visible="false">
+            <attribute name="leidos_name" />
+          </link-entity>
+          <attribute name="leidos_loanid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Loans" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
