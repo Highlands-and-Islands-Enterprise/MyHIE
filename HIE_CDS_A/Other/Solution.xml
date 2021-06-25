@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_A" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3609</Version>
+    <Version>1.18.0.3617</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -88,6 +88,7 @@
       <RootComponent type="1" schemaName="leidos_bpfprogramme" behavior="0" />
       <RootComponent type="1" schemaName="leidos_bpf_amcp_clientplan" behavior="0" />
       <RootComponent type="1" schemaName="leidos_bpf_pipelineproject" behavior="0" />
+      <RootComponent type="1" schemaName="leidos_employmentdetails" behavior="2" />
       <RootComponent type="1" schemaName="leidos_enquiry" behavior="2" />
       <RootComponent type="1" schemaName="leidos_ownhandinvoicesummary" behavior="2" />
       <RootComponent type="1" schemaName="leidos_pipelineprogramme" behavior="2" />
@@ -110,6 +111,7 @@
       <RootComponent type="29" id="{47012628-307e-4219-9926-7c5ce7102eb9}" behavior="0" />
       <RootComponent type="29" id="{4c0bfc4e-2175-eb11-a812-002248414cc3}" behavior="0" />
       <RootComponent type="29" id="{4f599052-6ccf-eb11-bacc-000d3ad59ccd}" behavior="0" />
+      <RootComponent type="29" id="{51dc1cf8-792d-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{70c503c3-28aa-ea11-a812-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{7cba6ed2-9bbe-4ee9-814c-ef1a1973ce3a}" behavior="0" />
       <RootComponent type="29" id="{7d6ac901-f9d3-eb11-bacb-000d3ad6153d}" behavior="0" />
@@ -118,6 +120,8 @@
       <RootComponent type="29" id="{932e0904-825f-ea11-a811-000d3a0bad17}" behavior="0" />
       <RootComponent type="29" id="{a4328629-c85e-ea11-a811-000d3a0bad17}" behavior="0" />
       <RootComponent type="29" id="{a6f4c492-c3a6-4dae-9c85-dbd2ea0fa8df}" behavior="0" />
+      <RootComponent type="29" id="{be12e379-db7c-eb11-a812-002248405303}" behavior="0" />
+      <RootComponent type="29" id="{d78794c1-94d5-eb11-bacb-000d3ad6153d}" behavior="0" />
       <RootComponent type="29" id="{df673bab-17d8-4ded-8556-f7232cd2805f}" behavior="0" />
       <RootComponent type="29" id="{e440cd76-51e4-4b54-85e6-d64a5b958b52}" behavior="0" />
       <RootComponent type="29" id="{e88b17e3-b43d-ea11-a812-000d3a0ba151}" behavior="0" />
@@ -140,6 +144,7 @@
       <RootComponent type="61" schemaName="north52_/formula/adx_invitation/nhp/f.59394c5f2ed3eb11bacb000d3ad5747e" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_accountmanagementclientplan/HZG/f.27cfff4139d0eb11bacc000d3ad59ccd" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_accountmanagementclientplan/HZG/fd.79003e5a39d0eb11bacc000d3ad59ccd" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_anticipatedspendprofile/VU5/f.03579cba84b7ea11a812000d3a7f1bbb" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_application/SaT/f.0cfb0b4e09d0eb11bacc000d3ad59ccd" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_application/SaT/fd.09531c6c09d0eb11bacc000d3ad59ccd" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_legalundertaking/M8X/f.b14053a107b3eb11823600224841837b" behavior="0" />
@@ -148,6 +153,7 @@
       <RootComponent type="61" schemaName="north52_/formula/leidos_ownhandinvoicedetail/bVz/fd.f44e313cf8bfeb11bacc000d3ad6a017" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_pipelineprogramme/iNk/f.8a75d5780bd0eb11bacc000d3ad59ccd" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_pipelineprogramme/iNk/fd.30ba8ce00bd0eb11bacc000d3ad59ccd" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_pipelineproject/lJ3/f.b0f1a73b98d5eb11bacb000d3ad6153d" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_pipelineproject/Wa4/f.cb9fd48c94cfeb11bacc000d3ad59ccd" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_pipelineproject/Wa4/fd.2fba5cc994cfeb11bacc000d3ad59ccd" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_programme/h7S/f.5fdd6e5d0fd0eb11bacc000d3ad59ccd" behavior="0" />
@@ -175,6 +181,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_accountmanagementactionplan" displayName="Account Management Action Plan" solution="Active" />
         <Dependent type="29" displayName="Action Plan - Flow - On Create Set the Name" id="{932e0904-825f-ea11-a811-000d3a0bad17}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_accountmanagementactionplan" displayName="Account Management Action Plan" solution="Active" />
+        <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_accountmanagementactionplan" displayName="Account Management Action Plan" solution="Active" />
@@ -326,6 +336,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
@@ -335,6 +349,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_claimadjustmentline" displayName="Claim Adjustment Line" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_claimdetail" displayName="Claim Detail" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_claimdetail" displayName="Claim Detail" solution="Active" />
@@ -350,11 +368,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientactionplan" displayName="Action" solution="Active" />
+        <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_clientactionplan" displayName="Action" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientenquiryorigin" displayName="Client Enquiry Origin" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_clientladder" displayName="Client Ladder" solution="Active" />
+        <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientladder" displayName="Client Ladder" solution="Active" />
@@ -390,6 +416,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientplanreviewresponse" displayName="Client Plan Review Response" solution="Active" />
+        <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_clientplanreviewresponse" displayName="Client Plan Review Response" solution="Active" />
         <Dependent type="60" displayName="HIE Client Plan" parentDisplayName="Account Management Client Plan" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
       </MissingDependency>
       <MissingDependency>
@@ -399,6 +429,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientplansummary" displayName="Client Plan Summary" solution="Active" />
         <Dependent type="29" displayName="Action Plan - Flow - On Create Set the Name" id="{932e0904-825f-ea11-a811-000d3a0bad17}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_clientplansummary" displayName="Client Plan Summary" solution="Active" />
+        <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientplansummary" displayName="Client Plan Summary" solution="Active" />
@@ -434,11 +468,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_employmentdetails" displayName="Employment Details" solution="Active" />
-        <Dependent type="60" displayName="HIE Client Plan" parentDisplayName="Account Management Client Plan" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="leidos_employmentdetails" displayName="Employment Details" solution="Active" />
-        <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+        <Dependent type="1" schemaName="leidos_employmentdetails" displayName="Employment Details" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_employmentroles" displayName="Employment Role" solution="Active" />
@@ -543,6 +573,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_jobtypesoc" displayName="Job Type (SOC)" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_keystrategicaction" displayName="Key Strategic Aim" solution="Active" />
+        <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_keystrategicaction" displayName="Key Strategic Aim" solution="Active" />
@@ -674,6 +708,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_paymentclaim" displayName="Payment Claim" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_paymentclaim" displayName="Payment Claim" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
@@ -702,7 +740,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_progressmeasure" displayName="Progress Measure" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_progressmeasure" displayName="Progress Measure" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_progressmilestones" displayName="Progress Milestones" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_progressmilestones" displayName="Progress Milestones" solution="Active" />
@@ -899,6 +945,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_theme" displayName="Theme" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_tradinggeography" displayName="Trading Geography" solution="Active" />
+        <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_tradinggeography" displayName="Trading Geography" solution="Active" />
@@ -2473,6 +2523,10 @@
         <Dependent type="60" displayName="HIE Client Plan" parentDisplayName="Account Management Client Plan" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_accountmanagementclientplan" parentDisplayName="Account Management Client Plan" solution="Active" />
+        <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_accountmanagementclientplan" parentDisplayName="Account Management Client Plan" solution="Active" />
         <Dependent type="60" displayName="HIE Client Plan" parentDisplayName="Account Management Client Plan" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
       </MissingDependency>
@@ -2919,6 +2973,30 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" solution="Active" />
         <Dependent type="10" schemaName="leidos_Segmentation_BusinessorSocialEnter" displayName="leidos_Segmentation_BusinessorSocialEnter" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submitclaimforapproval" displayName="Submit Claim for Approval" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_employmentdetailsid" displayName="Employment Details" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" solution="Active" />
+        <Dependent type="26" schemaName="AMR - Grid View Active Employment Details" displayName="AMR - Grid View Active Employment Details" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" id="{9bd02821-3e38-ea11-a813-000d3a0bad7c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_employmentrole" displayName="Employment Role" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" solution="Active" />
+        <Dependent type="26" schemaName="AMR - Grid View Active Employment Details" displayName="AMR - Grid View Active Employment Details" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" id="{9bd02821-3e38-ea11-a813-000d3a0bad7c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_noofemployeesofthattype" displayName="No Of employees of that type" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" solution="Active" />
+        <Dependent type="26" schemaName="AMR - Grid View Active Employment Details" displayName="AMR - Grid View Active Employment Details" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" id="{9bd02821-3e38-ea11-a813-000d3a0bad7c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_numberoffte" displayName="Number of FTE Employees" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" solution="Active" />
+        <Dependent type="26" schemaName="AMR - Grid View Active Employment Details" displayName="AMR - Grid View Active Employment Details" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" id="{9bd02821-3e38-ea11-a813-000d3a0bad7c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_salaryaverageforthattype" displayName="Average FTE Salary (before deductions)" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" solution="Active" />
+        <Dependent type="26" schemaName="AMR - Grid View Active Employment Details" displayName="AMR - Grid View Active Employment Details" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" id="{9bd02821-3e38-ea11-a813-000d3a0bad7c}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
@@ -3550,6 +3628,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="29" displayName="Confirm Route" id="{d78794c1-94d5-eb11-bacb-000d3ad6153d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
         <Dependent type="29" displayName="BPF - Pipeline Project" id="{df673bab-17d8-4ded-8556-f7232cd2805f}" />
       </MissingDependency>
       <MissingDependency>
@@ -3586,6 +3668,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_pipelineprojectid" displayName="Pipeline Project" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="29" displayName="Confirm Route" id="{d78794c1-94d5-eb11-bacb-000d3ad6153d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_pipelineprojectid" displayName="Pipeline Project" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
         <Dependent type="29" displayName="BPF - Pipeline Project" id="{df673bab-17d8-4ded-8556-f7232cd2805f}" />
       </MissingDependency>
       <MissingDependency>
@@ -3602,18 +3688,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_potentialsupportitemsadded" displayName="Potential Support Items Added" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
-        <Dependent type="60" displayName="Information" parentDisplayName="BPF - Pipeline Project" id="{d0094168-ba7f-4667-ae42-251eff90a7a8}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_preapplicationroute" displayName="Pre-Application Route" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
-        <Dependent type="29" displayName="BPF - Pipeline Project" id="{df673bab-17d8-4ded-8556-f7232cd2805f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_preapplicationroute" displayName="Pre-Application Route" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
-        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_preapplicationroute" displayName="Pre-Application Route" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="BPF - Pipeline Project" id="{d0094168-ba7f-4667-ae42-251eff90a7a8}" />
       </MissingDependency>
       <MissingDependency>
@@ -6885,14 +6959,6 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="AMR - Grid View Active Employment Details" displayName="AMR - Grid View Active Employment Details" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" solution="Active" id="{9bd02821-3e38-ea11-a813-000d3a0bad7c}" />
-        <Dependent type="60" displayName="HIE Client Plan" parentDisplayName="Account Management Client Plan" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="26" schemaName="AMR - Grid View Active Employment Details" displayName="AMR - Grid View Active Employment Details" parentSchemaName="leidos_employmentdetails" parentDisplayName="Employment Details" solution="Active" id="{9bd02821-3e38-ea11-a813-000d3a0bad7c}" />
-        <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="26" schemaName="AMR Renewal Overdue" displayName="AMR Renewal Overdue" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Account Management Record" solution="Active" id="{9c824177-83cd-ea11-a812-000d3a7f1bbb}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -7638,6 +7704,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
         <Dependent type="29" displayName="Pipeline Project - Flow - Submit Email for approval" id="{70c503c3-28aa-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
@@ -8345,8 +8415,16 @@
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="9" schemaName="leidos_preapplicationroute" displayName="Pre-Application Route" solution="Active" />
+        <Dependent type="2" schemaName="leidos_preapplicationroute" displayName="Pre-Application Route" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="90" schemaName="North52.FormulaManager.WorkflowActivities.ExecuteFormula, North52.FormulaManager, Version=1.0.0.596, Culture=neutral, PublicKeyToken=a8878fd7dad60ca1" displayName="N52 Process Genie" solution="North52FormulaManager (1.0.0.596)" id="{ef8da8e0-5947-ea11-a812-000d3a0ba151}" />
         <Dependent type="29" displayName="Cost Funding Line Spend N52 NVT" id="{47012628-307e-4219-9926-7c5ce7102eb9}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
@@ -8373,12 +8451,24 @@
         <Dependent type="29" displayName="AMCP - Flow - Submit for Approval" id="{a4328629-c85e-ea11-a811-000d3a0bad17}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnAMCP" solution="Active" id.connectionreferencelogicalname="leidos_ConnAMCP" />
+        <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnCosts" solution="Active" id.connectionreferencelogicalname="leidos_ConnCosts" />
         <Dependent type="29" displayName="Cost Funding - Flow - Recurrence -Update Spend " id="{7d6ac901-f9d3-eb11-bacb-000d3ad6153d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
         <Dependent type="29" displayName="Pipeline Project - Flow - NFI Email Approval Process" id="{0173199e-0a15-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
@@ -8419,6 +8509,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnProgrammeAmendment" solution="Active" id.connectionreferencelogicalname="leidos_ConnProgrammeAmendment" />
         <Dependent type="29" displayName="Programme Amendment - Flow - On create Update Programme Status" id="{36d4dc34-5ebf-ea11-a812-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_62e90" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_62e90" />
+        <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>

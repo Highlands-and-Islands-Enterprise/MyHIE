@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3609</Version>
+    <Version>1.18.0.3617</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -258,6 +258,7 @@
       <RootComponent type="9" schemaName="connectionrole_category" behavior="0" />
       <RootComponent type="9" schemaName="leidos_accountmanagementrecommendation" behavior="0" />
       <RootComponent type="9" schemaName="leidos_accountmanagementstatus" behavior="0" />
+      <RootComponent type="9" schemaName="leidos_adjustmenttype" behavior="0" />
       <RootComponent type="9" schemaName="leidos_attachmenttype" behavior="0" />
       <RootComponent type="9" schemaName="leidos_baselinescore" behavior="0" />
       <RootComponent type="9" schemaName="leidos_budgetholder" behavior="0" />
@@ -432,7 +433,6 @@
       <RootComponent type="29" id="{55a53840-9e7d-eb11-a812-002248405783}" behavior="0" />
       <RootComponent type="29" id="{56393943-f324-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{57173db9-cd8b-eb11-b1ac-000d3ad511c2}" behavior="0" />
-      <RootComponent type="29" id="{57522861-a01d-41bc-aeb8-e7e91542e412}" behavior="0" />
       <RootComponent type="29" id="{5a8b5d2e-280a-eb11-a813-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{5aadc7b1-a3ba-ea11-a812-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{5af12f6d-d475-eb11-a812-0022484145f5}" behavior="0" />
@@ -1317,7 +1317,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
-        <Dependent type="60" displayName="Web - Account Financial Assistance" parentDisplayName="Account" id="{431d1a95-ff55-46d9-9bd5-6caa578216c9}" />
+        <Dependent type="60" displayName="Web - Account Details" parentDisplayName="Account" id="{4afa4550-1f3d-ea11-a812-000d3a0bad17}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Contact/Contact_main_system_library.js" displayName="AppCommon/Contact/Contact_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
@@ -1325,7 +1325,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Contact/Contact_main_system_library.js" displayName="AppCommon/Contact/Contact_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
-        <Dependent type="60" displayName="HIE Contact Form" parentDisplayName="Contact" id="{c432ac4d-7254-4c1b-80d0-7e6597073db6}" />
+        <Dependent type="60" displayName="Web - Profile Edit" parentDisplayName="Contact" id="{c8a89cee-866e-ea11-a811-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="data8_predictiveaddress_ui.js" displayName="data8_predictiveaddress_ui.js" solution="Data8PredictiveAddress (1.2.6)" />
@@ -2268,10 +2268,6 @@
         <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="9" schemaName="leidos_adjustmenttype" displayName="Adjustment Type" solution="Active" />
-        <Dependent type="2" schemaName="leidos_adjustmenttype" displayName="Adjustment Type" parentSchemaName="leidos_loanadjustment" parentDisplayName="Loan Adjustment" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="90" schemaName="Adxstudio.Xrm.Workflow.Invitation.EncodeInvitationCode, Adxstudio.Xrm.Workflow.Invitation, Version=1.1.7.1, Culture=neutral, PublicKeyToken=3f8f3abf0a9e40bb" displayName="Encode Invitation Code" solution="MicrosoftPortalBase (9.2.2103.1)" id="{a56314a2-d9ad-e911-8199-000d3af912f9}" />
         <Dependent type="29" displayName="Send Invitation" id="{15c03c8d-754f-4386-a62c-cf7e91337ebd}" />
       </MissingDependency>
@@ -2306,10 +2302,6 @@
       <MissingDependency>
         <Required type="90" schemaName="North52.FormulaManager.WorkflowActivities.ExecuteFormula, North52.FormulaManager, Version=1.0.0.596, Culture=neutral, PublicKeyToken=a8878fd7dad60ca1" displayName="N52 Process Genie" solution="North52FormulaManager (1.0.0.596)" id="{ef8da8e0-5947-ea11-a812-000d3a0ba151}" />
         <Dependent type="29" displayName="Project Funding - Sync Workflow  - Check Totals for Roll back" id="{55a1ed92-271b-477d-82c3-14da7bbe2a3a}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="90" schemaName="North52.FormulaManager.WorkflowActivities.ExecuteFormula, North52.FormulaManager, Version=1.0.0.596, Culture=neutral, PublicKeyToken=a8878fd7dad60ca1" displayName="N52 Process Genie" solution="North52FormulaManager (1.0.0.596)" id="{ef8da8e0-5947-ea11-a812-000d3a0ba151}" />
-        <Dependent type="29" displayName="Loan Adjustment - Capitalisation - Action - Generate Transaction" id="{57522861-a01d-41bc-aeb8-e7e91542e412}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="90" schemaName="North52.FormulaManager.WorkflowActivities.ExecuteFormula, North52.FormulaManager, Version=1.0.0.596, Culture=neutral, PublicKeyToken=a8878fd7dad60ca1" displayName="N52 Process Genie" solution="North52FormulaManager (1.0.0.596)" id="{ef8da8e0-5947-ea11-a812-000d3a0ba151}" />
@@ -3246,6 +3238,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_62e90" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_62e90" />
         <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedexcelonlinebusiness_fbf79" solution="Active" id.connectionreferencelogicalname="leidos_sharedexcelonlinebusiness_fbf79" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedsharepointonline_5be6a" solution="Active" id.connectionreferencelogicalname="leidos_sharedsharepointonline_5be6a" />
