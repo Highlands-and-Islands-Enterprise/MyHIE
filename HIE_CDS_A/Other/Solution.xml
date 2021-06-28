@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.21055.133" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.21061.138" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>HIE_CDS_A</UniqueName>
     <LocalizedNames>
       <LocalizedName description="HIE_CDS_A" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3622</Version>
+    <Version>1.18.0.3645</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -108,11 +108,14 @@
       <RootComponent type="29" id="{2c98ca03-66d3-eb11-bacb-000d3ad57248}" behavior="0" />
       <RootComponent type="29" id="{36d4dc34-5ebf-ea11-a812-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{440ae705-9cfd-460b-b681-d7a6b0cb6e7e}" behavior="0" />
+      <RootComponent type="29" id="{464540d8-38a6-ea11-a812-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{47012628-307e-4219-9926-7c5ce7102eb9}" behavior="0" />
       <RootComponent type="29" id="{4c0bfc4e-2175-eb11-a812-002248414cc3}" behavior="0" />
       <RootComponent type="29" id="{4f599052-6ccf-eb11-bacc-000d3ad59ccd}" behavior="0" />
+      <RootComponent type="29" id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" behavior="0" />
       <RootComponent type="29" id="{51dc1cf8-792d-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{70c503c3-28aa-ea11-a812-000d3a7f1bbb}" behavior="0" />
+      <RootComponent type="29" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{7cba6ed2-9bbe-4ee9-814c-ef1a1973ce3a}" behavior="0" />
       <RootComponent type="29" id="{7d6ac901-f9d3-eb11-bacb-000d3ad6153d}" behavior="0" />
       <RootComponent type="29" id="{8795be78-0b20-eb11-a813-000d3a7fedbe}" behavior="0" />
@@ -151,6 +154,7 @@
       <RootComponent type="61" schemaName="north52_/formula/leidos_ownhandinvoicedetail/bVz/f.292a6cd382bceb11bacc000d3ad6a017" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_ownhandinvoicedetail/bVz/fd.401a42028bbceb11bacc000d3ad6a017" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_ownhandinvoicedetail/bVz/fd.f44e313cf8bfeb11bacc000d3ad6a017" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_ownhandinvoicesummary/i43/f.433cdaba8dbfeb11bacc000d3ad6a8e8" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_pipelineprogramme/iNk/f.8a75d5780bd0eb11bacc000d3ad59ccd" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_pipelineprogramme/iNk/fd.30ba8ce00bd0eb11bacc000d3ad59ccd" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_pipelineproject/lJ3/f.b0f1a73b98d5eb11bacb000d3ad6153d" behavior="0" />
@@ -205,6 +209,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_accountmanagementrecord" displayName="Account Management Record" solution="Active" />
         <Dependent type="29" displayName="BPF Account Process" id="{440ae705-9cfd-460b-b681-d7a6b0cb6e7e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_accountmanagementrecord" displayName="Account Management Record" solution="Active" />
+        <Dependent type="29" displayName="AMR-Flow - AMR Approval Process" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_accountmanagementrecord" displayName="Account Management Record" solution="Active" />
@@ -269,6 +277,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_applicationquestiontypes" displayName="Application Question Types" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_areaoffice" displayName="Area Office" solution="Active" />
+        <Dependent type="29" displayName="AMR-Flow - AMR Approval Process" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_areaoffice" displayName="Area Office" solution="Active" />
@@ -452,7 +464,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_delegatedauthorityapprovaltable" displayName="Delegated Authority Approval Table" solution="Active" />
+        <Dependent type="29" displayName="Pipeline Project - Flow - Submit ISA for approval" id="{464540d8-38a6-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_delegatedauthorityapprovaltable" displayName="Delegated Authority Approval Table" solution="Active" />
         <Dependent type="29" displayName="Pipeline Project - Flow - Submit Email for approval" id="{70c503c3-28aa-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_delegatedauthorityapprovaltable" displayName="Delegated Authority Approval Table" solution="Active" />
+        <Dependent type="29" displayName="AMR-Flow - AMR Approval Process" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_delegatedauthorityapprovaltable" displayName="Delegated Authority Approval Table" solution="Active" />
@@ -693,6 +713,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_organisationtype" displayName="Organisation Type" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandinvoicedetail" displayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_ownhandinvoicedetail" displayName="Own Hand Invoice Detail" solution="Active" />
@@ -2592,6 +2616,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_submitamrforapproval" displayName="Submit AMR for Approval" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Account Management Record" solution="Active" />
+        <Dependent type="29" displayName="AMR-Flow - AMR Approval Process" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submitamrforapproval" displayName="Submit AMR for Approval" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Account Management Record" solution="Active" />
         <Dependent type="29" displayName="AMR - Flow -Trigger on Submit for Approval" id="{faea2275-7346-ea11-a812-000d3a0ba151}" />
       </MissingDependency>
       <MissingDependency>
@@ -3093,6 +3121,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_description" displayName="Description " parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
         <Dependent type="29" displayName="Invoice Received date" id="{4f599052-6ccf-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_generatereport" displayName="Generate Report" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_invoicedate" displayName="Invoice Date" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
@@ -3728,6 +3760,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_submitisa" displayName="Submit ISA" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="29" displayName="Pipeline Project - Flow - Submit ISA for approval" id="{464540d8-38a6-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submitisa" displayName="Submit ISA" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
         <Dependent type="29" displayName="BPF - Pipeline Project" id="{df673bab-17d8-4ded-8556-f7232cd2805f}" />
       </MissingDependency>
       <MissingDependency>
@@ -3753,6 +3789,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_submitnfiemailapproval" displayName="Submit NFI Email Approval" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="BPF - Pipeline Project" id="{d0094168-ba7f-4667-ae42-251eff90a7a8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submitnfiisaforapproval" displayName="Submit NFI ISA For Approval" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="29" displayName="Pipeline Project - Flow - Submit ISA for approval" id="{464540d8-38a6-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_submitnfiisaforapproval" displayName="Submit NFI ISA For Approval" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
@@ -7692,6 +7732,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Pipeline Project - Child Flow - Process Approval Decision" solution="Active" id="{5e83fa4c-67aa-ea11-a812-000d3a7f1bbb}" />
+        <Dependent type="29" displayName="Pipeline Project - Flow - Submit ISA for approval" id="{464540d8-38a6-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="Pipeline Project - Child Flow - Process Approval Decision" solution="Active" id="{5e83fa4c-67aa-ea11-a812-000d3a7f1bbb}" />
         <Dependent type="29" displayName="Pipeline Project - Flow - Submit Email for approval" id="{70c503c3-28aa-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
@@ -7704,11 +7748,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="Pipeline Project - Flow - Submit ISA for approval" id="{464540d8-38a6-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
         <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
         <Dependent type="29" displayName="Pipeline Project - Flow - Submit Email for approval" id="{70c503c3-28aa-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="AMR-Flow - AMR Approval Process" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
@@ -8335,83 +8387,83 @@
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Segmentation" id="{1ec9e17a-beac-48cf-a8dd-e2f916644491}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="HIE Programme Form" parentDisplayName="Programme" id="{492effe1-1d54-4db2-8497-311b28e81ba8}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="HIE Client Plan" parentDisplayName="Account Management Client Plan" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="myHIE Form" parentDisplayName="Pipeline Programme" id="{b13122b7-ee5b-432f-9d55-f98c86799bdb}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21055.00133)" />
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21061.00138)" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21055.00133)" />
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21061.00138)" />
         <Dependent type="60" displayName="HIE Programme Form" parentDisplayName="Programme" id="{492effe1-1d54-4db2-8497-311b28e81ba8}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21055.00133)" />
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21061.00138)" />
         <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21055.00133)" />
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21061.00138)" />
         <Dependent type="60" displayName="HIE Client Plan" parentDisplayName="Account Management Client Plan" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21055.00133)" />
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21061.00138)" />
         <Dependent type="60" displayName="myHIE Form" parentDisplayName="Pipeline Programme" id="{b13122b7-ee5b-432f-9d55-f98c86799bdb}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21055.00133)" />
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21061.00138)" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21055.00133)" />
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21061.00138)" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="HIE Programme Form" parentDisplayName="Programme" id="{492effe1-1d54-4db2-8497-311b28e81ba8}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="HIE Client Plan" parentDisplayName="Account Management Client Plan" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2105.5004)" />
+        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2106.1009)" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
@@ -8428,11 +8480,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
+        <Dependent type="29" displayName="AMR-Flow - AMR Approval Process" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
         <Dependent type="29" displayName="AMCP - Flow - Submit for Approval" id="{a4328629-c85e-ea11-a811-000d3a0bad17}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_Approvals" solution="Active" id.connectionreferencelogicalname="leidos_Approvals" />
         <Dependent type="29" displayName="Pipeline Project - Flow - NFI Email Approval Process" id="{0173199e-0a15-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_Approvals" solution="Active" id.connectionreferencelogicalname="leidos_Approvals" />
+        <Dependent type="29" displayName="Pipeline Project - Flow - Submit ISA for approval" id="{464540d8-38a6-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_Approvals" solution="Active" id.connectionreferencelogicalname="leidos_Approvals" />
@@ -8455,6 +8515,10 @@
         <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnAMR" solution="Active" id.connectionreferencelogicalname="leidos_ConnAMR" />
+        <Dependent type="29" displayName="AMR-Flow - AMR Approval Process" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
         <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
       </MissingDependency>
@@ -8468,11 +8532,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
+        <Dependent type="29" displayName="Pipeline Project - Flow - Submit ISA for approval" id="{464540d8-38a6-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
         <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
         <Dependent type="29" displayName="Pipeline Project - Flow - Submit Email for approval" id="{70c503c3-28aa-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
+        <Dependent type="29" displayName="AMR-Flow - AMR Approval Process" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
@@ -8487,6 +8559,10 @@
         <Dependent type="29" displayName="Pipeline Programme - Flow-  Submit ISA for Approval" id="{8795be78-0b20-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOwnHand" solution="Active" id.connectionreferencelogicalname="leidos_ConnOwnHand" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnPipelineProgramme" solution="Active" id.connectionreferencelogicalname="leidos_ConnPipelineProgramme" />
         <Dependent type="29" displayName="Pipeline Programme - Flow-  Submit ISA for Approval" id="{8795be78-0b20-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
@@ -8497,6 +8573,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnPipleine" solution="Active" id.connectionreferencelogicalname="leidos_ConnPipleine" />
         <Dependent type="29" displayName="Pipeline Project - Flow - NFI Email Approval Process" id="{0173199e-0a15-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnPipleine" solution="Active" id.connectionreferencelogicalname="leidos_ConnPipleine" />
+        <Dependent type="29" displayName="Pipeline Project - Flow - Submit ISA for approval" id="{464540d8-38a6-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnPipleine" solution="Active" id.connectionreferencelogicalname="leidos_ConnPipleine" />
@@ -8513,6 +8593,14 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_62e90" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_62e90" />
         <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedexcelonlinebusiness_fbf79" solution="Active" id.connectionreferencelogicalname="leidos_sharedexcelonlinebusiness_fbf79" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedsharepointonline_5be6a" solution="Active" id.connectionreferencelogicalname="leidos_sharedsharepointonline_5be6a" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
