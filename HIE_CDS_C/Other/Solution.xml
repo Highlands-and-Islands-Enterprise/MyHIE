@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_C" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3691</Version>
+    <Version>1.18.0.3697</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -78,6 +78,7 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="29" id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" behavior="0" />
       <RootComponent type="31" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
@@ -88,6 +89,18 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_loan" displayName="Loan" solution="Active" />
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandinvoicedetail" displayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandinvoicesummary" displayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandrecordtype" displayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_project" displayName="Project" solution="Active" />
@@ -118,6 +131,10 @@
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_generatereport" displayName="Generate Report" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Project Title" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
       </MissingDependency>
@@ -132,6 +149,30 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOwnHand" solution="Active" id.connectionreferencelogicalname="leidos_ConnOwnHand" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedexcelonlinebusiness_fbf79" solution="Active" id.connectionreferencelogicalname="leidos_sharedexcelonlinebusiness_fbf79" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedsharepointonline_5be6a" solution="Active" id.connectionreferencelogicalname="leidos_sharedsharepointonline_5be6a" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="leidos_SharePointReportRootURL" solution="Active" id.schemaname="leidos_SharePointReportRootURL" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>

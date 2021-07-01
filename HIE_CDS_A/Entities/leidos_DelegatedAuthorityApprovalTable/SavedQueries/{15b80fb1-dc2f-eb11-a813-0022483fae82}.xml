@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{15b80fb1-dc2f-eb11-a813-0022483fae82}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_delegatedauthorityapprovaltableid">
+          <cell name="a_537a57f6a8bbea11a812000d3a7f1bbb.fullname" width="100" disableSorting="1" />
+          <cell name="leidos_maximumsignoffamount" width="100" />
+          <cell name="leidos_name" width="200" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="leidos_delegatedauthorityapprovaltable">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_maximumsignoffamount" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="leidos_userrecord" operator="ne-userid" />
+            <condition attribute="leidos_leadershipteam" operator="eq" value="1" />
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <link-entity name="systemuser" from="systemuserid" to="leidos_userrecord" visible="false" link-type="outer" alias="a_537a57f6a8bbea11a812000d3a7f1bbb">
+            <attribute name="fullname" />
+          </link-entity>
+          <attribute name="leidos_delegatedauthorityapprovaltableid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1232</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Top Slice - Leadership team" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

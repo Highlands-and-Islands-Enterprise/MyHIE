@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3691</Version>
+    <Version>1.18.0.3697</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -1053,6 +1053,26 @@
         <Dependent type="29" displayName="Child - Get Environment Variable" id="{c3e4375a-c7cc-ea11-a812-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandrecordtype" displayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="10" schemaName="leidos_OwnHandInvoiceSummary_RecordType_l" displayName="leidos_OwnHandInvoiceSummary_RecordType_l" parentSchemaName="leidos_ownhandrecordtype" parentDisplayName="Own Hand Record Type" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandrecordtype" displayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="2" schemaName="leidos_invoicedatesrequired" displayName="Invoice Dates Required" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandrecordtype" displayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandrecordtype" displayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="62" schemaName="leidos_OwnHandInvoiceProcessing" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandrecordtype" displayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="80" schemaName="leidos_OwnHandInvoiceProcessing" displayName="Own Hand Invoice Processing" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="teammobileofflineprofilemembership" displayName="TeamMobileOfflineProfileMembership" solution="MobileOfflineMembership (1.0.0.2)" />
         <Dependent type="1" schemaName="team" displayName="Team" />
       </MissingDependency>
@@ -1155,6 +1175,22 @@
       <MissingDependency>
         <Required type="2" schemaName="adx_identity_username" displayName="User Name" parentSchemaName="contact" parentDisplayName="Contact" solution="MicrosoftIdentity (9.2.2103.1)" />
         <Dependent type="60" displayName="HIE Contact Form" parentDisplayName="Contact" id="{c432ac4d-7254-4c1b-80d0-7e6597073db6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_invoicedates" displayName="Invoice Dates" parentSchemaName="leidos_ownhandrecordtype" parentDisplayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="2" schemaName="leidos_invoicedatesrequired" displayName="Invoice Dates Required" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_ownhandrecordtype" parentDisplayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="10" schemaName="leidos_OwnHandInvoiceSummary_RecordType_l" displayName="leidos_OwnHandInvoiceSummary_RecordType_l" parentSchemaName="leidos_ownhandrecordtype" parentDisplayName="Own Hand Record Type" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandrecordtypeid" displayName="Own Hand Record Type" parentSchemaName="leidos_ownhandrecordtype" parentDisplayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="10" schemaName="leidos_OwnHandInvoiceSummary_RecordType_l" displayName="leidos_OwnHandInvoiceSummary_RecordType_l" parentSchemaName="leidos_ownhandrecordtype" parentDisplayName="Own Hand Record Type" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandrecordtypeid" displayName="Own Hand Record Type" parentSchemaName="leidos_ownhandrecordtype" parentDisplayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="2" schemaName="leidos_invoicedatesrequired" displayName="Invoice Dates Required" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="membershiptype" displayName="Membership Type" parentSchemaName="team" parentDisplayName="Team" solution="AuthorizationCore (1.48.0.0)" />
@@ -1346,7 +1382,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
-        <Dependent type="60" displayName="Web - Account Financial Assistance" parentDisplayName="Account" id="{431d1a95-ff55-46d9-9bd5-6caa578216c9}" />
+        <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
@@ -1566,6 +1602,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Support Item" id="{caa8c902-c98d-406f-8c32-b51c6a342298}" />
       </MissingDependency>
       <MissingDependency>
@@ -1766,6 +1806,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.json2" displayName="north52_/javascript/n52.json2" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.json2" displayName="north52_/javascript/n52.json2" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Support Item" id="{caa8c902-c98d-406f-8c32-b51c6a342298}" />
       </MissingDependency>
       <MissingDependency>
@@ -1963,6 +2007,10 @@
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="HIE Contact Form" parentDisplayName="Contact" id="{c432ac4d-7254-4c1b-80d0-7e6597073db6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
