@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_A" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3701</Version>
+    <Version>1.18.0.3706</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -164,6 +164,7 @@
       <RootComponent type="60" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
       <RootComponent type="60" id="{b13122b7-ee5b-432f-9d55-f98c86799bdb}" />
       <RootComponent type="60" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
+      <RootComponent type="60" id="{bfc00270-eecc-eb11-bacc-000d3ad59831}" behavior="0" />
       <RootComponent type="60" id="{d875498a-80d3-4768-b48e-ea0374454bb5}" />
       <RootComponent type="60" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       <RootComponent type="60" id="{ed430420-11c8-44bd-85f0-ff67aa150bb4}" />
@@ -1649,10 +1650,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_ProjectCost_ParentProject_leidos_P" displayName="leidos_ProjectCost_ParentProject_leidos_P" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
-        <Dependent type="60" displayName="HIE Cost Funding" parentDisplayName="Cost Funding" id="{67e9be94-9ed9-4672-8b26-1caefb656919}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="10" schemaName="leidos_ProjectCost_ParentProject_leidos_P" displayName="leidos_ProjectCost_ParentProject_leidos_P" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
@@ -2460,10 +2457,6 @@
         <Dependent type="60" displayName="HIE Client Plan" parentDisplayName="Account Management Client Plan" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="leidos_clientplandocumentlink" displayName="Client Plan Document Link" parentSchemaName="leidos_accountmanagementclientplan" parentDisplayName="Account Management Client Plan" solution="Active" />
-        <Dependent type="60" displayName="HIE Client Plan" parentDisplayName="Account Management Client Plan" id="{ad8c144e-8504-4b79-9c20-3f6de3689120}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="leidos_costofsales" displayName="Cost of Sales (excluding wages)" parentSchemaName="leidos_accountmanagementclientplan" parentDisplayName="Account Management Client Plan" solution="Active" />
         <Dependent type="2" schemaName="leidos_productivity" displayName="Productivity (£)" parentSchemaName="leidos_accountmanagementclientplan" parentDisplayName="Account Management Client Plan" />
       </MissingDependency>
@@ -3209,7 +3202,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Enquiry-Dashboard View" displayName="Inactive Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{42b1675a-edcc-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Active Enquiry-Dashboard View" displayName="Active Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{64a30c37-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
         <Dependent type="26" schemaName="Progressed Enquiries" displayName="Progressed Enquiries" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{97b66e41-809a-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="All Enquiry-Dashboard View" displayName="All Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{f605f975-edcc-eb11-bacc-000d3ad59831}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_account" displayName="Account" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
@@ -3217,7 +3222,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_account" displayName="Account" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Enquiry-Dashboard View" displayName="Inactive Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{42b1675a-edcc-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_account" displayName="Account" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Active Enquiry-Dashboard View" displayName="Active Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{64a30c37-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_account" displayName="Account" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
         <Dependent type="26" schemaName="Progressed Enquiries" displayName="Progressed Enquiries" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{97b66e41-809a-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_account" displayName="Account" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="All Enquiry-Dashboard View" displayName="All Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{f605f975-edcc-eb11-bacc-000d3ad59831}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_contact" displayName="Contact" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
@@ -3225,7 +3242,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_contact" displayName="Contact" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Enquiry-Dashboard View" displayName="Inactive Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{42b1675a-edcc-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_contact" displayName="Contact" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Active Enquiry-Dashboard View" displayName="Active Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{64a30c37-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_contact" displayName="Contact" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
         <Dependent type="26" schemaName="Progressed Enquiries" displayName="Progressed Enquiries" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{97b66e41-809a-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_contact" displayName="Contact" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="All Enquiry-Dashboard View" displayName="All Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{f605f975-edcc-eb11-bacc-000d3ad59831}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_enquiryid" displayName="Enquiry" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
@@ -3233,7 +3262,43 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_enquiryid" displayName="Enquiry" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Enquiry-Dashboard View" displayName="Inactive Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{42b1675a-edcc-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_enquiryid" displayName="Enquiry" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Active Enquiry-Dashboard View" displayName="Active Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{64a30c37-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_enquiryid" displayName="Enquiry" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
         <Dependent type="26" schemaName="Progressed Enquiries" displayName="Progressed Enquiries" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{97b66e41-809a-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_enquiryid" displayName="Enquiry" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="All Enquiry-Dashboard View" displayName="All Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{f605f975-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_enquirymessage" displayName="Enquiry Message" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Enquiry-Dashboard View" displayName="Inactive Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{42b1675a-edcc-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_enquirymessage" displayName="Enquiry Message" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Active Enquiry-Dashboard View" displayName="Active Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{64a30c37-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_enquirymessage" displayName="Enquiry Message" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="All Enquiry-Dashboard View" displayName="All Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{f605f975-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_enquirysource" displayName="Enquiry Source" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Enquiry-Dashboard View" displayName="Inactive Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{42b1675a-edcc-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_enquirysource" displayName="Enquiry Source" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Active Enquiry-Dashboard View" displayName="Active Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{64a30c37-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_enquirysource" displayName="Enquiry Source" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="All Enquiry-Dashboard View" displayName="All Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{f605f975-edcc-eb11-bacc-000d3ad59831}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Topic" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
@@ -3241,7 +3306,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Topic" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Enquiry-Dashboard View" displayName="Inactive Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{42b1675a-edcc-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Topic" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Active Enquiry-Dashboard View" displayName="Active Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{64a30c37-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Topic" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
         <Dependent type="26" schemaName="Progressed Enquiries" displayName="Progressed Enquiries" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{97b66e41-809a-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Topic" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="All Enquiry-Dashboard View" displayName="All Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{f605f975-edcc-eb11-bacc-000d3ad59831}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_natureofenquiry" displayName="Nature of Enquiry" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
@@ -3253,7 +3330,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Enquiry-Dashboard View" displayName="Inactive Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{42b1675a-edcc-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Active Enquiry-Dashboard View" displayName="Active Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{64a30c37-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
         <Dependent type="26" schemaName="Progressed Enquiries" displayName="Progressed Enquiries" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{97b66e41-809a-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="All Enquiry-Dashboard View" displayName="All Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{f605f975-edcc-eb11-bacc-000d3ad59831}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
@@ -3261,11 +3350,31 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Enquiry-Dashboard View" displayName="Inactive Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{42b1675a-edcc-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Active Enquiry-Dashboard View" displayName="Active Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{64a30c37-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
         <Dependent type="26" schemaName="Progressed Enquiries" displayName="Progressed Enquiries" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{97b66e41-809a-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Enquiry-Dashboard View" displayName="Inactive Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{42b1675a-edcc-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="Active Enquiry-Dashboard View" displayName="Active Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{64a30c37-edcc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
         <Dependent type="26" schemaName="Progressed Enquiries" displayName="Progressed Enquiries" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{97b66e41-809a-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="26" schemaName="All Enquiry-Dashboard View" displayName="All Enquiry-Dashboard View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" id="{f605f975-edcc-eb11-bacc-000d3ad59831}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_hieteamid" displayName="HIE Team" parentSchemaName="leidos_hieteam" parentDisplayName="HIE Team" solution="Active" />
@@ -3333,18 +3442,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_invoicenumber" displayName="Invoice Number" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
-        <Dependent type="60" displayName="HIE Summary" parentDisplayName="Own Hand Invoice Summary" id="{966cd1f4-3c24-4085-839f-f36aa932883c}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_invoicereceiveddate" displayName="Invoice Received Date" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
-        <Dependent type="26" schemaName="Active Own Hand Invoice Summaries" displayName="Active Own Hand Invoice Summaries" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" id="{6c7bc673-bf0a-4f66-9e3d-d3951d243a59}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_invoicereceiveddate" displayName="Invoice Received Date" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
-        <Dependent type="29" displayName="Invoice Received date" id="{4f599052-6ccf-eb11-bacc-000d3ad59ccd}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_invoicereceiveddate" displayName="Invoice Received Date" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
         <Dependent type="60" displayName="HIE Summary" parentDisplayName="Own Hand Invoice Summary" id="{966cd1f4-3c24-4085-839f-f36aa932883c}" />
       </MissingDependency>
       <MissingDependency>
@@ -4541,30 +4638,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_leadershipteam" displayName="Leadership Team" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
-        <Dependent type="60" displayName="Information" parentDisplayName="BPF - Programme" id="{7eb2526a-307a-4f7f-9e6c-8706853acc22}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_movetocleartopay" displayName="Move to Clear to Pay" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
-        <Dependent type="29" displayName="BPF - Programme" id="{7cba6ed2-9bbe-4ee9-814c-ef1a1973ce3a}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_movetocleartopay" displayName="Move to Clear to Pay" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
-        <Dependent type="60" displayName="HIE Programme Form" parentDisplayName="Programme" id="{492effe1-1d54-4db2-8497-311b28e81ba8}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_movetocleartopay" displayName="Move to Clear to Pay" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
-        <Dependent type="60" displayName="Information" parentDisplayName="BPF - Programme" id="{7eb2526a-307a-4f7f-9e6c-8706853acc22}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_movetoprogrammeclosed" displayName="Move to Programme Closed" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
-        <Dependent type="29" displayName="BPF - Programme" id="{7cba6ed2-9bbe-4ee9-814c-ef1a1973ce3a}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_movetoprogrammeclosed" displayName="Move to Programme Closed" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
-        <Dependent type="60" displayName="HIE Programme Form" parentDisplayName="Programme" id="{492effe1-1d54-4db2-8497-311b28e81ba8}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_movetoprogrammeclosed" displayName="Move to Programme Closed" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="BPF - Programme" id="{7eb2526a-307a-4f7f-9e6c-8706853acc22}" />
       </MissingDependency>
       <MissingDependency>
@@ -7384,6 +7457,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="VAT Code Lookup View" displayName="VAT Code Lookup View" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" id="{3322489f-ed1b-4a41-a8f2-3a54e7c6e48a}" />
+        <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Inactive Funding Sources" displayName="Inactive Funding Sources" parentSchemaName="leidos_fundingsource" parentDisplayName="Funding Source" solution="Active" id="{332acbe4-c19c-4c18-8238-13ab1154fe12}" />
         <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
@@ -7552,6 +7629,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="VAT Code Associated View" displayName="VAT Code Associated View" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" id="{4e894b00-540c-4100-8c56-d448f8eb0234}" />
+        <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="State Aid Category Associated View" displayName="State Aid Category Associated View" parentSchemaName="leidos_stateaidcategory" parentDisplayName="Subsidy Control" solution="Active" id="{4efa1a5b-253e-4ef3-af1e-a147be97463d}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -7621,6 +7702,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Client Plan- Active Grid View Target" displayName="Client Plan- Active Grid View Target" parentSchemaName="leidos_tradinggeography" parentDisplayName="Trading Geography" solution="Active" id="{5cca631a-bc62-ea11-a811-000d3a0bad17}" />
+        <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="VAT Code (All) Lookup View" displayName="VAT Code (All) Lookup View" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" id="{5d315e29-3cc4-eb11-bacc-002248418773}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
@@ -7717,6 +7802,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Inactive Project Anticipated Spend Profile" displayName="Inactive Project Anticipated Spend Profile" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" id="{6e0b8325-b025-eb11-a813-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="VAT Code Advanced Find View" displayName="VAT Code Advanced Find View" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" id="{701bc90f-83eb-48ed-af91-11eec392c016}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
@@ -8460,6 +8549,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Active VAT Codes" displayName="Active VAT Codes" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" id="{e353eb30-48cd-480a-b751-87210986eeb9}" />
+        <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Inactive Programme Measures" displayName="Inactive Programme Measures" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" id="{e3631877-831f-eb11-a813-000d3a7fedbe}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -8769,6 +8862,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="59" schemaName="Enquiries By Date" displayName="Enquiries By Date" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" id="{85b0ad9b-c736-ea11-a813-000d3a0bad7c}" />
+        <Dependent type="60" displayName="Enquiry Dashboard List View" id="{bfc00270-eecc-eb11-bacc-000d3ad59831}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="59" schemaName="Enquiries By Date" displayName="Enquiries By Date" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" id="{85b0ad9b-c736-ea11-a813-000d3a0bad7c}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
@@ -9024,10 +9121,6 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="60" displayName="Enquiry Dashboard List View" solution="Active" id="{bfc00270-eecc-eb11-bacc-000d3ad59831}" />
-        <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="60" displayName="Account Card for Enquiry" parentDisplayName="Account" solution="Active" id="{c19ef749-a13e-ea11-a812-000d3a0bad17}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -9125,7 +9218,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
-        <Dependent type="60" displayName="Account" parentDisplayName="Account" id="{8448b78f-8f42-454e-8e2a-f8196b0419af}" />
+        <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="data8_predictiveaddress_ui.js" displayName="data8_predictiveaddress_ui.js" solution="Data8PredictiveAddress (1.2.6)" />
@@ -9606,14 +9699,6 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
         <Dependent type="29" displayName="AMCP - Flow - Submit for Approval" id="{a4328629-c85e-ea11-a811-000d3a0bad17}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook3" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook3" />
-        <Dependent type="29" displayName="Programme Amendment - Flow - Submit Programme Approval to Delegated Authority" id="{7cfa367d-69d2-ea11-a813-000d3a7fedbe}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook3" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook3" />
-        <Dependent type="29" displayName="Project Amendment - Flow - Submit Project Approval to Delegated Authority" id="{8ccada80-eec5-ea11-a812-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
