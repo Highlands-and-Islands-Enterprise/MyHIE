@@ -532,7 +532,7 @@
                     <row>
                       <cell id="{ce8cdab1-354c-8d0d-d2e1-d04e6513378b}" showlabel="true" colspan="1" auto="false">
                         <labels>
-                          <label description="Account Management" languagecode="1033" />
+                          <label description="Client Engagement" languagecode="1033" />
                         </labels>
                         <control id="AMRCard" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="leidos_currentamrrecord" disabled="false">
                           <parameters>
@@ -635,7 +635,7 @@
                 </section>
                 <section name="AccountManagerInput" id="b5343081-4a56-426d-90b6-213f199ee295" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="Account Manager Input" languagecode="1033" />
+                    <label description="HIE Contact Input" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -654,7 +654,7 @@
                         <labels>
                           <label description="Areas of Potential Support" languagecode="1033" />
                         </labels>
-                        <control id="leidos_proposedprojects" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_proposedprojects" disabled="false" />
+                        <control id="leidos_proposedprojects" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_proposedprojects" disabled="false" uniqueid="{5c89e083-020b-a239-4486-9da219b57c14}" />
                       </cell>
                     </row>
                     <row />
@@ -682,7 +682,7 @@
                 </section>
                 <section name="Profile_TAB_section_6" id="fe608dd3-826d-41ec-b7a2-a87e6840c702" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
-                    <label description="Account Management" languagecode="1033" />
+                    <label description="Client Engagement" languagecode="1033" />
                   </labels>
                   <rows>
                     <row>
@@ -777,15 +777,24 @@
                     <row>
                       <cell id="{70c6b933-fe54-4a48-afcc-ff51c4588bf7}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Current AMR Record" languagecode="1033" />
+                          <label description="Current Client Engagement Record" languagecode="1033" />
                         </labels>
-                        <control id="leidos_currentamrrecord" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_currentamrrecord" disabled="false" />
+                        <control id="leidos_currentamrrecord" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_currentamrrecord" disabled="false" uniqueid="{a631976a-3a2c-22d3-8364-36d187008078}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{96AAFFBC-4F12-437A-B429-F2A0075EBD50}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>
                       <cell id="{ad6c0837-0189-4344-4e13-a30d28b970cd}" showlabel="true" locklevel="0" visible="false">
                         <labels>
-                          <label description="Recommended for Account Management" languagecode="1033" />
+                          <label description="Recommended for Client Engagement" languagecode="1033" />
                         </labels>
                         <control id="leidos_recommendedforaccountmanagement" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_recommendedforaccountmanagement" disabled="false" uniqueid="{fbe1bcc1-d3a6-46ce-970d-54fc9e91e533}" />
                       </cell>
@@ -1303,6 +1312,29 @@
                             <ViewIds>{CF0C768A-5B6E-435A-8C17-8CC00D542333},{BC0BD59C-C457-EA11-A811-000D3A7F1BBB}</ViewIds>
                             <EnableViewPicker>false</EnableViewPicker>
                             <RelationshipName>leidos_ProjectMeasure_ParentAccount_Accou</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="PlansAndProjects_Applications" id="9d9b2a53-4baf-4d18-a2ed-03da007b91d5" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Applications" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{dfb17aec-660a-4b97-a176-4fb74b1b44e9}" rowspan="1" colspan="1" showlabel="false">
+                        <labels>
+                          <label description="Account Applications" languagecode="1033" />
+                        </labels>
+                        <control id="Subgrid_5" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_application</TargetEntityType>
+                            <ViewId>{DCE62760-73DE-EB11-BACB-0022483F8D9F}</ViewId>
+                            <ViewIds>{A5DD1518-B284-492A-A02B-C6597C1EE2D7},{E54B1C94-08AF-EA11-A812-000D3A7F1BBB},{DCE62760-73DE-EB11-BACB-0022483F8D9F}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_Application_ParentAccount_Account</RelationshipName>
                           </parameters>
                         </control>
                       </cell>
@@ -1832,7 +1864,7 @@
           </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="leidos_AccountManagementRecord_ParentAcco" Sequence="1000" Area="Sales" Id="nav_leidos_AccountManagementRecord_ParentAcco">
             <Titles>
-              <Title LCID="1033" Text="Account Management Records" />
+              <Title LCID="1033" Text="Client Engagement Records" />
             </Titles>
           </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="leidos_BusinessReview_RelatedAccount_Acco_leidos_accountmanagementclientplan" Sequence="1002" Area="Sales" Id="nav_leidos_BusinessReview_RelatedAccount_Acco_leidos_accountmanagementclientplan">
@@ -2107,7 +2139,7 @@
           </NavBarArea>
           <NavBarArea Id="Sales">
             <Titles>
-              <Title LCID="1033" Text="Account Management" />
+              <Title LCID="1033" Text="Client Engagement" />
             </Titles>
           </NavBarArea>
           <NavBarArea Id="Marketing">
@@ -2344,12 +2376,12 @@
           </customControl>
         </controlDescription>
         <controlDescription forControl="{fbe1bcc1-d3a6-46ce-970d-54fc9e91e533}">
-          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+          <customControl id="{67FAC785-CD58-4f9f-ABB3-4B7DDC6ED5ED}">
             <parameters>
               <datafieldname>leidos_recommendedforaccountmanagement</datafieldname>
             </parameters>
           </customControl>
-          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
             <parameters>
               <value>leidos_recommendedforaccountmanagement</value>
             </parameters>
@@ -2359,7 +2391,7 @@
               <value>leidos_recommendedforaccountmanagement</value>
             </parameters>
           </customControl>
-          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
+          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
             <parameters>
               <value>leidos_recommendedforaccountmanagement</value>
             </parameters>
@@ -2731,9 +2763,6 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions FallbackForm="true" Order="4">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{ba42d868-9440-990e-e86a-09b7e4757493}" />
         <Library name="leidos_AccountPrimaryContactFilter" libraryUniqueId="{abe68b47-3a8a-d371-7b3b-31aca1d5d3d5}" />
@@ -2742,6 +2771,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="4b0d2269-5193-42e3-973d-dcf0844183a4" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="660ecc87-4596-4516-acb2-eb1c3afc8b81" />
       </formLibraries>
+      <DisplayConditions FallbackForm="true" Order="4">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

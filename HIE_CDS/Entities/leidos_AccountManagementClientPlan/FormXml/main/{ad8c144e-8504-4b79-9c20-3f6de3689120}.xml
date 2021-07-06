@@ -38,7 +38,7 @@
                     <row>
                       <cell id="{2a818b3f-a645-47d5-ba46-00e78a1400fb}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Account Management Record" languagecode="1033" />
+                          <label description="Client Engagement Record" languagecode="1033" />
                         </labels>
                         <control id="leidos_accountmanagementrecord" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_accountmanagementrecord" disabled="false" uniqueid="{55c1916a-8bb8-7541-7ed2-9ecd9c21c32b}">
                           <parameters>
@@ -51,6 +51,7 @@
                             <DependentAttributeName>leidos_accountmanagementclientplan.leidos_relatedaccount</DependentAttributeName>
                             <DependentAttributeType>account</DependentAttributeType>
                             <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{96AAFFBC-4F12-437A-B429-F2A0075EBD50}</AvailableViewIds>
                           </parameters>
                         </control>
                       </cell>
@@ -97,17 +98,17 @@
                     <row>
                       <cell id="{b8732fa4-a97b-4de3-8e7d-d60f13e10c2a}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Account Management Recommendation" languagecode="1033" />
+                          <label description="Client Engagement  Recommendation" languagecode="1033" />
                         </labels>
-                        <control id="leidos_accountmanagementrecommendation" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_accountmanagementrecommendation" disabled="false" />
+                        <control id="leidos_accountmanagementrecommendation" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="leidos_accountmanagementrecommendation" disabled="false" uniqueid="{65871ed3-a4b6-5ded-c811-a4b3212b7932}" />
                       </cell>
                     </row>
                     <row>
-                      <cell id="{cd6dc42d-bba2-4323-8c7d-ca65b75d6e78}" locklevel="0">
+                      <cell id="{cd6dc42d-bba2-4323-8c7d-ca65b75d6e78}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="Account Management Recommendation Text" languagecode="1033" />
+                          <label description="Client Engagement Recommendation Text" languagecode="1033" />
                         </labels>
-                        <control id="leidos_accountmanagementrecommendationtext" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_accountmanagementrecommendationtext" disabled="false" />
+                        <control id="leidos_accountmanagementrecommendationtext" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_accountmanagementrecommendationtext" disabled="false" uniqueid="{041e6e29-b9e5-aa51-eb6b-db924c37242b}" />
                       </cell>
                     </row>
                     <row>
@@ -1074,6 +1075,11 @@
               <Title LCID="1033" Text="Trading Geographies" />
             </Titles>
           </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="bpf_leidos_accountmanagementclientplan_leidos_bpf_amcp_clientplan" Sequence="10000" Area="Info" Id="nav_bpf_leidos_accountmanagementclientplan_leidos_bpf_amcp_clientplan" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="BPF - AMCP - Generate Client Plan" />
+            </Titles>
+          </NavBarByRelationshipItem>
           <NavBarByRelationshipItem RelationshipName="leidos_AccountManagementActionPlan_Parent" Sequence="10000" Area="Info" Id="nav_leidos_AccountManagementActionPlan_Parent">
             <Titles>
               <Title LCID="1033" Text="Action Plans" />
@@ -1616,9 +1622,6 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_/AMClientPlan/disableColumninGrid.js" libraryUniqueId="{b57b7b32-915c-c7a8-9c04-0ebbd5caa2e9}" />
         <Library name="leidos_AMRFilterLokup.js" libraryUniqueId="{3068c7c0-9c4e-077e-7126-1017066c2a13}" />
@@ -1627,6 +1630,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="15d1a1d0-a158-4bb8-bfa1-2c202f582efa" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="6028ead5-7c9b-49f5-a415-69b442516241" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
