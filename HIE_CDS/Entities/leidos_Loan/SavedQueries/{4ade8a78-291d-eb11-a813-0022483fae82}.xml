@@ -27,11 +27,14 @@
           <attribute name="leidos_principal" />
           <attribute name="leidos_annualinterestrate" />
           <order attribute="leidos_loanreference" descending="true" />
-          <filter type="and">
-            <condition attribute="statecode" operator="eq" value="0" />
-          </filter>
           <attribute name="statuscode" />
           <attribute name="leidos_loanid" />
+          <filter type="and">
+            <filter type="or">
+              <condition attribute="statecode" operator="eq" value="0" />
+              <condition attribute="statuscode" operator="eq" value="100000007" />
+            </filter>
+          </filter>
         </entity>
       </fetch>
     </fetchxml>
