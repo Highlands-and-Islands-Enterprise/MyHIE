@@ -27,11 +27,16 @@
           <attribute name="leidos_applicationreference" />
           <attribute name="statuscode" />
           <attribute name="leidos_projectsapprovedbudgettotal" />
-          <filter type="and">
-            <condition attribute="statuscode" operator="ne" value="2" />
-          </filter>
           <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="in">
+              <value>445260000</value>
+              <value>445260009</value>
+              <value>445260011</value>
+            </condition>
+          </filter>
           <order attribute="createdon" descending="true" />
+          <order attribute="leidos_applicationreference" descending="false" />
         </entity>
       </fetch>
     </fetchxml>
