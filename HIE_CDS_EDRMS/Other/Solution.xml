@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS EDRMS" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3832</Version>
+    <Version>1.18.0.3847</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -81,6 +81,7 @@
       <RootComponent type="1" schemaName="account" behavior="0" />
       <RootComponent type="1" schemaName="leidos_edrmsdocmigrationconfig" behavior="0" />
       <RootComponent type="1" schemaName="leidos_edrmsdocumentlocation" behavior="0" />
+      <RootComponent type="1" schemaName="leidos_edrmsmigrationtype" behavior="0" />
       <RootComponent type="9" schemaName="leidos_documentlocationsetuptype" behavior="0" />
       <RootComponent type="9" schemaName="leidos_edrmsobjecttype" behavior="0" />
     </RootComponents>
@@ -112,6 +113,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_application" displayName="Application" solution="Active" />
         <Dependent type="1" schemaName="account" displayName="Account" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_application" displayName="Application" solution="Active" />
+        <Dependent type="10" schemaName="leidos_Application_leidos_EDRMSDocumentLocation" displayName="leidos_Application_leidos_EDRMSDocumentLocation" parentSchemaName="leidos_application" parentDisplayName="Application" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_application" displayName="Application" solution="Active" />
@@ -450,6 +455,14 @@
         <Dependent type="10" schemaName="leidos_Account_CurrentAMRRecord_leidos_AccountMa" displayName="leidos_Account_CurrentAMRRecord_leidos_AccountMa" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Client Engagement Relationship" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_applicationid" displayName="Application" parentSchemaName="leidos_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="10" schemaName="leidos_Application_leidos_EDRMSDocumentLocation" displayName="leidos_Application_leidos_EDRMSDocumentLocation" parentSchemaName="leidos_application" parentDisplayName="Application" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="10" schemaName="leidos_Application_leidos_EDRMSDocumentLocation" displayName="leidos_Application_leidos_EDRMSDocumentLocation" parentSchemaName="leidos_application" parentDisplayName="Application" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_areaoffice" displayName="Area Office" parentSchemaName="leidos_areaoffice" parentDisplayName="Area Office" solution="Active" />
         <Dependent type="10" schemaName="leidos_Account_AreaOffice_leidos_AreaOffice" displayName="leidos_Account_AreaOffice_leidos_AreaOffice" parentSchemaName="leidos_areaoffice" parentDisplayName="Area Office" />
       </MissingDependency>
@@ -746,6 +759,10 @@
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Account Grid- Applicaitons -NFI No" displayName="Account Grid- Applicaitons -NFI No" parentSchemaName="leidos_application" parentDisplayName="Application" solution="Active" id="{bad91e6a-9ee0-eb11-bacb-00224840132a}" />
+        <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Active Project Measures - Account Grid" displayName="Active Project Measures - Account Grid" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" id="{bc0bd59c-c457-ea11-a811-000d3a7f1bbb}" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
@@ -766,7 +783,7 @@
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="26" schemaName="Account Grid- Applicaitons" displayName="Account Grid- Applicaitons" parentSchemaName="leidos_application" parentDisplayName="Application" solution="Active" id="{dce62760-73de-eb11-bacb-0022483f8d9f}" />
+        <Required type="26" schemaName="Account Grid- Applicaitons -NFI yes" displayName="Account Grid- Applicaitons -NFI yes" parentSchemaName="leidos_application" parentDisplayName="Application" solution="Active" id="{dce62760-73de-eb11-bacb-0022483f8d9f}" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>

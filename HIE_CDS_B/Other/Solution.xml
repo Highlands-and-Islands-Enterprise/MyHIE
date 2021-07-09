@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_B" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3832</Version>
+    <Version>1.18.0.3847</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -80,6 +80,7 @@
     <RootComponents>
       <RootComponent type="1" schemaName="leidos_loan" behavior="0" />
       <RootComponent type="1" schemaName="leidos_loanadjustment" behavior="0" />
+      <RootComponent type="1" schemaName="leidos_pipelineproject" behavior="2" />
       <RootComponent type="1" schemaName="leidos_project" behavior="2" />
       <RootComponent type="1" schemaName="leidos_transactionline" behavior="2" />
       <RootComponent type="1" schemaName="leidos_vatcategory" behavior="0" />
@@ -212,6 +213,10 @@
         <Dependent type="1" schemaName="leidos_vatcategory" displayName="VAT Category" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_pipelineproject" displayName="Pipeline Project" solution="Active" />
+        <Dependent type="1" schemaName="leidos_pipelineproject" displayName="Pipeline Project" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_project" displayName="Project" solution="Active" />
         <Dependent type="1" schemaName="leidos_project" displayName="Project" />
       </MissingDependency>
@@ -276,6 +281,10 @@
         <Dependent type="10" schemaName="leidos_Loan_StateAidArticle_leidos_StateA" displayName="leidos_Loan_StateAidArticle_leidos_StateA" parentSchemaName="leidos_stateaidsubcategory" parentDisplayName="Subsidy Measure" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_supportitem" displayName="Support Item" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_supportitemtype" displayName="Support Item Type" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
@@ -300,6 +309,14 @@
         <Dependent type="1" schemaName="leidos_transactionline" displayName="Transaction Line" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="leidos_account_leidos_enquiry_Account" displayName="leidos_account_leidos_enquiry_Account" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_PipelineProject_Client_Account" displayName="leidos_PipelineProject_Client_Account" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="leidos_Project_Account_Account" displayName="leidos_Project_Account_Account" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
@@ -320,6 +337,18 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Transaction Line" id="{d113de14-4a18-4153-b55c-e96c5ed4311f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="leidos_PipelineProject_DelegatedAuthority" displayName="leidos_PipelineProject_DelegatedAuthority" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_PipelineProject_ProgrammeManager_l" displayName="leidos_PipelineProject_ProgrammeManager_l" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_Application_SourceEnquiry_leidos_e_leidos_pipelineproject" displayName="leidos_Application_SourceEnquiry_leidos_e_leidos_pipelineproject" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="leidos_TransactionLine_ExpenseType_leidos" displayName="leidos_TransactionLine_ExpenseType_leidos" parentSchemaName="leidos_expensetype" parentDisplayName="Expense Type" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Transaction Line" id="{d113de14-4a18-4153-b55c-e96c5ed4311f}" />
       </MissingDependency>
@@ -328,12 +357,20 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Transaction Line" id="{d113de14-4a18-4153-b55c-e96c5ed4311f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="leidos_leidos_pipelineproject_leidos_Fund" displayName="leidos_leidos_pipelineproject_leidos_Fund" parentSchemaName="leidos_fundingsource" parentDisplayName="Funding Source" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="leidos_TransactionLine_FundingSourceLooku" displayName="leidos_TransactionLine_FundingSourceLooku" parentSchemaName="leidos_fundingsource" parentDisplayName="Funding Source" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Transaction Line" id="{d113de14-4a18-4153-b55c-e96c5ed4311f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_TransactionLine_HIEBusinessUnit_le" displayName="leidos_TransactionLine_HIEBusinessUnit_le" parentSchemaName="leidos_hiebusinessunit" parentDisplayName="HIE Business Unit" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Transaction Line" id="{d113de14-4a18-4153-b55c-e96c5ed4311f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_PipelineProject_Team_leidos_HIETea" displayName="leidos_PipelineProject_Team_leidos_HIETea" parentSchemaName="leidos_hieteam" parentDisplayName="HIE Team" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_Project_HIETeam_leidos_HIETeam" displayName="leidos_Project_HIETeam_leidos_HIETeam" parentSchemaName="leidos_hieteam" parentDisplayName="HIE Team" solution="Active" />
@@ -370,6 +407,14 @@
       <MissingDependency>
         <Required type="10" schemaName="leidos_TransactionLine_PaymentClaim_leido" displayName="leidos_TransactionLine_PaymentClaim_leido" parentSchemaName="leidos_paymentclaim" parentDisplayName="Payment Claim" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Transaction Line" id="{d113de14-4a18-4153-b55c-e96c5ed4311f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_leidos_decision_leidos_ParentPipel" displayName="leidos_leidos_decision_leidos_ParentPipel" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_Project_PreApplicationProcess_leid" displayName="leidos_Project_PreApplicationProcess_leid" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_Project_PreApplicationProcess_leid" displayName="leidos_Project_PreApplicationProcess_leid" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
@@ -500,12 +545,20 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Transaction Line" id="{d113de14-4a18-4153-b55c-e96c5ed4311f}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="leidos_PipelineProject_leidos_SupportItem" displayName="leidos_PipelineProject_leidos_SupportItem" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="leidos_Project_SupportItemType_leidos_Sup" displayName="leidos_Project_SupportItemType_leidos_Sup" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_leidos_supportitem_leidos_SupportI" displayName="leidos_leidos_supportitem_leidos_SupportI" parentSchemaName="leidos_supportitemtype" parentDisplayName="Support Item Type" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_PipelineProject_SupportItemType_le" displayName="leidos_PipelineProject_SupportItemType_le" parentSchemaName="leidos_supportitemtype" parentDisplayName="Support Item Type" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_Project_SupportItemNFI_leidos_Supp" displayName="leidos_Project_SupportItemNFI_leidos_Supp" parentSchemaName="leidos_supportitemtype" parentDisplayName="Support Item Type" solution="Active" />
@@ -542,6 +595,154 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_legalundertaking" parentDisplayName="Legal Undertaking" solution="Active" />
         <Dependent type="10" schemaName="leidos_Loan_leidos_ParentLegalUndertaking" displayName="leidos_Loan_leidos_ParentLegalUndertaking" parentSchemaName="leidos_legalundertaking" parentDisplayName="Legal Undertaking" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_anticipatedoutcomes" displayName="Anticipated Outcomes" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_anticipatedprojectcost" displayName="Anticipated Total Project Cost" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_anticipatedprojectfunding" displayName="Anticipated HIE Gross Funding" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_anticipatedprojectstartdate" displayName="Estimated Date of Decision" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_areasforpotentialhieintervention" displayName="Areas for Potential HIE Intervention" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_basicprojectcostfundingentered" displayName="Basic Project Cost Funding Entered " parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_basicprojectcostsentered" displayName="Basic Project Costs Entered" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_client" displayName="Client" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_clientreasonsforundertakingproject" displayName="Client reasons for undertaking Project" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_confirmroutingiscorrect" displayName="Confirm Routing is Correct" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Budget Type" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_dateofenquiry" displayName="Date of Enquiry" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_delegatedauthority" displayName="Delegated Authority" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_directtoapplicationrationale" displayName="Direct to Application Rationale" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingsource" displayName="Funding Source" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_generateemailsubmission" displayName="Generate Email Submission " parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_initialstrategicassessmentlink" displayName="Initial Strategic Assessment Link" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_isaapprovalrequestedon" displayName="ISA Approval Requested on" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_isaapprovedon" displayName="Date Decision Actioned" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_isadecisionoutcome" displayName="ISA Decision Outcome" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_isadocumentreference" displayName="ISA Document Reference" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandclient" displayName="Own Hand Client" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_pipelineprojectreference" displayName="Pipeline Project Reference " parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_potentialsupportitemsadded" displayName="Potential Support Items Added" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_preapplicationroute" displayName="Pre-Application Route" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_programmemanager" displayName="Programme Manager" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_recommendation" displayName="Recommendation" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_sourceenquiry" displayName="Source Enquiry" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submitisa" displayName="Submit ISA" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submitnfiemailapproval" displayName="Submit NFI Email Approval" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submitnfiisaforapproval" displayName="Submit NFI ISA For Approval" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_supportitemtype" displayName="Support Item Type" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_team" displayName="Team" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_validatepipelineproject" displayName="Validate Pipeline Project" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_actualvalue" displayName="Actual Value" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -1048,8 +1249,24 @@
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Active Delegated Authority Approval Tables" displayName="Active Delegated Authority Approval Tables" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{0976d964-6c9e-4d23-90c3-078677a81f7d}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Account Grid" displayName="Account Grid" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" id="{09a0705d-aa4c-ea11-a812-000d3a0bad17}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Enquiry Lookup View" displayName="Enquiry Lookup View" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" id="{0a734b0f-0bb2-443f-9285-2e7e84e77f2f}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Repayment Frequency Lookup View" displayName="Repayment Frequency Lookup View" parentSchemaName="leidos_repaymentfrequency" parentDisplayName="Repayment Frequency" solution="Active" id="{11d84b5e-4178-407f-8746-f0f90e649848}" />
         <Dependent type="60" displayName="Web - Loan Form" parentDisplayName="Loan" id="{3d415993-14a1-4418-86f4-fc0b72cc3183}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="HIE Board" displayName="HIE Board" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{1359b25e-b7bb-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Subsector Lookup View" displayName="Subsector Lookup View" parentSchemaName="leidos_sector" parentDisplayName="Sector" solution="Active" id="{14f88737-55cb-ea11-a812-000d3a7f1bbb}" />
@@ -1064,12 +1281,28 @@
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Leadership Team" displayName="Leadership Team" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{21c34315-32bc-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Projects Grid in Application" displayName="Active Projects Grid in Application" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{23b2ff62-c154-ea11-a813-000d3a0bad17}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Active Loan Drawdowns" displayName="Active Loan Drawdowns" parentSchemaName="leidos_loandrawdown" parentDisplayName="Loan Drawdown" solution="Active" id="{24b875fb-95b4-41a0-a6b1-500cd308abb3}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Loan" id="{b781104e-f65d-46ee-bc5d-07b394c917b7}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Loan Lookup" displayName="Loan Lookup" parentSchemaName="leidos_security" parentDisplayName="Security" solution="Active" id="{2c43575c-2f39-eb11-a813-0022483fae82}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Loan" id="{b781104e-f65d-46ee-bc5d-07b394c917b7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Inactive Delegated Authority Approval Tables" displayName="Inactive Delegated Authority Approval Tables" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{2d197e17-8ff7-4580-b20d-b335aa91b158}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Inactive Funding Sources" displayName="Inactive Funding Sources" parentSchemaName="leidos_fundingsource" parentDisplayName="Funding Source" solution="Active" id="{332acbe4-c19c-4c18-8238-13ab1154fe12}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="loan view" displayName="loan view" parentSchemaName="leidos_loan_line" parentDisplayName="loan_line" solution="Active" id="{3697be46-bc3e-eb11-a813-0022483fae82}" />
@@ -1104,6 +1337,10 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Loan" id="{b781104e-f65d-46ee-bc5d-07b394c917b7}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Delegated Authority Approval Table Lookup View" displayName="Delegated Authority Approval Table Lookup View" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{53961d04-1fda-40fd-b978-8e0967433fb2}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Active Legal Undertakings" displayName="Active Legal Undertakings" parentSchemaName="leidos_legalundertaking" parentDisplayName="Legal Undertaking" solution="Active" id="{5651c473-57e6-4b7f-b4b6-ed717f523c82}" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
@@ -1128,6 +1365,14 @@
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="HIE Chief Executive" displayName="HIE Chief Executive" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{78b7a846-b7bb-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Projects" displayName="Active Projects" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{8078ace2-eae7-45e6-86aa-e2a651fe5e68}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Project and Account Managers" displayName="Project and Account Managers" parentSchemaName="systemuser" parentDisplayName="User" solution="Active" id="{80c59598-fc3c-ea11-a812-000d3a0ba151}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Loan Adjustment" id="{77e3b626-cad3-4800-8e97-4f3f311b6ae5}" />
       </MissingDependency>
@@ -1146,6 +1391,18 @@
       <MissingDependency>
         <Required type="26" schemaName="State Aid Category Lookup View" displayName="State Aid Category Lookup View" parentSchemaName="leidos_stateaidcategory" parentDisplayName="Subsidy Control" solution="Active" id="{81c342f0-4ffb-49b2-9570-0350a3232610}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Loan" id="{b781104e-f65d-46ee-bc5d-07b394c917b7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Legal Undertaking Lookup View" displayName="Legal Undertaking Lookup View" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{824f07be-3f0a-eb11-a813-000d3a7f1bbb}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Programme Manager" displayName="Programme Manager" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{88c56d5a-3a15-eb11-a813-0022483fae82}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Finance" displayName="Finance" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{8ef3343f-05cc-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Project Grid Embedded View" displayName="Project Grid Embedded View" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" id="{957dcd2a-e956-ea11-a811-000d3a7f1bbb}" />
@@ -1172,16 +1429,44 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Loan" id="{b781104e-f65d-46ee-bc5d-07b394c917b7}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Grade E staff" displayName="Grade E staff" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{aa3f26b8-b6bb-ea11-a812-000d3a7f1bbb}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="SIC Code Lookup View" displayName="SIC Code Lookup View" parentSchemaName="leidos_siccode" parentDisplayName="SIC Code" solution="Active" id="{aaf712bb-30b7-4bf5-874a-c1a706f9c401}" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Executive Grade Staff" displayName="Executive Grade Staff" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{ab53a03a-b7bb-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="SIC Code level 1 view" displayName="SIC Code level 1 view" parentSchemaName="leidos_siccode" parentDisplayName="SIC Code" solution="Active" id="{ae18672e-67c7-ea11-a812-000d3a7f1bbb}" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Active Selectable Support Items" displayName="Active Selectable Support Items" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" id="{bf0f6b2b-d56f-440f-9a9d-6eee0ec841e6}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Support Item Lookup View" displayName="Support Item Lookup View" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" id="{c1e43417-4a6c-48fc-a7f0-1f0211c92bd1}" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Funding Sources" displayName="Active Funding Sources" parentSchemaName="leidos_fundingsource" parentDisplayName="Funding Source" solution="Active" id="{c7059b17-5843-46b7-b885-e6c3fdff79e7}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="HIE Funding" displayName="HIE Funding" parentSchemaName="leidos_fundingsource" parentDisplayName="Funding Source" solution="Active" id="{c8406a53-d4ba-ea11-a812-000d3a7f1bbb}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Funding Source Lookup View" displayName="Funding Source Lookup View" parentSchemaName="leidos_fundingsource" parentDisplayName="Funding Source" solution="Active" id="{cd7b75a7-4890-4690-baaa-0a3217c6814f}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Grade F staff" displayName="Grade F staff" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{da8a1bc4-b6bb-ea11-a812-000d3a7f1bbb}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Obligation Period Lookup View" displayName="Obligation Period Lookup View" parentSchemaName="leidos_obligationperiod" parentDisplayName="Obligation Period" solution="Active" id="{daac1ccf-f229-44a5-a13b-5a96ea0ff7bf}" />
@@ -1202,6 +1487,10 @@
       <MissingDependency>
         <Required type="26" schemaName="Project Grid Embedded" displayName="Project Grid Embedded" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" id="{ebc1563f-e556-ea11-a811-000d3a7f1bbb}" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Application Lookup View" displayName="Application Lookup View" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{edfd18ec-b3bb-ea11-a812-000d3a7f1bbb}" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Project Costs" displayName="Active Project Costs" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" id="{ee1c9db8-d142-46b2-9401-acc6b4881aec}" />
@@ -1233,6 +1522,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="leidos_common" displayName="leidos_common" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="leidos_common" displayName="leidos_common" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Loan Adjustment" id="{77e3b626-cad3-4800-8e97-4f3f311b6ae5}" />
       </MissingDependency>
       <MissingDependency>
@@ -1248,6 +1541,10 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Loan Adjustment" id="{77e3b626-cad3-4800-8e97-4f3f311b6ae5}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="leidos_PipelineContolView" displayName="leidos_PipelineContolView" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="leidos_project.js" displayName="leidos_project.js" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
@@ -1256,8 +1553,16 @@
         <Dependent type="1" schemaName="leidos_project" displayName="Project" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="leidos_risks.svg" displayName="leidos_risks.svg" solution="Active" />
+        <Dependent type="1" schemaName="leidos_pipelineproject" displayName="Pipeline Project" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="Web - Loan Form" parentDisplayName="Loan" id="{3d415993-14a1-4418-86f4-fc0b72cc3183}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
@@ -1277,6 +1582,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.json2" displayName="north52_/javascript/n52.json2" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.json2" displayName="north52_/javascript/n52.json2" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Loan Adjustment" id="{77e3b626-cad3-4800-8e97-4f3f311b6ae5}" />
       </MissingDependency>
       <MissingDependency>
@@ -1293,6 +1602,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Loan Adjustment" id="{77e3b626-cad3-4800-8e97-4f3f311b6ae5}" />
       </MissingDependency>
       <MissingDependency>
@@ -1302,6 +1615,10 @@
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2106.2010)" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2106.2010)" />
@@ -1318,6 +1635,10 @@
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21062.00128)" />
         <Dependent type="60" displayName="Web - Loan Form" parentDisplayName="Loan" id="{3d415993-14a1-4418-86f4-fc0b72cc3183}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21062.00128)" />
+        <Dependent type="60" displayName="MyHIE Form" parentDisplayName="Pipeline Project" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21062.00128)" />
