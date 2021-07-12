@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_B" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3861</Version>
+    <Version>1.18.0.3869</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -88,6 +88,7 @@
       <RootComponent type="29" id="{1d2c9b01-86d5-eb11-bacb-000d3ad57aa4}" behavior="0" />
       <RootComponent type="29" id="{47614c30-5c2e-49bf-bf76-08978af5aa3c}" behavior="0" />
       <RootComponent type="29" id="{52dae365-1ad5-eb11-bacb-000d3ad6153d}" behavior="0" />
+      <RootComponent type="29" id="{5d80238c-9d22-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{6e1b60d6-81e4-42b2-96a6-375de6bbe189}" behavior="0" />
       <RootComponent type="29" id="{6e79f235-160b-4c12-8541-12e58c4bbe39}" behavior="0" />
       <RootComponent type="29" id="{96f8218d-42c4-eb11-bacc-002248418f15}" behavior="0" />
@@ -96,6 +97,7 @@
       <RootComponent type="29" id="{e629b309-2741-4d96-8bd0-2cbd57d0aab5}" behavior="0" />
       <RootComponent type="60" id="{691d2f3e-3020-4827-940e-bb1e18c0f968}" />
       <RootComponent type="60" id="{77e3b626-cad3-4800-8e97-4f3f311b6ae5}" behavior="0" />
+      <RootComponent type="60" id="{b781104e-f65d-46ee-bc5d-07b394c917b7}" behavior="0" />
       <RootComponent type="60" id="{d113de14-4a18-4153-b55c-e96c5ed4311f}" />
       <RootComponent type="60" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_claim/MSd/f.e6c99d7b8d5ceb11a81300224840fa54" behavior="0" />
@@ -1505,6 +1507,10 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Loan" id="{b781104e-f65d-46ee-bc5d-07b394c917b7}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="Loan - Notify Project Manager that status is Completed" id="{5d80238c-9d22-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Application" solution="Active" id="{0f11e0f4-75f5-4abb-ad93-eca3a85b8533}" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
@@ -1695,6 +1701,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnLoan" solution="Active" id.connectionreferencelogicalname="leidos_ConnLoan" />
         <Dependent type="29" displayName="When a row is added, modified or deleted -&gt; Initialize variable,Swi..." id="{1d2c9b01-86d5-eb11-bacb-000d3ad57aa4}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnLoan" solution="Active" id.connectionreferencelogicalname="leidos_ConnLoan" />
+        <Dependent type="29" displayName="Loan - Notify Project Manager that status is Completed" id="{5d80238c-9d22-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnLoan" solution="Active" id.connectionreferencelogicalname="leidos_ConnLoan" />
