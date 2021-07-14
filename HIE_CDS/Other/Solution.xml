@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3883</Version>
+    <Version>1.18.0.3887</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -587,6 +587,7 @@
       <RootComponent type="29" id="{c178e483-2af7-ea11-a816-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{c34d0de6-b4d8-4a85-99fb-cee9b9606cd8}" behavior="0" />
       <RootComponent type="29" id="{c3e4375a-c7cc-ea11-a812-000d3a7fedbe}" behavior="0" />
+      <RootComponent type="29" id="{c404b0e0-77e4-eb11-bacb-00224840bbb4}" behavior="0" />
       <RootComponent type="29" id="{c46d11fa-8dcf-eb11-bacc-000d3ad59ccd}" behavior="0" />
       <RootComponent type="29" id="{c4adcdd3-3389-4cba-9662-68301447af47}" behavior="0" />
       <RootComponent type="29" id="{c63e729f-a372-eb11-a812-00224840ee66}" behavior="0" />
@@ -1033,6 +1034,10 @@
         <Dependent type="1" schemaName="systemuser" displayName="User" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="adx_webpage" displayName="Web Page" solution="MicrosoftPortalDependencies (9.2.2103.0)" />
+        <Dependent type="29" displayName="Portal - Flow - Create Archive Terms and Conditions on Update" id="{c404b0e0-77e4-eb11-bacb-00224840bbb4}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="adx_webrole" displayName="Web Role" solution="MicrosoftPortalDependencies (9.2.2103.0)" />
         <Dependent type="1" schemaName="adx_webrole" displayName="Web Role" />
       </MissingDependency>
@@ -1127,6 +1132,10 @@
       <MissingDependency>
         <Required type="2" schemaName="adx_name" displayName="Name" parentSchemaName="adx_invitation" parentDisplayName="Invitation" solution="MicrosoftPortalBase (9.2.2103.1)" />
         <Dependent type="29" displayName="Send Invitation" id="{15c03c8d-754f-4386-a62c-cf7e91337ebd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="adx_copy" displayName="Copy" parentSchemaName="adx_webpage" parentDisplayName="Web Page" solution="MicrosoftPortalDependencies (9.2.2103.0)" />
+        <Dependent type="29" displayName="Portal - Flow - Create Archive Terms and Conditions on Update" id="{c404b0e0-77e4-eb11-bacb-00224840bbb4}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="adx_identity_accessfailedcount" displayName="Access Failed Count" parentSchemaName="contact" parentDisplayName="Contact" solution="MicrosoftIdentity (9.2.2103.1)" />
@@ -1286,7 +1295,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Email_main_system_library.js" displayName="Activities/SystemLibraries/Email_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
-        <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Email" id="{394ca387-4777-457c-b5ae-c7a3e632be41}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Task_main_system_library.js" displayName="Activities/SystemLibraries/Task_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
@@ -1350,11 +1359,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
-        <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
+        <Dependent type="60" displayName="Web - Account Financial Assistance" parentDisplayName="Account" id="{431d1a95-ff55-46d9-9bd5-6caa578216c9}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Account/Account_main_system_library.js" displayName="AppCommon/Account/Account_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
-        <Dependent type="60" displayName="Web - Account Financial Assistance" parentDisplayName="Account" id="{431d1a95-ff55-46d9-9bd5-6caa578216c9}" />
+        <Dependent type="60" displayName="Web - Account Details" parentDisplayName="Account" id="{4afa4550-1f3d-ea11-a812-000d3a0bad17}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="AppCommon/Contact/Contact_main_system_library.js" displayName="AppCommon/Contact/Contact_main_system_library.js" solution="msdynce_AppCommon (9.0.4.0066)" />
@@ -2618,6 +2627,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnCDS" solution="Active" id.connectionreferencelogicalname="leidos_ConnCDS" />
+        <Dependent type="29" displayName="Project- Manual Flow - Calculate Project Spend (aLh)" id="{a250f53e-ede3-eb11-bacb-00224840b38d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnCDS" solution="Active" id.connectionreferencelogicalname="leidos_ConnCDS" />
         <Dependent type="29" displayName="(Deprecated) Update Date of Decision - Project Amendment" id="{c8f28f18-5257-eb11-a812-002248418512}" />
       </MissingDependency>
       <MissingDependency>
@@ -3041,6 +3054,10 @@
         <Dependent type="29" displayName="BPF- Pipeline Project- Flow  - On Change of Stage" id="{b3718463-b7a5-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnPortal" solution="Active" id.connectionreferencelogicalname="leidos_ConnPortal" />
+        <Dependent type="29" displayName="Portal - Flow - Create Archive Terms and Conditions on Update" id="{c404b0e0-77e4-eb11-bacb-00224840bbb4}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnPortalMessage" solution="Active" id.connectionreferencelogicalname="leidos_ConnPortalMessage" />
         <Dependent type="29" displayName="Portal Message - Flow - On Create" id="{10d85382-3b9f-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
@@ -3263,10 +3280,6 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataservice_55fe7" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataservice_55fe7" />
         <Dependent type="29" displayName="Revert to Claims Complete" id="{40014950-ff69-eb11-a812-0022483f80cd}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="connectionreference" displayName="leidos_sharedcommondataservice_55fe7" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataservice_55fe7" />
-        <Dependent type="29" displayName="Project- Manual Flow - Calculate Project Spend (aLh)" id="{a250f53e-ede3-eb11-bacb-00224840b38d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataservice_55fe7" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataservice_55fe7" />

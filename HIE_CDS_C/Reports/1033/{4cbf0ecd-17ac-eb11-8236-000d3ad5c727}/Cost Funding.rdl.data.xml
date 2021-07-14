@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report>
+  <name>Cost Funding</name>
+  <defaultfilter>
+    <ReportFilter>
+      <ReportEntity paramname="CRM_Filteredleidos_Project" donotconvert="1">
+        <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+          <entity name="leidos_project">
+            <all-attributes />
+            <filter type="and">
+              <condition attribute="statuscode" operator="in">
+                <value>445260009</value>
+                <value>445260001</value>
+              </condition>
+            </filter>
+            <link-entity name="leidos_application" from="leidos_applicationid" to="leidos_parentapplication" visible="false" link-type="outer" alias="a_c5ee1a30205d443491214a3ad17da6e5">
+              <attribute name="statuscode" />
+              <attribute name="createdon" />
+              <attribute name="leidos_budgetapprovedon" />
+            </link-entity>
+          </entity>
+        </fetch>
+      </ReportEntity>
+      <ReportEntity paramname="CRM_Filteredleidos_ProjectFunding" donotconvert="1">
+        <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+          <entity name="leidos_projectfunding">
+            <all-attributes />
+            <filter type="and">
+              <condition attribute="modifiedon" operator="last-x-days" value="30" />
+            </filter>
+          </entity>
+        </fetch>
+      </ReportEntity>
+    </ReportFilter>
+  </defaultfilter>
+  <iscustomreport>1</iscustomreport>
+  <filename>Cost Funding.rdl</filename>
+  <languagecode>1033</languagecode>
+  <reportid>{4cbf0ecd-17ac-eb11-8236-000d3ad5c727}</reportid>
+  <reporttypecode>1</reporttypecode>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <createdinmajorversion>9</createdinmajorversion>
+  <iscustomizable>1</iscustomizable>
+  <ExportedFileName>/Reports/CostFundingrdl4cbf0ecd-17ac-eb11-8236-000d3ad5c727.wdl</ExportedFileName>
+  <ReportCategories />
+  <ReportVisibilities>
+    <ReportVisbility>2</ReportVisbility>
+    <ReportVisbility>3</ReportVisbility>
+    <ReportVisbility>1</ReportVisbility>
+  </ReportVisibilities>
+  <ReportEntities>
+    <ReportEntity>leidos_project</ReportEntity>
+  </ReportEntities>
+</Report>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report>
+  <name>Payments and Claims Report</name>
+  <defaultfilter>
+    <ReportFilter>
+      <ReportEntity paramname="CRM_Filteredleidos_Transaction" donotconvert="1">
+        <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+          <entity name="leidos_transaction">
+            <all-attributes />
+            <filter type="and">
+              <condition attribute="leidos_dateofposting" operator="on-or-after" />
+              <condition attribute="leidos_dateofposting" operator="on-or-before" />
+              <condition attribute="statuscode" operator="not-in">
+                <value>100000001</value>
+                <value>2</value>
+              </condition>
+            </filter>
+          </entity>
+        </fetch>
+      </ReportEntity>
+    </ReportFilter>
+  </defaultfilter>
+  <iscustomreport>0</iscustomreport>
+  <filename>Payments and Claims Report.rdl</filename>
+  <languagecode>1033</languagecode>
+  <reportid>{8990c597-42d0-eb11-bacc-000d3ad59935}</reportid>
+  <reporttypecode>1</reporttypecode>
+  <IntroducedVersion>1.18.0.3565</IntroducedVersion>
+  <createdinmajorversion>9</createdinmajorversion>
+  <iscustomizable>1</iscustomizable>
+  <ExportedFileName>/Reports/PaymentsandClaimsReportrdl8990c597-42d0-eb11-bacc-000d3ad59935</ExportedFileName>
+  <ReportCategories />
+  <ReportVisibilities>
+    <ReportVisbility>1</ReportVisbility>
+    <ReportVisbility>3</ReportVisbility>
+  </ReportVisibilities>
+  <ReportEntities>
+    <ReportEntity>leidos_project</ReportEntity>
+  </ReportEntities>
+</Report>
