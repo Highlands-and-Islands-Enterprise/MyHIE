@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_C" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3869</Version>
+    <Version>1.18.0.3879</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -78,17 +78,23 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="1" schemaName="leidos_loan" behavior="2" />
       <RootComponent type="29" id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" behavior="0" />
+      <RootComponent type="29" id="{c404b0e0-77e4-eb11-bacb-00224840bbb4}" behavior="0" />
       <RootComponent type="31" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="adx_webpage" displayName="Web Page" solution="MicrosoftPortalDependencies (9.2.2103.0)" />
+        <Dependent type="29" displayName="Portal - Flow - Create Archive Terms and Conditions on Update" id="{c404b0e0-77e4-eb11-bacb-00224840bbb4}" />
+      </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_legalundertaking" displayName="Legal Undertaking" solution="Active" />
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_loan" displayName="Loan" solution="Active" />
-        <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
+        <Dependent type="1" schemaName="leidos_loan" displayName="Loan" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_ownhandinvoicedetail" displayName="Own Hand Invoice Detail" solution="Active" />
@@ -107,12 +113,20 @@
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_projectfunding" displayName="Cost Funding" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_accountreference" displayName="Account Reference" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_companyregistrationnumber" displayName="Company Registration Number" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="adx_copy" displayName="Copy" parentSchemaName="adx_webpage" parentDisplayName="Web Page" solution="MicrosoftPortalDependencies (9.2.2103.0)" />
+        <Dependent type="29" displayName="Portal - Flow - Create Archive Terms and Conditions on Update" id="{c404b0e0-77e4-eb11-bacb-00224840bbb4}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_datedocumentsigned" displayName="Date Document Signed by Client" parentSchemaName="leidos_legalundertaking" parentDisplayName="Legal Undertaking" solution="Active" />
@@ -123,12 +137,44 @@
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_capitaloutstanding" displayName="Capital Outstanding" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_dateofnextrepayment" displayName="Date of Next Repayment" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_interestdue" displayName="Interest Due" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_loanid" displayName="Loan" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_loanreference" displayName="Loan Reference" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_loanreference" displayName="Loan Reference" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_parentfunding" displayName="Parent Funding" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_project" displayName="Project" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_generatereport" displayName="Generate Report" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
@@ -151,6 +197,14 @@
         <Dependent type="31" displayName="Loan Drawdown Notice" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectfundingid" displayName="Project Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
         <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
@@ -161,6 +215,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOwnHand" solution="Active" id.connectionreferencelogicalname="leidos_ConnOwnHand" />
         <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnPortal" solution="Active" id.connectionreferencelogicalname="leidos_ConnPortal" />
+        <Dependent type="29" displayName="Portal - Flow - Create Archive Terms and Conditions on Update" id="{c404b0e0-77e4-eb11-bacb-00224840bbb4}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedexcelonlinebusiness_fbf79" solution="Active" id.connectionreferencelogicalname="leidos_sharedexcelonlinebusiness_fbf79" />

@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.3869</Version>
+    <Version>1.18.0.3879</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -552,6 +552,7 @@
       <RootComponent type="29" id="{a122c4d8-a672-eb11-a812-00224840ee66}" behavior="0" />
       <RootComponent type="29" id="{a1c80361-2cb2-eb11-8236-00224841837b}" behavior="0" />
       <RootComponent type="29" id="{a24c1d63-3e57-eb11-a812-002248418512}" behavior="0" />
+      <RootComponent type="29" id="{a250f53e-ede3-eb11-bacb-00224840b38d}" behavior="0" />
       <RootComponent type="29" id="{a34013cf-851f-eb11-a813-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{a4328629-c85e-ea11-a811-000d3a0bad17}" behavior="0" />
       <RootComponent type="29" id="{a5795f3a-d41a-eb11-a813-0022483fae82}" behavior="0" />
@@ -928,9 +929,6 @@
       <RootComponent type="61" schemaName="north52_/formula/leidos_claim/8fh/fd.dd7a2bef3b9d43df91ea6bc722a310b7" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_claim/BZO/f.b003e14d0533eb11a813000d3a7fedbe" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_claim/BZO/fd.5820eb650533eb11a813000d3a7fedbe" behavior="0" />
-      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/Ip9/f.d87e85803328eb11a8130022483fae82" behavior="0" />
-      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/Ip9/fd.75c484053928eb11a8130022483fae82" behavior="0" />
-      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/Ip9/fd.ab1a6acc3828eb11a8130022483fae82" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_clientaction/92c/f.fa8fb11e0e07eb11a813000d3a7f1bbb" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_clientaction/Cbs/f.9f5ea4118201eb11a813000d3a7fedbe" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_clientaction/OgP/f.106c7ee0ce5e4405ad9390237218644b" behavior="0" />
@@ -1179,6 +1177,10 @@
         <Dependent type="26" schemaName="All Accounts" displayName="All Accounts" parentSchemaName="account" parentDisplayName="Account" id="{65ffaf9a-e8c5-432d-860b-32f841b00d87}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Active Accounts Clear to Pay- Claim Look up" displayName="Active Accounts Clear to Pay- Claim Look up" parentSchemaName="account" parentDisplayName="Account" solution="Active" id="{8f8d8b60-d9e3-eb11-bacb-00224840be1d}" />
+        <Dependent type="60" displayName="Claim Summary" parentDisplayName="Claim" id="{5d449de9-e475-4ec8-b77d-a7649adfa846}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="29" displayName="Send Invitation" solution="MicrosoftCrmPortalBaseWorkflows (9.2.10.0)" id="{15c03c8d-754f-4386-a62c-cf7e91337ebd}" />
         <Dependent type="29" displayName="Send Invitation" id="{15c03c8d-754f-4386-a62c-cf7e91337ebd}" />
       </MissingDependency>
@@ -1284,11 +1286,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Email_main_system_library.js" displayName="Activities/SystemLibraries/Email_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
-        <Dependent type="60" displayName="Email" parentDisplayName="Email" id="{0d1e47ff-12b2-4f53-9090-bee951b98cb4}" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Email" id="{394ca387-4777-457c-b5ae-c7a3e632be41}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Email_main_system_library.js" displayName="Activities/SystemLibraries/Email_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
-        <Dependent type="60" displayName="Information" parentDisplayName="Email" id="{394ca387-4777-457c-b5ae-c7a3e632be41}" />
+        <Dependent type="60" displayName="Enhanced Email" parentDisplayName="Email" id="{63769d04-c74f-4808-b0aa-77339e1b9191}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="Activities/SystemLibraries/Task_main_system_library.js" displayName="Activities/SystemLibraries/Task_main_system_library.js" solution="msdynce_Activities (9.0.1.2033)" />
@@ -3228,6 +3230,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnSystem" solution="Active" id.connectionreferencelogicalname="leidos_ConnSystem" />
+        <Dependent type="29" displayName="Project- Manual Flow - Calculate Project Spend (aLh)" id="{a250f53e-ede3-eb11-bacb-00224840b38d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnSystem" solution="Active" id.connectionreferencelogicalname="leidos_ConnSystem" />
         <Dependent type="29" displayName="Get Entity Url" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
       </MissingDependency>
       <MissingDependency>
@@ -3265,6 +3271,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataservice_55fe7" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataservice_55fe7" />
         <Dependent type="29" displayName="Project - Manual Flow - Generate Element6 for CODA" id="{d398c9aa-8ace-eb11-bacc-000d3ad59ccd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedcommondataservice_c4bbb" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataservice_c4bbb" />
+        <Dependent type="29" displayName="Project- Manual Flow - Calculate Project Spend (aLh)" id="{a250f53e-ede3-eb11-bacb-00224840b38d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_5ec64" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_5ec64" />
