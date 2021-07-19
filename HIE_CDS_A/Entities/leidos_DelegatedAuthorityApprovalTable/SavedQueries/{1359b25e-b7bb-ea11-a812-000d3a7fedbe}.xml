@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{1359b25e-b7bb-ea11-a812-000d3a7fedbe}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_delegatedauthorityapprovaltableid">
+          <cell name="a_ab00b1e042fe4468b7197db7a106474b.fullname" width="100" />
+          <cell name="leidos_maximumsignoffamount" width="100" />
+          <cell name="leidos_name" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_delegatedauthorityapprovaltable">
+          <filter type="and">
+            <condition attribute="leidos_userrecord" operator="ne-userid" />
+            <condition attribute="leidos_maximumsignoffamount" operator="gt" value="2000000" />
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <link-entity alias="a_ab00b1e042fe4468b7197db7a106474b" name="systemuser" to="leidos_userrecord" from="systemuserid" link-type="outer" visible="false">
+            <attribute name="fullname" />
+          </link-entity>
+          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_name" />
+          <attribute name="leidos_maximumsignoffamount" />
+          <attribute name="leidos_delegatedauthorityapprovaltableid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.6.0.8</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="HIE Board" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

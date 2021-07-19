@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{7eefe1cf-aa83-ea11-a811-000d3a7f1bbb}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_projectfundingid">
+          <cell name="leidos_clientfundingsource" width="160" />
+          <cell name="leidos_clientfundingamount" width="160" />
+          <cell name="leidos_fundingsource" width="200" />
+          <cell name="leidos_funddetails" width="200" />
+          <cell name="leidos_stateaidcategory" width="200" />
+          <cell name="leidos_stateaidsubcategory" width="200" />
+          <cell name="leidos_projectfundingreference" width="100" />
+          <cell name="leidos_fundingamount" width="100" />
+          <cell name="leidos_spendtodate" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="leidos_projectfunding">
+          <attribute name="leidos_fundingsource" />
+          <attribute name="leidos_funddetails" />
+          <attribute name="leidos_fundingamount" />
+          <attribute name="leidos_stateaidcategory" />
+          <attribute name="leidos_stateaidsubcategory" />
+          <attribute name="leidos_projectfundingreference" />
+          <attribute name="leidos_projectfundingid" />
+          <attribute name="leidos_clientfundingsource" />
+          <attribute name="leidos_clientfundingamount" />
+          <attribute name="leidos_spendtodate" />
+          <filter type="and">
+            <filter type="or">
+              <condition attribute="statuscode" operator="ne" value="2" />
+            </filter>
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.4.0.5</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Project Cost Grid View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

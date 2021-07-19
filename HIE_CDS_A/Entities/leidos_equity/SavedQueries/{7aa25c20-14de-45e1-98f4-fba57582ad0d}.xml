@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{7aa25c20-14de-45e1-98f4-fba57582ad0d}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_equities" jump="leidos_name" select="1" icon="1" preview="0">
+        <row name="leidos_equity" id="leidos_equityid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_typeofholdingproject" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_parentaccountid" width="100" />
+          <cell name="leidos_parentprojectid" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_equity">
+          <attribute name="leidos_equityid" />
+          <attribute name="leidos_name" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_typeofholdingproject" />
+          <attribute name="leidos_parentaccountid" />
+          <attribute name="leidos_parentprojectid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1113</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Equity Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

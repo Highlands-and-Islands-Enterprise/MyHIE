@@ -1,0 +1,683 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{341efd48-b625-eb11-a813-000d3a7fedbe}</formid>
+    <IntroducedVersion>1.9.0.1197</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{73a99ee0-3614-442b-abd7-0dc2176728ea}" IsUserDefined="1" name="ClaimSummary" labelid="{cc4fc2f0-c971-4585-9de7-e9f5262e21f6}">
+          <labels>
+            <label description="Claim Summary" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{519bfa73-9da3-4cf0-a913-0fe806bb88b6}" labelid="{f6d8c112-0378-455b-bfc0-bc3394ba49b3}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{85c5562f-0c78-4ed1-adad-644a82281964}" labelid="{6f8e8085-68a6-42d2-bbff-ee099d639de9}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="header_leidos_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="leidos_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{59cfbbcb-35b8-4da3-8811-23244820ade5}" locklevel="0" labelid="{e855cf63-9676-49ac-9208-4ef12516851a}">
+                        <labels>
+                          <label description="Parent Account" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_parentaccount" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentaccount" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{070cced2-07ab-842a-90ea-20dbe20c0183}" showlabel="true" locklevel="0" labelid="{8e626a47-74fc-4c4a-87ef-90d14c8b3fdc}">
+                        <labels>
+                          <label description="Parent Project" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_parentproject" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_parentproject" disabled="false" uniqueid="{aa49475c-6ce5-13e6-c989-ed6b0996d2ab}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>true</DisableQuickFind>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{526F08BC-6870-EB11-A812-00224840EE66}</DefaultViewId>
+                            <FilterRelationshipName>leidos_Project_ParentAccount_Account</FilterRelationshipName>
+                            <DependentAttributeName>leidos_claim.leidos_parentaccount</DependentAttributeName>
+                            <DependentAttributeType>account</DependentAttributeType>
+                            <AllowFilterOff>true</AllowFilterOff>
+                            <AvailableViewIds>{526F08BC-6870-EB11-A812-00224840EE66},{44A80479-099A-478B-A3B8-E5AF2A3B2B90}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{589a7d8b-777c-4154-b73e-9f44474ae2f8}" showlabel="false" labelid="{417e8067-701f-420f-ae23-27bcd70b2de0}">
+                        <labels>
+                          <label description="Account Details" languagecode="1033" />
+                        </labels>
+                        <control id="AccountDetails" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="leidos_parentaccount" disabled="false">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;b4379cb4-4124-eb11-a813-000d3a7fedbe&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section showlabel="false" showbar="false" id="{953c0082-7cb6-410a-8af4-59a1829c91d7}" IsUserDefined="0" height="auto" labelid="{7c41dca2-10bf-497d-a8e5-a34c5603e719}">
+                  <labels>
+                    <label description="Notes" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" locklevel="0" id="{700346c2-5e63-4a30-a983-414fb9f7640c}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_VATStatus" id="afce0292-d05f-409c-96d4-5074ddd584bc" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="VAT Status" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_4_section_1" id="3577d30d-d7f0-463a-8c8c-22910c39719a" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{9982edae-0b96-47de-832b-ae56c1f5011d}" locklevel="0">
+                        <labels>
+                          <label description="Has there been any change to your VAT status" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_hastherebeenanychangetoyourvatstatus" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_hastherebeenanychangetoyourvatstatus" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e42ea5d7-23cb-4022-b716-32fd784b760a}" locklevel="0">
+                        <labels>
+                          <label description="VAT registered" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_vatregistered" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_vatregistered" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{48940979-7196-44c4-a558-170ca473fa0b}" locklevel="0">
+                        <labels>
+                          <label description="VAT Number" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_vatnumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_vatnumber" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_BankDetails" id="f12c6748-46aa-4e9c-a081-43fa353e7ff0" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Bank Account Details" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_5_section_1" id="faf4be59-a691-4c86-b864-d5243afae9a4" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{90ec6e49-db26-4e9b-be13-40b71196e959}" locklevel="0">
+                        <labels>
+                          <label description="Do you want to update bank details?" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_enternewbankdetails" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_enternewbankdetails" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{93c65dc0-c512-4c28-9f1a-7ad8f4f55fba}" locklevel="0">
+                        <labels>
+                          <label description="Account Name" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_accountname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_accountname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f2c1d4aa-b5f7-47ba-a49b-b80410d7bf18}" locklevel="0">
+                        <labels>
+                          <label description="Account Number" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_bankacctnumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_bankacctnumber" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{62bfa450-a6ef-42fb-b69c-e93caa2c2756}" locklevel="0">
+                        <labels>
+                          <label description="Sort Code" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_banksortcode" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_banksortcode" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{afc06c88-36e7-4b31-86aa-591c84c68206}" locklevel="0">
+                        <labels>
+                          <label description="Bank Name" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_bankname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_bankname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{03022727-380e-445a-9c41-5ddcf40c0ce3}" locklevel="0">
+                        <labels>
+                          <label description="Address Line 1" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_bankaddressline1" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_bankaddressline1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{82f8c7af-6bde-4a7f-8e8d-bc9e244e7f82}" locklevel="0">
+                        <labels>
+                          <label description="Address Line 2" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_bankaddressline2" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_bankaddressline2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{16c88e47-9019-4e10-ad1c-579de4ad17ab}" locklevel="0">
+                        <labels>
+                          <label description="Address Line 3" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_bankaddressline3" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_bankaddressline3" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a2e76849-6257-487f-89c3-868c5607b49b}" locklevel="0">
+                        <labels>
+                          <label description="Town" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_banktownname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_banktownname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{aad1d4fe-c82e-4aab-9c0e-26a99a83bcbd}" locklevel="0">
+                        <labels>
+                          <label description="Post Code" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_bankpostcode" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_bankpostcode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_ProgressReport" id="f8ad7ffb-8b54-415a-bc20-7c695becc64e" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Progress Report" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_3_section_1" id="2ab4ebd0-b81e-4842-b33d-036e83d6cac2" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" visible="true">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{ef5fd164-a746-46fc-ac4d-362c33b37583}" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Measures" languagecode="1033" />
+                        </labels>
+                        <control id="sg_OutputMeasures" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_progressmeasure</TargetEntityType>
+                            <ViewId>{69A9E8F1-2828-EB11-A813-0022483FAE82}</ViewId>
+                            <ViewIds>{2B1A3339-580D-4AC7-A760-A4FA68CE3A0D},{69A9E8F1-2828-EB11-A813-0022483FAE82}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_leidos_progressmeasure_leidos_Pare</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{8cb0ca23-ee92-4fb2-be68-e7b14362f727}" rowspan="1" colspan="1">
+                        <labels>
+                          <label description="Milestones" languagecode="1033" />
+                        </labels>
+                        <control id="sg_Milestones" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <TargetEntityType>leidos_progressmilestones</TargetEntityType>
+                            <ViewId>{341F5740-3228-EB11-A813-000D3A7FEDBE}</ViewId>
+                            <ViewIds>{1E4A54B2-2588-454B-AE56-02BEBDDBFB0D},{341F5740-3228-EB11-A813-000D3A7FEDBE}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_ProgressMilestones_ParentClaim_lei</RelationshipName>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="tab_ProgressReport_section_3" id="c70decd2-939d-47d0-82f6-97e2c336717c" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Project Update" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{cefb24e9-b14e-450f-b2dc-e44fdbef5bcf}" locklevel="0" showlabel="false" rowspan="6">
+                        <labels>
+                          <label description="Project update" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_projectupdate" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="leidos_projectupdate" disabled="false" />
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{566d6679-6045-485b-9b7c-23a3c3ba5150}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="InvoiceSchedule" id="4abcf454-ce5f-4eab-9aa6-9ca4baf6f0e7" IsUserDefined="0" locklevel="0" showlabel="true" labelid="{d5e751ba-7990-411e-a303-bb44c8f58978}" expanded="true">
+          <labels>
+            <label description="Invoice Schedule" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="InvoicesTotal" id="96ef07b0-b308-423c-90a8-e00b09f62d32" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="111" labelwidth="115" labelid="{cc3e8bbd-c05b-4197-ba9d-32da425c4096}">
+                  <labels>
+                    <label description="Invoices Total" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{0d3d2b2a-a7a8-4ad5-90d0-b825f7457358}" locklevel="0" labelid="{e5fef0ea-aa54-4309-9d83-a3919de0e9a2}">
+                        <labels>
+                          <label description="Gross Invoice Value" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_grossinvoicevalue" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_grossinvoicevalue" disabled="true" />
+                      </cell>
+                      <cell id="{8cbc71fb-ab1c-464a-8c7b-94edc56ede57}" locklevel="0" labelid="{69798386-ca7f-40c1-afc3-e214321e48bd}">
+                        <labels>
+                          <label description="Net Invoice Value" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_netinvoicevalue" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_netinvoicevalue" disabled="true" />
+                      </cell>
+                      <cell id="{cf03ddf0-6187-4d2a-bfc5-3d3d5fc757d1}" locklevel="0" labelid="{aa8d2063-93fd-4509-a1b1-b2c3a78dfa97}" visible="false">
+                        <labels>
+                          <label description="Eligible" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_eligible" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_eligible" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{45bbb102-d63b-44fe-b801-df3436752b9f}" showlabel="false" labelid="{5c436102-279d-4189-b6b4-25a6ca4993e1}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{e0275e94-772d-4438-bb5f-e454ec9efb2c}" showlabel="false" labelid="{ab799eee-838e-449f-a346-de7c6a137326}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{fe624ffb-4dca-4756-a8d4-af6ee8fab8a2}" showlabel="false" labelid="{96fa201d-f893-4a22-b9ae-16e6cceb2996}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{af2c7416-a3c2-4a64-9511-c3bf4a03b646}" showlabel="false" labelid="{525d616b-9552-4839-9b36-63f7adeb80bd}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{3af558ca-2618-48e9-93a5-b30c2dcc1ef9}" showlabel="false" labelid="{9018754d-426d-4ce2-a93a-e32cfffd4a48}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell locklevel="0" id="{e0baea1d-afa3-4556-a1d2-921b7838babe}" showlabel="false" labelid="{a3859750-f9c1-4af5-ac09-154ec98cd6fd}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="InvoiceList" id="db9b141d-5a54-4558-8fb3-f2a4be832661" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" labelid="{3c6f9afd-341e-403b-8f47-24a23f8d9549}">
+                  <labels>
+                    <label description="Invoice List" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell locklevel="0" id="{ab92f732-3168-47cf-b30e-9b22a5d279f3}" rowspan="7" colspan="1" showlabel="true" labelid="{9def810e-c555-49ca-a7f9-db5117ddd21d}" auto="false">
+                        <labels>
+                          <label description="Eligible Invoices" languagecode="1033" />
+                        </labels>
+                        <control id="sg_EligibleInvoices" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{753bd049-ccba-d85d-0878-1be6524d8523}">
+                          <parameters>
+                            <TargetEntityType>leidos_claimdetail</TargetEntityType>
+                            <ViewId>{28890424-E15B-EB11-A812-00224840F2C5}</ViewId>
+                            <ViewIds>{28890424-E15B-EB11-A812-00224840F2C5}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_ClaimDetail_ParentClaim_leidos_Cla</RelationshipName>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <IsUserView>false</IsUserView>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row>
+                      <cell id="{b5324217-209a-c2b2-8bd0-e85e962bea90}" showlabel="true" colspan="1" auto="false" rowspan="7">
+                        <labels>
+                          <label description="Ineligible Invoices" languagecode="1033" />
+                        </labels>
+                        <control id="sg_IneligibleInvoices" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{1573a041-0763-babe-8c16-2342ba35a9db}">
+                          <parameters>
+                            <ViewId>{FED93730-E15B-EB11-A812-00224840F2C5}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>leidos_ClaimDetail_ParentClaim_leidos_Cla</RelationshipName>
+                            <TargetEntityType>leidos_claimdetail</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{EFA6C43B-EC5C-4164-A7BE-9BA0226B0661},{FED93730-E15B-EB11-A812-00224840F2C5}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_AdditionalEvidence" id="319c690d-b19f-4731-b1c4-d96311d42ac7" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Additional Evidence" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_7_section_1" id="52a26d08-7d04-4600-9605-094f1aea99ca" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell showlabel="false" rowspan="1" auto="false" id="{356735ef-7ca9-413f-85a2-31816e4b9d28}" labelid="{88fa72db-e49c-4959-b579-9faf8e3778f1}" locklevel="0">
+                        <labels>
+                          <label description="Note Text" languagecode="1033" />
+                        </labels>
+                        <control id="notescontrol" classid="{06375649-c143-495e-a496-c962e5b4488e}" uniqueid="{8e89c2ce-eb24-2b32-ddcc-d3667da137c3}" disabled="false">
+                          <parameters>
+                            <DefaultTabId>NotesTab</DefaultTabId>
+                            <UClientModules>Notes</UClientModules>
+                            <UClientUniqueName>Timeline</UClientUniqueName>
+                            <UClientDefaultModuleForCreateExperience>Notes</UClientDefaultModuleForCreateExperience>
+                            <UClientShowFilterPane>true</UClientShowFilterPane>
+                            <UClientExpandFilterPane>false</UClientExpandFilterPane>
+                            <UClientOrderBy>descending</UClientOrderBy>
+                            <UClientRecordPerPage>10</UClientRecordPerPage>
+                            <UClientEnableWhatsNewFilter>false</UClientEnableWhatsNewFilter>
+                            <UClientSortActivitiesByValue>modifiedon</UClientSortActivitiesByValue>
+                            <UClientDisplayActivityHeaderUsing>defaultformat</UClientDisplayActivityHeaderUsing>
+                            <UClientCreateActivityUsing>quickcreateform</UClientCreateActivityUsing>
+                            <UClientDisplayActivityUsing>cardform</UClientDisplayActivityUsing>
+                            <UClientActivityCardMap>appointment:4201:,email:4202:,fax:4204:,letter:4207:,phonecall:4210:,task:4212:,adx_alertsubscription:10042:,adx_inviteredemption:10045:,adx_portalcomment:10094:,leidos_portalmessage:10238:</UClientActivityCardMap>
+                            <OrderByActivityWall>descending</OrderByActivityWall>
+                            <SortActivityWall>modifiedon</SortActivityWall>
+                            <EmailConversationView>true</EmailConversationView>
+                            <ShowArticleTab>false</ShowArticleTab>
+                            <SelectDefaultLanguage>00000000-0000-0000-0000-000000000000</SelectDefaultLanguage>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_Submission" id="414e0f9c-7686-4a87-8175-07d5fb78b020" IsUserDefined="0" locklevel="0" showlabel="true">
+          <labels>
+            <label description="Submission" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_6_section_1" id="ebc60d0b-60a2-4bcf-9b6d-ba93fadc7513" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{823523be-dfc5-4910-9557-ca654068c686}" locklevel="0">
+                        <labels>
+                          <label description="Submitted from Portal" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_submittedfromportal" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="leidos_submittedfromportal" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4f56ed55-4be2-4106-9f00-2762eaf218e3}" locklevel="1">
+                        <labels>
+                          <label description="Submitted on Portal By" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_submittedonportalby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_submittedonportalby" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fce57d7a-68d6-4fed-91aa-58b1c1065670}" locklevel="0" visible="true">
+                        <labels>
+                          <label description="Submitted on" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_claimsubmitteddate" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="leidos_claimsubmitteddate" disabled="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{8f2e3893-86f4-48cc-bb8f-a860c1126c88}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{7ee763c4-f474-400f-a6ee-efbf4e40ac70}" showlabel="false" labelid="{8a8a9236-7c4a-40f1-b55a-f8ec16e57b36}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3cd95456-3e95-44a4-a194-7e5d4a2f6035}" showlabel="false" labelid="{cda97088-29b9-4ef1-a4fd-946830144472}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{5ae50956-75a0-4b53-8f95-c64f84bc1098}" showlabel="false" labelid="{0fb0b297-20f5-4c89-a59f-7b14a2d5fbd6}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c7dbdba7-7d39-4a50-9a37-d00574f282c0}" locklevel="0" labelid="{be79fa6f-5035-4a02-bc99-2acae4d0eb5f}">
+              <labels>
+                <label description="Claim Reference" languagecode="1033" />
+              </labels>
+              <control id="header_leidos_claimreference" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_claimreference" disabled="false" />
+            </cell>
+            <cell id="{5d6c9b64-2701-4f64-81a8-ca8f02df6081}" locklevel="0" labelid="{3ec17134-531e-4df3-9189-ad93272efbfa}">
+              <labels>
+                <label description="Status Reason" languagecode="1033" />
+              </labels>
+              <control id="header_statuscode" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="statuscode" disabled="false" />
+            </cell>
+            <cell id="{a8c48fed-b132-473b-be6f-6c9d35f4dadd}" labelid="{f13316e3-6e58-4d34-a73f-0db017cb4af7}">
+              <labels>
+                <label description="Owner" languagecode="1033" />
+              </labels>
+              <control id="header_ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{e0f95de6-469a-4da1-a6fd-22e1e3f8f5ec}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{67ada93f-f03f-4e3b-840e-4ec506971d2a}" showlabel="false" labelid="{918fd209-a09b-4e50-b5ee-a900c8524612}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{12341d18-0751-441c-87d6-bea17b561c59}" showlabel="false" labelid="{1eb605e4-33c6-462f-8a66-a024835b7a3b}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{cf6d90f6-1cb1-4664-842f-39a2717ae275}" showlabel="false" labelid="{5f58feab-1ce5-4277-8e12-10446d606d0e}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <Navigation>
+        <NavBar>
+          <NavBarByRelationshipItem RelationshipName="leidos_leidos_progressmeasure_leidos_Pare" Sequence="10001" Area="Info" Id="nav_leidos_leidos_progressmeasure_leidos_Pare">
+            <Titles>
+              <Title LCID="1033" Text="Progress Measures" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_ProgressMilestones_ParentClaim_lei" Sequence="10002" Area="Info" Id="nav_leidos_ProgressMilestones_ParentClaim_lei">
+            <Titles>
+              <Title LCID="1033" Text="Progress Milestones" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="bpf_leidos_claim_leidos_bpf_claim" Sequence="10003" Area="Info" Id="nav_bpf_leidos_claim_leidos_bpf_claim">
+            <Titles>
+              <Title LCID="1033" Text="BPF - Claim" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_BankDetails_ParentClaim_leidos_Cla" Sequence="10004" Area="Info" Id="nav_leidos_BankDetails_ParentClaim_leidos_Cla">
+            <Titles>
+              <Title LCID="1033" Text="Bank Details" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_Transaction_Claim_leidos_Claim" Sequence="10005" Area="Info" Id="nav_leidos_Transaction_Claim_leidos_Claim">
+            <Titles>
+              <Title LCID="1033" Text="Transactions" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="leidos_PaymentClaim_ParentClaim_leidos_Cl" Id="nav_leidos_PaymentClaim_ParentClaim_leidos_Cl" Show="true" Sequence="10006" Area="Info">
+            <Titles>
+              <Title LCID="1033" Text="Payment Claims" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <controlDescriptions />
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description=" Web - Claim" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

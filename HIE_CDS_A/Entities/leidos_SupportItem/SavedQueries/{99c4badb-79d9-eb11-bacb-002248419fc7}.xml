@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{99c4badb-79d9-eb11-bacb-002248419fc7}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_supportitemid">
+          <cell name="leidos_name" width="200" />
+          <cell name="leidos_supportitemtype" width="100" />
+          <cell name="leidos_programme" width="100" />
+          <cell name="a_90a2a596bec645f99b09a9b7c3631d20.statuscode" width="100" />
+          <cell name="leidos_fundingallocation" width="100" />
+          <cell name="leidos_committedvalue" width="100" />
+          <cell name="leidos_spendvalue" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_supportitem">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_supportitemid" />
+          <attribute name="leidos_supportitemtype" />
+          <attribute name="leidos_programme" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <link-entity alias="a_90a2a596bec645f99b09a9b7c3631d20" name="leidos_programme" to="leidos_programme" from="leidos_programmeid" link-type="outer" visible="false">
+            <attribute name="statuscode" />
+          </link-entity>
+          <attribute name="leidos_committedvalue" />
+          <attribute name="leidos_spendvalue" />
+          <attribute name="leidos_fundingallocation" />
+          <order attribute="leidos_supportitemtype" descending="false" />
+          <order attribute="leidos_name" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.18.0.3672</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="All Active Support Items" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

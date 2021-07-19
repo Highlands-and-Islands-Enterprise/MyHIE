@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{0a734b0f-0bb2-443f-9285-2e7e84e77f2f}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_enquiries" jump="leidos_name" select="1" icon="1" preview="0">
+        <row name="leidos_enquiry" id="leidos_enquiryid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_account" width="100" />
+          <cell name="leidos_contact" width="100" />
+          <cell name="leidos_natureofenquiry" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_enquiry">
+          <attribute name="leidos_enquiryid" />
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <order attribute="createdon" descending="true" />
+          <attribute name="leidos_natureofenquiry" />
+          <attribute name="leidos_contact" />
+          <attribute name="leidos_account" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Enquiry Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

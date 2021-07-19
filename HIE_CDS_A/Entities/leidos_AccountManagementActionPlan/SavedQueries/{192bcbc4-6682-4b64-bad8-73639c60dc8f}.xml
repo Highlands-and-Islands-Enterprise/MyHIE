@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{192bcbc4-6682-4b64-bad8-73639c60dc8f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_accountmanagementactionplanid">
+          <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="leidos_account" width="100" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_parentaccountmanagementclientplan" width="300" />
+          <cell name="a_2edc5eee75684d8c9a57e5d1044ffced.leidos_amcpreference" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_accountmanagementactionplan">
+          <attribute name="leidos_accountmanagementactionplanid" />
+          <attribute name="leidos_name" />
+          <attribute name="leidos_parentaccountmanagementclientplan" />
+          <attribute name="leidos_account" />
+          <attribute name="createdon" />
+          <attribute name="ownerid" />
+          <attribute name="statecode" />
+          <order attribute="leidos_name" descending="false" />
+          <link-entity alias="a_2edc5eee75684d8c9a57e5d1044ffced" name="leidos_accountmanagementclientplan" to="leidos_parentaccountmanagementclientplan" from="leidos_accountmanagementclientplanid" link-type="outer" visible="false">
+            <attribute name="leidos_amcpreference" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.7.0.5</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Action Plan Advanced Find View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

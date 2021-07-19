@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{dce62760-73de-eb11-bacb-0022483f8d9f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_applicationid">
+          <cell name="leidos_name" width="200" />
+          <cell name="leidos_applicationreference" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="leidos_projectsapprovedbudgettotal" width="100" />
+          <cell name="createdon" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_application">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_applicationid" />
+          <attribute name="leidos_applicationreference" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_projectsapprovedbudgettotal" />
+          <attribute name="createdon" />
+          <order attribute="createdon" descending="true" />
+          <order attribute="leidos_applicationreference" descending="false" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="in">
+              <value>445260000</value>
+              <value>445260009</value>
+              <value>445260011</value>
+            </condition>
+          </filter>
+          <link-entity name="new_bpfapplicationbusinessprocessflow" alias="aa" link-type="inner" from="bpf_leidos_applicationid" to="leidos_applicationid">
+            <link-entity name="leidos_project" alias="af" link-type="inner" from="leidos_projectid" to="bpf_leidos_projectid">
+              <link-entity name="leidos_supportitemtype" alias="ag" link-type="inner" from="leidos_supportitemtypeid" to="leidos_supportitemnfi">
+                <filter type="and">
+                  <condition attribute="leidos_nfihidefeilds" operator="eq" value="1" />
+                </filter>
+              </link-entity>
+            </link-entity>
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.18.0.3744</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Account Grid- Applicaitons -NFI yes" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
