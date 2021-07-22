@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{95fd8116-fcea-eb11-bacb-00224841e62c}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_milestoneid">
+          <cell name="leidos_alertdate" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_expectedduedate" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="a_46fbc5cc1bbaea11a812000d3a7fedbe.leidos_parentaccount" width="150" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_parentproject" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_name" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="statuscode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="leidos_milestone">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_expectedduedate" />
+          <attribute name="leidos_alertdate" />
+          <attribute name="leidos_parentproject" />
+          <order attribute="leidos_alertdate" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="leidos_expectedduedate" operator="next-x-weeks" value="6" />
+          </filter>
+          <link-entity alias="a_46fbc5cc1bbaea11a812000d3a7fedbe" name="leidos_project" from="leidos_projectid" to="leidos_parentproject" link-type="inner">
+            <attribute name="leidos_parentaccount" />
+          </link-entity>
+          <attribute name="leidos_milestoneid" />
+          <attribute name="statuscode" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.18.0.4004</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Upcoming Project Milestones" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
