@@ -58,7 +58,12 @@
                         <labels>
                           <label description="Recovery Line" languagecode="1033" />
                         </labels>
-                        <control id="leidos_recoveryline" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_recoveryline" disabled="false" />
+                        <control id="leidos_recoveryline" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_recoveryline" disabled="false">
+                          <parameters>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DisableMru>true</DisableMru>
+                          </parameters>
+                        </control>
                       </cell>
                     </row>
                     <row>
@@ -307,6 +312,7 @@
         <event name="onload" application="true" active="true">
           <Handlers>
             <Handler functionName="Leidos.CostFundingLineFilterview" libraryName="leidos_PaymentClaim" handlerUniqueId="{11f7e492-98ef-47d5-9915-035442175060}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.RecoveryLineFilterview" libraryName="leidos_PaymentClaim" handlerUniqueId="{5760044c-e96a-4df4-a2a7-ac91824de344}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>
