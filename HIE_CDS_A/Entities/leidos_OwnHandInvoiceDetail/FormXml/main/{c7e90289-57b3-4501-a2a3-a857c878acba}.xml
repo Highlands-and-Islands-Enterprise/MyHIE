@@ -67,6 +67,26 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{b25e0916-51be-470a-81db-e1bb71465462}" locklevel="0" visible="false" showlabel="true">
+                        <labels>
+                          <label description="Recovery Profile" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_recoveryprofile" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_recoveryprofile" disabled="false" uniqueid="{e7294c21-a09a-34c2-a591-6d8b5dcb92da}">
+                          <parameters>
+                            <DisableMru>true</DisableMru>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{703841EB-10A0-4BA5-A835-5CBF1D23980A}</DefaultViewId>
+                            <FilterRelationshipName>leidos_Recovery_ParentFunding_leidos_Proj</FilterRelationshipName>
+                            <DependentAttributeName>leidos_ownhandinvoicedetail.leidos_fundingline</DependentAttributeName>
+                            <DependentAttributeType>leidos_projectfunding</DependentAttributeType>
+                            <AllowFilterOff>true</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{54011203-1967-473b-a5e6-8e70b5b27a36}" locklevel="0">
                         <labels>
                           <label description="Cost Type" languagecode="1033" />
@@ -223,7 +243,7 @@
                         </labels>
                         <control id="leidos_projectnumber" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_projectnumber" disabled="false" />
                       </cell>
-                      <cell locklevel="0" id="{86b182e6-f047-4ebe-88e8-744d99e0444c}">
+                      <cell locklevel="0" id="{86b182e6-f047-4ebe-88e8-744d99e0444c}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -303,7 +323,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -333,9 +353,6 @@
         </NavBarAreas>
       </Navigation>
       <controlDescriptions />
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
@@ -348,6 +365,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="8ff31bb4-6cd0-4d04-ab59-e3fe5b6ff100" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="4525f488-4d7c-4fb9-a4d0-81f3d6861777" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
