@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_A" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.4044</Version>
+    <Version>1.18.0.4049</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -1410,6 +1410,10 @@
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="leidos_enquiry_SEPPartnerOrganisation_Acc" displayName="leidos_enquiry_SEPPartnerOrganisation_Acc" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="leidos_LegalUndertaking_ParentAccount_Acc" displayName="leidos_LegalUndertaking_ParentAccount_Acc" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
@@ -2140,6 +2144,10 @@
       <MissingDependency>
         <Required type="10" schemaName="leidos_ProjectMeasure_Output_leidos_Proje" displayName="leidos_ProjectMeasure_Output_leidos_Proje" parentSchemaName="leidos_projectoutput" parentDisplayName="Project Output" solution="Active" />
         <Dependent type="60" displayName="HIE Measures Form" parentDisplayName="Measure" id="{d875498a-80d3-4768-b48e-ea0374454bb5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_PaymentClaim_RecoveryLine_leidos_R" displayName="leidos_PaymentClaim_RecoveryLine_leidos_R" parentSchemaName="leidos_recovery" parentDisplayName="Recovery Profile" solution="Active" />
+        <Dependent type="2" schemaName="leidos_recoveryline" displayName="Recovery Line" parentSchemaName="leidos_paymentclaim" parentDisplayName="Payment Claim" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_PaymentClaim_RecoveryLine_leidos_R" displayName="leidos_PaymentClaim_RecoveryLine_leidos_R" parentSchemaName="leidos_recovery" parentDisplayName="Recovery Profile" solution="Active" />
@@ -5570,6 +5578,14 @@
         <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_sepenquiryid" displayName="SEPEnquiryID" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_seppartnerorganisation" displayName="SEP Partner Organisation" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_skiptofinalstage" displayName=" Skip to Final Stage" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
         <Dependent type="29" displayName="BPF - Enquiry Business Flow" id="{b563bc4d-f5d3-4d7b-8d43-2179f246d138}" />
       </MissingDependency>
@@ -5627,6 +5643,14 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_telephonenumber" displayName="Telephone Number" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_transferredon" displayName="Transferred On" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
+        <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_transfersuccessful" displayName="Transfer Successful" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
         <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
       </MissingDependency>
       <MissingDependency>
@@ -6547,10 +6571,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_paymentclaimreference" displayName="Payment Claim Reference" parentSchemaName="leidos_paymentclaim" parentDisplayName="Payment Claim" solution="Active" />
-        <Dependent type="60" displayName="HIE Information" parentDisplayName="Payment Claim" id="{2e867ea7-72e0-4f31-a54a-bedd9d737cb6}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_recoveryline" displayName="Recovery Line" parentSchemaName="leidos_paymentclaim" parentDisplayName="Payment Claim" solution="Active" />
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Payment Claim" id="{2e867ea7-72e0-4f31-a54a-bedd9d737cb6}" />
       </MissingDependency>
       <MissingDependency>
