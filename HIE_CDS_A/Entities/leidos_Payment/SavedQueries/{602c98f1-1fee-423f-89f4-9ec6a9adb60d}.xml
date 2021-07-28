@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{602c98f1-1fee-423f-89f4-9ec6a9adb60d}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_paymentid">
+          <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="a_e892fb2216754b8a8e57224d5e78f8e5.name" width="125" />
+          <cell name="a_43313a4939be48969b8400e1f6f732eb.leidos_name" width="125" />
+          <cell name="a_43313a4939be48969b8400e1f6f732eb.leidos_projectreference" width="125" />
+          <cell name="leidos_name" width="300" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_payment">
+          <attribute name="leidos_paymentid" />
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="ownerid" />
+          <attribute name="statuscode" />
+          <link-entity alias="a_e892fb2216754b8a8e57224d5e78f8e5" name="account" to="leidos_parentaccount" from="accountid" link-type="outer" visible="false">
+            <attribute name="name" />
+          </link-entity>
+          <link-entity alias="a_43313a4939be48969b8400e1f6f732eb" name="leidos_project" to="leidos_parentproject" from="leidos_projectid" link-type="outer" visible="false">
+            <attribute name="leidos_name" />
+            <attribute name="leidos_projectreference" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Payments" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

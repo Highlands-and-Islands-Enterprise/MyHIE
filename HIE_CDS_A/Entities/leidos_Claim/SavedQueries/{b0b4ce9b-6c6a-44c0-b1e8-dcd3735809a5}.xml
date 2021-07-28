@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{b0b4ce9b-6c6a-44c0-b1e8-dcd3735809a5}</savedqueryid>
+    <layoutxml>
+      <grid name="leidos_claims" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="leidos_claim" id="leidos_claimid">
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_codareference" width="100" />
+          <cell name="leidos_alternativepayeeacount" width="100" />
+          <cell name="leidos_claimreference" width="100" />
+          <cell name="leidos_claimnumber" width="100" />
+          <cell name="leidos_paymentclaimnettotal" width="100" />
+          <cell name="leidos_netinvoicevalue" width="100" />
+          <cell name="leidos_eligible" width="100" />
+          <cell name="leidos_claimsubmitteddate" width="100" />
+          <cell name="leidos_dateofposting" width="100" />
+          <cell name="leidos_paymentdate" width="100" />
+          <cell name="leidos_datepaidoncoda" width="100" />
+          <cell name="statuscode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_claim">
+          <attribute name="leidos_claimid" />
+          <attribute name="leidos_name" />
+          <order attribute="leidos_name" descending="false" />
+          <attribute name="leidos_claimreference" />
+          <attribute name="leidos_claimsubmitteddate" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_datepaidoncoda" />
+          <attribute name="leidos_eligible" />
+          <attribute name="leidos_netinvoicevalue" />
+          <attribute name="leidos_alternativepayeeacount" />
+          <attribute name="leidos_codareference" />
+          <attribute name="leidos_claimnumber" />
+          <attribute name="leidos_dateofposting" />
+          <attribute name="leidos_paymentdate" />
+          <attribute name="leidos_paymentclaimnettotal" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="ne" value="445260005" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1173</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Claim Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

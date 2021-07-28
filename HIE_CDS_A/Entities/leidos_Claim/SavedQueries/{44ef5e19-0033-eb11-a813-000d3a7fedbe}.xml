@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{44ef5e19-0033-eb11-a813-000d3a7fedbe}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_claimid">
+          <cell name="leidos_claimreference" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_paymentclaimnettotal" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_datepaidoncoda" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="statuscode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_claim">
+          <attribute name="leidos_claimreference" />
+          <attribute name="statuscode" />
+          <order attribute="leidos_claimreference" descending="true" />
+          <attribute name="leidos_datepaidoncoda" />
+          <attribute name="leidos_paymentclaimnettotal" />
+          <attribute name="leidos_claimid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1240</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Portal Web View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

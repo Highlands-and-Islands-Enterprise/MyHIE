@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e55bceca-3e05-4d2a-87c4-4ef454f57e63}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_spendprofiledetailid">
+          <cell name="leidos_name" width="300" />
+          <cell name="a_4c455013385247a48fb7f2511ca49f35.leidos_parentproject" width="100" />
+          <cell name="leidos_parentspendprofile" width="100" />
+          <cell name="leidos_hiefinancialyear" width="100" />
+          <cell name="leidos_apr" width="100" />
+          <cell name="leidos_may" width="100" />
+          <cell name="leidos_june" width="100" />
+          <cell name="leidos_july" width="100" />
+          <cell name="leidos_aug" width="100" />
+          <cell name="leidos_sept" width="100" />
+          <cell name="leidos_oct" width="100" />
+          <cell name="leidos_nov" width="100" />
+          <cell name="leidos_dec" width="100" />
+          <cell name="leidos_jan" width="100" />
+          <cell name="leidos_feb" width="100" />
+          <cell name="leidos_mar" width="100" />
+          <cell name="createdon" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_spendprofiledetail">
+          <attribute name="leidos_name" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <attribute name="leidos_hiefinancialyear" />
+          <attribute name="leidos_parentspendprofile" />
+          <order attribute="leidos_name" descending="false" />
+          <link-entity alias="a_4c455013385247a48fb7f2511ca49f35" name="leidos_anticipatedspendprofile" to="leidos_parentspendprofile" from="leidos_anticipatedspendprofileid" link-type="outer" visible="false">
+            <attribute name="leidos_parentproject" />
+          </link-entity>
+          <attribute name="leidos_spendprofiledetailid" />
+          <attribute name="leidos_apr" />
+          <attribute name="leidos_may" />
+          <attribute name="leidos_june" />
+          <attribute name="leidos_july" />
+          <attribute name="leidos_aug" />
+          <attribute name="leidos_sept" />
+          <attribute name="leidos_oct" />
+          <attribute name="leidos_nov" />
+          <attribute name="leidos_dec" />
+          <attribute name="leidos_jan" />
+          <attribute name="leidos_feb" />
+          <attribute name="leidos_mar" />
+          <attribute name="createdon" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.5.0.20</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Spend Profile Details" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
