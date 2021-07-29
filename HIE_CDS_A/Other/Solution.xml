@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_A" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.4054</Version>
+    <Version>1.18.0.4059</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -195,6 +195,7 @@
       <RootComponent type="60" id="{204cf485-2100-47c7-88d5-24acad0dd460}" />
       <RootComponent type="60" id="{2acbf199-cbff-42bd-b1df-5443e1a9ece2}" behavior="0" />
       <RootComponent type="60" id="{2e867ea7-72e0-4f31-a54a-bedd9d737cb6}" />
+      <RootComponent type="60" id="{341efd48-b625-eb11-a813-000d3a7fedbe}" behavior="0" />
       <RootComponent type="60" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       <RootComponent type="60" id="{3d6290f9-5e7f-413a-a421-1fe3efef3d4f}" />
       <RootComponent type="60" id="{45470719-0c2f-4100-ab8b-d68daa119d9b}" />
@@ -292,11 +293,16 @@
       <RootComponent type="62" schemaName="leidos_OwnHandInvoiceProcessing" behavior="0" />
       <RootComponent type="80" schemaName="leidos_HIEAccountManagement" behavior="0" />
       <RootComponent type="80" schemaName="leidos_OwnHandInvoiceProcessing" behavior="0" />
+      <RootComponent type="80" schemaName="leidos_ReferenceDataManagement" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
         <Required type="1" schemaName="adx_invitation" displayName="Invitation" solution="MicrosoftPortalBase (9.2.2103.1)" />
         <Dependent type="1" schemaName="adx_invitation" displayName="Invitation" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="adx_webrole" displayName="Web Role" solution="MicrosoftPortalDependencies (9.2.2103.0)" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_accountcodefunding" displayName="Account Code Funding" solution="Active" />
@@ -323,6 +329,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_actionby" displayName="Action By" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_actiontype" displayName="Action Type" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
@@ -331,12 +341,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_actiontype" displayName="Action Type" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_advicetype" displayName="Advice Type" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_advicetype" displayName="Advice Type" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_advicetype" displayName="Advice Type" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_anticipatedspendprofile" displayName="Spend \ Recovery  Profile" solution="Active" />
@@ -375,6 +393,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_anticipatedspendprofile" displayName="Spend \ Recovery  Profile" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_application" displayName="Application" solution="Active" />
         <Dependent type="1" schemaName="leidos_application" displayName="Application" />
       </MissingDependency>
@@ -395,12 +417,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_applicationquestion" displayName="Application Question" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_applicationquestioncategory" displayName="Application Question Category" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_applicationquestioncategory" displayName="Application Question Category" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_applicationquestioncategory" displayName="Application Question Category" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_applicationquestiontypes" displayName="Application Question Types" solution="Active" />
@@ -435,6 +465,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_areaoffice" displayName="Area Office" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_bankdetails" displayName="Bank Details" solution="Active" />
         <Dependent type="1" schemaName="leidos_claim" displayName="Claim" />
       </MissingDependency>
@@ -443,36 +477,68 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_bankdetails" displayName="Bank Details" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_bpf_claim" displayName="BPF - Claim" solution="Active" />
         <Dependent type="1" schemaName="leidos_claim" displayName="Claim" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_bpf_claim" displayName="BPF - Claim" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_bpf_claim" displayName="BPF - Claim" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_bpf_legalundertaking" displayName="BPF - Legal Undertaking" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_bpf_legalundertaking" displayName="BPF - Legal Undertaking" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_bpf_loan" displayName="BPF - Loan" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_bpfamrdirectcreation" displayName="BPF Account Management Record" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_bpfloanadjustment" displayName="BPF - Loan Adjustment" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_bpfloanadjustment" displayName="BPF - Loan Adjustment" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_bpfloandrawdown" displayName="BPF - Loan Drawdown" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_bpfloandrawdown" displayName="BPF - Loan Drawdown" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_bpfloanreceipt" displayName="BPF - Loan Receipt" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_bpfloanreceipt" displayName="BPF - Loan Receipt" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_budget" displayName="Budget" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_budget" displayName="Budget" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_businessorsocialenterprise" displayName="Business or Social Enterprise" solution="Active" />
@@ -483,8 +549,16 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_businessorsocialenterprise" displayName="Business or Social Enterprise" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_categorynatureofenquiry" displayName="Category - Nature of Enquiry" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_categorynatureofenquiry" displayName="Category - Nature of Enquiry" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_claimadjustment" displayName="Claim Adjustment" solution="Active" />
@@ -535,6 +609,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_claimdetail" displayName="Claim Detail" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_clientaction" displayName="Client Action" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
@@ -567,6 +645,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_clientenquiryorigin" displayName="Client Enquiry Origin" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_clientladder" displayName="Client Ladder" solution="Active" />
         <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
       </MissingDependency>
@@ -595,6 +677,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_clientneed" displayName="Client Need" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_clientneedsolution" displayName="Client Need Solution" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
@@ -603,12 +689,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_clientneedsolution" displayName="Client Need Solution" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_clientplanquestion" displayName="Client Plan Question" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientplanquestion" displayName="Client Plan Question" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_clientplanquestion" displayName="Client Plan Question" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientplanquestioncategory" displayName="Client Plan Question Category" solution="Active" />
@@ -623,6 +717,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_clientplanquestioncategory" displayName="Client Plan Question Category" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_clientplanreviewresponse" displayName="Client Plan Review Response" solution="Active" />
         <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
       </MissingDependency>
@@ -633,6 +731,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientplanreviewresponse" displayName="Client Plan Review Response" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_clientplanreviewresponse" displayName="Client Plan Review Response" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientplansummary" displayName="Client Plan Summary" solution="Active" />
@@ -649,14 +751,26 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientplansummary" displayName="Client Plan Summary" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_clientplansummary" displayName="Client Plan Summary" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_costtype" displayName="Cost Type" solution="Active" />
         <Dependent type="1" schemaName="leidos_costtype" displayName="Cost Type" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_decision" displayName="Decision" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_documentrequirement" displayName="Document Requirement" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_documentrequirement" displayName="Document Requirement" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_employmentdetails" displayName="Employment Details" solution="Active" />
@@ -669,6 +783,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_employmentroles" displayName="Employment Role" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_employmentroles" displayName="Employment Role" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_enquiry" displayName="Enquiry" solution="Active" />
@@ -703,12 +821,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_eventparticipation" displayName="Event Participation" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_eventtype" displayName="Event Type" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_eventtype" displayName="Event Type" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_eventtype" displayName="Event Type" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_financialyear" displayName="Financial Year" solution="Active" />
@@ -729,6 +855,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_financialyear" displayName="Financial Year" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_financialyear" displayName="Financial Year" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_funddetail" displayName="Fund Detail" solution="Active" />
@@ -753,6 +883,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_funddetail" displayName="Fund Detail" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_funddetail" displayName="Fund Detail" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_fundingsource" displayName="Funding Source" solution="Active" />
@@ -787,16 +921,28 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_fundingsource" displayName="Funding Source" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_fundingsourcecategory" displayName="Funding Source Category" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_fundingsourcecategory" displayName="Funding Source Category" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_geographicdistribution" displayName="Geographic Distribution" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_geographicdistribution" displayName="Geographic Distribution" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_geographicdistribution" displayName="Geographic Distribution" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_geographies" displayName="Geography" solution="Active" />
@@ -807,12 +953,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_geographies" displayName="Geography" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_hiebusinessunit" displayName="HIE Business Unit" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_hiebusinessunit" displayName="HIE Business Unit" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_hiebusinessunit" displayName="HIE Business Unit" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_hierepresentation" displayName="HIE Representation" solution="Active" />
@@ -821,6 +975,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_hierepresentation" displayName="HIE Representation" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_hierepresentation" displayName="HIE Representation" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_hieteam" displayName="HIE Team" solution="Active" />
@@ -843,6 +1001,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_hieteam" displayName="HIE Team" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_investment" displayName="Investment" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
@@ -863,6 +1025,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_jobtypesoc" displayName="Job Type (SOC)" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_keystrategicaction" displayName="Key Strategic Aim" solution="Active" />
         <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
       </MissingDependency>
@@ -879,12 +1045,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_keystrategicaction" displayName="Key Strategic Aim" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_ladder" displayName="Ladder" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_ladder" displayName="Ladder" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ladder" displayName="Ladder" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_laddercategory" displayName="Ladder Category" solution="Active" />
@@ -895,12 +1069,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_laddercategory" displayName="Ladder Category" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_ladderquestion" displayName="Ladder Question" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_ladderquestion" displayName="Ladder Question" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ladderquestion" displayName="Ladder Question" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_ladderquestionanswer" displayName="Ladder Question Answer" solution="Active" />
@@ -911,24 +1093,40 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_ladderquestionanswer" displayName="Ladder Question Answer" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_ladderstep" displayName="Ladder Step" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_ladderstep" displayName="Ladder Step" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ladderstep" displayName="Ladder Step" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_legacycompanyinformation" displayName="Legacy Company Information" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_legalcondition" displayName="Legal Condition" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_legalentity" displayName="Legal Entities" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_legalentity" displayName="Legal Entities" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_legalentity" displayName="Legal Entities" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_legalundertaking" displayName="Legal Undertaking" solution="Active" />
@@ -947,6 +1145,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_legalundertaking" displayName="Legal Undertaking" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_loan" displayName="Loan" solution="Active" />
         <Dependent type="1" schemaName="leidos_projectfunding" displayName="Cost Funding" />
       </MissingDependency>
@@ -963,20 +1165,40 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_loan" displayName="Loan" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_loan_line" displayName="loan_line" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_loan_line" displayName="loan_line" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_loanadjustment" displayName="Loan Adjustment" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_loanadjustment" displayName="Loan Adjustment" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_loandrawdown" displayName="Loan Drawdown" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_loandrawdown" displayName="Loan Drawdown" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_loanreceipt" displayName="Loan Receipt" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_loanreceipt" displayName="Loan Receipt" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_milestone" displayName="Milestone" solution="Active" />
@@ -991,12 +1213,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_month" displayName="Month" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_natureofenquiry" displayName="Nature of Enquiry" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_natureofenquiry" displayName="Nature of Enquiry" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_natureofenquiry" displayName="Nature of Enquiry" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_nfistateaid" displayName="NFI Subsidy Control" solution="Active" />
@@ -1007,12 +1237,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_nfistateaid" displayName="NFI Subsidy Control" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_numberofemployees" displayName="Number of Employees" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_numberofemployees" displayName="Number of Employees" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_numberofemployees" displayName="Number of Employees" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_obligationperiod" displayName="Obligation Period" solution="Active" />
@@ -1023,12 +1261,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_obligationperiod" displayName="Obligation Period" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_organisationtype" displayName="Organisation Type" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_organisationtype" displayName="Organisation Type" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_organisationtype" displayName="Organisation Type" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_ownhandinvoicedetail" displayName="Own Hand Invoice Detail" solution="Active" />
@@ -1053,6 +1299,18 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_portalmessage" displayName="Portal Message" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_portalmessage" displayName="Portal Message" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_portalpasswordresetrequest" displayName="Portal Password Reset Request" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_producttheme" displayName="Product Theme" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_programme" displayName="Programme" solution="Active" />
@@ -1081,6 +1339,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_projectactivity" displayName="Project Activity" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_projectactivity" displayName="Project Activity" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_projectamendment" displayName="Project Amendment" solution="Active" />
@@ -1115,12 +1377,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_projectcost" displayName="Cost" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_projectcostcategory" displayName="Cost Category" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_projectcostcategory" displayName="Cost Category" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_projectcostcategory" displayName="Cost Category" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_projectmeasure" displayName="Measure" solution="Active" />
@@ -1131,12 +1401,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_projectoutcome" displayName="Project Outcome" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_projectoutput" displayName="Project Output" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_projectoutput" displayName="Project Output" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_projectoutput" displayName="Project Output" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_projectspecialistadvice" displayName="Project Specialist Advice" solution="Active" />
@@ -1155,8 +1433,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_projecttheme" displayName="Project Theme" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_qualification" displayName="Qualification" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_repaymentfrequency" displayName="Repayment Frequency" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_repaymentfrequency" displayName="Repayment Frequency" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_sector" displayName="Sector" solution="Active" />
@@ -1173,12 +1463,20 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_sector" displayName="Sector" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_sector" displayName="Sector" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_security" displayName="Security" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_security" displayName="Security" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_siccode" displayName="SIC Code" solution="Active" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
@@ -1195,8 +1493,16 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_siccode" displayName="SIC Code" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_signatory" displayName="Signatory" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_signatory" displayName="Signatory" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_stateaidassessment" displayName="Subsidy Control Assessment" solution="Active" />
@@ -1207,8 +1513,16 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_stateaidassessment" displayName="Subsidy Control Assessment" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_stateaidassessmentdetail" displayName="Subsidy Control Assessment Detail" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_stateaidassessmentdetail" displayName="Subsidy Control Assessment Detail" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_stateaidcategory" displayName="Subsidy Control" solution="Active" />
@@ -1227,8 +1541,16 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_stateaidcategory" displayName="Subsidy Control" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_stateaidstatement" displayName="Subsidy Control Statement" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_stateaidstatement" displayName="Subsidy Control Statement" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_stateaidsubcategory" displayName="Subsidy Measure" solution="Active" />
@@ -1241,6 +1563,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_stateaidsubcategory" displayName="Subsidy Measure" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_stateaidsubcategory" displayName="Subsidy Measure" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_strategicpriority" displayName="Strategic Priority Type" solution="Active" />
@@ -1279,6 +1605,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_supportitemtype" displayName="Support Item Type" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_systemparameters" displayName="System Parameters" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -1299,6 +1629,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_theme" displayName="Theme" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_tradinggeography" displayName="Trading Geography" solution="Active" />
         <Dependent type="29" displayName="AMCP - On change of state to Inactive deactivate child records" id="{be12e379-db7c-eb11-a812-002248405303}" />
       </MissingDependency>
@@ -1315,12 +1649,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_tradinggeography" displayName="Trading Geography" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_tradingstatus" displayName="Trading Status" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_tradingstatus" displayName="Trading Status" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_tradingstatus" displayName="Trading Status" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_transaction" displayName="Transaction" solution="Active" />
@@ -1339,6 +1681,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_transaction" displayName="Transaction" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_transactionline" displayName="Transaction Line" solution="Active" />
         <Dependent type="1" schemaName="leidos_transactionline" displayName="Transaction Line" />
       </MissingDependency>
@@ -1349,6 +1695,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_transactionsubtype" displayName="Transaction Subtype" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_transactionsubtype" displayName="Transaction Subtype" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_transactiontype" displayName="Transaction Type" solution="Active" />
@@ -1363,12 +1713,24 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_turnover" displayName="Turnover" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_typeofassistancerequestedfromhie" displayName="Type of assistance requested from HIE" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_typeofassistancerequestedfromhie" displayName="Type of assistance requested from HIE" solution="Active" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_typeofassistancerequestedfromhie" displayName="Type of assistance requested from HIE" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_typeofexporter" displayName="Type of Exporter" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_account_leidos_enquiry_Account" displayName="leidos_account_leidos_enquiry_Account" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
@@ -10723,6 +11085,10 @@
         <Dependent type="29" displayName="Transaction Type" id="{6daa9aa9-7435-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="20" displayName="Reference Data Management" solution="Active" id="{cded9c91-1e66-eb11-a812-002248417b3a}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="My Active Projects as SRO" displayName="My Active Projects as SRO" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{00eb3b06-115b-eb11-a813-00224840fa54}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -10891,6 +11257,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="My Open Specialist Input Request" displayName="My Open Specialist Input Request" parentSchemaName="task" parentDisplayName="Task" solution="Active" id="{169ce939-abba-ea11-a812-000d3a7f1bbb}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Approved  Projects" displayName="Approved  Projects" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{1732ce6f-11af-ea11-a812-000d3a7f1bbb}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -11031,6 +11401,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="My tasks due this month" displayName="My tasks due this month" parentSchemaName="task" parentDisplayName="Task" solution="Active" id="{2b649247-92ca-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Inactive Fund Details" displayName="Inactive Fund Details" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" solution="Active" id="{2bc7999a-6e54-4a41-82cf-bc0a7ee7a54f}" />
         <Dependent type="60" displayName="Web - Project Funding - Public" parentDisplayName="Cost Funding" id="{41119a9d-8bf7-ea11-a816-000d3a7f1bbb}" />
       </MissingDependency>
@@ -11169,6 +11543,10 @@
       <MissingDependency>
         <Required type="26" schemaName="My tasks due next month" displayName="My tasks due next month" parentSchemaName="task" parentDisplayName="Task" solution="Active" id="{42952591-92ca-ea11-a812-000d3a7fedbe}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="My tasks due next month" displayName="My tasks due next month" parentSchemaName="task" parentDisplayName="Task" solution="Active" id="{42952591-92ca-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Key Strategic Aims" displayName="Active Key Strategic Aims" parentSchemaName="leidos_keystrategicaction" parentDisplayName="Key Strategic Aim" solution="Active" id="{42d1d9ec-6026-4ec9-961f-0c26431bbdd8}" />
@@ -11735,6 +12113,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="My overdue tasks" displayName="My overdue tasks" parentSchemaName="task" parentDisplayName="Task" solution="Active" id="{acff3588-c160-eb11-a812-000d3ad5cbb0}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="SIC Code level 1 view" displayName="SIC Code level 1 view" parentSchemaName="leidos_siccode" parentDisplayName="SIC Code" solution="Active" id="{ae18672e-67c7-ea11-a812-000d3a7f1bbb}" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
@@ -11805,6 +12187,10 @@
       <MissingDependency>
         <Required type="26" schemaName="Pipeline Project Advanced Find View" displayName="Pipeline Project Advanced Find View" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" id="{b7b6cb94-2518-4502-8d35-83346e6a2c5f}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Open Specialist Input Request for My Projects" displayName="Open Specialist Input Request for My Projects" parentSchemaName="task" parentDisplayName="Task" solution="Active" id="{b7d7c8c1-04f4-ea11-a815-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="My Client Actions due next month" displayName="My Client Actions due next month" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" id="{b8e17b40-d37d-eb11-a812-00224840506e}" />
@@ -12183,6 +12569,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Open Specialist Input Request" displayName="Open Specialist Input Request" parentSchemaName="task" parentDisplayName="Task" solution="Active" id="{f22aa9f1-aaba-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Project Cost Advanced Find View" displayName="Project Cost Advanced Find View" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" id="{f26cc4bd-90d2-4333-b8cd-a703850b8041}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -12435,8 +12825,24 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="HIE Legal Undertaking" parentDisplayName="Legal Undertaking" solution="Active" id="{00c9a86d-f428-44e3-a0ef-41667b6eaf64}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Transaction" solution="Active" id="{02127ef6-6237-4438-b9be-def9670e1dc5}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Portal Message" solution="Active" id="{028e7ee3-d84b-47fb-aff7-5cad219b8fd6}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="HIE Client Review Response" parentDisplayName="Client Plan Review Response" solution="Active" id="{03bf671c-936b-4cb6-ac50-a78ac1404883}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Cost Category" solution="Active" id="{04620969-efb0-414c-9904-ba33415ff4e7}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Pipeline Programme" solution="Active" id="{059a0044-68f8-4001-952d-478131888e31}" />
@@ -12447,12 +12853,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="HIE Spend Profile Form" parentDisplayName="Spend \ Recovery  Profile" solution="Active" id="{06197ad7-eab2-402d-88dd-9e2df37e8aa6}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Account Reference Panel" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{098ae145-1567-41ec-8398-86dbaac70c9b}" />
         <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Account Reference Panel" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{098ae145-1567-41ec-8398-86dbaac70c9b}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Repayment Frequency" solution="Active" id="{0b62ff63-9d9e-4f95-a585-eeefa1cd03d1}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Application" solution="Active" id="{0f11e0f4-75f5-4abb-ad93-eca3a85b8533}" />
@@ -12475,8 +12889,52 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Subsidy Measure" solution="Active" id="{14ddf210-4dfc-4d9c-be55-9d0264618ab0}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="HIE Form" parentDisplayName="Subsidy Control Statement" solution="Active" id="{151ce543-7714-4c07-9a86-086a381bb4da}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Task" parentDisplayName="Task" solution="msdynce_Activities (9.0.1.2033)" id="{16654191-19ad-48ca-9e46-c4b4fbdad76f}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Loan Drawdown" solution="Active" id="{172a5ef1-008c-46b2-aca6-dc367a97cdf2}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Web - Project Form" parentDisplayName="Project" solution="Active" id="{18d7078d-4559-ea11-a811-000d3a7f1bbb}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="HIE Team" solution="Active" id="{19557325-a3b5-4466-aa64-1825a7836653}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Bank Details" solution="Active" id="{19f07f6b-800e-4dad-a06d-eeca3b56c0b2}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Pipeline Project" solution="Active" id="{1e56cf6d-2c2c-44ca-a12e-1d921ca1ff18}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Pipeline Project" solution="Active" id="{1e56cf6d-2c2c-44ca-a12e-1d921ca1ff18}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Geography" solution="Active" id="{24e13fbe-c4f1-49e9-9545-2650001c1d41}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="HIE - Legal Condition" parentDisplayName="Legal Condition" solution="Active" id="{26a539cd-7909-eb11-a813-000d3a7f1bbb}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="HIE Representation" solution="Active" id="{27c319d1-d647-4ee4-8629-5c4bfcce9ebb}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="account contact card" parentDisplayName="Contact" solution="msdynce_AppCommon (9.0.4.0066)" id="{29de27bc-a257-4f29-99cf-bab4a84e688f}" />
@@ -12495,6 +12953,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Claim View" parentDisplayName="Project" solution="Active" id="{309b7083-0424-eb11-a813-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Theme" solution="Active" id="{3458c1fd-5718-44ca-adad-ed51c0f00fad}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -12511,6 +12973,14 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Loan Receipt" solution="Active" id="{3b60685f-df74-48f3-b200-5f6e2dcffc49}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Web - Loan Form" parentDisplayName="Loan" solution="Active" id="{3d415993-14a1-4418-86f4-fc0b72cc3183}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="HIE Information" parentDisplayName="Subsidy Control Assessment Detail" solution="Active" id="{3f84accb-a85d-4bdb-b655-3b1c3064bdb7}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -12523,16 +12993,40 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Transaction Subtype" solution="Active" id="{51e4b90f-c890-46e7-8e81-5faab9c22771}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Progress Milestone Grid" parentDisplayName="Milestone" solution="Active" id="{52824e0e-3128-eb11-a813-000d3a7fedbe}" />
         <Dependent type="60" displayName="Information" parentDisplayName="Progress Milestones" id="{1e39320b-ed76-4c58-a3be-18bd6dbec9e3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Progress Milestone Grid" parentDisplayName="Milestone" solution="Active" id="{52824e0e-3128-eb11-a813-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Web - Legal Condition" parentDisplayName="Legal Condition" solution="Active" id="{5a372516-7a09-eb11-a813-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="FTE Measure Totals" parentDisplayName="Project" solution="Active" id="{5c648343-078b-eb11-b1ac-000d3ad51b39}" />
         <Dependent type="60" displayName="HIE Measures Form" parentDisplayName="Measure" id="{d875498a-80d3-4768-b48e-ea0374454bb5}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Strategic Priority Type" solution="Active" id="{60302a35-f588-48e8-bfd2-febf9ee0abd4}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="MyHIE Information" parentDisplayName="Key Strategic Aim" solution="Active" id="{61f8ffff-8dfb-4107-a3c9-2321d0cdb22d}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Trading Geography" solution="Active" id="{625d2ecc-2770-40fc-b408-f4ed205f63c9}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Trading Geography" solution="Active" id="{625d2ecc-2770-40fc-b408-f4ed205f63c9}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Security" solution="Active" id="{6536e60b-d963-4ba4-bf47-584a08376136}" />
@@ -12543,6 +13037,10 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Client Plan Summary Form" parentDisplayName="Client Plan Summary" solution="Active" id="{67fb3164-8573-437e-85d5-11f892ead6a1}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName=" Support Item Programme for Project" parentDisplayName="Support Item" solution="Active" id="{698d70ec-dfaf-ea11-a812-000d3a7f1bbb}" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
@@ -12551,12 +13049,24 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName=" Support Item Programme for Project" parentDisplayName="Support Item" solution="Active" id="{698d70ec-dfaf-ea11-a812-000d3a7f1bbb}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Account Hierarchy Tile Form" parentDisplayName="Account" solution="msdynce_AppCommon (9.0.4.0066)" id="{69cff312-cfb6-4289-9631-249ab85d2c62}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Web - Progress Milestone" parentDisplayName="Progress Milestones" solution="Active" id="{6c9e98a1-a052-eb11-a812-0022483fae82}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Client Actions Dashboard" solution="Active" id="{6f97a75b-d47d-eb11-a812-00224840506e}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" solution="Active" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Claim Detail" solution="Active" id="{75fee748-8308-4982-bf68-a70957445302}" />
@@ -12567,8 +13077,24 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Loan Adjustment" solution="Active" id="{77e3b626-cad3-4800-8e97-4f3f311b6ae5}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Quick Create Form" parentDisplayName="HIE Representation" solution="Active" id="{7b4cb796-2726-496e-b636-9169f65edda5}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Signatory" solution="Active" id="{7da2d72e-72a0-481f-8a44-819b8c35ca28}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Signatory" solution="Active" id="{7da2d72e-72a0-481f-8a44-819b8c35ca28}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="HIE Information" parentDisplayName="Milestone" solution="Active" id="{7db5920c-7d08-4e21-ac47-b01ceb667f84}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Quick Create Form" parentDisplayName="Enquiry" solution="Active" id="{7e270050-4538-ea11-a813-000d3a0ba110}" />
@@ -12587,16 +13113,44 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Invoice Schedule" parentDisplayName="Claim Detail" solution="Active" id="{832b0068-a66a-4071-987c-faaeb5a45c64}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Web - Progress Measure" parentDisplayName="Progress Measure" solution="Active" id="{892bdf60-a052-eb11-a812-0022483fae82}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Obligation Period" solution="Active" id="{8a554ab3-b0a1-44e9-9e04-411634914e7c}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Subsidy Measure" solution="Active" id="{905309af-a873-459e-897e-540f515556ec}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="New Form" parentDisplayName="Portal Message" solution="Active" id="{937e839a-4411-4632-96cd-b4f073df2df9}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Project Output" solution="Active" id="{9901f71b-1fef-4c33-b13c-dd90d9df29d7}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Theme" solution="Active" id="{9bd07936-7f38-41be-a6af-3bc8f43391a2}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Theme" solution="Active" id="{9bd07936-7f38-41be-a6af-3bc8f43391a2}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Spend Profile Quick Form" parentDisplayName="Project" solution="Active" id="{9db20159-e525-4634-8c44-5bffe95b86ec}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Spend Profile Quick Form" parentDisplayName="Project" solution="Active" id="{9db20159-e525-4634-8c44-5bffe95b86ec}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Subsidy Control Assessment" solution="Active" id="{9df3573a-f9af-45d5-9f89-4afda05b4943}" />
@@ -12607,8 +13161,24 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Strategic Priority" solution="Active" id="{a0e5f280-cec0-485d-a701-ce55e5d25045}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Portal Message Dashboard" solution="Active" id="{a1620c4b-447c-eb11-a812-002248405783}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Task quick create form." parentDisplayName="Task" solution="msdynce_Activities (9.0.1.2033)" id="{a1c8a6dc-8804-4019-9c78-7dbe86560ea1}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Response Embedded Form" parentDisplayName="Client Plan Question" solution="Active" id="{ab4f4772-49bf-482c-8ab1-df1858634b93}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Employment Details" solution="Active" id="{ad3ce81a-c8e1-4cce-b1b3-6a5440e30e91}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Client Plan" solution="Active" id="{ade802f5-089a-466a-850e-f29337ca9327}" />
@@ -12623,8 +13193,20 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Support Item Type" solution="Active" id="{af1c5eac-c069-4071-848f-e699537688be}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Security" solution="Active" id="{af60e588-0b6f-4a8a-ada1-958a5d193a8a}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Security" solution="Active" id="{af60e588-0b6f-4a8a-ada1-958a5d193a8a}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="MyHIE Information" parentDisplayName="NFI Subsidy Control" solution="Active" id="{afda0023-5f32-41e3-9836-75950d9cd317}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Claim Summary View" parentDisplayName="Account" solution="Active" id="{b4379cb4-4124-eb11-a813-000d3a7fedbe}" />
@@ -12647,8 +13229,24 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Loan" solution="Active" id="{b781104e-f65d-46ee-bc5d-07b394c917b7}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="HIE Form" parentDisplayName="Funding Source" solution="Active" id="{b7f442c9-1f30-452b-bad4-3a27bb24b93c}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Information" parentDisplayName="Document Requirement" solution="Active" id="{bbf141e6-ff9c-4e2c-8a18-b8703fd8182c}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Web Form" parentDisplayName="Subsidy Control Statement" solution="Active" id="{bf6bb771-c83d-4d21-a9a5-27a5f214d823}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Project Activity" solution="Active" id="{c115f490-377b-4d46-b21e-ffb644675b48}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Account Card for Enquiry" parentDisplayName="Account" solution="Active" id="{c19ef749-a13e-ea11-a812-000d3a0bad17}" />
@@ -12661,6 +13259,10 @@
       <MissingDependency>
         <Required type="60" displayName=" AMR View" parentDisplayName="Account" solution="Active" id="{c1c3b01f-6a38-eb11-a813-0022483fae82}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Client Need Solution" solution="Active" id="{c20891bf-9197-43c8-9283-1066b9bb79a7}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Account Manager Project Dashboard" solution="Active" id="{c2ffc825-a6ba-ea11-a812-000d3a7f1bbb}" />
@@ -12679,12 +13281,44 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Support Item" solution="Active" id="{caa8c902-c98d-406f-8c32-b51c6a342298}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Web - Portal Message" parentDisplayName="Portal Message" solution="Active" id="{caab4a21-369f-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName=" Web - Milestones" parentDisplayName="Milestone" solution="Active" id="{cbc5aa69-06bd-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Transaction Line" solution="Active" id="{d113de14-4a18-4153-b55c-e96c5ed4311f}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Legal Entities" solution="Active" id="{d34cc2b5-a81e-43bc-9572-40ffc220108e}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="MyHIE Task Dashboard" solution="Active" id="{d436e909-91ca-ea11-a812-000d3a7f1bbb}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Claim Quick Form" parentDisplayName="Project" solution="Active" id="{d6baf9f0-3324-eb11-a813-0022483fae82}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Fund Detail" solution="Active" id="{d79d19c2-ad40-4460-9e58-42f00a7c566b}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="HIE Spend Profile Quick View form" parentDisplayName="Spend \ Recovery  Profile" solution="Active" id="{d83a7c52-fe57-4236-9a0c-0b0d5702b463}" />
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Spend / Recovery Detail" id="{26d7f189-0dd4-423c-80f3-32133ea63e18}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="HIE Spend Profile Quick View form" parentDisplayName="Spend \ Recovery  Profile" solution="Active" id="{d83a7c52-fe57-4236-9a0c-0b0d5702b463}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Web - Enquiry Form" parentDisplayName="Enquiry" solution="Active" id="{d8546885-3039-ea11-a813-000d3a0ba151}" />
@@ -12703,6 +13337,10 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Progress Measure" id="{01e89e6f-7f13-4712-81ed-d8d266f2c995}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Progress Grid" parentDisplayName="Measure" solution="Active" id="{dcf701f0-2928-eb11-a813-0022483fae82}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Lists of Enquiries Dashboard" solution="Active" id="{de0daf95-ec6a-eb11-a812-0022483f8bcb}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
@@ -12713,6 +13351,10 @@
       <MissingDependency>
         <Required type="60" displayName="Web - Account Manager" parentDisplayName="User" solution="Active" id="{e365bd18-0c3d-ea11-a812-000d3a0bad17}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Web - Information" parentDisplayName="Employment Details" solution="Active" id="{e3c09fb1-6e85-ea11-a811-000d3a7fedbe}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Project" parentDisplayName="Pipeline Project" solution="Active" id="{e82c664f-ff71-eb11-a812-00224840ee66}" />
@@ -12727,12 +13369,28 @@
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="60" displayName="Web - Document Requirement" parentDisplayName="Document Requirement" solution="Active" id="{e8c26554-f6ae-ea11-a812-000d3a7f1bbb}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="60" displayName="Web - Account Manager" parentDisplayName="User" solution="Active" id="{ea38a0f6-dd40-ea11-a812-000d3a0bad17}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="Legal Undertaking" solution="Active" id="{eb60738a-4886-eb11-a812-00224841917b}" />
         <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Web - Legal Undertaking" parentDisplayName="Legal Undertaking" solution="Active" id="{f4035890-5788-4ffc-b68a-8642d9678c3d}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Project Activity" solution="Active" id="{f5a2c2d3-517f-4a06-af18-f433e53539fd}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="60" displayName="Information" parentDisplayName="Project Theme" solution="Active" id="{f875126f-b210-43f8-b48e-1ffe748f6f3e}" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="60" displayName="HIE Document Requirement" parentDisplayName="Document Requirement" solution="Active" id="{fb5da633-c4b1-4821-927a-beaabd49799d}" />
@@ -12903,6 +13561,10 @@
         <Dependent type="80" schemaName="leidos_OwnHandInvoiceProcessing" displayName="Own Hand Invoice Processing" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Spend / Recovery Detail" id="{26d7f189-0dd4-423c-80f3-32133ea63e18}" />
       </MissingDependency>
@@ -13189,6 +13851,10 @@
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="Web - Project Funding - Private" parentDisplayName="Cost Funding" id="{fe832186-8bf7-ea11-a815-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="62" schemaName="leidos_ReferenceDataManagement" solution="Active" />
+        <Dependent type="80" schemaName="leidos_ReferenceDataManagement" displayName="Reference Data Management" />
       </MissingDependency>
       <MissingDependency>
         <Required type="66" schemaName="data8_Data8.PredictiveAddressControl" displayName="data8_Data8.PredictiveAddressControl" solution="Data8PredictiveAddress (1.2.6)" />
