@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{f2e9d7d6-427c-eb11-a812-00224840506e}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="subject" select="1" icon="1" preview="1">
+        <row name="result" id="activityid">
+          <cell name="leidos_contact" width="100" />
+          <cell name="subject" width="300" />
+          <cell name="regardingobjectid" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_portalmessage">
+          <attribute name="subject" />
+          <attribute name="createdon" />
+          <attribute name="leidos_contact" />
+          <attribute name="regardingobjectid" />
+          <order attribute="createdon" descending="true" />
+          <attribute name="activityid" />
+          <filter type="and">
+            <condition attribute="leidos_origin" operator="eq" value="445260000" />
+          </filter>
+          <link-entity name="account" alias="aa" link-type="inner" from="accountid" to="regardingobjectid">
+            <filter type="and">
+              <condition attribute="ownerid" operator="eq-userid" />
+            </filter>
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.14.0.1651</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Sent from Client Portal from My Accounts" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Dashboard View" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

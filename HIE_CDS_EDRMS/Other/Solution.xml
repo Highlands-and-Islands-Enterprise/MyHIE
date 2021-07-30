@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS EDRMS" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.4059</Version>
+    <Version>1.18.0.4066</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -82,6 +82,7 @@
       <RootComponent type="1" schemaName="leidos_edrmsdocmigrationconfig" behavior="0" />
       <RootComponent type="1" schemaName="leidos_edrmsdocumentlocation" behavior="0" />
       <RootComponent type="1" schemaName="leidos_edrmsmigrationtype" behavior="0" />
+      <RootComponent type="1" schemaName="leidos_portalmessage" behavior="0" />
       <RootComponent type="9" schemaName="leidos_documentlocationsetuptype" behavior="0" />
       <RootComponent type="9" schemaName="leidos_edrmsobjecttype" behavior="0" />
       <RootComponent type="60" id="{7e152f5e-e31a-4c22-b5dd-2dd726ff1ff8}" behavior="0" />
@@ -229,10 +230,6 @@
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="1" schemaName="leidos_portalmessage" displayName="Portal Message" solution="Active" />
-        <Dependent type="1" schemaName="account" displayName="Account" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="1" schemaName="leidos_project" displayName="Project" solution="Active" />
         <Dependent type="1" schemaName="account" displayName="Account" />
       </MissingDependency>
@@ -378,10 +375,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_PipelineProject_Client_Account" displayName="leidos_PipelineProject_Client_Account" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
-        <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="10" schemaName="leidos_PortalMessage_Company_Account" displayName="leidos_PortalMessage_Company_Account" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
@@ -959,6 +952,10 @@
       <MissingDependency>
         <Required type="9" schemaName="leidos_ladder" displayName="Social Enterprise Ladder" solution="Active" />
         <Dependent type="2" schemaName="leidos_socialenterpriseladder" displayName="Social Enterprise Ladder" parentSchemaName="account" parentDisplayName="Account" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="9" schemaName="leidos_portalmessageorigin" displayName="Portal Message Origin" solution="Active" />
+        <Dependent type="2" schemaName="leidos_origin" displayName="Origin" parentSchemaName="leidos_portalmessage" parentDisplayName="Portal Message" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
