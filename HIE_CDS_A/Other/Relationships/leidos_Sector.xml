@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <EntityRelationship Name="leidos_Account_AuthorisedSignatory_Contact">
+  <EntityRelationship Name="leidos_Account_SecondarySector_leidos_Sector">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <IntroducedVersion>1.7.0.5</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
     <ReferencingEntityName>Account</ReferencingEntityName>
-    <ReferencedEntityName>Contact</ReferencedEntityName>
+    <ReferencedEntityName>leidos_Sector</ReferencedEntityName>
     <CascadeAssign>NoCascade</CascadeAssign>
     <CascadeDelete>RemoveLink</CascadeDelete>
     <CascadeReparent>NoCascade</CascadeReparent>
@@ -14,7 +14,7 @@
     <CascadeUnshare>NoCascade</CascadeUnshare>
     <CascadeRollupView>NoCascade</CascadeRollupView>
     <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
-    <ReferencingAttributeName>leidos_AuthorisedSignatory</ReferencingAttributeName>
+    <ReferencingAttributeName>leidos_SecondarySector</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
         <Description description="" languagecode="1033" />
@@ -25,22 +25,22 @@
         <NavPaneDisplayOption>UseCollectionName</NavPaneDisplayOption>
         <NavPaneArea>Details</NavPaneArea>
         <NavPaneOrder>10000</NavPaneOrder>
-        <NavigationPropertyName>leidos_AuthorisedSignatory</NavigationPropertyName>
+        <NavigationPropertyName>leidos_SecondarySector</NavigationPropertyName>
         <RelationshipRoleType>1</RelationshipRoleType>
       </EntityRelationshipRole>
       <EntityRelationshipRole>
-        <NavigationPropertyName>leidos_Account_AuthorisedSignatory_Contact</NavigationPropertyName>
+        <NavigationPropertyName>leidos_Account_SecondarySector_leidos_Sector</NavigationPropertyName>
         <RelationshipRoleType>0</RelationshipRoleType>
       </EntityRelationshipRole>
     </EntityRelationshipRoles>
   </EntityRelationship>
-  <EntityRelationship Name="leidos_Claim_ClaimAuthorisedSignatory_Con">
+  <EntityRelationship Name="leidos_Account_SubSector_leidos_Sector">
     <EntityRelationshipType>OneToMany</EntityRelationshipType>
     <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>1.9.0.1206</IntroducedVersion>
+    <IntroducedVersion>1.7.0.5</IntroducedVersion>
     <IsHierarchical>0</IsHierarchical>
-    <ReferencingEntityName>leidos_Claim</ReferencingEntityName>
-    <ReferencedEntityName>Contact</ReferencedEntityName>
+    <ReferencingEntityName>Account</ReferencingEntityName>
+    <ReferencedEntityName>leidos_Sector</ReferencedEntityName>
     <CascadeAssign>NoCascade</CascadeAssign>
     <CascadeDelete>RemoveLink</CascadeDelete>
     <CascadeReparent>NoCascade</CascadeReparent>
@@ -48,41 +48,7 @@
     <CascadeUnshare>NoCascade</CascadeUnshare>
     <CascadeRollupView>NoCascade</CascadeRollupView>
     <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
-    <ReferencingAttributeName>leidos_ClaimAuthorisedSignatory</ReferencingAttributeName>
-    <RelationshipDescription>
-      <Descriptions>
-        <Description description="Populated from Portal on Submit" languagecode="1033" />
-      </Descriptions>
-    </RelationshipDescription>
-    <EntityRelationshipRoles>
-      <EntityRelationshipRole>
-        <NavPaneDisplayOption>UseCollectionName</NavPaneDisplayOption>
-        <NavPaneArea>Details</NavPaneArea>
-        <NavPaneOrder>10000</NavPaneOrder>
-        <NavigationPropertyName>leidos_ClaimAuthorisedSignatory</NavigationPropertyName>
-        <RelationshipRoleType>1</RelationshipRoleType>
-      </EntityRelationshipRole>
-      <EntityRelationshipRole>
-        <NavigationPropertyName>leidos_Claim_ClaimAuthorisedSignatory_Con</NavigationPropertyName>
-        <RelationshipRoleType>0</RelationshipRoleType>
-      </EntityRelationshipRole>
-    </EntityRelationshipRoles>
-  </EntityRelationship>
-  <EntityRelationship Name="leidos_Claim_SubmittedonPortalBy_Contact">
-    <EntityRelationshipType>OneToMany</EntityRelationshipType>
-    <IsCustomizable>1</IsCustomizable>
-    <IntroducedVersion>1.14.0.1586</IntroducedVersion>
-    <IsHierarchical>0</IsHierarchical>
-    <ReferencingEntityName>leidos_Claim</ReferencingEntityName>
-    <ReferencedEntityName>Contact</ReferencedEntityName>
-    <CascadeAssign>NoCascade</CascadeAssign>
-    <CascadeDelete>RemoveLink</CascadeDelete>
-    <CascadeReparent>NoCascade</CascadeReparent>
-    <CascadeShare>NoCascade</CascadeShare>
-    <CascadeUnshare>NoCascade</CascadeUnshare>
-    <CascadeRollupView>NoCascade</CascadeRollupView>
-    <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
-    <ReferencingAttributeName>leidos_SubmittedonPortalBy</ReferencingAttributeName>
+    <ReferencingAttributeName>leidos_SubSector</ReferencingAttributeName>
     <RelationshipDescription>
       <Descriptions>
         <Description description="" languagecode="1033" />
@@ -93,11 +59,45 @@
         <NavPaneDisplayOption>UseCollectionName</NavPaneDisplayOption>
         <NavPaneArea>Details</NavPaneArea>
         <NavPaneOrder>10000</NavPaneOrder>
-        <NavigationPropertyName>leidos_SubmittedonPortalBy</NavigationPropertyName>
+        <NavigationPropertyName>leidos_SubSector</NavigationPropertyName>
         <RelationshipRoleType>1</RelationshipRoleType>
       </EntityRelationshipRole>
       <EntityRelationshipRole>
-        <NavigationPropertyName>leidos_Claim_SubmittedonPortalBy_Contact</NavigationPropertyName>
+        <NavigationPropertyName>leidos_Account_SubSector_leidos_Sector</NavigationPropertyName>
+        <RelationshipRoleType>0</RelationshipRoleType>
+      </EntityRelationshipRole>
+    </EntityRelationshipRoles>
+  </EntityRelationship>
+  <EntityRelationship Name="leidos_enquiry_Sector_leidos_Sector_account">
+    <EntityRelationshipType>OneToMany</EntityRelationshipType>
+    <IsCustomizable>1</IsCustomizable>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <IsHierarchical>0</IsHierarchical>
+    <ReferencingEntityName>Account</ReferencingEntityName>
+    <ReferencedEntityName>leidos_Sector</ReferencedEntityName>
+    <CascadeAssign>NoCascade</CascadeAssign>
+    <CascadeDelete>RemoveLink</CascadeDelete>
+    <CascadeReparent>NoCascade</CascadeReparent>
+    <CascadeShare>NoCascade</CascadeShare>
+    <CascadeUnshare>NoCascade</CascadeUnshare>
+    <CascadeRollupView>NoCascade</CascadeRollupView>
+    <IsValidForAdvancedFind>1</IsValidForAdvancedFind>
+    <ReferencingAttributeName>leidos_Sector</ReferencingAttributeName>
+    <RelationshipDescription>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </RelationshipDescription>
+    <EntityRelationshipRoles>
+      <EntityRelationshipRole>
+        <NavPaneDisplayOption>UseCollectionName</NavPaneDisplayOption>
+        <NavPaneArea>Details</NavPaneArea>
+        <NavPaneOrder>10000</NavPaneOrder>
+        <NavigationPropertyName>leidos_Sector</NavigationPropertyName>
+        <RelationshipRoleType>1</RelationshipRoleType>
+      </EntityRelationshipRole>
+      <EntityRelationshipRole>
+        <NavigationPropertyName>leidos_enquiry_Sector_leidos_Sector_account</NavigationPropertyName>
         <RelationshipRoleType>0</RelationshipRoleType>
       </EntityRelationshipRole>
     </EntityRelationshipRoles>
