@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{7184a646-ea96-eb11-b1ac-002248413ac9}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_programmeid">
+          <cell name="createdon" width="125" />
+          <cell name="ownerid" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="leidos_name" width="300" />
+          <cell name="leidos_programmereference" width="150" />
+          <cell name="leidos_hieteam" width="100" />
+          <cell name="statuscode" width="125" />
+          <cell name="leidos_totalcostscalculated" width="150" />
+          <cell name="leidos_hiegrossfunding" width="150" />
+          <cell name="leidos_totalhiefunding" width="150" />
+          <cell name="leidos_dateofdecision" width="125" />
+          <cell name="leidos_enddate" width="125" />
+          <cell name="leidos_totalapprovalsassociatedprojects" width="150" />
+          <cell name="leidos_totalprogrammespend" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_programme">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_programmeid" />
+          <attribute name="leidos_programmereference" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="eq" value="445260010" />
+          </filter>
+          <attribute name="createdon" />
+          <attribute name="leidos_enddate" />
+          <attribute name="statuscode" />
+          <attribute name="leidos_hieteam" />
+          <attribute name="ownerid" />
+          <attribute name="statecode" />
+          <attribute name="leidos_totalcostscalculated" />
+          <attribute name="leidos_hiegrossfunding" />
+          <attribute name="leidos_totalhiefunding" />
+          <attribute name="leidos_dateofdecision" />
+          <attribute name="leidos_totalapprovalsassociatedprojects" />
+          <attribute name="leidos_totalprogrammespend" />
+          <order attribute="leidos_name" descending="false" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.16.0.1823</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Closed Programmes" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Used in Programme Amendment form for Programme lookup when Amendment type is 'revert to Clear to Pay'" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>
