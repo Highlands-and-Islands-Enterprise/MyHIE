@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{0c41976a-7b02-4325-80fc-3aef05146153}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_ownhandinvoicedetailid">
+          <cell name="leidos_name" width="300" />
+          <cell name="a_6326a3bd5847436fb101564aabc40a7c.leidos_suppliertext" width="100" />
+          <cell name="a_6326a3bd5847436fb101564aabc40a7c.leidos_suppliercode" width="100" />
+          <cell name="a_6326a3bd5847436fb101564aabc40a7c.leidos_credtdebit" width="100" />
+          <cell name="leidos_description" width="100" />
+          <cell name="a_6326a3bd5847436fb101564aabc40a7c.leidos_invoicedate" width="100" />
+          <cell name="a_6326a3bd5847436fb101564aabc40a7c.leidos_invoicereceiveddate" width="100" />
+          <cell name="a_6326a3bd5847436fb101564aabc40a7c.leidos_invoicenumber" width="100" />
+          <cell name="leidos_ownhanddetailreference" width="100" />
+          <cell name="leidos_parentsummary" width="100" />
+          <cell name="leidos_project" width="100" />
+          <cell name="leidos_fundingline" width="100" />
+          <cell name="leidos_costtype" width="100" />
+          <cell name="leidos_transactionsubtype" width="100" />
+          <cell name="leidos_fundingscheme" width="100" />
+          <cell name="leidos_fundingsource" width="100" />
+          <cell name="leidos_vatcode" width="100" />
+          <cell name="a_a1d810a3471943fda248d86858f5d19b.leidos_codaref" width="100" />
+          <cell name="leidos_businessunit" width="100" />
+          <cell name="leidos_expensetype" width="100" />
+          <cell name="leidos_projectnumber" width="100" />
+          <cell name="leidos_claiminvoiceno" width="100" />
+          <cell name="leidos_strategicpriority" width="100" />
+          <cell name="leidos_vatcategory" width="100" />
+          <cell name="leidos_costfunding" width="100" />
+          <cell name="leidos_netinvoice" width="100" />
+          <cell name="leidos_vatvalue" width="100" />
+          <cell name="leidos_totalinvoicevalue" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_ownhandinvoicedetail">
+          <attribute name="leidos_ownhandinvoicedetailid" />
+          <attribute name="leidos_name" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_parentsummary" />
+          <attribute name="leidos_project" />
+          <attribute name="leidos_fundingline" />
+          <attribute name="leidos_costtype" />
+          <attribute name="leidos_vatcode" />
+          <attribute name="leidos_netinvoice" />
+          <attribute name="leidos_vatvalue" />
+          <attribute name="leidos_totalinvoicevalue" />
+          <attribute name="leidos_transactionsubtype" />
+          <attribute name="leidos_fundingscheme" />
+          <attribute name="leidos_fundingsource" />
+          <attribute name="leidos_businessunit" />
+          <attribute name="leidos_expensetype" />
+          <attribute name="leidos_projectnumber" />
+          <attribute name="leidos_claiminvoiceno" />
+          <attribute name="leidos_strategicpriority" />
+          <attribute name="leidos_vatcategory" />
+          <attribute name="leidos_costfunding" />
+          <attribute name="leidos_ownhanddetailreference" />
+          <link-entity alias="a_6326a3bd5847436fb101564aabc40a7c" name="leidos_ownhandinvoicesummary" to="leidos_parentsummary" from="leidos_ownhandinvoicesummaryid" link-type="outer" visible="false">
+            <attribute name="leidos_credtdebit" />
+            <attribute name="leidos_invoicedate" />
+            <attribute name="leidos_invoicenumber" />
+            <attribute name="leidos_suppliercode" />
+            <attribute name="leidos_suppliertext" />
+            <attribute name="leidos_invoicereceiveddate" />
+          </link-entity>
+          <attribute name="leidos_description" />
+          <link-entity alias="a_a1d810a3471943fda248d86858f5d19b" name="leidos_vatcode" to="leidos_vatcode" from="leidos_vatcodeid" link-type="outer" visible="false">
+            <attribute name="leidos_codaref" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.18.0.3104</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Own Hand Invoice Details" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

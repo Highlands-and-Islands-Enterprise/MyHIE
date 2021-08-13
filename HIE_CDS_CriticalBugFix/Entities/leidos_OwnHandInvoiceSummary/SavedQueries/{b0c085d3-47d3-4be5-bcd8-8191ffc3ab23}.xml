@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{b0c085d3-47d3-4be5-bcd8-8191ffc3ab23}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_description" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_ownhandinvoicesummaryid">
+          <cell name="leidos_description" width="300" />
+          <cell name="leidos_suppliertext" width="100" />
+          <cell name="leidos_supplier" width="100" />
+          <cell name="leidos_invoicedate" width="100" />
+          <cell name="leidos_invoicereceiveddate" width="100" />
+          <cell name="leidos_invoicenumber" width="100" />
+          <cell name="leidos_invoicetype" width="100" />
+          <cell name="leidos_netinvoice" width="100" />
+          <cell name="leidos_vatvalue" width="100" />
+          <cell name="leidos_totalinvoicevalue" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_ownhandinvoicesummary">
+          <attribute name="leidos_ownhandinvoicesummaryid" />
+          <attribute name="leidos_description" />
+          <attribute name="createdon" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <attribute name="leidos_invoicedate" />
+          <attribute name="leidos_invoicenumber" />
+          <attribute name="leidos_invoicetype" />
+          <attribute name="leidos_supplier" />
+          <attribute name="leidos_netinvoice" />
+          <attribute name="leidos_vatvalue" />
+          <attribute name="leidos_totalinvoicevalue" />
+          <order attribute="leidos_description" descending="false" />
+          <attribute name="leidos_suppliertext" />
+          <attribute name="leidos_invoicereceiveddate" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.18.0.3104</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Own Hand Invoice Summaries" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
