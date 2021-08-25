@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_C" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.4225</Version>
+    <Version>1.18.0.4232</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -98,17 +98,18 @@
       <RootComponent type="31" id="{3cf60447-5137-ea11-a813-00224801c2d0}" schemaName="1033{17a857e5-06d6-4143-b158-154fddcf444c}" behavior="0" />
       <RootComponent type="31" id="{482fcca9-8564-eb11-a812-00224841783c}" behavior="0" />
       <RootComponent type="31" id="{4cbf0ecd-17ac-eb11-8236-000d3ad5c727}" behavior="0" />
-      <RootComponent type="31" id="{55f87bb2-5aaa-ea11-a812-000d3a7fedbe}" behavior="0" />
-      <RootComponent type="31" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" behavior="0" />
       <RootComponent type="31" id="{9d24b02c-c09d-eb11-b1ac-000d3ad5fe7a}" behavior="0" />
-      <RootComponent type="31" id="{cda48f4e-68a7-eb11-9442-0022480156c6}" behavior="0" />
       <RootComponent type="31" id="{ede7f176-6b61-eb11-a812-000d3ad5cd62}" behavior="0" />
+      <RootComponent type="31" id="{42f60447-5137-ea11-a813-00224801c2d0}" schemaName="1033{9ec7650c-5870-4bdc-abc4-511c465110d5}" behavior="0" />
+      <RootComponent type="31" id="{55f87bb2-5aaa-ea11-a812-000d3a7fedbe}" behavior="0" />
+      <RootComponent type="31" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" behavior="0" />
+      <RootComponent type="31" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" behavior="0" />
       <RootComponent type="31" id="{27f60447-5137-ea11-a813-00224801c2d0}" schemaName="1033{a788a3de-f207-4573-a983-7af0867a7857}" behavior="0" />
       <RootComponent type="31" id="{37f60447-5137-ea11-a813-00224801c2d0}" schemaName="1033{eb641068-6ed3-47e8-80b3-e7311cc3f6e5}" behavior="0" />
       <RootComponent type="31" id="{519a807a-4bb2-eb11-8236-002248418ab3}" behavior="0" />
       <RootComponent type="31" id="{c864c5ec-9693-eb11-b1ac-000d3a7ea4b5}" behavior="0" />
+      <RootComponent type="31" id="{cda48f4e-68a7-eb11-9442-0022480156c6}" behavior="0" />
       <RootComponent type="31" id="{db1c941d-10f9-eb11-94ef-000d3ad67b58}" behavior="0" />
-      <RootComponent type="31" id="{42f60447-5137-ea11-a813-00224801c2d0}" schemaName="1033{9ec7650c-5870-4bdc-abc4-511c465110d5}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -170,6 +171,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_businessorsocialenterprise" displayName="Business or Social Enterprise" solution="Active" />
         <Dependent type="31" displayName="(DEPRECATED) - ISA" id="{217fcc1f-14e6-eb11-bacb-00224840be43}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_documentrequirement" displayName="Document Requirement" solution="Active" />
@@ -302,6 +307,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_project" displayName="Project" solution="Active" />
         <Dependent type="31" displayName="Client History" id="{55f87bb2-5aaa-ea11-a812-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_project" displayName="Project" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_project" displayName="Project" solution="Active" />
@@ -532,6 +541,14 @@
         <Dependent type="31" displayName="Appraisal - Child Appraisal" id="{db1c941d-10f9-eb11-94ef-000d3ad67b58}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_vatnumber" displayName="VAT Number" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatregistered" displayName="Vat Registered " parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="adx_copy" displayName="Copy" parentSchemaName="adx_webpage" parentDisplayName="Web Page" solution="MicrosoftPortalDependencies (9.2.2103.0)">
           <package>CDSStarterPortal (9.2.2006.10)</package>
         </Required>
@@ -716,6 +733,38 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" solution="Active" />
         <Dependent type="31" displayName="(DEPRECATED) - ISA" id="{217fcc1f-14e6-eb11-bacb-00224840be43}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_claimid" displayName="Claim" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_claimreference" displayName="Claim Reference" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_hastherebeenanychangetoyourvatstatus" displayName="Has there been any change to your VAT status" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentaccount" displayName="Parent Account" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatnumber" displayName="VAT Number" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatregistered" displayName="VAT registered" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_account" displayName="Account" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
@@ -2023,6 +2072,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
       </MissingDependency>
       <MissingDependency>
@@ -2092,6 +2145,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="31" displayName="Grant Offer - Innovate" id="{519a807a-4bb2-eb11-8236-002248418ab3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="Claim Detail Report" id="{7f59ed41-7d05-ec11-b6e6-00224841d7af}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
