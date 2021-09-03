@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_A" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.4287</Version>
+    <Version>1.18.0.4294</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -155,6 +155,7 @@
       <RootComponent type="29" id="{47012628-307e-4219-9926-7c5ce7102eb9}" behavior="0" />
       <RootComponent type="29" id="{4c0bfc4e-2175-eb11-a812-002248414cc3}" behavior="0" />
       <RootComponent type="29" id="{4f599052-6ccf-eb11-bacc-000d3ad59ccd}" behavior="0" />
+      <RootComponent type="29" id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" behavior="0" />
       <RootComponent type="29" id="{51dc1cf8-792d-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{61a258f1-8b29-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{70c503c3-28aa-ea11-a812-000d3a7f1bbb}" behavior="0" />
@@ -6160,6 +6161,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_description" displayName="Description " parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
         <Dependent type="60" displayName="HIE Summary" parentDisplayName="Own Hand Invoice Summary" id="{966cd1f4-3c24-4085-839f-f36aa932883c}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_generatereport" displayName="Generate Report" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_generatereport" displayName="Generate Report" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
@@ -13211,6 +13216,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
         <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
@@ -13267,6 +13276,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
         <Dependent type="29" displayName="Claim - Flow - Notify on Bank Details Entered" id="{7c7c7dde-fc75-eb11-a812-002248414cc3}" />
       </MissingDependency>
       <MissingDependency>
@@ -13276,6 +13289,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
         <Dependent type="29" displayName="Project Amendment - Flow - Submit Project Approval to Delegated Authority" id="{8ccada80-eec5-ea11-a812-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOwnHand" solution="Active" id.connectionreferencelogicalname="leidos_ConnOwnHand" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnPipelineProgramme" solution="Active" id.connectionreferencelogicalname="leidos_ConnPipelineProgramme" />
@@ -13364,6 +13381,14 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_62e90" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_62e90" />
         <Dependent type="29" displayName="Claim - Flow -  Submit for Approval " id="{51dc1cf8-792d-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedexcelonlinebusiness_fbf79" solution="Active" id.connectionreferencelogicalname="leidos_sharedexcelonlinebusiness_fbf79" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedsharepointonline_5be6a" solution="Active" id.connectionreferencelogicalname="leidos_sharedsharepointonline_5be6a" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="leidos_FinanceTeam_EmailAddress" solution="Active" id.schemaname="leidos_FinanceTeam_EmailAddress" />
