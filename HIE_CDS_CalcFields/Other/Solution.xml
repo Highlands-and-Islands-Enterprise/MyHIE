@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CalcFields" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.4330</Version>
+    <Version>1.18.0.4335</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -79,6 +79,7 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="1" schemaName="leidos_clientladder" behavior="2" />
+      <RootComponent type="1" schemaName="leidos_programme" behavior="2" />
       <RootComponent type="1" schemaName="leidos_project" behavior="2" />
       <RootComponent type="1" schemaName="leidos_projectcost" behavior="2" />
       <RootComponent type="1" schemaName="leidos_projectfunding" behavior="2" />
@@ -98,6 +99,10 @@
         <Dependent type="2" schemaName="leidos_ladderscorerollup" displayName="Ladder Score Rollup" parentSchemaName="leidos_clientladder" parentDisplayName="Client Ladder" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_programme" displayName="Programme" solution="Active" />
+        <Dependent type="1" schemaName="leidos_programme" displayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_project" displayName="Project" solution="Active" />
         <Dependent type="1" schemaName="leidos_project" displayName="Project" />
       </MissingDependency>
@@ -114,8 +119,44 @@
         <Dependent type="1" schemaName="leidos_projectmeasure" displayName="Measure" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_supportitem" displayName="Support Item" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalapprovalsassociatedprojects" displayName="Total Approvals (Associated Projects) " parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_supportitem" displayName="Support Item" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalprogrammespend" displayName="Total Spend (Associated Projects)" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="leidos_ClientLadderResponse_ClientLadder_" displayName="leidos_ClientLadderResponse_ClientLadder_" parentSchemaName="leidos_clientladder" parentDisplayName="Client Ladder" solution="Active" />
         <Dependent type="2" schemaName="leidos_ladderscorerollup" displayName="Ladder Score Rollup" parentSchemaName="leidos_clientladder" parentDisplayName="Client Ladder" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ProjectCost_parentprogramme_leidos" displayName="leidos_ProjectCost_parentprogramme_leidos" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcapitalcostscalculated" displayName="Total Capital Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ProjectCost_parentprogramme_leidos" displayName="leidos_ProjectCost_parentprogramme_leidos" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcostscalculated" displayName="Total Programme Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ProjectCost_parentprogramme_leidos" displayName="leidos_ProjectCost_parentprogramme_leidos" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalfinancialtransactioncosts" displayName="Total Financial Transaction Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ProjectCost_parentprogramme_leidos" displayName="leidos_ProjectCost_parentprogramme_leidos" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalrevenuecostscalculated" displayName="Total Revenue Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ProjectFunding_leidos_Programme_le" displayName="leidos_ProjectFunding_leidos_Programme_le" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcostfunding" displayName="Total Cost Funding" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_SupportItem_Programme_leidos_Progr" displayName="leidos_SupportItem_Programme_leidos_Progr" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalapprovalsassociatedprojects" displayName="Total Approvals (Associated Projects) " parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_SupportItem_Programme_leidos_Progr" displayName="leidos_SupportItem_Programme_leidos_Progr" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalprogrammespend" displayName="Total Spend (Associated Projects)" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_AnticipatedSpendProfile_ParentProj" displayName="leidos_AnticipatedSpendProfile_ParentProj" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -178,6 +219,34 @@
         <Dependent type="2" schemaName="leidos_ladderscorerollup" displayName="Ladder Score Rollup" parentSchemaName="leidos_clientladder" parentDisplayName="Client Ladder" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_programmeid" displayName="Programme" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_hienetamount" displayName="Total Net HIE Funding" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_programmeid" displayName="Programme" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_hienetamount_base" displayName="HIE Net Amount (Base)" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_recoveries" displayName="Recoveries" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_hienetamount" displayName="Total Net HIE Funding" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_recoveries" displayName="Recoveries" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
+        <Dependent type="2" schemaName="leidos_hienetamount_base" displayName="HIE Net Amount (Base)" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Budget Type" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcapitalcostscalculated" displayName="Total Capital Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Budget Type" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalfinancialtransactioncosts" displayName="Total Financial Transaction Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Budget Type" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalrevenuecostscalculated" displayName="Total Revenue Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_costtype" displayName="Budget Type" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
         <Dependent type="2" schemaName="leidos_totalcapitalcost" displayName="Total Capital Cost " parentSchemaName="leidos_project" parentDisplayName="Project" />
       </MissingDependency>
@@ -188,6 +257,22 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_costtype" displayName="Budget Type" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
         <Dependent type="2" schemaName="leidos_totalrevenuecosts" displayName="Total Revenue Costs" parentSchemaName="leidos_project" parentDisplayName="Project" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_itemcost" displayName="Item Cost" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcapitalcostscalculated" displayName="Total Capital Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_itemcost" displayName="Item Cost" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcostscalculated" displayName="Total Programme Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_itemcost" displayName="Item Cost" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalfinancialtransactioncosts" displayName="Total Financial Transaction Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_itemcost" displayName="Item Cost" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalrevenuecostscalculated" displayName="Total Revenue Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_itemcost" displayName="Item Cost" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
@@ -207,6 +292,22 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectcostid" displayName="Project Cost" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcapitalcostscalculated" displayName="Total Capital Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectcostid" displayName="Project Cost" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcostscalculated" displayName="Total Programme Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectcostid" displayName="Project Cost" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalfinancialtransactioncosts" displayName="Total Financial Transaction Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectcostid" displayName="Project Cost" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalrevenuecostscalculated" displayName="Total Revenue Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectcostid" displayName="Project Cost" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
         <Dependent type="2" schemaName="leidos_totalcapitalcost" displayName="Total Capital Cost " parentSchemaName="leidos_project" parentDisplayName="Project" />
       </MissingDependency>
       <MissingDependency>
@@ -223,6 +324,22 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcapitalcostscalculated" displayName="Total Capital Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcostscalculated" displayName="Total Programme Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalfinancialtransactioncosts" displayName="Total Financial Transaction Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalrevenuecostscalculated" displayName="Total Revenue Costs" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
         <Dependent type="2" schemaName="leidos_totalcapitalcost" displayName="Total Capital Cost " parentSchemaName="leidos_project" parentDisplayName="Project" />
       </MissingDependency>
       <MissingDependency>
@@ -236,6 +353,10 @@
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" solution="Active" />
         <Dependent type="2" schemaName="leidos_totalrevenuecosts" displayName="Total Revenue Costs" parentSchemaName="leidos_project" parentDisplayName="Project" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingamount" displayName="Funding Amount" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcostfunding" displayName="Total Cost Funding" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_fundingamount" displayName="Funding Amount" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
@@ -252,6 +373,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_fundingamount" displayName="Funding Amount" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
         <Dependent type="2" schemaName="leidos_netthiefunding_base" displayName="Nett HIE Funding (Base)" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectfundingid" displayName="Project Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalcostfunding" displayName="Total Cost Funding" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectfundingid" displayName="Project Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
@@ -576,6 +701,22 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_weeklyhoursforecast" displayName="Weekly Hours Forecast" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
         <Dependent type="2" schemaName="leidos_weeklyhoursexpectedhieoutput" displayName="Weekly Hours Expected HIE Output" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_committedvalue" displayName="Committed Value" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalapprovalsassociatedprojects" displayName="Total Approvals (Associated Projects) " parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_spendvalue" displayName="Spend Value" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalprogrammespend" displayName="Total Spend (Associated Projects)" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_supportitemid" displayName="Support Item" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalapprovalsassociatedprojects" displayName="Total Approvals (Associated Projects) " parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_supportitemid" displayName="Support Item" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" />
+        <Dependent type="2" schemaName="leidos_totalprogrammespend" displayName="Total Spend (Associated Projects)" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="leidos_discover.svg" displayName="leidos_discover.svg" solution="Active" />
