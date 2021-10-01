@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS CriticalBugFix" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.4415</Version>
+    <Version>1.18.0.4422</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -84,6 +84,8 @@
       <RootComponent type="1" schemaName="leidos_ownhandinvoicesummary" behavior="0" />
       <RootComponent type="1" schemaName="leidos_ownhandrecordtype" behavior="0" />
       <RootComponent type="1" schemaName="leidos_project" behavior="1" />
+      <RootComponent type="1" schemaName="leidos_transaction" behavior="2" />
+      <RootComponent type="1" schemaName="leidos_transactionline" behavior="2" />
       <RootComponent type="1" schemaName="leidos_vatcode" behavior="0" />
       <RootComponent type="20" id="{12ff01f2-dd66-eb11-a812-00224841783c}" behavior="0" />
       <RootComponent type="20" id="{7d12f089-9abb-ea11-a812-000d3a7f1bbb}" behavior="0" />
@@ -200,8 +202,12 @@
         <Dependent type="10" schemaName="leidos_OwnHandInvoiceDetail_RecoveryProfi" displayName="leidos_OwnHandInvoiceDetail_RecoveryProfi" parentSchemaName="leidos_recovery" parentDisplayName="Recovery Profile" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_transaction" displayName="Transaction" solution="Active" />
+        <Dependent type="1" schemaName="leidos_transaction" displayName="Transaction" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_transactionline" displayName="Transaction Line" solution="Active" />
-        <Dependent type="1" schemaName="leidos_vatcode" displayName="VAT Code" />
+        <Dependent type="1" schemaName="leidos_transactionline" displayName="Transaction Line" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_vatcategory" displayName="VAT Category" solution="Active" />
