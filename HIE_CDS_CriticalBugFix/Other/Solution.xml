@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS CriticalBugFix" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.4432</Version>
+    <Version>1.18.0.4438</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -79,6 +79,7 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="1" schemaName="account" behavior="2" />
+      <RootComponent type="1" schemaName="leidos_clientaction" behavior="2" />
       <RootComponent type="1" schemaName="leidos_costtype" behavior="0" />
       <RootComponent type="1" schemaName="leidos_invoicetype" behavior="0" />
       <RootComponent type="1" schemaName="leidos_ownhandinvoicedetail" behavior="0" />
@@ -133,6 +134,14 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_bpf_project" displayName="BPF - Project" solution="Active" />
         <Dependent type="80" schemaName="leidos_OwnHandInvoiceProcessing" displayName="Own Hand Invoice Processing" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_clientaction" displayName="Client Action" solution="Active" />
+        <Dependent type="1" schemaName="leidos_clientaction" displayName="Client Action" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_clientneed" displayName="Client Need" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_enquiry" displayName="Enquiry" solution="Active" />
@@ -231,6 +240,10 @@
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_stateaidcategory" displayName="Subsidy Control" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_supportitem" displayName="Support Item" solution="Active" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
@@ -285,6 +298,10 @@
       <MissingDependency>
         <Required type="10" schemaName="leidos_Claim_ParentAccount_Account" displayName="leidos_Claim_ParentAccount_Account" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ClientAction_ParentAccount_Account" displayName="leidos_ClientAction_ParentAccount_Account" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_Contact_Account_AuthorisedSignatory" displayName="leidos_Contact_Account_AuthorisedSignatory" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
@@ -343,8 +360,28 @@
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="leidos_ClientAction_ActionBy_leidos_Actio" displayName="leidos_ClientAction_ActionBy_leidos_Actio" parentSchemaName="leidos_actionby" parentDisplayName="Action By" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ClientAction_ActionType_leidos_Act" displayName="leidos_ClientAction_ActionType_leidos_Act" parentSchemaName="leidos_actiontype" parentDisplayName="Action Type" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="leidos_Account_AreaOffice_leidos_AreaOffice" displayName="leidos_Account_AreaOffice_leidos_AreaOffice" parentSchemaName="leidos_areaoffice" parentDisplayName="Area Office" solution="Active" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ClientAction_ClientNeed_leidos_Cli" displayName="leidos_ClientAction_ClientNeed_leidos_Cli" parentSchemaName="leidos_clientneed" parentDisplayName="Client Need" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ClientNeedSolution_ClientNeed_leid" displayName="leidos_ClientNeedSolution_ClientNeed_leid" parentSchemaName="leidos_clientneed" parentDisplayName="Client Need" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ClientAction_Solution_leidos_Clien" displayName="leidos_ClientAction_Solution_leidos_Clien" parentSchemaName="leidos_clientneedsolution" parentDisplayName="Client Need Solution" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_Account_LinktoLegacyCompany_leidos_Legacy" displayName="leidos_Account_LinktoLegacyCompany_leidos_Legacy" parentSchemaName="leidos_legacycompanyinformation" parentDisplayName="Legacy Company Information" solution="Active" />
@@ -361,6 +398,10 @@
       <MissingDependency>
         <Required type="10" schemaName="leidos_Account_OrganisationType_leidos_Organisat" displayName="leidos_Account_OrganisationType_leidos_Organisat" parentSchemaName="leidos_organisationtype" parentDisplayName="Organisation Type" solution="Active" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ClientAction_RelatedProject_leidos" displayName="leidos_ClientAction_RelatedProject_leidos" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_ProjectFunding_ParentProject_leido" displayName="leidos_ProjectFunding_ParentProject_leido" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -405,6 +446,18 @@
       <MissingDependency>
         <Required type="10" schemaName="leidos_SICCode_parent_leidos_SICCode" displayName="leidos_SICCode_parent_leidos_SICCode" parentSchemaName="leidos_siccode" parentDisplayName="SIC Code" solution="Active" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ClientAction_StateAidArticle_leido" displayName="leidos_ClientAction_StateAidArticle_leido" parentSchemaName="leidos_stateaidcategory" parentDisplayName="Subsidy Control" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_StateAidSubCategory_StateAidCatego" displayName="leidos_StateAidSubCategory_StateAidCatego" parentSchemaName="leidos_stateaidcategory" parentDisplayName="Subsidy Control" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ClientAction_StateAidType_leidos_S" displayName="leidos_ClientAction_StateAidType_leidos_S" parentSchemaName="leidos_stateaidsubcategory" parentDisplayName="Subsidy Measure" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_Account_leidos_SupportItem" displayName="leidos_Account_leidos_SupportItem" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" />
@@ -701,6 +754,78 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_vatregistered" displayName="Vat Registered " parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_actionby" displayName="Action By" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_actiontype" displayName="Action Type" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_actualcompletiondate" displayName="Actual Completion Date" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_clientactionreference" displayName="Client Action Reference" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_clientneed" displayName="Client Need" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_dateofgranting" displayName="Date of Granting" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_dateofsendingstateaidstatement" displayName="Date of Sending Subsidy Control  Statement" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_expectedcompletiondate" displayName="Expected Completion Date" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_generatestateaidstatement" displayName="Generate Subsidy Control Statement" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentaccount" displayName="Parent Account" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_relatedproject" displayName="Related Project" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_solution" displayName="Solution" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_stateaidarticle" displayName="Subsidy Control" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_stateaidtype" displayName="Subsidy Measure" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_stateaidvalue" displayName="Subsidy Control Value" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_title" displayName="Title" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_equiryoutcome" displayName="Enquiry Outcome" parentSchemaName="leidos_enquiry" parentDisplayName="Enquiry" solution="Active" />
@@ -1100,7 +1225,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Project Lookup View" displayName="Project Lookup View" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{44a80479-099a-478b-a3b8-e5af2a3b2b90}" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Project Lookup View" displayName="Project Lookup View" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{44a80479-099a-478b-a3b8-e5af2a3b2b90}" />
         <Dependent type="80" schemaName="leidos_OwnHandInvoiceProcessing" displayName="Own Hand Invoice Processing" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Subsidy Measure Lookup View" displayName="Subsidy Measure Lookup View" parentSchemaName="leidos_stateaidsubcategory" parentDisplayName="Subsidy Measure" solution="Active" id="{47b60d3b-097f-437c-afed-43bf190b9a80}" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Secondary Sectors" displayName="Active Secondary Sectors" parentSchemaName="leidos_sector" parentDisplayName="Sector" solution="Active" id="{592de9c2-740c-eb11-a813-000d3a7f1bbb}" />
@@ -1163,6 +1296,10 @@
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="State Aid Category Lookup View" displayName="State Aid Category Lookup View" parentSchemaName="leidos_stateaidcategory" parentDisplayName="Subsidy Control" solution="Active" id="{81c342f0-4ffb-49b2-9570-0350a3232610}" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Inactive Funding" displayName="Inactive Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{86057322-1f63-4210-8afc-fa3456831189}" />
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
@@ -1223,6 +1360,10 @@
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Client Need Solution Lookup View" displayName="Client Need Solution Lookup View" parentSchemaName="leidos_clientneedsolution" parentDisplayName="Client Need Solution" solution="Active" id="{c3e4b7d1-d311-41a0-9f44-cc1390eb7d28}" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Suppliers" displayName="Suppliers" parentSchemaName="account" parentDisplayName="Account" solution="Active" id="{ce11d906-44ba-eb11-8236-002248016b5c}" />
         <Dependent type="60" displayName="HIE Summary" parentDisplayName="Own Hand Invoice Summary" id="{966cd1f4-3c24-4085-839f-f36aa932883c}" />
       </MissingDependency>
@@ -1263,8 +1404,16 @@
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Action Type Lookup View" displayName="Action Type Lookup View" parentSchemaName="leidos_actiontype" parentDisplayName="Action Type" solution="Active" id="{ea29ed68-b297-4105-8044-71c6160861d3}" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Active Account Equities" displayName="Active Account Equities" parentSchemaName="leidos_equity" parentDisplayName="Equity" solution="Active" id="{ea8cb164-1819-eb11-a813-000d3a7fedbe}" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Client Need Lookup View" displayName="Client Need Lookup View" parentSchemaName="leidos_clientneed" parentDisplayName="Client Need" solution="Active" id="{f20ad29a-8cd9-4e4a-b1b2-aa0136ac7e2f}" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Project Funding" displayName="Active Project Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{f8a2f6f2-b025-eb11-a813-0022483fae82}" />
@@ -1273,6 +1422,10 @@
       <MissingDependency>
         <Required type="26" schemaName="Completed Projects" displayName="Completed Projects" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{fbafe737-ee56-ea11-a811-000d3a0bad17}" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Action By Lookup View" displayName="Action By Lookup View" parentSchemaName="leidos_actionby" parentDisplayName="Action By" solution="Active" id="{fbbf8f98-17a9-44ff-bb9c-b84d9bac43db}" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Accounts Clear to Pay" displayName="Active Accounts Clear to Pay" parentSchemaName="account" parentDisplayName="Account" solution="Active" id="{fd59b5a7-b229-eb11-a813-0022483fae82}" />
@@ -1345,6 +1498,10 @@
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.json2" displayName="north52_/javascript/n52.json2" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
@@ -1357,6 +1514,10 @@
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.json2" displayName="north52_/javascript/n52.json2" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
@@ -1367,6 +1528,10 @@
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="62" schemaName="leidos_OwnHandInvoiceProcessing" solution="Active" />
