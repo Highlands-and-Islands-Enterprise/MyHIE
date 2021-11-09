@@ -131,8 +131,11 @@
                       <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep5" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_project" />
                       <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep_SetAttributeValueStep5_8: Hide Nett funding">
+                    <Sequence DisplayName="SetVisibilityStep8: Hide Nett funding">
                       <mcwc:SetVisibility ControlId="leidos_anticipatedhienettfunding" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep8_9: Show NFI Project Approval route">
+                      <mcwc:SetVisibility ControlId="leidos_nfiprojectapprovalroute" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="True" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
@@ -166,8 +169,27 @@
                     <Sequence DisplayName="SetVisibilityStep6: Show Recovery">
                       <mcwc:SetVisibility ControlId="leidos_anticipatedrecoveryamount" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="True" />
                     </Sequence>
-                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep6_7: Show Nett funding">
+                    <Sequence DisplayName="SetVisibilityStep7: Show Nett funding">
                       <mcwc:SetVisibility ControlId="leidos_anticipatedhienettfunding" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="True" />
+                    </Sequence>
+                    <Sequence DisplayName="SetVisibilityStep_SetVisibilityStep7_10: Hide NFI Project Approval route">
+                      <mcwc:SetVisibility ControlId="leidos_nfiprojectapprovalroute" ControlType="standard" Entity="[InputEntities(&quot;primaryEntity&quot;)]" EntityName="leidos_project" IsVisible="False" />
+                    </Sequence>
+                    <Sequence DisplayName="SetAttributeValueStep_SetVisibilityStep7_10_11: Clear NFI Project Approval route">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:Object" Name="SetAttributeValueStep_SetVisibilityStep7_10_11_1" />
+                      </Sequence.Variables>
+                      <Assign x:TypeArguments="mxs:Entity" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" Value="[New Entity(&quot;leidos_project&quot;)]" />
+                      <Assign x:TypeArguments="s:Guid" To="[CreatedEntities(&quot;primaryEntity#Temp&quot;).Id]" Value="[InputEntities(&quot;primaryEntity&quot;).Id]" />
+                      <mxswa:SetEntityProperty Attribute="leidos_nfiprojectapprovalroute" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_project" Value="[SetAttributeValueStep_SetVisibilityStep7_10_11_1]">
+                        <mxswa:SetEntityProperty.TargetType>
+                          <InArgument x:TypeArguments="s:Type">
+                            <mxswa:ReferenceLiteral x:TypeArguments="s:Type" Value="mxs:OptionSetValue" />
+                          </InArgument>
+                        </mxswa:SetEntityProperty.TargetType>
+                      </mxswa:SetEntityProperty>
+                      <mcwc:SetAttributeValue DisplayName="SetAttributeValueStep_SetVisibilityStep7_10_11" Entity="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" EntityName="leidos_project" />
+                      <Assign x:TypeArguments="mxs:Entity" To="[InputEntities(&quot;primaryEntity&quot;)]" Value="[CreatedEntities(&quot;primaryEntity#Temp&quot;)]" />
                     </Sequence>
                   </sco:Collection>
                 </mxswa:ActivityReference.Properties>
