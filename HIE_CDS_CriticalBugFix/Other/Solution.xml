@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS CriticalBugFix" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.18.0.4647</Version>
+    <Version>1.18.0.4652</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -97,6 +97,7 @@
       <RootComponent type="29" id="{3b443cf4-90a1-ea11-a812-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" behavior="0" />
       <RootComponent type="29" id="{7c10c4b4-e4b9-ea11-a812-000d3a7f1bbb}" behavior="0" />
+      <RootComponent type="29" id="{8b3b1c22-1775-eb11-a812-0022484145f5}" behavior="0" />
       <RootComponent type="29" id="{9430c9b1-250f-ec11-b6e6-000d3ad67ea6}" behavior="0" />
       <RootComponent type="29" id="{a30b6276-080f-ec11-b6e6-000d3ad67ea6}" behavior="0" />
       <RootComponent type="29" id="{bcfd9302-f316-ec11-b6e6-00224841218a}" behavior="0" />
@@ -153,6 +154,14 @@
         <Dependent type="1" schemaName="leidos_clientaction" displayName="Client Action" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_clientladder" displayName="Client Ladder" solution="Active" />
+        <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_clientladderresponse" displayName="Client Ladder Response" solution="Active" />
+        <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_clientneed" displayName="Client Need" solution="Active" />
         <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
@@ -183,6 +192,18 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_hieteam" displayName="HIE Team" solution="Active" />
         <Dependent type="26" schemaName="WES Projects Clear to Pay" displayName="WES Projects Clear to Pay" parentSchemaName="leidos_project" parentDisplayName="Project" id="{231d9493-a4d2-eb11-bacb-000d3ad6153d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ladder" displayName="Ladder" solution="Active" />
+        <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_laddercategory" displayName="Ladder Category" solution="Active" />
+        <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ladderquestion" displayName="Ladder Question" solution="Active" />
+        <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_milestone" displayName="Milestone" solution="Active" />
@@ -1717,6 +1738,10 @@
         <Dependent type="29" displayName="Enquiry - Flow - On Select Enquiry Outcome" id="{3b443cf4-90a1-ea11-a812-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnLadder" solution="Active" id.connectionreferencelogicalname="leidos_ConnLadder" />
+        <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
         <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
@@ -1735,6 +1760,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnSpendProfile" solution="Active" id.connectionreferencelogicalname="leidos_ConnSpendProfile" />
         <Dependent type="29" displayName="Child - Create or Update Spend Profile records" id="{a30b6276-080f-ec11-b6e6-000d3ad67ea6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnSystem" solution="Active" id.connectionreferencelogicalname="leidos_ConnSystem" />
+        <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_5ec64" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_5ec64" />
