@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{b8d757b2-67bc-eb11-bacc-000d3ad6a1dc}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_ownhandinvoicedetailid">
+          <cell name="leidos_project" width="100" />
+          <cell name="leidos_fundingline" width="100" />
+          <cell name="leidos_costtype" width="100" />
+          <cell name="leidos_vatcode" width="100" />
+          <cell name="leidos_netinvoice" width="100" />
+          <cell name="leidos_vatvalueadjusted" width="100" />
+          <cell name="leidos_totalinvoicevalue" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_ownhandinvoicedetail">
+          <attribute name="leidos_ownhandinvoicedetailid" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="leidos_project" />
+          <attribute name="leidos_fundingline" />
+          <attribute name="leidos_costtype" />
+          <attribute name="leidos_vatcode" />
+          <attribute name="leidos_netinvoice" />
+          <attribute name="leidos_totalinvoicevalue" />
+          <attribute name="leidos_vatvalueadjusted" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.18.0.3145</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Own Hand Invoice Details- own Hand Grid" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

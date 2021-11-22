@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.21104.132" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.21111.141" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>HIE_CDS_CI</UniqueName>
     <LocalizedNames>
@@ -86,6 +86,7 @@
       <RootComponent type="1" schemaName="leidos_clientaction" behavior="1" />
       <RootComponent type="1" schemaName="leidos_enquiry" behavior="1" />
       <RootComponent type="1" schemaName="leidos_enquirybusinessflow" behavior="0" />
+      <RootComponent type="1" schemaName="leidos_ownhandinvoicedetail" behavior="2" />
       <RootComponent type="1" schemaName="leidos_project" behavior="2" />
       <RootComponent type="1" schemaName="leidos_spendprofiledetail" behavior="2" />
       <RootComponent type="1" schemaName="new_bpfapplicationbusinessprocessflow" behavior="0" />
@@ -104,6 +105,7 @@
       <RootComponent type="29" id="{48a12d86-6714-eb11-a813-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{4ca7fbde-8fcf-eb11-bacc-000d3ad59ccd}" behavior="0" />
       <RootComponent type="29" id="{4e10ea33-e228-eb11-a813-000d3a7fedbe}" behavior="0" />
+      <RootComponent type="29" id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" behavior="0" />
       <RootComponent type="29" id="{5a8b5d2e-280a-eb11-a813-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{61602747-88c2-ea11-a812-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{6a47be68-037d-eb11-a812-00224840506e}" behavior="0" />
@@ -118,6 +120,7 @@
       <RootComponent type="29" id="{946126b9-c872-eb11-a812-00224840ee66}" behavior="0" />
       <RootComponent type="29" id="{975a9638-3d3a-48be-bee0-32f2e2e2e038}" behavior="0" />
       <RootComponent type="29" id="{9b443976-720c-eb11-a813-000d3a7fedbe}" behavior="0" />
+      <RootComponent type="29" id="{b10d369f-4e49-ec11-8c62-00224841b49f}" behavior="0" />
       <RootComponent type="29" id="{b563bc4d-f5d3-4d7b-8d43-2179f246d138}" behavior="0" />
       <RootComponent type="29" id="{c178e483-2af7-ea11-a816-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{d04ccdb2-23af-ea11-a812-000d3a7fedbe}" behavior="0" />
@@ -457,6 +460,22 @@
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandinvoicedetail" displayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="1" schemaName="leidos_ownhandinvoicedetail" displayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandinvoicesummary" displayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandinvoicesummary" displayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandrecordtype" displayName="Own Hand Record Type" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_paymentclaim" displayName="Payment Claim" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
@@ -499,6 +518,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_projectfunding" displayName="Cost Funding" solution="Active" />
         <Dependent type="29" displayName="Security - Flow - Send to legal for Review" id="{946126b9-c872-eb11-a812-00224840ee66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_projectfunding" displayName="Cost Funding" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_projectoutput" displayName="Project Output" solution="Active" />
@@ -606,6 +629,18 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_vatcode" displayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_vatcode" displayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_vatcode" displayName="VAT Code" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_vatcode" displayName="VAT Code" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
@@ -649,6 +684,10 @@
         <Dependent type="60" displayName="Invoice Schedule" parentDisplayName="Claim Detail" id="{832b0068-a66a-4071-987c-faaeb5a45c64}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="leidos_OwnHandInvoiceDetail_CostType_leid" displayName="leidos_OwnHandInvoiceDetail_CostType_leid" parentSchemaName="leidos_costtype" parentDisplayName="Cost Type" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="leidos_AnticipatedSpendProfile_FundingSou" displayName="leidos_AnticipatedSpendProfile_FundingSou" parentSchemaName="leidos_fundingsource" parentDisplayName="Funding Source" solution="Active" />
         <Dependent type="60" displayName="HIE Spend Profile Form" parentDisplayName="Spend \ Recovery  Profile" id="{06197ad7-eab2-402d-88dd-9e2df37e8aa6}" />
       </MissingDependency>
@@ -665,12 +704,36 @@
         <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="leidos_OwnHandInvoiceDetail_ParentSummary" displayName="leidos_OwnHandInvoiceDetail_ParentSummary" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="10" schemaName="leidos_AnticipatedSpendProfile_ParentProg" displayName="leidos_AnticipatedSpendProfile_ParentProg" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
         <Dependent type="60" displayName="HIE Spend Profile Form" parentDisplayName="Spend \ Recovery  Profile" id="{06197ad7-eab2-402d-88dd-9e2df37e8aa6}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_AnticipatedSpendProfile_ParentProj" displayName="leidos_AnticipatedSpendProfile_ParentProj" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Spend Profile Form" parentDisplayName="Spend \ Recovery  Profile" id="{06197ad7-eab2-402d-88dd-9e2df37e8aa6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_OwnHandInvoiceDetail_Project_leido" displayName="leidos_OwnHandInvoiceDetail_Project_leido" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ProjectFunding_ParentProject_leido" displayName="leidos_ProjectFunding_ParentProject_leido" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_OwnHandInvoiceDetail_FundingLine_l" displayName="leidos_OwnHandInvoiceDetail_FundingLine_l" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_Recovery_ParentFunding_leidos_Proj" displayName="leidos_Recovery_ParentFunding_leidos_Proj" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_OwnHandInvoiceDetail_RecoveryProfi" displayName="leidos_OwnHandInvoiceDetail_RecoveryProfi" parentSchemaName="leidos_recovery" parentDisplayName="Recovery Profile" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_enquiry_Sector_leidos_Sector" displayName="leidos_enquiry_Sector_leidos_Sector" parentSchemaName="leidos_sector" parentDisplayName="Sector" solution="Active" />
@@ -683,6 +746,18 @@
       <MissingDependency>
         <Required type="10" schemaName="leidos_enquiry_Turnover_leidos_Turnover" displayName="leidos_enquiry_Turnover_leidos_Turnover" parentSchemaName="leidos_turnover" parentDisplayName="Turnover" solution="Active" />
         <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_OwnHandInvoiceDetail_VATCode_leido" displayName="leidos_OwnHandInvoiceDetail_VATCode_leido" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_OwnHandInvoiceDetail_VATCode_leido" displayName="leidos_OwnHandInvoiceDetail_VATCode_leido" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_OwnHandInvoiceDetail_VATCode_leido" displayName="leidos_OwnHandInvoiceDetail_VATCode_leido" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_enquiry_RelevantPerson_SystemUser" displayName="leidos_enquiry_RelevantPerson_SystemUser" parentSchemaName="systemuser" parentDisplayName="User" solution="Active" />
@@ -1829,6 +1904,438 @@
         <Dependent type="60" displayName="Information" parentDisplayName="BPF - Loan" id="{dce479e6-cb17-4b63-9704-d570b0470cef}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_businessunit" displayName="Business Unit" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_businessunit" displayName="Business Unit" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_claiminvoiceno" displayName="Claim / Invoice No" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_claiminvoiceno" displayName="Claim / Invoice No" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costfunding" displayName="Cost &amp; Funding" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costfunding" displayName="Cost &amp; Funding" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Cost Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Cost Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Own Hand Invoice Details" displayName="Inactive Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{11dcd56c-47a1-42a6-b86c-60b7245a3860}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Cost Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Advanced Find View" displayName="Own Hand Invoice Detail Advanced Find View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1df77abf-1d91-4dec-9eb6-5ac88ca55d1b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Cost Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Own Hand Invoice Details" displayName="Quick Find Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1e2a321d-c863-483b-b6a5-0dfde5085414}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Cost Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Associated View" displayName="Own Hand Invoice Detail Associated View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{7f5e6594-8c78-4799-8156-3ed7ee5431db}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Cost Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Details- own Hand Grid" displayName="Own Hand Invoice Details- own Hand Grid" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{b8d757b2-67bc-eb11-bacc-000d3ad6a1dc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_costtype" displayName="Cost Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_description" displayName="Description" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_expensetype" displayName="Expense Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_expensetype" displayName="Expense Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingline" displayName="Funding Line" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingline" displayName="Funding Line" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Own Hand Invoice Details" displayName="Inactive Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{11dcd56c-47a1-42a6-b86c-60b7245a3860}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingline" displayName="Funding Line" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Advanced Find View" displayName="Own Hand Invoice Detail Advanced Find View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1df77abf-1d91-4dec-9eb6-5ac88ca55d1b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingline" displayName="Funding Line" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Own Hand Invoice Details" displayName="Quick Find Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1e2a321d-c863-483b-b6a5-0dfde5085414}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingline" displayName="Funding Line" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Associated View" displayName="Own Hand Invoice Detail Associated View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{7f5e6594-8c78-4799-8156-3ed7ee5431db}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingline" displayName="Funding Line" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Details- own Hand Grid" displayName="Own Hand Invoice Details- own Hand Grid" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{b8d757b2-67bc-eb11-bacc-000d3ad6a1dc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingline" displayName="Funding Line" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingscheme" displayName="Funding Scheme" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingscheme" displayName="Funding Scheme" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingsource" displayName="Funding Source" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingsource" displayName="Funding Source" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Line Description" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Line Description" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Own Hand Invoice Details" displayName="Inactive Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{11dcd56c-47a1-42a6-b86c-60b7245a3860}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Line Description" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Advanced Find View" displayName="Own Hand Invoice Detail Advanced Find View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1df77abf-1d91-4dec-9eb6-5ac88ca55d1b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Line Description" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Own Hand Invoice Details" displayName="Quick Find Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1e2a321d-c863-483b-b6a5-0dfde5085414}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Line Description" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Associated View" displayName="Own Hand Invoice Detail Associated View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{7f5e6594-8c78-4799-8156-3ed7ee5431db}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Line Description" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="29" displayName="Own hand Invoice Detail - Set Line VAT Value field" id="{b10d369f-4e49-ec11-8c62-00224841b49f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Line Description" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Own Hand Invoice Details" displayName="Inactive Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{11dcd56c-47a1-42a6-b86c-60b7245a3860}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Advanced Find View" displayName="Own Hand Invoice Detail Advanced Find View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1df77abf-1d91-4dec-9eb6-5ac88ca55d1b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Own Hand Invoice Details" displayName="Quick Find Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1e2a321d-c863-483b-b6a5-0dfde5085414}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Associated View" displayName="Own Hand Invoice Detail Associated View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{7f5e6594-8c78-4799-8156-3ed7ee5431db}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Details- own Hand Grid" displayName="Own Hand Invoice Details- own Hand Grid" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{b8d757b2-67bc-eb11-bacc-000d3ad6a1dc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhanddetailreference" displayName="Own Hand Detail Reference" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhanddetailreference" displayName="Own Hand Detail Reference" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Own Hand Invoice Details" displayName="Inactive Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{11dcd56c-47a1-42a6-b86c-60b7245a3860}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Advanced Find View" displayName="Own Hand Invoice Detail Advanced Find View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1df77abf-1d91-4dec-9eb6-5ac88ca55d1b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Own Hand Invoice Details" displayName="Quick Find Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1e2a321d-c863-483b-b6a5-0dfde5085414}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Associated View" displayName="Own Hand Invoice Detail Associated View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{7f5e6594-8c78-4799-8156-3ed7ee5431db}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Details- own Hand Grid" displayName="Own Hand Invoice Details- own Hand Grid" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{b8d757b2-67bc-eb11-bacc-000d3ad6a1dc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="29" displayName="Own hand Invoice Detail - Set Line VAT Value field" id="{b10d369f-4e49-ec11-8c62-00224841b49f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentsummary" displayName="Parent Summary" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentsummary" displayName="Parent Summary" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Own Hand Invoice Details" displayName="Inactive Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{11dcd56c-47a1-42a6-b86c-60b7245a3860}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentsummary" displayName="Parent Summary" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Advanced Find View" displayName="Own Hand Invoice Detail Advanced Find View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1df77abf-1d91-4dec-9eb6-5ac88ca55d1b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentsummary" displayName="Parent Summary" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Own Hand Invoice Details" displayName="Quick Find Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1e2a321d-c863-483b-b6a5-0dfde5085414}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentsummary" displayName="Parent Summary" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Associated View" displayName="Own Hand Invoice Detail Associated View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{7f5e6594-8c78-4799-8156-3ed7ee5431db}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentsummary" displayName="Parent Summary" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_project" displayName="Project " parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_project" displayName="Project " parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Own Hand Invoice Details" displayName="Inactive Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{11dcd56c-47a1-42a6-b86c-60b7245a3860}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_project" displayName="Project " parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Advanced Find View" displayName="Own Hand Invoice Detail Advanced Find View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1df77abf-1d91-4dec-9eb6-5ac88ca55d1b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_project" displayName="Project " parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Own Hand Invoice Details" displayName="Quick Find Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1e2a321d-c863-483b-b6a5-0dfde5085414}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_project" displayName="Project " parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Associated View" displayName="Own Hand Invoice Detail Associated View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{7f5e6594-8c78-4799-8156-3ed7ee5431db}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_project" displayName="Project " parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Details- own Hand Grid" displayName="Own Hand Invoice Details- own Hand Grid" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{b8d757b2-67bc-eb11-bacc-000d3ad6a1dc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_project" displayName="Project " parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectnumber" displayName="Project Number" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectnumber" displayName="Project Number" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_recoveryprofile" displayName="Recovery Profile" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_strategicpriority" displayName="Strategic Priority" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_strategicpriority" displayName="Strategic Priority" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalinvoicevalue" displayName="Line Total Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalinvoicevalue" displayName="Line Total Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Own Hand Invoice Details" displayName="Inactive Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{11dcd56c-47a1-42a6-b86c-60b7245a3860}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalinvoicevalue" displayName="Line Total Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Advanced Find View" displayName="Own Hand Invoice Detail Advanced Find View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1df77abf-1d91-4dec-9eb6-5ac88ca55d1b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalinvoicevalue" displayName="Line Total Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Own Hand Invoice Details" displayName="Quick Find Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1e2a321d-c863-483b-b6a5-0dfde5085414}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalinvoicevalue" displayName="Line Total Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Associated View" displayName="Own Hand Invoice Detail Associated View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{7f5e6594-8c78-4799-8156-3ed7ee5431db}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalinvoicevalue" displayName="Line Total Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Details- own Hand Grid" displayName="Own Hand Invoice Details- own Hand Grid" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{b8d757b2-67bc-eb11-bacc-000d3ad6a1dc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalinvoicevalue" displayName="Line Total Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_transactionsubtype" displayName="Transaction Sub Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_transactionsubtype" displayName="Transaction Sub Type" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcategory" displayName="VAT Category" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcategory" displayName="VAT Category" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Own Hand Invoice Details" displayName="Inactive Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{11dcd56c-47a1-42a6-b86c-60b7245a3860}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Advanced Find View" displayName="Own Hand Invoice Detail Advanced Find View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1df77abf-1d91-4dec-9eb6-5ac88ca55d1b}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Own Hand Invoice Details" displayName="Quick Find Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1e2a321d-c863-483b-b6a5-0dfde5085414}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Associated View" displayName="Own Hand Invoice Detail Associated View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{7f5e6594-8c78-4799-8156-3ed7ee5431db}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Details- own Hand Grid" displayName="Own Hand Invoice Details- own Hand Grid" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{b8d757b2-67bc-eb11-bacc-000d3ad6a1dc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcodereference" displayName="Vat Code Reference" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Inactive Own Hand Invoice Details" displayName="Inactive Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{11dcd56c-47a1-42a6-b86c-60b7245a3860}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Quick Find Active Own Hand Invoice Details" displayName="Quick Find Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{1e2a321d-c863-483b-b6a5-0dfde5085414}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Detail Associated View" displayName="Own Hand Invoice Detail Associated View" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{7f5e6594-8c78-4799-8156-3ed7ee5431db}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="26" schemaName="Own Hand Invoice Details- own Hand Grid" displayName="Own Hand Invoice Details- own Hand Grid" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{b8d757b2-67bc-eb11-bacc-000d3ad6a1dc}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_credtdebit" displayName="Invoice  / Credit Note" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_generatereport" displayName="Generate Report" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_invoicedate" displayName="Invoice Date" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_invoicenumber" displayName="Invoice Number" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_invoicereceiveddate" displayName="Invoice Received Date" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicesummaryid" displayName="Own Hand Invoice Summary" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_suppliercode" displayName="Supplier Code" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_suppliertext" displayName="Supplier Name" parentSchemaName="leidos_ownhandinvoicesummary" parentDisplayName="Own Hand Invoice Summary" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_submitnfiemailapproval" displayName="Submit NFI Email Approval" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
         <Dependent type="29" displayName="Pipeline Project - Flow - NFI Email Approval Process" id="{0173199e-0a15-eb11-a813-0022483fae82}" />
       </MissingDependency>
@@ -2593,12 +3100,44 @@
         <Dependent type="29" displayName="BPF - Application Business Process Flow" id="{e88b17e3-b43d-ea11-a812-000d3a0ba151}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_codaref" displayName="CODA ref" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatamount" displayName="VAT Amount" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatamount" displayName="VAT Amount" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcodeid" displayName="VAT Code" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcodeid" displayName="VAT Code" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcodeid" displayName="VAT Code" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="20" displayName="Enquiry Officer" solution="Active" id="{ee097c7f-b736-ea11-a813-000d3a0bad7c}" />
         <Dependent type="60" displayName="HIE Enquiry Form - Simplified" parentDisplayName="Enquiry" id="{e5e48e46-f894-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Subsidy Control Provision View" displayName="Subsidy Control Provision View" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{0353f4b1-6c64-ea11-a811-000d3a0bad17}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Active Delegated Authority Approval Tables" displayName="Active Delegated Authority Approval Tables" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{0976d964-6c9e-4d23-90c3-078677a81f7d}" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Web - Cost Funding" displayName="Web - Cost Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{0e6f2acd-6635-eb11-a813-0022483fae82}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="HIE Board" displayName="HIE Board" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{1359b25e-b7bb-ea11-a812-000d3a7fedbe}" />
@@ -2613,6 +3152,18 @@
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="WES Projects Clear to Pay" displayName="WES Projects Clear to Pay" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{231d9493-a4d2-eb11-bacb-000d3ad6153d}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Web - State Aid Provision View" displayName="Web - State Aid Provision View" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{29abdbbe-677e-ea11-a811-000d3a7fedbe}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Programme Funding - Grid view" displayName="Active Programme Funding - Grid view" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{2d184199-8661-eb11-a812-000d3ad5cbb0}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Inactive Delegated Authority Approval Tables" displayName="Inactive Delegated Authority Approval Tables" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{2d197e17-8ff7-4580-b20d-b335aa91b158}" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
@@ -2625,12 +3176,36 @@
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Own Hand Project Clear to Pay" displayName="Own Hand Project Clear to Pay" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{6e28ddc1-69bc-eb11-bacc-000d3ad6a4c4}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Recovery Lookup View" displayName="Recovery Lookup View" parentSchemaName="leidos_recovery" parentDisplayName="Recovery Profile" solution="Active" id="{703841eb-10a0-4ba5-a835-5cbf1d23980a}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Web - Private Funding" displayName="Web - Private Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{7240961a-5036-eb11-a813-0022483fae82}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Own hand Look Up - Funding" displayName="Own hand Look Up - Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{77f19b81-2bdf-eb11-bacb-0022483f850b}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="HIE Chief Executive" displayName="HIE Chief Executive" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{78b7a846-b7bb-ea11-a812-000d3a7fedbe}" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Active Programme Funding" displayName="Active Programme Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{7d3e838f-b125-eb11-a813-0022483fae82}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Active Application Answers" displayName="Active Application Answers" parentSchemaName="leidos_applicationanswer" parentDisplayName="Application Answer" solution="Active" id="{7d899618-6461-4522-bafa-8102d91b1ff2}" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Project Cost Grid View" displayName="Project Cost Grid View" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{7eefe1cf-aa83-ea11-a811-000d3a7f1bbb}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Active Projects" displayName="Active Projects" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{8078ace2-eae7-45e6-86aa-e2a651fe5e68}" />
@@ -2641,8 +3216,16 @@
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Inactive Funding" displayName="Inactive Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{86057322-1f63-4210-8afc-fa3456831189}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Programme Manager" displayName="Programme Manager" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{88c56d5a-3a15-eb11-a813-0022483fae82}" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Claim Adjust Line - Look up" displayName="Claim Adjust Line - Look up" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{88f0c8c6-0ea8-eb11-9442-002248015ddd}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Finance" displayName="Finance" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{8ef3343f-05cc-ea11-a812-000d3a7fedbe}" />
@@ -2653,6 +3236,14 @@
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Project Funding Lookup View" displayName="Project Funding Lookup View" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{9b89498c-2491-4be5-997a-8197a61c3599}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Funding" displayName="Active Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{a04a55e0-5dca-4453-9399-8c81a6f9ba2c}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Grade E staff" displayName="Grade E staff" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{aa3f26b8-b6bb-ea11-a812-000d3a7f1bbb}" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
@@ -2661,12 +3252,36 @@
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="All Projects Clear to Pay" displayName="All Projects Clear to Pay" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" id="{ba7c6802-36df-eb11-bacb-0022483f8d9f}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Inactive Project Funding" displayName="Inactive Project Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{d19c3449-b125-eb11-a813-0022483fae82}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Web - Public Funding" displayName="Web - Public Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{d91f93f0-4f36-eb11-a813-0022483fae82}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Grade F staff" displayName="Grade F staff" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{da8a1bc4-b6bb-ea11-a812-000d3a7f1bbb}" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="26" schemaName="Project Grid Embedded" displayName="Project Grid Embedded" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{e180c04e-e956-ea11-a811-000d3a7f1bbb}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Inactive Programme Funding" displayName="Inactive Programme Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{e8491dc4-b125-eb11-a813-0022483fae82}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="26" schemaName="Application Lookup View" displayName="Application Lookup View" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" id="{edfd18ec-b3bb-ea11-a812-000d3a7f1bbb}" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Active Project Funding" displayName="Active Project Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" id="{f8a2f6f2-b025-eb11-a813-0022483fae82}" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Pipeline Project - Child Flow - Process Approval Decision" solution="Active" id="{5e83fa4c-67aa-ea11-a812-000d3a7f1bbb}" />
@@ -2880,6 +3495,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="HIE Enquiry Form - Simplified" parentDisplayName="Enquiry" id="{e5e48e46-f894-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
@@ -2900,6 +3519,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.json2" displayName="north52_/javascript/n52.json2" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.json2" displayName="north52_/javascript/n52.json2" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="HIE Enquiry Form - Simplified" parentDisplayName="Enquiry" id="{e5e48e46-f894-ea11-a812-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
@@ -2917,6 +3540,10 @@
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Invoice Detail" id="{c7e90289-57b3-4501-a2a3-a857c878acba}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
@@ -2927,23 +3554,23 @@
         <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2110.4017)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2111.1014)" />
         <Dependent type="60" displayName="Invoice Schedule" parentDisplayName="Claim Detail" id="{832b0068-a66a-4071-987c-faaeb5a45c64}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2110.4017)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2111.1014)" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21104.00132)" />
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21111.00141)" />
         <Dependent type="60" displayName="HIE Enquiry Form" parentDisplayName="Enquiry" id="{898bd476-4331-4ecb-87b7-8d8c52e9cdfd}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21104.00132)" />
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21111.00141)" />
         <Dependent type="60" displayName="HIE Application Form" parentDisplayName="Application" id="{b3f1c88e-3b70-4309-9343-50ae803be87e}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2110.4017)" />
+        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2111.1014)" />
         <Dependent type="60" displayName="HIE Spend Profile Form" parentDisplayName="Spend \ Recovery  Profile" id="{06197ad7-eab2-402d-88dd-9e2df37e8aa6}" />
       </MissingDependency>
       <MissingDependency>
@@ -3015,6 +3642,10 @@
         <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnLegal" solution="Active" id.connectionreferencelogicalname="leidos_ConnLegal" />
         <Dependent type="29" displayName="Legal Conditions - Flow - Create Document Requirement on Create or Update" id="{15930849-7b09-eb11-a813-000d3a7f1bbb}" />
       </MissingDependency>
@@ -3072,7 +3703,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
         <Dependent type="29" displayName="Security - Flow - Send to legal for Review" id="{946126b9-c872-eb11-a812-00224840ee66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOwnHand" solution="Active" id.connectionreferencelogicalname="leidos_ConnOwnHand" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnPipleine" solution="Active" id.connectionreferencelogicalname="leidos_ConnPipleine" />
@@ -3081,6 +3720,18 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedadobesign_30b2a" solution="Active" id.connectionreferencelogicalname="leidos_sharedadobesign_30b2a" />
         <Dependent type="29" displayName="Legal Undertaking - Flow - Submit for E Signature" id="{1a3cf23e-440d-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedexcelonlinebusiness_fbf79" solution="Active" id.connectionreferencelogicalname="leidos_sharedexcelonlinebusiness_fbf79" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedsharepointonline_5be6a" solution="Active" id.connectionreferencelogicalname="leidos_sharedsharepointonline_5be6a" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="leidos_SharePointReportRootURL" solution="Active" id.schemaname="leidos_SharePointReportRootURL" />
+        <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>
