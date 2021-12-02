@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{5b5b063d-4023-eb11-a813-000d3a7fedbe}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_loanid">
+          <cell name="leidos_loanreference" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="a_c2f18ff41f1deb11a8130022483fae82.leidos_parentproject" width="125" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_capitaloutstanding" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_interestdue" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="leidos_dateofnextrepayment" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="statuscode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="leidos_loan">
+          <attribute name="statuscode" />
+          <attribute name="leidos_loanreference" />
+          <attribute name="leidos_interestdue" />
+          <attribute name="leidos_capitaloutstanding" />
+          <order attribute="leidos_loanreference" descending="false" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="not-in">
+              <value>100000000</value>
+              <value>100000006</value>
+              <value>100000005</value>
+              <value>100000002</value>
+            </condition>
+          </filter>
+          <link-entity alias="a_c2f18ff41f1deb11a8130022483fae82" name="leidos_projectfunding" from="leidos_projectfundingid" to="leidos_parentfunding" link-type="outer" visible="false">
+            <attribute name="leidos_parentproject" />
+          </link-entity>
+          <attribute name="leidos_dateofnextrepayment" />
+          <attribute name="leidos_loanid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.9.0.1173</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Web - Active Loans" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
