@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{ea26ff41-b3f2-ea11-a815-000d3a7f1bbb}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_projectid">
+          <cell name="leidos_name" width="200" />
+          <cell name="leidos_totalclientcosts" width="100" />
+          <cell name="leidos_clientprivatefundingtotal" width="100" />
+          <cell name="leidos_clientpublicfundingtotal" width="100" />
+          <cell name="a_3a563c07b52f48aead1ec04ee458db14.leidos_fundingrequestedfromhie_base" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="leidos_project">
+          <attribute name="leidos_name" />
+          <attribute name="leidos_projectid" />
+          <attribute name="leidos_clientprivatefundingtotal" />
+          <attribute name="leidos_clientpublicfundingtotal" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <filter type="or">
+              <condition attribute="statuscode" operator="eq" value="445260006" />
+              <condition attribute="statuscode" operator="eq" value="445260004" />
+              <condition attribute="statuscode" operator="eq" value="445260005" />
+              <condition attribute="statuscode" operator="eq" value="445260001" />
+            </filter>
+          </filter>
+          <attribute name="leidos_totalclientcosts" />
+          <link-entity alias="a_3a563c07b52f48aead1ec04ee458db14" name="leidos_application" to="leidos_parentapplication" from="leidos_applicationid" link-type="outer" visible="false">
+            <attribute name="leidos_fundingrequestedfromhie_base" />
+          </link-entity>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.7.0.949</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Web - Application Projects" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
