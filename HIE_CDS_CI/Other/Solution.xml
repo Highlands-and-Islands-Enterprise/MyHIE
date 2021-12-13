@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CI" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.4760</Version>
+    <Version>1.19.0.4764</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -143,6 +143,7 @@
       <RootComponent type="29" id="{ea6fc158-22f5-eb11-94ef-0022483fc71a}" behavior="0" />
       <RootComponent type="29" id="{ee7e079b-7bfd-ea11-a813-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{faea2275-7346-ea11-a812-000d3a0ba151}" behavior="0" />
+      <RootComponent type="31" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" behavior="0" />
       <RootComponent type="61" schemaName="leidos_PaymentClaim" behavior="0" />
       <RootComponent type="61" schemaName="leidos_SpendProfile" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_clientaction/dUy/f.7d95513a3941eb11a813000d3a7fedbe" behavior="0" />
@@ -199,6 +200,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_accountmanagementrecord" displayName="Client Engagement Relationship" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_accountmanagementrecord" displayName="Client Engagement Relationship" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
@@ -244,6 +249,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_areaoffice" displayName="Area Office" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_businessorsocialenterprise" displayName="Business or Social Enterprise" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
@@ -368,6 +377,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_hieteam" displayName="HIE Team" solution="Active" />
         <Dependent type="29" displayName="Pipeline Project - Flow - NFI Email Approval Process" id="{0173199e-0a15-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_hieteam" displayName="HIE Team" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_hieteam" displayName="HIE Team" solution="Active" />
@@ -516,6 +529,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_pipelineproject" displayName="Pipeline Project" solution="Active" />
         <Dependent type="29" displayName="Pipeline Project - Flow - NFI Email Approval Process" id="{0173199e-0a15-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_pipelineproject" displayName="Pipeline Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_pipelineproject" displayName="Pipeline Project" solution="Active" />
@@ -1074,6 +1091,10 @@
         <Dependent type="60" displayName="Information" parentDisplayName="BPF Account Process" id="{7aa319a8-6609-4ec4-a624-35285d806ed7}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_businessorsocialenterprise" displayName="Business or Social Enterprise " parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_charityregistrationnumber" displayName="Charity Registration Number" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="60" displayName="Web - Account Details" parentDisplayName="Account" id="{4afa4550-1f3d-ea11-a812-000d3a0bad17}" />
       </MissingDependency>
@@ -1088,6 +1109,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_companyregistrationnumber" displayName="Company Registration Number" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="BPF Account Process" id="{7aa319a8-6609-4ec4-a624-35285d806ed7}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_currentamrrecord" displayName="Current Client Engagement Record" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_dateofregistration" displayName="Date of Registration" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
@@ -1139,6 +1164,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_legalentity" displayName="Legal Entity" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_legalentity" displayName="Legal Entity" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="60" displayName="Web - Account Details" parentDisplayName="Account" id="{4afa4550-1f3d-ea11-a812-000d3a0bad17}" />
       </MissingDependency>
       <MissingDependency>
@@ -1168,6 +1197,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_organisationtype" displayName="Organisation Type" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="29" displayName="BPF Account Process" id="{440ae705-9cfd-460b-b681-d7a6b0cb6e7e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_organisationtype" displayName="Organisation Type" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_organisationtype" displayName="Organisation Type" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
@@ -1302,6 +1335,10 @@
         <Dependent type="29" displayName="BPF Account Process" id="{440ae705-9cfd-460b-b681-d7a6b0cb6e7e}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_accountmanagementrecordid" displayName="Client Engagement Record" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Client Engagement Relationship" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_areamanager" displayName="Area Manager" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Client Engagement Relationship" solution="Active" />
         <Dependent type="29" displayName="BPF Account Process" id="{440ae705-9cfd-460b-b681-d7a6b0cb6e7e}" />
       </MissingDependency>
@@ -1339,6 +1376,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_proposedsegmentation" displayName="Segmentation" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Client Engagement Relationship" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_proposedsegmentation" displayName="Segmentation" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Client Engagement Relationship" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="BPF Account Process" id="{7aa319a8-6609-4ec4-a624-35285d806ed7}" />
       </MissingDependency>
       <MissingDependency>
@@ -1372,6 +1413,14 @@
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Client Engagement Relationship" solution="Active" />
         <Dependent type="29" displayName="AMR - Flow - On Change of Status Reason Send Engage - Disengage email" id="{00aff4e8-514e-ea11-a812-000d3a0bad17}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_businessorsocialenterpriseid" displayName="Business or Social Enterprise" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_costitemeligible" displayName="Cost Item Eligible " parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
@@ -2082,6 +2131,14 @@
         <Dependent type="10" schemaName="leidos_AnticipatedSpendProfile_FundingSou" displayName="leidos_AnticipatedSpendProfile_FundingSou" parentSchemaName="leidos_fundingsource" parentDisplayName="Funding Source" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_hieteamid" displayName="HIE Team" parentSchemaName="leidos_hieteam" parentDisplayName="HIE Team" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentbusinessunit" displayName="Parent Business Unit" parentSchemaName="leidos_hieteam" parentDisplayName="HIE Team" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_authorisedsignatory" displayName="Authorised Signatory" parentSchemaName="leidos_legalundertaking" parentDisplayName="Legal Undertaking" solution="Active" />
         <Dependent type="29" displayName="Legal Undertaking - Flow - Set Client Contact" id="{8ed22449-760d-eb11-a813-000d3a7f1bbb}" />
       </MissingDependency>
@@ -2344,6 +2401,22 @@
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_loan" parentDisplayName="Loan" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="BPF - Loan" id="{dce479e6-cb17-4b63-9704-d570b0470cef}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_evidencerequirementtext" displayName="Evidence Requirement Text" parentSchemaName="leidos_milestone" parentDisplayName="Milestone" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_expectedduedate" displayName="Expected Due Date" parentSchemaName="leidos_milestone" parentDisplayName="Milestone" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_milestone" parentDisplayName="Milestone" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_milestone" parentDisplayName="Milestone" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_businessunit" displayName="Business Unit" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
@@ -2766,6 +2839,22 @@
         <Dependent type="26" schemaName="Active Own Hand Invoice Details" displayName="Active Own Hand Invoice Details" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" id="{0c41976a-7b02-4325-80fc-3aef05146153}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_isaapprovaldelegatedauthority" displayName="ISA Approval Delegated Authority" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_isaapprovedon" displayName="Date Decision Actioned" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_isadecisionoutcome" displayName="ISA Decision Outcome" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_pipelineprojectid" displayName="Pipeline Project" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_submitnfiemailapproval" displayName="Submit NFI Email Approval" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
         <Dependent type="29" displayName="Pipeline Project - Flow - NFI Email Approval Process" id="{0173199e-0a15-eb11-a813-0022483fae82}" />
       </MissingDependency>
@@ -2819,6 +2908,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_anticipatedhiefunding" displayName="Anticipated HIE Gross Funding" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_anticipatedhiefunding" displayName="Anticipated HIE Gross Funding" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="BPF - Application Business Process Flow" id="{44ad148e-db01-40a0-92f3-18eb9914be85}" />
       </MissingDependency>
       <MissingDependency>
@@ -2826,8 +2919,16 @@
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_anticipatedhiefunding_base" displayName="Anticipated HIE funding (Base)" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_anticipatedhienettfunding" displayName="Anticipated HIE Net Funding" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="29" displayName="NFI Project" id="{6f5b4a7f-8117-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_anticipatedhienettfunding" displayName="Anticipated HIE Net Funding" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_anticipatedhienettfunding" displayName="Anticipated HIE Net Funding" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -2847,11 +2948,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_anticipatedrecoveryamount" displayName="Anticipated Recoveries" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_anticipatedrecoveryamount" displayName="Anticipated Recoveries" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="BPF - Application Business Process Flow" id="{44ad148e-db01-40a0-92f3-18eb9914be85}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_anticipatedrecoveryamount" displayName="Anticipated Recoveries" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_approvedbudget" displayName="Approved Budget" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_budgetsubtype" displayName="Budget sub-type" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -2860,6 +2969,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_budgetsubtype" displayName="Budget sub-type" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="29" displayName="BPF - Application Business Process Flow" id="{e88b17e3-b43d-ea11-a812-000d3a0ba151}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_budgetsubtype" displayName="Budget sub-type" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_budgetsubtype" displayName="Budget sub-type" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3019,6 +3132,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_dateofenquiry" displayName="Date of Enquiry" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_dateofenquiry" displayName="Date of Enquiry" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="BPF - Application Business Process Flow" id="{44ad148e-db01-40a0-92f3-18eb9914be85}" />
       </MissingDependency>
       <MissingDependency>
@@ -3071,11 +3188,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_hiegrossfunding" displayName="HIE Gross Funding" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_hiegrossfunding" displayName="HIE Gross Funding" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_hiegrossfundingclaimed" displayName="HIE Gross Funding Claimed" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_hieteam" displayName="HIE Team" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_hieteam" displayName="HIE Team" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3211,6 +3336,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Project Title" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Project Title" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="BPF - Application Business Process Flow" id="{44ad148e-db01-40a0-92f3-18eb9914be85}" />
       </MissingDependency>
       <MissingDependency>
@@ -3240,6 +3369,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_nfirecoveryamount" displayName="NFI Recovery Amount" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="29" displayName="NFI  Recovery" id="{48a12d86-6714-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_nfirecoveryamount" displayName="NFI Recovery Amount" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_nfirecoveryamount" displayName="NFI Recovery Amount" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3303,6 +3436,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_parentaccount" displayName="Parent Account" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentaccount" displayName="Parent Account" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
@@ -3311,7 +3448,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_parentapplication" displayName="Parent Application" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentapplication" displayName="Parent Application" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_preapplicationprocess" displayName="Pre-Application Process" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_preapplicationprocess" displayName="Pre-Application Process" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3324,6 +3469,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_preconditionsmet" displayName="Pre-Conditions Met" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_primarytheme" displayName="Primary Theme" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_primarytheme" displayName="Primary Theme" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3340,6 +3489,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectenddate" displayName="Final Claim by Date" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="29" displayName="BPF - Application Business Process Flow" id="{e88b17e3-b43d-ea11-a812-000d3a0ba151}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectenddate" displayName="Final Claim by Date" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectenddate" displayName="Final Claim by Date" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3430,8 +3583,16 @@
         <Dependent type="29" displayName="Project SIC Codes" id="{ee7e079b-7bfd-ea11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_projectpostcode" displayName="Project Postcode" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="29" displayName="BPF - Application Business Process Flow" id="{e88b17e3-b43d-ea11-a812-000d3a0ba151}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectpostcode" displayName="Project Postcode" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectpostcode" displayName="Project Postcode" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3440,6 +3601,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectpostcode" displayName="Project Postcode" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3452,6 +3617,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectstartdate" displayName="Estimated Date of Decision" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="29" displayName="BPF - Application Business Process Flow" id="{e88b17e3-b43d-ea11-a812-000d3a0ba151}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectstartdate" displayName="Estimated Date of Decision" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectstartdate" displayName="Estimated Date of Decision" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3539,6 +3708,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_sro" displayName="SRO" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_sro" displayName="SRO" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
@@ -3611,6 +3784,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_totalcostscalculated" displayName="Total Project Costs" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalcostscalculated" displayName="Total Project Costs" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
@@ -3627,7 +3804,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_totalhiefunding" displayName="Total HIE Funding" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalhiefunding" displayName="Total HIE Funding" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalnetgia" displayName="Total Net GIA" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_totalnetgia" displayName="Total Net GIA" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3660,6 +3845,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_variancedoesnoteffectstateaid" displayName="Variance does not affect Subsidy Control" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="29" displayName="NFI State Aid Variance" id="{0c0ea42a-0419-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3706,12 +3895,28 @@
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_funddetails" displayName="Fund Details" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingamount" displayName="Funding Amount" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_fundingsource" displayName="Funding Source" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
         <Dependent type="10" schemaName="leidos_Recovery_ParentFunding_leidos_Proj" displayName="leidos_Recovery_ParentFunding_leidos_Proj" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
         <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectfundingid" displayName="Project Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
@@ -3727,19 +3932,63 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_actualduedate" displayName="Actual Due Date" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_actualduedate" displayName="Actual Due Date" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
         <Dependent type="60" displayName="Progress Grid" parentDisplayName="Measure" id="{dcf701f0-2928-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_expectedhieoutputdescription" displayName="Expected HIE Output Description" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_expectedhieoutputquantity" displayName="Expected HIE Output Quantity" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_measuretype" displayName="Measure Type" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_measuretype" displayName="Measure Type" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
         <Dependent type="60" displayName="Progress Grid" parentDisplayName="Measure" id="{dcf701f0-2928-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_output" displayName="Output" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
         <Dependent type="60" displayName="Progress Grid" parentDisplayName="Measure" id="{dcf701f0-2928-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectspecificactivity" displayName="Expected Activity Description" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_qty" displayName="Expected Quantity" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_qty" displayName="Expected Quantity" parentSchemaName="leidos_projectmeasure" parentDisplayName="Measure" solution="Active" />
         <Dependent type="60" displayName="Progress Grid" parentDisplayName="Measure" id="{dcf701f0-2928-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_projectstrategicpriority" parentDisplayName="Strategic Priority" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_primarystrategicpriority" displayName="Primary Strategic Priority " parentSchemaName="leidos_projectstrategicpriority" parentDisplayName="Strategic Priority" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_strategicpriority" displayName="Strategic Priority" parentSchemaName="leidos_projectstrategicpriority" parentDisplayName="Strategic Priority" solution="Active" />
+        <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_recoverysource" parentDisplayName="Recovery Source" solution="Active" />
