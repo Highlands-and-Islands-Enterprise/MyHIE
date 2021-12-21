@@ -1,12 +1,8 @@
 var Leidos = window.Leidos || {};
 
-Leidos.setFieldsDisabled = function(executionContext) {
-   var formContext =  executionContext.getFormContext()
-    var vSPDetail = formContext.data.entity;
-    var vLocked =  vSPDetail.Attribute("Locked").getValue();
-    if (vLocked == "Yes") {
-        vSPDetail.attributes.forEach(function(field, i) {
-            field.controls.get(0).setDisabled(true);
-        });
-    }
+Leidos.setGridFieldsDisabled = function(executionContext) {
+    "use strict";
+    var formContext = executionContext.getFormContext()
+    var grid = formContext.getControl("Spend Profile - Embedded Grid");
+   
 }
