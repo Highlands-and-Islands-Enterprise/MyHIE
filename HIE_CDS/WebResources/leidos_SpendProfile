@@ -3,6 +3,19 @@ var Leidos = window.Leidos || {};
 Leidos.setGridFieldsDisabled = function(executionContext) {
     "use strict";
     var formContext = executionContext.getFormContext()
-    var grid = formContext.getControl("Spend Profile - Embedded Grid");
-   
+    var gridContext = formContext.getControl();
+};
+
+Leidos.gridRowSelected = function(executionContext) {
+    "use strict";
+    var formContext = executionContext.getFormContext()
+    var gridContext = formContext.getControl("SpendProfileDetails");
+    var selectedRows = gridContext.getSubGrid().getSelectedRows();
+    selectedRows.forEach(function (selectedRow, i) {
+        if (selectedRow.data.entity.gridAttributes.getName("leidos_oct").getValue() === "100") {
+            selectedRow.data.entity.attributes.forEach(function (attribute,j) {
+                attribute.controls.get(i).setDisabled(true) ;
+            });
+        };      
+    });
 }
