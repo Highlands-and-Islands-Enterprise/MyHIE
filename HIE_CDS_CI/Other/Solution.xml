@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CI" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.4853</Version>
+    <Version>1.19.0.4859</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -112,6 +112,7 @@
       <RootComponent type="29" id="{1dcc1f25-7357-ec11-8f8f-00224842c30b}" behavior="0" />
       <RootComponent type="29" id="{2186984c-063a-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{321aa7cc-794c-ec11-8f8e-000d3a7f952a}" behavior="0" />
+      <RootComponent type="29" id="{3a3858bf-156e-ec11-8943-00224842bdfd}" behavior="0" />
       <RootComponent type="29" id="{3bc0ebbc-950f-eb11-a813-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{3eb902d9-6509-eb11-a813-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{432f8cee-c81d-eb11-a813-0022483fae82}" behavior="0" />
@@ -260,6 +261,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
         <Dependent type="1" schemaName="leidos_financialyear" displayName="Financial Year" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow - On Change of Status Reason Update Child Records" id="{3a3858bf-156e-ec11-8943-00224842bdfd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
@@ -531,6 +536,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_paymentclaim" displayName="Payment Claim" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow - On Change of Status Reason Update Child Records" id="{3a3858bf-156e-ec11-8943-00224842bdfd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_paymentclaim" displayName="Payment Claim" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Payment" id="{17940790-a24b-42f6-9810-18d90fa42f56}" />
       </MissingDependency>
       <MissingDependency>
@@ -568,6 +577,14 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_programme_amendment" displayName="Programme Amendment" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_progressmeasure" displayName="Progress Measure" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow - On Change of Status Reason Update Child Records" id="{3a3858bf-156e-ec11-8943-00224842bdfd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_progressmilestones" displayName="Progress Milestones" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow - On Change of Status Reason Update Child Records" id="{3a3858bf-156e-ec11-8943-00224842bdfd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_project" displayName="Project" solution="Active" />
@@ -1504,6 +1521,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" solution="Active" />
         <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow - On Change of Status Reason Update Child Records" id="{3a3858bf-156e-ec11-8943-00224842bdfd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_costitemeligible" displayName="Cost Item Eligible " parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
@@ -5010,6 +5031,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnApplication" solution="Active" id.connectionreferencelogicalname="leidos_ConnApplication" />
         <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
+        <Dependent type="29" displayName="Claim - Flow - On Change of Status Reason Update Child Records" id="{3a3858bf-156e-ec11-8943-00224842bdfd}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
