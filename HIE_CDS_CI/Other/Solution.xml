@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CI" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.4863</Version>
+    <Version>1.19.0.4868</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -83,6 +83,7 @@
       <RootComponent type="1" schemaName="leidos_application" behavior="1" />
       <RootComponent type="1" schemaName="leidos_bpfaccountprocess" behavior="0" />
       <RootComponent type="1" schemaName="leidos_bpf_loan" behavior="0" />
+      <RootComponent type="1" schemaName="leidos_claimadjustment" behavior="2" />
       <RootComponent type="1" schemaName="leidos_claimdetail" behavior="2" />
       <RootComponent type="1" schemaName="leidos_clientaction" behavior="1" />
       <RootComponent type="1" schemaName="leidos_documentrequirement" behavior="2" />
@@ -92,6 +93,9 @@
       <RootComponent type="1" schemaName="leidos_financialyear" behavior="0" />
       <RootComponent type="1" schemaName="leidos_funddetail" behavior="2" />
       <RootComponent type="1" schemaName="leidos_loan" behavior="2" />
+      <RootComponent type="1" schemaName="leidos_loanadjustment" behavior="2" />
+      <RootComponent type="1" schemaName="leidos_loandrawdown" behavior="2" />
+      <RootComponent type="1" schemaName="leidos_loanreceipt" behavior="2" />
       <RootComponent type="1" schemaName="leidos_ownhandinvoicedetail" behavior="2" />
       <RootComponent type="1" schemaName="leidos_payment" behavior="2" />
       <RootComponent type="1" schemaName="leidos_project" behavior="2" />
@@ -154,6 +158,7 @@
       <RootComponent type="61" schemaName="north52_/formula/leidos_documentrequirement/XHZ/f.cb7cea2c7e4cec118f8e000d3a7f952a" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_paymentclaim/ngb/f.3fac0a74b864ec118f8f000d3ad55c2e" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_project/I9w/f.654037b3b74eec118f8e000d3a7f9abb" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_signatory/wpG/f.7bfc252391f2ea11a815000d3a7f1bbb" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/eHo/f.6e1a6f9da84bec118f8e000d3a7f952a" behavior="0" />
       <RootComponent type="62" schemaName="leidos_HIEAccountManagement" behavior="0" />
     </RootComponents>
@@ -276,7 +281,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_claimadjustment" displayName="Claim Adjustment" solution="Active" />
-        <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
+        <Dependent type="1" schemaName="leidos_claimadjustment" displayName="Claim Adjustment" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_claimdetail" displayName="Claim Detail" solution="Active" />
@@ -473,6 +478,18 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_loan" displayName="Loan" solution="Active" />
         <Dependent type="1" schemaName="leidos_loan" displayName="Loan" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_loanadjustment" displayName="Loan Adjustment" solution="Active" />
+        <Dependent type="1" schemaName="leidos_loanadjustment" displayName="Loan Adjustment" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_loandrawdown" displayName="Loan Drawdown" solution="Active" />
+        <Dependent type="1" schemaName="leidos_loandrawdown" displayName="Loan Drawdown" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_loanreceipt" displayName="Loan Receipt" solution="Active" />
+        <Dependent type="1" schemaName="leidos_loanreceipt" displayName="Loan Receipt" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_milestone" displayName="Milestone" solution="Active" />

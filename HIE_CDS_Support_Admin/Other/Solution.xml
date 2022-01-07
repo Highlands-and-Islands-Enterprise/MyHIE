@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ImportExportXml version="9.2.21114.131" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
-    <UniqueName>HIE_CDS_CurrentSprint</UniqueName>
+    <UniqueName>HIE_CDS_Support_Admin</UniqueName>
     <LocalizedNames>
-      <LocalizedName description="HIE_CDS_CurrentSprint" languagecode="1033" />
+      <LocalizedName description="HIE_CDS_Support_Admin" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
     <Version>1.19.0.4868</Version>
@@ -77,7 +77,39 @@
         </Address>
       </Addresses>
     </Publisher>
-    <RootComponents />
-    <MissingDependencies />
+    <RootComponents>
+      <RootComponent type="29" id="{a4c10a78-b36f-ec11-8943-00224842bdfd}" behavior="0" />
+      <RootComponent type="29" id="{b99ad7d1-ac6f-ec11-8943-00224842b446}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="north52_formula" displayName="N52 Formula" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="29" displayName="N52 Formula Status - Recurrence Flow - Status Check" id="{a4c10a78-b36f-ec11-8943-00224842bdfd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
+        <Dependent type="29" displayName="N52 Formula Status - Recurrence Flow - Status Check" id="{a4c10a78-b36f-ec11-8943-00224842bdfd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
+        <Dependent type="29" displayName="Email Message - Recurrence Flow - Status Check" id="{b99ad7d1-ac6f-ec11-8943-00224842b446}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnRecurrence" solution="Active" id.connectionreferencelogicalname="leidos_ConnRecurrence" />
+        <Dependent type="29" displayName="N52 Formula Status - Recurrence Flow - Status Check" id="{a4c10a78-b36f-ec11-8943-00224842bdfd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnRecurrence" solution="Active" id.connectionreferencelogicalname="leidos_ConnRecurrence" />
+        <Dependent type="29" displayName="Email Message - Recurrence Flow - Status Check" id="{b99ad7d1-ac6f-ec11-8943-00224842b446}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="leidos_BaseURL" solution="Active" id.schemaname="leidos_BaseURL" />
+        <Dependent type="29" displayName="N52 Formula Status - Recurrence Flow - Status Check" id="{a4c10a78-b36f-ec11-8943-00224842bdfd}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="leidos_BaseURL" solution="Active" id.schemaname="leidos_BaseURL" />
+        <Dependent type="29" displayName="Email Message - Recurrence Flow - Status Check" id="{b99ad7d1-ac6f-ec11-8943-00224842b446}" />
+      </MissingDependency>
+    </MissingDependencies>
   </SolutionManifest>
 </ImportExportXml>
