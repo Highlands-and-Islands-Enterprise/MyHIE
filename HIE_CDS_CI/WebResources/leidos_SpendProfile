@@ -19,3 +19,39 @@ Leidos.gridRowSelected = function(executionContext) {
         };      
     });
 }
+
+function setFutureFieldsDisabled(context) {
+	var thisRow = context.getFormContext().data.entity;
+
+	var rowYearKey = thisRow.attributes.get("leidos_hiefinancialyear").getValue()[0].name;
+	var rowFY = "20" + rowYearKey.substr(6,2);
+
+	//get current date
+    var today = new Date();
+    var curMonth = today.getMonth()+1;
+    var curYear = today.getFullYear();
+	//var curKey = (curYear*100)+curMonth;
+
+	var curFinYear = curYear;
+	var curFinPeriod = ((curMonth+8)%12)+1;
+	if (curFinPeriod<=9){
+	  curFinYear=curFinYear+1;
+	}
+
+	var curFinKey = (curFinYear*100)+curFinPeriod;
+
+	//iterate the attributes (1=Apr, 2=May etc
+	for(var i=1;i<=12;i++){
+
+		//get key for thiscontrol
+		var thisFinKey = (parseInt(rowFY)*100)+i;
+
+		if (thisFinKey<curFinKey){
+			//disable the field
+			thisRow.attributes.get(i).controls.get(0).setDisabled(true);
+		}
+	}
+}
+
+
+
