@@ -1,26 +1,6 @@
 var Leidos = window.Leidos || {};
 
-Leidos.setGridFieldsDisabled = function(executionContext) {
-    "use strict";
-    var formContext = executionContext.getFormContext()
-    var gridContext = formContext.getControl();
-};
-
-Leidos.gridRowSelected = function(executionContext) {
-    "use strict";
-    var formContext = executionContext.getFormContext()
-    var gridContext = formContext.getControl("SpendProfileDetails");
-    var selectedRows = gridContext.getSubGrid().getSelectedRows();
-    selectedRows.forEach(function (selectedRow, i) {
-        if (selectedRow.data.entity.gridAttributes.getName("leidos_oct").getValue() === "100") {
-            selectedRow.data.entity.attributes.forEach(function (attribute,j) {
-                attribute.controls.get(i).setDisabled(true) ;
-            });
-        };      
-    });
-}
-
-function setFutureFieldsDisabled(context) {
+function setPastFieldsDisabled(context) {
 	var thisRow = context.getFormContext().data.entity;
 
 	var rowYearKey = thisRow.attributes.get("leidos_hiefinancialyear").getValue()[0].name;
