@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CI" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.4922</Version>
+    <Version>1.19.0.4927</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -122,6 +122,7 @@
       <RootComponent type="29" id="{3eb902d9-6509-eb11-a813-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{432f8cee-c81d-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{440ae705-9cfd-460b-b681-d7a6b0cb6e7e}" behavior="0" />
+      <RootComponent type="29" id="{489fe0af-38b8-4e3b-8887-5837b3be5007}" behavior="0" />
       <RootComponent type="29" id="{48a12d86-6714-eb11-a813-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{4ca7fbde-8fcf-eb11-bacc-000d3ad59ccd}" behavior="0" />
       <RootComponent type="29" id="{4e10ea33-e228-eb11-a813-000d3a7fedbe}" behavior="0" />
@@ -164,6 +165,7 @@
       <RootComponent type="61" schemaName="north52_/formula/leidos_project/I9w/f.654037b3b74eec118f8e000d3a7f9abb" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_signatory/wpG/f.7bfc252391f2ea11a815000d3a7f1bbb" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/eHo/f.6e1a6f9da84bec118f8e000d3a7f952a" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/schedule/leidos_project/PES/s.6e6a32802a7aec118d21002248433a59" behavior="0" />
       <RootComponent type="62" schemaName="leidos_HIEAccountManagement" behavior="0" />
     </RootComponents>
     <MissingDependencies>
@@ -3517,6 +3519,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Project Title" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="29" displayName="Project - Action - Call  Project Set Client Remaining Balance Process Genie" id="{489fe0af-38b8-4e3b-8887-5837b3be5007}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Project Title" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="29" displayName="NFI  Recovery" id="{48a12d86-6714-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
@@ -3778,6 +3784,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="29" displayName="Anticipated Recovery Value Check" id="{432f8cee-c81d-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="29" displayName="Project - Action - Call  Project Set Client Remaining Balance Process Genie" id="{489fe0af-38b8-4e3b-8887-5837b3be5007}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -5034,12 +5044,20 @@
         <Dependent type="2" schemaName="leidos_determineapprovalrouting" displayName="Determine Approval Routing" parentSchemaName="leidos_application" parentDisplayName="Application" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="90" schemaName="North52.FormulaManager.WorkflowActivities.ExecuteFormula, North52.FormulaManager, Version=1.0.0.596, Culture=neutral, PublicKeyToken=a8878fd7dad60ca1" displayName="N52 Process Genie" solution="North52FormulaManager (1.0.0.596)" id="{ef8da8e0-5947-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="Project - Action - Call  Project Set Client Remaining Balance Process Genie" id="{489fe0af-38b8-4e3b-8887-5837b3be5007}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
         <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
         <Dependent type="29" displayName="AMR-Flow - AMR Approval Process" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
+        <Dependent type="29" displayName="Loan Drawdown - Flow - Submit for Approval - ConnRef" id="{f27add36-3579-ec11-8d21-002248433af0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_Approvals" solution="Active" id.connectionreferencelogicalname="leidos_Approvals" />
@@ -5136,6 +5154,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
         <Dependent type="29" displayName="Legal Undertaking - Flow - Submit for DA Approval" id="{9b443976-720c-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
+        <Dependent type="29" displayName="Loan Drawdown - Flow - Submit for Approval - ConnRef" id="{f27add36-3579-ec11-8d21-002248433af0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
