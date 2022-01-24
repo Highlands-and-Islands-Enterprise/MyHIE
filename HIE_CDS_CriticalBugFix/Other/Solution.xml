@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ImportExportXml version="9.2.21122.145" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ImportExportXml version="9.2.21123.167" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SolutionManifest>
     <UniqueName>HIE_CDS_CriticalBugFix</UniqueName>
     <LocalizedNames>
       <LocalizedName description="HIE CDS CriticalBugFix" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.4931</Version>
+    <Version>1.19.0.4936</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -98,6 +98,7 @@
       <RootComponent type="20" id="{b4d7f427-de5d-ec11-8f8f-00224842ca49}" behavior="0" />
       <RootComponent type="20" id="{ba7a6dcd-b736-ea11-a813-000d3a0bad7c}" behavior="0" />
       <RootComponent type="20" id="{ee097c7f-b736-ea11-a813-000d3a0bad7c}" behavior="0" />
+      <RootComponent type="29" id="{0add8987-0e5f-eb11-a812-000d3ad6089d}" behavior="0" />
       <RootComponent type="29" id="{3b443cf4-90a1-ea11-a812-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" behavior="0" />
       <RootComponent type="29" id="{7c10c4b4-e4b9-ea11-a812-000d3a7f1bbb}" behavior="0" />
@@ -107,6 +108,7 @@
       <RootComponent type="29" id="{a30b6276-080f-ec11-b6e6-000d3ad67ea6}" behavior="0" />
       <RootComponent type="29" id="{bcfd9302-f316-ec11-b6e6-00224841218a}" behavior="0" />
       <RootComponent type="29" id="{ee4aae86-200f-ec11-b6e6-000d3ad67033}" behavior="0" />
+      <RootComponent type="29" id="{f27add36-3579-ec11-8d21-002248433af0}" behavior="0" />
       <RootComponent type="31" id="{1a959438-2cbd-eb11-bacc-000d3ad6a8e8}" behavior="0" />
       <RootComponent type="61" schemaName="leidos_application.js" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_anticipatedspendprofile/8GY/f.5d577ba3eab9ea11a812000d3a7f1bbb" behavior="0" />
@@ -248,6 +250,14 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_loan" displayName="Loan" solution="Active" />
         <Dependent type="1" schemaName="leidos_loan" displayName="Loan" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_loandrawdown" displayName="Loan Drawdown" solution="Active" />
+        <Dependent type="29" displayName="(Deprecated) Loan Drawdown - Flow - Submit for Approval" id="{0add8987-0e5f-eb11-a812-000d3ad6089d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_loandrawdown" displayName="Loan Drawdown" solution="Active" />
+        <Dependent type="29" displayName="Loan Drawdown - Flow - Submit for Approval - ConnRef" id="{f27add36-3579-ec11-8d21-002248433af0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_milestone" displayName="Milestone" solution="Active" />
@@ -1062,6 +1072,14 @@
         <Dependent type="26" schemaName="Web - Active Loans" displayName="Web - Active Loans" parentSchemaName="leidos_loan" parentDisplayName="Loan" id="{5b5b063d-4023-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_submitdrawdownforapproval" displayName="Submit Drawdown for Approval" parentSchemaName="leidos_loandrawdown" parentDisplayName="Loan Drawdown" solution="Active" />
+        <Dependent type="29" displayName="(Deprecated) Loan Drawdown - Flow - Submit for Approval" id="{0add8987-0e5f-eb11-a812-000d3ad6089d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submitdrawdownforapproval" displayName="Submit Drawdown for Approval" parentSchemaName="leidos_loandrawdown" parentDisplayName="Loan Drawdown" solution="Active" />
+        <Dependent type="29" displayName="Loan Drawdown - Flow - Submit for Approval - ConnRef" id="{f27add36-3579-ec11-8d21-002248433af0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="createdon" displayName="Created On" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="26" schemaName="WES Projects Clear to Pay" displayName="WES Projects Clear to Pay" parentSchemaName="leidos_project" parentDisplayName="Project" id="{231d9493-a4d2-eb11-bacb-000d3ad6153d}" />
       </MissingDependency>
@@ -1822,6 +1840,14 @@
         <Dependent type="60" displayName="HIE Summary" parentDisplayName="Own Hand Invoice Summary" id="{966cd1f4-3c24-4085-839f-f36aa932883c}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="(Deprecated) Loan Drawdown - Flow - Submit for Approval" id="{0add8987-0e5f-eb11-a812-000d3ad6089d}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="Loan Drawdown - Flow - Submit for Approval - ConnRef" id="{f27add36-3579-ec11-8d21-002248433af0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="29" displayName="BPF - Project" solution="Active" id="{c34d0de6-b4d8-4a85-99fb-cee9b9606cd8}" />
         <Dependent type="80" schemaName="leidos_OwnHandInvoiceProcessing" displayName="Own Hand Invoice Processing" />
       </MissingDependency>
@@ -1958,31 +1984,31 @@
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2112.2010)" />
+        <Required type="66" schemaName="MscrmControls.CardFeedContainer.CardFeedContainer" displayName="MscrmControls.CardFeedContainer.CardFeedContainer" solution="BaseCustomControlsCore (9.0.2112.3015)" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2112.2010)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2112.3015)" />
         <Dependent type="60" displayName="Information" parentDisplayName="Invoice Type" id="{204cf485-2100-47c7-88d5-24acad0dd460}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2112.2010)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2112.3015)" />
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Own Hand Record Type" id="{2acbf199-cbff-42bd-b1df-5443e1a9ece2}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2112.2010)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2112.3015)" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2112.2010)" />
+        <Required type="66" schemaName="MscrmControls.FieldControls.ToggleControl" displayName="MscrmControls.FieldControls.ToggleControl" solution="BaseCustomControlsCore (9.0.2112.3015)" />
         <Dependent type="60" displayName="HIE Summary" parentDisplayName="Own Hand Invoice Summary" id="{966cd1f4-3c24-4085-839f-f36aa932883c}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21122.00145)" />
+        <Required type="66" schemaName="MscrmControls.FlipSwitch.FlipSwitchControl" displayName="MscrmControls.FlipSwitch.FlipSwitchControl" solution="CustomControlsCore (9.2.21123.00167)" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2112.2010)" />
+        <Required type="66" schemaName="MscrmControls.Grid.GridControl" displayName="MscrmControls.Grid.GridControl" solution="BaseCustomControlsCore (9.0.2112.3015)" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
       </MissingDependency>
       <MissingDependency>
@@ -1994,8 +2020,16 @@
         <Dependent type="2" schemaName="leidos_incomeexpenditure" displayName="Income/ Expenditure" parentSchemaName="leidos_ownhandrecordtype" parentDisplayName="Own Hand Record Type" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
+        <Dependent type="29" displayName="Loan Drawdown - Flow - Submit for Approval - ConnRef" id="{f27add36-3579-ec11-8d21-002248433af0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnApplication" solution="Active" id.connectionreferencelogicalname="leidos_ConnApplication" />
         <Dependent type="29" displayName="Application - Flow - On InviteToApply Send Notification to Client" id="{930e3734-ebab-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnCDSLoanDrawdown" solution="Active" id.connectionreferencelogicalname="leidos_ConnCDSLoanDrawdown" />
+        <Dependent type="29" displayName="Loan Drawdown - Flow - Submit for Approval - ConnRef" id="{f27add36-3579-ec11-8d21-002248433af0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
@@ -2016,6 +2050,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnLadder" solution="Active" id.connectionreferencelogicalname="leidos_ConnLadder" />
         <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
+        <Dependent type="29" displayName="Loan Drawdown - Flow - Submit for Approval - ConnRef" id="{f27add36-3579-ec11-8d21-002248433af0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
