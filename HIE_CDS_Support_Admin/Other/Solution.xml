@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_Support_Admin" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.4940</Version>
+    <Version>1.19.0.4944</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -80,6 +80,7 @@
     <RootComponents>
       <RootComponent type="29" id="{a4c10a78-b36f-ec11-8943-00224842bdfd}" behavior="0" />
       <RootComponent type="29" id="{b99ad7d1-ac6f-ec11-8943-00224842b446}" behavior="0" />
+      <RootComponent type="29" id="{bcfd9302-f316-ec11-b6e6-00224841218a}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
@@ -95,6 +96,14 @@
         <Dependent type="29" displayName="Email Message - Recurrence Flow - Status Check" id="{b99ad7d1-ac6f-ec11-8943-00224842b446}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
+        <Dependent type="29" displayName="Recurrence -&gt; Enable disabled flows" id="{bcfd9302-f316-ec11-b6e6-00224841218a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnPowerAutomateforAdmins" solution="Active" id.connectionreferencelogicalname="leidos_ConnPowerAutomateforAdmins" />
+        <Dependent type="29" displayName="Recurrence -&gt; Enable disabled flows" id="{bcfd9302-f316-ec11-b6e6-00224841218a}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnRecurrence" solution="Active" id.connectionreferencelogicalname="leidos_ConnRecurrence" />
         <Dependent type="29" displayName="N52 Formula Status - Recurrence Flow - Status Check" id="{a4c10a78-b36f-ec11-8943-00224842bdfd}" />
       </MissingDependency>
@@ -109,6 +118,10 @@
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="leidos_BaseURL" solution="Active" id.schemaname="leidos_BaseURL" />
         <Dependent type="29" displayName="Email Message - Recurrence Flow - Status Check" id="{b99ad7d1-ac6f-ec11-8943-00224842b446}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="leidos_BaseURL" solution="Active" id.schemaname="leidos_BaseURL" />
+        <Dependent type="29" displayName="Recurrence -&gt; Enable disabled flows" id="{bcfd9302-f316-ec11-b6e6-00224841218a}" />
       </MissingDependency>
     </MissingDependencies>
   </SolutionManifest>

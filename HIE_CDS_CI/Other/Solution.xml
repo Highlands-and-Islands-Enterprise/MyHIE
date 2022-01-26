@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CI" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.4940</Version>
+    <Version>1.19.0.4944</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -83,6 +83,7 @@
       <RootComponent type="1" schemaName="leidos_application" behavior="1" />
       <RootComponent type="1" schemaName="leidos_bpfaccountprocess" behavior="0" />
       <RootComponent type="1" schemaName="leidos_bpf_loan" behavior="0" />
+      <RootComponent type="1" schemaName="leidos_claim" behavior="2" />
       <RootComponent type="1" schemaName="leidos_claimadjustment" behavior="2" />
       <RootComponent type="1" schemaName="leidos_claimdetail" behavior="2" />
       <RootComponent type="1" schemaName="leidos_clientaction" behavior="1" />
@@ -159,6 +160,16 @@
       <RootComponent type="31" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" behavior="0" />
       <RootComponent type="61" schemaName="leidos_PaymentClaim" behavior="0" />
       <RootComponent type="61" schemaName="leidos_SpendProfile" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_accountmanagementactionplan/wNF/f.2f8dcce7d50eeb11a813000d3a7fedbe" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/MSd/f.e6c99d7b8d5ceb11a81300224840fa54" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/MSd/fd.1172f770e171eb11a81200224840ee66" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/MSd/fd.15ef97fec7a9eb119442002248015c28" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/MSd/fd.59ed00cc8260eb11a812000d3ad5cbb0" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/MSd/fd.7a360829f65eeb11a812000d3ad60179" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/MSd/fd.9767d965cf5ceb11a81300224840fa54" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/MSd/fd.a275541ad15ceb11a81200224840f2c5" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/MSd/fd.b396fef85391eb11b1ac000d3ad5c4c1" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_claim/MSd/fd.d83c1b1fc95ceb11a81300224840fa54" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_claim/WD7/f.8b6b508c7c78ec118d21002248433ae1" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_claimadjustmentline/BAB/f.ed7567d40d7347c7af82bb274cd07f38" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_claimadjustmentline/BAB/fd.ebfa6843f84e4777aedfd3b0e11b3184" behavior="0" />
@@ -171,6 +182,7 @@
       <RootComponent type="61" schemaName="north52_/formula/leidos_clientaction/dUy/f.7d95513a3941eb11a813000d3a7fedbe" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_documentrequirement/0bB/f.9e6fc4b07b4cec118f8e000d3a7f952a" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_documentrequirement/XHZ/f.cb7cea2c7e4cec118f8e000d3a7f952a" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_loan/EmP/f.ebc3eea94223eb11a813000d3a7fedbe" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_paymentclaim/ngb/f.3fac0a74b864ec118f8f000d3ad55c2e" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_project/hr0/f.01bd981f0d7aec118d21002248433a59" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_project/I9w/f.654037b3b74eec118f8e000d3a7f9abb" behavior="0" />
@@ -286,23 +298,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
-        <Dependent type="1" schemaName="leidos_financialyear" displayName="Financial Year" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
-        <Dependent type="29" displayName="Claim - Flow - On Change of Status Reason Update Child Records" id="{3a3858bf-156e-ec11-8943-00224842bdfd}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
-        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
-        <Dependent type="60" displayName="Web - Project Form" parentDisplayName="Project" id="{18d7078d-4559-ea11-a811-000d3a7f1bbb}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="leidos_claim" displayName="Claim" solution="Active" />
-        <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
+        <Dependent type="1" schemaName="leidos_claim" displayName="Claim" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_claimadjustment" displayName="Claim Adjustment" solution="Active" />
