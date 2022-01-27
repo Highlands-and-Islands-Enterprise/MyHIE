@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CI" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.4944</Version>
+    <Version>1.19.0.4948</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -112,6 +112,7 @@
       <RootComponent type="29" id="{0173199e-0a15-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{0c0ea42a-0419-eb11-a813-000d3a7fedbe}" behavior="0" />
+      <RootComponent type="29" id="{0ce291d7-7b51-ea11-a813-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{15930849-7b09-eb11-a813-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{1a2008f9-7717-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{1a3cf23e-440d-eb11-a813-000d3a7fedbe}" behavior="0" />
@@ -186,12 +187,24 @@
       <RootComponent type="61" schemaName="north52_/formula/leidos_paymentclaim/ngb/f.3fac0a74b864ec118f8f000d3ad55c2e" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_project/hr0/f.01bd981f0d7aec118d21002248433a59" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_project/I9w/f.654037b3b74eec118f8e000d3a7f9abb" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/f.1604350708d4eb11bacb000d3ad57248" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.02844a564a79ec118d21002248433af0" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.038ae1933c79ec118d21002248433af0" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.649d993e747fec118d210022484115c4" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.6bd9f0544779ec118d21002248433af0" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.a965a8d308d4eb11bacb000d3ad57248" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_signatory/wpG/f.7bfc252391f2ea11a815000d3a7f1bbb" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/eHo/f.6e1a6f9da84bec118f8e000d3a7f952a" behavior="0" />
       <RootComponent type="61" schemaName="north52_/schedule/leidos_project/PES/s.6e6a32802a7aec118d21002248433a59" behavior="0" />
       <RootComponent type="62" schemaName="leidos_HIEAccountManagement" behavior="0" />
     </RootComponents>
     <MissingDependencies>
+      <MissingDependency>
+        <Required type="1" schemaName="adx_invitation" displayName="Invitation" solution="MicrosoftPortalBase (9.2.2103.1)">
+          <package>CDSStarterPortal (9.2.2006.10)</package>
+        </Required>
+        <Dependent type="29" displayName="Invitation - Flow - On create" id="{0ce291d7-7b51-ea11-a813-000d3a7f1bbb}" />
+      </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_accountmanagementactionplan" displayName="Action Plan" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
@@ -605,6 +618,10 @@
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_portalmessage" displayName="Portal Message" solution="Active" />
+        <Dependent type="29" displayName="Invitation - Flow - On create" id="{0ce291d7-7b51-ea11-a813-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_programme" displayName="Programme" solution="Active" />
         <Dependent type="10" schemaName="leidos_AnticipatedSpendProfile_ParentProg" displayName="leidos_AnticipatedSpendProfile_ParentProg" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
       </MissingDependency>
@@ -923,6 +940,10 @@
       <MissingDependency>
         <Required type="10" schemaName="leidos_Project_ParentApplication_leidos_A" displayName="leidos_Project_ParentApplication_leidos_A" parentSchemaName="leidos_application" parentDisplayName="Application" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_ClaimDetail_ParentClaim_leidos_Cla" displayName="leidos_ClaimDetail_ParentClaim_leidos_Cla" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_ClaimDetail_ParentClaim_leidos_Cla" displayName="leidos_ClaimDetail_ParentClaim_leidos_Cla" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
@@ -1654,7 +1675,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_expendituredescription" displayName="Expenditure Description" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_expendituredescription" displayName="Expenditure Description" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
         <Dependent type="60" displayName="Invoice Schedule" parentDisplayName="Claim Detail" id="{832b0068-a66a-4071-987c-faaeb5a45c64}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_invoicedate" displayName="Invoice Date" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_invoicedate" displayName="Invoice Date" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
@@ -1662,7 +1691,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_invoicenumber" displayName="Invoice number" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_invoicenumber" displayName="Invoice number" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
         <Dependent type="60" displayName="Invoice Schedule" parentDisplayName="Claim Detail" id="{832b0068-a66a-4071-987c-faaeb5a45c64}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_invoicevalue" displayName="Invoice value" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_invoicevalue" displayName="Invoice value" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
@@ -1670,7 +1707,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
         <Dependent type="60" displayName="Invoice Schedule" parentDisplayName="Claim Detail" id="{832b0068-a66a-4071-987c-faaeb5a45c64}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentclaim" displayName="Parent Claim" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_parentclaim" displayName="Parent Claim" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
@@ -1678,7 +1723,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_reasonifnoteligible" displayName="Reason if not eligible" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_reasonifnoteligible" displayName="Reason if not eligible" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
         <Dependent type="60" displayName="Invoice Schedule" parentDisplayName="Claim Detail" id="{832b0068-a66a-4071-987c-faaeb5a45c64}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_supplier" displayName="Supplier" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_supplier" displayName="Supplier" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
@@ -1686,7 +1739,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
         <Dependent type="60" displayName="Invoice Schedule" parentDisplayName="Claim Detail" id="{832b0068-a66a-4071-987c-faaeb5a45c64}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_claimdetail" parentDisplayName="Claim Detail" solution="Active" />
@@ -4978,6 +5039,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Child - Get Environment Variable" solution="Active" id="{c3e4375a-c7cc-ea11-a812-000d3a7fedbe}" />
+        <Dependent type="29" displayName="Invitation - Flow - On create" id="{0ce291d7-7b51-ea11-a813-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="Child - Get Environment Variable" solution="Active" id="{c3e4375a-c7cc-ea11-a812-000d3a7fedbe}" />
         <Dependent type="29" displayName="Legal Undertaking - Flow -  Route to HIE Legal Route 2" id="{3eb902d9-6509-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
@@ -5116,6 +5181,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.clientside" displayName="north52_/javascript/n52.clientside" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="Invoice Schedule" parentDisplayName="Claim Detail" id="{832b0068-a66a-4071-987c-faaeb5a45c64}" />
       </MissingDependency>
       <MissingDependency>
@@ -5160,6 +5229,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.json2" displayName="north52_/javascript/n52.json2" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.json2" displayName="north52_/javascript/n52.json2" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="Invoice Schedule" parentDisplayName="Claim Detail" id="{832b0068-a66a-4071-987c-faaeb5a45c64}" />
       </MissingDependency>
       <MissingDependency>
@@ -5201,6 +5274,10 @@
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Spend / Recovery Detail" id="{26d7f189-0dd4-423c-80f3-32133ea63e18}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
+        <Dependent type="60" displayName="WEB - Invoice Schedule" parentDisplayName="Claim Detail" id="{707f1965-62e6-4ed6-a80d-f38c397a3754}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="north52_/javascript/n52.rest" displayName="north52_/javascript/n52.rest" solution="North52FormulaManager (1.0.0.596)" />
@@ -5355,6 +5432,10 @@
         <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnInvitation" solution="Active" id.connectionreferencelogicalname="leidos_ConnInvitation" />
+        <Dependent type="29" displayName="Invitation - Flow - On create" id="{0ce291d7-7b51-ea11-a813-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnLegal" solution="Active" id.connectionreferencelogicalname="leidos_ConnLegal" />
         <Dependent type="29" displayName="Legal Conditions - Flow - Create Document Requirement on Create or Update" id="{15930849-7b09-eb11-a813-000d3a7f1bbb}" />
       </MissingDependency>
@@ -5425,6 +5506,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnPipleine" solution="Active" id.connectionreferencelogicalname="leidos_ConnPipleine" />
         <Dependent type="29" displayName="Pipeline Project - Flow - NFI Email Approval Process" id="{0173199e-0a15-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnPortalMessage" solution="Active" id.connectionreferencelogicalname="leidos_ConnPortalMessage" />
+        <Dependent type="29" displayName="Invitation - Flow - On create" id="{0ce291d7-7b51-ea11-a813-000d3a7f1bbb}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnSpendProfile" solution="Active" id.connectionreferencelogicalname="leidos_ConnSpendProfile" />
