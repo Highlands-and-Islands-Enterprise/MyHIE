@@ -3,19 +3,22 @@
   <name>Application Form</name>
   <defaultfilter>
     <ReportFilter>
-      <ReportEntity paramname="CRM_Filteredleidos_ApplicationAnswer" donotconvert="1">
+      <ReportEntity paramname="CRM_Filteredleidos_Application" donotconvert="1">
         <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
-          <entity name="leidos_applicationanswer">
+          <entity name="leidos_application">
             <all-attributes />
             <filter type="and">
-              <condition attribute="statecode" operator="eq" value="0" />
+              <filter type="or">
+                <condition attribute="leidos_applicationreference" operator="eq" value="APP-244784" />
+                <condition attribute="leidos_parentaccount" operator="eq" uiname="3102 Test" uitype="account" value="{BAE54390-5F0D-4FA0-A839-4D3C36054F6D}" />
+              </filter>
             </filter>
           </entity>
         </fetch>
       </ReportEntity>
     </ReportFilter>
   </defaultfilter>
-  <iscustomreport>1</iscustomreport>
+  <iscustomreport>0</iscustomreport>
   <description>Application Question and Answers</description>
   <filename>Application Form.rdl</filename>
   <languagecode>1033</languagecode>
@@ -24,7 +27,7 @@
   <IntroducedVersion>1.19.0.4931</IntroducedVersion>
   <createdinmajorversion>9</createdinmajorversion>
   <iscustomizable>1</iscustomizable>
-  <ExportedFileName>/Reports/ApplicationFormrdl9f46d6a3-107d-ec11-8d21-6045bd0e661e.wdl</ExportedFileName>
+  <ExportedFileName>/Reports/ApplicationFormrdl9f46d6a3-107d-ec11-8d21-6045bd0e661e</ExportedFileName>
   <ReportCategories />
   <ReportVisibilities>
     <ReportVisbility>2</ReportVisbility>
@@ -32,6 +35,6 @@
     <ReportVisbility>1</ReportVisbility>
   </ReportVisibilities>
   <ReportEntities>
-    <ReportEntity>leidos_applicationanswer</ReportEntity>
+    <ReportEntity>leidos_application</ReportEntity>
   </ReportEntities>
 </Report>
