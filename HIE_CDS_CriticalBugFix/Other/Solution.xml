@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS CriticalBugFix" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.4998</Version>
+    <Version>1.19.0.5004</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -99,6 +99,7 @@
       <RootComponent type="20" id="{ba7a6dcd-b736-ea11-a813-000d3a0bad7c}" behavior="0" />
       <RootComponent type="20" id="{ee097c7f-b736-ea11-a813-000d3a0bad7c}" behavior="0" />
       <RootComponent type="29" id="{0add8987-0e5f-eb11-a812-000d3ad6089d}" behavior="0" />
+      <RootComponent type="29" id="{1a2008f9-7717-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{3b443cf4-90a1-ea11-a812-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" behavior="0" />
       <RootComponent type="29" id="{7c10c4b4-e4b9-ea11-a812-000d3a7f1bbb}" behavior="0" />
@@ -204,6 +205,10 @@
         <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_documentrequirement" displayName="Document Requirement" solution="Active" />
+        <Dependent type="29" displayName="Legal Undertaking - Document Requirement -  Send email to PM when evidence is uploaded" id="{1a2008f9-7717-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_enquiry" displayName="Enquiry" solution="Active" />
         <Dependent type="1" schemaName="leidos_enquiry" displayName="Enquiry" />
       </MissingDependency>
@@ -246,6 +251,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_ladderquestion" displayName="Ladder Question" solution="Active" />
         <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_legalundertaking" displayName="Legal Undertaking" solution="Active" />
+        <Dependent type="29" displayName="Legal Undertaking - Document Requirement -  Send email to PM when evidence is uploaded" id="{1a2008f9-7717-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_loan" displayName="Loan" solution="Active" />
@@ -1845,6 +1854,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="Legal Undertaking - Document Requirement -  Send email to PM when evidence is uploaded" id="{1a2008f9-7717-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
         <Dependent type="29" displayName="Loan Drawdown - Flow - Submit for Approval - ConnRef" id="{f27add36-3579-ec11-8d21-002248433af0}" />
       </MissingDependency>
       <MissingDependency>
@@ -2050,6 +2063,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnLadder" solution="Active" id.connectionreferencelogicalname="leidos_ConnLadder" />
         <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnLegal" solution="Active" id.connectionreferencelogicalname="leidos_ConnLegal" />
+        <Dependent type="29" displayName="Legal Undertaking - Document Requirement -  Send email to PM when evidence is uploaded" id="{1a2008f9-7717-eb11-a813-0022483fae82}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
