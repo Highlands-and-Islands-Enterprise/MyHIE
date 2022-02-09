@@ -33,5 +33,26 @@ function setPastFieldsDisabled(context) {
 	}
 }
 
+Leidos.disableFieldEdit = function(context, fieldName)
+{
+    "use strict";
+    context.getFormContext().getData().getEntity().attributes.forEach(function (attr) {
+        if (attr.getName() === fieldName) {
+            attr.controls.forEach(function (c) {
+                c.setDisabled(true);
+            })
+        }
+    });
+}
+
+
+Leidos.gridRowSelectedDisableSlippage = function (context) {
+    "use strict";
+    Leidos.disableFieldEdit(context, "leidos_slippageamount");
+}
+Leidos.gridRowSelectedDisableNonSpendAmount = function (context) {
+    "use strict";
+    Leidos.disableFieldEdit(context, "leidos_nonspendamount");
+}
 
 

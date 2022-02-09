@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CI" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.5024</Version>
+    <Version>1.19.0.5031</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -176,6 +176,7 @@
       <RootComponent type="31" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" behavior="0" />
       <RootComponent type="31" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" behavior="0" />
       <RootComponent type="31" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" behavior="0" />
+      <RootComponent type="31" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" behavior="0" />
       <RootComponent type="60" id="{d436e909-91ca-ea11-a812-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="61" schemaName="leidos_AMCP_ScoreImage" behavior="0" />
       <RootComponent type="61" schemaName="leidos_PaymentClaim" behavior="0" />
@@ -230,7 +231,6 @@
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.6bd9f0544779ec118d21002248433af0" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.a965a8d308d4eb11bacb000d3ad57248" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_signatory/wpG/f.7bfc252391f2ea11a815000d3a7f1bbb" behavior="0" />
-      <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/eHo/f.6e1a6f9da84bec118f8e000d3a7f952a" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_transaction/SVb/f.ce1a440b198eeb11b1ac000d3ad51b39" behavior="0" />
       <RootComponent type="61" schemaName="north52_/schedule/leidos_project/PES/s.6e6a32802a7aec118d21002248433a59" behavior="0" />
       <RootComponent type="62" schemaName="leidos_HIEAccountManagement" behavior="0" />
@@ -914,7 +914,11 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_transaction" displayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_transaction" displayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_transaction" displayName="Transaction" solution="Active" />
@@ -5030,7 +5034,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -5043,6 +5047,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectpostcode" displayName="Project Postcode" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -5062,7 +5070,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -5075,6 +5083,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectreference" displayName="Project Reference" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -5726,11 +5738,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_dateofposting" displayName="date of posting" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_dateofposting" displayName="date of posting" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_dateofposting" displayName="date of posting" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_datepaidoncoda" displayName="date paid on CODA" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
@@ -5742,67 +5758,99 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_grossamount" displayName="gross amount" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_grossamount" displayName="gross amount" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="leidos_grossamount_base" displayName="gross amount (Base)" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Required type="2" schemaName="leidos_grossamount" displayName="gross amount" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_grossamount_base" displayName="gross amount (Base)" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_grossamount_base" displayName="gross amount (Base)" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_grossamount_base" displayName="gross amount (Base)" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_netamount" displayName="NET amount" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_netamount" displayName="NET amount" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="leidos_netamount_base" displayName="NET amount (Base)" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Required type="2" schemaName="leidos_netamount" displayName="NET amount" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_netamount_base" displayName="NET amount (Base)" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netamount_base" displayName="NET amount (Base)" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netamount_base" displayName="NET amount (Base)" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_postingperiod" displayName="posting period" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_postingperiod" displayName="posting period" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_postingperiod" displayName="posting period" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_postingperiod" displayName="posting period" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_postingyear" displayName="posting year" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_postingyear" displayName="posting year" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_postingyear" displayName="posting year" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_project" displayName="project" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_project" displayName="project" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_project" displayName="project" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_suppliercode" displayName="supplier code" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
@@ -5810,11 +5858,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_transactionid" displayName="Transaction" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_transactionid" displayName="Transaction" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_transactionid" displayName="Transaction" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_transactionreference" displayName="transaction reference" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
@@ -5854,11 +5906,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
-        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
+        <Dependent type="31" displayName="(DEPRECATED) Transaction Reconciliation Report" id="{434f8e2c-8dc8-eb11-bacc-000d3ad5fe47}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Transaction Reconciliation Report" id="{fb1e4f9a-8f89-ec11-93b0-000d3ad68ef8}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_codaref" displayName="CODA ref" parentSchemaName="leidos_transactiontype" parentDisplayName="Transaction Type" solution="Active" />
