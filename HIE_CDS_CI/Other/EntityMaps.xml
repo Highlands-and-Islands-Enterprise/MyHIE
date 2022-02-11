@@ -1,6 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EntityMaps xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <EntityMap>
+    <EntitySource>account</EntitySource>
+    <EntityTarget>leidos_accountmanagementrecord</EntityTarget>
+    <AttributeMaps>
+      <AttributeMap>
+        <AttributeSource>leidos_businessorsocialenterprise</AttributeSource>
+        <AttributeTarget>leidos_businessorsocialenterprise</AttributeTarget>
+      </AttributeMap>
+      <AttributeMap>
+        <AttributeSource>leidos_longtermvision</AttributeSource>
+        <AttributeTarget>leidos_longtermvision</AttributeTarget>
+      </AttributeMap>
+      <AttributeMap>
+        <AttributeSource>leidos_shortmediumtermgoals</AttributeSource>
+        <AttributeTarget>leidos_shortmedtermgoals</AttributeTarget>
+      </AttributeMap>
+      <AttributeMap>
+        <AttributeSource>ownerid</AttributeSource>
+        <AttributeTarget>ownerid</AttributeTarget>
+      </AttributeMap>
+    </AttributeMaps>
+  </EntityMap>
+  <EntityMap>
+    <EntitySource>leidos_accountmanagementrecord</EntitySource>
+    <EntityTarget>leidos_accountmanagementclientplan</EntityTarget>
+    <AttributeMaps>
+      <AttributeMap>
+        <AttributeSource>leidos_parentaccount</AttributeSource>
+        <AttributeTarget>leidos_relatedaccount</AttributeTarget>
+      </AttributeMap>
+    </AttributeMaps>
+  </EntityMap>
+  <EntityMap>
     <EntitySource>leidos_anticipatedspendprofile</EntitySource>
     <EntityTarget>leidos_spendprofiledetail</EntityTarget>
     <AttributeMaps>
@@ -17,6 +49,16 @@
       <AttributeMap>
         <AttributeSource>leidos_name</AttributeSource>
         <AttributeTarget>leidos_name</AttributeTarget>
+      </AttributeMap>
+    </AttributeMaps>
+  </EntityMap>
+  <EntityMap>
+    <EntitySource>leidos_keystrategicaction</EntitySource>
+    <EntityTarget>leidos_clientactionplan</EntityTarget>
+    <AttributeMaps>
+      <AttributeMap>
+        <AttributeSource>leidos_parentaccountmanagementactionplan</AttributeSource>
+        <AttributeTarget>leidos_parentaccountmanagementactionplan</AttributeTarget>
       </AttributeMap>
     </AttributeMaps>
   </EntityMap>

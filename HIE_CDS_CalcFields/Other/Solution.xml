@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CalcFields" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.5036</Version>
+    <Version>1.19.0.5041</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -79,6 +79,7 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="1" schemaName="leidos_clientladder" behavior="2" />
+      <RootComponent type="1" schemaName="leidos_ownhandinvoicedetail" behavior="2" />
       <RootComponent type="1" schemaName="leidos_programme" behavior="2" />
       <RootComponent type="1" schemaName="leidos_project" behavior="2" />
       <RootComponent type="1" schemaName="leidos_projectcost" behavior="2" />
@@ -97,6 +98,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientladderresponse" displayName="Client Ladder Response" solution="Active" />
         <Dependent type="2" schemaName="leidos_ladderscorerollup" displayName="Ladder Score Rollup" parentSchemaName="leidos_clientladder" parentDisplayName="Client Ladder" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_ownhandinvoicedetail" displayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="1" schemaName="leidos_ownhandinvoicedetail" displayName="Own Hand Invoice Detail" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_programme" displayName="Programme" solution="Active" />
@@ -125,6 +130,14 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_supportitem" displayName="Support Item" solution="Active" />
         <Dependent type="2" schemaName="leidos_totalprogrammespend" displayName="Total Spend (Associated Projects)" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_vatcode" displayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_vatcode" displayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_ClientLadderResponse_ClientLadder_" displayName="leidos_ClientLadderResponse_ClientLadder_" parentSchemaName="leidos_clientladder" parentDisplayName="Client Ladder" solution="Active" />
@@ -187,6 +200,14 @@
         <Dependent type="2" schemaName="leidos_totalfundedamount" displayName="Total Funded Amount" parentSchemaName="leidos_projectcost" parentDisplayName="Cost" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="10" schemaName="leidos_OwnHandInvoiceDetail_VATCode_leido" displayName="leidos_OwnHandInvoiceDetail_VATCode_leido" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="10" schemaName="leidos_OwnHandInvoiceDetail_VATCode_leido" displayName="leidos_OwnHandInvoiceDetail_VATCode_leido" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_anticipatedspendprofileid" displayName="Anticipated Spend Profile" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" />
         <Dependent type="2" schemaName="leidos_totalspendprofile" displayName="Total Spend Profile" parentSchemaName="leidos_project" parentDisplayName="Project" />
       </MissingDependency>
@@ -217,6 +238,30 @@
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_clientladderresponse" parentDisplayName="Client Ladder Response" solution="Active" />
         <Dependent type="2" schemaName="leidos_ladderscorerollup" displayName="Ladder Score Rollup" parentSchemaName="leidos_clientladder" parentDisplayName="Client Ladder" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcode" displayName="VAT Code" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_programmeid" displayName="Programme" parentSchemaName="leidos_programme" parentDisplayName="Programme" solution="Active" />
@@ -717,6 +762,22 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_supportitemid" displayName="Support Item" parentSchemaName="leidos_supportitem" parentDisplayName="Support Item" solution="Active" />
         <Dependent type="2" schemaName="leidos_totalprogrammespend" displayName="Total Spend (Associated Projects)" parentSchemaName="leidos_programme" parentDisplayName="Programme" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatamount" displayName="VAT Amount" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatamount" displayName="VAT Amount" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcodeid" displayName="VAT Code" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_vatcodeid" displayName="VAT Code" parentSchemaName="leidos_vatcode" parentDisplayName="VAT Code" solution="Active" />
+        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="leidos_discover.svg" displayName="leidos_discover.svg" solution="Active" />

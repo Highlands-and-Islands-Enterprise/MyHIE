@@ -6,7 +6,7 @@
       <LocalizedName description="HIE CDS CriticalBugFix" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.5036</Version>
+    <Version>1.19.0.5041</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -98,6 +98,7 @@
       <RootComponent type="20" id="{b4d7f427-de5d-ec11-8f8f-00224842ca49}" behavior="0" />
       <RootComponent type="20" id="{ba7a6dcd-b736-ea11-a813-000d3a0bad7c}" behavior="0" />
       <RootComponent type="20" id="{ee097c7f-b736-ea11-a813-000d3a0bad7c}" behavior="0" />
+      <RootComponent type="29" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{0add8987-0e5f-eb11-a812-000d3ad6089d}" behavior="0" />
       <RootComponent type="29" id="{1a2008f9-7717-eb11-a813-0022483fae82}" behavior="0" />
       <RootComponent type="29" id="{3b443cf4-90a1-ea11-a812-000d3a7fedbe}" behavior="0" />
@@ -106,6 +107,7 @@
       <RootComponent type="29" id="{8b3b1c22-1775-eb11-a812-0022484145f5}" behavior="0" />
       <RootComponent type="29" id="{930e3734-ebab-ea11-a812-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{9430c9b1-250f-ec11-b6e6-000d3ad67ea6}" behavior="0" />
+      <RootComponent type="29" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{a30b6276-080f-ec11-b6e6-000d3ad67ea6}" behavior="0" />
       <RootComponent type="29" id="{bcfd9302-f316-ec11-b6e6-00224841218a}" behavior="0" />
       <RootComponent type="29" id="{ee4aae86-200f-ec11-b6e6-000d3ad67033}" behavior="0" />
@@ -178,7 +180,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_application" displayName="Application" solution="Active" />
         <Dependent type="29" displayName="Application - Flow - On InviteToApply Send Notification to Client" id="{930e3734-ebab-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_application" displayName="Application" solution="Active" />
+        <Dependent type="29" displayName="Application - Flow - Submit  NFI Email Approval" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_application" displayName="Application" solution="Active" />
@@ -203,6 +213,14 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientneed" displayName="Client Need" solution="Active" />
         <Dependent type="60" displayName="MyHIE Client Action" parentDisplayName="Client Action" id="{eed5c98a-ae3c-48c8-b794-33cc886b4bc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_delegatedauthorityapprovaltable" displayName="Delegated Authority Approval Table" solution="Active" />
+        <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_delegatedauthorityapprovaltable" displayName="Delegated Authority Approval Table" solution="Active" />
+        <Dependent type="29" displayName="Application - Flow - Submit  NFI Email Approval" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_documentrequirement" displayName="Document Requirement" solution="Active" />
@@ -241,6 +259,10 @@
         <Dependent type="26" schemaName="WES Projects Clear to Pay" displayName="WES Projects Clear to Pay" parentSchemaName="leidos_project" parentDisplayName="Project" id="{231d9493-a4d2-eb11-bacb-000d3ad6153d}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="1" schemaName="leidos_hieteam" displayName="HIE Team" solution="Active" />
+        <Dependent type="29" displayName="Application - Flow - Submit  NFI Email Approval" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="1" schemaName="leidos_ladder" displayName="Ladder" solution="Active" />
         <Dependent type="29" displayName="Client Ladder - Create Client Response Records " id="{8b3b1c22-1775-eb11-a812-0022484145f5}" />
       </MissingDependency>
@@ -275,6 +297,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_paymentclaim" displayName="Payment Claim" solution="Active" />
         <Dependent type="1" schemaName="leidos_vatcode" displayName="VAT Code" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_pipelineproject" displayName="Pipeline Project" solution="Active" />
+        <Dependent type="29" displayName="Application - Flow - Submit  NFI Email Approval" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_pipelineproject" displayName="Pipeline Project" solution="Active" />
@@ -359,6 +385,14 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_vatcategory" displayName="VAT Category" solution="Active" />
         <Dependent type="80" schemaName="leidos_OwnHandInvoiceProcessing" displayName="Own Hand Invoice Processing" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="new_bpfapplicationbusinessprocessflow" displayName="BPF - Application Business Process Flow" solution="Active" />
+        <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="new_bpfapplicationbusinessprocessflow" displayName="BPF - Application Business Process Flow" solution="Active" />
+        <Dependent type="29" displayName="Application - Flow - Submit  NFI Email Approval" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="leidos_account_leidos_enquiry_Account" displayName="leidos_account_leidos_enquiry_Account" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
@@ -879,6 +913,14 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_invitetoapply" displayName="Invite To Apply" parentSchemaName="leidos_application" parentDisplayName="Application" solution="Active" />
         <Dependent type="29" displayName="Application - Flow - On InviteToApply Send Notification to Client" id="{930e3734-ebab-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submitapplicationforbudgetapproval" displayName="Submit Project for Decision" parentSchemaName="leidos_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submitnfiemailapproval" displayName="Submit NFI Email Approval " parentSchemaName="leidos_application" parentDisplayName="Application" solution="Active" />
+        <Dependent type="29" displayName="Application - Flow - Submit  NFI Email Approval" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_actionby" displayName="Action By" parentSchemaName="leidos_clientaction" parentDisplayName="Client Action" solution="Active" />
@@ -1850,11 +1892,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
         <Dependent type="29" displayName="(Deprecated) Loan Drawdown - Flow - Submit for Approval" id="{0add8987-0e5f-eb11-a812-000d3ad6089d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
         <Dependent type="29" displayName="Notes - Document Requirement - Legal Undertaking send email to PM when evidence is uploaded" id="{1a2008f9-7717-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="Application - Flow - Submit  NFI Email Approval" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
@@ -2034,11 +2084,27 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
+        <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
+        <Dependent type="29" displayName="Application - Flow - Submit  NFI Email Approval" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ApprovalConnectionReference" solution="Active" id.connectionreferencelogicalname="leidos_ApprovalConnectionReference" />
         <Dependent type="29" displayName="Loan Drawdown - Flow - Submit for Approval - ConnRef" id="{f27add36-3579-ec11-8d21-002248433af0}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnApplication" solution="Active" id.connectionreferencelogicalname="leidos_ConnApplication" />
+        <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnApplication" solution="Active" id.connectionreferencelogicalname="leidos_ConnApplication" />
         <Dependent type="29" displayName="Application - Flow - On InviteToApply Send Notification to Client" id="{930e3734-ebab-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnApplication" solution="Active" id.connectionreferencelogicalname="leidos_ConnApplication" />
+        <Dependent type="29" displayName="Application - Flow - Submit  NFI Email Approval" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnCDSLoanDrawdown" solution="Active" id.connectionreferencelogicalname="leidos_ConnCDSLoanDrawdown" />
@@ -2067,6 +2133,14 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnLegal" solution="Active" id.connectionreferencelogicalname="leidos_ConnLegal" />
         <Dependent type="29" displayName="Notes - Document Requirement - Legal Undertaking send email to PM when evidence is uploaded" id="{1a2008f9-7717-eb11-a813-0022483fae82}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
+        <Dependent type="29" displayName="Application - Flow - Submit for Budget Approval" id="{04d1b1bd-f956-ea11-a811-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
+        <Dependent type="29" displayName="Application - Flow - Submit  NFI Email Approval" id="{9488a49e-ef27-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOffice365Outlook" solution="Active" id.connectionreferencelogicalname="leidos_ConnOffice365Outlook" />
