@@ -32,7 +32,6 @@
         <entity name="leidos_claim">
           <attribute name="leidos_claimid" />
           <attribute name="leidos_name" />
-          <order attribute="leidos_name" descending="false" />
           <attribute name="leidos_claimreference" />
           <attribute name="leidos_claimsubmitteddate" />
           <attribute name="statuscode" />
@@ -48,6 +47,7 @@
           <filter type="and">
             <condition attribute="statuscode" operator="ne" value="445260005" />
           </filter>
+          <order attribute="leidos_dateofposting" descending="true" />
         </entity>
       </fetch>
     </fetchxml>
