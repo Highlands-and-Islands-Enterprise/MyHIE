@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CI" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.5083</Version>
+    <Version>1.19.0.5088</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -88,8 +88,8 @@
       <RootComponent type="1" schemaName="email" behavior="2" />
       <RootComponent type="1" schemaName="fax" behavior="2" />
       <RootComponent type="1" schemaName="leidos_accountmanagementactionplan" behavior="0" />
-      <RootComponent type="1" schemaName="leidos_accountmanagementclientplan" behavior="2" />
-      <RootComponent type="1" schemaName="leidos_accountmanagementrecord" behavior="2" />
+      <RootComponent type="1" schemaName="leidos_accountmanagementclientplan" behavior="0" />
+      <RootComponent type="1" schemaName="leidos_accountmanagementrecord" behavior="0" />
       <RootComponent type="1" schemaName="leidos_anticipatedspendprofile" behavior="0" />
       <RootComponent type="1" schemaName="leidos_application" behavior="1" />
       <RootComponent type="1" schemaName="leidos_applicationanswer" behavior="2" />
@@ -298,12 +298,15 @@
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectamendment/akP/fd.67bb74e1408fec11b400002248427a83" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectamendment/tiH/f.760aa22deb9e418e96d152378a66db4f" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectamendment/tiH/fd.2878726f281c478897d07164ee8c4935" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_projectcost/nCa/f.0aaabb74e193ec11b4006045bd0ee2e3" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_projectcost/nCa/fd.f91275c1e193ec11b4006045bd0ee2e3" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/f.1604350708d4eb11bacb000d3ad57248" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.02844a564a79ec118d21002248433af0" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.038ae1933c79ec118d21002248433af0" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.649d993e747fec118d210022484115c4" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.6bd9f0544779ec118d21002248433af0" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/NVT/fd.a965a8d308d4eb11bacb000d3ad57248" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_projectfunding/pLu/f.cc7d6600fe93ec11b4006045bd0ee2e3" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_signatory/wpG/f.7bfc252391f2ea11a815000d3a7f1bbb" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/eHo/f.6e1a6f9da84bec118f8e000d3a7f952a" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/LgV/f.d38692b04265eb11a81200224841783c" behavior="0" />
@@ -329,14 +332,6 @@
           <package>CDSStarterPortal (9.2.2006.10)</package>
         </Required>
         <Dependent type="1" schemaName="adx_portalcomment" displayName="Portal Comment" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="leidos_accountmanagementclientplan" displayName="Client Plan" solution="Active" />
-        <Dependent type="1" schemaName="leidos_accountmanagementclientplan" displayName="Client Plan" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="1" schemaName="leidos_accountmanagementrecord" displayName="Client Engagement Record" solution="Active" />
-        <Dependent type="1" schemaName="leidos_accountmanagementrecord" displayName="Client Engagement Record" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_actionby" displayName="Action By" solution="Active" />
@@ -377,6 +372,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_bpfamrdirectcreation" displayName="BPF Account Management Record" solution="Active" />
         <Dependent type="1" schemaName="leidos_bpfamrdirectcreation" displayName="BPF Account Management Record" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_businessorsocialenterprise" displayName="Business or Social Enterprise" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_Businessor" displayName="leidos_AccountManagementRecord_Businessor" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_businessorsocialenterprise" displayName="Business or Social Enterprise" solution="Active" />
@@ -433,6 +432,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientplanreviewresponse" displayName="Client Plan Review Response" solution="Active" />
         <Dependent type="1" schemaName="leidos_clientplanreviewresponse" displayName="Client Plan Review Response" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_delegatedauthorityapprovaltable" displayName="Delegated Authority Approval Table" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_AMApprover" displayName="leidos_AccountManagementRecord_AMApprover" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_delegatedauthorityapprovaltable" displayName="Delegated Authority Approval Table" solution="Active" />
@@ -664,6 +667,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_organisationtype" displayName="Organisation Type" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_NatureofOr" displayName="leidos_AccountManagementRecord_NatureofOr" parentSchemaName="leidos_organisationtype" parentDisplayName="Organisation Type" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_organisationtype" displayName="Organisation Type" solution="Active" />
         <Dependent type="62" schemaName="leidos_HIEAccountManagement" />
       </MissingDependency>
       <MissingDependency>
@@ -849,6 +856,14 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_security" displayName="Security" solution="Active" />
         <Dependent type="29" displayName="Security - Flow - Send to legal for Review" id="{946126b9-c872-eb11-a812-00224840ee66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_segmentation" displayName="Segmentation" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementClientPlan_NewRec" displayName="leidos_AccountManagementClientPlan_NewRec" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_segmentation" displayName="Segmentation" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_ProposedSe" displayName="leidos_AccountManagementRecord_ProposedSe" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_segmentation" displayName="Segmentation" solution="Active" />
@@ -1732,6 +1747,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_businessorsocialenterprise" displayName="Business or Social Enterprise " parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_ParentAcco" displayName="leidos_AccountManagementRecord_ParentAcco" parentSchemaName="account" parentDisplayName="Account" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_businessorsocialenterprise" displayName="Business or Social Enterprise " parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
       </MissingDependency>
       <MissingDependency>
@@ -1916,6 +1935,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_longtermvision" displayName="Long Term Vision" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_ParentAcco" displayName="leidos_AccountManagementRecord_ParentAcco" parentSchemaName="account" parentDisplayName="Account" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_longtermvision" displayName="Long Term Vision" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="29" displayName="BPF Account Process" id="{440ae705-9cfd-460b-b681-d7a6b0cb6e7e}" />
       </MissingDependency>
       <MissingDependency>
@@ -2033,6 +2056,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_seppartnerorginisation" displayName="SEP Partner Organisation" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="60" displayName="HIE Client Form" parentDisplayName="Account" id="{39151aa2-bee0-428d-94b4-463406a15ee0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_shortmediumtermgoals" displayName="Short/Medium Term Goals" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_ParentAcco" displayName="leidos_AccountManagementRecord_ParentAcco" parentSchemaName="account" parentDisplayName="Account" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_shortmediumtermgoals" displayName="Short/Medium Term Goals" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
@@ -2276,7 +2303,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_businessorsocialenterpriseid" displayName="Business or Social Enterprise" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_Businessor" displayName="leidos_AccountManagementRecord_Businessor" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_businessorsocialenterpriseid" displayName="Business or Social Enterprise" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" solution="Active" />
         <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_Businessor" displayName="leidos_AccountManagementRecord_Businessor" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" solution="Active" />
@@ -2629,6 +2664,14 @@
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_clientplanreviewresponse" parentDisplayName="Client Plan Review Response" solution="Active" />
         <Dependent type="60" displayName="HIE Client Review Response" parentDisplayName="Client Plan Review Response" id="{03bf671c-936b-4cb6-ac50-a78ac1404883}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_delegatedauthorityapprovaltableid" displayName="Delegated Authority Approval Table" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_AMApprover" displayName="leidos_AccountManagementRecord_AMApprover" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_AMApprover" displayName="leidos_AccountManagementRecord_AMApprover" parentSchemaName="leidos_delegatedauthorityapprovaltable" parentDisplayName="Delegated Authority Approval Table" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_description" displayName="Description" parentSchemaName="leidos_documentrequirement" parentDisplayName="Document Requirement" solution="Active" />
@@ -3809,6 +3852,14 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_milestone" parentDisplayName="Milestone" solution="Active" />
         <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_organisationtype" displayName="Organisation Type" parentSchemaName="leidos_organisationtype" parentDisplayName="Organisation Type" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_NatureofOr" displayName="leidos_AccountManagementRecord_NatureofOr" parentSchemaName="leidos_organisationtype" parentDisplayName="Organisation Type" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_organisationtypeid" displayName="Organisation Type" parentSchemaName="leidos_organisationtype" parentDisplayName="Organisation Type" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_NatureofOr" displayName="leidos_AccountManagementRecord_NatureofOr" parentSchemaName="leidos_organisationtype" parentDisplayName="Organisation Type" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_businessunit" displayName="Business Unit" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
@@ -5963,8 +6014,24 @@
         <Dependent type="2" schemaName="leidos_hieimpactaccount" displayName="HIE Impact Account" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Client Engagement Record" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementClientPlan_NewRec" displayName="leidos_AccountManagementClientPlan_NewRec" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_ProposedSe" displayName="leidos_AccountManagementRecord_ProposedSe" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_relationshipmanaged" displayName="Relationship Managed" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" solution="Active" />
         <Dependent type="2" schemaName="leidos_relationshipmanaged" displayName="Relationship Managed" parentSchemaName="leidos_accountmanagementrecord" parentDisplayName="Client Engagement Record" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_segmentationid" displayName="Segmentation" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementClientPlan_NewRec" displayName="leidos_AccountManagementClientPlan_NewRec" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_segmentationid" displayName="Segmentation" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" solution="Active" />
+        <Dependent type="10" schemaName="leidos_AccountManagementRecord_ProposedSe" displayName="leidos_AccountManagementRecord_ProposedSe" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_segmentationid" displayName="Segmentation" parentSchemaName="leidos_segmentation" parentDisplayName="Segmentation" solution="Active" />
