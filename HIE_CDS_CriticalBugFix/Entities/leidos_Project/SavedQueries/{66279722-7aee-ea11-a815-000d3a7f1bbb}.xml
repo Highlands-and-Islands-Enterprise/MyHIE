@@ -32,17 +32,17 @@
           <attribute name="leidos_projectid" />
           <filter type="and">
             <filter type="or">
-              <condition attribute="statuscode" operator="eq" value="445260002" />
-              <condition attribute="statuscode" operator="eq" value="445260001" />
-              <condition attribute="statuscode" operator="eq" value="445260009" />
-              <condition attribute="statuscode" operator="eq" value="2" />
-              <condition attribute="statuscode" operator="eq" value="445260007" />
-              <condition attribute="statuscode" operator="eq" value="445260011" />
-              <condition attribute="statuscode" operator="eq" value="445260013" />
-              <condition attribute="statuscode" operator="eq" value="445260010" />
-              <condition attribute="statuscode" operator="eq" value="445260017" />
+              <condition attribute="statuscode" operator="in">
+                <value>445260002</value>
+                <value>445260001</value>
+                <value>445260013</value>
+                <value>2</value>
+                <value>445260011</value>
+                <value>445260017</value>
+              </condition>
             </filter>
           </filter>
+          <order attribute="leidos_name" descending="false" />
         </entity>
       </fetch>
     </fetchxml>

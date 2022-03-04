@@ -5,7 +5,7 @@
     <IntroducedVersion>1.9.0.1113</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form>
+    <form headerdensity="HighWithControls">
       <tabs>
         <tab verticallayout="true" id="{44d28c24-b106-4a64-826c-3faaa065aece}" IsUserDefined="1" name="{44d28c24-b106-4a64-826c-3faaa065aece}" locklevel="0" expanded="true" showlabel="false">
           <labels>
@@ -74,7 +74,7 @@
                     <row>
                       <cell id="{e3c73dc4-dcda-55ca-e102-eac99d0ecbd7}" showlabel="true" locklevel="0" colspan="1">
                         <labels>
-                          <label description="Value paid (per share)" languagecode="1033" />
+                          <label description="Price paid (per share)" languagecode="1033" />
                         </labels>
                         <control id="leidos_valuepaidpershareproject" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_valuepaidpershareproject" disabled="false" uniqueid="{3eace3d0-d310-cc7b-aa86-506e04022ca1}" />
                       </cell>
@@ -82,7 +82,7 @@
                     <row>
                       <cell id="{53225379-6dd7-7069-3309-6bc58015d128}" showlabel="true" locklevel="0" colspan="1">
                         <labels>
-                          <label description="Nominal price (per share)" languagecode="1033" />
+                          <label description="Nominal value (per share)" languagecode="1033" />
                         </labels>
                         <control id="leidos_nominalpricepershareproject" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_nominalpricepershareproject" disabled="false" uniqueid="{cbb1815a-0c1a-01da-51a8-de4c50880b43}" />
                       </cell>
@@ -90,9 +90,17 @@
                     <row>
                       <cell id="{0ae84670-5998-0058-044b-be6b377405c5}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Number of shares held" languagecode="1033" />
+                          <label description="Number of shares purchased " languagecode="1033" />
                         </labels>
                         <control id="leidos_numberofsharesheldproject" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="leidos_numberofsharesheldproject" disabled="false" uniqueid="{63a63e83-ba82-d961-22ad-e79e85a910b0}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{fa7c39d2-759e-4288-8533-ca910f9b23e0}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Investment Round " languagecode="1033" />
+                        </labels>
+                        <control id="leidos_investmentround" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="leidos_investmentround" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -169,7 +177,7 @@
                     <row>
                       <cell id="{e4275a05-9863-d6cb-71e9-2deebebb3396}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Value paid (per share)" languagecode="1033" />
+                          <label description="Price paid (per share)" languagecode="1033" />
                         </labels>
                         <control id="leidos_valuepaidpershareaccount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_valuepaidpershareaccount" disabled="false" uniqueid="{041657b8-ae60-0a64-bd37-19aaa8bb8303}" />
                       </cell>
@@ -177,7 +185,7 @@
                     <row>
                       <cell id="{90b7e385-3a76-de18-7a1b-c880c88916ea}" showlabel="true" locklevel="0">
                         <labels>
-                          <label description="Nominal price (per share)" languagecode="1033" />
+                          <label description="Nominal value (per share)" languagecode="1033" />
                         </labels>
                         <control id="leidos_nominalpricepershareaccount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_nominalpricepershareaccount" disabled="false" uniqueid="{9b7e8810-84c5-3041-dcb8-0d3a526b6867}" />
                       </cell>
@@ -188,6 +196,14 @@
                           <label description="Number of shares held" languagecode="1033" />
                         </labels>
                         <control id="leidos_numberofsharesheldaccount" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="leidos_numberofsharesheldaccount" disabled="false" uniqueid="{18b11043-a863-8c60-8064-b33be727d159}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b4808d0b-7a6b-452c-b502-b4ed3abf4460}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Number of investment rounds" languagecode="1033" />
+                        </labels>
+                        <control id="leidos_numberofinvestmentrounds" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="leidos_numberofinvestmentrounds" disabled="false" />
                       </cell>
                     </row>
                   </rows>
@@ -250,7 +266,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -297,6 +313,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="a6059eba-9fb2-4ae8-ab81-78fca3334c12" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="139fb102-4e06-4471-ac5a-131472684476" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>
