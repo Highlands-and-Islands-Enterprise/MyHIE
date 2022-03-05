@@ -1,1 +1,202 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnEnquiry"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Enquiry_Outcome_has_been_Selected":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_enquiry","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_equiryoutcome","subscriptionRequest/filterexpression":"(leidos_equiryoutcome ne null)","subscriptionRequest/runas":3},"authentication":"@parameters('$authentication')"}}},"actions":{"Switch":{"runAfter":{},"cases":{"Progress_with_Enquiry":{"case":445260000,"actions":{"Set_Enquiry_to_Progressed":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_enquiries","recordId":"@triggerOutputs()?['body/leidos_enquiryid']","item/statecode":1,"item/statuscode":2},"authentication":"@parameters('$authentication')"}}}},"Close_Enquiry\t":{"case":445260001,"actions":{"Set_to_Abandoned_":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_enquiries","recordId":"@triggerOutputs()?['body/leidos_enquiryid']","item/statecode":1,"item/statuscode":445260003},"authentication":"@parameters('$authentication')"}}}},"Passed_to_Find_Business_Support":{"case":445260002,"actions":{"Set_to_Transferred_outwith_HIE":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_enquiries","recordId":"@triggerOutputs()?['body/leidos_enquiryid']","item/statecode":1,"item/statuscode":445260002},"authentication":"@parameters('$authentication')"}}}},"Transferred_outwith_HIE":{"case":445260003,"actions":{"Transferred_out_with_HIE":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_enquiries","recordId":"@triggerOutputs()?['body/leidos_enquiryid']","item/statecode":1,"item/statuscode":445260002},"authentication":"@parameters('$authentication')"}}}},"Not_Progressed\t":{"case":445260004,"actions":{"Set_to_Not_Porgressed":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_enquiries","recordId":"@triggerOutputs()?['body/leidos_enquiryid']","item/statecode":1,"item/statuscode":445260003},"authentication":"@parameters('$authentication')"}}}},"Cancelled":{"case":445260005,"actions":{"Set_to_cancelled":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_enquiries","recordId":"@triggerOutputs()?['body/leidos_enquiryid']","item/statecode":1,"item/statuscode":445260004},"authentication":"@parameters('$authentication')"}}}}},"default":{"actions":{}},"expression":"@triggerOutputs()?['body/leidos_equiryoutcome']","type":"Switch"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnEnquiry"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Enquiry_Outcome_has_been_Selected": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_enquiry",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_equiryoutcome",
+              "subscriptionRequest/filterexpression": "(leidos_equiryoutcome ne null)",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Progress_with_Enquiry": {
+              "case": 445260000,
+              "actions": {
+                "Set_Enquiry_to_Progressed": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_enquiries",
+                      "recordId": "@triggerOutputs()?['body/leidos_enquiryid']",
+                      "item/statecode": 1,
+                      "item/statuscode": 2
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Close_Enquiry\t": {
+              "case": 445260001,
+              "actions": {
+                "Set_to_Abandoned_": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_enquiries",
+                      "recordId": "@triggerOutputs()?['body/leidos_enquiryid']",
+                      "item/statecode": 1,
+                      "item/statuscode": 445260003
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Passed_to_Find_Business_Support": {
+              "case": 445260002,
+              "actions": {
+                "Set_to_Transferred_outwith_HIE": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_enquiries",
+                      "recordId": "@triggerOutputs()?['body/leidos_enquiryid']",
+                      "item/statecode": 1,
+                      "item/statuscode": 445260002
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Transferred_outwith_HIE": {
+              "case": 445260003,
+              "actions": {
+                "Transferred_out_with_HIE": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_enquiries",
+                      "recordId": "@triggerOutputs()?['body/leidos_enquiryid']",
+                      "item/statecode": 1,
+                      "item/statuscode": 445260002
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Not_Progressed\t": {
+              "case": 445260004,
+              "actions": {
+                "Set_to_Not_Porgressed": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_enquiries",
+                      "recordId": "@triggerOutputs()?['body/leidos_enquiryid']",
+                      "item/statecode": 1,
+                      "item/statuscode": 445260003
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Cancelled": {
+              "case": 445260005,
+              "actions": {
+                "Set_to_cancelled": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_enquiries",
+                      "recordId": "@triggerOutputs()?['body/leidos_enquiryid']",
+                      "item/statecode": 1,
+                      "item/statuscode": 445260004
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerOutputs()?['body/leidos_equiryoutcome']",
+          "type": "Switch"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

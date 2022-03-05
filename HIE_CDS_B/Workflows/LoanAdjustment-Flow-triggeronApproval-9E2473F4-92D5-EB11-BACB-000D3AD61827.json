@@ -1,1 +1,147 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnLoan"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"When_a_row_is_added,_modified_or_deleted":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_loanadjustment","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"statuscode","subscriptionRequest/filterexpression":"(statuscode eq 445260003)","subscriptionRequest/runas":3},"authentication":"@parameters('$authentication')"}}},"actions":{"Initialize_variable":{"runAfter":{},"type":"InitializeVariable","inputs":{"variables":[{"name":"type","type":"integer","value":"@triggerOutputs()?['body/leidos_adjustmenttype']"}]}},"Switch":{"runAfter":{"Initialize_variable":["Succeeded"]},"cases":{"Case_Capital_Write-off":{"case":445260002,"actions":{"call_N52:_zz6":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"PerformBoundAction","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loanadjustments","actionName":"Microsoft.Dynamics.CRM.leidos_LoanAdjustmentCapitalWriteoffActionGenerateTransactionsInformation","recordId":"@triggerOutputs()?['body/leidos_loanadjustmentid']"},"authentication":"@parameters('$authentication')"}}}},"Case_Transfer_of_Capital":{"case":445260001,"actions":{"Call_N52:_eUc":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"PerformBoundAction","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loanadjustments","actionName":"Microsoft.Dynamics.CRM.leidos_LoanAdjustmentTransferCapitalActionGenerateTransactions","recordId":"@triggerOutputs()?['body/leidos_loanadjustmentid']"},"authentication":"@parameters('$authentication')"}}}},"Case_Capitalisation_of_Interest":{"case":445260000,"actions":{"Call_N52:_hhF":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"PerformBoundAction","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loanadjustments","actionName":"Microsoft.Dynamics.CRM.leidos_LoanAdjustmentInterestCapitalisationActionGenerateTransactions","recordId":"@triggerOutputs()?['body/leidos_loanadjustmentid']"},"authentication":"@parameters('$authentication')"}}}}},"default":{"actions":{}},"expression":"@variables('type')","type":"Switch"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnLoan"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_loanadjustment",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/filterexpression": "(statuscode eq 445260003)",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable": {
+          "runAfter": {},
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "type",
+                "type": "integer",
+                "value": "@triggerOutputs()?['body/leidos_adjustmenttype']"
+              }
+            ]
+          }
+        },
+        "Switch": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Case_Capital_Write-off": {
+              "case": 445260002,
+              "actions": {
+                "call_N52:_zz6": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "PerformBoundAction",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_loanadjustments",
+                      "actionName": "Microsoft.Dynamics.CRM.leidos_LoanAdjustmentCapitalWriteoffActionGenerateTransactionsInformation",
+                      "recordId": "@triggerOutputs()?['body/leidos_loanadjustmentid']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Case_Transfer_of_Capital": {
+              "case": 445260001,
+              "actions": {
+                "Call_N52:_eUc": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "PerformBoundAction",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_loanadjustments",
+                      "actionName": "Microsoft.Dynamics.CRM.leidos_LoanAdjustmentTransferCapitalActionGenerateTransactions",
+                      "recordId": "@triggerOutputs()?['body/leidos_loanadjustmentid']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Case_Capitalisation_of_Interest": {
+              "case": 445260000,
+              "actions": {
+                "Call_N52:_hhF": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "PerformBoundAction",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_loanadjustments",
+                      "actionName": "Microsoft.Dynamics.CRM.leidos_LoanAdjustmentInterestCapitalisationActionGenerateTransactions",
+                      "recordId": "@triggerOutputs()?['body/leidos_loanadjustmentid']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@variables('type')",
+          "type": "Switch"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

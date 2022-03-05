@@ -1,1 +1,366 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_2":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnLoan"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"When_a_loan_is_updated_to_Completed":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":3,"subscriptionRequest/entityname":"leidos_loan","subscriptionRequest/scope":4,"subscriptionRequest/filterexpression":"statuscode eq 100000004"},"authentication":"@parameters('$authentication')"}}},"actions":{"Initialize_variable":{"runAfter":{},"type":"InitializeVariable","inputs":{"variables":[{"name":"Project Manager","type":"string"}]}},"Create_Email_to_be_sent_to_PM":{"runAfter":{"Get_Data_for_processing":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"emails","item/activitypointer_activity_parties":[{"participationtypemask":2,"partyid@odata.bind":"/systemusers(@{outputs('Get_HIE_Contact')?['body/systemuserid']})"}],"item/description":"Hello @{outputs('Get_HIE_Contact')?['body/fullname']},\n</br>\n</br>\nPlease be advised that the below loan has now completed and you should alert HIE Legal Services to discharge any security taken at the outset.\n</br>\n</br>\nClient: @{outputs('Get_parent_account')?['body/name']}\n</br>\nParent Project: @{outputs('Get_parent_project')?['body/leidos_name']}\n</br>\nLoan Reference: <a href=@{outputs('Get_Loan''s_entity_URL')?['Body']?['entityurl']}>@{outputs('Get_loan_record')?['body/leidos_loanreference']}</a>\n\n","item/regardingobjectid_leidos_project_email@odata.bind":"/leidos_projects(@{outputs('Get_parent_project')?['body/leidos_projectid']})","item/subject":"Loan with reference @{outputs('Get_loan_record')?['body/leidos_loanreference']} has now completed - Alert HIE Legal Services"},"authentication":"@parameters('$authentication')"}},"Send_Email":{"runAfter":{"Create_Email_to_be_sent_to_PM":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"PerformBoundAction","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"emails","actionName":"Microsoft.Dynamics.CRM.SendEmail","recordId":"@outputs('Create_Email_to_be_sent_to_PM')?['body/activityid']","item/IssueSend":true},"authentication":"@parameters('$authentication')"}},"Get_Data_for_processing":{"actions":{"Get_loan_record":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loans","recordId":"@triggerOutputs()?['body/leidos_loanid']"},"authentication":"@parameters('$authentication')"}},"Get_parent_project":{"runAfter":{"Get_loan_record":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","recordId":"@outputs('Get_loan_record')?['body/_leidos_project_value']"},"authentication":"@parameters('$authentication')"}},"Get_parent_account":{"runAfter":{"Get_parent_project":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@outputs('Get_parent_project')?['body/_leidos_parentaccount_value']"},"authentication":"@parameters('$authentication')"}},"Get_Loan's_entity_URL":{"runAfter":{"Get_parent_account":["Succeeded"]},"type":"Workflow","inputs":{"host":{"workflowReferenceName":"b0db1a8a-c449-ea11-a812-000d3a0ba151"},"body":{"EntityId_Inputs":"@outputs('Get_loan_record')?['body/leidos_loanid']","EntityType_Value":"leidos_loan"}}},"Check_Project's_Owner_is_Team":{"actions":{"Get_Team":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"teams","recordId":"@outputs('Get_parent_project')?['body/_owningteam_value']"},"authentication":"@parameters('$authentication')"}},"Get_Primary_Contact_for_Team":{"runAfter":{"Get_Team":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Get_Team')?['body/_leidos_teamprimarycontact_value']"},"authentication":"@parameters('$authentication')"}},"Set_variable_to_Team_Primary_Contact":{"runAfter":{"Get_Primary_Contact_for_Team":["Succeeded"]},"type":"SetVariable","inputs":{"name":"Project Manager","value":"@outputs('Get_Primary_Contact_for_Team')?['body/systemuserid']"}}},"runAfter":{"Get_Loan's_entity_URL":["Succeeded"]},"else":{"actions":{"Get_Owner_(User)":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Get_parent_project')?['body/_ownerid_value']"},"authentication":"@parameters('$authentication')"}},"Set_variable_to_User":{"runAfter":{"Get_Owner_(User)":["Succeeded"]},"type":"SetVariable","inputs":{"name":"Project Manager","value":"@outputs('Get_Owner_(User)')?['body/systemuserid']"}}}},"expression":{"equals":["@outputs('Get_parent_project')?['body/_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']","team"]},"type":"If"},"Get_HIE_Contact":{"runAfter":{"Check_Project's_Owner_is_Team":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@variables('Project Manager')"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Initialize_variable":["Succeeded"]},"type":"Scope"},"Create_Draft_Email_to_be_sent_to_Client":{"runAfter":{"Get_parent_account's_primary_contact":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"emails","item/activitypointer_activity_parties":[{"participationtypemask":2,"partyid@odata.bind":"/contacts(@{outputs('Get_parent_account''s_primary_contact')?['body/contactid']})"},{"participationtypemask":1,"partyid@odata.bind":"/systemusers(@{outputs('Get_HIE_Contact')?['body/systemuserid']})"}],"item/leidos_copyasportalmessage":true,"item/description":"Please be advised that the loan detailed below has now been fully repaid.  Please ensure that your standing order is cancelled to prevent any overpayments. \n</br>\n HIE will now commence the process of releasing any security held and will confirm once this is complete.\n</br>\nProject: @{outputs('Get_parent_project')?['body/leidos_name']}\nLoan Reference: @{outputs('Get_loan_record')?['body/leidos_loanreference']}\n</br>\nKind regards,\n</br>\n@{outputs('Get_HIE_Contact')?['body/fullname']}\n","item/regardingobjectid_leidos_project_email@odata.bind":"/leidos_projects(@{outputs('Get_parent_project')?['body/leidos_projectid']})","item/subject":"Repayments for loan with reference @{outputs('Get_loan_record')?['body/leidos_loanreference']} are complete"},"authentication":"@parameters('$authentication')"}},"Get_parent_account's_primary_contact":{"runAfter":{"Get_Data_for_processing":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"contacts","recordId":"@outputs('Get_parent_account')?['body/_primarycontactid_value']"},"authentication":"@parameters('$authentication')"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_2": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnLoan"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_loan_is_updated_to_Completed": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "leidos_loan",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filterexpression": "statuscode eq 100000004"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable": {
+          "runAfter": {},
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Project Manager",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Create_Email_to_be_sent_to_PM": {
+          "runAfter": {
+            "Get_Data_for_processing": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "emails",
+              "item/activitypointer_activity_parties": [
+                {
+                  "participationtypemask": 2,
+                  "partyid@odata.bind": "/systemusers(@{outputs('Get_HIE_Contact')?['body/systemuserid']})"
+                }
+              ],
+              "item/description": "Hello @{outputs('Get_HIE_Contact')?['body/fullname']},\n</br>\n</br>\nPlease be advised that the below loan has now completed and you should alert HIE Legal Services to discharge any security taken at the outset.\n</br>\n</br>\nClient: @{outputs('Get_parent_account')?['body/name']}\n</br>\nParent Project: @{outputs('Get_parent_project')?['body/leidos_name']}\n</br>\nLoan Reference: <a href=@{outputs('Get_Loan''s_entity_URL')?['Body']?['entityurl']}>@{outputs('Get_loan_record')?['body/leidos_loanreference']}</a>\n\n",
+              "item/regardingobjectid_leidos_project_email@odata.bind": "/leidos_projects(@{outputs('Get_parent_project')?['body/leidos_projectid']})",
+              "item/subject": "Loan with reference @{outputs('Get_loan_record')?['body/leidos_loanreference']} has now completed - Alert HIE Legal Services"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Send_Email": {
+          "runAfter": {
+            "Create_Email_to_be_sent_to_PM": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "PerformBoundAction",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "emails",
+              "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+              "recordId": "@outputs('Create_Email_to_be_sent_to_PM')?['body/activityid']",
+              "item/IssueSend": true
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Data_for_processing": {
+          "actions": {
+            "Get_loan_record": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_2",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_loans",
+                  "recordId": "@triggerOutputs()?['body/leidos_loanid']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_parent_project": {
+              "runAfter": {
+                "Get_loan_record": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_2",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projects",
+                  "recordId": "@outputs('Get_loan_record')?['body/_leidos_project_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_parent_account": {
+              "runAfter": {
+                "Get_parent_project": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_2",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "accounts",
+                  "recordId": "@outputs('Get_parent_project')?['body/_leidos_parentaccount_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Loan's_entity_URL": {
+              "runAfter": {
+                "Get_parent_account": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "b0db1a8a-c449-ea11-a812-000d3a0ba151"
+                },
+                "body": {
+                  "EntityId_Inputs": "@outputs('Get_loan_record')?['body/leidos_loanid']",
+                  "EntityType_Value": "leidos_loan"
+                }
+              }
+            },
+            "Check_Project's_Owner_is_Team": {
+              "actions": {
+                "Get_Team": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_2",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "teams",
+                      "recordId": "@outputs('Get_parent_project')?['body/_owningteam_value']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Get_Primary_Contact_for_Team": {
+                  "runAfter": {
+                    "Get_Team": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_2",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "systemusers",
+                      "recordId": "@outputs('Get_Team')?['body/_leidos_teamprimarycontact_value']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Set_variable_to_Team_Primary_Contact": {
+                  "runAfter": {
+                    "Get_Primary_Contact_for_Team": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "SetVariable",
+                  "inputs": {
+                    "name": "Project Manager",
+                    "value": "@outputs('Get_Primary_Contact_for_Team')?['body/systemuserid']"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_Loan's_entity_URL": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Get_Owner_(User)": {
+                    "runAfter": {},
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_2",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "systemusers",
+                        "recordId": "@outputs('Get_parent_project')?['body/_ownerid_value']"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Set_variable_to_User": {
+                    "runAfter": {
+                      "Get_Owner_(User)": [
+                        "Succeeded"
+                      ]
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Project Manager",
+                      "value": "@outputs('Get_Owner_(User)')?['body/systemuserid']"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@outputs('Get_parent_project')?['body/_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']",
+                  "team"
+                ]
+              },
+              "type": "If"
+            },
+            "Get_HIE_Contact": {
+              "runAfter": {
+                "Check_Project's_Owner_is_Team": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_2",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@variables('Project Manager')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "type": "Scope"
+        },
+        "Create_Draft_Email_to_be_sent_to_Client": {
+          "runAfter": {
+            "Get_parent_account's_primary_contact": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "emails",
+              "item/activitypointer_activity_parties": [
+                {
+                  "participationtypemask": 2,
+                  "partyid@odata.bind": "/contacts(@{outputs('Get_parent_account''s_primary_contact')?['body/contactid']})"
+                },
+                {
+                  "participationtypemask": 1,
+                  "partyid@odata.bind": "/systemusers(@{outputs('Get_HIE_Contact')?['body/systemuserid']})"
+                }
+              ],
+              "item/leidos_copyasportalmessage": true,
+              "item/description": "Please be advised that the loan detailed below has now been fully repaid.  Please ensure that your standing order is cancelled to prevent any overpayments. \n</br>\n HIE will now commence the process of releasing any security held and will confirm once this is complete.\n</br>\nProject: @{outputs('Get_parent_project')?['body/leidos_name']}\nLoan Reference: @{outputs('Get_loan_record')?['body/leidos_loanreference']}\n</br>\nKind regards,\n</br>\n@{outputs('Get_HIE_Contact')?['body/fullname']}\n",
+              "item/regardingobjectid_leidos_project_email@odata.bind": "/leidos_projects(@{outputs('Get_parent_project')?['body/leidos_projectid']})",
+              "item/subject": "Repayments for loan with reference @{outputs('Get_loan_record')?['body/leidos_loanreference']} are complete"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_parent_account's_primary_contact": {
+          "runAfter": {
+            "Get_Data_for_processing": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@outputs('Get_parent_account')?['body/_primarycontactid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

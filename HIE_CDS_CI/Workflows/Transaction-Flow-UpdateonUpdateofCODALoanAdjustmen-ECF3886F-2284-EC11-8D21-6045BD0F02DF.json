@@ -1,1 +1,243 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnClaim"},"api":{"name":"shared_commondataserviceforapps"}},"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_sharedcommondataserviceforapps_5ec64"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"When_a_Loan_Adjustment_Transaction_changes_Status_Reason":{"metadata":{"operationMetadataId":"7e9a6bf3-ad5c-44c5-a1e2-477aed9926f5"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_transaction","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"statuscode","subscriptionRequest/filterexpression":"(_leidos_loanadjustment_value ne null)","subscriptionRequest/runas":3},"authentication":"@parameters('$authentication')"}}},"actions":{"Switch":{"runAfter":{},"cases":{"Paid_in_Coda":{"case":100000005,"actions":{"Get_Loan":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loans","recordId":"@triggerOutputs()?['body/_leidos_loan_value']"},"authentication":"@parameters('$authentication')"}},"Get_Project":{"runAfter":{"Get_Loan":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","recordId":"@triggerOutputs()?['body/_leidos_project_value']"},"authentication":"@parameters('$authentication')"}},"Get_Account":{"runAfter":{"Get_Project":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@outputs('Get_Project')?['body/_leidos_parentaccount_value']"},"authentication":"@parameters('$authentication')"}},"Get_Primary_Contact":{"runAfter":{"Get_Account":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"contacts","recordId":"@outputs('Get_Account')?['body/_primarycontactid_value']"},"authentication":"@parameters('$authentication')"}},"Create_Email_Message_to_Primary_Contact":{"runAfter":{"Get_Primary_Contact":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"emails","item/activitypointer_activity_parties":[{"participationtypemask":2,"partyid@odata.bind":"/contacts(@{outputs('Get_Primary_Contact')?['body/contactid']})"}],"item/leidos_copyasportalmessage":true,"item/description":"The Loan Adjustment  for  @{outputs('Get_Project')?['body/leidos_name']}, reference  @{outputs('Get_Loan')?['body/leidos_loanreference']} has been processed and the payment passed to your nominated bank account for payment.\n\nPlease Note: it may take several days for the funds to show in your bank account.","item/regardingobjectid_leidos_project_email@odata.bind":"/leidos_projects(@{outputs('Get_Project')?['body/leidos_projectid']})","item/subject":"Your Loan Adjustment for Loan:   @{outputs('Get_Loan')?['body/leidos_loanreference']}"},"authentication":"@parameters('$authentication')"}},"Perform_a_bound_action":{"runAfter":{"Create_Email_Message_to_Primary_Contact":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"PerformBoundAction","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"emails","actionName":"Microsoft.Dynamics.CRM.SendEmail","recordId":"@outputs('Create_Email_Message_to_Primary_Contact')?['body/activityid']","item/IssueSend":false},"authentication":"@parameters('$authentication')"}}}},"Failed_to_log_in_Coda":{"case":100000006,"actions":{"Create_Task":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"tasks","item/subject":"Loan Adjustment","item/description":"Loan Adjustment has failed to submit\nError Code:  @{triggerOutputs()?['body/leidos_codafailure']}","item/ownerid_task@odata.bind":"/systemusers(@{triggerOutputs()?['body/_ownerid_value']})","item/prioritycode":2,"item/regardingobjectid_leidos_loanadjustment_task@odata.bind":"/leidos_loanadjustments(@{triggerOutputs()?['body/_leidos_loanadjustment_value']})"},"authentication":"@parameters('$authentication')"}}}}},"default":{"actions":{"Terminate":{"runAfter":{},"type":"Terminate","inputs":{"runStatus":"Cancelled"}}}},"expression":"@triggerOutputs()?['body/statuscode']","metadata":{"operationMetadataId":"2fe17435-d3fc-4b64-80ee-12be1d517fa7"},"type":"Switch"}}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnClaim"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_sharedcommondataserviceforapps_5ec64"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_Loan_Adjustment_Transaction_changes_Status_Reason": {
+          "metadata": {
+            "operationMetadataId": "7e9a6bf3-ad5c-44c5-a1e2-477aed9926f5"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_transaction",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/filterexpression": "(_leidos_loanadjustment_value ne null)",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Paid_in_Coda": {
+              "case": 100000005,
+              "actions": {
+                "Get_Loan": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_loans",
+                      "recordId": "@triggerOutputs()?['body/_leidos_loan_value']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Get_Project": {
+                  "runAfter": {
+                    "Get_Loan": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_projects",
+                      "recordId": "@triggerOutputs()?['body/_leidos_project_value']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Get_Account": {
+                  "runAfter": {
+                    "Get_Project": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "accounts",
+                      "recordId": "@outputs('Get_Project')?['body/_leidos_parentaccount_value']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Get_Primary_Contact": {
+                  "runAfter": {
+                    "Get_Account": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "contacts",
+                      "recordId": "@outputs('Get_Account')?['body/_primarycontactid_value']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Create_Email_Message_to_Primary_Contact": {
+                  "runAfter": {
+                    "Get_Primary_Contact": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "emails",
+                      "item/activitypointer_activity_parties": [
+                        {
+                          "participationtypemask": 2,
+                          "partyid@odata.bind": "/contacts(@{outputs('Get_Primary_Contact')?['body/contactid']})"
+                        }
+                      ],
+                      "item/leidos_copyasportalmessage": true,
+                      "item/description": "The Loan Adjustment  for  @{outputs('Get_Project')?['body/leidos_name']}, reference  @{outputs('Get_Loan')?['body/leidos_loanreference']} has been processed and the payment passed to your nominated bank account for payment.\n\nPlease Note: it may take several days for the funds to show in your bank account.",
+                      "item/regardingobjectid_leidos_project_email@odata.bind": "/leidos_projects(@{outputs('Get_Project')?['body/leidos_projectid']})",
+                      "item/subject": "Your Loan Adjustment for Loan:   @{outputs('Get_Loan')?['body/leidos_loanreference']}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Perform_a_bound_action": {
+                  "runAfter": {
+                    "Create_Email_Message_to_Primary_Contact": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "PerformBoundAction",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "emails",
+                      "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+                      "recordId": "@outputs('Create_Email_Message_to_Primary_Contact')?['body/activityid']",
+                      "item/IssueSend": false
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Failed_to_log_in_Coda": {
+              "case": 100000006,
+              "actions": {
+                "Create_Task": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "tasks",
+                      "item/subject": "Loan Adjustment",
+                      "item/description": "Loan Adjustment has failed to submit\nError Code:  @{triggerOutputs()?['body/leidos_codafailure']}",
+                      "item/ownerid_task@odata.bind": "/systemusers(@{triggerOutputs()?['body/_ownerid_value']})",
+                      "item/prioritycode": 2,
+                      "item/regardingobjectid_leidos_loanadjustment_task@odata.bind": "/leidos_loanadjustments(@{triggerOutputs()?['body/_leidos_loanadjustment_value']})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {
+              "Terminate": {
+                "runAfter": {},
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Cancelled"
+                }
+              }
+            }
+          },
+          "expression": "@triggerOutputs()?['body/statuscode']",
+          "metadata": {
+            "operationMetadataId": "2fe17435-d3fc-4b64-80ee-12be1d517fa7"
+          },
+          "type": "Switch"
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

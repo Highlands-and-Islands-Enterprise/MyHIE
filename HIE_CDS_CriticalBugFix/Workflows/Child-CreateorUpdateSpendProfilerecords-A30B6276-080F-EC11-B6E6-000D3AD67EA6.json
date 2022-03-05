@@ -1,1 +1,460 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnProject"},"api":{"name":"shared_commondataserviceforapps"}},"shared_commondataserviceforapps_2":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnSpendProfile"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"manual":{"metadata":{"operationMetadataId":"9acdf818-5f26-4925-8f66-1879c52340c6"},"type":"Request","kind":"Button","inputs":{"schema":{"type":"object","properties":{"text":{"title":"FundingSource","type":"string","x-ms-dynamically-added":true,"description":"Please enter the funding source","x-ms-content-hint":"TEXT"},"text_1":{"title":"Cost","type":"string","x-ms-dynamically-added":true,"description":"Please enter the parent project cost","x-ms-content-hint":"TEXT"},"text_2":{"title":"Project","type":"string","x-ms-dynamically-added":true,"description":"Please enter the parent project id","x-ms-content-hint":"TEXT"},"text_3":{"title":"Programme","type":"string","x-ms-dynamically-added":true,"description":"Please enter the parent programme id","x-ms-content-hint":"TEXT"}},"required":["text","text_1","text_2","text_3"]}},"description":"Create or update Spend Profile records when Cost funding records are created/updated"}},"actions":{"Get_Funding_Source":{"runAfter":{},"metadata":{"operationMetadataId":"41e82a1b-d1e0-4204-bed6-57cf2c112227"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_fundingsources","recordId":"@triggerBody()['text']"},"authentication":"@parameters('$authentication')"}},"Is_a_Spend_Profile_Required":{"actions":{"Get_Parent_Cost":{"runAfter":{},"metadata":{"operationMetadataId":"006eb0b8-4ff2-4316-b534-ceef30fce1e2"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projectcosts","recordId":"@triggerBody()['text_1']"},"authentication":"@parameters('$authentication')"}},"Condition_-_Linked_to_Project_record":{"actions":{"Are_there_existing_Spend_Profiles_Project":{"actions":{"Create_a_new_Spend_Profile_linked_to_Project":{"runAfter":{},"metadata":{"operationMetadataId":"06afda74-9335-4aab-b82a-008390a910cd"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_anticipatedspendprofiles","item/leidos_costtype":"@outputs('Get_Parent_Cost')?['body/leidos_costtype']","item/leidos_FundingSource@odata.bind":"/leidos_fundingsources(@{triggerBody()['text']})","item/leidos_spendprofileamount":0,"item/leidos_ParentProject@odata.bind":"/leidos_projects(@{triggerBody()['text_2']})","item/leidos_updatespendprofile":"@utcNow()"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"_Compose_Projects":["Succeeded"]},"else":{"actions":{"Apply_to_each_Spend_Profile:_Trigger_Update":{"foreach":"@outputs('List_Spend_Profile_Projects')?['body/value']","actions":{"Update_Spend_Profile_Trigger_Project":{"runAfter":{},"metadata":{"operationMetadataId":"55cc330d-640a-4c51-9729-cc40549748fc"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_anticipatedspendprofiles","recordId":"@items('Apply_to_each_Spend_Profile:_Trigger_Update')?['leidos_anticipatedspendprofileid']","item/leidos_updatespendprofile":"@utcNow()"},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"metadata":{"operationMetadataId":"984556f5-06f7-460c-85ac-029a20a716ce"},"type":"Foreach"}}},"expression":{"equals":["@outputs('_Compose_Projects')",0]},"metadata":{"operationMetadataId":"bd1c91db-5a43-4d18-ac18-c578cc95eb4b"},"type":"If"},"_Compose_Projects":{"runAfter":{"List_Spend_Profile_Projects":["Succeeded"]},"metadata":{"operationMetadataId":"ec9a07a7-f32e-4d16-8941-9aeaa7d09530"},"type":"Compose","inputs":"@length(outputs('List_Spend_Profile_Projects')?['body/value'])"},"List_Spend_Profile_Projects":{"runAfter":{},"metadata":{"operationMetadataId":"f225e1bf-299a-488b-ac48-791d443a4812"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_anticipatedspendprofiles","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_anticipatedspendprofile\">\n    <attribute name=\"leidos_parentproject\" />\n    <attribute name=\"createdon\" />\n    <attribute name=\"leidos_spendprofilereference\" />\n    <attribute name=\"leidos_fundingsource\" />\n    <attribute name=\"leidos_totalamountprofiled\" />\n    <attribute name=\"leidos_costtype\" />\n    <attribute name=\"leidos_anticipatedspendprofileid\" />\n    <order attribute=\"leidos_parentproject\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"leidos_costtype\" operator=\"eq\" value=\"@{outputs('Get_Parent_Cost')?['body/leidos_costtype']}\" />\n      <condition attribute=\"leidos_fundingsource\" operator=\"eq\"  value=\"@{triggerBody()['text']}\" />\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{outputs('Get_Parent_Cost')?['body/_leidos_parentproject_value']}\" />\n    </filter>\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Get_Parent_Cost":["Succeeded"]},"else":{"actions":{"Condition_-__Linked_to_Programme":{"actions":{"Are_there_existing_Spend_Profiles_Programme":{"actions":{"Create_a_new_Spend_Profile_linked_to_Programme":{"runAfter":{},"metadata":{"operationMetadataId":"761dff2b-2f33-4b54-b28a-dc6b1e1b9ff3"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_anticipatedspendprofiles","item/leidos_costtype":"@outputs('Get_Parent_Cost')?['body/leidos_costtype']","item/leidos_FundingSource@odata.bind":"/leidos_fundingsources(@{triggerBody()['text']})","item/leidos_spendprofileamount":0,"item/leidos_ParentProgramme@odata.bind":"/leidos_programmes(@{triggerBody()['text_3']})","item/leidos_updatespendprofile":"@utcNow()"},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"else":{"actions":{"Apply_to_each_Spend_Profile_Programme:_Trigger_update":{"foreach":"@outputs('List_Spend_Profiles_Programmes')?['body/value']","actions":{"Update_Spend_Profiles_Programme":{"runAfter":{},"metadata":{"operationMetadataId":"50289a31-d05b-455e-ae75-1668b35f6888"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_anticipatedspendprofiles","recordId":"@items('Apply_to_each_Spend_Profile_Programme:_Trigger_update')?['leidos_anticipatedspendprofileid']","item/leidos_updatespendprofile":"@utcNow()"},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"metadata":{"operationMetadataId":"a257d486-1006-4033-abb4-ad658d7d8d17"},"type":"Foreach"}}},"expression":{"equals":["@outputs('Compose_Programme_')",0]},"metadata":{"operationMetadataId":"a555a417-d703-4d3f-b4ad-8cff86463252"},"type":"If"}},"runAfter":{"Compose_Programme_":["Succeeded"]},"else":{"actions":{"Terminate_2":{"runAfter":{},"metadata":{"operationMetadataId":"3b372ecf-08d5-4bb6-8a91-3d37dbd6a272"},"type":"Terminate","inputs":{"runStatus":"Cancelled"}}}},"expression":{"not":{"equals":["@triggerBody()['text_3']","@null"]}},"metadata":{"operationMetadataId":"cf22e18c-fd9e-4d50-a8ed-e501930348eb"},"type":"If"},"List_Spend_Profiles_Programmes":{"runAfter":{},"metadata":{"operationMetadataId":"500f2119-edd8-4748-9199-3c1258da8e82"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_anticipatedspendprofiles","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_anticipatedspendprofile\">\n    <attribute name=\"leidos_parentprogramme\" />\n    <attribute name=\"createdon\" />\n    <attribute name=\"leidos_spendprofilereference\" />\n    <attribute name=\"leidos_fundingsource\" />\n    <attribute name=\"leidos_totalamountprofiled\" />\n    <attribute name=\"leidos_costtype\" />\n    <attribute name=\"leidos_anticipatedspendprofileid\" />\n    <order attribute=\"leidos_parentprogramme\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"leidos_costtype\" operator=\"eq\" value=\"@{outputs('Get_Parent_Cost')?['body/leidos_costtype']}\" />\n      <condition attribute=\"leidos_fundingsource\" operator=\"eq\"  value=\"@{triggerBody()['text']}\" />\n      <condition attribute=\"leidos_parentprogramme\" operator=\"eq\"  value=\"@{outputs('Get_Parent_Cost')?['body/_leidos_parentprogramme_value']}\" />\n    </filter>\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"}},"Compose_Programme_":{"runAfter":{"List_Spend_Profiles_Programmes":["Succeeded"]},"metadata":{"operationMetadataId":"d57befcc-a3cd-4ce6-b760-1c60464f3249"},"type":"Compose","inputs":"@length(outputs('List_Spend_Profiles_Programmes')?['body/value'])"}}},"expression":{"equals":["@Not(empty(triggerBody()['text_2']))","@true"]},"metadata":{"operationMetadataId":"e59b4326-c29a-4ad1-b064-186ab0c50929"},"type":"If"}},"runAfter":{"Get_Funding_Source":["Succeeded"]},"else":{"actions":{"Terminate":{"runAfter":{},"metadata":{"operationMetadataId":"57f83991-dd1a-4f56-b3ed-3436afdd8084"},"type":"Terminate","inputs":{"runStatus":"Succeeded"}}}},"expression":{"equals":["@outputs('Get_Funding_Source')?['body/leidos_spendprofilerequired']",true]},"metadata":{"operationMetadataId":"a0b14e4e-9813-436e-b30e-e57a5b38506c"},"type":"If"},"Respond_to_a_PowerApp_or_flow":{"runAfter":{"Is_a_Spend_Profile_Required":["Succeeded"]},"metadata":{"operationMetadataId":"1d9ef929-6d06-4d91-b3e9-8e501f37f2cf"},"type":"Response","kind":"PowerApp","inputs":{"statusCode":200,"body":{"response_status":"Successfuly created or updated Spend Profiles."},"schema":{"type":"object","properties":{"response_status":{"title":"Response_Status","x-ms-dynamically-added":true,"type":"string"}}}}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProject"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps_2": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnSpendProfile"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "9acdf818-5f26-4925-8f66-1879c52340c6"
+          },
+          "type": "Request",
+          "kind": "Button",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "FundingSource",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter the funding source",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_1": {
+                  "title": "Cost",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter the parent project cost",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_2": {
+                  "title": "Project",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter the parent project id",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_3": {
+                  "title": "Programme",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter the parent programme id",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text",
+                "text_1",
+                "text_2",
+                "text_3"
+              ]
+            }
+          },
+          "description": "Create or update Spend Profile records when Cost funding records are created/updated"
+        }
+      },
+      "actions": {
+        "Get_Funding_Source": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "41e82a1b-d1e0-4204-bed6-57cf2c112227"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_fundingsources",
+              "recordId": "@triggerBody()['text']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Is_a_Spend_Profile_Required": {
+          "actions": {
+            "Get_Parent_Cost": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "006eb0b8-4ff2-4316-b534-ceef30fce1e2"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_2",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projectcosts",
+                  "recordId": "@triggerBody()['text_1']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Condition_-_Linked_to_Project_record": {
+              "actions": {
+                "Are_there_existing_Spend_Profiles_Project": {
+                  "actions": {
+                    "Create_a_new_Spend_Profile_linked_to_Project": {
+                      "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "06afda74-9335-4aab-b82a-008390a910cd"
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_2",
+                          "operationId": "CreateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_anticipatedspendprofiles",
+                          "item/leidos_costtype": "@outputs('Get_Parent_Cost')?['body/leidos_costtype']",
+                          "item/leidos_FundingSource@odata.bind": "/leidos_fundingsources(@{triggerBody()['text']})",
+                          "item/leidos_spendprofileamount": 0,
+                          "item/leidos_ParentProject@odata.bind": "/leidos_projects(@{triggerBody()['text_2']})",
+                          "item/leidos_updatespendprofile": "@utcNow()"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "_Compose_Projects": [
+                      "Succeeded"
+                    ]
+                  },
+                  "else": {
+                    "actions": {
+                      "Apply_to_each_Spend_Profile:_Trigger_Update": {
+                        "foreach": "@outputs('List_Spend_Profile_Projects')?['body/value']",
+                        "actions": {
+                          "Update_Spend_Profile_Trigger_Project": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "55cc330d-640a-4c51-9729-cc40549748fc"
+                            },
+                            "type": "OpenApiConnection",
+                            "inputs": {
+                              "host": {
+                                "connectionName": "shared_commondataserviceforapps_2",
+                                "operationId": "UpdateRecord",
+                                "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                              },
+                              "parameters": {
+                                "entityName": "leidos_anticipatedspendprofiles",
+                                "recordId": "@items('Apply_to_each_Spend_Profile:_Trigger_Update')?['leidos_anticipatedspendprofileid']",
+                                "item/leidos_updatespendprofile": "@utcNow()"
+                              },
+                              "authentication": "@parameters('$authentication')"
+                            }
+                          }
+                        },
+                        "runAfter": {},
+                        "metadata": {
+                          "operationMetadataId": "984556f5-06f7-460c-85ac-029a20a716ce"
+                        },
+                        "type": "Foreach"
+                      }
+                    }
+                  },
+                  "expression": {
+                    "equals": [
+                      "@outputs('_Compose_Projects')",
+                      0
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "bd1c91db-5a43-4d18-ac18-c578cc95eb4b"
+                  },
+                  "type": "If"
+                },
+                "_Compose_Projects": {
+                  "runAfter": {
+                    "List_Spend_Profile_Projects": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "ec9a07a7-f32e-4d16-8941-9aeaa7d09530"
+                  },
+                  "type": "Compose",
+                  "inputs": "@length(outputs('List_Spend_Profile_Projects')?['body/value'])"
+                },
+                "List_Spend_Profile_Projects": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "f225e1bf-299a-488b-ac48-791d443a4812"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_2",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_anticipatedspendprofiles",
+                      "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_anticipatedspendprofile\">\n    <attribute name=\"leidos_parentproject\" />\n    <attribute name=\"createdon\" />\n    <attribute name=\"leidos_spendprofilereference\" />\n    <attribute name=\"leidos_fundingsource\" />\n    <attribute name=\"leidos_totalamountprofiled\" />\n    <attribute name=\"leidos_costtype\" />\n    <attribute name=\"leidos_anticipatedspendprofileid\" />\n    <order attribute=\"leidos_parentproject\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"leidos_costtype\" operator=\"eq\" value=\"@{outputs('Get_Parent_Cost')?['body/leidos_costtype']}\" />\n      <condition attribute=\"leidos_fundingsource\" operator=\"eq\"  value=\"@{triggerBody()['text']}\" />\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{outputs('Get_Parent_Cost')?['body/_leidos_parentproject_value']}\" />\n    </filter>\n  </entity>\n</fetch>"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Get_Parent_Cost": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Condition_-__Linked_to_Programme": {
+                    "actions": {
+                      "Are_there_existing_Spend_Profiles_Programme": {
+                        "actions": {
+                          "Create_a_new_Spend_Profile_linked_to_Programme": {
+                            "runAfter": {},
+                            "metadata": {
+                              "operationMetadataId": "761dff2b-2f33-4b54-b28a-dc6b1e1b9ff3"
+                            },
+                            "type": "OpenApiConnection",
+                            "inputs": {
+                              "host": {
+                                "connectionName": "shared_commondataserviceforapps_2",
+                                "operationId": "CreateRecord",
+                                "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                              },
+                              "parameters": {
+                                "entityName": "leidos_anticipatedspendprofiles",
+                                "item/leidos_costtype": "@outputs('Get_Parent_Cost')?['body/leidos_costtype']",
+                                "item/leidos_FundingSource@odata.bind": "/leidos_fundingsources(@{triggerBody()['text']})",
+                                "item/leidos_spendprofileamount": 0,
+                                "item/leidos_ParentProgramme@odata.bind": "/leidos_programmes(@{triggerBody()['text_3']})",
+                                "item/leidos_updatespendprofile": "@utcNow()"
+                              },
+                              "authentication": "@parameters('$authentication')"
+                            }
+                          }
+                        },
+                        "runAfter": {},
+                        "else": {
+                          "actions": {
+                            "Apply_to_each_Spend_Profile_Programme:_Trigger_update": {
+                              "foreach": "@outputs('List_Spend_Profiles_Programmes')?['body/value']",
+                              "actions": {
+                                "Update_Spend_Profiles_Programme": {
+                                  "runAfter": {},
+                                  "metadata": {
+                                    "operationMetadataId": "50289a31-d05b-455e-ae75-1668b35f6888"
+                                  },
+                                  "type": "OpenApiConnection",
+                                  "inputs": {
+                                    "host": {
+                                      "connectionName": "shared_commondataserviceforapps_2",
+                                      "operationId": "UpdateRecord",
+                                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                                    },
+                                    "parameters": {
+                                      "entityName": "leidos_anticipatedspendprofiles",
+                                      "recordId": "@items('Apply_to_each_Spend_Profile_Programme:_Trigger_update')?['leidos_anticipatedspendprofileid']",
+                                      "item/leidos_updatespendprofile": "@utcNow()"
+                                    },
+                                    "authentication": "@parameters('$authentication')"
+                                  }
+                                }
+                              },
+                              "runAfter": {},
+                              "metadata": {
+                                "operationMetadataId": "a257d486-1006-4033-abb4-ad658d7d8d17"
+                              },
+                              "type": "Foreach"
+                            }
+                          }
+                        },
+                        "expression": {
+                          "equals": [
+                            "@outputs('Compose_Programme_')",
+                            0
+                          ]
+                        },
+                        "metadata": {
+                          "operationMetadataId": "a555a417-d703-4d3f-b4ad-8cff86463252"
+                        },
+                        "type": "If"
+                      }
+                    },
+                    "runAfter": {
+                      "Compose_Programme_": [
+                        "Succeeded"
+                      ]
+                    },
+                    "else": {
+                      "actions": {
+                        "Terminate_2": {
+                          "runAfter": {},
+                          "metadata": {
+                            "operationMetadataId": "3b372ecf-08d5-4bb6-8a91-3d37dbd6a272"
+                          },
+                          "type": "Terminate",
+                          "inputs": {
+                            "runStatus": "Cancelled"
+                          }
+                        }
+                      }
+                    },
+                    "expression": {
+                      "not": {
+                        "equals": [
+                          "@triggerBody()['text_3']",
+                          "@null"
+                        ]
+                      }
+                    },
+                    "metadata": {
+                      "operationMetadataId": "cf22e18c-fd9e-4d50-a8ed-e501930348eb"
+                    },
+                    "type": "If"
+                  },
+                  "List_Spend_Profiles_Programmes": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "500f2119-edd8-4748-9199-3c1258da8e82"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps_2",
+                        "operationId": "ListRecords",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "leidos_anticipatedspendprofiles",
+                        "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_anticipatedspendprofile\">\n    <attribute name=\"leidos_parentprogramme\" />\n    <attribute name=\"createdon\" />\n    <attribute name=\"leidos_spendprofilereference\" />\n    <attribute name=\"leidos_fundingsource\" />\n    <attribute name=\"leidos_totalamountprofiled\" />\n    <attribute name=\"leidos_costtype\" />\n    <attribute name=\"leidos_anticipatedspendprofileid\" />\n    <order attribute=\"leidos_parentprogramme\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"leidos_costtype\" operator=\"eq\" value=\"@{outputs('Get_Parent_Cost')?['body/leidos_costtype']}\" />\n      <condition attribute=\"leidos_fundingsource\" operator=\"eq\"  value=\"@{triggerBody()['text']}\" />\n      <condition attribute=\"leidos_parentprogramme\" operator=\"eq\"  value=\"@{outputs('Get_Parent_Cost')?['body/_leidos_parentprogramme_value']}\" />\n    </filter>\n  </entity>\n</fetch>"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Compose_Programme_": {
+                    "runAfter": {
+                      "List_Spend_Profiles_Programmes": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "d57befcc-a3cd-4ce6-b760-1c60464f3249"
+                    },
+                    "type": "Compose",
+                    "inputs": "@length(outputs('List_Spend_Profiles_Programmes')?['body/value'])"
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@Not(empty(triggerBody()['text_2']))",
+                  "@true"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e59b4326-c29a-4ad1-b064-186ab0c50929"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Get_Funding_Source": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "57f83991-dd1a-4f56-b3ed-3436afdd8084"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Get_Funding_Source')?['body/leidos_spendprofilerequired']",
+              true
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a0b14e4e-9813-436e-b30e-e57a5b38506c"
+          },
+          "type": "If"
+        },
+        "Respond_to_a_PowerApp_or_flow": {
+          "runAfter": {
+            "Is_a_Spend_Profile_Required": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1d9ef929-6d06-4d91-b3e9-8e501f37f2cf"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "response_status": "Successfuly created or updated Spend Profiles."
+            },
+            "schema": {
+              "type": "object",
+              "properties": {
+                "response_status": {
+                  "title": "Response_Status",
+                  "x-ms-dynamically-added": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

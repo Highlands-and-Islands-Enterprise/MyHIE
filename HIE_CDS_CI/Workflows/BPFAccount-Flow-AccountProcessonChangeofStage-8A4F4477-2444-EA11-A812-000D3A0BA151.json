@@ -1,1 +1,215 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnAccMan"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"When_Account_BPF_is_Updated":{"metadata":{"operationMetadataId":"f02c872c-5194-4a37-a23d-87676a6893db"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_bpfaccountprocess","subscriptionRequest/scope":4,"subscriptionRequest/name":"8a4f4477-2444-ea11-a812-000d3a0ba151"},"authentication":"@parameters('$authentication')"}}},"actions":{"Stage_value":{"runAfter":{},"metadata":{"operationMetadataId":"96d285ec-4a5d-4684-a922-1662317bae23"},"type":"Compose","inputs":"@triggerOutputs()?['body/_activestageid_value']"},"BPF_Status_Reason":{"runAfter":{"Stage_value":["Succeeded"]},"metadata":{"operationMetadataId":"d73ea1c1-f828-4b2a-b4a6-b6aab3ee803a"},"type":"Compose","inputs":"@triggerOutputs()?['body/statuscode']"},"Switch":{"runAfter":{"Get_Account":["Succeeded"]},"cases":{"Basic_Details":{"case":"c40b1ea2-8dc9-4711-a2ef-280b4a89ea23","actions":{"Update_Account_to_Active":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@outputs('Get_Account')?['body/accountid']","item/statuscode":445260004},"authentication":"@parameters('$authentication')"}}}},"Proposed_for_AMR":{"case":"30159041-6b9d-4fdd-9e39-1e038134e57a","actions":{"AMR_Record":{"runAfter":{},"type":"Compose","inputs":"@triggerOutputs()?['body/_bpf_leidos_accountmanagementrecordid_value']"},"Update_Account_Status_Reason_to_Proposed_for_AMR":{"runAfter":{"Update_AMR_Status_to_Draft_(in_case_of_Reactivate)":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@outputs('Get_Account')?['body/accountid']","item/leidos_CurrentAMRRecord@odata.bind":"/leidos_accountmanagementrecords(@{outputs('AMR_Record')})","item/statecode":0,"item/statuscode":445260000},"authentication":"@parameters('$authentication')"}},"Update_AMR_Status_to_Draft_(in_case_of_Reactivate)":{"runAfter":{"AMR_Record":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_accountmanagementrecords","recordId":"@outputs('AMR_Record')","item/statecode":0,"item/statuscode":1},"authentication":"@parameters('$authentication')"}}}},"Client_Entered_Data":{"case":"64393fa5-aa84-4058-a2b0-d0fb510e5259","actions":{"Update_a_record":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@outputs('Get_Account')?['body/accountid']","item/statecode":0,"item/statuscode":1},"authentication":"@parameters('$authentication')"}}}}},"default":{"actions":{}},"expression":"@outputs('Stage_value')","metadata":{"operationMetadataId":"fa97d888-5952-4c0b-903e-2faef23004b9"},"type":"Switch"},"Get_Account":{"runAfter":{"BPF_Status_Reason":["Succeeded"]},"metadata":{"operationMetadataId":"eb4e21c6-a420-47d1-af3c-7b8b10375eb8"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@triggerOutputs()?['body/_bpf_accountid_value']"},"authentication":"@parameters('$authentication')"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnAccMan"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Account_BPF_is_Updated": {
+          "metadata": {
+            "operationMetadataId": "f02c872c-5194-4a37-a23d-87676a6893db"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_bpfaccountprocess",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/name": "8a4f4477-2444-ea11-a812-000d3a0ba151"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Stage_value": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "96d285ec-4a5d-4684-a922-1662317bae23"
+          },
+          "type": "Compose",
+          "inputs": "@triggerOutputs()?['body/_activestageid_value']"
+        },
+        "BPF_Status_Reason": {
+          "runAfter": {
+            "Stage_value": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d73ea1c1-f828-4b2a-b4a6-b6aab3ee803a"
+          },
+          "type": "Compose",
+          "inputs": "@triggerOutputs()?['body/statuscode']"
+        },
+        "Switch": {
+          "runAfter": {
+            "Get_Account": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Basic_Details": {
+              "case": "c40b1ea2-8dc9-4711-a2ef-280b4a89ea23",
+              "actions": {
+                "Update_Account_to_Active": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "accounts",
+                      "recordId": "@outputs('Get_Account')?['body/accountid']",
+                      "item/statuscode": 445260004
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Proposed_for_AMR": {
+              "case": "30159041-6b9d-4fdd-9e39-1e038134e57a",
+              "actions": {
+                "AMR_Record": {
+                  "runAfter": {},
+                  "type": "Compose",
+                  "inputs": "@triggerOutputs()?['body/_bpf_leidos_accountmanagementrecordid_value']"
+                },
+                "Update_Account_Status_Reason_to_Proposed_for_AMR": {
+                  "runAfter": {
+                    "Update_AMR_Status_to_Draft_(in_case_of_Reactivate)": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "accounts",
+                      "recordId": "@outputs('Get_Account')?['body/accountid']",
+                      "item/leidos_CurrentAMRRecord@odata.bind": "/leidos_accountmanagementrecords(@{outputs('AMR_Record')})",
+                      "item/statecode": 0,
+                      "item/statuscode": 445260000
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Update_AMR_Status_to_Draft_(in_case_of_Reactivate)": {
+                  "runAfter": {
+                    "AMR_Record": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_accountmanagementrecords",
+                      "recordId": "@outputs('AMR_Record')",
+                      "item/statecode": 0,
+                      "item/statuscode": 1
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Client_Entered_Data": {
+              "case": "64393fa5-aa84-4058-a2b0-d0fb510e5259",
+              "actions": {
+                "Update_a_record": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "accounts",
+                      "recordId": "@outputs('Get_Account')?['body/accountid']",
+                      "item/statecode": 0,
+                      "item/statuscode": 1
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@outputs('Stage_value')",
+          "metadata": {
+            "operationMetadataId": "fa97d888-5952-4c0b-903e-2faef23004b9"
+          },
+          "type": "Switch"
+        },
+        "Get_Account": {
+          "runAfter": {
+            "BPF_Status_Reason": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "eb4e21c6-a420-47d1-af3c-7b8b10375eb8"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "accounts",
+              "recordId": "@triggerOutputs()?['body/_bpf_accountid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

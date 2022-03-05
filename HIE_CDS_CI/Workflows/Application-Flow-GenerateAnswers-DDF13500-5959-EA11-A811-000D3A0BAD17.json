@@ -1,1 +1,278 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnApplication"},"api":{"name":"shared_commondataserviceforapps"}},"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_sharedcommondataserviceforapps_5ec64"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Application_-_Generate_Questions":{"metadata":{"operationMetadataId":"018f3659-4db2-40a7-876c-c30cb0001a50"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_application","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_generateapplicationquestionset","subscriptionRequest/filterexpression":"leidos_generateapplicationquestionset eq true"},"authentication":"@parameters('$authentication')"},"description":"Triggered By the Submit or a change of Support item"}},"actions":{"Get_List_of_Questions_from_All_Projects":{"runAfter":{},"metadata":{"operationMetadataId":"759c62e7-83dd-43c6-bc87-1f920435127c"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applicationquestions","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"true\">\n  <entity name=\"leidos_applicationquestion\">\n    <attribute name=\"leidos_applicationquestionid\" />\n    <attribute name=\"leidos_question\" />\n    <attribute name=\"createdon\" />\n  <filter>\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n    </filter>\n    <order attribute=\"leidos_question\" descending=\"false\" />\n    <link-entity name=\"leidos_applicationquestion_leidos_suppo\" from=\"leidos_applicationquestionid\" to=\"leidos_applicationquestionid\" visible=\"false\" intersect=\"true\">\n      <link-entity name=\"leidos_supportitem\" from=\"leidos_supportitemid\" to=\"leidos_supportitemid\" alias=\"aj\">\n        <link-entity name=\"leidos_project\" from=\"leidos_supportitemtype\" to=\"leidos_supportitemid\" link-type=\"inner\" alias=\"ak\">\n          <link-entity name=\"leidos_application\" from=\"leidos_applicationid\" to=\"leidos_parentapplication\" link-type=\"inner\" alias=\"al\">\n            <filter type=\"and\">\n              <condition attribute=\"leidos_applicationid\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_applicationid']}\" />\n             \n            </filter>\n          </link-entity>\n        </link-entity>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"},"description":"Get a List of the Questions fpr all Projects associated with this Application"},"Apply_to_each":{"foreach":"@outputs('Get_List_of_Questions_from_All_Projects')?['body/value']","actions":{"List_of_Answers_Not_in_application_2":{"runAfter":{},"metadata":{"operationMetadataId":"406a3f9d-fead-49c3-80cf-47c6a95c37c7"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applicationanswers","fetchXml":"<fetch top=\"200\" distinct=\"true\" >\n  <entity name=\"leidos_applicationanswer\" >\n    <filter type=\"and\">\n      <condition attribute=\"leidos_parentapplication\" operator=\"eq\" value=\"@{triggerOutputs()?['body/leidos_applicationid']}\" />\n\n      <condition attribute=\"leidos_question\" operator=\"eq\" value=\"@{items('Apply_to_each')?['leidos_applicationquestionid']}\" />\n      <condition attribute=\"statuscode\" operator=\"ne\" value=\"2\" />    </filter>\n\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"}},"If_there_is_a_result,_the_Answer_Exists":{"actions":{"Create_a_new_Answer_Associated_to_the_Applicaiton":{"runAfter":{},"metadata":{"operationMetadataId":"b531c2ac-32bc-42c8-bd7a-0ad0857eaad5"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applicationanswers","item/leidos_name":"@items('Apply_to_each')?['leidos_question']","item/leidos_ParentApplication@odata.bind":"/leidos_applications(@{triggerOutputs()?['body/leidos_applicationid']})","item/leidos_Question@odata.bind":"/leidos_applicationquestions(@{items('Apply_to_each')?['leidos_applicationquestionid']})"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"List_of_Answers_Not_in_application_2":["Succeeded"]},"expression":{"equals":["@length(outputs('List_of_Answers_Not_in_application_2')?['body/value'])",0]},"metadata":{"operationMetadataId":"fb005dc4-ad88-4615-b6c5-b08b48928367"},"type":"If"}},"runAfter":{"Get_List_of_Questions_from_All_Projects":["Succeeded"]},"metadata":{"operationMetadataId":"a790e3f6-0e1a-4738-86fe-9cba8000856f"},"type":"Foreach","description":"Check if the Question already exists, if so skip it"},"List_Of_Global_Questions_for_All_Applications":{"runAfter":{},"metadata":{"operationMetadataId":"f8f92f41-6523-452d-840f-dae6931c34c2"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applicationquestions","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\" >\n  <entity name=\"leidos_applicationquestion\" >\n    <attribute name=\"leidos_applicationquestionid\" />\n    <attribute name=\"leidos_question\" />\n    <attribute name=\"leidos_questionfulltext\" />\n    <attribute name=\"leidos_questiontype\" />\n    <attribute name=\"leidos_regexvalidation\" />\n    <attribute name=\"leidos_category\" />\n    <filter type=\"and\" >\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n    </filter>\n    <order attribute=\"leidos_category\" />\n    <order attribute=\"leidos_question\" />\n    <link-entity name=\"leidos_applicationquestioncategory\" from=\"leidos_applicationquestioncategoryid\" to=\"leidos_category\" link-type=\"inner\" alias=\"ac\" >\n      <filter type=\"and\" >\n        <condition attribute=\"leidos_global\" operator=\"eq\" value=\"1\" />\n        <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n      </filter>\n    </link-entity>\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"}},"Loop_Through_Global_Questions":{"foreach":"@outputs('List_Of_Global_Questions_for_All_Applications')?['body/value']","actions":{"List_of_answers_Not_in_Application_global":{"runAfter":{},"metadata":{"operationMetadataId":"29d262db-f2cf-4052-b076-e8f162ccd9b1"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applicationanswers","fetchXml":"<fetch top=\"200\" distinct=\"true\" >\n  <entity name=\"leidos_applicationanswer\" >\n    <filter type=\"and\">\n      <condition attribute=\"leidos_parentapplication\" operator=\"eq\" value=\"@{triggerOutputs()?['body/leidos_applicationid']}\" />\n\n      <condition attribute=\"leidos_question\" operator=\"eq\" value=\"@{items('Loop_Through_Global_Questions')?['leidos_applicationquestionid']}\" />\n      <condition attribute=\"statuscode\" operator=\"ne\" value=\"2\" />\n    </filter>\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"}},"Does_answer_not_yet_exist":{"actions":{"Create_Global_Application_Answer":{"runAfter":{},"metadata":{"operationMetadataId":"cb19c331-c195-41f7-8911-b023e2a264f6"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applicationanswers","item/leidos_name":"@items('Loop_Through_Global_Questions')?['leidos_question']","item/leidos_ParentApplication@odata.bind":"/leidos_applications(@{triggerOutputs()?['body/leidos_applicationid']})","item/leidos_Question@odata.bind":"/leidos_applicationquestions(@{items('Loop_Through_Global_Questions')?['leidos_applicationquestionid']})"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"List_of_answers_Not_in_Application_global":["Succeeded"]},"expression":{"equals":["@length(outputs('List_of_Answers_Not_in_application_global')?['body/value'])",0]},"metadata":{"operationMetadataId":"aa5bfac7-56ad-4705-95af-40e36a9eca11"},"type":"If"}},"runAfter":{"List_Of_Global_Questions_for_All_Applications":["Succeeded"]},"metadata":{"operationMetadataId":"f7737c92-34c8-4e78-8066-f9c9e4e855ad"},"type":"Foreach"},"Update_a_Application_to_Submitted_to_Client":{"runAfter":{"Apply_to_each":["Succeeded"],"Loop_Through_Global_Questions":["Succeeded"]},"metadata":{"operationMetadataId":"3f20f324-4179-4e52-a39b-5bf3fb5614c7"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applications","recordId":"@triggerOutputs()?['body/leidos_applicationid']"},"authentication":"@parameters('$authentication')"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnApplication"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_sharedcommondataserviceforapps_5ec64"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Application_-_Generate_Questions": {
+          "metadata": {
+            "operationMetadataId": "018f3659-4db2-40a7-876c-c30cb0001a50"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_generateapplicationquestionset",
+              "subscriptionRequest/filterexpression": "leidos_generateapplicationquestionset eq true"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Triggered By the Submit or a change of Support item"
+        }
+      },
+      "actions": {
+        "Get_List_of_Questions_from_All_Projects": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "759c62e7-83dd-43c6-bc87-1f920435127c"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_applicationquestions",
+              "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"true\">\n  <entity name=\"leidos_applicationquestion\">\n    <attribute name=\"leidos_applicationquestionid\" />\n    <attribute name=\"leidos_question\" />\n    <attribute name=\"createdon\" />\n  <filter>\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n    </filter>\n    <order attribute=\"leidos_question\" descending=\"false\" />\n    <link-entity name=\"leidos_applicationquestion_leidos_suppo\" from=\"leidos_applicationquestionid\" to=\"leidos_applicationquestionid\" visible=\"false\" intersect=\"true\">\n      <link-entity name=\"leidos_supportitem\" from=\"leidos_supportitemid\" to=\"leidos_supportitemid\" alias=\"aj\">\n        <link-entity name=\"leidos_project\" from=\"leidos_supportitemtype\" to=\"leidos_supportitemid\" link-type=\"inner\" alias=\"ak\">\n          <link-entity name=\"leidos_application\" from=\"leidos_applicationid\" to=\"leidos_parentapplication\" link-type=\"inner\" alias=\"al\">\n            <filter type=\"and\">\n              <condition attribute=\"leidos_applicationid\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_applicationid']}\" />\n             \n            </filter>\n          </link-entity>\n        </link-entity>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          },
+          "description": "Get a List of the Questions fpr all Projects associated with this Application"
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Get_List_of_Questions_from_All_Projects')?['body/value']",
+          "actions": {
+            "List_of_Answers_Not_in_application_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "406a3f9d-fead-49c3-80cf-47c6a95c37c7"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_applicationanswers",
+                  "fetchXml": "<fetch top=\"200\" distinct=\"true\" >\n  <entity name=\"leidos_applicationanswer\" >\n    <filter type=\"and\">\n      <condition attribute=\"leidos_parentapplication\" operator=\"eq\" value=\"@{triggerOutputs()?['body/leidos_applicationid']}\" />\n\n      <condition attribute=\"leidos_question\" operator=\"eq\" value=\"@{items('Apply_to_each')?['leidos_applicationquestionid']}\" />\n      <condition attribute=\"statuscode\" operator=\"ne\" value=\"2\" />    </filter>\n\n  </entity>\n</fetch>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "If_there_is_a_result,_the_Answer_Exists": {
+              "actions": {
+                "Create_a_new_Answer_Associated_to_the_Applicaiton": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "b531c2ac-32bc-42c8-bd7a-0ad0857eaad5"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_applicationanswers",
+                      "item/leidos_name": "@items('Apply_to_each')?['leidos_question']",
+                      "item/leidos_ParentApplication@odata.bind": "/leidos_applications(@{triggerOutputs()?['body/leidos_applicationid']})",
+                      "item/leidos_Question@odata.bind": "/leidos_applicationquestions(@{items('Apply_to_each')?['leidos_applicationquestionid']})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_of_Answers_Not_in_application_2": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "equals": [
+                  "@length(outputs('List_of_Answers_Not_in_application_2')?['body/value'])",
+                  0
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "fb005dc4-ad88-4615-b6c5-b08b48928367"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Get_List_of_Questions_from_All_Projects": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a790e3f6-0e1a-4738-86fe-9cba8000856f"
+          },
+          "type": "Foreach",
+          "description": "Check if the Question already exists, if so skip it"
+        },
+        "List_Of_Global_Questions_for_All_Applications": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "f8f92f41-6523-452d-840f-dae6931c34c2"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_applicationquestions",
+              "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\" >\n  <entity name=\"leidos_applicationquestion\" >\n    <attribute name=\"leidos_applicationquestionid\" />\n    <attribute name=\"leidos_question\" />\n    <attribute name=\"leidos_questionfulltext\" />\n    <attribute name=\"leidos_questiontype\" />\n    <attribute name=\"leidos_regexvalidation\" />\n    <attribute name=\"leidos_category\" />\n    <filter type=\"and\" >\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n    </filter>\n    <order attribute=\"leidos_category\" />\n    <order attribute=\"leidos_question\" />\n    <link-entity name=\"leidos_applicationquestioncategory\" from=\"leidos_applicationquestioncategoryid\" to=\"leidos_category\" link-type=\"inner\" alias=\"ac\" >\n      <filter type=\"and\" >\n        <condition attribute=\"leidos_global\" operator=\"eq\" value=\"1\" />\n        <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n      </filter>\n    </link-entity>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_Through_Global_Questions": {
+          "foreach": "@outputs('List_Of_Global_Questions_for_All_Applications')?['body/value']",
+          "actions": {
+            "List_of_answers_Not_in_Application_global": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "29d262db-f2cf-4052-b076-e8f162ccd9b1"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_applicationanswers",
+                  "fetchXml": "<fetch top=\"200\" distinct=\"true\" >\n  <entity name=\"leidos_applicationanswer\" >\n    <filter type=\"and\">\n      <condition attribute=\"leidos_parentapplication\" operator=\"eq\" value=\"@{triggerOutputs()?['body/leidos_applicationid']}\" />\n\n      <condition attribute=\"leidos_question\" operator=\"eq\" value=\"@{items('Loop_Through_Global_Questions')?['leidos_applicationquestionid']}\" />\n      <condition attribute=\"statuscode\" operator=\"ne\" value=\"2\" />\n    </filter>\n  </entity>\n</fetch>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Does_answer_not_yet_exist": {
+              "actions": {
+                "Create_Global_Application_Answer": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "cb19c331-c195-41f7-8911-b023e2a264f6"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_applicationanswers",
+                      "item/leidos_name": "@items('Loop_Through_Global_Questions')?['leidos_question']",
+                      "item/leidos_ParentApplication@odata.bind": "/leidos_applications(@{triggerOutputs()?['body/leidos_applicationid']})",
+                      "item/leidos_Question@odata.bind": "/leidos_applicationquestions(@{items('Loop_Through_Global_Questions')?['leidos_applicationquestionid']})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "List_of_answers_Not_in_Application_global": [
+                  "Succeeded"
+                ]
+              },
+              "expression": {
+                "equals": [
+                  "@length(outputs('List_of_Answers_Not_in_application_global')?['body/value'])",
+                  0
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "aa5bfac7-56ad-4705-95af-40e36a9eca11"
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "List_Of_Global_Questions_for_All_Applications": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f7737c92-34c8-4e78-8066-f9c9e4e855ad"
+          },
+          "type": "Foreach"
+        },
+        "Update_a_Application_to_Submitted_to_Client": {
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ],
+            "Loop_Through_Global_Questions": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3f20f324-4179-4e52-a39b-5bf3fb5614c7"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_applications",
+              "recordId": "@triggerOutputs()?['body/leidos_applicationid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}
