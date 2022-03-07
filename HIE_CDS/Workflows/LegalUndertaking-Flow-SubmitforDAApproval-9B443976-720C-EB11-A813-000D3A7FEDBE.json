@@ -1,1 +1,262 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnLegal"},"api":{"name":"shared_commondataserviceforapps"}},"shared_office365":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnOffice365Outlook"},"api":{"name":"shared_office365"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Submit_for_DA_Approval":{"metadata":{"operationMetadataId":"2691c210-bccc-4210-a448-c60cc89afa2c"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_legalundertaking","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_submitfordaapproval","subscriptionRequest/filterexpression":"leidos_submitfordaapproval eq true","subscriptionRequest/name":"9b443976-720c-eb11-a813-000d3a7fedbe"},"authentication":"@parameters('$authentication')"}}},"actions":{"get_the_record_URL":{"runAfter":{"Initialize_variable":["Succeeded"]},"metadata":{"operationMetadataId":"07d4b6b1-f110-4c98-b7bb-63268c60e43a"},"type":"Workflow","inputs":{"host":{"workflowReferenceName":"b0db1a8a-c449-ea11-a812-000d3a0ba151"},"body":{"EntityId_Inputs":"@triggerOutputs()?['body/leidos_legalundertakingid']","EntityType_Value":"leidos_legalundertaking"}}},"Record_URL":{"runAfter":{"get_the_record_URL":["Succeeded"]},"metadata":{"operationMetadataId":"6bcc562d-17a2-4db4-b5f0-84992e1c5a83"},"type":"Compose","inputs":"@outputs('get_the_record_URL')?['Body']?['entityurl']"},"Get_Project":{"runAfter":{"Initialize_variable":["Succeeded"]},"metadata":{"operationMetadataId":"e494ca5f-19ad-4d85-bac4-0d942ee59155"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","recordId":"@triggerOutputs()?['body/_leidos_project_value']"},"authentication":"@parameters('$authentication')"}},"Get_Project_Owner":{"runAfter":{"Get_Project":["Succeeded"]},"metadata":{"operationMetadataId":"b3afcba1-81ac-4e97-9af4-a43bb35a0671"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Get_Project')?['body/_ownerid_value']"},"authentication":"@parameters('$authentication')"}},"Initialize_variable":{"runAfter":{},"metadata":{"operationMetadataId":"48ccf01a-591d-4a0b-b2c5-344eb8842728"},"type":"InitializeVariable","inputs":{"variables":[{"name":"HIE Email","type":"string"}]}},"Get_DA_Table":{"runAfter":{"Initialize_variable":["Succeeded"]},"metadata":{"operationMetadataId":"21f675d1-530e-46bf-b870-83e4e6e3c781"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_delegatedauthorityapprovaltables","recordId":"@triggerOutputs()?['body/_leidos_delegatedauthority_value']"},"authentication":"@parameters('$authentication')"}},"Get_DA_User_Record":{"runAfter":{"Get_DA_Table":["Succeeded"]},"metadata":{"operationMetadataId":"2ad25ba4-cc72-45a4-9ef9-2eb2d609fc44"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Get_DA_Table')?['body/_leidos_userrecord_value']"},"authentication":"@parameters('$authentication')"}},"Set_to_DA_Email":{"runAfter":{"Get_DA_User_Record":["Succeeded"]},"metadata":{"operationMetadataId":"687632a5-81da-41bb-a8b8-11c83fd4c30d"},"type":"SetVariable","inputs":{"name":"HIE Email","value":"@outputs('Get_DA_User_Record')?['body/internalemailaddress']"}},"Send_an_email_(V2)_2":{"runAfter":{"Offer_Letter_URL":["Succeeded"]},"metadata":{"operationMetadataId":"1c3157f8-6196-48e2-b0f2-5f2c6f235dd3"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@variables('HIE Email')","emailMessage/Subject":"Legal Undertaking Input Requested  : @{triggerOutputs()?['body/leidos_name']}","emailMessage/Body":"<p>Project Title: @{outputs('Get_Project')?['body/leidos_name']}<br>\nProject Owner: @{outputs('Get_Project_Owner')?['body/fullname']}<br>\nProject Reference: @{outputs('Get_Project')?['body/leidos_projectreference']}<br>\n<br>\nLegal Undertaking : <a href=\"@{outputs('Record_URL')}\">@{outputs('Get_DA_Table')?['body/leidos_name']}</a> <br>\nOffer Letter :  <a href=\"@{outputs('Offer_Letter_URL')}\">Offer Letter</a> <br>\n</p>"},"authentication":"@parameters('$authentication')"}},"Offer_Letter_URL":{"runAfter":{"Get_Project_Owner":["Succeeded"],"Record_URL":["Succeeded"],"Set_to_DA_Email":["Succeeded"]},"metadata":{"operationMetadataId":"09b562e4-f0f0-40a6-a490-97bcb33a8f31"},"type":"Compose","inputs":"@triggerOutputs()?['body/leidos_offerletterurl']"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnLegal"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnOffice365Outlook"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Submit_for_DA_Approval": {
+          "metadata": {
+            "operationMetadataId": "2691c210-bccc-4210-a448-c60cc89afa2c"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_legalundertaking",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_submitfordaapproval",
+              "subscriptionRequest/filterexpression": "leidos_submitfordaapproval eq true",
+              "subscriptionRequest/name": "9b443976-720c-eb11-a813-000d3a7fedbe"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "get_the_record_URL": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "07d4b6b1-f110-4c98-b7bb-63268c60e43a"
+          },
+          "type": "Workflow",
+          "inputs": {
+            "host": {
+              "workflowReferenceName": "b0db1a8a-c449-ea11-a812-000d3a0ba151"
+            },
+            "body": {
+              "EntityId_Inputs": "@triggerOutputs()?['body/leidos_legalundertakingid']",
+              "EntityType_Value": "leidos_legalundertaking"
+            }
+          }
+        },
+        "Record_URL": {
+          "runAfter": {
+            "get_the_record_URL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6bcc562d-17a2-4db4-b5f0-84992e1c5a83"
+          },
+          "type": "Compose",
+          "inputs": "@outputs('get_the_record_URL')?['Body']?['entityurl']"
+        },
+        "Get_Project": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e494ca5f-19ad-4d85-bac4-0d942ee59155"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_projects",
+              "recordId": "@triggerOutputs()?['body/_leidos_project_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Project_Owner": {
+          "runAfter": {
+            "Get_Project": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b3afcba1-81ac-4e97-9af4-a43bb35a0671"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@outputs('Get_Project')?['body/_ownerid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "48ccf01a-591d-4a0b-b2c5-344eb8842728"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "HIE Email",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Get_DA_Table": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "21f675d1-530e-46bf-b870-83e4e6e3c781"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_delegatedauthorityapprovaltables",
+              "recordId": "@triggerOutputs()?['body/_leidos_delegatedauthority_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_DA_User_Record": {
+          "runAfter": {
+            "Get_DA_Table": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2ad25ba4-cc72-45a4-9ef9-2eb2d609fc44"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@outputs('Get_DA_Table')?['body/_leidos_userrecord_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Set_to_DA_Email": {
+          "runAfter": {
+            "Get_DA_User_Record": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "687632a5-81da-41bb-a8b8-11c83fd4c30d"
+          },
+          "type": "SetVariable",
+          "inputs": {
+            "name": "HIE Email",
+            "value": "@outputs('Get_DA_User_Record')?['body/internalemailaddress']"
+          }
+        },
+        "Send_an_email_(V2)_2": {
+          "runAfter": {
+            "Offer_Letter_URL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1c3157f8-6196-48e2-b0f2-5f2c6f235dd3"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365",
+              "operationId": "SendEmailV2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "emailMessage/To": "@variables('HIE Email')",
+              "emailMessage/Subject": "Legal Undertaking Input Requested  : @{triggerOutputs()?['body/leidos_name']}",
+              "emailMessage/Body": "<p>Project Title: @{outputs('Get_Project')?['body/leidos_name']}<br>\nProject Owner: @{outputs('Get_Project_Owner')?['body/fullname']}<br>\nProject Reference: @{outputs('Get_Project')?['body/leidos_projectreference']}<br>\n<br>\nLegal Undertaking : <a href=\"@{outputs('Record_URL')}\">@{outputs('Get_DA_Table')?['body/leidos_name']}</a> <br>\nOffer Letter :  <a href=\"@{outputs('Offer_Letter_URL')}\">Offer Letter</a> <br>\n</p>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Offer_Letter_URL": {
+          "runAfter": {
+            "Get_Project_Owner": [
+              "Succeeded"
+            ],
+            "Record_URL": [
+              "Succeeded"
+            ],
+            "Set_to_DA_Email": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "09b562e4-f0f0-40a6-a490-97bcb33a8f31"
+          },
+          "type": "Compose",
+          "inputs": "@triggerOutputs()?['body/leidos_offerletterurl']"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

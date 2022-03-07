@@ -1,1 +1,293 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnPipleine"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Pipeline_-_Proceed_to_Application":{"metadata":{"operationMetadataId":"0da4a451-1c6f-42c7-bb87-49d0a555d4ab"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":3,"subscriptionRequest/entityname":"leidos_pipelineproject","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_preapplicationroute","subscriptionRequest/filterexpression":"leidos_preapplicationroute eq 445260000","subscriptionRequest/runas":1,"subscriptionRequest/name":"aa32c9b2-1ec1-ea11-a812-000d3a7f1bbb"},"authentication":"@parameters('$authentication')"}}},"actions":{"Update_Pipeline_to_closed":{"runAfter":{"Check_for_SIC_Codes_on_account":["Succeeded"]},"metadata":{"operationMetadataId":"5ce95b89-6dac-402c-a422-2938769bad16"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_pipelineprojects","recordId":"@triggerOutputs()?['body/leidos_pipelineprojectid']","item/leidos_isaapprovedon":"@utcNow()","item/statecode":1,"item/statuscode":2},"authentication":"@parameters('$authentication')"}},"Create_Base_Project":{"runAfter":{"Get_Data_to_process":["Succeeded"]},"metadata":{"operationMetadataId":"ecbf79fa-5a79-481d-ad67-aff9983a68ce"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","item/leidos_name":"@triggerOutputs()?['body/leidos_name']","item/leidos_anticipatedhiefunding":"@triggerOutputs()?['body/leidos_anticipatedprojectfunding']","item/leidos_budgetsubtype":"@outputs('Get_Pipeline_Project')?['body/leidos_budgetsubtype']","item/leidos_dateofenquiry":"@outputs('Get_Pipeline_Project')?['body/leidos_dateofenquiry']","item/leidos_projectstartdate":"@triggerOutputs()?['body/leidos_anticipatedprojectstartdate']","item/leidos_HIETeam@odata.bind":"/leidos_hieteams(@{outputs('Get_The_team')?['body/leidos_hieteamid']})","item/leidos_ownhandproject":"@outputs('Get_Pipeline_Project')?['body/leidos_ownhandclient']","item/ownerid@odata.bind":"/@{outputs('Get_Pipeline_Project')?['body/_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']}s(@{outputs('Get_Pipeline_Project')?['body/_ownerid_value']})","item/leidos_ParentAccount@odata.bind":"/accounts(@{outputs('Get_Account')?['body/accountid']})","item/leidos_PreApplicationProcess@odata.bind":"/leidos_pipelineprojects(@{triggerOutputs()?['body/leidos_pipelineprojectid']})","item/statuscode":445260005,"item/leidos_SupportItemNFI@odata.bind":"/leidos_supportitemtypes(@{outputs('Get_Support_Item_Type')?['body/leidos_supportitemtypeid']})"},"authentication":"@parameters('$authentication')"}},"Check_for_SIC_Codes_on_account":{"actions":{"Update_Project_to_Planned_No_SIC_Codes":{"runAfter":{},"metadata":{"operationMetadataId":"1e335274-df74-4f89-a7dd-173ef313a512"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","recordId":"@outputs('Create_Base_Project')?['body/leidos_projectid']","item/statecode":0,"item/statuscode":445260005},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Create_Base_Project":["Succeeded"]},"else":{"actions":{"Update_Project_to_Planned__with_SIC_Codes":{"runAfter":{},"metadata":{"operationMetadataId":"18a1e716-6a97-4ffd-831b-302d80254375"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","recordId":"@outputs('Create_Base_Project')?['body/leidos_projectid']","item/leidos_SIC1@odata.bind":"/leidos_siccodes(@{outputs('Get_Account')?['body/_leidos_sic1_value']})","item/leidos_SIC2@odata.bind":"/leidos_siccodes(@{outputs('Get_Account')?['body/_leidos_sic2_value']})","item/statecode":0,"item/statuscode":445260005},"authentication":"@parameters('$authentication')"}}}},"expression":{"or":[{"equals":["@outputs('Get_Account')?['body/_leidos_sic1_value']","@null"]},{"equals":["@outputs('Get_Account')?['body/_leidos_sic2_value']","@null"]}]},"metadata":{"operationMetadataId":"bd931bbd-8200-41e2-8101-74a5bac4db12"},"type":"If"},"Get_Data_to_process":{"actions":{"Get_Pipeline_Project":{"runAfter":{},"metadata":{"operationMetadataId":"044fa778-983f-4fb1-b87e-a2490e6b7e25"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_pipelineprojects","recordId":"@triggerOutputs()?['body/leidos_pipelineprojectid']"},"authentication":"@parameters('$authentication')"}},"Get_Account":{"runAfter":{"Get_Pipeline_Project":["Succeeded"]},"metadata":{"operationMetadataId":"fe155115-7f72-4111-a618-3634b15dfb4c"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@triggerOutputs()?['body/_leidos_client_value']"},"authentication":"@parameters('$authentication')"},"description":"Get Account to access SIC Codes"},"Get_Support_Item_Type":{"runAfter":{"Get_Account":["Succeeded"]},"metadata":{"operationMetadataId":"4b205945-79e8-4588-a0ef-4922121e051a"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_supportitemtypes","recordId":"@triggerOutputs()?['body/_leidos_supportitemtype_value']"},"authentication":"@parameters('$authentication')"}},"Get_The_team":{"runAfter":{"Get_Support_Item_Type":["Succeeded"]},"metadata":{"operationMetadataId":"e75ecc56-5c54-423f-bb91-fcf7cc6e0766"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_hieteams","recordId":"@triggerOutputs()?['body/_leidos_team_value']"},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"metadata":{"operationMetadataId":"88eef785-913a-4992-80da-e6e4425881c7"},"type":"Scope"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnPipleine"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Pipeline_-_Proceed_to_Application": {
+          "metadata": {
+            "operationMetadataId": "0da4a451-1c6f-42c7-bb87-49d0a555d4ab"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "leidos_pipelineproject",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_preapplicationroute",
+              "subscriptionRequest/filterexpression": "leidos_preapplicationroute eq 445260000",
+              "subscriptionRequest/runas": 1,
+              "subscriptionRequest/name": "aa32c9b2-1ec1-ea11-a812-000d3a7f1bbb"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Update_Pipeline_to_closed": {
+          "runAfter": {
+            "Check_for_SIC_Codes_on_account": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "5ce95b89-6dac-402c-a422-2938769bad16"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_pipelineprojects",
+              "recordId": "@triggerOutputs()?['body/leidos_pipelineprojectid']",
+              "item/leidos_isaapprovedon": "@utcNow()",
+              "item/statecode": 1,
+              "item/statuscode": 2
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Create_Base_Project": {
+          "runAfter": {
+            "Get_Data_to_process": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "ecbf79fa-5a79-481d-ad67-aff9983a68ce"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_projects",
+              "item/leidos_name": "@triggerOutputs()?['body/leidos_name']",
+              "item/leidos_anticipatedhiefunding": "@triggerOutputs()?['body/leidos_anticipatedprojectfunding']",
+              "item/leidos_budgetsubtype": "@outputs('Get_Pipeline_Project')?['body/leidos_budgetsubtype']",
+              "item/leidos_dateofenquiry": "@outputs('Get_Pipeline_Project')?['body/leidos_dateofenquiry']",
+              "item/leidos_projectstartdate": "@triggerOutputs()?['body/leidos_anticipatedprojectstartdate']",
+              "item/leidos_HIETeam@odata.bind": "/leidos_hieteams(@{outputs('Get_The_team')?['body/leidos_hieteamid']})",
+              "item/leidos_ownhandproject": "@outputs('Get_Pipeline_Project')?['body/leidos_ownhandclient']",
+              "item/ownerid@odata.bind": "/@{outputs('Get_Pipeline_Project')?['body/_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']}s(@{outputs('Get_Pipeline_Project')?['body/_ownerid_value']})",
+              "item/leidos_ParentAccount@odata.bind": "/accounts(@{outputs('Get_Account')?['body/accountid']})",
+              "item/leidos_PreApplicationProcess@odata.bind": "/leidos_pipelineprojects(@{triggerOutputs()?['body/leidos_pipelineprojectid']})",
+              "item/statuscode": 445260005,
+              "item/leidos_SupportItemNFI@odata.bind": "/leidos_supportitemtypes(@{outputs('Get_Support_Item_Type')?['body/leidos_supportitemtypeid']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Check_for_SIC_Codes_on_account": {
+          "actions": {
+            "Update_Project_to_Planned_No_SIC_Codes": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "1e335274-df74-4f89-a7dd-173ef313a512"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projects",
+                  "recordId": "@outputs('Create_Base_Project')?['body/leidos_projectid']",
+                  "item/statecode": 0,
+                  "item/statuscode": 445260005
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Create_Base_Project": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Update_Project_to_Planned__with_SIC_Codes": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "18a1e716-6a97-4ffd-831b-302d80254375"
+                },
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "UpdateRecord",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "leidos_projects",
+                    "recordId": "@outputs('Create_Base_Project')?['body/leidos_projectid']",
+                    "item/leidos_SIC1@odata.bind": "/leidos_siccodes(@{outputs('Get_Account')?['body/_leidos_sic1_value']})",
+                    "item/leidos_SIC2@odata.bind": "/leidos_siccodes(@{outputs('Get_Account')?['body/_leidos_sic2_value']})",
+                    "item/statecode": 0,
+                    "item/statuscode": 445260005
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              }
+            }
+          },
+          "expression": {
+            "or": [
+              {
+                "equals": [
+                  "@outputs('Get_Account')?['body/_leidos_sic1_value']",
+                  "@null"
+                ]
+              },
+              {
+                "equals": [
+                  "@outputs('Get_Account')?['body/_leidos_sic2_value']",
+                  "@null"
+                ]
+              }
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bd931bbd-8200-41e2-8101-74a5bac4db12"
+          },
+          "type": "If"
+        },
+        "Get_Data_to_process": {
+          "actions": {
+            "Get_Pipeline_Project": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "044fa778-983f-4fb1-b87e-a2490e6b7e25"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_pipelineprojects",
+                  "recordId": "@triggerOutputs()?['body/leidos_pipelineprojectid']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Account": {
+              "runAfter": {
+                "Get_Pipeline_Project": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "fe155115-7f72-4111-a618-3634b15dfb4c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "accounts",
+                  "recordId": "@triggerOutputs()?['body/_leidos_client_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "description": "Get Account to access SIC Codes"
+            },
+            "Get_Support_Item_Type": {
+              "runAfter": {
+                "Get_Account": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "4b205945-79e8-4588-a0ef-4922121e051a"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_supportitemtypes",
+                  "recordId": "@triggerOutputs()?['body/_leidos_supportitemtype_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_The_team": {
+              "runAfter": {
+                "Get_Support_Item_Type": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e75ecc56-5c54-423f-bb91-fcf7cc6e0766"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_hieteams",
+                  "recordId": "@triggerOutputs()?['body/_leidos_team_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "88eef785-913a-4992-80da-e6e4425881c7"
+          },
+          "type": "Scope"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

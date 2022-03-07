@@ -1,1 +1,565 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnClaim"},"api":{"name":"shared_commondataserviceforapps"}},"shared_office365_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnOutlook2"},"api":{"name":"shared_office365"}},"shared_approvals":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ApprovalConnectionReference"},"api":{"name":"shared_approvals"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Claim_Adjustment_On_Submit":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_claimadjustment","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_submitforapproval","subscriptionRequest/filterexpression":"leidos_submitforapproval eq true","subscriptionRequest/runas":3},"authentication":"@parameters('$authentication')"}}},"actions":{"Get_Data":{"actions":{"Get_DA_Record":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_delegatedauthorityapprovaltables","recordId":"@triggerOutputs()?['body/_leidos_delegatedauthority_value']"},"authentication":"@parameters('$authentication')"}},"Get_User":{"runAfter":{"Get_DA_Record":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Get_DA_Record')?['body/_leidos_userrecord_value']"},"authentication":"@parameters('$authentication')"}},"Run_a_Child_Flow":{"runAfter":{"Get_Project":["Succeeded"]},"type":"Workflow","inputs":{"host":{"workflowReferenceName":"b0db1a8a-c449-ea11-a812-000d3a0ba151"},"body":{"EntityId_Inputs":"@triggerOutputs()?['body/leidos_claimadjustmentid']","EntityType_Value":"leidos_claimadjustment"}}},"List_Claim_Adjustment_Rows":{"runAfter":{"Run_a_Child_Flow":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_claimadjustmentlines","$select":"leidos_claimadjustmentlineid","$filter":"(_leidos_claimadjustment_value eq  @{triggerOutputs()?['body/leidos_claimadjustmentid']})"},"authentication":"@parameters('$authentication')"}},"Compose":{"runAfter":{"List_Claim_Adjustment_Rows":["Succeeded"]},"type":"Compose","inputs":"@length(outputs('List_Claim_Adjustment_Rows')?['body/value'])"},"Get_Requested_By":{"runAfter":{"Get_User":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@triggerOutputs()?['body/_leidos_approvalsubmittedby_value']"},"authentication":"@parameters('$authentication')"}},"Get_Project":{"runAfter":{"Get_Requested_By":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","recordId":"@triggerOutputs()?['body/_leidos_project_value']"},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"type":"Scope"},"Run_on_Data_Fail":{"actions":{"Update_Claim_Adjust_Submit_to_No":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_claimadjustments","recordId":"@triggerOutputs()?['body/leidos_claimadjustmentid']","item/leidos_submitforapproval":false},"authentication":"@parameters('$authentication')"}},"Send_an_email_(V2)":{"runAfter":{"Update_Claim_Adjust_Submit_to_No":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365_1","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@outputs('Get_Requested_By')?['body/internalemailaddress']","emailMessage/Subject":"Claim Adjustment Submit for Approval Process Failed","emailMessage/Body":"<p>The Approval Flow for @{outputs('Update_Claim_Adjust_Submit_to_No')?['body/leidos_claimadjustmentreference']} has failed due to missing data.<br>\n<br>\nPlease check and Resubmit<br>\n<br>\nRecord Link: @{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}</p>"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Get_Data":["Failed"]},"type":"Scope"},"Start_and_wait_for_an_approval":{"runAfter":{"Get_Data":["Succeeded"]},"limit":{"timeout":"P3D"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_approvals","operationId":"StartAndWaitForAnApproval","apiId":"/providers/Microsoft.PowerApps/apis/shared_approvals"},"parameters":{"approvalType":"CustomResponse","WebhookApprovalCreationInput/responseOptions":["Approve and Authorise Claim Adjustment","Defer Claim Adjustment "],"WebhookApprovalCreationInput/title":"Claim Adjustment Approval and Authorisation for @{triggerOutputs()?['body/leidos_name']}","WebhookApprovalCreationInput/assignedTo":"@{outputs('Get_User')?['body/internalemailaddress']};","WebhookApprovalCreationInput/details":"## Approval for : @{triggerOutputs()?['body/leidos_claimadjustmentreference']}\n\n","WebhookApprovalCreationInput/itemLink":"@outputs('Run_a_Child_Flow')?['Body']?['entityurl']","WebhookApprovalCreationInput/itemLinkDescription":"@triggerOutputs()?['body/leidos_name']","WebhookApprovalCreationInput/requestor":"@{outputs('Get_Requested_By')?['body/internalemailaddress']};","WebhookApprovalCreationInput/enableNotifications":true,"WebhookApprovalCreationInput/enableReassignment":false},"authentication":"@parameters('$authentication')"}},"Switch":{"runAfter":{"Start_and_wait_for_an_approval":["Succeeded"]},"cases":{"Approve_and_Authorise_Claim_Adjustment":{"case":"Approve and Authorise Claim Adjustment","actions":{"Set_Detail_to_Approved":{"foreach":"@outputs('List_Claim_Adjustment_Rows')?['body/value']","actions":{"Update_Claim_Adjustment_Lines":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_claimadjustmentlines","recordId":"@items('Set_Detail_to_Approved')?['leidos_claimadjustmentlineid']","item/statecode":1,"item/statuscode":445260001},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Update_Claim_Adjustment":["Succeeded"]},"type":"Foreach"},"Update_Claim_Adjustment":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_claimadjustments","recordId":"@triggerOutputs()?['body/leidos_claimadjustmentid']","item/leidos_dateofdecision":"@outputs('Start_and_wait_for_an_approval')?['body/completionDate']","item/leidos_DecisionBy@odata.bind":"/systemusers(@{outputs('Get_User')?['body/systemuserid']})","item/leidos_decisionoutcome":445260000,"item/statecode":1,"item/statuscode":445260001},"authentication":"@parameters('$authentication')"}}}},"Defer_Claim_Adjustment_":{"case":"Defer Claim Adjustment ","actions":{"Update_Claim_Adjustment_on_Defer":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_claimadjustments","recordId":"@triggerOutputs()?['body/leidos_claimadjustmentid']","item/leidos_decisionoutcome":445260002,"item/leidos_DelegatedAuthority@odata.bind":"@null","item/statecode":0,"item/statuscode":1,"item/leidos_submitforapproval":false,"item/leidos_validateclaimadjustment":false},"authentication":"@parameters('$authentication')"}},"Loop_thru_Lines_and_set_to_Active":{"foreach":"@outputs('List_Claim_Adjustment_Rows')?['body/value']","actions":{"Update_Adjustment_Lines":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_claimadjustmentlines","recordId":"@items('Loop_thru_Lines_and_set_to_Active')?['leidos_claimadjustmentlineid']","item/statecode":0,"item/statuscode":1},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Update_Claim_Adjustment_on_Defer":["Succeeded"]},"type":"Foreach"}}}},"default":{"actions":{}},"expression":"@outputs('Start_and_wait_for_an_approval')?['body/outcome']","type":"Switch"},"Lock_for_Approval":{"actions":{"Lock_Claim_Adjustmet":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_claimadjustments","recordId":"@triggerOutputs()?['body/leidos_claimadjustmentid']","item/leidos_approvalrequestedon":"@utcNow()","item/leidos_ApprovalSubmittedBy@odata.bind":"/systemusers(@{outputs('Get_Requested_By')?['body/systemuserid']})","item/statecode":1,"item/statuscode":445260000},"authentication":"@parameters('$authentication')"}},"Apply_to_each":{"foreach":"@outputs('List_Claim_Adjustment_Rows')?['body/value']","actions":{"Lock_Claim_Adjustment_Lines":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_claimadjustmentlines","recordId":"@items('Apply_to_each')?['leidos_claimadjustmentlineid']","item/statecode":1,"item/statuscode":445260000},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Lock_Claim_Adjustmet":["Succeeded"]},"type":"Foreach"}},"runAfter":{"Get_Data":["Succeeded"]},"type":"Scope"},"Create_Notifications":{"foreach":"@outputs('Start_and_wait_for_an_approval')?['body/responses']","actions":{"Create_a_task_in_Project":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"tasks","item/subject":"Claim Adjustment Approval Outcome","item/description":"@{outputs('Start_and_wait_for_an_approval')?['body/responseSummary']}\n\n@{outputs('Start_and_wait_for_an_approval')?['body/details']}\n\nComments: @{items('Create_Notifications')?['comments']}","item/regardingobjectid_leidos_project_task@odata.bind":"/leidos_projects(@{outputs('Get_Project')?['body/leidos_projectid']})"},"authentication":"@parameters('$authentication')"}},"Send_an_email_(V2)_2":{"runAfter":{"Create_a_task_in_Project":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365_1","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@outputs('Get_Requested_By')?['body/internalemailaddress']","emailMessage/Subject":"Claim Adjustment Approval Outcome : @{outputs('Start_and_wait_for_an_approval')?['body/outcome']}","emailMessage/Body":"</p>\n<p>\n@{outputs('Start_and_wait_for_an_approval')?['body/responseSummary']}<br>\n<br>\n@{outputs('Start_and_wait_for_an_approval')?['body/details']}<br>\n<br>\n@{items('Create_Notifications')?['comments']}<br>\n<br>\nRecord Link: <a href= @{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}\">Record Link </a> <br>\n<br>\n</p>"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Switch":["Succeeded"]},"type":"Foreach"},"Approval_Time_Out_Actions":{"actions":{"Update_Adjustment_to_allow_resubmit":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_claimadjustments","recordId":"@triggerOutputs()?['body/leidos_claimadjustmentid']","item/leidos_submitforapproval":false},"authentication":"@parameters('$authentication')"}},"Send_an_email_(V2)_3":{"runAfter":{"Update_Adjustment_to_allow_resubmit":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365_1","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@outputs('Get_Requested_By')?['body/internalemailaddress']","emailMessage/Subject":"Approval request for Claim Adjutment Timed Out","emailMessage/Body":"<p>The Flow for the Approval Process for @{outputs('Update_Adjustment_to_allow_resubmit')?['body/leidos_claimadjustmentreference']} has timed out as the Approver has not approved the response within the time limit.<br>\n<br>\nPlease check the availability of a suitable Authoriser and resubmit<br>\n<br>\nRecord Link: @{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}</p>"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Start_and_wait_for_an_approval":["Succeeded"]},"type":"Scope"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnClaim"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnOutlook2"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_approvals": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ApprovalConnectionReference"
+        },
+        "api": {
+          "name": "shared_approvals"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Claim_Adjustment_On_Submit": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_claimadjustment",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_submitforapproval",
+              "subscriptionRequest/filterexpression": "leidos_submitforapproval eq true",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Data": {
+          "actions": {
+            "Get_DA_Record": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_delegatedauthorityapprovaltables",
+                  "recordId": "@triggerOutputs()?['body/_leidos_delegatedauthority_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_User": {
+              "runAfter": {
+                "Get_DA_Record": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@outputs('Get_DA_Record')?['body/_leidos_userrecord_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Run_a_Child_Flow": {
+              "runAfter": {
+                "Get_Project": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "b0db1a8a-c449-ea11-a812-000d3a0ba151"
+                },
+                "body": {
+                  "EntityId_Inputs": "@triggerOutputs()?['body/leidos_claimadjustmentid']",
+                  "EntityType_Value": "leidos_claimadjustment"
+                }
+              }
+            },
+            "List_Claim_Adjustment_Rows": {
+              "runAfter": {
+                "Run_a_Child_Flow": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_claimadjustmentlines",
+                  "$select": "leidos_claimadjustmentlineid",
+                  "$filter": "(_leidos_claimadjustment_value eq  @{triggerOutputs()?['body/leidos_claimadjustmentid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Compose": {
+              "runAfter": {
+                "List_Claim_Adjustment_Rows": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Compose",
+              "inputs": "@length(outputs('List_Claim_Adjustment_Rows')?['body/value'])"
+            },
+            "Get_Requested_By": {
+              "runAfter": {
+                "Get_User": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@triggerOutputs()?['body/_leidos_approvalsubmittedby_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Project": {
+              "runAfter": {
+                "Get_Requested_By": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projects",
+                  "recordId": "@triggerOutputs()?['body/_leidos_project_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "type": "Scope"
+        },
+        "Run_on_Data_Fail": {
+          "actions": {
+            "Update_Claim_Adjust_Submit_to_No": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_claimadjustments",
+                  "recordId": "@triggerOutputs()?['body/leidos_claimadjustmentid']",
+                  "item/leidos_submitforapproval": false
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Send_an_email_(V2)": {
+              "runAfter": {
+                "Update_Claim_Adjust_Submit_to_No": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_office365_1",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                },
+                "parameters": {
+                  "emailMessage/To": "@outputs('Get_Requested_By')?['body/internalemailaddress']",
+                  "emailMessage/Subject": "Claim Adjustment Submit for Approval Process Failed",
+                  "emailMessage/Body": "<p>The Approval Flow for @{outputs('Update_Claim_Adjust_Submit_to_No')?['body/leidos_claimadjustmentreference']} has failed due to missing data.<br>\n<br>\nPlease check and Resubmit<br>\n<br>\nRecord Link: @{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Data": [
+              "Failed"
+            ]
+          },
+          "type": "Scope"
+        },
+        "Start_and_wait_for_an_approval": {
+          "runAfter": {
+            "Get_Data": [
+              "Succeeded"
+            ]
+          },
+          "limit": {
+            "timeout": "P3D"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_approvals",
+              "operationId": "StartAndWaitForAnApproval",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+            },
+            "parameters": {
+              "approvalType": "CustomResponse",
+              "WebhookApprovalCreationInput/responseOptions": [
+                "Approve and Authorise Claim Adjustment",
+                "Defer Claim Adjustment "
+              ],
+              "WebhookApprovalCreationInput/title": "Claim Adjustment Approval and Authorisation for @{triggerOutputs()?['body/leidos_name']}",
+              "WebhookApprovalCreationInput/assignedTo": "@{outputs('Get_User')?['body/internalemailaddress']};",
+              "WebhookApprovalCreationInput/details": "## Approval for : @{triggerOutputs()?['body/leidos_claimadjustmentreference']}\n\n",
+              "WebhookApprovalCreationInput/itemLink": "@outputs('Run_a_Child_Flow')?['Body']?['entityurl']",
+              "WebhookApprovalCreationInput/itemLinkDescription": "@triggerOutputs()?['body/leidos_name']",
+              "WebhookApprovalCreationInput/requestor": "@{outputs('Get_Requested_By')?['body/internalemailaddress']};",
+              "WebhookApprovalCreationInput/enableNotifications": true,
+              "WebhookApprovalCreationInput/enableReassignment": false
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Switch": {
+          "runAfter": {
+            "Start_and_wait_for_an_approval": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Approve_and_Authorise_Claim_Adjustment": {
+              "case": "Approve and Authorise Claim Adjustment",
+              "actions": {
+                "Set_Detail_to_Approved": {
+                  "foreach": "@outputs('List_Claim_Adjustment_Rows')?['body/value']",
+                  "actions": {
+                    "Update_Claim_Adjustment_Lines": {
+                      "runAfter": {},
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_claimadjustmentlines",
+                          "recordId": "@items('Set_Detail_to_Approved')?['leidos_claimadjustmentlineid']",
+                          "item/statecode": 1,
+                          "item/statuscode": 445260001
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Update_Claim_Adjustment": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "Foreach"
+                },
+                "Update_Claim_Adjustment": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_claimadjustments",
+                      "recordId": "@triggerOutputs()?['body/leidos_claimadjustmentid']",
+                      "item/leidos_dateofdecision": "@outputs('Start_and_wait_for_an_approval')?['body/completionDate']",
+                      "item/leidos_DecisionBy@odata.bind": "/systemusers(@{outputs('Get_User')?['body/systemuserid']})",
+                      "item/leidos_decisionoutcome": 445260000,
+                      "item/statecode": 1,
+                      "item/statuscode": 445260001
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Defer_Claim_Adjustment_": {
+              "case": "Defer Claim Adjustment ",
+              "actions": {
+                "Update_Claim_Adjustment_on_Defer": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_claimadjustments",
+                      "recordId": "@triggerOutputs()?['body/leidos_claimadjustmentid']",
+                      "item/leidos_decisionoutcome": 445260002,
+                      "item/leidos_DelegatedAuthority@odata.bind": "@null",
+                      "item/statecode": 0,
+                      "item/statuscode": 1,
+                      "item/leidos_submitforapproval": false,
+                      "item/leidos_validateclaimadjustment": false
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Loop_thru_Lines_and_set_to_Active": {
+                  "foreach": "@outputs('List_Claim_Adjustment_Rows')?['body/value']",
+                  "actions": {
+                    "Update_Adjustment_Lines": {
+                      "runAfter": {},
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_claimadjustmentlines",
+                          "recordId": "@items('Loop_thru_Lines_and_set_to_Active')?['leidos_claimadjustmentlineid']",
+                          "item/statecode": 0,
+                          "item/statuscode": 1
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Update_Claim_Adjustment_on_Defer": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "Foreach"
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@outputs('Start_and_wait_for_an_approval')?['body/outcome']",
+          "type": "Switch"
+        },
+        "Lock_for_Approval": {
+          "actions": {
+            "Lock_Claim_Adjustmet": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_claimadjustments",
+                  "recordId": "@triggerOutputs()?['body/leidos_claimadjustmentid']",
+                  "item/leidos_approvalrequestedon": "@utcNow()",
+                  "item/leidos_ApprovalSubmittedBy@odata.bind": "/systemusers(@{outputs('Get_Requested_By')?['body/systemuserid']})",
+                  "item/statecode": 1,
+                  "item/statuscode": 445260000
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('List_Claim_Adjustment_Rows')?['body/value']",
+              "actions": {
+                "Lock_Claim_Adjustment_Lines": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_claimadjustmentlines",
+                      "recordId": "@items('Apply_to_each')?['leidos_claimadjustmentlineid']",
+                      "item/statecode": 1,
+                      "item/statuscode": 445260000
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {
+                "Lock_Claim_Adjustmet": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_Data": [
+              "Succeeded"
+            ]
+          },
+          "type": "Scope"
+        },
+        "Create_Notifications": {
+          "foreach": "@outputs('Start_and_wait_for_an_approval')?['body/responses']",
+          "actions": {
+            "Create_a_task_in_Project": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "item/subject": "Claim Adjustment Approval Outcome",
+                  "item/description": "@{outputs('Start_and_wait_for_an_approval')?['body/responseSummary']}\n\n@{outputs('Start_and_wait_for_an_approval')?['body/details']}\n\nComments: @{items('Create_Notifications')?['comments']}",
+                  "item/regardingobjectid_leidos_project_task@odata.bind": "/leidos_projects(@{outputs('Get_Project')?['body/leidos_projectid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Send_an_email_(V2)_2": {
+              "runAfter": {
+                "Create_a_task_in_Project": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_office365_1",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                },
+                "parameters": {
+                  "emailMessage/To": "@outputs('Get_Requested_By')?['body/internalemailaddress']",
+                  "emailMessage/Subject": "Claim Adjustment Approval Outcome : @{outputs('Start_and_wait_for_an_approval')?['body/outcome']}",
+                  "emailMessage/Body": "</p>\n<p>\n@{outputs('Start_and_wait_for_an_approval')?['body/responseSummary']}<br>\n<br>\n@{outputs('Start_and_wait_for_an_approval')?['body/details']}<br>\n<br>\n@{items('Create_Notifications')?['comments']}<br>\n<br>\nRecord Link: <a href= @{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}\">Record Link </a> <br>\n<br>\n</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Switch": [
+              "Succeeded"
+            ]
+          },
+          "type": "Foreach"
+        },
+        "Approval_Time_Out_Actions": {
+          "actions": {
+            "Update_Adjustment_to_allow_resubmit": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_claimadjustments",
+                  "recordId": "@triggerOutputs()?['body/leidos_claimadjustmentid']",
+                  "item/leidos_submitforapproval": false
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Send_an_email_(V2)_3": {
+              "runAfter": {
+                "Update_Adjustment_to_allow_resubmit": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_office365_1",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                },
+                "parameters": {
+                  "emailMessage/To": "@outputs('Get_Requested_By')?['body/internalemailaddress']",
+                  "emailMessage/Subject": "Approval request for Claim Adjutment Timed Out",
+                  "emailMessage/Body": "<p>The Flow for the Approval Process for @{outputs('Update_Adjustment_to_allow_resubmit')?['body/leidos_claimadjustmentreference']} has timed out as the Approver has not approved the response within the time limit.<br>\n<br>\nPlease check the availability of a suitable Authoriser and resubmit<br>\n<br>\nRecord Link: @{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Start_and_wait_for_an_approval": [
+              "Succeeded"
+            ]
+          },
+          "type": "Scope"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

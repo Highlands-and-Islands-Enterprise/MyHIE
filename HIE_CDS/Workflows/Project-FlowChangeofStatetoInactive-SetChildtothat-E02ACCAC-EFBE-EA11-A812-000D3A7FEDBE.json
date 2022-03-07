@@ -1,1 +1,438 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnProject"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Project_Change_of_State_-_Deactivate_Child_Records":{"metadata":{"operationMetadataId":"1d25a702-ba66-4d89-9873-92ac05343cc5"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":3,"subscriptionRequest/entityname":"leidos_project","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"statuscode","subscriptionRequest/filterexpression":"statuscode eq 2 or statuscode eq 445260003 or statuscode eq 445260008 or statuscode eq 445260009 or statuscode eq 445260010 or statuscode eq  445260012 or statuscode eq 445260013","subscriptionRequest/name":"e02accac-efbe-ea11-a812-000d3a7fedbe"},"authentication":"@parameters('$authentication')"}}},"actions":{"List_Costs":{"runAfter":{},"metadata":{"operationMetadataId":"850313ab-d345-484d-85e6-a2fe460892d1"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projectcosts","$select":"leidos_projectcostid","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_projectcost\">\n    <attribute name=\"leidos_projectcostid\" />\n    <attribute name=\"leidos_costitem\" />\n    <order attribute=\"leidos_costitem\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_projectid']}\" />\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n    </filter>\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"}},"List_Cost_Funding":{"runAfter":{},"metadata":{"operationMetadataId":"82a93587-5429-45d0-9f93-da8aa0aec0d0"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projectfundings","$select":"leidos_projectfundingid","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_projectfunding\">\n    <attribute name=\"leidos_name\" />\n    <attribute name=\"leidos_projectfundingid\" />\n    <order attribute=\"leidos_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_projectid']}\" />\n    </filter>\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"}},"List_Measures":{"runAfter":{},"metadata":{"operationMetadataId":"0692f269-530f-4cc6-878e-159999175847"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projectmeasures","$select":"leidos_projectmeasureid","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_projectmeasure\">\n    <attribute name=\"leidos_name\" />\n    <attribute name=\"leidos_projectmeasureid\" />\n    <order attribute=\"leidos_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_projectid']}\" />\n    </filter>\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"}},"List_Spend_Profiles":{"runAfter":{},"metadata":{"operationMetadataId":"19ec7560-8364-4008-a2fe-9d1f515e642d"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_anticipatedspendprofiles","$select":"leidos_anticipatedspendprofileid","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_anticipatedspendprofile\">\n    <attribute name=\"leidos_anticipatedspendprofileid\" />\n    <attribute name=\"leidos_name\" />\n    <order attribute=\"leidos_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_projectid']}\" />\n    </filter>\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"}},"Loop_Thru_Costs_and_Lock_Records":{"foreach":"@outputs('List_Costs')?['body/value']","actions":{"Update_Costs_":{"runAfter":{},"metadata":{"operationMetadataId":"e8e37871-ed59-43a2-8178-65abdab9f2f8"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projectcosts","recordId":"@items('Loop_Thru_Costs_and_Lock_Records')?['leidos_projectcostid']","item/leidos_priorstatusreason":"@triggerBody()?['_statecode']","item/statecode":1,"item/statuscode":445260001},"authentication":"@parameters('$authentication')"}}},"runAfter":{"List_Costs":["Succeeded"]},"metadata":{"operationMetadataId":"80e41824-6da3-48d9-9a1d-56c997477d38"},"type":"Foreach"},"Loop_thru_Cost_Funding_and_Lock_Records":{"foreach":"@outputs('List_Cost_Funding')?['body/value']","actions":{"Update_Cost_Funding":{"runAfter":{},"metadata":{"operationMetadataId":"41c9b31c-4cba-4487-b2ce-b44adbf5babb"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projectfundings","recordId":"@items('Loop_thru_Cost_Funding_and_Lock_Records')?['leidos_projectfundingid']","item/statecode":1,"item/statuscode":445260000},"authentication":"@parameters('$authentication')"}}},"runAfter":{"List_Cost_Funding":["Succeeded"]},"metadata":{"operationMetadataId":"9832ea2f-7780-48ab-9f58-d296bca2b896"},"type":"Foreach"},"Loop_thru_Spend_Profiles_and_Lock_Records":{"foreach":"@outputs('List_Spend_Profiles')?['body/value']","actions":{"Update_Spend_Profile":{"runAfter":{},"metadata":{"operationMetadataId":"ff7f89dc-e9bb-4b7c-b398-78bf17018a25"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_anticipatedspendprofiles","recordId":"@items('Loop_thru_Spend_Profiles_and_Lock_Records')?['leidos_anticipatedspendprofileid']","item/statecode":1,"item/statuscode":445260001},"authentication":"@parameters('$authentication')"},"description":"Removed Spend Profile Update as not needed"}},"runAfter":{"List_Spend_Profiles":["Succeeded"]},"metadata":{"operationMetadataId":"da33a252-4cb6-4aae-be4d-4d9244f6aeb3"},"type":"Foreach"},"List_Strategic_Priorities":{"runAfter":{},"metadata":{"operationMetadataId":"d977aa78-2b00-49be-83c6-3f41c07dd7ba"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projectstrategicpriorities","$select":"leidos_projectstrategicpriorityid","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_projectstrategicpriority\">\n    <attribute name=\"leidos_projectstrategicpriorityid\" />\n    <attribute name=\"leidos_name\" />\n    <attribute name=\"leidos_parentproject\" />\n    <attribute name=\"leidos_strategicpriority\" />\n    <order attribute=\"leidos_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_projectid']}\" />\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n    </filter>\n  </entity>\n</fetch>"},"authentication":"@parameters('$authentication')"}},"Loop_thru_Strategic_Priorities":{"foreach":"@outputs('List_Strategic_Priorities')?['body/value']","actions":{"Update_Project_Strategic_Priority":{"runAfter":{},"metadata":{"operationMetadataId":"0e05ec78-7e17-42d5-9a23-5164014780d8"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projectstrategicpriorities","recordId":"@items('Loop_thru_Strategic_Priorities')?['leidos_projectstrategicpriorityid']","item/statecode":1,"item/statuscode":445260000},"authentication":"@parameters('$authentication')"}}},"runAfter":{"List_Strategic_Priorities":["Succeeded"]},"metadata":{"operationMetadataId":"7ee5576e-a98c-47d5-a2f7-ba83f0b4a57a"},"type":"Foreach"},"List_NFI_State_Aid":{"runAfter":{},"metadata":{"operationMetadataId":"819ee1d2-d2ac-433f-9e1f-812c9ea2b58a"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_nfistateaids","$select":"leidos_nfistateaidid","$filter":"_leidos_parentproject_value eq @{triggerOutputs()?['body/leidos_projectid']}"},"authentication":"@parameters('$authentication')"}},"Loop_thru_NFI_State_Aid":{"foreach":"@outputs('List_NFI_State_Aid')?['body/value']","actions":{"Update_NFI_State_Aid":{"runAfter":{},"metadata":{"operationMetadataId":"1b632d33-b40d-4532-8446-9b79d4009ea6"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_nfistateaids","recordId":"@items('Loop_thru_NFI_State_Aid')?['leidos_nfistateaidid']","item/statuscode":445260000},"authentication":"@parameters('$authentication')"}}},"runAfter":{"List_NFI_State_Aid":["Succeeded"]},"metadata":{"operationMetadataId":"fa29cc21-b08f-4b5d-aacf-1c2205561dc4"},"type":"Foreach"},"Is_Project_Complete":{"actions":{"Loop_thru_to_Measure_Complete":{"foreach":"@outputs('List_Measures')?['body/value']","actions":{"Update_Measure_to_Closed":{"runAfter":{},"metadata":{"operationMetadataId":"ccd5a19f-9252-4e8c-9dc4-c9981a7d05b9"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projectmeasures","recordId":"@items('Loop_thru_to_Measure_Complete')?['leidos_projectmeasureid']","item/statecode":1,"item/statuscode":2},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"metadata":{"operationMetadataId":"6a021fbe-8e00-41a9-98ab-2d365670375f"},"type":"Foreach"}},"runAfter":{"List_Measures":["Succeeded"]},"else":{"actions":{"Loop_Thru_Measures_and_Lock_Record":{"foreach":"@outputs('List_Measures')?['body/value']","actions":{"Update_Measures":{"runAfter":{},"metadata":{"operationMetadataId":"43e3b120-6fc9-49fe-83ed-798c54325da3"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projectmeasures","recordId":"@items('Loop_Thru_Measures_and_Lock_Record')?['leidos_projectmeasureid']","item/statecode":1,"item/statuscode":445260003},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"metadata":{"operationMetadataId":"7146e656-b039-4eb9-9b04-3ef9370a0c8f"},"type":"Foreach"}}},"expression":{"equals":["@triggerOutputs()?['body/statuscode']",2]},"metadata":{"operationMetadataId":"fd1afc5f-d185-4c92-bfc8-b9b0f6d02010"},"type":"If"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProject"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Project_Change_of_State_-_Deactivate_Child_Records": {
+          "metadata": {
+            "operationMetadataId": "1d25a702-ba66-4d89-9873-92ac05343cc5"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "leidos_project",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/filterexpression": "statuscode eq 2 or statuscode eq 445260003 or statuscode eq 445260008 or statuscode eq 445260009 or statuscode eq 445260010 or statuscode eq  445260012 or statuscode eq 445260013",
+              "subscriptionRequest/name": "e02accac-efbe-ea11-a812-000d3a7fedbe"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "List_Costs": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "850313ab-d345-484d-85e6-a2fe460892d1"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_projectcosts",
+              "$select": "leidos_projectcostid",
+              "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_projectcost\">\n    <attribute name=\"leidos_projectcostid\" />\n    <attribute name=\"leidos_costitem\" />\n    <order attribute=\"leidos_costitem\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_projectid']}\" />\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_Cost_Funding": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "82a93587-5429-45d0-9f93-da8aa0aec0d0"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_projectfundings",
+              "$select": "leidos_projectfundingid",
+              "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_projectfunding\">\n    <attribute name=\"leidos_name\" />\n    <attribute name=\"leidos_projectfundingid\" />\n    <order attribute=\"leidos_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_projectid']}\" />\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_Measures": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "0692f269-530f-4cc6-878e-159999175847"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_projectmeasures",
+              "$select": "leidos_projectmeasureid",
+              "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_projectmeasure\">\n    <attribute name=\"leidos_name\" />\n    <attribute name=\"leidos_projectmeasureid\" />\n    <order attribute=\"leidos_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_projectid']}\" />\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_Spend_Profiles": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "19ec7560-8364-4008-a2fe-9d1f515e642d"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_anticipatedspendprofiles",
+              "$select": "leidos_anticipatedspendprofileid",
+              "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_anticipatedspendprofile\">\n    <attribute name=\"leidos_anticipatedspendprofileid\" />\n    <attribute name=\"leidos_name\" />\n    <order attribute=\"leidos_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_projectid']}\" />\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_Thru_Costs_and_Lock_Records": {
+          "foreach": "@outputs('List_Costs')?['body/value']",
+          "actions": {
+            "Update_Costs_": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e8e37871-ed59-43a2-8178-65abdab9f2f8"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projectcosts",
+                  "recordId": "@items('Loop_Thru_Costs_and_Lock_Records')?['leidos_projectcostid']",
+                  "item/leidos_priorstatusreason": "@triggerBody()?['_statecode']",
+                  "item/statecode": 1,
+                  "item/statuscode": 445260001
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_Costs": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "80e41824-6da3-48d9-9a1d-56c997477d38"
+          },
+          "type": "Foreach"
+        },
+        "Loop_thru_Cost_Funding_and_Lock_Records": {
+          "foreach": "@outputs('List_Cost_Funding')?['body/value']",
+          "actions": {
+            "Update_Cost_Funding": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "41c9b31c-4cba-4487-b2ce-b44adbf5babb"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projectfundings",
+                  "recordId": "@items('Loop_thru_Cost_Funding_and_Lock_Records')?['leidos_projectfundingid']",
+                  "item/statecode": 1,
+                  "item/statuscode": 445260000
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_Cost_Funding": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9832ea2f-7780-48ab-9f58-d296bca2b896"
+          },
+          "type": "Foreach"
+        },
+        "Loop_thru_Spend_Profiles_and_Lock_Records": {
+          "foreach": "@outputs('List_Spend_Profiles')?['body/value']",
+          "actions": {
+            "Update_Spend_Profile": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "ff7f89dc-e9bb-4b7c-b398-78bf17018a25"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_anticipatedspendprofiles",
+                  "recordId": "@items('Loop_thru_Spend_Profiles_and_Lock_Records')?['leidos_anticipatedspendprofileid']",
+                  "item/statecode": 1,
+                  "item/statuscode": 445260001
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "description": "Removed Spend Profile Update as not needed"
+            }
+          },
+          "runAfter": {
+            "List_Spend_Profiles": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "da33a252-4cb6-4aae-be4d-4d9244f6aeb3"
+          },
+          "type": "Foreach"
+        },
+        "List_Strategic_Priorities": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d977aa78-2b00-49be-83c6-3f41c07dd7ba"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_projectstrategicpriorities",
+              "$select": "leidos_projectstrategicpriorityid",
+              "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_projectstrategicpriority\">\n    <attribute name=\"leidos_projectstrategicpriorityid\" />\n    <attribute name=\"leidos_name\" />\n    <attribute name=\"leidos_parentproject\" />\n    <attribute name=\"leidos_strategicpriority\" />\n    <order attribute=\"leidos_name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"leidos_parentproject\" operator=\"eq\"  value=\"@{triggerOutputs()?['body/leidos_projectid']}\" />\n      <condition attribute=\"statecode\" operator=\"eq\" value=\"0\" />\n    </filter>\n  </entity>\n</fetch>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_thru_Strategic_Priorities": {
+          "foreach": "@outputs('List_Strategic_Priorities')?['body/value']",
+          "actions": {
+            "Update_Project_Strategic_Priority": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "0e05ec78-7e17-42d5-9a23-5164014780d8"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projectstrategicpriorities",
+                  "recordId": "@items('Loop_thru_Strategic_Priorities')?['leidos_projectstrategicpriorityid']",
+                  "item/statecode": 1,
+                  "item/statuscode": 445260000
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_Strategic_Priorities": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7ee5576e-a98c-47d5-a2f7-ba83f0b4a57a"
+          },
+          "type": "Foreach"
+        },
+        "List_NFI_State_Aid": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "819ee1d2-d2ac-433f-9e1f-812c9ea2b58a"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_nfistateaids",
+              "$select": "leidos_nfistateaidid",
+              "$filter": "_leidos_parentproject_value eq @{triggerOutputs()?['body/leidos_projectid']}"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_thru_NFI_State_Aid": {
+          "foreach": "@outputs('List_NFI_State_Aid')?['body/value']",
+          "actions": {
+            "Update_NFI_State_Aid": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "1b632d33-b40d-4532-8446-9b79d4009ea6"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_nfistateaids",
+                  "recordId": "@items('Loop_thru_NFI_State_Aid')?['leidos_nfistateaidid']",
+                  "item/statuscode": 445260000
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_NFI_State_Aid": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fa29cc21-b08f-4b5d-aacf-1c2205561dc4"
+          },
+          "type": "Foreach"
+        },
+        "Is_Project_Complete": {
+          "actions": {
+            "Loop_thru_to_Measure_Complete": {
+              "foreach": "@outputs('List_Measures')?['body/value']",
+              "actions": {
+                "Update_Measure_to_Closed": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "ccd5a19f-9252-4e8c-9dc4-c9981a7d05b9"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_projectmeasures",
+                      "recordId": "@items('Loop_thru_to_Measure_Complete')?['leidos_projectmeasureid']",
+                      "item/statecode": 1,
+                      "item/statuscode": 2
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              },
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "6a021fbe-8e00-41a9-98ab-2d365670375f"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "List_Measures": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Loop_Thru_Measures_and_Lock_Record": {
+                "foreach": "@outputs('List_Measures')?['body/value']",
+                "actions": {
+                  "Update_Measures": {
+                    "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "43e3b120-6fc9-49fe-83ed-798c54325da3"
+                    },
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "UpdateRecord",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "leidos_projectmeasures",
+                        "recordId": "@items('Loop_Thru_Measures_and_Lock_Record')?['leidos_projectmeasureid']",
+                        "item/statecode": 1,
+                        "item/statuscode": 445260003
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  }
+                },
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "7146e656-b039-4eb9-9b04-3ef9370a0c8f"
+                },
+                "type": "Foreach"
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@triggerOutputs()?['body/statuscode']",
+              2
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "fd1afc5f-d185-4c92-bfc8-b9b0f6d02010"
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

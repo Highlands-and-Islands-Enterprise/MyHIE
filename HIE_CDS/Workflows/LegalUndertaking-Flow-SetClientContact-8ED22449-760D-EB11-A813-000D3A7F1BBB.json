@@ -1,1 +1,126 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnLegal"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"When_Legal_Undertakings_created_or_updated":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_legalundertaking","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_clientsignatoryroute,leidos_authorisedsignatory"},"authentication":"@parameters('$authentication')"}}},"actions":{"Switch":{"runAfter":{},"cases":{"Sent_to_Primary_Contact":{"case":445260000,"actions":{"Get_Account_record":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@triggerOutputs()?['body/_leidos_parentaccount_value']"},"authentication":"@parameters('$authentication')"}},"Update_Legal_Undertaking_record_-_PC":{"runAfter":{"Get_Account_record":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_legalundertakings","recordId":"@triggerOutputs()?['body/leidos_legalundertakingid']","item/leidos_ClientContact@odata.bind":"/contacts/@{outputs('Get_Account_record')?['body/_primarycontactid_value']}"},"authentication":"@parameters('$authentication')"}}}},"Authorised_Signatory":{"case":445260001,"actions":{"Update_Legal_Undertaking_record_-_AS":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_legalundertakings","recordId":"@triggerOutputs()?['body/leidos_legalundertakingid']","item/leidos_ClientContact@odata.bind":"/contacts/@{triggerOutputs()?['body/_leidos_authorisedsignatory_value']}"},"authentication":"@parameters('$authentication')"}}}}},"default":{"actions":{}},"expression":"@triggerOutputs()?['body/leidos_clientsignatoryroute']","type":"Switch"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnLegal"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Legal_Undertakings_created_or_updated": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_legalundertaking",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_clientsignatoryroute,leidos_authorisedsignatory"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Switch": {
+          "runAfter": {},
+          "cases": {
+            "Sent_to_Primary_Contact": {
+              "case": 445260000,
+              "actions": {
+                "Get_Account_record": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "accounts",
+                      "recordId": "@triggerOutputs()?['body/_leidos_parentaccount_value']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Update_Legal_Undertaking_record_-_PC": {
+                  "runAfter": {
+                    "Get_Account_record": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_legalundertakings",
+                      "recordId": "@triggerOutputs()?['body/leidos_legalundertakingid']",
+                      "item/leidos_ClientContact@odata.bind": "/contacts/@{outputs('Get_Account_record')?['body/_primarycontactid_value']}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Authorised_Signatory": {
+              "case": 445260001,
+              "actions": {
+                "Update_Legal_Undertaking_record_-_AS": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_legalundertakings",
+                      "recordId": "@triggerOutputs()?['body/leidos_legalundertakingid']",
+                      "item/leidos_ClientContact@odata.bind": "/contacts/@{triggerOutputs()?['body/_leidos_authorisedsignatory_value']}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@triggerOutputs()?['body/leidos_clientsignatoryroute']",
+          "type": "Switch"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,1 +1,87 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnPortalMessage"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Create_Attachment_for_Portal_Message":{"metadata":{"operationMetadataId":"7e7bd9bb-399b-4f3d-b85f-e06d3f487aa6"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_portalmessage","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_copytoedrms","subscriptionRequest/filterexpression":"leidos_copytoedrms eq true","subscriptionRequest/runas":3,"subscriptionRequest/name":"eeec7948-14f9-eb11-94ef-000d3ad67c82"},"authentication":"@parameters('$authentication')"}}},"actions":{"Scope":{"actions":{"Perform_a_bound_action":{"runAfter":{},"metadata":{"operationMetadataId":"928ee9bd-d6bb-42a2-a7fb-0d53e772ef8b"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"PerformBoundAction","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_portalmessages","actionName":"Microsoft.Dynamics.CRM.leidos_GeneratePtrlMsgAttchment","recordId":"@triggerOutputs()?['body/activityid']"},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"metadata":{"operationMetadataId":"e529b141-d078-494a-adf6-66f21d33847b"},"type":"Scope"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnPortalMessage"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Create_Attachment_for_Portal_Message": {
+          "metadata": {
+            "operationMetadataId": "7e7bd9bb-399b-4f3d-b85f-e06d3f487aa6"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_portalmessage",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_copytoedrms",
+              "subscriptionRequest/filterexpression": "leidos_copytoedrms eq true",
+              "subscriptionRequest/runas": 3,
+              "subscriptionRequest/name": "eeec7948-14f9-eb11-94ef-000d3ad67c82"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Scope": {
+          "actions": {
+            "Perform_a_bound_action": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "928ee9bd-d6bb-42a2-a7fb-0d53e772ef8b"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "PerformBoundAction",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_portalmessages",
+                  "actionName": "Microsoft.Dynamics.CRM.leidos_GeneratePtrlMsgAttchment",
+                  "recordId": "@triggerOutputs()?['body/activityid']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "e529b141-d078-494a-adf6-66f21d33847b"
+          },
+          "type": "Scope"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

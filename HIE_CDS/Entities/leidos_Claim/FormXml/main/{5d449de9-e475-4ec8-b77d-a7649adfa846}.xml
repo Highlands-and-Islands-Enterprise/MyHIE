@@ -83,7 +83,7 @@
                     <row>
                       <cell id="{a4434ee5-4cef-4f0a-ab70-94366b609b32}" locklevel="0">
                         <labels>
-                          <label description="Description" languagecode="1033" />
+                          <label description="Remittance Advice Description" languagecode="1033" />
                         </labels>
                         <control id="leidos_description" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="leidos_description" disabled="false" />
                       </cell>
@@ -313,7 +313,7 @@
                     <row />
                     <row />
                     <row>
-                      <cell locklevel="0" id="{6cee26ce-0df2-4a46-970c-e790c780cc76}">
+                      <cell locklevel="0" id="{6cee26ce-0df2-4a46-970c-e790c780cc76}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -350,11 +350,11 @@
                         </labels>
                         <control id="leidos_netinvoicevalue" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_netinvoicevalue" disabled="false" />
                       </cell>
-                      <cell id="{cf03ddf0-6187-4d2a-bfc5-3d3d5fc757d1}" locklevel="0">
+                      <cell id="{cf03ddf0-6187-4d2a-bfc5-3d3d5fc757d1}" locklevel="0" showlabel="true">
                         <labels>
-                          <label description="Eligible" languagecode="1033" />
+                          <label description="Eligible Value" languagecode="1033" />
                         </labels>
-                        <control id="leidos_eligible" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_eligible" disabled="false" />
+                        <control id="leidos_eligible" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_eligible" disabled="false" uniqueid="{4d658a06-bbb8-6432-5360-327d85861cdc}" />
                       </cell>
                     </row>
                     <row>
@@ -698,29 +698,29 @@
                         </labels>
                         <control id="leidos_remainingbalance" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="leidos_remainingbalance" disabled="true" uniqueid="{e57cbc27-9654-5b13-d0a8-8ee376360bde}" />
                       </cell>
-                      <cell locklevel="0" id="{9b65dbd3-9cc9-479e-982e-676d8436eed0}">
+                      <cell locklevel="0" id="{9b65dbd3-9cc9-479e-982e-676d8436eed0}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{78942a69-dcb6-4536-9cd8-5b122a54029e}">
+                      <cell locklevel="0" id="{78942a69-dcb6-4536-9cd8-5b122a54029e}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{c732d201-8a90-419b-b74d-59570ce48e1c}">
+                      <cell locklevel="0" id="{c732d201-8a90-419b-b74d-59570ce48e1c}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{5e8c8263-d0ae-4222-aaf7-137e9e300104}">
+                      <cell locklevel="0" id="{5e8c8263-d0ae-4222-aaf7-137e9e300104}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
                       </cell>
-                      <cell locklevel="0" id="{31e60cff-1910-4667-ab21-ee8c47095ec8}">
+                      <cell locklevel="0" id="{31e60cff-1910-4667-ab21-ee8c47095ec8}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -790,7 +790,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{649171e5-3c09-4292-8ed6-31c53307d392}">
+                      <cell locklevel="0" id="{649171e5-3c09-4292-8ed6-31c53307d392}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -803,7 +803,7 @@
                       </cell>
                     </row>
                     <row>
-                      <cell locklevel="0" id="{24422860-7dc1-45ba-88a5-fb99eeaef656}">
+                      <cell locklevel="0" id="{24422860-7dc1-45ba-88a5-fb99eeaef656}" showlabel="false">
                         <labels>
                           <label description="" languagecode="1033" />
                         </labels>
@@ -883,7 +883,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -1189,9 +1189,6 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_common" libraryUniqueId="{1259c156-5717-4b79-4183-6a0311c080e9}" />
         <Library name="leidos_Claim" libraryUniqueId="{8e01ea2b-53ee-d27d-22c5-4b74269d00a9}" />
@@ -1199,6 +1196,9 @@
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="51e373ad-3236-45aa-ae7b-a45a340a454b" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="2e26cdaa-487f-495f-b486-d3bf10d9ac98" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

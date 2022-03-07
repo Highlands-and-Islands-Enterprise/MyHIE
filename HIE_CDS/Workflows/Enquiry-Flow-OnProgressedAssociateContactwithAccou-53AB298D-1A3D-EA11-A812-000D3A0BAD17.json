@@ -1,1 +1,110 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_2":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnEnquiry"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Enquiry_-_On_Progressed":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":3,"subscriptionRequest/entityname":"leidos_enquiry","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"statecode","subscriptionRequest/filterexpression":"statuscode eq 2 and _leidos_account_value ne null and _leidos_contact_value ne null"},"authentication":"@parameters('$authentication')"}}},"actions":{"Get_Account":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@triggerOutputs()?['body/_leidos_account_value']"},"authentication":"@parameters('$authentication')"}},"Get_Contact":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"contacts","recordId":"@triggerOutputs()?['body/_leidos_contact_value']"},"authentication":"@parameters('$authentication')"}},"Update_Contact_with_Account_Lookup_and_Owner":{"runAfter":{"Get_Account":["Succeeded"],"Get_Contact":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"contacts","recordId":"@outputs('Get_Contact')?['body/contactid']","item/parentcustomerid_account@odata.bind":"/accounts(@{outputs('Get_Account')?['body/accountid']})","item/ownerid@odata.bind":"/systemusers(@{outputs('Get_Account')?['body/_ownerid_value']})"},"authentication":"@parameters('$authentication')"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_2": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnEnquiry"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Enquiry_-_On_Progressed": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "leidos_enquiry",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statecode",
+              "subscriptionRequest/filterexpression": "statuscode eq 2 and _leidos_account_value ne null and _leidos_contact_value ne null"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Account": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "accounts",
+              "recordId": "@triggerOutputs()?['body/_leidos_account_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_Contact": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@triggerOutputs()?['body/_leidos_contact_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_Contact_with_Account_Lookup_and_Owner": {
+          "runAfter": {
+            "Get_Account": [
+              "Succeeded"
+            ],
+            "Get_Contact": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "contacts",
+              "recordId": "@outputs('Get_Contact')?['body/contactid']",
+              "item/parentcustomerid_account@odata.bind": "/accounts(@{outputs('Get_Account')?['body/accountid']})",
+              "item/ownerid@odata.bind": "/systemusers(@{outputs('Get_Account')?['body/_ownerid_value']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,1 +1,200 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnPortal"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"},"ClientPortalUrl":{"defaultValue":"https://hienpdevclientportal.powerappsportals.com","type":"String","metadata":{"schemaName":"leidos_ClientPortalUrl"}}},"triggers":{"When_a_row_is_added,_modified_or_deleted":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"adx_webpage","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"adx_copy","subscriptionRequest/filterexpression":"adx_partialurl eq 'terms-hie' or adx_partialurl eq 'terms-Innovate' or adx_partialurl eq 'terms-NIH'"},"authentication":"@parameters('$authentication')"}}},"actions":{"Create_New_Root_Page_-_Archive_Copy":{"runAfter":{"Scope":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"adx_webpages","item/adx_hiddenfromsitemap":"@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_hiddenfromsitemap']","item/adx_isroot":"@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_isroot']","item/adx_name":"@concat(triggerOutputs()?['body/adx_name'],'-',outputs('FormatedDate'))","item/adx_pagetemplateid@odata.bind":"/adx_pagetemplates(@{outputs('Get_a_row_by_ID_-_Root_page')?['body/_adx_pagetemplateid_value']})","item/adx_partialurl":"@Replace(Replace(Replace(concat(triggerOutputs()?['body/adx_name'],'-',outputs('FormatedDate')), ' ', ''), ':', ''), '.','')","item/adx_publishingstateid@odata.bind":"/adx_publishingstates(@{outputs('Get_a_row_by_ID_-_Root_page')?['body/_adx_publishingstateid_value']})","item/adx_sharedpageconfiguration":"@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_sharedpageconfiguration']","item/adx_webpagelanguageid@odata.bind":"@null","item/adx_websiteid@odata.bind":"/adx_websites(@{outputs('Get_a_row_by_ID_-_Root_page')?['body/_adx_websiteid_value']})","item/adx_copy":"@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_copy']","item/adx_meta_description":"@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_meta_description']","item/adx_displaydate":"@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_displaydate']","item/adx_parentpageid@odata.bind":"/adx_webpages(@{outputs('Archive')})"},"authentication":"@parameters('$authentication')"}},"Scope":{"actions":{"Archive":{"runAfter":{},"type":"Compose","inputs":"7a0434a4-6d6c-4dfa-870d-e57bc6cb53ad"},"Root_Page":{"runAfter":{"Archive":["Succeeded"]},"type":"Compose","inputs":"@triggerOutputs()?['body/_adx_rootwebpageid_value']"},"Get_a_row_by_ID_-_Root_page":{"runAfter":{"FormatedDate":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"adx_webpages","recordId":"@outputs('Root_Page')"},"authentication":"@parameters('$authentication')"}},"FormatedDate":{"runAfter":{"Root_Page":["Succeeded"]},"type":"Compose","inputs":"@utcNow()"}},"runAfter":{"Check_for_Dev_Environment":["Succeeded"]},"type":"Scope"},"Create_Local_Copy":{"runAfter":{"Create_New_Root_Page_-_Archive_Copy":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"adx_webpages","item/adx_hiddenfromsitemap":"@triggerOutputs()?['body/adx_hiddenfromsitemap']","item/adx_isroot":"@triggerOutputs()?['body/adx_isroot']","item/adx_name":"@concat(triggerOutputs()?['body/adx_name'],'-',outputs('FormatedDate'))","item/adx_pagetemplateid@odata.bind":"/adx_pagetemplates(@{triggerOutputs()?['body/_adx_pagetemplateid_value']})","item/adx_partialurl":"@Replace(Replace(Replace(concat(triggerOutputs()?['body/adx_name'],'-Local-',outputs('FormatedDate')), ' ',''),':',''),'.','')","item/adx_publishingstateid@odata.bind":"/adx_publishingstates(@{triggerOutputs()?['body/_adx_publishingstateid_value']})","item/adx_sharedpageconfiguration":"@triggerOutputs()?['body/adx_sharedpageconfiguration']","item/adx_webpagelanguageid@odata.bind":"/adx_websitelanguages(@{triggerOutputs()?['body/_adx_webpagelanguageid_value']})","item/adx_websiteid@odata.bind":"/adx_websites(@{triggerOutputs()?['body/_adx_websiteid_value']})","item/adx_copy":"@triggerOutputs()?['body/adx_copy']","item/adx_meta_description":"@triggerOutputs()?['body/adx_meta_description']","item/adx_displaydate":"@triggerOutputs()?['body/adx_displaydate']","item/adx_parentpageid@odata.bind":"/adx_webpages(@{outputs('Create_New_Root_Page_-_Archive_Copy')?['body/adx_webpageid']})"},"authentication":"@parameters('$authentication')"}},"Check_for_Dev_Environment":{"actions":{"Terminate":{"runAfter":{},"type":"Terminate","inputs":{"runStatus":"Failed","runError":{"code":"000000000","message":"Cancelled: Do not run on Dev Environment"}}}},"runAfter":{},"expression":{"contains":["@parameters('ClientPortalUrl')","hienpdevclientportal.powerappsportals.com"]},"type":"If"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnPortal"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "ClientPortalUrl": {
+          "defaultValue": "https://hienpdevclientportal.powerappsportals.com",
+          "type": "String",
+          "metadata": {
+            "schemaName": "leidos_ClientPortalUrl"
+          }
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "adx_webpage",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "adx_copy",
+              "subscriptionRequest/filterexpression": "adx_partialurl eq 'terms-hie' or adx_partialurl eq 'terms-Innovate' or adx_partialurl eq 'terms-NIH'"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Create_New_Root_Page_-_Archive_Copy": {
+          "runAfter": {
+            "Scope": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "adx_webpages",
+              "item/adx_hiddenfromsitemap": "@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_hiddenfromsitemap']",
+              "item/adx_isroot": "@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_isroot']",
+              "item/adx_name": "@concat(triggerOutputs()?['body/adx_name'],'-',outputs('FormatedDate'))",
+              "item/adx_pagetemplateid@odata.bind": "/adx_pagetemplates(@{outputs('Get_a_row_by_ID_-_Root_page')?['body/_adx_pagetemplateid_value']})",
+              "item/adx_partialurl": "@Replace(Replace(Replace(concat(triggerOutputs()?['body/adx_name'],'-',outputs('FormatedDate')), ' ', ''), ':', ''), '.','')",
+              "item/adx_publishingstateid@odata.bind": "/adx_publishingstates(@{outputs('Get_a_row_by_ID_-_Root_page')?['body/_adx_publishingstateid_value']})",
+              "item/adx_sharedpageconfiguration": "@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_sharedpageconfiguration']",
+              "item/adx_webpagelanguageid@odata.bind": "@null",
+              "item/adx_websiteid@odata.bind": "/adx_websites(@{outputs('Get_a_row_by_ID_-_Root_page')?['body/_adx_websiteid_value']})",
+              "item/adx_copy": "@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_copy']",
+              "item/adx_meta_description": "@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_meta_description']",
+              "item/adx_displaydate": "@outputs('Get_a_row_by_ID_-_Root_page')?['body/adx_displaydate']",
+              "item/adx_parentpageid@odata.bind": "/adx_webpages(@{outputs('Archive')})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Scope": {
+          "actions": {
+            "Archive": {
+              "runAfter": {},
+              "type": "Compose",
+              "inputs": "7a0434a4-6d6c-4dfa-870d-e57bc6cb53ad"
+            },
+            "Root_Page": {
+              "runAfter": {
+                "Archive": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Compose",
+              "inputs": "@triggerOutputs()?['body/_adx_rootwebpageid_value']"
+            },
+            "Get_a_row_by_ID_-_Root_page": {
+              "runAfter": {
+                "FormatedDate": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "adx_webpages",
+                  "recordId": "@outputs('Root_Page')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "FormatedDate": {
+              "runAfter": {
+                "Root_Page": [
+                  "Succeeded"
+                ]
+              },
+              "type": "Compose",
+              "inputs": "@utcNow()"
+            }
+          },
+          "runAfter": {
+            "Check_for_Dev_Environment": [
+              "Succeeded"
+            ]
+          },
+          "type": "Scope"
+        },
+        "Create_Local_Copy": {
+          "runAfter": {
+            "Create_New_Root_Page_-_Archive_Copy": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "adx_webpages",
+              "item/adx_hiddenfromsitemap": "@triggerOutputs()?['body/adx_hiddenfromsitemap']",
+              "item/adx_isroot": "@triggerOutputs()?['body/adx_isroot']",
+              "item/adx_name": "@concat(triggerOutputs()?['body/adx_name'],'-',outputs('FormatedDate'))",
+              "item/adx_pagetemplateid@odata.bind": "/adx_pagetemplates(@{triggerOutputs()?['body/_adx_pagetemplateid_value']})",
+              "item/adx_partialurl": "@Replace(Replace(Replace(concat(triggerOutputs()?['body/adx_name'],'-Local-',outputs('FormatedDate')), ' ',''),':',''),'.','')",
+              "item/adx_publishingstateid@odata.bind": "/adx_publishingstates(@{triggerOutputs()?['body/_adx_publishingstateid_value']})",
+              "item/adx_sharedpageconfiguration": "@triggerOutputs()?['body/adx_sharedpageconfiguration']",
+              "item/adx_webpagelanguageid@odata.bind": "/adx_websitelanguages(@{triggerOutputs()?['body/_adx_webpagelanguageid_value']})",
+              "item/adx_websiteid@odata.bind": "/adx_websites(@{triggerOutputs()?['body/_adx_websiteid_value']})",
+              "item/adx_copy": "@triggerOutputs()?['body/adx_copy']",
+              "item/adx_meta_description": "@triggerOutputs()?['body/adx_meta_description']",
+              "item/adx_displaydate": "@triggerOutputs()?['body/adx_displaydate']",
+              "item/adx_parentpageid@odata.bind": "/adx_webpages(@{outputs('Create_New_Root_Page_-_Archive_Copy')?['body/adx_webpageid']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Check_for_Dev_Environment": {
+          "actions": {
+            "Terminate": {
+              "runAfter": {},
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Failed",
+                "runError": {
+                  "code": "000000000",
+                  "message": "Cancelled: Do not run on Dev Environment"
+                }
+              }
+            }
+          },
+          "runAfter": {},
+          "expression": {
+            "contains": [
+              "@parameters('ClientPortalUrl')",
+              "hienpdevclientportal.powerappsportals.com"
+            ]
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

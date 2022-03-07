@@ -1,1 +1,81 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnMilestone"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Milestone_-_Evidence_Required":{"metadata":{"operationMetadataId":"01302d2f-31d9-4b8c-9a15-21387817a318"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_milestone","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_requiresevidence,leidos_evidencerequirementtext","subscriptionRequest/filterexpression":"leidos_requiresevidence eq true and leidos_evidencerequirementtext ne null and statuscode eq 1","subscriptionRequest/name":"5aadc7b1-a3ba-ea11-a812-000d3a7fedbe"},"authentication":"@parameters('$authentication')"}}},"actions":{"Create_a_new_Document_Requirement":{"runAfter":{},"metadata":{"operationMetadataId":"fa4e9388-6a8c-40bf-862e-629eabf2ac87"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_documentrequirements","item/leidos_name":"@concat(triggerOutputs()?['body/leidos_name'] , '-Evidence Requirement')","item/leidos_requirementtype":445260001,"item/leidos_description":"@triggerOutputs()?['body/leidos_evidencerequirementtext']","item/leidos_Milestone@odata.bind":"/leidos_milestones(@{triggerOutputs()?['body/leidos_milestoneid']})","item/statecode":0,"item/statuscode":1},"authentication":"@parameters('$authentication')"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnMilestone"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Milestone_-_Evidence_Required": {
+          "metadata": {
+            "operationMetadataId": "01302d2f-31d9-4b8c-9a15-21387817a318"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_milestone",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_requiresevidence,leidos_evidencerequirementtext",
+              "subscriptionRequest/filterexpression": "leidos_requiresevidence eq true and leidos_evidencerequirementtext ne null and statuscode eq 1",
+              "subscriptionRequest/name": "5aadc7b1-a3ba-ea11-a812-000d3a7fedbe"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Create_a_new_Document_Requirement": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "fa4e9388-6a8c-40bf-862e-629eabf2ac87"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_documentrequirements",
+              "item/leidos_name": "@concat(triggerOutputs()?['body/leidos_name'] , '-Evidence Requirement')",
+              "item/leidos_requirementtype": 445260001,
+              "item/leidos_description": "@triggerOutputs()?['body/leidos_evidencerequirementtext']",
+              "item/leidos_Milestone@odata.bind": "/leidos_milestones(@{triggerOutputs()?['body/leidos_milestoneid']})",
+              "item/statecode": 0,
+              "item/statuscode": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

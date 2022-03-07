@@ -1,1 +1,125 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnProject"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Project_On_Create":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":1,"subscriptionRequest/entityname":"leidos_project","subscriptionRequest/scope":4},"authentication":"@parameters('$authentication')"}}},"actions":{"Get_Data_for_Date_of_Enquiry":{"actions":{"Get_Pipeline_Project":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_pipelineprojects","recordId":"@triggerOutputs()?['body/_leidos_preapplicationprocess_value']"},"authentication":"@parameters('$authentication')"}},"Get_Enquiry":{"runAfter":{"Get_Pipeline_Project":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_enquiries","recordId":"@outputs('Get_Pipeline_Project')?['body/_leidos_sourceenquiry_value']"},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"type":"Scope"},"Update_Project_Created_On":{"runAfter":{"Get_Data_for_Date_of_Enquiry":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","recordId":"@triggerOutputs()?['body/leidos_projectid']","item/leidos_dateofenquiry":"@outputs('Get_Enquiry')?['body/createdon']"},"authentication":"@parameters('$authentication')"}},"Terminate":{"runAfter":{"Get_Data_for_Date_of_Enquiry":["Failed"]},"type":"Terminate","inputs":{"runStatus":"Succeeded"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProject"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Project_On_Create": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "leidos_project",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Data_for_Date_of_Enquiry": {
+          "actions": {
+            "Get_Pipeline_Project": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_pipelineprojects",
+                  "recordId": "@triggerOutputs()?['body/_leidos_preapplicationprocess_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Enquiry": {
+              "runAfter": {
+                "Get_Pipeline_Project": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_enquiries",
+                  "recordId": "@outputs('Get_Pipeline_Project')?['body/_leidos_sourceenquiry_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "type": "Scope"
+        },
+        "Update_Project_Created_On": {
+          "runAfter": {
+            "Get_Data_for_Date_of_Enquiry": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_projects",
+              "recordId": "@triggerOutputs()?['body/leidos_projectid']",
+              "item/leidos_dateofenquiry": "@outputs('Get_Enquiry')?['body/createdon']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Terminate": {
+          "runAfter": {
+            "Get_Data_for_Date_of_Enquiry": [
+              "Failed"
+            ]
+          },
+          "type": "Terminate",
+          "inputs": {
+            "runStatus": "Succeeded"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

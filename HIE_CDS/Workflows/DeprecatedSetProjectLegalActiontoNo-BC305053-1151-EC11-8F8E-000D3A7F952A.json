@@ -1,1 +1,119 @@
-{"properties":{"connectionReferences":{"shared_commondataservice":{"runtimeSource":"invoker","connection":{"connectionReferenceLogicalName":"leidos_sharedcommondataservice_55fe7"},"api":{"name":"shared_commondataservice"}},"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_sharedcommondataserviceforapps_5ec64"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"When_a_Project_record_is_selected":{"splitOn":"@triggerBody()['rows']","metadata":{"operationMetadataId":"59fcc898-d6eb-4ad2-a6cb-f0b8ce1516b9"},"type":"Request","kind":"ApiConnection","inputs":{"schema":{"type":"object","properties":{"rows":{"type":"array","items":{"type":"object","properties":{"entity":{"type":"object","properties":{"leidos_projectid":{"title":"Project","type":"string","format":"guid"}},"required":["leidos_projectid"]}},"required":["entity"]}}},"required":["rows"]},"host":{"connection":{"name":"@parameters('$connections')['shared_commondataservice']['connectionId']"}},"operationId":"GetOnNewItems_V2","parameters":{"dataset":"default.cds","table":"leidos_projects"}}}},"actions":{"Update_Project_row_-_Legal_Action_No":{"runAfter":{},"metadata":{"operationMetadataId":"da1b698f-99ae-4761-a7bc-90595063ac0b"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","recordId":"@triggerBody()?['entity']?['leidos_projectid']","item/leidos_legalaction":false},"authentication":{"type":"Raw","value":"@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"}}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataservice": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_sharedcommondataservice_55fe7"
+        },
+        "api": {
+          "name": "shared_commondataservice"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_sharedcommondataserviceforapps_5ec64"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_Project_record_is_selected": {
+          "splitOn": "@triggerBody()['rows']",
+          "metadata": {
+            "operationMetadataId": "59fcc898-d6eb-4ad2-a6cb-f0b8ce1516b9"
+          },
+          "type": "Request",
+          "kind": "ApiConnection",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "entity": {
+                        "type": "object",
+                        "properties": {
+                          "leidos_projectid": {
+                            "title": "Project",
+                            "type": "string",
+                            "format": "guid"
+                          }
+                        },
+                        "required": [
+                          "leidos_projectid"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "entity"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "rows"
+              ]
+            },
+            "host": {
+              "connection": {
+                "name": "@parameters('$connections')['shared_commondataservice']['connectionId']"
+              }
+            },
+            "operationId": "GetOnNewItems_V2",
+            "parameters": {
+              "dataset": "default.cds",
+              "table": "leidos_projects"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Update_Project_row_-_Legal_Action_No": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "da1b698f-99ae-4761-a7bc-90595063ac0b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_projects",
+              "recordId": "@triggerBody()?['entity']?['leidos_projectid']",
+              "item/leidos_legalaction": false
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

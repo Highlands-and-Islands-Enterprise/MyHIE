@@ -1,1 +1,223 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnAccMan"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"When_a_record_is_created,_updated_or_deleted":{"metadata":{"operationMetadataId":"ce553bb7-b649-49ed-ba41-526c0263bd0b"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":3,"subscriptionRequest/entityname":"account","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_projectofficerallocation"},"authentication":"@parameters('$authentication')"}}},"actions":{"Create_Email":{"runAfter":{"ClientPortalUrl":["Succeeded"]},"metadata":{"operationMetadataId":"239b4415-20cf-46f5-810f-106eee379128"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"emails","item/activitypointer_activity_parties":[{"participationtypemask":2,"partyid@odata.bind":"/contacts(@{triggerOutputs()?['body/_primarycontactid_value']})"}],"item/description":"<p>Your organisation has been assigned a new HIE contact.</p>\n<p>To view the new HIE contact log in to <a href=\"@{body('ClientPortalUrl')?['value']}\">the client portal</a> and view the organisation record</p>\n\n<p>If your email client does not allow you to click on links copy and paste the address below into your browser:</p>\n\n@{body('ClientPortalUrl')?['value']}\n\n\n\n<p> \nMyHIE team<br />\nHighlands & Islands Enterprise</p>","item/regardingobjectid_account_email@odata.bind":"/accounts(@{triggerOutputs()?['body/accountid']})","item/subject":"New HIE Contact allocated."},"authentication":"@parameters('$authentication')"}},"Account_has_primary_contact":{"actions":{},"runAfter":{"Get_Project_Officer_Record":["Succeeded"]},"else":{"actions":{"Terminate":{"runAfter":{},"metadata":{"operationMetadataId":"982b14bf-97fd-4deb-9903-5e7f7f326a36"},"type":"Terminate","inputs":{"runStatus":"Succeeded"}}}},"expression":{"not":{"equals":["@triggerOutputs()?['body/_primarycontactid_value']","@null"]}},"metadata":{"operationMetadataId":"88992eb1-c830-41a7-9ada-82fe9d08d307"},"type":"If"},"ClientPortalUrl":{"runAfter":{"Get_ClientPortalUrl":["Succeeded"]},"metadata":{"operationMetadataId":"bde4306f-cb60-4303-89dc-b225ac71999c"},"type":"ParseJson","inputs":{"content":"@outputs('Get_ClientPortalUrl')?['Body']?['value']","schema":{"type":"object","properties":{"@@odata.type":{"type":"string"},"@@odata.id":{"type":"string"},"@@odata.etag":{"type":"string"},"@@odata.editLink":{"type":"string"},"value":{"type":"string"},"environmentvariablevalueid@odata.type":{"type":"string"},"environmentvariablevalueid":{"type":"string"}}}}},"Get_ClientPortalUrl":{"runAfter":{"Account_has_primary_contact":["Succeeded"]},"metadata":{"operationMetadataId":"afaf85a9-722a-4b15-912f-25b9f5f9883e"},"type":"Workflow","inputs":{"host":{"workflowReferenceName":"c3e4375a-c7cc-ea11-a812-000d3a7fedbe"},"body":{"text":"ClientPortalUrl"}}},"Get_Project_Officer_Record":{"runAfter":{},"metadata":{"operationMetadataId":"a2c28bc0-5430-4ba1-9d88-0c97aa60e11b"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@triggerOutputs()?['body/_leidos_projectofficerallocation_value']"},"authentication":"@parameters('$authentication')"}},"Create_Task_to_Send_Email":{"runAfter":{"Create_Email":["Succeeded"]},"metadata":{"operationMetadataId":"d362edb5-62ce-43ba-999b-d89b8b2a2ad9"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"tasks","item/subject":"New Account Manager allocated Draft Email Created","item/description":"Please navigate to the Account Record, and edit and send the email if required.\nIf the Account has just been accepted into Account Management, the information will already have been sent.\n","item/regardingobjectid_account_task@odata.bind":"/accounts(@{triggerOutputs()?['body/accountid']})"},"authentication":"@parameters('$authentication')"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnAccMan"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_record_is_created,_updated_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "ce553bb7-b649-49ed-ba41-526c0263bd0b"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "account",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_projectofficerallocation"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Create_Email": {
+          "runAfter": {
+            "ClientPortalUrl": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "239b4415-20cf-46f5-810f-106eee379128"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "emails",
+              "item/activitypointer_activity_parties": [
+                {
+                  "participationtypemask": 2,
+                  "partyid@odata.bind": "/contacts(@{triggerOutputs()?['body/_primarycontactid_value']})"
+                }
+              ],
+              "item/description": "<p>Your organisation has been assigned a new HIE contact.</p>\n<p>To view the new HIE contact log in to <a href=\"@{body('ClientPortalUrl')?['value']}\">the client portal</a> and view the organisation record</p>\n\n<p>If your email client does not allow you to click on links copy and paste the address below into your browser:</p>\n\n@{body('ClientPortalUrl')?['value']}\n\n\n\n<p> \nMyHIE team<br />\nHighlands & Islands Enterprise</p>",
+              "item/regardingobjectid_account_email@odata.bind": "/accounts(@{triggerOutputs()?['body/accountid']})",
+              "item/subject": "New HIE Contact allocated."
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Account_has_primary_contact": {
+          "actions": {},
+          "runAfter": {
+            "Get_Project_Officer_Record": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "982b14bf-97fd-4deb-9903-5e7f7f326a36"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerOutputs()?['body/_primarycontactid_value']",
+                "@null"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "88992eb1-c830-41a7-9ada-82fe9d08d307"
+          },
+          "type": "If"
+        },
+        "ClientPortalUrl": {
+          "runAfter": {
+            "Get_ClientPortalUrl": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bde4306f-cb60-4303-89dc-b225ac71999c"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('Get_ClientPortalUrl')?['Body']?['value']",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "@@odata.type": {
+                  "type": "string"
+                },
+                "@@odata.id": {
+                  "type": "string"
+                },
+                "@@odata.etag": {
+                  "type": "string"
+                },
+                "@@odata.editLink": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                },
+                "environmentvariablevalueid@odata.type": {
+                  "type": "string"
+                },
+                "environmentvariablevalueid": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Get_ClientPortalUrl": {
+          "runAfter": {
+            "Account_has_primary_contact": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "afaf85a9-722a-4b15-912f-25b9f5f9883e"
+          },
+          "type": "Workflow",
+          "inputs": {
+            "host": {
+              "workflowReferenceName": "c3e4375a-c7cc-ea11-a812-000d3a7fedbe"
+            },
+            "body": {
+              "text": "ClientPortalUrl"
+            }
+          }
+        },
+        "Get_Project_Officer_Record": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "a2c28bc0-5430-4ba1-9d88-0c97aa60e11b"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/_leidos_projectofficerallocation_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Create_Task_to_Send_Email": {
+          "runAfter": {
+            "Create_Email": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d362edb5-62ce-43ba-999b-d89b8b2a2ad9"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "tasks",
+              "item/subject": "New Account Manager allocated Draft Email Created",
+              "item/description": "Please navigate to the Account Record, and edit and send the email if required.\nIf the Account has just been accepted into Account Management, the information will already have been sent.\n",
+              "item/regardingobjectid_account_task@odata.bind": "/accounts(@{triggerOutputs()?['body/accountid']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

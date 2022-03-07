@@ -1,1 +1,135 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnProject"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Project_Change_of_Name":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_project","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_name"},"authentication":"@parameters('$authentication')"}}},"actions":{"Get_Parent_Application":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applications","recordId":"@triggerOutputs()?['body/_leidos_parentapplication_value']"},"authentication":"@parameters('$authentication')"}},"Active_Applications_with_a_Different_Name":{"actions":{"Update_Application_Name":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applications","recordId":"@outputs('Get_Parent_Application')?['body/leidos_applicationid']","item/leidos_name":"@triggerOutputs()?['body/leidos_name']"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Get_Parent_Application":["Succeeded"]},"else":{"actions":{"Terminate":{"runAfter":{},"type":"Terminate","inputs":{"runStatus":"Succeeded"}}}},"expression":{"and":[{"not":{"equals":["@outputs('Get_Parent_Application')?['body/leidos_name']","@triggerOutputs()?['body/leidos_name']"]}},{"equals":["@outputs('Get_Parent_Application')?['body/statecode']",0]}]},"type":"If"},"Terminate_2":{"runAfter":{"Get_Parent_Application":["Failed"]},"type":"Terminate","inputs":{"runStatus":"Cancelled"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProject"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Project_Change_of_Name": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_project",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_name"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Parent_Application": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_applications",
+              "recordId": "@triggerOutputs()?['body/_leidos_parentapplication_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Active_Applications_with_a_Different_Name": {
+          "actions": {
+            "Update_Application_Name": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_applications",
+                  "recordId": "@outputs('Get_Parent_Application')?['body/leidos_applicationid']",
+                  "item/leidos_name": "@triggerOutputs()?['body/leidos_name']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Parent_Application": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate": {
+                "runAfter": {},
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "and": [
+              {
+                "not": {
+                  "equals": [
+                    "@outputs('Get_Parent_Application')?['body/leidos_name']",
+                    "@triggerOutputs()?['body/leidos_name']"
+                  ]
+                }
+              },
+              {
+                "equals": [
+                  "@outputs('Get_Parent_Application')?['body/statecode']",
+                  0
+                ]
+              }
+            ]
+          },
+          "type": "If"
+        },
+        "Terminate_2": {
+          "runAfter": {
+            "Get_Parent_Application": [
+              "Failed"
+            ]
+          },
+          "type": "Terminate",
+          "inputs": {
+            "runStatus": "Cancelled"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

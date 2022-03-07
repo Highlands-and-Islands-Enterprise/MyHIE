@@ -1,1 +1,166 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnClaim"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Claim_on_change_of_Date_Paid_on_CODA":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":3,"subscriptionRequest/entityname":"leidos_claim","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_datepaidoncoda","subscriptionRequest/filterexpression":"(leidos_datepaidoncoda ne null)"},"authentication":"@parameters('$authentication')"}}},"actions":{"Get_Data_required_by_Process":{"actions":{"Get_Project":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","recordId":"@triggerOutputs()?['body/_leidos_parentproject_value']"},"authentication":"@parameters('$authentication')"}},"Get_Account":{"runAfter":{"Get_Project":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@outputs('Get_Project')?['body/_leidos_parentaccount_value']"},"authentication":"@parameters('$authentication')"}},"Get_Primary_Contact":{"runAfter":{"Get_Account":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"contacts","recordId":"@outputs('Get_Account')?['body/_primarycontactid_value']"},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"type":"Scope"},"Create_Email_Massage":{"runAfter":{"Get_Data_required_by_Process":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"emails","item/activitypointer_activity_parties":[{"participationtypemask":2,"partyid@odata.bind":"/contacts(@{outputs('Get_Primary_Contact')?['body/contactid']})"}],"item/leidos_copyasportalmessage":true,"item/description":"<p>\nPayment Claim @{triggerOutputs()?['body/leidos_name']}, refernce @{triggerOutputs()?['body/leidos_claimreference']} has been confrimed as Paid.   </br>\nPlease note it may take a couple of days for the funds to show up within your bank statement.\n</p>","item/regardingobjectid_leidos_claim_email@odata.bind":"/leidos_claims(@{triggerOutputs()?['body/leidos_claimid']})","item/subject":"@{triggerOutputs()?['body/leidos_claimreference']} has been confrimed as Paid.   "},"authentication":"@parameters('$authentication')"}},"Perform_a_bound_action":{"runAfter":{"Create_Email_Massage":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"PerformBoundAction","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"emails","actionName":"Microsoft.Dynamics.CRM.SendEmail","recordId":"@outputs('Create_Email_Massage')?['body/activityid']","item/IssueSend":false},"authentication":"@parameters('$authentication')"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnClaim"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Claim_on_change_of_Date_Paid_on_CODA": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "leidos_claim",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_datepaidoncoda",
+              "subscriptionRequest/filterexpression": "(leidos_datepaidoncoda ne null)"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Data_required_by_Process": {
+          "actions": {
+            "Get_Project": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projects",
+                  "recordId": "@triggerOutputs()?['body/_leidos_parentproject_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Account": {
+              "runAfter": {
+                "Get_Project": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "accounts",
+                  "recordId": "@outputs('Get_Project')?['body/_leidos_parentaccount_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Primary_Contact": {
+              "runAfter": {
+                "Get_Account": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@outputs('Get_Account')?['body/_primarycontactid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "type": "Scope"
+        },
+        "Create_Email_Massage": {
+          "runAfter": {
+            "Get_Data_required_by_Process": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "CreateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "emails",
+              "item/activitypointer_activity_parties": [
+                {
+                  "participationtypemask": 2,
+                  "partyid@odata.bind": "/contacts(@{outputs('Get_Primary_Contact')?['body/contactid']})"
+                }
+              ],
+              "item/leidos_copyasportalmessage": true,
+              "item/description": "<p>\nPayment Claim @{triggerOutputs()?['body/leidos_name']}, refernce @{triggerOutputs()?['body/leidos_claimreference']} has been confrimed as Paid.   </br>\nPlease note it may take a couple of days for the funds to show up within your bank statement.\n</p>",
+              "item/regardingobjectid_leidos_claim_email@odata.bind": "/leidos_claims(@{triggerOutputs()?['body/leidos_claimid']})",
+              "item/subject": "@{triggerOutputs()?['body/leidos_claimreference']} has been confrimed as Paid.   "
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Perform_a_bound_action": {
+          "runAfter": {
+            "Create_Email_Massage": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "PerformBoundAction",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "emails",
+              "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+              "recordId": "@outputs('Create_Email_Massage')?['body/activityid']",
+              "item/IssueSend": false
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,1 +1,123 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"impersonation":{},"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnProgramme"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"When_Programme_Closed":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps","connectionName":"shared_commondataserviceforapps_1","operationId":"SubscribeWebhookTrigger"},"parameters":{"subscriptionRequest/message":3,"subscriptionRequest/entityname":"leidos_programme","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"statuscode","subscriptionRequest/filterexpression":"(statuscode eq 445260010)","subscriptionRequest/runas":3,"subscriptionRequest/name":"ba95e8ca-db88-eb11-a812-00224841917b"},"authentication":"@parameters('$authentication')"}}},"actions":{"List_Support_Items":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps","connectionName":"shared_commondataserviceforapps_1","operationId":"ListRecords"},"parameters":{"entityName":"leidos_supportitems","$select":"leidos_supportitemid","$filter":"(_leidos_programme_value eq @{triggerOutputs()?['body/leidos_programmeid']})"},"authentication":"@parameters('$authentication')"}},"Loop_thru_Support_Items_Children":{"foreach":"@outputs('List_Support_Items')?['body/value']","actions":{"Run_Totals_update":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps","connectionName":"shared_commondataserviceforapps_1","operationId":"PerformBoundAction"},"parameters":{"entityName":"leidos_supportitems","actionName":"Microsoft.Dynamics.CRM.leidos_CappProcessGenieforSupportItemTotals","recordId":"@items('Loop_thru_Support_Items_Children')?['leidos_supportitemid']"},"authentication":"@parameters('$authentication')"}},"Update_Support_Item_to_deactivated":{"runAfter":{"Run_Totals_update":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps","connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord"},"parameters":{"entityName":"leidos_supportitems","recordId":"@items('Loop_thru_Support_Items_Children')?['leidos_supportitemid']","item/statecode":1,"item/statuscode":2},"authentication":"@parameters('$authentication')"}}},"runAfter":{"List_Support_Items":["Succeeded"]},"type":"Foreach"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "impersonation": {},
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProgramme"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_Programme_Closed": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "leidos_programme",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/filterexpression": "(statuscode eq 445260010)",
+              "subscriptionRequest/runas": 3,
+              "subscriptionRequest/name": "ba95e8ca-db88-eb11-a812-00224841917b"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "List_Support_Items": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords"
+            },
+            "parameters": {
+              "entityName": "leidos_supportitems",
+              "$select": "leidos_supportitemid",
+              "$filter": "(_leidos_programme_value eq @{triggerOutputs()?['body/leidos_programmeid']})"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Loop_thru_Support_Items_Children": {
+          "foreach": "@outputs('List_Support_Items')?['body/value']",
+          "actions": {
+            "Run_Totals_update": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "PerformBoundAction"
+                },
+                "parameters": {
+                  "entityName": "leidos_supportitems",
+                  "actionName": "Microsoft.Dynamics.CRM.leidos_CappProcessGenieforSupportItemTotals",
+                  "recordId": "@items('Loop_thru_Support_Items_Children')?['leidos_supportitemid']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_Support_Item_to_deactivated": {
+              "runAfter": {
+                "Run_Totals_update": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps",
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord"
+                },
+                "parameters": {
+                  "entityName": "leidos_supportitems",
+                  "recordId": "@items('Loop_thru_Support_Items_Children')?['leidos_supportitemid']",
+                  "item/statecode": 1,
+                  "item/statuscode": 2
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_Support_Items": [
+              "Succeeded"
+            ]
+          },
+          "type": "Foreach"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,1 +1,148 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnStateAid"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"State_Aid_Details_":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":1,"subscriptionRequest/entityname":"leidos_stateaidassessmentdetail","subscriptionRequest/scope":4},"authentication":"@parameters('$authentication')"}}},"actions":{"State_Aid_Record":{"runAfter":{"Get_State_Aid_Category":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_stateaidassessments","recordId":"@triggerOutputs()?['body/_leidos_parentstateaidrecord_value']"},"authentication":"@parameters('$authentication')"}},"Application":{"runAfter":{"State_Aid_Record":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applications","recordId":"@outputs('State_Aid_Record')?['body/_leidos_parentapplication_value']"},"authentication":"@parameters('$authentication')"}},"Account":{"runAfter":{"Application":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@outputs('Application')?['body/_leidos_parentaccount_value']"},"authentication":"@parameters('$authentication')"}},"Update_a_record":{"runAfter":{"Account":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_stateaidassessmentdetails","recordId":"@triggerOutputs()?['body/leidos_stateaidassessmentdetailid']","item/leidos_name":"@concat(outputs('Account')?['body/name'], ' - ', outputs('Get_State_Aid_Category')?['body/leidos_category'])"},"authentication":"@parameters('$authentication')"}},"Get_State_Aid_Category":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_stateaidcategories","recordId":"@triggerOutputs()?['body/_leidos_sourceofaid_value']"},"authentication":"@parameters('$authentication')"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnStateAid"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "State_Aid_Details_": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "leidos_stateaidassessmentdetail",
+              "subscriptionRequest/scope": 4
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "State_Aid_Record": {
+          "runAfter": {
+            "Get_State_Aid_Category": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_stateaidassessments",
+              "recordId": "@triggerOutputs()?['body/_leidos_parentstateaidrecord_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Application": {
+          "runAfter": {
+            "State_Aid_Record": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_applications",
+              "recordId": "@outputs('State_Aid_Record')?['body/_leidos_parentapplication_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Account": {
+          "runAfter": {
+            "Application": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "accounts",
+              "recordId": "@outputs('Application')?['body/_leidos_parentaccount_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Update_a_record": {
+          "runAfter": {
+            "Account": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_stateaidassessmentdetails",
+              "recordId": "@triggerOutputs()?['body/leidos_stateaidassessmentdetailid']",
+              "item/leidos_name": "@concat(outputs('Account')?['body/name'], ' - ', outputs('Get_State_Aid_Category')?['body/leidos_category'])"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Get_State_Aid_Category": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_stateaidcategories",
+              "recordId": "@triggerOutputs()?['body/_leidos_sourceofaid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

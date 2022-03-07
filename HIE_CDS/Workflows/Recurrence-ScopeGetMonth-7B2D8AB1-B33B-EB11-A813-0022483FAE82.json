@@ -1,1 +1,123 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnRecurrence"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Recurrence":{"recurrence":{"frequency":"Month","interval":1,"timeZone":"GMT Standard Time"},"metadata":{"operationMetadataId":"b96a6682-556f-40cc-a400-eb10737973ca"},"type":"Recurrence"}},"actions":{"Get_Data":{"actions":{"Get_Month":{"runAfter":{},"metadata":{"operationMetadataId":"0a6bd3e4-b6b9-4173-9ec7-21ff36c5b080"},"type":"Compose","inputs":"@formatDateTime(utcNow(), 'MM')"},"Get_Year":{"runAfter":{"Get_Month":["Succeeded"]},"metadata":{"operationMetadataId":"ddaaea9e-93cf-4261-9e8c-a92ec9a07d06"},"type":"Compose","inputs":"@formatDateTime(utcNow(), 'yyyy')"},"List_FY":{"runAfter":{"Now":["Succeeded"]},"metadata":{"operationMetadataId":"9d1a5a57-05c6-42ea-b176-e7bf33e84622"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_financialyears","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\" >\n  <entity name=\"leidos_financialyear\" >\n    <attribute name=\"leidos_financialyearid\" />\n    <order attribute=\"leidos_financialyear\" descending=\"false\" />\n    <filter type=\"and\" >\n      <condition attribute=\"leidos_startdate\" operator=\"on-or-before\" value=\"@{outputs('Now')}\"/>\n      <condition attribute=\"leidos_enddate\" operator=\"on-or-after\" value=\"@{outputs('Now')}\" />\n    </filter>\n  </entity>\n</fetch>","$top":1},"authentication":"@parameters('$authentication')"}},"Now":{"runAfter":{"Get_Year":["Succeeded"]},"metadata":{"operationMetadataId":"e55a1530-c330-4307-a208-6821a8f6e2c5"},"type":"Compose","inputs":"@utcNow()"},"Compose":{"runAfter":{"List_FY":["Succeeded"]},"metadata":{"operationMetadataId":"7b44692c-d195-4795-9699-5b1fbab94c2a"},"type":"Compose","inputs":"@outputs('List_FY')?['body']?['value']"}},"runAfter":{},"metadata":{"operationMetadataId":"93e9fdbf-1814-4c91-acb9-5d46cbcc1d6f"},"type":"Scope"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnRecurrence"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Month",
+            "interval": 1,
+            "timeZone": "GMT Standard Time"
+          },
+          "metadata": {
+            "operationMetadataId": "b96a6682-556f-40cc-a400-eb10737973ca"
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "Get_Data": {
+          "actions": {
+            "Get_Month": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "0a6bd3e4-b6b9-4173-9ec7-21ff36c5b080"
+              },
+              "type": "Compose",
+              "inputs": "@formatDateTime(utcNow(), 'MM')"
+            },
+            "Get_Year": {
+              "runAfter": {
+                "Get_Month": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "ddaaea9e-93cf-4261-9e8c-a92ec9a07d06"
+              },
+              "type": "Compose",
+              "inputs": "@formatDateTime(utcNow(), 'yyyy')"
+            },
+            "List_FY": {
+              "runAfter": {
+                "Now": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "9d1a5a57-05c6-42ea-b176-e7bf33e84622"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_financialyears",
+                  "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\" >\n  <entity name=\"leidos_financialyear\" >\n    <attribute name=\"leidos_financialyearid\" />\n    <order attribute=\"leidos_financialyear\" descending=\"false\" />\n    <filter type=\"and\" >\n      <condition attribute=\"leidos_startdate\" operator=\"on-or-before\" value=\"@{outputs('Now')}\"/>\n      <condition attribute=\"leidos_enddate\" operator=\"on-or-after\" value=\"@{outputs('Now')}\" />\n    </filter>\n  </entity>\n</fetch>",
+                  "$top": 1
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Now": {
+              "runAfter": {
+                "Get_Year": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e55a1530-c330-4307-a208-6821a8f6e2c5"
+              },
+              "type": "Compose",
+              "inputs": "@utcNow()"
+            },
+            "Compose": {
+              "runAfter": {
+                "List_FY": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7b44692c-d195-4795-9699-5b1fbab94c2a"
+              },
+              "type": "Compose",
+              "inputs": "@outputs('List_FY')?['body']?['value']"
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "93e9fdbf-1814-4c91-acb9-5d46cbcc1d6f"
+          },
+          "type": "Scope"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

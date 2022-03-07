@@ -1,1 +1,405 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnApplication"},"api":{"name":"shared_commondataserviceforapps"}},"shared_office365":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnOffice365Outlook"},"api":{"name":"shared_office365"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Application_is_Assigned":{"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_application","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"ownerid"},"authentication":"@parameters('$authentication')"}}},"actions":{"Application_Record":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_applications","recordId":"@triggerOutputs()?['body/leidos_applicationid']"},"authentication":"@parameters('$authentication')"}},"Account_Record":{"runAfter":{"Application_Record":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@outputs('Application_Record')?['body/_leidos_parentaccount_value']"},"authentication":"@parameters('$authentication')"}},"Owner_Type":{"runAfter":{"Get_Application_URL":["Succeeded"]},"type":"Compose","inputs":"@outputs('Application_Record')?['body/_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']"},"Condition":{"actions":{"Team_Record":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"teams","recordId":"@outputs('Application_Record')?['body/_ownerid_value']"},"authentication":"@parameters('$authentication')"}},"Team_has_Primary_Contact":{"actions":{"List_Team_Members":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"teammemberships","$filter":"teamid eq '@{outputs('Team_Record')?['body/teamid']}'"},"authentication":"@parameters('$authentication')"}},"Parse_JSON":{"runAfter":{"List_Team_Members":["Succeeded"]},"type":"ParseJson","inputs":{"content":"@outputs('List_Team_Members')?['body/value']","schema":{"type":"array","items":{"type":"object","properties":{"@@odata.type":{"type":"string"},"@@odata.id":{"type":"string"},"@@odata.etag":{"type":"string"},"@@odata.editLink":{"type":"string"},"systemuserid@odata.type":{"type":"string"},"systemuserid":{"type":"string"},"versionnumber@odata.type":{"type":"string"},"versionnumber":{"type":"integer"},"teammembershipid@odata.type":{"type":"string"},"teammembershipid":{"type":"string"},"teamid@odata.type":{"type":"string"},"teamid":{"type":"string"},"userentityinstancedata_teammembership@odata.associationLink":{"type":"string"},"userentityinstancedata_teammembership@odata.navigationLink":{"type":"string"}},"required":["@@odata.type","@@odata.id","@@odata.etag","@@odata.editLink","systemuserid@odata.type","systemuserid","versionnumber@odata.type","versionnumber","teammembershipid@odata.type","teammembershipid","teamid@odata.type","teamid","userentityinstancedata_teammembership@odata.associationLink","userentityinstancedata_teammembership@odata.navigationLink"]}}}},"Apply_to_each":{"foreach":"@body('Parse_JSON')","actions":{"Get_Team_User":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@items('Apply_to_each')['systemuserid']"},"authentication":"@parameters('$authentication')"}},"Append_to_string_variable":{"runAfter":{"Get_Team_User":["Succeeded"]},"type":"AppendToStringVariable","inputs":{"name":"Email Address","value":"@{outputs('Get_Team_User')?['body/internalemailaddress']};"}}},"runAfter":{"Parse_JSON":["Succeeded"]},"type":"Foreach"}},"runAfter":{"Team_Record":["Succeeded"]},"else":{"actions":{"Team_Primary_Contact":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Team_Record')?['body/_leidos_teamprimarycontact_value']"},"authentication":"@parameters('$authentication')"}},"Set_to_team_Primary_Contact_Email_Address":{"runAfter":{"Team_Primary_Contact":["Succeeded"]},"type":"SetVariable","inputs":{"name":"Email Address","value":"@outputs('Team_Primary_Contact')?['body/internalemailaddress']"}}}},"expression":{"equals":["@outputs('Team_Record')?['body/_leidos_teamprimarycontact_value']","@null"]},"type":"If"}},"runAfter":{"Initialize_variable":["Succeeded"]},"else":{"actions":{"User_Record":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Application_Record')?['body/_ownerid_value']"},"authentication":"@parameters('$authentication')"}},"Set_Email_to_User":{"runAfter":{"User_Record":["Succeeded"]},"type":"SetVariable","inputs":{"name":"Email Address","value":"@outputs('User_Record')?['body/internalemailaddress']"}}}},"expression":{"equals":["@outputs('Owner_Type')","team"]},"type":"If"},"Initialize_variable":{"runAfter":{"Owner_Type":["Succeeded"]},"type":"InitializeVariable","inputs":{"variables":[{"name":"Email Address","type":"String","value":"@{null}"}]}},"Get_Application_URL":{"runAfter":{"Account_Record":["Succeeded"]},"type":"Workflow","inputs":{"host":{"workflowReferenceName":"b0db1a8a-c449-ea11-a812-000d3a0ba151"},"body":{"EntityId_Inputs":"@outputs('Application_Record')?['body/leidos_applicationid']","EntityType_Value":"leidos_application"}}},"Send_an_email_(V2)":{"runAfter":{"Condition":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@variables('Email Address')","emailMessage/Subject":"An Application for @{outputs('Account_Record')?['body/name']}","emailMessage/Body":"<p>The Application from @{outputs('Account_Record')?['body/name']} has been assigned to you:<br>\n<br>\nApplication Record Link : <a href=\"@{outputs('Get_Application_URL')?['Body']?['entityurl']}\">@{outputs('Application_Record')?['body/leidos_name']}</a></p>"},"authentication":"@parameters('$authentication')"}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnApplication"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnOffice365Outlook"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Application_is_Assigned": {
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_application",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "ownerid"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Application_Record": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_applications",
+              "recordId": "@triggerOutputs()?['body/leidos_applicationid']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Account_Record": {
+          "runAfter": {
+            "Application_Record": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "accounts",
+              "recordId": "@outputs('Application_Record')?['body/_leidos_parentaccount_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Owner_Type": {
+          "runAfter": {
+            "Get_Application_URL": [
+              "Succeeded"
+            ]
+          },
+          "type": "Compose",
+          "inputs": "@outputs('Application_Record')?['body/_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']"
+        },
+        "Condition": {
+          "actions": {
+            "Team_Record": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "teams",
+                  "recordId": "@outputs('Application_Record')?['body/_ownerid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Team_has_Primary_Contact": {
+              "actions": {
+                "List_Team_Members": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "teammemberships",
+                      "$filter": "teamid eq '@{outputs('Team_Record')?['body/teamid']}'"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Parse_JSON": {
+                  "runAfter": {
+                    "List_Team_Members": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "ParseJson",
+                  "inputs": {
+                    "content": "@outputs('List_Team_Members')?['body/value']",
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "@@odata.type": {
+                            "type": "string"
+                          },
+                          "@@odata.id": {
+                            "type": "string"
+                          },
+                          "@@odata.etag": {
+                            "type": "string"
+                          },
+                          "@@odata.editLink": {
+                            "type": "string"
+                          },
+                          "systemuserid@odata.type": {
+                            "type": "string"
+                          },
+                          "systemuserid": {
+                            "type": "string"
+                          },
+                          "versionnumber@odata.type": {
+                            "type": "string"
+                          },
+                          "versionnumber": {
+                            "type": "integer"
+                          },
+                          "teammembershipid@odata.type": {
+                            "type": "string"
+                          },
+                          "teammembershipid": {
+                            "type": "string"
+                          },
+                          "teamid@odata.type": {
+                            "type": "string"
+                          },
+                          "teamid": {
+                            "type": "string"
+                          },
+                          "userentityinstancedata_teammembership@odata.associationLink": {
+                            "type": "string"
+                          },
+                          "userentityinstancedata_teammembership@odata.navigationLink": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "@@odata.type",
+                          "@@odata.id",
+                          "@@odata.etag",
+                          "@@odata.editLink",
+                          "systemuserid@odata.type",
+                          "systemuserid",
+                          "versionnumber@odata.type",
+                          "versionnumber",
+                          "teammembershipid@odata.type",
+                          "teammembershipid",
+                          "teamid@odata.type",
+                          "teamid",
+                          "userentityinstancedata_teammembership@odata.associationLink",
+                          "userentityinstancedata_teammembership@odata.navigationLink"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "Apply_to_each": {
+                  "foreach": "@body('Parse_JSON')",
+                  "actions": {
+                    "Get_Team_User": {
+                      "runAfter": {},
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "systemusers",
+                          "recordId": "@items('Apply_to_each')['systemuserid']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Append_to_string_variable": {
+                      "runAfter": {
+                        "Get_Team_User": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "AppendToStringVariable",
+                      "inputs": {
+                        "name": "Email Address",
+                        "value": "@{outputs('Get_Team_User')?['body/internalemailaddress']};"
+                      }
+                    }
+                  },
+                  "runAfter": {
+                    "Parse_JSON": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "Foreach"
+                }
+              },
+              "runAfter": {
+                "Team_Record": [
+                  "Succeeded"
+                ]
+              },
+              "else": {
+                "actions": {
+                  "Team_Primary_Contact": {
+                    "runAfter": {},
+                    "type": "OpenApiConnection",
+                    "inputs": {
+                      "host": {
+                        "connectionName": "shared_commondataserviceforapps",
+                        "operationId": "GetItem",
+                        "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                      },
+                      "parameters": {
+                        "entityName": "systemusers",
+                        "recordId": "@outputs('Team_Record')?['body/_leidos_teamprimarycontact_value']"
+                      },
+                      "authentication": "@parameters('$authentication')"
+                    }
+                  },
+                  "Set_to_team_Primary_Contact_Email_Address": {
+                    "runAfter": {
+                      "Team_Primary_Contact": [
+                        "Succeeded"
+                      ]
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Email Address",
+                      "value": "@outputs('Team_Primary_Contact')?['body/internalemailaddress']"
+                    }
+                  }
+                }
+              },
+              "expression": {
+                "equals": [
+                  "@outputs('Team_Record')?['body/_leidos_teamprimarycontact_value']",
+                  "@null"
+                ]
+              },
+              "type": "If"
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "User_Record": {
+                "runAfter": {},
+                "type": "OpenApiConnection",
+                "inputs": {
+                  "host": {
+                    "connectionName": "shared_commondataserviceforapps",
+                    "operationId": "GetItem",
+                    "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                  },
+                  "parameters": {
+                    "entityName": "systemusers",
+                    "recordId": "@outputs('Application_Record')?['body/_ownerid_value']"
+                  },
+                  "authentication": "@parameters('$authentication')"
+                }
+              },
+              "Set_Email_to_User": {
+                "runAfter": {
+                  "User_Record": [
+                    "Succeeded"
+                  ]
+                },
+                "type": "SetVariable",
+                "inputs": {
+                  "name": "Email Address",
+                  "value": "@outputs('User_Record')?['body/internalemailaddress']"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Owner_Type')",
+              "team"
+            ]
+          },
+          "type": "If"
+        },
+        "Initialize_variable": {
+          "runAfter": {
+            "Owner_Type": [
+              "Succeeded"
+            ]
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Email Address",
+                "type": "String",
+                "value": "@{null}"
+              }
+            ]
+          }
+        },
+        "Get_Application_URL": {
+          "runAfter": {
+            "Account_Record": [
+              "Succeeded"
+            ]
+          },
+          "type": "Workflow",
+          "inputs": {
+            "host": {
+              "workflowReferenceName": "b0db1a8a-c449-ea11-a812-000d3a0ba151"
+            },
+            "body": {
+              "EntityId_Inputs": "@outputs('Application_Record')?['body/leidos_applicationid']",
+              "EntityType_Value": "leidos_application"
+            }
+          }
+        },
+        "Send_an_email_(V2)": {
+          "runAfter": {
+            "Condition": [
+              "Succeeded"
+            ]
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365",
+              "operationId": "SendEmailV2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "emailMessage/To": "@variables('Email Address')",
+              "emailMessage/Subject": "An Application for @{outputs('Account_Record')?['body/name']}",
+              "emailMessage/Body": "<p>The Application from @{outputs('Account_Record')?['body/name']} has been assigned to you:<br>\n<br>\nApplication Record Link : <a href=\"@{outputs('Get_Application_URL')?['Body']?['entityurl']}\">@{outputs('Application_Record')?['body/leidos_name']}</a></p>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,1 +1,732 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnProgramme"},"api":{"name":"shared_commondataserviceforapps"}},"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_sharedcommondataserviceforapps_5ec64"},"api":{"name":"shared_commondataserviceforapps"}},"shared_approvals":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ApprovalConnectionReference"},"api":{"name":"shared_approvals"}},"shared_office365":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnOffice365Outlook"},"api":{"name":"shared_office365"}},"shared_office365_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnOffice365Outlook3"},"api":{"name":"shared_office365"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Programme_Submit_for_Approval":{"metadata":{"operationMetadataId":"8bbfeda3-4d5c-408a-8c23-8e9269980772"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_programme","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_submitforapproval","subscriptionRequest/filterexpression":"leidos_submitforapproval eq true"},"authentication":"@parameters('$authentication')"}}},"actions":{"Initialize_variable":{"runAfter":{},"metadata":{"operationMetadataId":"06601cb8-61dd-4b7a-bd13-b84c104b452c"},"type":"InitializeVariable","inputs":{"variables":[{"name":"Delegated Authority","type":"string"}]}},"Get_Data":{"actions":{"Switch_based_on_Top_Slice":{"runAfter":{},"cases":{"Top_Slice":{"case":445260000,"actions":{"Get_Leadership_DA":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_delegatedauthorityapprovaltables","recordId":"@triggerOutputs()?['body/_leidos_leadershipteam_value']"},"authentication":"@parameters('$authentication')"}},"Get_DA_User_Record":{"runAfter":{"Get_Leadership_DA":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Get_Leadership_DA')?['body/_leidos_userrecord_value']"},"authentication":"@parameters('$authentication')"}},"Set_variable":{"runAfter":{"Get_DA_User_Record":["Succeeded"]},"type":"SetVariable","inputs":{"name":"Delegated Authority","value":"@outputs('Get_DA_User_Record')?['body/internalemailaddress']"}}}},"Delegate_Authority":{"case":445260001,"actions":{"Get_DA_Table":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_delegatedauthorityapprovaltables","recordId":"@triggerOutputs()?['body/_leidos_delegatedauthority_value']"},"authentication":"@parameters('$authentication')"}},"Get_DA_User":{"runAfter":{"Get_DA_Table":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Get_DA_Table')?['body/_leidos_userrecord_value']"},"authentication":"@parameters('$authentication')"}},"Set_variable_2":{"runAfter":{"Get_DA_User":["Succeeded"]},"type":"SetVariable","inputs":{"name":"Delegated Authority","value":"@outputs('Get_DA_User')?['body/internalemailaddress']"}}}},"Case":{"case":445260002,"actions":{"Get_a_DA_Table":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_delegatedauthorityapprovaltables","recordId":"@triggerOutputs()?['body/_leidos_delegatedauthority_value']"},"authentication":"@parameters('$authentication')"}},"Get_DA_User_for_Business_Support":{"runAfter":{"Get_a_DA_Table":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Get_a_DA_Table')?['body/_leidos_userrecord_value']"},"authentication":"@parameters('$authentication')"}},"Set_variable_3":{"runAfter":{"Get_DA_User_for_Business_Support":["Succeeded"]},"type":"SetVariable","inputs":{"name":"Delegated Authority","value":"@outputs('Get_DA_User_for_Business_Support')?['body/internalemailaddress']"}}}}},"default":{"actions":{}},"expression":"@triggerOutputs()?['body/leidos_budgetsubtype']","metadata":{"operationMetadataId":"1255d6c1-c83a-4075-b635-41cac09950d8"},"type":"Switch","description":"Select from relevant DA lookup and populate Variable"},"Get_Requested_By":{"runAfter":{"Switch_based_on_Top_Slice":["Succeeded"]},"metadata":{"operationMetadataId":"0d4ee5c5-babe-456b-8372-d2d5e616da92"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@triggerOutputs()?['body/_leidos_approvalrequestedby_value']"},"authentication":"@parameters('$authentication')"}},"Get_Owner":{"runAfter":{"Switch_based_on_Top_Slice":["Succeeded"]},"metadata":{"operationMetadataId":"66ac8a4a-c076-4046-ad54-73b88825988f"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@triggerOutputs()?['body/_ownerid_value']"},"authentication":"@parameters('$authentication')"}},"Run_a_Child_Flow":{"runAfter":{"Get_Requested_By":["Succeeded"],"Get_Owner":["Succeeded"]},"metadata":{"operationMetadataId":"c59b08f7-5a7b-485a-9777-896046068b1d"},"type":"Workflow","inputs":{"host":{"workflowReferenceName":"b0db1a8a-c449-ea11-a812-000d3a0ba151"},"body":{"EntityId_Inputs":"@triggerOutputs()?['body/leidos_programmeid']","EntityType_Value":"leidos_programme"}}}},"runAfter":{"Initialize_variable":["Succeeded"]},"metadata":{"operationMetadataId":"d1d32a99-adba-4d93-88ea-e6f6c18cba8c"},"type":"Scope"},"Start_and_wait_for_an_approval":{"runAfter":{"Get_Data":["Succeeded"]},"limit":{"timeout":"P3D"},"metadata":{"operationMetadataId":"dd8850fb-1d32-4266-bb8b-6411cf230e4d"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_approvals","operationId":"StartAndWaitForAnApproval","apiId":"/providers/Microsoft.PowerApps/apis/shared_approvals"},"parameters":{"approvalType":"CustomResponse","WebhookApprovalCreationInput/responseOptions":["Approve Programme","Reject Programme","Defer Programme"],"WebhookApprovalCreationInput/title":" Programme Approval Request:   @{triggerOutputs()?['body/leidos_name']}","WebhookApprovalCreationInput/assignedTo":"@{variables('Delegated Authority')};","WebhookApprovalCreationInput/details":"### The following has been submitted for Programme Approval   @{triggerOutputs()?['body/leidos_name']}   ###\n\n  -  Programme: @{triggerOutputs()?['body/leidos_name']}\n  - Recommendation : @{if(triggerOutputs()?['body/leidos_recommendation'],'Approve','Reject')}\n  -  Link of Programme Name   [@{triggerOutputs()?['body/leidos_name']}](@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']})\n#### If the Date of Decision was prior to this sign off, please include the actual Date of Decision in the Note box below ####","WebhookApprovalCreationInput/itemLink":"@triggerOutputs()?['body/leidos_appraisallink']","WebhookApprovalCreationInput/itemLinkDescription":"Link to Appraisal Document","WebhookApprovalCreationInput/requestor":"@{outputs('Get_Requested_By')?['body/internalemailaddress']};","WebhookApprovalCreationInput/enableNotifications":true,"WebhookApprovalCreationInput/enableReassignment":true},"authentication":"@parameters('$authentication')"}},"Switch":{"runAfter":{"Start_and_wait_for_an_approval":["Succeeded"]},"cases":{"Approve_Programme_Appraisal":{"case":"Approve Programme","actions":{"Update_Programme_to_Approved":{"runAfter":{"Get_Approved_By_Record":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_programmes","recordId":"@triggerOutputs()?['body/leidos_programmeid']","item/leidos_ApprovedBy@odata.bind":"/systemusers(@{outputs('Get_Approved_By_Record')?['body/systemuserid']})","item/leidos_approvedon":"@utcNow()","item/statecode":0,"item/statuscode":445260004},"authentication":"@parameters('$authentication')"}},"List_User":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","$select":"systemuserid","$filter":"internalemailaddress eq '@{variables('Delegated Authority')}'","$top":1},"authentication":"@parameters('$authentication')"}},"Compose":{"runAfter":{"List_User":["Succeeded"]},"type":"Compose","inputs":"@first(outputs('List_User')?['body/value'])"},"Get_Approved_By_Record":{"runAfter":{"Get_Owner_ID":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@outputs('Get_Owner_ID')"},"authentication":"@parameters('$authentication')"}},"Parse_JSON":{"runAfter":{"Compose":["Succeeded"]},"type":"ParseJson","inputs":{"content":"@outputs('Compose')","schema":{"type":"object","properties":{"@@odata.type":{"type":"string"},"@@odata.id":{"type":"string"},"@@odata.etag":{"type":"string"},"@@odata.editLink":{"type":"string"},"systemuserid@odata.type":{"type":"string"},"systemuserid":{"type":"string"},"ownerid@odata.type":{"type":"string"},"ownerid":{"type":"string"}}}}},"Get_Owner_ID":{"runAfter":{"Parse_JSON":["Succeeded"]},"type":"Compose","inputs":"@body('Parse_JSON')?['ownerid']"}}},"Reject_Programme_Appraisal":{"case":"Reject Programme","actions":{"Set_to_Inactive":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_programmes","recordId":"@triggerOutputs()?['body/leidos_programmeid']","item/statecode":1,"item/statuscode":445260005},"authentication":"@parameters('$authentication')"}}}},"Defer_Programme_Appraisal":{"case":"Defer Programme","actions":{"Update_Programme_for_Deferred":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_programmes","recordId":"@triggerOutputs()?['body/leidos_programmeid']","item/statecode":0,"item/statuscode":445260008,"item/leidos_submitforapproval":false},"authentication":"@parameters('$authentication')"}}}}},"default":{"actions":{}},"expression":"@outputs('Start_and_wait_for_an_approval')?['body/outcome']","metadata":{"operationMetadataId":"a85c5c41-80a8-4ce6-9c1c-c209d70bae31"},"type":"Switch"},"Update_Programme_Lock_while_in_Approval":{"runAfter":{"Get_Data":["Succeeded"]},"metadata":{"operationMetadataId":"a562b9cd-6cd4-4f1c-9cf7-292a3c0b8f74"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_programmes","recordId":"@triggerOutputs()?['body/leidos_programmeid']","item/statecode":1,"item/statuscode":445260006},"authentication":"@parameters('$authentication')"}},"Apply_to_each":{"foreach":"@outputs('Start_and_wait_for_an_approval')?['body/responses']","actions":{"Send_an_email_(V2)":{"runAfter":{},"metadata":{"operationMetadataId":"46c2af14-11f2-471c-a65e-bf4fc27e7e48"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@outputs('Get_Owner')?['body/internalemailaddress']","emailMessage/Subject":"Programme Appraisal Response","emailMessage/Body":"<p>\n<p>Response for Programme Appraisal submission<br><br></p>\n<br>\n- Delegated Authority:  @{items('Apply_to_each')?['responder/displayName']} ;<br>\n-Delegated Authority Decision :@{outputs('Start_and_wait_for_an_approval')?['body/outcome']}<br>\n-Delegated Authority Comments:  @{items('Apply_to_each')?['comments']}<br>\n<br>\n<a href=\"@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}\">Record Link</a> <br>\n</p>"},"authentication":"@parameters('$authentication')"}},"Create_a_new_task":{"runAfter":{"Send_an_email_(V2)":["Succeeded"]},"metadata":{"operationMetadataId":"cb022a66-5f4e-4622-bedc-c94f74b28076"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"tasks","item/subject":"Programme Appraisal Response","item/description":"Response for Programme Appraisal submission   \n\n- Delegated Authority:  @{items('Apply_to_each')?['responder/displayName']} \n\n-Delegated Authority Decision :@{outputs('Start_and_wait_for_an_approval')?['body/outcome']}\n\n-Delegated Authority Comments:  @{items('Apply_to_each')?['comments']}\n","item/regardingobjectid_leidos_programme_task@odata.bind":"/leidos_programmes(@{triggerOutputs()?['body/leidos_programmeid']})"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Switch":["Succeeded"]},"metadata":{"operationMetadataId":"9349f3ff-0a75-4856-a9ee-073e8082612c"},"type":"Foreach"},"Scope_Approval_Timed_out":{"actions":{"Update_Programme_to_Reset":{"runAfter":{},"metadata":{"operationMetadataId":"525f3a00-dfb0-4e92-938f-4e445903e5b9"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_programmes","recordId":"@triggerOutputs()?['body/leidos_programmeid']","item/statecode":0,"item/statuscode":445260008,"item/leidos_submitforapproval":false},"authentication":"@parameters('$authentication')"}},"Send_an_email_(V2)_2":{"runAfter":{"Update_Programme_to_Reset":["Succeeded"]},"metadata":{"operationMetadataId":"5c5b93ff-2cd0-442f-af50-b38a68a54f9e"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365_1","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@outputs('Get_Requested_By')?['body/internalemailaddress']","emailMessage/Subject":"Proigramme Approval Timed Out:@{triggerOutputs()?['body/leidos_programmereference']}","emailMessage/Body":"<p>The Approcal Process for @{triggerOutputs()?['body/leidos_programmereference']} has timed out, please resubmit.<br>\n<br>\n@{body('Run_a_Child_Flow')?['entityurl']}</p>"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Start_and_wait_for_an_approval":["TimedOut"]},"metadata":{"operationMetadataId":"baba2b66-199c-4d2b-8b8d-8d4365fb48b6"},"type":"Scope"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProgramme"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_sharedcommondataserviceforapps_5ec64"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_approvals": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ApprovalConnectionReference"
+        },
+        "api": {
+          "name": "shared_approvals"
+        }
+      },
+      "shared_office365": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnOffice365Outlook"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_office365_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnOffice365Outlook3"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Programme_Submit_for_Approval": {
+          "metadata": {
+            "operationMetadataId": "8bbfeda3-4d5c-408a-8c23-8e9269980772"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_programme",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_submitforapproval",
+              "subscriptionRequest/filterexpression": "leidos_submitforapproval eq true"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "06601cb8-61dd-4b7a-bd13-b84c104b452c"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Delegated Authority",
+                "type": "string"
+              }
+            ]
+          }
+        },
+        "Get_Data": {
+          "actions": {
+            "Switch_based_on_Top_Slice": {
+              "runAfter": {},
+              "cases": {
+                "Top_Slice": {
+                  "case": 445260000,
+                  "actions": {
+                    "Get_Leadership_DA": {
+                      "runAfter": {},
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_delegatedauthorityapprovaltables",
+                          "recordId": "@triggerOutputs()?['body/_leidos_leadershipteam_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Get_DA_User_Record": {
+                      "runAfter": {
+                        "Get_Leadership_DA": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "systemusers",
+                          "recordId": "@outputs('Get_Leadership_DA')?['body/_leidos_userrecord_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Set_variable": {
+                      "runAfter": {
+                        "Get_DA_User_Record": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Delegated Authority",
+                        "value": "@outputs('Get_DA_User_Record')?['body/internalemailaddress']"
+                      }
+                    }
+                  }
+                },
+                "Delegate_Authority": {
+                  "case": 445260001,
+                  "actions": {
+                    "Get_DA_Table": {
+                      "runAfter": {},
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_delegatedauthorityapprovaltables",
+                          "recordId": "@triggerOutputs()?['body/_leidos_delegatedauthority_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Get_DA_User": {
+                      "runAfter": {
+                        "Get_DA_Table": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "systemusers",
+                          "recordId": "@outputs('Get_DA_Table')?['body/_leidos_userrecord_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Set_variable_2": {
+                      "runAfter": {
+                        "Get_DA_User": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Delegated Authority",
+                        "value": "@outputs('Get_DA_User')?['body/internalemailaddress']"
+                      }
+                    }
+                  }
+                },
+                "Case": {
+                  "case": 445260002,
+                  "actions": {
+                    "Get_a_DA_Table": {
+                      "runAfter": {},
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_delegatedauthorityapprovaltables",
+                          "recordId": "@triggerOutputs()?['body/_leidos_delegatedauthority_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Get_DA_User_for_Business_Support": {
+                      "runAfter": {
+                        "Get_a_DA_Table": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "GetItem",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "systemusers",
+                          "recordId": "@outputs('Get_a_DA_Table')?['body/_leidos_userrecord_value']"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Set_variable_3": {
+                      "runAfter": {
+                        "Get_DA_User_for_Business_Support": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "SetVariable",
+                      "inputs": {
+                        "name": "Delegated Authority",
+                        "value": "@outputs('Get_DA_User_for_Business_Support')?['body/internalemailaddress']"
+                      }
+                    }
+                  }
+                }
+              },
+              "default": {
+                "actions": {}
+              },
+              "expression": "@triggerOutputs()?['body/leidos_budgetsubtype']",
+              "metadata": {
+                "operationMetadataId": "1255d6c1-c83a-4075-b635-41cac09950d8"
+              },
+              "type": "Switch",
+              "description": "Select from relevant DA lookup and populate Variable"
+            },
+            "Get_Requested_By": {
+              "runAfter": {
+                "Switch_based_on_Top_Slice": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "0d4ee5c5-babe-456b-8372-d2d5e616da92"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@triggerOutputs()?['body/_leidos_approvalrequestedby_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Owner": {
+              "runAfter": {
+                "Switch_based_on_Top_Slice": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "66ac8a4a-c076-4046-ad54-73b88825988f"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@triggerOutputs()?['body/_ownerid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Run_a_Child_Flow": {
+              "runAfter": {
+                "Get_Requested_By": [
+                  "Succeeded"
+                ],
+                "Get_Owner": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "c59b08f7-5a7b-485a-9777-896046068b1d"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "b0db1a8a-c449-ea11-a812-000d3a0ba151"
+                },
+                "body": {
+                  "EntityId_Inputs": "@triggerOutputs()?['body/leidos_programmeid']",
+                  "EntityType_Value": "leidos_programme"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d1d32a99-adba-4d93-88ea-e6f6c18cba8c"
+          },
+          "type": "Scope"
+        },
+        "Start_and_wait_for_an_approval": {
+          "runAfter": {
+            "Get_Data": [
+              "Succeeded"
+            ]
+          },
+          "limit": {
+            "timeout": "P3D"
+          },
+          "metadata": {
+            "operationMetadataId": "dd8850fb-1d32-4266-bb8b-6411cf230e4d"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_approvals",
+              "operationId": "StartAndWaitForAnApproval",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+            },
+            "parameters": {
+              "approvalType": "CustomResponse",
+              "WebhookApprovalCreationInput/responseOptions": [
+                "Approve Programme",
+                "Reject Programme",
+                "Defer Programme"
+              ],
+              "WebhookApprovalCreationInput/title": " Programme Approval Request:   @{triggerOutputs()?['body/leidos_name']}",
+              "WebhookApprovalCreationInput/assignedTo": "@{variables('Delegated Authority')};",
+              "WebhookApprovalCreationInput/details": "### The following has been submitted for Programme Approval   @{triggerOutputs()?['body/leidos_name']}   ###\n\n  -  Programme: @{triggerOutputs()?['body/leidos_name']}\n  - Recommendation : @{if(triggerOutputs()?['body/leidos_recommendation'],'Approve','Reject')}\n  -  Link of Programme Name   [@{triggerOutputs()?['body/leidos_name']}](@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']})\n#### If the Date of Decision was prior to this sign off, please include the actual Date of Decision in the Note box below ####",
+              "WebhookApprovalCreationInput/itemLink": "@triggerOutputs()?['body/leidos_appraisallink']",
+              "WebhookApprovalCreationInput/itemLinkDescription": "Link to Appraisal Document",
+              "WebhookApprovalCreationInput/requestor": "@{outputs('Get_Requested_By')?['body/internalemailaddress']};",
+              "WebhookApprovalCreationInput/enableNotifications": true,
+              "WebhookApprovalCreationInput/enableReassignment": true
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Switch": {
+          "runAfter": {
+            "Start_and_wait_for_an_approval": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Approve_Programme_Appraisal": {
+              "case": "Approve Programme",
+              "actions": {
+                "Update_Programme_to_Approved": {
+                  "runAfter": {
+                    "Get_Approved_By_Record": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_programmes",
+                      "recordId": "@triggerOutputs()?['body/leidos_programmeid']",
+                      "item/leidos_ApprovedBy@odata.bind": "/systemusers(@{outputs('Get_Approved_By_Record')?['body/systemuserid']})",
+                      "item/leidos_approvedon": "@utcNow()",
+                      "item/statecode": 0,
+                      "item/statuscode": 445260004
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "List_User": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "ListRecords",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "systemusers",
+                      "$select": "systemuserid",
+                      "$filter": "internalemailaddress eq '@{variables('Delegated Authority')}'",
+                      "$top": 1
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose": {
+                  "runAfter": {
+                    "List_User": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "Compose",
+                  "inputs": "@first(outputs('List_User')?['body/value'])"
+                },
+                "Get_Approved_By_Record": {
+                  "runAfter": {
+                    "Get_Owner_ID": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "systemusers",
+                      "recordId": "@outputs('Get_Owner_ID')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Parse_JSON": {
+                  "runAfter": {
+                    "Compose": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "ParseJson",
+                  "inputs": {
+                    "content": "@outputs('Compose')",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "@@odata.type": {
+                          "type": "string"
+                        },
+                        "@@odata.id": {
+                          "type": "string"
+                        },
+                        "@@odata.etag": {
+                          "type": "string"
+                        },
+                        "@@odata.editLink": {
+                          "type": "string"
+                        },
+                        "systemuserid@odata.type": {
+                          "type": "string"
+                        },
+                        "systemuserid": {
+                          "type": "string"
+                        },
+                        "ownerid@odata.type": {
+                          "type": "string"
+                        },
+                        "ownerid": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "Get_Owner_ID": {
+                  "runAfter": {
+                    "Parse_JSON": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "Compose",
+                  "inputs": "@body('Parse_JSON')?['ownerid']"
+                }
+              }
+            },
+            "Reject_Programme_Appraisal": {
+              "case": "Reject Programme",
+              "actions": {
+                "Set_to_Inactive": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_programmes",
+                      "recordId": "@triggerOutputs()?['body/leidos_programmeid']",
+                      "item/statecode": 1,
+                      "item/statuscode": 445260005
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            },
+            "Defer_Programme_Appraisal": {
+              "case": "Defer Programme",
+              "actions": {
+                "Update_Programme_for_Deferred": {
+                  "runAfter": {},
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "UpdateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_programmes",
+                      "recordId": "@triggerOutputs()?['body/leidos_programmeid']",
+                      "item/statecode": 0,
+                      "item/statuscode": 445260008,
+                      "item/leidos_submitforapproval": false
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@outputs('Start_and_wait_for_an_approval')?['body/outcome']",
+          "metadata": {
+            "operationMetadataId": "a85c5c41-80a8-4ce6-9c1c-c209d70bae31"
+          },
+          "type": "Switch"
+        },
+        "Update_Programme_Lock_while_in_Approval": {
+          "runAfter": {
+            "Get_Data": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a562b9cd-6cd4-4f1c-9cf7-292a3c0b8f74"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_programmes",
+              "recordId": "@triggerOutputs()?['body/leidos_programmeid']",
+              "item/statecode": 1,
+              "item/statuscode": 445260006
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Start_and_wait_for_an_approval')?['body/responses']",
+          "actions": {
+            "Send_an_email_(V2)": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "46c2af14-11f2-471c-a65e-bf4fc27e7e48"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_office365",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                },
+                "parameters": {
+                  "emailMessage/To": "@outputs('Get_Owner')?['body/internalemailaddress']",
+                  "emailMessage/Subject": "Programme Appraisal Response",
+                  "emailMessage/Body": "<p>\n<p>Response for Programme Appraisal submission<br><br></p>\n<br>\n- Delegated Authority:  @{items('Apply_to_each')?['responder/displayName']} ;<br>\n-Delegated Authority Decision :@{outputs('Start_and_wait_for_an_approval')?['body/outcome']}<br>\n-Delegated Authority Comments:  @{items('Apply_to_each')?['comments']}<br>\n<br>\n<a href=\"@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}\">Record Link</a> <br>\n</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Create_a_new_task": {
+              "runAfter": {
+                "Send_an_email_(V2)": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "cb022a66-5f4e-4622-bedc-c94f74b28076"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "item/subject": "Programme Appraisal Response",
+                  "item/description": "Response for Programme Appraisal submission   \n\n- Delegated Authority:  @{items('Apply_to_each')?['responder/displayName']} \n\n-Delegated Authority Decision :@{outputs('Start_and_wait_for_an_approval')?['body/outcome']}\n\n-Delegated Authority Comments:  @{items('Apply_to_each')?['comments']}\n",
+                  "item/regardingobjectid_leidos_programme_task@odata.bind": "/leidos_programmes(@{triggerOutputs()?['body/leidos_programmeid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Switch": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9349f3ff-0a75-4856-a9ee-073e8082612c"
+          },
+          "type": "Foreach"
+        },
+        "Scope_Approval_Timed_out": {
+          "actions": {
+            "Update_Programme_to_Reset": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "525f3a00-dfb0-4e92-938f-4e445903e5b9"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_programmes",
+                  "recordId": "@triggerOutputs()?['body/leidos_programmeid']",
+                  "item/statecode": 0,
+                  "item/statuscode": 445260008,
+                  "item/leidos_submitforapproval": false
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Send_an_email_(V2)_2": {
+              "runAfter": {
+                "Update_Programme_to_Reset": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "5c5b93ff-2cd0-442f-af50-b38a68a54f9e"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_office365_1",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                },
+                "parameters": {
+                  "emailMessage/To": "@outputs('Get_Requested_By')?['body/internalemailaddress']",
+                  "emailMessage/Subject": "Proigramme Approval Timed Out:@{triggerOutputs()?['body/leidos_programmereference']}",
+                  "emailMessage/Body": "<p>The Approcal Process for @{triggerOutputs()?['body/leidos_programmereference']} has timed out, please resubmit.<br>\n<br>\n@{body('Run_a_Child_Flow')?['entityurl']}</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Start_and_wait_for_an_approval": [
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "baba2b66-199c-4d2b-8b8d-8d4365fb48b6"
+          },
+          "type": "Scope"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,1 +1,246 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnAMCP"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Recurrence":{"recurrence":{"frequency":"Week","interval":1},"type":"Recurrence"}},"actions":{"List_AMR_8_week":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_accountmanagementrecords","$filter":"statuscode eq 445260000 and Microsoft.Dynamics.CRM.NextXWeeks(PropertyName='leidos_businessreviewreminderdate',PropertyValue=8) and leidos_weekremindersent ne true"},"authentication":"@parameters('$authentication')"}},"List_AMR_4_weeks":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_accountmanagementrecords","$filter":"statuscode eq 445260000 and Microsoft.Dynamics.CRM.NextXWeeks(PropertyName='leidos_businessreviewreminderdate',PropertyValue=4) and leidos_fourweekremindersent ne true"},"authentication":"@parameters('$authentication')"}},"List_Overdue_AMR_records":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_accountmanagementrecords","$filter":"statuscode eq 445260000 and Microsoft.Dynamics.CRM.LastXWeeks(PropertyName='leidos_businessreviewreminderdate',PropertyValue=52) and leidos_overduereminderset ne true"},"authentication":"@parameters('$authentication')"}},"Due_in_8_Weeks":{"foreach":"@outputs('List_AMR_8_week')?['body/value']","actions":{"Create_8_week_reminder_task":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"tasks","item/subject":"AMR for @{items('Due_in_8_Weeks')?['leidos_name']} is due in the next 8 weeks","item/description":"AMR for @{items('Due_in_8_Weeks')?['leidos_name']} is due in the next 8 weeks.\n\nPlease create a Client Plan record to commence the review process.","item/scheduledend":"@addDays(utcNow(),28)","item/ownerid_task@odata.bind":"/systemusers(@{items('Due_in_8_Weeks')?['_ownerid_value']})","item/regardingobjectid_leidos_accountmanagementrecord_task@odata.bind":"/leidos_accountmanagementrecords(@{items('Due_in_8_Weeks')?['leidos_accountmanagementrecordid']})"},"authentication":"@parameters('$authentication')"}},"Update_flag_in_AMR":{"runAfter":{"Create_8_week_reminder_task":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_accountmanagementrecords","recordId":"@items('Due_in_8_Weeks')?['leidos_accountmanagementrecordid']","item/leidos_weekremindersent":true},"authentication":"@parameters('$authentication')"}}},"runAfter":{"List_AMR_8_week":["Succeeded"]},"type":"Foreach"},"Due_in_4_weeks":{"foreach":"@outputs('List_AMR_4_weeks')?['body/value']","actions":{"Create_4_week_reminder_task":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"tasks","item/subject":"AMR for @{items('Due_in_4_weeks')?['leidos_name']} is due in 4 weeks","item/description":"The annual Account review for @{items('Due_in_4_weeks')?['leidos_name']} is due in the next 4 weeks.  Please create a Client plan to commence the annual review process","item/scheduledend":"@addDays(utcNow(),28)","item/ownerid_task@odata.bind":"/systemusers(@{items('Due_in_4_weeks')?['_ownerid_value']})","item/regardingobjectid_leidos_accountmanagementrecord_task@odata.bind":"/leidos_accountmanagementrecords(@{items('Due_in_4_weeks')?['leidos_accountmanagementrecordid']})"},"authentication":"@parameters('$authentication')"}},"Update_AMR_flag":{"runAfter":{"Create_4_week_reminder_task":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_accountmanagementrecords","recordId":"@items('Due_in_4_weeks')?['leidos_accountmanagementrecordid']","item/leidos_fourweekremindersent":true},"authentication":"@parameters('$authentication')"}}},"runAfter":{"List_AMR_4_weeks":["Succeeded"]},"type":"Foreach"},"Overdue_AMR":{"foreach":"@outputs('List_Overdue_AMR_records')?['body/value']","actions":{"AMR_Overdue_Task_Reminder":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"tasks","item/subject":"AMR for @{items('Overdue_AMR')?['leidos_name']} is overdue","item/description":"This is a weekly reminder for an overdue Account Management Record review.  Please create a new Account Management Client Plan to begin the Review process","item/scheduledend":"@utcNow()","item/ownerid_task@odata.bind":"/systemusers(@{items('Overdue_AMR')?['_ownerid_value']})","item/regardingobjectid_leidos_accountmanagementrecord_task@odata.bind":"/leidos_accountmanagementrecords(@{items('Overdue_AMR')?['leidos_accountmanagementrecordid']})"},"authentication":"@parameters('$authentication')"}},"Update_AMR_Clear_Flag":{"runAfter":{"AMR_Overdue_Task_Reminder":["Succeeded"]},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_accountmanagementrecords","recordId":"@items('Overdue_AMR')?['leidos_accountmanagementrecordid']","item/leidos_overduereminderset":true},"authentication":"@parameters('$authentication')"}}},"runAfter":{"List_Overdue_AMR_records":["Succeeded"]},"type":"Foreach"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnAMCP"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Recurrence": {
+          "recurrence": {
+            "frequency": "Week",
+            "interval": 1
+          },
+          "type": "Recurrence"
+        }
+      },
+      "actions": {
+        "List_AMR_8_week": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_accountmanagementrecords",
+              "$filter": "statuscode eq 445260000 and Microsoft.Dynamics.CRM.NextXWeeks(PropertyName='leidos_businessreviewreminderdate',PropertyValue=8) and leidos_weekremindersent ne true"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_AMR_4_weeks": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_accountmanagementrecords",
+              "$filter": "statuscode eq 445260000 and Microsoft.Dynamics.CRM.NextXWeeks(PropertyName='leidos_businessreviewreminderdate',PropertyValue=4) and leidos_fourweekremindersent ne true"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "List_Overdue_AMR_records": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_accountmanagementrecords",
+              "$filter": "statuscode eq 445260000 and Microsoft.Dynamics.CRM.LastXWeeks(PropertyName='leidos_businessreviewreminderdate',PropertyValue=52) and leidos_overduereminderset ne true"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Due_in_8_Weeks": {
+          "foreach": "@outputs('List_AMR_8_week')?['body/value']",
+          "actions": {
+            "Create_8_week_reminder_task": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "item/subject": "AMR for @{items('Due_in_8_Weeks')?['leidos_name']} is due in the next 8 weeks",
+                  "item/description": "AMR for @{items('Due_in_8_Weeks')?['leidos_name']} is due in the next 8 weeks.\n\nPlease create a Client Plan record to commence the review process.",
+                  "item/scheduledend": "@addDays(utcNow(),28)",
+                  "item/ownerid_task@odata.bind": "/systemusers(@{items('Due_in_8_Weeks')?['_ownerid_value']})",
+                  "item/regardingobjectid_leidos_accountmanagementrecord_task@odata.bind": "/leidos_accountmanagementrecords(@{items('Due_in_8_Weeks')?['leidos_accountmanagementrecordid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_flag_in_AMR": {
+              "runAfter": {
+                "Create_8_week_reminder_task": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_accountmanagementrecords",
+                  "recordId": "@items('Due_in_8_Weeks')?['leidos_accountmanagementrecordid']",
+                  "item/leidos_weekremindersent": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_AMR_8_week": [
+              "Succeeded"
+            ]
+          },
+          "type": "Foreach"
+        },
+        "Due_in_4_weeks": {
+          "foreach": "@outputs('List_AMR_4_weeks')?['body/value']",
+          "actions": {
+            "Create_4_week_reminder_task": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "item/subject": "AMR for @{items('Due_in_4_weeks')?['leidos_name']} is due in 4 weeks",
+                  "item/description": "The annual Account review for @{items('Due_in_4_weeks')?['leidos_name']} is due in the next 4 weeks.  Please create a Client plan to commence the annual review process",
+                  "item/scheduledend": "@addDays(utcNow(),28)",
+                  "item/ownerid_task@odata.bind": "/systemusers(@{items('Due_in_4_weeks')?['_ownerid_value']})",
+                  "item/regardingobjectid_leidos_accountmanagementrecord_task@odata.bind": "/leidos_accountmanagementrecords(@{items('Due_in_4_weeks')?['leidos_accountmanagementrecordid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_AMR_flag": {
+              "runAfter": {
+                "Create_4_week_reminder_task": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_accountmanagementrecords",
+                  "recordId": "@items('Due_in_4_weeks')?['leidos_accountmanagementrecordid']",
+                  "item/leidos_fourweekremindersent": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_AMR_4_weeks": [
+              "Succeeded"
+            ]
+          },
+          "type": "Foreach"
+        },
+        "Overdue_AMR": {
+          "foreach": "@outputs('List_Overdue_AMR_records')?['body/value']",
+          "actions": {
+            "AMR_Overdue_Task_Reminder": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "item/subject": "AMR for @{items('Overdue_AMR')?['leidos_name']} is overdue",
+                  "item/description": "This is a weekly reminder for an overdue Account Management Record review.  Please create a new Account Management Client Plan to begin the Review process",
+                  "item/scheduledend": "@utcNow()",
+                  "item/ownerid_task@odata.bind": "/systemusers(@{items('Overdue_AMR')?['_ownerid_value']})",
+                  "item/regardingobjectid_leidos_accountmanagementrecord_task@odata.bind": "/leidos_accountmanagementrecords(@{items('Overdue_AMR')?['leidos_accountmanagementrecordid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Update_AMR_Clear_Flag": {
+              "runAfter": {
+                "AMR_Overdue_Task_Reminder": [
+                  "Succeeded"
+                ]
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_accountmanagementrecords",
+                  "recordId": "@items('Overdue_AMR')?['leidos_accountmanagementrecordid']",
+                  "item/leidos_overduereminderset": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "List_Overdue_AMR_records": [
+              "Succeeded"
+            ]
+          },
+          "type": "Foreach"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

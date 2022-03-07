@@ -1,1 +1,73 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_sharedcommondataserviceforapps_5ec64"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Cost_Funding_is_created":{"metadata":{"operationMetadataId":"8b34e3fa-5bb3-463a-86d7-319523b5c532"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":1,"subscriptionRequest/entityname":"leidos_projectfunding","subscriptionRequest/scope":4,"subscriptionRequest/name":"9430c9b1-250f-ec11-b6e6-000d3ad67ea6"},"authentication":"@parameters('$authentication')"}}},"actions":{"Run_a_Child_Flow":{"runAfter":{},"metadata":{"operationMetadataId":"e99dac94-56d5-491e-ab01-5517023be844"},"type":"Workflow","inputs":{"host":{"workflowReferenceName":"a30b6276-080f-ec11-b6e6-000d3ad67ea6"},"body":{"text":"@String(triggerOutputs()?['body/_leidos_fundingsource_value'])","text_1":"@string(triggerOutputs()?['body/_leidos_parentprojectcost_value'])","text_2":"@string(triggerOutputs()?['body/_leidos_parentproject_value'])","text_3":"@string(triggerOutputs()?['body/_leidos_programme_value'])"}}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_sharedcommondataserviceforapps_5ec64"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Cost_Funding_is_created": {
+          "metadata": {
+            "operationMetadataId": "8b34e3fa-5bb3-463a-86d7-319523b5c532"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 1,
+              "subscriptionRequest/entityname": "leidos_projectfunding",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/name": "9430c9b1-250f-ec11-b6e6-000d3ad67ea6"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Run_a_Child_Flow": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "e99dac94-56d5-491e-ab01-5517023be844"
+          },
+          "type": "Workflow",
+          "inputs": {
+            "host": {
+              "workflowReferenceName": "a30b6276-080f-ec11-b6e6-000d3ad67ea6"
+            },
+            "body": {
+              "text": "@String(triggerOutputs()?['body/_leidos_fundingsource_value'])",
+              "text_1": "@string(triggerOutputs()?['body/_leidos_parentprojectcost_value'])",
+              "text_2": "@string(triggerOutputs()?['body/_leidos_parentproject_value'])",
+              "text_3": "@string(triggerOutputs()?['body/_leidos_programme_value'])"
+            }
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

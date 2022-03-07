@@ -1,1 +1,160 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnAccMan"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"When_a_record_is_created,_updated_or_deleted":{"metadata":{"operationMetadataId":"15c74390-d602-480f-8771-bcd0f21e3133"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"account","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_createdocumentstore","subscriptionRequest/filterexpression":"leidos_createdocumentstore eq true","subscriptionRequest/name":"51cfb63d-ad62-ea11-a811-000d3a0bad17"},"authentication":"@parameters('$authentication')"}}},"actions":{"List_the_Default_SP_sites_to_get_the_Base_URL":{"runAfter":{},"metadata":{"operationMetadataId":"291f8ea9-c345-44fa-849c-bdb6777e2350"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"sharepointsites","fetchXml":"<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"sharepointsite\">\n    <attribute name=\"name\" />\n    <attribute name=\"parentsite\" />\n    <attribute name=\"relativeurl\" />\n    <attribute name=\"absoluteurl\" />\n    <attribute name=\"validationstatus\" />\n    <attribute name=\"isdefault\" />\n    <order attribute=\"name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"isdefault\" operator=\"eq\" value=\"1\" />\n    </filter>\n  </entity>\n</fetch>","$top":1},"authentication":"@parameters('$authentication')"}},"AbsoluteURL":{"runAfter":{"List_the_Default_SP_sites_to_get_the_Base_URL":["Succeeded"]},"metadata":{"operationMetadataId":"9d6cc183-8382-46d4-928d-4479d8e4fdcd"},"type":"Compose","inputs":"@first(outputs('List_the_Default_SP_sites_to_get_the_Base_URL')?['body/value'])?['absoluteurl']"},"Build_SharePoint_Site_Path":{"runAfter":{"Parse_SitePath":["Succeeded"]},"metadata":{"operationMetadataId":"d897e9b4-90c7-4c82-93c9-732b01f36ca7"},"type":"Compose","inputs":"@concat(outputs('AbsoluteURL'),body('Parse_SitePath')?['value'])"},"Parse_SitePath":{"runAfter":{"Run_a_Child_Flow":["Succeeded"]},"metadata":{"operationMetadataId":"9984da6f-94f7-45ea-96b1-a4461d32cc1a"},"type":"ParseJson","inputs":{"content":"@outputs('Run_a_Child_Flow')?['Body']?['value']","schema":{"type":"object","properties":{"@@odata.type":{"type":"string"},"@@odata.id":{"type":"string"},"@@odata.etag":{"type":"string"},"@@odata.editLink":{"type":"string"},"value":{"type":"string"},"environmentvariablevalueid@odata.type":{"type":"string"},"environmentvariablevalueid":{"type":"string"}}}}},"Run_a_Child_Flow":{"runAfter":{"AbsoluteURL":["Succeeded"]},"metadata":{"operationMetadataId":"bb782764-334a-419d-8856-36eeff3f3f0d"},"type":"Workflow","inputs":{"host":{"workflowReferenceName":"30095a04-574e-ea11-a812-000d3a7f1bbb"},"body":{"EnvironmentVariable_Inputs":"SharePoint_DocSitePath"}}}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnAccMan"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_record_is_created,_updated_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "15c74390-d602-480f-8771-bcd0f21e3133"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "account",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_createdocumentstore",
+              "subscriptionRequest/filterexpression": "leidos_createdocumentstore eq true",
+              "subscriptionRequest/name": "51cfb63d-ad62-ea11-a811-000d3a0bad17"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "List_the_Default_SP_sites_to_get_the_Base_URL": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "291f8ea9-c345-44fa-849c-bdb6777e2350"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "ListRecords",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "sharepointsites",
+              "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"sharepointsite\">\n    <attribute name=\"name\" />\n    <attribute name=\"parentsite\" />\n    <attribute name=\"relativeurl\" />\n    <attribute name=\"absoluteurl\" />\n    <attribute name=\"validationstatus\" />\n    <attribute name=\"isdefault\" />\n    <order attribute=\"name\" descending=\"false\" />\n    <filter type=\"and\">\n      <condition attribute=\"isdefault\" operator=\"eq\" value=\"1\" />\n    </filter>\n  </entity>\n</fetch>",
+              "$top": 1
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "AbsoluteURL": {
+          "runAfter": {
+            "List_the_Default_SP_sites_to_get_the_Base_URL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9d6cc183-8382-46d4-928d-4479d8e4fdcd"
+          },
+          "type": "Compose",
+          "inputs": "@first(outputs('List_the_Default_SP_sites_to_get_the_Base_URL')?['body/value'])?['absoluteurl']"
+        },
+        "Build_SharePoint_Site_Path": {
+          "runAfter": {
+            "Parse_SitePath": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "d897e9b4-90c7-4c82-93c9-732b01f36ca7"
+          },
+          "type": "Compose",
+          "inputs": "@concat(outputs('AbsoluteURL'),body('Parse_SitePath')?['value'])"
+        },
+        "Parse_SitePath": {
+          "runAfter": {
+            "Run_a_Child_Flow": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9984da6f-94f7-45ea-96b1-a4461d32cc1a"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@outputs('Run_a_Child_Flow')?['Body']?['value']",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "@@odata.type": {
+                  "type": "string"
+                },
+                "@@odata.id": {
+                  "type": "string"
+                },
+                "@@odata.etag": {
+                  "type": "string"
+                },
+                "@@odata.editLink": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                },
+                "environmentvariablevalueid@odata.type": {
+                  "type": "string"
+                },
+                "environmentvariablevalueid": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "Run_a_Child_Flow": {
+          "runAfter": {
+            "AbsoluteURL": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bb782764-334a-419d-8856-36eeff3f3f0d"
+          },
+          "type": "Workflow",
+          "inputs": {
+            "host": {
+              "workflowReferenceName": "30095a04-574e-ea11-a812-000d3a7f1bbb"
+            },
+            "body": {
+              "EnvironmentVariable_Inputs": "SharePoint_DocSitePath"
+            }
+          }
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

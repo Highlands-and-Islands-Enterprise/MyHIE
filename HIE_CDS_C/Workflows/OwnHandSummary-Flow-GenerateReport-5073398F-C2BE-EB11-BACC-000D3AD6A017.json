@@ -1,1 +1,630 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnOwnHand"},"api":{"name":"shared_commondataserviceforapps"}},"shared_sharepointonline":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_sharedsharepointonline_5be6a"},"api":{"name":"shared_sharepointonline"}},"shared_excelonlinebusiness":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_sharedexcelonlinebusiness_fbf79"},"api":{"name":"shared_excelonlinebusiness"}},"shared_commondataserviceforapps_2":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnClaim"},"api":{"name":"shared_commondataserviceforapps"}},"shared_office365_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnOutlook2"},"api":{"name":"shared_office365"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"},"SharePointReportRootURL":{"defaultValue":"https://hiedigitalnonprod.sharepoint.com/sites/Finance/","type":"String","metadata":{"schemaName":"leidos_SharePointReportRootURL"}}},"triggers":{"Own_Hand_Summary_generate_Report":{"metadata":{"operationMetadataId":"f01e0c19-dbc7-4742-997a-b4a9ae6aed24"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":3,"subscriptionRequest/entityname":"leidos_ownhandinvoicesummary","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_generatereport","subscriptionRequest/filterexpression":"(leidos_generatereport eq true)"},"authentication":"@parameters('$authentication')"}}},"actions":{"Data_Set_Up":{"actions":{"Reference":{"runAfter":{},"metadata":{"operationMetadataId":"3c065ef7-02c2-40d3-99fb-dcff54714e71"},"type":"Compose","inputs":"@concat(triggerOutputs()?['body/leidos_ownhandinvoicesummaryreference'],'-',triggerOutputs()?['body/leidos_suppliertext'],'-',utcNow(),'.xlsx')"},"Get_record_Type":{"runAfter":{"Reference":["Succeeded"]},"metadata":{"operationMetadataId":"b5a3eb39-ade6-4200-b735-65fdddd50a6b"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_ownhandrecordtypes","recordId":"@triggerOutputs()?['body/_leidos_recordtype_value']"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Loop_Count_index":["Succeeded"]},"metadata":{"operationMetadataId":"3937bdae-1c2e-4a48-aed4-ce8db1491e6b"},"type":"Scope"},"Set_Up_Excel_File":{"actions":{"Get_file_content_from_tempalte":{"runAfter":{},"metadata":{"%252fShared%2bDocuments%252fTemplate%252fBlank.xlsx":"/Shared Documents/Template/Blank.xlsx","%252fShared%2bDocuments%252fTemplate%252fCODAxl.xlsx":"/Shared Documents/Template/CODAxl.xlsx","operationMetadataId":"82c2c213-46f7-4044-9b2e-c4cf1375d35a"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_sharepointonline","operationId":"GetFileContent","apiId":"/providers/Microsoft.PowerApps/apis/shared_sharepointonline"},"parameters":{"dataset":"@parameters('SharePointReportRootURL')","id":"%252fShared%2bDocuments%252fTemplate%252fCODAxl.xlsx","inferContentType":true},"authentication":"@parameters('$authentication')"}},"Create_file":{"runAfter":{"Get_file_content_from_tempalte":["Succeeded"]},"metadata":{"operationMetadataId":"98aeb3e9-d1cb-480b-b49f-36b0efc806ea"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_sharepointonline","operationId":"CreateFile","apiId":"/providers/Microsoft.PowerApps/apis/shared_sharepointonline"},"parameters":{"dataset":"@parameters('SharePointReportRootURL')","folderPath":"/Shared Documents","name":"@outputs('Reference')","body":"@outputs('Get_file_content_from_tempalte')?['body']"},"authentication":"@parameters('$authentication')"},"runtimeConfiguration":{"contentTransfer":{"transferMode":"Chunked"}}},"Get_tables":{"runAfter":{"Create_file":["Succeeded"]},"metadata":{"operationMetadataId":"13780d74-58df-48cc-a1b4-12d4c5626c2f","tableId":null},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_excelonlinebusiness","operationId":"GetTables","apiId":"/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"},"parameters":{"source":"@parameters('SharePointReportRootURL')","drive":"b!scX2Qu_V-UmOH6pa0EOAS_6-vCPAAvdEocuHIrH3-NlC2bbme7iCQ4sL7snw9lX1","file":"@outputs('Create_file')?['body/Id']"},"authentication":"@parameters('$authentication')"}},"TableID":{"runAfter":{"Get_tables":["Succeeded"]},"metadata":{"operationMetadataId":"103a0af1-f01b-4477-9f8d-07afccd4fd12"},"type":"Compose","inputs":"@first(outputs('Get_tables')?['body/value'])['Id']"},"File_Link":{"runAfter":{"TableID":["Succeeded"]},"metadata":{"operationMetadataId":"05d0ac8b-fbe0-4026-b800-bf1445dc332f"},"type":"Compose","inputs":"@Concat(substring(parameters('SharePointReportRootURL'),0,Sub(length(parameters('SharePointReportRootURL')),1)),outputs('Create_file')?['body/Path'])"}},"runAfter":{"Data_Set_Up":["Succeeded"]},"metadata":{"operationMetadataId":"07784f4d-9837-49b2-9395-2b1da35859c5"},"type":"Scope"},"Analysis_Lines":{"actions":{"List_rows_-_Active_Own_Hand_Details":{"runAfter":{},"metadata":{"operationMetadataId":"a4d804c9-6129-4343-9741-8603c4e8ea59"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"ListRecords","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_ownhandinvoicedetails","$select":"leidos_ownhandinvoicedetailid","$filter":"(statuscode eq 1 and _leidos_parentsummary_value eq @{triggerOutputs()?['body/leidos_ownhandinvoicesummaryid']})"},"authentication":"@parameters('$authentication')"}},"Compose":{"runAfter":{"List_rows_-_Active_Own_Hand_Details":["Succeeded"]},"metadata":{"operationMetadataId":"47202613-2f21-4de0-b51a-b4c15978e956"},"type":"Compose","inputs":"@length(outputs('List_rows_-_Active_Own_Hand_Details')?['body/value'])"},"Apply_to_Each_Own_hand_Detail":{"foreach":"@outputs('List_rows_-_Active_Own_Hand_Details')?['body/value']","actions":{"Get_a_row_by_ID_-_Detail_Record":{"runAfter":{},"metadata":{"operationMetadataId":"483e2264-9544-42e6-9ef4-c9986180bd9f"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_ownhandinvoicedetails","recordId":"@items('Apply_to_Each_Own_hand_Detail')?['leidos_ownhandinvoicedetailid']"},"authentication":"@parameters('$authentication')"}},"Add_Analysis_Line":{"runAfter":{"Get_a_row_by_ID_-_Detail_Record":["Succeeded"]},"metadata":{"operationMetadataId":"ebae2960-d1b4-4363-a381-2f6e9ce483c7","tableId":"@outputs('TableID')"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_excelonlinebusiness","operationId":"AddRowV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"},"parameters":{"source":"@parameters('SharePointReportRootURL')","drive":"b!scX2Qu_V-UmOH6pa0EOAS_6-vCPAAvdEocuHIrH3-NlC2bbme7iCQ4sL7snw9lX1","file":"@outputs('Create_file')?['body/Id']","table":"@outputs('TableID')","item":{"Post":"1","Line Type":"Analysis","Line number":"Line @{variables('Line Number')}","Description":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_name']}","EL1":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_transactionsubtype']}","EL2":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_fundingscheme']}","EL3":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_fundingsource']}","EL4":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_businessunit']}","EL5":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_expensetype']}","EL6":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_projectnumber']}","Dr/Cr":"@{outputs('Get_record_Type')?['body/leidos_analysisdrcr']}","Amount":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_netinvoice']}","Ref1":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_claiminvoiceno']}","Ref2":"","Ref3":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_projectnumber']}","Ref4":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_strategicpriority']}","Ref5":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatcategory']}","Ref6":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_costfunding']}","Line Type2":"analysis","Tax Code1":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatcodereference']}","Tax Value1":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatvalueadjusted']}","Sum Tax":"","Tax Turnover":"","Tax Code":""}},"authentication":"@parameters('$authentication')"}},"Add_Tax_Line":{"runAfter":{"Add_Analysis_Line":["Succeeded"]},"metadata":{"operationMetadataId":"7fa7ddbf-c59f-41ea-bc0c-b12d93bd4065","tableId":"@outputs('TableID')"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_excelonlinebusiness","operationId":"AddRowV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"},"parameters":{"source":"@parameters('SharePointReportRootURL')","drive":"b!scX2Qu_V-UmOH6pa0EOAS_6-vCPAAvdEocuHIrH3-NlC2bbme7iCQ4sL7snw9lX1","file":"@outputs('Create_file')?['body/Id']","table":"@outputs('TableID')","item":{"Post":"1","Line Type":"Tax","Line number":"Line @{variables('Line Number')}","Description":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_name']}","EL1":"030010","EL2":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatcodereference']}","EL3":"","EL4":"","EL5":"","EL6":"","Dr/Cr":"@{outputs('Get_record_Type')?['body/leidos_analysisdrcr']}","Amount":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatvalueadjusted']}","Ref1":"","Ref2":"","Ref3":"","Ref4":"","Ref5":"","Ref6":"","Line Type2":"tax","Tax Code1":"","Tax Value1":"","Sum Tax":"","Tax Turnover":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_netinvoice']}","Tax Code":"@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatcodereference']}"}},"authentication":"@parameters('$authentication')"}},"Increment_variable":{"runAfter":{"Add_Tax_Line":["Succeeded"]},"metadata":{"operationMetadataId":"2e54c20b-4108-4451-aabe-37ca1288f699"},"type":"IncrementVariable","inputs":{"name":"Line Number","value":1}}},"runAfter":{"Compose":["Succeeded"]},"metadata":{"operationMetadataId":"2f131f54-9e80-401d-95cd-cdf9946c8186"},"type":"Foreach"}},"runAfter":{"Create_Header_and_Summary":["Succeeded"]},"metadata":{"operationMetadataId":"7c725579-ce46-4aac-9afb-5fea8b221d59"},"type":"Scope"},"Loop_Count_index":{"runAfter":{},"metadata":{"operationMetadataId":"e2f9b381-7714-42e7-9a03-d8868ccd354e"},"type":"InitializeVariable","inputs":{"variables":[{"name":"Line Number","type":"integer","value":1}]}},"Get_Owner":{"runAfter":{"Analysis_Lines":["Succeeded"]},"metadata":{"operationMetadataId":"e1ea4631-58db-4701-8f5c-ed7586827713"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_2","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@triggerOutputs()?['body/_ownerid_value']"},"authentication":"@parameters('$authentication')"}},"Send_an_email_(V2)":{"runAfter":{"Get_Owner":["Succeeded"]},"metadata":{"operationMetadataId":"7fa7d1b8-a55e-48b9-a7ca-e2e58a97e80f"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365_1","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@outputs('Get_Owner')?['body/internalemailaddress']","emailMessage/Subject":"CODA XL File has been generated for @{triggerOutputs()?['body/leidos_ownhandinvoicesummaryreference']}","emailMessage/Body":"<p>\nThe Coda XL File has been generated.<br>\nRecord Link: <a href=\"@{outputs('File_Link')}\">@{triggerOutputs()?['body/leidos_ownhandinvoicesummaryreference']}</a> <br>\n\nIf recipient requires a PO number, to please include it on the email instruction to the Data Centre <br>\n</p>"},"authentication":"@parameters('$authentication')"}},"Create_Header_and_Summary":{"actions":{"Add_Header_Row":{"runAfter":{},"metadata":{"operationMetadataId":"231b5d50-13fc-406a-89e7-5e83f71aae49","tableId":"@outputs('TableID')"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_excelonlinebusiness","operationId":"AddRowV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"},"parameters":{"source":"@parameters('SharePointReportRootURL')","drive":"b!scX2Qu_V-UmOH6pa0EOAS_6-vCPAAvdEocuHIrH3-NlC2bbme7iCQ4sL7snw9lX1","file":"@outputs('Create_file')?['body/Id']","table":"@outputs('TableID')","item":{"Post":"1","Line Type":"Header","Line number":"","Description":"@{triggerOutputs()?['body/leidos_description']}","EL1":"","EL2":"","EL3":"@{triggerOutputs()?['body/leidos_description']}","EL4":"","EL5":"","EL6":"@{triggerOutputs()?['body/leidos_invoicedate']}","Dr/Cr":"","Amount":"","Ref1":"@{outputs('Get_record_Type')?['body/leidos_template']}","Ref2":"@{outputs('Get_record_Type')?['body/leidos_doccode']}","Ref3":"","Ref4":"@{triggerOutputs()?['body/leidos_invoicenumber']}","Ref5":"@{triggerOutputs()?['body/leidos_invoicereceiveddate']}","Ref6":"","Line Type2":"Header","Tax Code1":"","Tax Value1":"","Sum Tax":"","Tax Turnover":"","Tax Code":""}},"authentication":"@parameters('$authentication')"}},"Add_Summary_Row":{"runAfter":{"Add_Header_Row":["Succeeded"]},"metadata":{"operationMetadataId":"681f85c4-ff6c-4a36-8c4f-a88329534059","tableId":"@outputs('TableID')"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_excelonlinebusiness","operationId":"AddRowV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"},"parameters":{"source":"@parameters('SharePointReportRootURL')","drive":"b!scX2Qu_V-UmOH6pa0EOAS_6-vCPAAvdEocuHIrH3-NlC2bbme7iCQ4sL7snw9lX1","file":"@outputs('Create_file')?['body/Id']","table":"@outputs('TableID')","item":{"Post":"1","Line Type":"Summary","Line number":"1","Description":"@{triggerOutputs()?['body/leidos_description']}","EL1":"@{outputs('Get_record_Type')?['body/leidos_summaryelement1']}","EL2":"SupplierCodeToBeAdded","EL3":"","EL4":"","EL5":"","EL6":"","Dr/Cr":"@{outputs('Get_record_Type')?['body/leidos_summarydrcr']}","Amount":"@{triggerOutputs()?['body/leidos_totalinvoicevalue']}","Ref1":"","Ref2":"","Ref3":"","Ref4":"","Ref5":"","Ref6":"","Line Type2":"Summary","Tax Code1":"","Tax Value1":"","Sum Tax":"@{triggerOutputs()?['body/leidos_vatvalue']}","Tax Turnover":"","Tax Code":""}},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Set_Up_Excel_File":["Succeeded"]},"metadata":{"operationMetadataId":"c8149dc9-4b56-499c-a9bf-e61eb63a35f4"},"type":"Scope"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnOwnHand"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_sharepointonline": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_sharedsharepointonline_5be6a"
+        },
+        "api": {
+          "name": "shared_sharepointonline"
+        }
+      },
+      "shared_excelonlinebusiness": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_sharedexcelonlinebusiness_fbf79"
+        },
+        "api": {
+          "name": "shared_excelonlinebusiness"
+        }
+      },
+      "shared_commondataserviceforapps_2": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnClaim"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnOutlook2"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "SharePointReportRootURL": {
+          "defaultValue": "https://hiedigitalnonprod.sharepoint.com/sites/Finance/",
+          "type": "String",
+          "metadata": {
+            "schemaName": "leidos_SharePointReportRootURL"
+          }
+        }
+      },
+      "triggers": {
+        "Own_Hand_Summary_generate_Report": {
+          "metadata": {
+            "operationMetadataId": "f01e0c19-dbc7-4742-997a-b4a9ae6aed24"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "leidos_ownhandinvoicesummary",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_generatereport",
+              "subscriptionRequest/filterexpression": "(leidos_generatereport eq true)"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Data_Set_Up": {
+          "actions": {
+            "Reference": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "3c065ef7-02c2-40d3-99fb-dcff54714e71"
+              },
+              "type": "Compose",
+              "inputs": "@concat(triggerOutputs()?['body/leidos_ownhandinvoicesummaryreference'],'-',triggerOutputs()?['body/leidos_suppliertext'],'-',utcNow(),'.xlsx')"
+            },
+            "Get_record_Type": {
+              "runAfter": {
+                "Reference": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b5a3eb39-ade6-4200-b735-65fdddd50a6b"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_ownhandrecordtypes",
+                  "recordId": "@triggerOutputs()?['body/_leidos_recordtype_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Loop_Count_index": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3937bdae-1c2e-4a48-aed4-ce8db1491e6b"
+          },
+          "type": "Scope"
+        },
+        "Set_Up_Excel_File": {
+          "actions": {
+            "Get_file_content_from_tempalte": {
+              "runAfter": {},
+              "metadata": {
+                "%252fShared%2bDocuments%252fTemplate%252fBlank.xlsx": "/Shared Documents/Template/Blank.xlsx",
+                "%252fShared%2bDocuments%252fTemplate%252fCODAxl.xlsx": "/Shared Documents/Template/CODAxl.xlsx",
+                "operationMetadataId": "82c2c213-46f7-4044-9b2e-c4cf1375d35a"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "GetFileContent",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@parameters('SharePointReportRootURL')",
+                  "id": "%252fShared%2bDocuments%252fTemplate%252fCODAxl.xlsx",
+                  "inferContentType": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Create_file": {
+              "runAfter": {
+                "Get_file_content_from_tempalte": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "98aeb3e9-d1cb-480b-b49f-36b0efc806ea"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_sharepointonline",
+                  "operationId": "CreateFile",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_sharepointonline"
+                },
+                "parameters": {
+                  "dataset": "@parameters('SharePointReportRootURL')",
+                  "folderPath": "/Shared Documents",
+                  "name": "@outputs('Reference')",
+                  "body": "@outputs('Get_file_content_from_tempalte')?['body']"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runtimeConfiguration": {
+                "contentTransfer": {
+                  "transferMode": "Chunked"
+                }
+              }
+            },
+            "Get_tables": {
+              "runAfter": {
+                "Create_file": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "13780d74-58df-48cc-a1b4-12d4c5626c2f",
+                "tableId": null
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_excelonlinebusiness",
+                  "operationId": "GetTables",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+                },
+                "parameters": {
+                  "source": "@parameters('SharePointReportRootURL')",
+                  "drive": "b!scX2Qu_V-UmOH6pa0EOAS_6-vCPAAvdEocuHIrH3-NlC2bbme7iCQ4sL7snw9lX1",
+                  "file": "@outputs('Create_file')?['body/Id']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "TableID": {
+              "runAfter": {
+                "Get_tables": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "103a0af1-f01b-4477-9f8d-07afccd4fd12"
+              },
+              "type": "Compose",
+              "inputs": "@first(outputs('Get_tables')?['body/value'])['Id']"
+            },
+            "File_Link": {
+              "runAfter": {
+                "TableID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "05d0ac8b-fbe0-4026-b800-bf1445dc332f"
+              },
+              "type": "Compose",
+              "inputs": "@Concat(substring(parameters('SharePointReportRootURL'),0,Sub(length(parameters('SharePointReportRootURL')),1)),outputs('Create_file')?['body/Path'])"
+            }
+          },
+          "runAfter": {
+            "Data_Set_Up": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "07784f4d-9837-49b2-9395-2b1da35859c5"
+          },
+          "type": "Scope"
+        },
+        "Analysis_Lines": {
+          "actions": {
+            "List_rows_-_Active_Own_Hand_Details": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a4d804c9-6129-4343-9741-8603c4e8ea59"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_ownhandinvoicedetails",
+                  "$select": "leidos_ownhandinvoicedetailid",
+                  "$filter": "(statuscode eq 1 and _leidos_parentsummary_value eq @{triggerOutputs()?['body/leidos_ownhandinvoicesummaryid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Compose": {
+              "runAfter": {
+                "List_rows_-_Active_Own_Hand_Details": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "47202613-2f21-4de0-b51a-b4c15978e956"
+              },
+              "type": "Compose",
+              "inputs": "@length(outputs('List_rows_-_Active_Own_Hand_Details')?['body/value'])"
+            },
+            "Apply_to_Each_Own_hand_Detail": {
+              "foreach": "@outputs('List_rows_-_Active_Own_Hand_Details')?['body/value']",
+              "actions": {
+                "Get_a_row_by_ID_-_Detail_Record": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "483e2264-9544-42e6-9ef4-c9986180bd9f"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "leidos_ownhandinvoicedetails",
+                      "recordId": "@items('Apply_to_Each_Own_hand_Detail')?['leidos_ownhandinvoicedetailid']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Add_Analysis_Line": {
+                  "runAfter": {
+                    "Get_a_row_by_ID_-_Detail_Record": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "ebae2960-d1b4-4363-a381-2f6e9ce483c7",
+                    "tableId": "@outputs('TableID')"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_excelonlinebusiness",
+                      "operationId": "AddRowV2",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+                    },
+                    "parameters": {
+                      "source": "@parameters('SharePointReportRootURL')",
+                      "drive": "b!scX2Qu_V-UmOH6pa0EOAS_6-vCPAAvdEocuHIrH3-NlC2bbme7iCQ4sL7snw9lX1",
+                      "file": "@outputs('Create_file')?['body/Id']",
+                      "table": "@outputs('TableID')",
+                      "item": {
+                        "Post": "1",
+                        "Line Type": "Analysis",
+                        "Line number": "Line @{variables('Line Number')}",
+                        "Description": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_name']}",
+                        "EL1": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_transactionsubtype']}",
+                        "EL2": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_fundingscheme']}",
+                        "EL3": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_fundingsource']}",
+                        "EL4": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_businessunit']}",
+                        "EL5": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_expensetype']}",
+                        "EL6": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_projectnumber']}",
+                        "Dr/Cr": "@{outputs('Get_record_Type')?['body/leidos_analysisdrcr']}",
+                        "Amount": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_netinvoice']}",
+                        "Ref1": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_claiminvoiceno']}",
+                        "Ref2": "",
+                        "Ref3": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_projectnumber']}",
+                        "Ref4": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_strategicpriority']}",
+                        "Ref5": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatcategory']}",
+                        "Ref6": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_costfunding']}",
+                        "Line Type2": "analysis",
+                        "Tax Code1": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatcodereference']}",
+                        "Tax Value1": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatvalueadjusted']}",
+                        "Sum Tax": "",
+                        "Tax Turnover": "",
+                        "Tax Code": ""
+                      }
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Add_Tax_Line": {
+                  "runAfter": {
+                    "Add_Analysis_Line": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "7fa7ddbf-c59f-41ea-bc0c-b12d93bd4065",
+                    "tableId": "@outputs('TableID')"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_excelonlinebusiness",
+                      "operationId": "AddRowV2",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+                    },
+                    "parameters": {
+                      "source": "@parameters('SharePointReportRootURL')",
+                      "drive": "b!scX2Qu_V-UmOH6pa0EOAS_6-vCPAAvdEocuHIrH3-NlC2bbme7iCQ4sL7snw9lX1",
+                      "file": "@outputs('Create_file')?['body/Id']",
+                      "table": "@outputs('TableID')",
+                      "item": {
+                        "Post": "1",
+                        "Line Type": "Tax",
+                        "Line number": "Line @{variables('Line Number')}",
+                        "Description": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_name']}",
+                        "EL1": "030010",
+                        "EL2": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatcodereference']}",
+                        "EL3": "",
+                        "EL4": "",
+                        "EL5": "",
+                        "EL6": "",
+                        "Dr/Cr": "@{outputs('Get_record_Type')?['body/leidos_analysisdrcr']}",
+                        "Amount": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatvalueadjusted']}",
+                        "Ref1": "",
+                        "Ref2": "",
+                        "Ref3": "",
+                        "Ref4": "",
+                        "Ref5": "",
+                        "Ref6": "",
+                        "Line Type2": "tax",
+                        "Tax Code1": "",
+                        "Tax Value1": "",
+                        "Sum Tax": "",
+                        "Tax Turnover": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_netinvoice']}",
+                        "Tax Code": "@{outputs('Get_a_row_by_ID_-_Detail_Record')?['body/leidos_vatcodereference']}"
+                      }
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Increment_variable": {
+                  "runAfter": {
+                    "Add_Tax_Line": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2e54c20b-4108-4451-aabe-37ca1288f699"
+                  },
+                  "type": "IncrementVariable",
+                  "inputs": {
+                    "name": "Line Number",
+                    "value": 1
+                  }
+                }
+              },
+              "runAfter": {
+                "Compose": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "2f131f54-9e80-401d-95cd-cdf9946c8186"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Create_Header_and_Summary": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7c725579-ce46-4aac-9afb-5fea8b221d59"
+          },
+          "type": "Scope"
+        },
+        "Loop_Count_index": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "e2f9b381-7714-42e7-9a03-d8868ccd354e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Line Number",
+                "type": "integer",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "Get_Owner": {
+          "runAfter": {
+            "Analysis_Lines": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e1ea4631-58db-4701-8f5c-ed7586827713"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_2",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "systemusers",
+              "recordId": "@triggerOutputs()?['body/_ownerid_value']"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Send_an_email_(V2)": {
+          "runAfter": {
+            "Get_Owner": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7fa7d1b8-a55e-48b9-a7ca-e2e58a97e80f"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_office365_1",
+              "operationId": "SendEmailV2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+            },
+            "parameters": {
+              "emailMessage/To": "@outputs('Get_Owner')?['body/internalemailaddress']",
+              "emailMessage/Subject": "CODA XL File has been generated for @{triggerOutputs()?['body/leidos_ownhandinvoicesummaryreference']}",
+              "emailMessage/Body": "<p>\nThe Coda XL File has been generated.<br>\nRecord Link: <a href=\"@{outputs('File_Link')}\">@{triggerOutputs()?['body/leidos_ownhandinvoicesummaryreference']}</a> <br>\n\nIf recipient requires a PO number, to please include it on the email instruction to the Data Centre <br>\n</p>"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Create_Header_and_Summary": {
+          "actions": {
+            "Add_Header_Row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "231b5d50-13fc-406a-89e7-5e83f71aae49",
+                "tableId": "@outputs('TableID')"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_excelonlinebusiness",
+                  "operationId": "AddRowV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+                },
+                "parameters": {
+                  "source": "@parameters('SharePointReportRootURL')",
+                  "drive": "b!scX2Qu_V-UmOH6pa0EOAS_6-vCPAAvdEocuHIrH3-NlC2bbme7iCQ4sL7snw9lX1",
+                  "file": "@outputs('Create_file')?['body/Id']",
+                  "table": "@outputs('TableID')",
+                  "item": {
+                    "Post": "1",
+                    "Line Type": "Header",
+                    "Line number": "",
+                    "Description": "@{triggerOutputs()?['body/leidos_description']}",
+                    "EL1": "",
+                    "EL2": "",
+                    "EL3": "@{triggerOutputs()?['body/leidos_description']}",
+                    "EL4": "",
+                    "EL5": "",
+                    "EL6": "@{triggerOutputs()?['body/leidos_invoicedate']}",
+                    "Dr/Cr": "",
+                    "Amount": "",
+                    "Ref1": "@{outputs('Get_record_Type')?['body/leidos_template']}",
+                    "Ref2": "@{outputs('Get_record_Type')?['body/leidos_doccode']}",
+                    "Ref3": "",
+                    "Ref4": "@{triggerOutputs()?['body/leidos_invoicenumber']}",
+                    "Ref5": "@{triggerOutputs()?['body/leidos_invoicereceiveddate']}",
+                    "Ref6": "",
+                    "Line Type2": "Header",
+                    "Tax Code1": "",
+                    "Tax Value1": "",
+                    "Sum Tax": "",
+                    "Tax Turnover": "",
+                    "Tax Code": ""
+                  }
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Add_Summary_Row": {
+              "runAfter": {
+                "Add_Header_Row": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "681f85c4-ff6c-4a36-8c4f-a88329534059",
+                "tableId": "@outputs('TableID')"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_excelonlinebusiness",
+                  "operationId": "AddRowV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_excelonlinebusiness"
+                },
+                "parameters": {
+                  "source": "@parameters('SharePointReportRootURL')",
+                  "drive": "b!scX2Qu_V-UmOH6pa0EOAS_6-vCPAAvdEocuHIrH3-NlC2bbme7iCQ4sL7snw9lX1",
+                  "file": "@outputs('Create_file')?['body/Id']",
+                  "table": "@outputs('TableID')",
+                  "item": {
+                    "Post": "1",
+                    "Line Type": "Summary",
+                    "Line number": "1",
+                    "Description": "@{triggerOutputs()?['body/leidos_description']}",
+                    "EL1": "@{outputs('Get_record_Type')?['body/leidos_summaryelement1']}",
+                    "EL2": "SupplierCodeToBeAdded",
+                    "EL3": "",
+                    "EL4": "",
+                    "EL5": "",
+                    "EL6": "",
+                    "Dr/Cr": "@{outputs('Get_record_Type')?['body/leidos_summarydrcr']}",
+                    "Amount": "@{triggerOutputs()?['body/leidos_totalinvoicevalue']}",
+                    "Ref1": "",
+                    "Ref2": "",
+                    "Ref3": "",
+                    "Ref4": "",
+                    "Ref5": "",
+                    "Ref6": "",
+                    "Line Type2": "Summary",
+                    "Tax Code1": "",
+                    "Tax Value1": "",
+                    "Sum Tax": "@{triggerOutputs()?['body/leidos_vatvalue']}",
+                    "Tax Turnover": "",
+                    "Tax Code": ""
+                  }
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Set_Up_Excel_File": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "c8149dc9-4b56-499c-a9bf-e61eb63a35f4"
+          },
+          "type": "Scope"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

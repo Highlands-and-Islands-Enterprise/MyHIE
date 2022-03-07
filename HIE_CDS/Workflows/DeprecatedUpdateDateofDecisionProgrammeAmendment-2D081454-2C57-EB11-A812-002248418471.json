@@ -1,1 +1,182 @@
-{"properties":{"connectionReferences":{"shared_commondataservice_1":{"runtimeSource":"invoker","connection":{"connectionReferenceLogicalName":"leidos_ConnCDS"},"api":{"name":"shared_commondataservice"}},"shared_commondataserviceforapps":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnProgrammeAmendment"},"api":{"name":"shared_commondataserviceforapps"}},"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnProgramme"},"api":{"name":"shared_commondataserviceforapps"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"manual":{"splitOn":"@triggerBody()['rows']","type":"Request","kind":"ApiConnection","inputs":{"schema":{"type":"object","properties":{"rows":{"type":"array","items":{"type":"object","properties":{"date":{"title":"Trigger date","type":"string","format":"date","x-ms-dynamically-added":true,"description":"Programme Amendment Date of Decision","x-ms-content-hint":"DATE"},"entity":{"type":"object","properties":{"leidos_programme_amendmentid":{"title":"Programme_Amendment","type":"string","format":"guid"}},"required":["leidos_programme_amendmentid"]}},"required":["date","entity"]}}},"required":["rows"]},"host":{"connection":{"name":"@parameters('$connections')['shared_commondataservice_1']['connectionId']"}},"operationId":"GetOnNewItems_V2","parameters":{"dataset":"default.cds","table":"leidos_programme_amendments"}}}},"actions":{"Get_Programme_Amendment":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_programme_amendments","recordId":"@triggerBody()?['entity']?['leidos_programme_amendmentid']"},"authentication":{"type":"Raw","value":"@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"}}},"DoD_validation_Checks":{"actions":{"Update_Programme_Amendment_with_DoD":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_programme_amendments","recordId":"@outputs('Get_Programme_Amendment')?['body/leidos_programme_amendmentid']","item/leidos_dateofdecision":"@triggerBody()['date']"},"authentication":{"type":"Raw","value":"@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"}}}},"runAfter":{"Get_Programme_Amendment":["Succeeded"]},"expression":{"and":[{"equals":["@outputs('Get_Programme_Amendment')?['body/statuscode']",445260001]},{"lessOrEquals":["@triggerBody()['date']","@utcNow()"]},{"lessOrEquals":["@triggerBody()['date']","@outputs('Get_Programme_Amendment')?['body/leidos_amendmentapprovedon']"]}]},"type":"If"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataservice_1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnCDS"
+        },
+        "api": {
+          "name": "shared_commondataservice"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProgrammeAmendment"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProgramme"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "splitOn": "@triggerBody()['rows']",
+          "type": "Request",
+          "kind": "ApiConnection",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "date": {
+                        "title": "Trigger date",
+                        "type": "string",
+                        "format": "date",
+                        "x-ms-dynamically-added": true,
+                        "description": "Programme Amendment Date of Decision",
+                        "x-ms-content-hint": "DATE"
+                      },
+                      "entity": {
+                        "type": "object",
+                        "properties": {
+                          "leidos_programme_amendmentid": {
+                            "title": "Programme_Amendment",
+                            "type": "string",
+                            "format": "guid"
+                          }
+                        },
+                        "required": [
+                          "leidos_programme_amendmentid"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "date",
+                      "entity"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "rows"
+              ]
+            },
+            "host": {
+              "connection": {
+                "name": "@parameters('$connections')['shared_commondataservice_1']['connectionId']"
+              }
+            },
+            "operationId": "GetOnNewItems_V2",
+            "parameters": {
+              "dataset": "default.cds",
+              "table": "leidos_programme_amendments"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_Programme_Amendment": {
+          "runAfter": {},
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_programme_amendments",
+              "recordId": "@triggerBody()?['entity']?['leidos_programme_amendmentid']"
+            },
+            "authentication": {
+              "type": "Raw",
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+            }
+          }
+        },
+        "DoD_validation_Checks": {
+          "actions": {
+            "Update_Programme_Amendment_with_DoD": {
+              "runAfter": {},
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_programme_amendments",
+                  "recordId": "@outputs('Get_Programme_Amendment')?['body/leidos_programme_amendmentid']",
+                  "item/leidos_dateofdecision": "@triggerBody()['date']"
+                },
+                "authentication": {
+                  "type": "Raw",
+                  "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Programme_Amendment": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "and": [
+              {
+                "equals": [
+                  "@outputs('Get_Programme_Amendment')?['body/statuscode']",
+                  445260001
+                ]
+              },
+              {
+                "lessOrEquals": [
+                  "@triggerBody()['date']",
+                  "@utcNow()"
+                ]
+              },
+              {
+                "lessOrEquals": [
+                  "@triggerBody()['date']",
+                  "@outputs('Get_Programme_Amendment')?['body/leidos_amendmentapprovedon']"
+                ]
+              }
+            ]
+          },
+          "type": "If"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

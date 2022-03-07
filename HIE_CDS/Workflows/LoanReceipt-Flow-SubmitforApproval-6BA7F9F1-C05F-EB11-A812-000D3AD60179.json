@@ -1,1 +1,568 @@
-{"properties":{"connectionReferences":{"shared_commondataserviceforapps_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnLoan"},"api":{"name":"shared_commondataserviceforapps"}},"shared_office365_1":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ConnOutlook2"},"api":{"name":"shared_office365"}},"shared_approvals":{"runtimeSource":"embedded","connection":{"connectionReferenceLogicalName":"leidos_ApprovalConnectionReference"},"api":{"name":"shared_approvals"}}},"definition":{"$schema":"https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#","contentVersion":"1.0.0.0","parameters":{"$connections":{"defaultValue":{},"type":"Object"},"$authentication":{"defaultValue":{},"type":"SecureObject"}},"triggers":{"Loan_Receipt_Submit_for_Approval":{"metadata":{"operationMetadataId":"ad98a895-842e-4d9d-8b09-1d3c4b510cb9"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"SubscribeWebhookTrigger","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"subscriptionRequest/message":4,"subscriptionRequest/entityname":"leidos_loanreceipt","subscriptionRequest/scope":4,"subscriptionRequest/filteringattributes":"leidos_submitreceiptforapproval","subscriptionRequest/filterexpression":"(leidos_submitreceiptforapproval eq true)","subscriptionRequest/runas":3},"authentication":"@parameters('$authentication')"}}},"actions":{"Get_Data":{"actions":{"Get_Approver_User_Record":{"runAfter":{},"metadata":{"operationMetadataId":"edae73bc-5360-4b47-82f3-e01e28575489"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@triggerOutputs()?['body/_leidos_receiptapprover_value']"},"authentication":"@parameters('$authentication')"}},"Get_Requested_By":{"runAfter":{"Get_Approver_User_Record":["Succeeded"]},"metadata":{"operationMetadataId":"f3db704f-5bdd-494e-b845-e13c418eaaa0"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"systemusers","recordId":"@triggerOutputs()?['body/_leidos_submittedby_value']"},"authentication":"@parameters('$authentication')"}},"Run_a_Child_Flow":{"runAfter":{"Get_Requested_By":["Succeeded"]},"metadata":{"operationMetadataId":"2e35d3af-f98f-440a-b6b0-59ac5c467d32"},"type":"Workflow","inputs":{"host":{"workflowReferenceName":"b0db1a8a-c449-ea11-a812-000d3a0ba151"},"body":{"EntityId_Inputs":"@triggerOutputs()?['body/leidos_loanreceiptid']","EntityType_Value":"leidos_loanreceipt"}}},"Get_Loan":{"runAfter":{"Run_a_Child_Flow":["Succeeded"]},"metadata":{"operationMetadataId":"6cddcfd0-bb32-4fd6-a340-e302a68bf135"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loans","recordId":"@triggerOutputs()?['body/_leidos_loan_value']"},"authentication":"@parameters('$authentication')"}},"Get_Project":{"runAfter":{"Get_Loan":["Succeeded"]},"metadata":{"operationMetadataId":"d1af9b69-df88-442e-8f4a-13353faaee48"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_projects","recordId":"@outputs('Get_Loan')?['body/_leidos_project_value']"},"authentication":"@parameters('$authentication')"}},"Get_Account":{"runAfter":{"Get_Project":["Succeeded"]},"metadata":{"operationMetadataId":"7db74f13-f1e2-419e-8087-fa6e89bbd4b0"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"GetItem","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"accounts","recordId":"@outputs('Get_Project')?['body/_leidos_parentaccount_value']"},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"metadata":{"operationMetadataId":"2e666c9e-2c1b-43e1-abc1-559f3d99a0a1"},"type":"Scope"},"Run_On_Fail":{"actions":{"Update_Loan_Receipt_to_reset":{"runAfter":{},"metadata":{"operationMetadataId":"df0916d6-387a-40bc-ac43-833b4745e553"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loanreceipts","recordId":"@triggerOutputs()?['body/leidos_loanreceiptid']","item/leidos_submitreceiptforapproval":false,"item/leidos_validationchecks":false},"authentication":"@parameters('$authentication')"}},"Send_an_email_(V2)":{"runAfter":{"Update_Loan_Receipt_to_reset":["Succeeded"]},"metadata":{"operationMetadataId":"e59d2603-10fe-468a-a3f1-12fe91df8dae"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365_1","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@outputs('Get_Requested_By')?['body/internalemailaddress']","emailMessage/Subject":"Loan Receipt  @{triggerOutputs()?['body/leidos_loanreceiptreference']}","emailMessage/Body":"<p>The Approval request for @{triggerOutputs()?['body/leidos_loanreceiptreference']} has failed due to missing data.<br>\n<br>\nPlease check the data and resubmit<br>\n<br>\n\n<a href=\"@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}\">Record Link</a>\n\n</p>"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Get_Data":["Failed"]},"metadata":{"operationMetadataId":"e8edeb6c-8635-42f2-be92-5c7da7ab091d"},"type":"Scope"},"Update_Loan_Receipt_to_Submitted":{"runAfter":{"Get_Data":["Succeeded"]},"metadata":{"operationMetadataId":"b55338e6-86ce-4531-9f5e-1028d81559f3"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loanreceipts","recordId":"@triggerOutputs()?['body/leidos_loanreceiptid']","item/statecode":1,"item/statuscode":100000006,"item/leidos_SubmittedBy@odata.bind":"/systemusers(@{triggerOutputs()?['body/_leidos_submittedby_value']})","item/leidos_submittedon":"@UtcNow()\r\n"},"authentication":"@parameters('$authentication')"}},"Start_and_wait_for_an_approval":{"runAfter":{"Get_Data":["Succeeded"]},"limit":{"timeout":"P3D"},"metadata":{"operationMetadataId":"e8e875ea-13d7-493b-89f9-936c8cf9350d"},"type":"OpenApiConnectionWebhook","inputs":{"host":{"connectionName":"shared_approvals","operationId":"StartAndWaitForAnApproval","apiId":"/providers/Microsoft.PowerApps/apis/shared_approvals"},"parameters":{"approvalType":"CustomResponse","WebhookApprovalCreationInput/responseOptions":["Approve Loan Receipt","Defer Loan Receipt"],"WebhookApprovalCreationInput/title":"Loan Receipt Approval Request for @{triggerOutputs()?['body/leidos_name']}","WebhookApprovalCreationInput/assignedTo":"@{outputs('Get_Approver_User_Record')?['body/internalemailaddress']};","WebhookApprovalCreationInput/details":" ###Approval for Loan Receipt:  @{triggerOutputs()?['body/leidos_name']}\n\n##Account: **@{outputs('Get_Account')?['body/name']}**\nLoan Receipt Amount: **£@{triggerOutputs()?['body/leidos_receiptamount']}**","WebhookApprovalCreationInput/itemLink":" @{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}","WebhookApprovalCreationInput/itemLinkDescription":"Link to Loan Receipt Record","WebhookApprovalCreationInput/requestor":"@{outputs('Get_Requested_By')?['body/internalemailaddress']};","WebhookApprovalCreationInput/enableNotifications":true,"WebhookApprovalCreationInput/enableReassignment":true},"authentication":"@parameters('$authentication')"}},"Switch":{"runAfter":{"Start_and_wait_for_an_approval":["Succeeded"]},"cases":{"Approve_Loan_Receipt":{"case":"Approve Loan Receipt","actions":{"Apply_to_each_4":{"foreach":"@outputs('Start_and_wait_for_an_approval')?['body/responses']","actions":{"Update_Loan_receipt_to_Approved":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loanreceipts","recordId":"@triggerOutputs()?['body/leidos_loanreceiptid']","item/leidos_datedecisionactioned":"@utcNow()","item/leidos_dateofposting":"@outputs('Start_and_wait_for_an_approval')?['body/completionDate']","item/leidos_decisioncomments":"@items('Apply_to_each_4')?['comments']","item/leidos_decisionoutcome":445260000,"item/statecode":1,"item/statuscode":100000007},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"type":"Foreach"}}},"Defer_Loan_Receipt":{"case":"Defer Loan Receipt","actions":{"Apply_to_each_3":{"foreach":"@outputs('Start_and_wait_for_an_approval')?['body/responses']","actions":{"Update_Loan_receipt_for_Defer":{"runAfter":{},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loanreceipts","recordId":"@triggerOutputs()?['body/leidos_loanreceiptid']","item/leidos_receiptamount":"@null\r\n","item/leidos_datedecisionactioned":"@utcNow()","item/leidos_decisioncomments":"@items('Apply_to_each_3')?['comments']","item/leidos_decisionoutcome":445260002,"item/leidos_processingdate":"@null","item/statecode":0,"item/statuscode":1,"item/leidos_submitreceiptforapproval":false,"item/leidos_SubmittedBy@odata.bind":"@null","item/leidos_submittedon":"@null","item/leidos_validationchecks":false},"authentication":"@parameters('$authentication')"}}},"runAfter":{},"type":"Foreach"}}}},"default":{"actions":{}},"expression":"@outputs('Start_and_wait_for_an_approval')?['body/outcome']","metadata":{"operationMetadataId":"5b41205d-09ab-4901-90d0-5b041add4167"},"type":"Switch"},"Apply_to_each":{"foreach":"@outputs('Start_and_wait_for_an_approval')?['body/responses']","actions":{"Create_Task_with_Responses":{"runAfter":{},"metadata":{"operationMetadataId":"1ea5a896-7c34-4330-a53a-6044a54b45de"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"CreateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"tasks","item/subject":"Loan Receipt Approval Outcome","item/description":"@{outputs('Start_and_wait_for_an_approval')?['body/responseSummary']}\n\n@{outputs('Start_and_wait_for_an_approval')?['body/details']}\n\nComments:  @{items('Apply_to_each')?['comments']}","item/regardingobjectid_leidos_loanreceipt_task@odata.bind":"/leidos_loanreceipts(@{triggerOutputs()?['body/leidos_loanreceiptid']})"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Switch":["Succeeded"]},"metadata":{"operationMetadataId":"3ba4e0b4-ac02-4275-96fb-cdc9bdd2bc16"},"type":"Foreach"},"Apply_to_each_2":{"foreach":"@outputs('Start_and_wait_for_an_approval')?['body/responses']","actions":{"Send_an_email_(V2)_2":{"runAfter":{},"metadata":{"operationMetadataId":"e99fe050-3c08-4a4c-8003-5d06d9e76dd9"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365_1","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@outputs('Get_Requested_By')?['body/internalemailaddress']","emailMessage/Subject":"Loan Receipt: @{triggerOutputs()?['body/leidos_loanreceiptreference']} Approval Outcome: @{outputs('Start_and_wait_for_an_approval')?['body/outcome']}","emailMessage/Body":"<p>\n<br>\nClient: @{outputs('Get_Account')?['body/name']} <br>\nProject: @{outputs('Get_Project')?['body/leidos_name']} <br>\nProject Reference: @{outputs('Get_Project')?['body/leidos_projectreference']} <br>\nLoan Receipt: @{triggerOutputs()?['body/leidos_loanreceiptreference']} <br>\n<br>\n@{outputs('Start_and_wait_for_an_approval')?['body/responseSummary']} <br>\n@{outputs('Start_and_wait_for_an_approval')?['body/details']} <br>\n@{items('Apply_to_each_2')?['comments']} <br>\n<br>\n<br>\n<a href=\"@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}\">Record Link</a><br>\n<br>\n</p>"},"authentication":"@parameters('$authentication')"}}},"runAfter":{"Apply_to_each":["Succeeded"]},"metadata":{"operationMetadataId":"26290616-e5ef-4795-9c46-41234bcc53fc"},"type":"Foreach"},"Run_After_Time_Out":{"actions":{"Update_Loan_Receipt_to_reset_on_Time_Out":{"runAfter":{},"metadata":{"operationMetadataId":"ee15d9a5-9109-47bc-8915-6d75c644cce6"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_commondataserviceforapps_1","operationId":"UpdateRecord","apiId":"/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"},"parameters":{"entityName":"leidos_loanreceipts","recordId":"@triggerOutputs()?['body/leidos_loanreceiptid']","item/leidos_submitreceiptforapproval":false,"item/leidos_validationchecks":false},"authentication":"@parameters('$authentication')"}},"Send_an_email_(V2)_On_Timeout":{"runAfter":{"Update_Loan_Receipt_to_reset_on_Time_Out":["Succeeded"]},"metadata":{"operationMetadataId":"2267b1fb-e31a-49c9-9093-065422eb19a7"},"type":"OpenApiConnection","inputs":{"host":{"connectionName":"shared_office365_1","operationId":"SendEmailV2","apiId":"/providers/Microsoft.PowerApps/apis/shared_office365"},"parameters":{"emailMessage/To":"@outputs('Get_Requested_By')?['body/internalemailaddress']","emailMessage/Subject":"Loan Receipt  @{triggerOutputs()?['body/leidos_loanreceiptreference']}","emailMessage/Body":"<p>The Approval request for @{triggerOutputs()?['body/leidos_loanreceiptreference']} has timed &nbsp;due to no response from the requested Approver.<br>\n<br>\nPlease select another Approver and resumbit<br>\n<a href=\"&lt;object custom=\">@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}&gt;Record Link</a></p>"},"authentication":"@parameters('$authentication')"}},"Terminate":{"runAfter":{"Send_an_email_(V2)_On_Timeout":["Succeeded"]},"metadata":{"operationMetadataId":"aab50407-e12b-4863-bd8a-65e03154321f"},"type":"Terminate","inputs":{"runStatus":"Succeeded"}}},"runAfter":{"Start_and_wait_for_an_approval":["TimedOut"]},"metadata":{"operationMetadataId":"40801435-fa48-4aa9-94c3-22793a77b152"},"type":"Scope"}},"outputs":{}}},"schemaVersion":"1.0.0.0"}
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnLoan"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_office365_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnOutlook2"
+        },
+        "api": {
+          "name": "shared_office365"
+        }
+      },
+      "shared_approvals": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ApprovalConnectionReference"
+        },
+        "api": {
+          "name": "shared_approvals"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Loan_Receipt_Submit_for_Approval": {
+          "metadata": {
+            "operationMetadataId": "ad98a895-842e-4d9d-8b09-1d3c4b510cb9"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 4,
+              "subscriptionRequest/entityname": "leidos_loanreceipt",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "leidos_submitreceiptforapproval",
+              "subscriptionRequest/filterexpression": "(leidos_submitreceiptforapproval eq true)",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Data": {
+          "actions": {
+            "Get_Approver_User_Record": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "edae73bc-5360-4b47-82f3-e01e28575489"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@triggerOutputs()?['body/_leidos_receiptapprover_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Requested_By": {
+              "runAfter": {
+                "Get_Approver_User_Record": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "f3db704f-5bdd-494e-b845-e13c418eaaa0"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@triggerOutputs()?['body/_leidos_submittedby_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Run_a_Child_Flow": {
+              "runAfter": {
+                "Get_Requested_By": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "2e35d3af-f98f-440a-b6b0-59ac5c467d32"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "b0db1a8a-c449-ea11-a812-000d3a0ba151"
+                },
+                "body": {
+                  "EntityId_Inputs": "@triggerOutputs()?['body/leidos_loanreceiptid']",
+                  "EntityType_Value": "leidos_loanreceipt"
+                }
+              }
+            },
+            "Get_Loan": {
+              "runAfter": {
+                "Run_a_Child_Flow": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "6cddcfd0-bb32-4fd6-a340-e302a68bf135"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_loans",
+                  "recordId": "@triggerOutputs()?['body/_leidos_loan_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Project": {
+              "runAfter": {
+                "Get_Loan": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "d1af9b69-df88-442e-8f4a-13353faaee48"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projects",
+                  "recordId": "@outputs('Get_Loan')?['body/_leidos_project_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Account": {
+              "runAfter": {
+                "Get_Project": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7db74f13-f1e2-419e-8087-fa6e89bbd4b0"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "accounts",
+                  "recordId": "@outputs('Get_Project')?['body/_leidos_parentaccount_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "2e666c9e-2c1b-43e1-abc1-559f3d99a0a1"
+          },
+          "type": "Scope"
+        },
+        "Run_On_Fail": {
+          "actions": {
+            "Update_Loan_Receipt_to_reset": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "df0916d6-387a-40bc-ac43-833b4745e553"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_loanreceipts",
+                  "recordId": "@triggerOutputs()?['body/leidos_loanreceiptid']",
+                  "item/leidos_submitreceiptforapproval": false,
+                  "item/leidos_validationchecks": false
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Send_an_email_(V2)": {
+              "runAfter": {
+                "Update_Loan_Receipt_to_reset": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e59d2603-10fe-468a-a3f1-12fe91df8dae"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_office365_1",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                },
+                "parameters": {
+                  "emailMessage/To": "@outputs('Get_Requested_By')?['body/internalemailaddress']",
+                  "emailMessage/Subject": "Loan Receipt  @{triggerOutputs()?['body/leidos_loanreceiptreference']}",
+                  "emailMessage/Body": "<p>The Approval request for @{triggerOutputs()?['body/leidos_loanreceiptreference']} has failed due to missing data.<br>\n<br>\nPlease check the data and resubmit<br>\n<br>\n\n<a href=\"@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}\">Record Link</a>\n\n</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Data": [
+              "Failed"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "e8edeb6c-8635-42f2-be92-5c7da7ab091d"
+          },
+          "type": "Scope"
+        },
+        "Update_Loan_Receipt_to_Submitted": {
+          "runAfter": {
+            "Get_Data": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "b55338e6-86ce-4531-9f5e-1028d81559f3"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "UpdateRecord",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "leidos_loanreceipts",
+              "recordId": "@triggerOutputs()?['body/leidos_loanreceiptid']",
+              "item/statecode": 1,
+              "item/statuscode": 100000006,
+              "item/leidos_SubmittedBy@odata.bind": "/systemusers(@{triggerOutputs()?['body/_leidos_submittedby_value']})",
+              "item/leidos_submittedon": "@UtcNow()\r\n"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Start_and_wait_for_an_approval": {
+          "runAfter": {
+            "Get_Data": [
+              "Succeeded"
+            ]
+          },
+          "limit": {
+            "timeout": "P3D"
+          },
+          "metadata": {
+            "operationMetadataId": "e8e875ea-13d7-493b-89f9-936c8cf9350d"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_approvals",
+              "operationId": "StartAndWaitForAnApproval",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_approvals"
+            },
+            "parameters": {
+              "approvalType": "CustomResponse",
+              "WebhookApprovalCreationInput/responseOptions": [
+                "Approve Loan Receipt",
+                "Defer Loan Receipt"
+              ],
+              "WebhookApprovalCreationInput/title": "Loan Receipt Approval Request for @{triggerOutputs()?['body/leidos_name']}",
+              "WebhookApprovalCreationInput/assignedTo": "@{outputs('Get_Approver_User_Record')?['body/internalemailaddress']};",
+              "WebhookApprovalCreationInput/details": " ###Approval for Loan Receipt:  @{triggerOutputs()?['body/leidos_name']}\n\n##Account: **@{outputs('Get_Account')?['body/name']}**\nLoan Receipt Amount: **£@{triggerOutputs()?['body/leidos_receiptamount']}**",
+              "WebhookApprovalCreationInput/itemLink": " @{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}",
+              "WebhookApprovalCreationInput/itemLinkDescription": "Link to Loan Receipt Record",
+              "WebhookApprovalCreationInput/requestor": "@{outputs('Get_Requested_By')?['body/internalemailaddress']};",
+              "WebhookApprovalCreationInput/enableNotifications": true,
+              "WebhookApprovalCreationInput/enableReassignment": true
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Switch": {
+          "runAfter": {
+            "Start_and_wait_for_an_approval": [
+              "Succeeded"
+            ]
+          },
+          "cases": {
+            "Approve_Loan_Receipt": {
+              "case": "Approve Loan Receipt",
+              "actions": {
+                "Apply_to_each_4": {
+                  "foreach": "@outputs('Start_and_wait_for_an_approval')?['body/responses']",
+                  "actions": {
+                    "Update_Loan_receipt_to_Approved": {
+                      "runAfter": {},
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_loanreceipts",
+                          "recordId": "@triggerOutputs()?['body/leidos_loanreceiptid']",
+                          "item/leidos_datedecisionactioned": "@utcNow()",
+                          "item/leidos_dateofposting": "@outputs('Start_and_wait_for_an_approval')?['body/completionDate']",
+                          "item/leidos_decisioncomments": "@items('Apply_to_each_4')?['comments']",
+                          "item/leidos_decisionoutcome": 445260000,
+                          "item/statecode": 1,
+                          "item/statuscode": 100000007
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "type": "Foreach"
+                }
+              }
+            },
+            "Defer_Loan_Receipt": {
+              "case": "Defer Loan Receipt",
+              "actions": {
+                "Apply_to_each_3": {
+                  "foreach": "@outputs('Start_and_wait_for_an_approval')?['body/responses']",
+                  "actions": {
+                    "Update_Loan_receipt_for_Defer": {
+                      "runAfter": {},
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_1",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_loanreceipts",
+                          "recordId": "@triggerOutputs()?['body/leidos_loanreceiptid']",
+                          "item/leidos_receiptamount": "@null\r\n",
+                          "item/leidos_datedecisionactioned": "@utcNow()",
+                          "item/leidos_decisioncomments": "@items('Apply_to_each_3')?['comments']",
+                          "item/leidos_decisionoutcome": 445260002,
+                          "item/leidos_processingdate": "@null",
+                          "item/statecode": 0,
+                          "item/statuscode": 1,
+                          "item/leidos_submitreceiptforapproval": false,
+                          "item/leidos_SubmittedBy@odata.bind": "@null",
+                          "item/leidos_submittedon": "@null",
+                          "item/leidos_validationchecks": false
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    }
+                  },
+                  "runAfter": {},
+                  "type": "Foreach"
+                }
+              }
+            }
+          },
+          "default": {
+            "actions": {}
+          },
+          "expression": "@outputs('Start_and_wait_for_an_approval')?['body/outcome']",
+          "metadata": {
+            "operationMetadataId": "5b41205d-09ab-4901-90d0-5b041add4167"
+          },
+          "type": "Switch"
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('Start_and_wait_for_an_approval')?['body/responses']",
+          "actions": {
+            "Create_Task_with_Responses": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "1ea5a896-7c34-4330-a53a-6044a54b45de"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "item/subject": "Loan Receipt Approval Outcome",
+                  "item/description": "@{outputs('Start_and_wait_for_an_approval')?['body/responseSummary']}\n\n@{outputs('Start_and_wait_for_an_approval')?['body/details']}\n\nComments:  @{items('Apply_to_each')?['comments']}",
+                  "item/regardingobjectid_leidos_loanreceipt_task@odata.bind": "/leidos_loanreceipts(@{triggerOutputs()?['body/leidos_loanreceiptid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Switch": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3ba4e0b4-ac02-4275-96fb-cdc9bdd2bc16"
+          },
+          "type": "Foreach"
+        },
+        "Apply_to_each_2": {
+          "foreach": "@outputs('Start_and_wait_for_an_approval')?['body/responses']",
+          "actions": {
+            "Send_an_email_(V2)_2": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "e99fe050-3c08-4a4c-8003-5d06d9e76dd9"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_office365_1",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                },
+                "parameters": {
+                  "emailMessage/To": "@outputs('Get_Requested_By')?['body/internalemailaddress']",
+                  "emailMessage/Subject": "Loan Receipt: @{triggerOutputs()?['body/leidos_loanreceiptreference']} Approval Outcome: @{outputs('Start_and_wait_for_an_approval')?['body/outcome']}",
+                  "emailMessage/Body": "<p>\n<br>\nClient: @{outputs('Get_Account')?['body/name']} <br>\nProject: @{outputs('Get_Project')?['body/leidos_name']} <br>\nProject Reference: @{outputs('Get_Project')?['body/leidos_projectreference']} <br>\nLoan Receipt: @{triggerOutputs()?['body/leidos_loanreceiptreference']} <br>\n<br>\n@{outputs('Start_and_wait_for_an_approval')?['body/responseSummary']} <br>\n@{outputs('Start_and_wait_for_an_approval')?['body/details']} <br>\n@{items('Apply_to_each_2')?['comments']} <br>\n<br>\n<br>\n<a href=\"@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}\">Record Link</a><br>\n<br>\n</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "26290616-e5ef-4795-9c46-41234bcc53fc"
+          },
+          "type": "Foreach"
+        },
+        "Run_After_Time_Out": {
+          "actions": {
+            "Update_Loan_Receipt_to_reset_on_Time_Out": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "ee15d9a5-9109-47bc-8915-6d75c644cce6"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_loanreceipts",
+                  "recordId": "@triggerOutputs()?['body/leidos_loanreceiptid']",
+                  "item/leidos_submitreceiptforapproval": false,
+                  "item/leidos_validationchecks": false
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Send_an_email_(V2)_On_Timeout": {
+              "runAfter": {
+                "Update_Loan_Receipt_to_reset_on_Time_Out": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "2267b1fb-e31a-49c9-9093-065422eb19a7"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_office365_1",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_office365"
+                },
+                "parameters": {
+                  "emailMessage/To": "@outputs('Get_Requested_By')?['body/internalemailaddress']",
+                  "emailMessage/Subject": "Loan Receipt  @{triggerOutputs()?['body/leidos_loanreceiptreference']}",
+                  "emailMessage/Body": "<p>The Approval request for @{triggerOutputs()?['body/leidos_loanreceiptreference']} has timed &nbsp;due to no response from the requested Approver.<br>\n<br>\nPlease select another Approver and resumbit<br>\n<a href=\"&lt;object custom=\">@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}&gt;Record Link</a></p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate": {
+              "runAfter": {
+                "Send_an_email_(V2)_On_Timeout": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "aab50407-e12b-4863-bd8a-65e03154321f"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            }
+          },
+          "runAfter": {
+            "Start_and_wait_for_an_approval": [
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "40801435-fa48-4aa9-94c3-22793a77b152"
+          },
+          "type": "Scope"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}
