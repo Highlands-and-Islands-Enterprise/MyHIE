@@ -26,6 +26,9 @@
       },
       "triggers": {
         "Claim_on_Assign": {
+          "metadata": {
+            "operationMetadataId": "6d2dd835-aabf-4665-b691-f921231369fa"
+          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
@@ -38,7 +41,8 @@
               "subscriptionRequest/entityname": "leidos_claim",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "ownerid",
-              "subscriptionRequest/filterexpression": "statuscode eq 1"
+              "subscriptionRequest/filterexpression": "statuscode eq 1",
+              "subscriptionRequest/name": "9b451752-0a28-eb11-a813-0022483fae82"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -47,6 +51,9 @@
       "actions": {
         "Update_Claim_to_In_Progress": {
           "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "4c7a9731-2638-41f9-9f28-1bb033a98de4"
+          },
           "type": "OpenApiConnection",
           "inputs": {
             "host": {

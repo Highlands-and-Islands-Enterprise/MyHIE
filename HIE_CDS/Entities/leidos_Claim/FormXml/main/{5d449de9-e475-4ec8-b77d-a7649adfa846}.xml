@@ -503,7 +503,7 @@
                         <labels>
                           <label description="Progress Report Complete" languagecode="1033" />
                         </labels>
-                        <control id="leidos_progressreportcomplete" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_progressreportcomplete" disabled="false" uniqueid="{6a375695-1a21-4004-9a67-bfd504f9a9d9}" />
+                        <control id="leidos_progressreportcomplete" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="leidos_progressreportcomplete" disabled="false" uniqueid="{e95cc98a-0e13-4052-9144-775a9cd8a5ab}" />
                       </cell>
                       <cell id="{01aee84c-a484-413f-99d6-286ae2087918}" locklevel="0">
                         <labels>
@@ -883,7 +883,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar></NavBar>
+        <NavBar />
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -976,28 +976,6 @@
           <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
             <parameters>
               <value>leidos_cancelpayment</value>
-            </parameters>
-          </customControl>
-        </controlDescription>
-        <controlDescription forControl="{6a375695-1a21-4004-9a67-bfd504f9a9d9}">
-          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
-            <parameters>
-              <datafieldname>leidos_progressreportcomplete</datafieldname>
-            </parameters>
-          </customControl>
-          <customControl formFactor="0" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_progressreportcomplete</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="2" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_progressreportcomplete</value>
-            </parameters>
-          </customControl>
-          <customControl formFactor="1" name="MscrmControls.FlipSwitch.FlipSwitchControl">
-            <parameters>
-              <value>leidos_progressreportcomplete</value>
             </parameters>
           </customControl>
         </controlDescription>
@@ -1155,11 +1133,33 @@
             </parameters>
           </customControl>
         </controlDescription>
+        <controlDescription forControl="{e95cc98a-0e13-4052-9144-775a9cd8a5ab}">
+          <customControl id="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}">
+            <parameters>
+              <datafieldname>leidos_progressreportcomplete</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_progressreportcomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_progressreportcomplete</value>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.FieldControls.ToggleControl">
+            <parameters>
+              <value type="TwoOptions">leidos_progressreportcomplete</value>
+            </parameters>
+          </customControl>
+        </controlDescription>
       </controlDescriptions>
       <events>
         <event name="onload" application="false" active="false">
           <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8b16c867-879d-4c61-8cbe-1b17b10572ab" enabled="true" parameters="'6eL:*:CreateUpdate::0:217890000:217890000:217890000:217890000','WD7:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="8b16c867-879d-4c61-8cbe-1b17b10572ab" enabled="true" parameters="'6eL:*:CreateUpdate::0:217890000:217890000:217890000:217890000','WD7:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="Leidos.hideBPFFinishButton" libraryName="leidos_common" handlerUniqueId="{35484690-627b-3b10-d958-b781219d9c19}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
@@ -1189,16 +1189,16 @@
           </Handlers>
         </event>
       </events>
-      <formLibraries>
-        <Library name="leidos_common" libraryUniqueId="{1259c156-5717-4b79-4183-6a0311c080e9}" />
-        <Library name="leidos_Claim" libraryUniqueId="{8e01ea2b-53ee-d27d-22c5-4b74269d00a9}" />
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="d95fe8ee-cadc-4a2e-a482-43ab5f61d30b" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="51e373ad-3236-45aa-ae7b-a45a340a454b" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="2e26cdaa-487f-495f-b486-d3bf10d9ac98" />
-      </formLibraries>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_common" libraryUniqueId="{1259c156-5717-4b79-4183-6a0311c080e9}" />
+        <Library name="leidos_Claim" libraryUniqueId="{8e01ea2b-53ee-d27d-22c5-4b74269d00a9}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="4888f539-079a-4244-84bb-ac7845429184" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="b1780345-b6ca-4c22-83c2-5ac75a9a2455" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="2b6c52f5-7c62-43db-80e8-60a6130e76af" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

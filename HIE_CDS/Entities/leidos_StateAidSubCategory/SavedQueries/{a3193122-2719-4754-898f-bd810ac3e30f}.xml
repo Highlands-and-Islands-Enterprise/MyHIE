@@ -11,6 +11,7 @@
       <grid name="resultset" jump="leidos_subtype" select="1" icon="1" preview="1">
         <row name="result" id="leidos_stateaidsubcategoryid">
           <cell name="leidos_subtype" width="300" />
+          <cell name="leidos_stateaidcategory" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -19,7 +20,6 @@
       <fetch version="1.0" mapping="logical">
         <entity name="leidos_stateaidsubcategory">
           <attribute name="leidos_subtype" />
-          <order attribute="leidos_subtype" descending="false" />
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
@@ -27,6 +27,10 @@
             <condition attribute="leidos_subtype" operator="like" value="{0}" />
           </filter>
           <attribute name="leidos_stateaidsubcategoryid" />
+          <attribute name="leidos_displayorder" />
+          <order attribute="leidos_displayorder" descending="false" />
+          <order attribute="leidos_subtype" descending="false" />
+          <attribute name="leidos_stateaidcategory" />
         </entity>
       </fetch>
     </fetchxml>
