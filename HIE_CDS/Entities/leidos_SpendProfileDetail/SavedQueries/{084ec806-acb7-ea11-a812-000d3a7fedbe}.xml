@@ -26,12 +26,13 @@
           <cell name="leidos_slippageamount" width="100" />
           <cell name="leidos_nonspendamount" width="100" />
           <cell name="leidos_totalforfy" width="100" />
+          <cell name="statuscode" width="100" />
         </row>
       </grid>
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch count="50">
         <entity name="leidos_spendprofiledetail">
           <attribute name="leidos_jan" />
           <attribute name="leidos_feb" />
@@ -57,6 +58,11 @@
           <order attribute="leidos_hiefinancialyear" descending="false" />
           <attribute name="leidos_nonspendamount" />
           <attribute name="leidos_slippageamount" />
+          <link-entity name="leidos_anticipatedspendprofile" from="leidos_anticipatedspendprofileid" to="leidos_parentspendprofile">
+            <link-entity name="leidos_project" from="leidos_projectid" to="leidos_parentproject">
+              <attribute name="statuscode" alias="statuscode" />
+            </link-entity>
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

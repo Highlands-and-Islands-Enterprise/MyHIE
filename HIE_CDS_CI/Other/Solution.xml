@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CI" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.5154</Version>
+    <Version>1.19.0.5158</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -188,6 +188,7 @@
       <RootComponent type="29" id="{319b42ca-148b-eb11-b1ac-000d3ad511f1}" behavior="0" />
       <RootComponent type="29" id="{321aa7cc-794c-ec11-8f8e-000d3a7f952a}" behavior="0" />
       <RootComponent type="29" id="{3671384b-38d0-eb11-bacc-000d3ad59ccd}" behavior="0" />
+      <RootComponent type="29" id="{369a9b8f-9c9f-ec11-b400-6045bd10599f}" behavior="0" />
       <RootComponent type="29" id="{3a3858bf-156e-ec11-8943-00224842bdfd}" behavior="0" />
       <RootComponent type="29" id="{3bc0ebbc-950f-eb11-a813-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{3eb902d9-6509-eb11-a813-000d3a7fedbe}" behavior="0" />
@@ -212,7 +213,9 @@
       <RootComponent type="29" id="{70c503c3-28aa-ea11-a812-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{7332ac3a-3d57-ec11-8f8f-00224842c7cc}" behavior="0" />
       <RootComponent type="29" id="{73ae4fb7-bc54-ea11-a813-000d3a0bad17}" behavior="0" />
+      <RootComponent type="29" id="{77cb3d9e-8f9f-ec11-b400-6045bd105a3f}" behavior="0" />
       <RootComponent type="29" id="{792de1f5-12c8-ea11-a812-000d3a7fedbe}" behavior="0" />
+      <RootComponent type="29" id="{7c7c7dde-fc75-eb11-a812-002248414cc3}" behavior="0" />
       <RootComponent type="29" id="{7cfa367d-69d2-ea11-a813-000d3a7fedbe}" behavior="0" />
       <RootComponent type="29" id="{7d6ac901-f9d3-eb11-bacb-000d3ad6153d}" behavior="0" />
       <RootComponent type="29" id="{7edffe89-f456-ea11-a811-000d3a0bad17}" behavior="0" />
@@ -250,6 +253,7 @@
       <RootComponent type="29" id="{c74cecd9-b6ac-ea11-a812-000d3a7f1bbb}" behavior="0" />
       <RootComponent type="29" id="{cad948ac-f766-eb11-a812-002248417b3a}" behavior="0" />
       <RootComponent type="29" id="{d04ccdb2-23af-ea11-a812-000d3a7fedbe}" behavior="0" />
+      <RootComponent type="29" id="{d4d779a4-999f-ec11-b400-6045bd10573d}" behavior="0" />
       <RootComponent type="29" id="{ddf13500-5959-ea11-a811-000d3a0bad17}" behavior="0" />
       <RootComponent type="29" id="{df673bab-17d8-4ded-8556-f7232cd2805f}" behavior="0" />
       <RootComponent type="29" id="{e440cd76-51e4-4b54-85e6-d64a5b958b52}" behavior="0" />
@@ -368,6 +372,7 @@
       <RootComponent type="61" schemaName="north52_/formula/leidos_signatory/wpG/f.7bfc252391f2ea11a815000d3a7f1bbb" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/4OS/f.560c44900cc642f8ac77d29c224b9958" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/645/f.c859901cb855eb11a812002248418512" behavior="0" />
+      <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/9Xo/f.487a0590f63deb11a813000d3a7fedbe" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/eHo/f.6e1a6f9da84bec118f8e000d3a7f952a" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_spendprofiledetail/LgV/f.d38692b04265eb11a81200224841783c" behavior="0" />
       <RootComponent type="61" schemaName="north52_/formula/leidos_transaction/SVb/f.ce1a440b198eeb11b1ac000d3ad51b39" behavior="0" />
@@ -3444,6 +3449,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_claimsubmitteddate" displayName="Date Claim Submitted from Portal" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow - Notify on Bank Details Entered" id="{7c7c7dde-fc75-eb11-a812-002248414cc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_claimsubmitteddate" displayName="Date Claim Submitted from Portal" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
         <Dependent type="60" displayName=" Web - Claim" parentDisplayName="Claim" id="{341efd48-b625-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
@@ -3717,6 +3726,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_submittedby" displayName="Submitted By" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
         <Dependent type="60" displayName="Claim Summary" parentDisplayName="Claim" id="{5d449de9-e475-4ec8-b77d-a7649adfa846}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_submittedfromportal" displayName="Submitted from Portal" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
+        <Dependent type="29" displayName="Claim - Flow - Notify on Bank Details Entered" id="{7c7c7dde-fc75-eb11-a812-002248414cc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_submittedfromportal" displayName="Submitted from Portal" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
@@ -5413,6 +5426,10 @@
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_legalundertaking" parentDisplayName="Legal Undertaking" solution="Active" />
         <Dependent type="60" displayName="HIE Legal Undertaking" parentDisplayName="Legal Undertaking" id="{00c9a86d-f428-44e3-a0ef-41667b6eaf64}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_legalundertaking" parentDisplayName="Legal Undertaking" solution="Active" />
+        <Dependent type="29" displayName="Legal Undertaking - Flow - On Returned" id="{369a9b8f-9c9f-ec11-b400-6045bd10599f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_legalundertaking" parentDisplayName="Legal Undertaking" solution="Active" />
@@ -9284,6 +9301,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="26" schemaName="Spend Profile - Embedded Grid" displayName="Spend Profile - Embedded Grid" parentSchemaName="leidos_spendprofiledetail" parentDisplayName="Spend / Recovery Detail" id="{084ec806-acb7-ea11-a812-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectid" displayName="Project" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="26" schemaName="Project Associated View" displayName="Project Associated View" parentSchemaName="leidos_project" parentDisplayName="Project" id="{20d891c8-ac1b-4c46-a05a-177d498f01a5}" />
       </MissingDependency>
       <MissingDependency>
@@ -9984,6 +10005,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="26" schemaName="Spend Profile - Embedded Grid" displayName="Spend Profile - Embedded Grid" parentSchemaName="leidos_spendprofiledetail" parentDisplayName="Spend / Recovery Detail" id="{084ec806-acb7-ea11-a812-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="26" schemaName="Project Associated View" displayName="Project Associated View" parentSchemaName="leidos_project" parentDisplayName="Project" id="{20d891c8-ac1b-4c46-a05a-177d498f01a5}" />
       </MissingDependency>
       <MissingDependency>
@@ -10029,6 +10054,10 @@
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="29" displayName="Project Status Reason is CTP -&gt; Patch Spend" id="{b160683c-4484-ec11-8d21-6045bd0f02df}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="29" displayName="Project - Flow -On Appraisal Approved" id="{d4d779a4-999f-ec11-b400-6045bd10573d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -14246,6 +14275,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
+        <Dependent type="29" displayName="Claim - Flow - Notify on Bank Details Entered" id="{7c7c7dde-fc75-eb11-a812-002248414cc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="29" displayName="Get Entity Url" solution="Active" id="{b0db1a8a-c449-ea11-a812-000d3a0ba151}" />
         <Dependent type="29" displayName="Programme Amendment - Flow - Submit Programme Approval to Delegated Authority" id="{7cfa367d-69d2-ea11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
@@ -15794,6 +15827,14 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
+        <Dependent type="29" displayName="Child Flow - Create Task for Bank Details" id="{77cb3d9e-8f9f-ec11-b400-6045bd105a3f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
+        <Dependent type="29" displayName="Claim - Flow - Notify on Bank Details Entered" id="{7c7c7dde-fc75-eb11-a812-002248414cc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnClaim" solution="Active" id.connectionreferencelogicalname="leidos_ConnClaim" />
         <Dependent type="29" displayName="Transaction - Flow - Update on Update of CODA" id="{89257b6a-e95e-eb11-a812-000d3ad60179}" />
       </MissingDependency>
       <MissingDependency>
@@ -15823,6 +15864,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnLegal" solution="Active" id.connectionreferencelogicalname="leidos_ConnLegal" />
         <Dependent type="29" displayName="Legal Undertaking - Flow - Submit for E Signature" id="{1a3cf23e-440d-eb11-a813-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnLegal" solution="Active" id.connectionreferencelogicalname="leidos_ConnLegal" />
+        <Dependent type="29" displayName="Legal Undertaking - Flow - On Returned" id="{369a9b8f-9c9f-ec11-b400-6045bd10599f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnLegal" solution="Active" id.connectionreferencelogicalname="leidos_ConnLegal" />
@@ -15966,6 +16011,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
+        <Dependent type="29" displayName="Claim - Flow - Notify on Bank Details Entered" id="{7c7c7dde-fc75-eb11-a812-002248414cc3}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnOutlook2" solution="Active" id.connectionreferencelogicalname="leidos_ConnOutlook2" />
         <Dependent type="29" displayName="Pipeline Programme - Flow-  Submit ISA for Approval" id="{8795be78-0b20-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
@@ -16018,11 +16067,19 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnProject" solution="Active" id.connectionreferencelogicalname="leidos_ConnProject" />
+        <Dependent type="29" displayName="Child Flow - Create Task for Bank Details" id="{77cb3d9e-8f9f-ec11-b400-6045bd105a3f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnProject" solution="Active" id.connectionreferencelogicalname="leidos_ConnProject" />
         <Dependent type="29" displayName="Project Amendment - Flow - Submit Project Approval to Delegated Authority" id="{8ccada80-eec5-ea11-a812-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnProject" solution="Active" id.connectionreferencelogicalname="leidos_ConnProject" />
         <Dependent type="29" displayName="Project - Generate Application is Yes -&gt; Create Application" id="{c74cecd9-b6ac-ea11-a812-000d3a7f1bbb}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_ConnProject" solution="Active" id.connectionreferencelogicalname="leidos_ConnProject" />
+        <Dependent type="29" displayName="Project - Flow -On Appraisal Approved" id="{d4d779a4-999f-ec11-b400-6045bd10573d}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_ConnProjectAmendment" solution="Active" id.connectionreferencelogicalname="leidos_ConnProjectAmendment" />
@@ -16074,6 +16131,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_5ec64" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_5ec64" />
+        <Dependent type="29" displayName="Legal Undertaking - Flow - On Returned" id="{369a9b8f-9c9f-ec11-b400-6045bd10599f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_5ec64" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_5ec64" />
         <Dependent type="29" displayName="Transaction - Flow - Update on Update of CODA Loan Drawdowns" id="{574eac2e-3784-ec11-8d21-6045bd0f0f1f}" />
       </MissingDependency>
       <MissingDependency>
@@ -16091,6 +16152,10 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_5ec64" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_5ec64" />
         <Dependent type="29" displayName="BPF Application - Flow - On change of Stage" id="{73ae4fb7-bc54-ea11-a813-000d3a0bad17}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_5ec64" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_5ec64" />
+        <Dependent type="29" displayName="Child Flow - Create Task for Bank Details" id="{77cb3d9e-8f9f-ec11-b400-6045bd105a3f}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedcommondataserviceforapps_5ec64" solution="Active" id.connectionreferencelogicalname="leidos_sharedcommondataserviceforapps_5ec64" />
@@ -16123,6 +16188,14 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="leidos_sharedsharepointonline_5be6a" solution="Active" id.connectionreferencelogicalname="leidos_sharedsharepointonline_5be6a" />
         <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="leidos_ClientPortalUrl" solution="Active" id.schemaname="leidos_ClientPortalUrl" />
+        <Dependent type="29" displayName="Child Flow - Create Task for Bank Details" id="{77cb3d9e-8f9f-ec11-b400-6045bd105a3f}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="EnvironmentVariableDefinition" displayName="leidos_FinanceTeam_EmailAddress" solution="Active" id.schemaname="leidos_FinanceTeam_EmailAddress" />
+        <Dependent type="29" displayName="Claim - Flow - Notify on Bank Details Entered" id="{7c7c7dde-fc75-eb11-a812-002248414cc3}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="EnvironmentVariableDefinition" displayName="leidos_LoanArrearsdays" solution="Active" id.schemaname="leidos_LoanArrearsdays" />

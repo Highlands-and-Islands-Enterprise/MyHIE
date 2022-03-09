@@ -26,6 +26,9 @@
       },
       "triggers": {
         "Enquiry_Outcome_has_been_Selected": {
+          "metadata": {
+            "operationMetadataId": "63236309-8275-4544-883a-cf3b7aac53fa"
+          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
@@ -39,7 +42,8 @@
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "leidos_equiryoutcome",
               "subscriptionRequest/filterexpression": "(leidos_equiryoutcome ne null)",
-              "subscriptionRequest/runas": 3
+              "subscriptionRequest/runas": 3,
+              "subscriptionRequest/name": "3b443cf4-90a1-ea11-a812-000d3a7fedbe"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -192,6 +196,9 @@
             "actions": {}
           },
           "expression": "@triggerOutputs()?['body/leidos_equiryoutcome']",
+          "metadata": {
+            "operationMetadataId": "d6412fe0-7427-4eed-9983-d5ed2b64c8f9"
+          },
           "type": "Switch"
         }
       },

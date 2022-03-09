@@ -1,0 +1,270 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProject"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps_2": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnClaim"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_sharedcommondataserviceforapps_5ec64"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        },
+        "ClientPortalUrl (leidos_ClientPortalUrl)": {
+          "defaultValue": "https://hienpdevclientportal.powerappsportals.com",
+          "type": "String",
+          "metadata": {
+            "schemaName": "leidos_ClientPortalUrl"
+          }
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "9c07d14c-2edc-489b-86c7-670da0a8ece8"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "Ownerid",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                },
+                "text_1": {
+                  "title": "Projectid",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text",
+                "text_1"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "GetData": {
+          "actions": {
+            "Get_User_Record": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "add97eaf-6d3c-41c4-a74c-42c1795cde0e"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "systemusers",
+                  "recordId": "@triggerBody()['text']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Project_Record": {
+              "runAfter": {
+                "Get_User_Record": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b6f97651-a139-402c-ab3e-b1f628cd3cf9"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_2",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projects",
+                  "recordId": "@triggerBody()['text_1']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Create_a_Task": {
+              "runAfter": {
+                "Get_Primary_Contact": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "83c17e3a-c22b-4956-a546-ad410552c8c3"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "tasks",
+                  "item/subject": "Request Bank Details for Project: @{outputs('Get_Project_Record')?['body/leidos_projectreference']}",
+                  "item/description": "Project @{outputs('Get_Project_Record')?['body/leidos_projectreference']} has been approved and the legals have been returned.  \n\nPlease request Bank Details from the client to facilitate payment.",
+                  "item/scheduledend": "@addDays(utcNow(),14)",
+                  "item/ownerid_task@odata.bind": "/systemusers(@{outputs('Get_User_Record')?['body/systemuserid']})",
+                  "item/regardingobjectid_leidos_project_task@odata.bind": "/leidos_projects(@{outputs('Get_Project_Record')?['body/leidos_projectid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Create_Draft_Email": {
+              "runAfter": {
+                "Create_a_Task": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "4b50a732-4ef2-47d3-bf40-788bb1ad623c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "CreateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "emails",
+                  "item/activitypointer_activity_parties": [
+                    {
+                      "participationtypemask": 2,
+                      "partyid@odata.bind": "/contacts(@{outputs('Get_Primary_Contact')?['body/contactid']})"
+                    },
+                    {
+                      "participationtypemask": 1,
+                      "partyid@odata.bind": "/systemusers(@{outputs('Get_User_Record')?['body/systemuserid']})"
+                    }
+                  ],
+                  "item/description": "<p>In order that you can submit claims to HIE, we require you to provide us with your bank details.  </p>\n<p>Please click the <a href \"@{parameters('ClientPortalUrl (leidos_ClientPortalUrl)')}\"> link </a> to be directed to the client portal where you can enter your details securely.</p>\n\n<p>Many thanks<br></P>\n\n\n@{outputs('Get_User_Record')?['body/fullname']}",
+                  "item/regardingobjectid_leidos_project_email@odata.bind": "/leidos_projects(@{outputs('Get_Project_Record')?['body/leidos_projectid']})",
+                  "item/subject": "Request for bank details"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Account": {
+              "runAfter": {
+                "Get_Project_Record": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "1aa60335-071a-4af2-8137-e13996eea137"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "accounts",
+                  "recordId": "@outputs('Get_Project_Record')?['body/_leidos_parentaccount_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Primary_Contact": {
+              "runAfter": {
+                "Get_Account": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "4d3ac040-002a-4e19-a837-8a6c9d182067"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@outputs('Get_Account')?['body/_primarycontactid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "1288a89b-72b2-4aa8-8069-9d49b745573a"
+          },
+          "type": "Scope"
+        },
+        "Respond_to_a_PowerApp_or_flow": {
+          "runAfter": {
+            "GetData": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "44bd5bb8-6389-4b00-84f5-eb108c01f663"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

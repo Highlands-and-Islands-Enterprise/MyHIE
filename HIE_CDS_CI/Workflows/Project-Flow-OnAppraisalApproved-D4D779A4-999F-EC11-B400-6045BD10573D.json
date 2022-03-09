@@ -1,0 +1,132 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProject"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted:_Project_Approved": {
+          "metadata": {
+            "operationMetadataId": "221ce25e-5c9d-4333-be40-26ff450d0beb"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps_1",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "leidos_project",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/filterexpression": "(statuscode eq 445260001)",
+              "subscriptionRequest/runas": 3
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Get_Data": {
+          "actions": {
+            "List_rows": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "a5c1a06f-6378-40f9-bab4-af0653422705"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_legalundertakings",
+                  "$select": "leidos_legalundertakingid",
+                  "$filter": "(statuscode eq 445260009 and _leidos_project_value eq @{triggerOutputs()?['body/leidos_projectid']})"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "RecordCount": {
+              "runAfter": {
+                "List_rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "8ba386ec-e2b0-48ab-b68a-124cf0afa318"
+              },
+              "type": "Compose",
+              "inputs": "@length(outputs('List_rows')?['body/value'])"
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "6a63177d-7493-43bf-bc06-d3915809868d"
+          },
+          "type": "Scope"
+        },
+        "Condition": {
+          "actions": {
+            "Run_a_Child_Flow": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "292db5fb-b421-4232-bd24-fb89da1d7d1c"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "77cb3d9e-8f9f-ec11-b400-6045bd105a3f"
+                },
+                "body": {
+                  "text": "@triggerOutputs()?['body/_ownerid_value']",
+                  "text_1": "@triggerOutputs()?['body/leidos_projectid']"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Data": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "greaterOrEquals": [
+              "@outputs('RecordCount')",
+              1
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "bbd8cb71-7a9d-4831-9cef-934809addccc"
+          },
+          "type": "If"
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}
