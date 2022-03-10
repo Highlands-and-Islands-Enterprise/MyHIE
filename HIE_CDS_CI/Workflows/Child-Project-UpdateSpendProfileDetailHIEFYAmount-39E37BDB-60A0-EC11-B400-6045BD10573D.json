@@ -1,0 +1,154 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnProject"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "5e4ecafe-7059-4cbc-85a1-8e6344bff7f8"
+          },
+          "type": "Request",
+          "kind": "PowerAppV2",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "title": "ProjectID",
+                  "type": "string",
+                  "x-ms-dynamically-added": true,
+                  "description": "Please enter your input",
+                  "x-ms-content-hint": "TEXT"
+                }
+              },
+              "required": [
+                "text"
+              ]
+            }
+          }
+        }
+      },
+      "actions": {
+        "Get_Data": {
+          "actions": {
+            "List_rows": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "d8f5dc76-efeb-48c7-9619-dcade7c91626"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_spendprofiledetails",
+                  "fetchXml": "<fetch version=\"1.0\" output-format=\"xml-platform\" mapping=\"logical\" distinct=\"false\">\n  <entity name=\"leidos_spendprofiledetail\">\n    <attribute name=\"leidos_spendprofiledetailid\" />\n    <attribute name=\"leidos_totalforfy\" />\n    <filter type=\"and\">\n      <condition attribute=\"leidos_hiefinancialyearspendprofileamount\" operator=\"null\" />\n<condition attribute=\"leidos_totalforfy\" operator=\"gt\" value=\"0\" />\n    </filter>\n    <link-entity name=\"leidos_anticipatedspendprofile\" from=\"leidos_anticipatedspendprofileid\" to=\"leidos_parentspendprofile\" link-type=\"inner\" alias=\"ai\">\n      <link-entity name=\"leidos_project\" from=\"leidos_projectid\" to=\"leidos_parentproject\" link-type=\"inner\" alias=\"aj\">\n        <filter type=\"and\">\n          <condition attribute=\"leidos_projectid\" operator=\"eq\" uiname=\"Test\" uitype=\"leidos_project\" value=\"@{triggerBody()['text']}\" />\n        </filter>\n      </link-entity>\n    </link-entity>\n  </entity>\n</fetch>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Compose": {
+              "runAfter": {
+                "List_rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "14e78556-9daf-4096-87b2-7ff028fe41fb"
+              },
+              "type": "Compose",
+              "inputs": "@length(outputs('List_rows')?['body/value'])"
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "b4718eb7-424a-4dcd-97f6-913e7c84d161"
+          },
+          "type": "Scope"
+        },
+        "Respond_to_a_PowerApp_or_flow": {
+          "runAfter": {
+            "Loop_thru_Spend_Profile_Detail_and_populate_HIE_FY_Amount": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "f9842d2d-f241-450c-92f8-370a240fa5fc"
+          },
+          "type": "Response",
+          "kind": "PowerApp",
+          "inputs": {
+            "statusCode": 200,
+            "body": {},
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        },
+        "Loop_thru_Spend_Profile_Detail_and_populate_HIE_FY_Amount": {
+          "foreach": "@outputs('List_rows')?['body/value']",
+          "actions": {
+            "Update_a_row": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "c38b79e9-f52e-4c94-8582-cca214ac97fc"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_spendprofiledetails",
+                  "recordId": "@items('Loop_thru_Spend_Profile_Detail_and_populate_HIE_FY_Amount')?['leidos_spendprofiledetailid']",
+                  "item/leidos_hiefinancialyearspendprofileamount": "@items('Loop_thru_Spend_Profile_Detail_and_populate_HIE_FY_Amount')?['leidos_totalforfy']",
+                  "item/leidos_hietotalpopulated": true
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Data": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "66f293af-2501-4257-a5ea-da1c292a5fc7"
+          },
+          "type": "Foreach"
+        }
+      },
+      "outputs": {}
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

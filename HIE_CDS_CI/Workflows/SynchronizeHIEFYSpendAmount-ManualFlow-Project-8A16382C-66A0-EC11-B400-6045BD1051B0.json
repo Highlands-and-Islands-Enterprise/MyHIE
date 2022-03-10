@@ -1,0 +1,136 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataservice": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_sharedcommondataservice_55fe7"
+        },
+        "api": {
+          "name": "shared_commondataservice"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "Select_a_Project": {
+          "splitOn": "@triggerBody()['rows']",
+          "metadata": {
+            "operationMetadataId": "946302d9-c608-4809-a888-124b36a8fe3d"
+          },
+          "type": "Request",
+          "kind": "ApiConnection",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "boolean": {
+                        "title": "Yes/No",
+                        "type": "boolean",
+                        "x-ms-dynamically-added": true,
+                        "description": "Overwrite the HIE FY Spend Profile Amount ?",
+                        "x-ms-content-hint": "BOOLEAN"
+                      },
+                      "entity": {
+                        "type": "object",
+                        "properties": {
+                          "leidos_projectid": {
+                            "title": "Project",
+                            "type": "string",
+                            "format": "guid"
+                          }
+                        },
+                        "required": [
+                          "leidos_projectid"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "boolean",
+                      "entity"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "rows"
+              ]
+            },
+            "host": {
+              "connection": {
+                "name": "@parameters('$connections')['shared_commondataservice']['connectionId']"
+              }
+            },
+            "operationId": "GetOnNewItems_V2",
+            "parameters": {
+              "dataset": "default.cds",
+              "table": "leidos_projects"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Condition": {
+          "actions": {
+            "Run_a_Child_Flow": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "b7ed0533-982a-402d-8618-8091a3007a9c"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "866fc3dc-66a0-ec11-b400-6045bd10573d"
+                },
+                "body": {
+                  "text": "@triggerBody()?['entity']?['leidos_projectid']"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "expression": {
+            "equals": [
+              "@triggerBody()['boolean']",
+              "yes"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "64352142-37fc-4e9d-a8e2-8e412a5f3ec6"
+          },
+          "type": "If"
+        },
+        "Compose": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "d9736bd1-b23f-4682-ac52-9003ee8a1590"
+          },
+          "type": "Compose",
+          "inputs": "@triggerBody()['boolean']"
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}

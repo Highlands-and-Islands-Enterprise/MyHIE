@@ -124,6 +124,21 @@
             "operationMetadataId": "bbd8cb71-7a9d-4831-9cef-934809addccc"
           },
           "type": "If"
+        },
+        "Run_a_Child_Flow_2": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "e9223b77-7a15-4e2f-b01f-88410b552655"
+          },
+          "type": "Workflow",
+          "inputs": {
+            "host": {
+              "workflowReferenceName": "39e37bdb-60a0-ec11-b400-6045bd10573d"
+            },
+            "body": {
+              "text": "@triggerOutputs()?['body/leidos_projectid']"
+            }
+          }
         }
       }
     }

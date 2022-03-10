@@ -10,10 +10,10 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_spendprofiledetailid">
-          <cell name="leidos_hiefinancialyear" width="50" />
+          <cell name="leidos_hiefinancialyear" width="156" />
           <cell name="leidos_apr" width="60" />
-          <cell name="leidos_may" width="60" />
-          <cell name="leidos_june" width="60" />
+          <cell name="leidos_may" width="76" />
+          <cell name="leidos_june" width="71" />
           <cell name="leidos_july" width="60" />
           <cell name="leidos_aug" width="60" />
           <cell name="leidos_sept" width="60" />
@@ -25,8 +25,6 @@
           <cell name="leidos_mar" width="60" />
           <cell name="leidos_slippageamount" width="100" />
           <cell name="leidos_nonspendamount" width="100" />
-          <cell name="leidos_totalforfy" width="100" />
-          <cell name="statuscode" width="100" />
         </row>
       </grid>
     </layoutxml>
@@ -34,21 +32,24 @@
     <fetchxml>
       <fetch count="50">
         <entity name="leidos_spendprofiledetail">
+          <attribute name="leidos_spendprofiledetailid" />
+          <attribute name="leidos_hiefinancialyear" />
           <attribute name="leidos_jan" />
           <attribute name="leidos_feb" />
           <attribute name="leidos_mar" />
           <attribute name="leidos_apr" />
           <attribute name="leidos_may" />
-          <attribute name="leidos_hiefinancialyear" />
           <attribute name="leidos_june" />
-          <attribute name="leidos_totalforfy" />
+          <attribute name="leidos_july" />
+          <attribute name="leidos_aug" />
           <attribute name="leidos_sept" />
           <attribute name="leidos_oct" />
           <attribute name="leidos_nov" />
-          <attribute name="leidos_july" />
           <attribute name="leidos_dec" />
-          <attribute name="leidos_aug" />
-          <attribute name="leidos_spendprofiledetailid" />
+          <attribute name="leidos_totalforfy" />
+          <attribute name="leidos_hiefinancialyearspendprofileamount" />
+          <attribute name="leidos_nonspendamount" />
+          <attribute name="leidos_slippageamount" />
           <filter type="and">
             <filter type="or">
               <condition attribute="statecode" operator="eq" value="0" />
@@ -56,13 +57,6 @@
             </filter>
           </filter>
           <order attribute="leidos_hiefinancialyear" descending="false" />
-          <attribute name="leidos_nonspendamount" />
-          <attribute name="leidos_slippageamount" />
-          <link-entity name="leidos_anticipatedspendprofile" from="leidos_anticipatedspendprofileid" to="leidos_parentspendprofile">
-            <link-entity name="leidos_project" from="leidos_projectid" to="leidos_parentproject">
-              <attribute name="statuscode" alias="statuscode" />
-            </link-entity>
-          </link-entity>
         </entity>
       </fetch>
     </fetchxml>

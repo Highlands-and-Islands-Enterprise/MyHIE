@@ -1,0 +1,144 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataservice_1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "leidos_ConnCDS"
+        },
+        "api": {
+          "name": "shared_commondataservice"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "splitOn": "@triggerBody()['rows']",
+          "metadata": {
+            "operationMetadataId": "dd516c64-d1ab-4ef8-9ee6-8ffe6aeb3f99"
+          },
+          "type": "Request",
+          "kind": "ApiConnection",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "text": {
+                        "title": "Run Process",
+                        "type": "string",
+                        "x-ms-dynamically-added": true,
+                        "description": "Please Select an option from the drop down",
+                        "x-ms-content-hint": "TEXT",
+                        "enum": [
+                          "Update the HIE FY Amount for all Spend Profile Detail Records ",
+                          "Cancel"
+                        ]
+                      },
+                      "entity": {
+                        "type": "object",
+                        "properties": {
+                          "leidos_projectid": {
+                            "title": "Project",
+                            "type": "string",
+                            "format": "guid"
+                          }
+                        },
+                        "required": [
+                          "leidos_projectid"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "text",
+                      "entity"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "rows"
+              ]
+            },
+            "host": {
+              "connection": {
+                "name": "@parameters('$connections')['shared_commondataservice_1']['connectionId']"
+              }
+            },
+            "operationId": "GetOnNewItems_V2",
+            "parameters": {
+              "dataset": "default.cds",
+              "table": "leidos_projects"
+            }
+          }
+        }
+      },
+      "actions": {
+        "Condition": {
+          "actions": {
+            "Run_a_Child_Flow": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "fb7282e9-1c42-46ef-8dba-6d87868243eb"
+              },
+              "type": "Workflow",
+              "inputs": {
+                "host": {
+                  "workflowReferenceName": "866fc3dc-66a0-ec11-b400-6045bd10573d"
+                },
+                "body": {
+                  "text": "@triggerBody()?['entity']?['leidos_projectid']"
+                }
+              }
+            }
+          },
+          "runAfter": {},
+          "else": {
+            "actions": {
+              "Terminate": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "580f2668-162e-46f9-a268-7e6ec998ba1b"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Succeeded"
+                }
+              }
+            }
+          },
+          "expression": {
+            "not": {
+              "equals": [
+                "@triggerBody()['text']",
+                "Cancel"
+              ]
+            }
+          },
+          "metadata": {
+            "operationMetadataId": "f8498d9c-f8a4-4336-9546-6f7e82ce3e21"
+          },
+          "type": "If"
+        }
+      }
+    }
+  },
+  "schemaVersion": "1.0.0.0"
+}
