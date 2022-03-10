@@ -26,6 +26,9 @@
       },
       "triggers": {
         "Claim_Change_of_VAT": {
+          "metadata": {
+            "operationMetadataId": "616fc154-a2b5-4f44-ad8a-fa02b6aa255a"
+          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
@@ -38,7 +41,8 @@
               "subscriptionRequest/entityname": "leidos_claim",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "leidos_acceptvatchange",
-              "subscriptionRequest/filterexpression": "(leidos_hastherebeenanychangetoyourvatstatus eq true and leidos_acceptvatchange eq true and leidos_vatnumber ne null and leidos_vatregistered eq true)"
+              "subscriptionRequest/filterexpression": "(leidos_hastherebeenanychangetoyourvatstatus eq true and leidos_acceptvatchange eq true and leidos_vatnumber ne null and leidos_vatregistered eq true)",
+              "subscriptionRequest/name": "2f8f6657-9e25-eb11-a813-0022483fae82"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -47,6 +51,9 @@
       "actions": {
         "Update_Account": {
           "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "97d47585-992d-49a9-98ee-1ca0ce6c372e"
+          },
           "type": "OpenApiConnection",
           "inputs": {
             "host": {

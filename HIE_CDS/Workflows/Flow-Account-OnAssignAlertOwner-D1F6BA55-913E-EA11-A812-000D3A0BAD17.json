@@ -35,6 +35,9 @@
       },
       "triggers": {
         "Account_-_On_Assign": {
+          "metadata": {
+            "operationMetadataId": "a199eeb9-b5ea-442e-b608-1e4997eb9b40"
+          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
@@ -46,7 +49,8 @@
               "subscriptionRequest/message": 3,
               "subscriptionRequest/entityname": "account",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "ownerid"
+              "subscriptionRequest/filteringattributes": "ownerid",
+              "subscriptionRequest/name": "d1f6ba55-913e-ea11-a812-000d3a0bad17"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -55,6 +59,9 @@
       "actions": {
         "Email_Address_": {
           "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "733fda52-1e31-4242-a8f1-0c359801a699"
+          },
           "type": "InitializeVariable",
           "inputs": {
             "variables": [
@@ -75,6 +82,9 @@
                     "List_Team_Memebers": [
                       "Succeeded"
                     ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "dad40ddf-0317-42b9-ab0b-03c28d188624"
                   },
                   "type": "ParseJson",
                   "inputs": {
@@ -128,6 +138,9 @@
                           "Succeeded"
                         ]
                       },
+                      "metadata": {
+                        "operationMetadataId": "2f9a8cbb-4dc4-4f2c-95e5-bf3987d8a1db"
+                      },
                       "type": "AppendToStringVariable",
                       "inputs": {
                         "name": "Email Addresses",
@@ -136,6 +149,9 @@
                     },
                     "Get_a_record": {
                       "runAfter": {},
+                      "metadata": {
+                        "operationMetadataId": "f9643c7a-0b9c-4043-919e-d26c37ef6063"
+                      },
                       "type": "OpenApiConnection",
                       "inputs": {
                         "host": {
@@ -156,6 +172,9 @@
                       "Succeeded"
                     ]
                   },
+                  "metadata": {
+                    "operationMetadataId": "ed9ec86d-cd8b-4b73-85f0-9003f7d0d931"
+                  },
                   "type": "Foreach"
                 },
                 "Email_Address_String": {
@@ -164,11 +183,17 @@
                       "Succeeded"
                     ]
                   },
+                  "metadata": {
+                    "operationMetadataId": "7091bd59-0bee-49fd-a816-7b931996beb2"
+                  },
                   "type": "Compose",
                   "inputs": "@variables('Email Addresses')"
                 },
                 "List_Team_Memebers": {
                   "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "cf4f712f-800b-4273-8450-c9034a27dbcb"
+                  },
                   "type": "OpenApiConnection",
                   "inputs": {
                     "host": {
@@ -196,6 +221,9 @@
                         "Succeeded"
                       ]
                     },
+                    "metadata": {
+                      "operationMetadataId": "e1fafa4f-a82a-4514-af8c-c7e591266ac8"
+                    },
                     "type": "SetVariable",
                     "inputs": {
                       "name": "Email Addresses",
@@ -204,6 +232,9 @@
                   },
                   "Get_Primary_User": {
                     "runAfter": {},
+                    "metadata": {
+                      "operationMetadataId": "4bf3e03f-beb8-41b4-871c-33fa1b4adedf"
+                    },
                     "type": "OpenApiConnection",
                     "inputs": {
                       "host": {
@@ -226,10 +257,16 @@
                   "@null"
                 ]
               },
+              "metadata": {
+                "operationMetadataId": "68047647-5db4-40d9-8548-e73e9aa7c3a1"
+              },
               "type": "If"
             },
             "Get_the_Team_Record": {
               "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "b3d2a758-5acc-458e-a790-b14883d0d0bc"
+              },
               "type": "OpenApiConnection",
               "inputs": {
                 "host": {
@@ -258,6 +295,9 @@
                     "Succeeded"
                   ]
                 },
+                "metadata": {
+                  "operationMetadataId": "090fcc10-471a-429c-aaea-5fe34038b663"
+                },
                 "type": "SetVariable",
                 "inputs": {
                   "name": "Email Addresses",
@@ -266,6 +306,9 @@
               },
               "Get_Owner_Users_Record": {
                 "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "f8671432-22c3-44bf-8b0e-e8ed3cb60f08"
+                },
                 "type": "OpenApiConnection",
                 "inputs": {
                   "host": {
@@ -285,6 +328,9 @@
                   "Get_Owner_Users_Record": [
                     "Succeeded"
                   ]
+                },
+                "metadata": {
+                  "operationMetadataId": "c8e7112a-5fe3-4135-a8f4-1eeb56e6bd58"
                 },
                 "type": "OpenApiConnection",
                 "inputs": {
@@ -309,6 +355,9 @@
               "team"
             ]
           },
+          "metadata": {
+            "operationMetadataId": "56b406f6-d465-4898-a448-e67d2ae71e98"
+          },
           "type": "If"
         },
         "Send_an_email_(V2)": {
@@ -316,6 +365,9 @@
             "Condition": [
               "Succeeded"
             ]
+          },
+          "metadata": {
+            "operationMetadataId": "960e1edd-9d9c-49e6-870c-8742d6dc95da"
           },
           "type": "OpenApiConnection",
           "inputs": {
@@ -336,6 +388,9 @@
           "actions": {
             "Get_Account": {
               "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "2e997b6c-0261-4287-bab8-703b8ed15422"
+              },
               "type": "OpenApiConnection",
               "inputs": {
                 "host": {
@@ -356,6 +411,9 @@
                   "Succeeded"
                 ]
               },
+              "metadata": {
+                "operationMetadataId": "4c61f0a5-02ce-4d91-83c0-88068795b62c"
+              },
               "type": "Compose",
               "inputs": "@outputs('Get_Account')?['body/_ownerid_value@Microsoft.Dynamics.CRM.lookuplogicalname']"
             },
@@ -364,6 +422,9 @@
                 "Owner_Type": [
                   "Succeeded"
                 ]
+              },
+              "metadata": {
+                "operationMetadataId": "89089f28-660b-481b-8bd0-2c451def1514"
               },
               "type": "Workflow",
               "inputs": {
@@ -381,6 +442,9 @@
             "Email_Address_": [
               "Succeeded"
             ]
+          },
+          "metadata": {
+            "operationMetadataId": "32b74fe3-fe66-4849-81c8-0cb595b87d69"
           },
           "type": "Scope"
         }
