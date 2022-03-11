@@ -94,7 +94,7 @@
               ],
               "WebhookApprovalCreationInput/title": "Request for Pipeline Decision for @{outputs('Get_Account_')?['body/name']}   ",
               "WebhookApprovalCreationInput/assignedTo": "@{variables('Delegated Authority Email')};",
-              "WebhookApprovalCreationInput/details": "### ISA Approval request for Pipeline Decision for @{triggerOutputs()?['body/leidos_name']}  ###\n- Client Name : @{outputs('Get_Account_')?['body/name']}\n- Project name : @{triggerOutputs()?['body/leidos_name']}\n- Anticipated total project costs : £@{triggerOutputs()?['body/leidos_anticipatedprojectcost']}\n- Anticipated HIE gross funding: £@{triggerOutputs()?['body/leidos_anticipatedprojectfunding']}\n- ISA Document :  [Document Link ](@{triggerOutputs()?['body/leidos_initialstrategicassessmentlink']})\n- Recommendation: @{if(triggerOutputs()?['body/leidos_recommendation'],'Approve','Reject')}\n",
+              "WebhookApprovalCreationInput/details": "### ISA Approval request for Pipeline Decision for @{triggerOutputs()?['body/leidos_name']}  ###\n- Client Name : @{outputs('Get_Account_')?['body/name']}\n- Project name : @{triggerOutputs()?['body/leidos_name']}\n@{variables('AnticipatedCost')}\n@{variables('Anticipated Funding')}\n- ISA Document :  [Document Link ](@{triggerOutputs()?['body/leidos_initialstrategicassessmentlink']})\n- Recommendation: @{if(triggerOutputs()?['body/leidos_recommendation'],'Approve','Reject')}\n",
               "WebhookApprovalCreationInput/itemLink": "@outputs('Get_Record_URL')?['Body']?['entityurl']",
               "WebhookApprovalCreationInput/itemLinkDescription": "@triggerOutputs()?['body/leidos_name']",
               "WebhookApprovalCreationInput/requestor": "@outputs('Get_Submitted_By')?['body/internalemailaddress']",
@@ -418,6 +418,36 @@
                       "name": "Delegated Authority Email",
                       "value": "@outputs('Get_a_record')?['body/internalemailaddress']"
                     }
+                  },
+                  "Set_variable_2": {
+                    "runAfter": {
+                      "Set_variable": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "51a00c16-b90c-45de-8971-aa41f162be24"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "AnticipatedCost",
+                      "value": "- Anticipated total project costs : £@{triggerOutputs()?['body/leidos_anticipatedprojectcost']}"
+                    }
+                  },
+                  "Set_variable_3": {
+                    "runAfter": {
+                      "Set_variable_2": [
+                        "Succeeded"
+                      ]
+                    },
+                    "metadata": {
+                      "operationMetadataId": "a211c79f-327c-494c-8aff-9b84c94f1ce6"
+                    },
+                    "type": "SetVariable",
+                    "inputs": {
+                      "name": "Anticipated Funding",
+                      "value": "- Anticipated HIE gross funding: £@{triggerOutputs()?['body/leidos_anticipatedprojectfunding']}"
+                    }
                   }
                 }
               },
@@ -434,7 +464,7 @@
             }
           },
           "runAfter": {
-            "DA_Email": [
+            "Cost_String": [
               "Succeeded"
             ]
           },
@@ -582,6 +612,46 @@
             "operationMetadataId": "ac237752-c66a-45a3-8649-e2a960f62552"
           },
           "type": "Scope"
+        },
+        "Cost_String": {
+          "runAfter": {
+            "Funding_String": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "8e680d24-1d41-4840-baca-e3f76fe6fc26"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "AnticipatedCost",
+                "type": "string",
+                "value": "@{null}"
+              }
+            ]
+          }
+        },
+        "Funding_String": {
+          "runAfter": {
+            "DA_Email": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "35d4af61-3de1-4c82-a089-a4fd3b51790e"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "Anticipated Funding",
+                "type": "string",
+                "value": "@{null}"
+              }
+            ]
+          }
         }
       },
       "outputs": {}

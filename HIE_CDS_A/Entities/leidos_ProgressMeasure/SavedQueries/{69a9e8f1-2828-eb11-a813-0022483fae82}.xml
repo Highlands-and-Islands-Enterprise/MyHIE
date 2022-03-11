@@ -10,10 +10,10 @@
     <layoutxml>
       <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
         <row name="result" id="leidos_progressmeasureid">
-          <cell name="leidos_name" width="100" />
-          <cell name="leidos_outputname" width="100" />
-          <cell name="leidos_expectedoutputquantity" width="100" />
-          <cell name="leidos_duedate" width="100" />
+          <cell name="leidos_name" width="299" />
+          <cell name="a_8323769492dc494a99e693576814ffff.leidos_output" width="100" />
+          <cell name="a_8323769492dc494a99e693576814ffff.leidos_expectedhieoutputquantity" width="100" />
+          <cell name="a_8323769492dc494a99e693576814ffff.leidos_actualduedate" width="100" />
           <cell name="leidos_progress" width="100" />
           <cell name="leidos_notes" width="100" />
           <cell name="leidos_date" width="100" />
@@ -34,9 +34,11 @@
             </filter>
           </link-entity>
           <attribute name="leidos_name" />
-          <attribute name="leidos_outputname" />
-          <attribute name="leidos_expectedoutputquantity" />
-          <attribute name="leidos_duedate" />
+          <link-entity alias="a_8323769492dc494a99e693576814ffff" name="leidos_projectmeasure" to="leidos_parentmeasure" from="leidos_projectmeasureid" link-type="outer" visible="false">
+            <attribute name="leidos_expectedhieoutputquantity" />
+            <attribute name="leidos_actualduedate" />
+            <attribute name="leidos_output" />
+          </link-entity>
         </entity>
       </fetch>
     </fetchxml>
