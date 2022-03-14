@@ -49,7 +49,8 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "leidos_transaction",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filterexpression": "(_leidos_loanreceipt_value ne null)",
+              "subscriptionRequest/filteringattributes": "statuscode",
+              "subscriptionRequest/filterexpression": "(_leidos_loanreceipt_value ne null and (statuscode eq 100000006 or statuscode eq 100000005))",
               "subscriptionRequest/runas": 3
             },
             "authentication": "@parameters('$authentication')"
@@ -58,93 +59,17 @@
       },
       "actions": {
         "Switch": {
-          "runAfter": {},
+          "runAfter": {
+            "Get_Data": [
+              "Succeeded"
+            ]
+          },
           "cases": {
             "Paid_in_Coda": {
               "case": 100000005,
               "actions": {
-                "Get_Loan": {
-                  "runAfter": {},
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "leidos_loans",
-                      "recordId": "@triggerOutputs()?['body/_leidos_loan_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
-                },
-                "Get_Project": {
-                  "runAfter": {
-                    "Get_Loan": [
-                      "Succeeded"
-                    ]
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "leidos_projects",
-                      "recordId": "@triggerOutputs()?['body/_leidos_project_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
-                },
-                "Get_Account": {
-                  "runAfter": {
-                    "Get_Project": [
-                      "Succeeded"
-                    ]
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps_1",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "accounts",
-                      "recordId": "@outputs('Get_Project')?['body/_leidos_parentaccount_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
-                },
-                "Get_Primary_Contact": {
-                  "runAfter": {
-                    "Get_Account": [
-                      "Succeeded"
-                    ]
-                  },
-                  "type": "OpenApiConnection",
-                  "inputs": {
-                    "host": {
-                      "connectionName": "shared_commondataserviceforapps",
-                      "operationId": "GetItem",
-                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
-                    },
-                    "parameters": {
-                      "entityName": "contacts",
-                      "recordId": "@outputs('Get_Account')?['body/_primarycontactid_value']"
-                    },
-                    "authentication": "@parameters('$authentication')"
-                  }
-                },
                 "Create_Email_Message_to_Primary_Contact": {
-                  "runAfter": {
-                    "Get_Primary_Contact": [
-                      "Succeeded"
-                    ]
-                  },
+                  "runAfter": {},
                   "type": "OpenApiConnection",
                   "inputs": {
                     "host": {
@@ -185,7 +110,7 @@
                       "entityName": "emails",
                       "actionName": "Microsoft.Dynamics.CRM.SendEmail",
                       "recordId": "@outputs('Create_Email_Message_to_Primary_Contact')?['body/activityid']",
-                      "item/IssueSend": false
+                      "item/IssueSend": true
                     },
                     "authentication": "@parameters('$authentication')"
                   }
@@ -195,6 +120,34 @@
             "Failed_to_log_in_Coda": {
               "case": 100000006,
               "actions": {
+                "Create_Email_Message": {
+                  "runAfter": {
+                    "Create_Task": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "CreateRecord",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "emails",
+                      "item/activitypointer_activity_parties": [
+                        {
+                          "participationtypemask": 2,
+                          "partyid@odata.bind": "/systemusers(@{outputs('Get_Project')?['body/_ownerid_value']})"
+                        }
+                      ],
+                      "item/description": "Loan Receipt has failed to submit\nError Code:  @{triggerOutputs()?['body/leidos_codafailure']}",
+                      "item/regardingobjectid_leidos_loanreceipt_email@odata.bind": "/leidos_loanreceipts(@{triggerOutputs()?['body/_leidos_loanreceipt_value']})",
+                      "item/subject": "@{outputs('Get_Account')?['body/name']} : @{outputs('Get_Project')?['body/leidos_name']}: @{outputs('Get_Loan')?['body/leidos_loanreference']}"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
                 "Create_Task": {
                   "runAfter": {},
                   "type": "OpenApiConnection",
@@ -211,6 +164,28 @@
                       "item/ownerid_task@odata.bind": "/systemusers(@{triggerOutputs()?['body/_ownerid_value']})",
                       "item/prioritycode": 2,
                       "item/regardingobjectid_leidos_loanreceipt_task@odata.bind": "/leidos_loanreceipts(@{triggerOutputs()?['body/_leidos_loanreceipt_value']})"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Perform_a_bound_action_2": {
+                  "runAfter": {
+                    "Create_Email_Message": [
+                      "Succeeded"
+                    ]
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps_1",
+                      "operationId": "PerformBoundAction",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "emails",
+                      "actionName": "Microsoft.Dynamics.CRM.SendEmail",
+                      "recordId": "@outputs('Create_Email_Message')?['body/activityid']",
+                      "item/IssueSend": true
                     },
                     "authentication": "@parameters('$authentication')"
                   }
@@ -234,6 +209,103 @@
             "operationMetadataId": "2fe17435-d3fc-4b64-80ee-12be1d517fa7"
           },
           "type": "Switch"
+        },
+        "Get_Data": {
+          "actions": {
+            "Get_Loan": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "6d152418-f149-4970-aa5e-660729b95fc2"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_loans",
+                  "recordId": "@triggerOutputs()?['body/_leidos_loan_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Project": {
+              "runAfter": {
+                "Get_Loan": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e5c007a3-aa2f-466b-a1d1-7faa6d51d670"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projects",
+                  "recordId": "@triggerOutputs()?['body/_leidos_project_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Account": {
+              "runAfter": {
+                "Get_Project": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "811bd44f-c483-4de3-b0ad-4a2bcc3b2250"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps_1",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "accounts",
+                  "recordId": "@outputs('Get_Project')?['body/_leidos_parentaccount_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_Primary_Contact": {
+              "runAfter": {
+                "Get_Account": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "4c8f618f-9770-4507-a188-939bfdc6558f"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@outputs('Get_Account')?['body/_primarycontactid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "b8b7f1cd-2041-406c-8996-41ee267ffe22"
+          },
+          "type": "Scope"
         }
       }
     }

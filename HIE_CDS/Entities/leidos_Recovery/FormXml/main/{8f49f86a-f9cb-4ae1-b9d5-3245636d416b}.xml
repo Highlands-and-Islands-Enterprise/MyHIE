@@ -5,7 +5,7 @@
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form headerdensity="HighWithControls">
+    <form headerdensity="HighWithControls" shownavigationbar="true" showImage="false" maxWidth="1920">
       <tabs>
         <tab verticallayout="true" id="{c0645aa5-b17d-40bb-a1a8-8afefb7495bb}" IsUserDefined="1" name="General">
           <labels>
@@ -53,7 +53,7 @@
                     </row>
                   </rows>
                 </section>
-                <section name="RecoveryProfile" id="a2a1957e-f5c9-4dc9-9d50-512800ce513a" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                <section name="recoveryprofilelocked" id="a2a1957e-f5c9-4dc9-9d50-512800ce513a" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
                   <labels>
                     <label description="Recovery Profile" languagecode="1033" />
                   </labels>
@@ -84,13 +84,58 @@
                         </control>
                       </cell>
                     </row>
-                    <row></row>
                     <row />
                     <row />
                     <row />
                     <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="recoveryprofileopen" id="dad9ea2d-9150-4638-9294-975c662c2d20" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Recovery Profile" languagecode="1033" />
+                  </labels>
+                  <rows>
                     <row>
-                      <cell id="{b287efc8-9f52-4fdc-850c-d4760ceb663c}" locklevel="0">
+                      <cell locklevel="0" id="{dd3c2b7e-d4fd-4937-b20d-94f474557281}" rowspan="6" colspan="1" auto="false" showlabel="false">
+                        <labels>
+                          <label description="New SG control 1647258018515" languagecode="1033" />
+                        </labels>
+                        <control id="Subgrid_2" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" indicationOfSubgrid="true" uniqueid="{529e02ad-9a2e-15ca-ec30-510bed54351e}">
+                          <parameters>
+                            <TargetEntityType>leidos_spendprofiledetail</TargetEntityType>
+                            <ViewId>{BE23EDFE-77A3-EC11-983F-6045BD0E69D7}</ViewId>
+                            <ViewIds>{059910DD-566C-4912-AC13-32EEA6B9F534},{BE23EDFE-77A3-EC11-983F-6045BD0E69D7}</ViewIds>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <RelationshipName>leidos_SpendProfileDetail_ParentRecovery_</RelationshipName>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                            <IsUserView>false</IsUserView>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="General_section_5" id="603d9227-65c8-4c11-be4a-d08038978137" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{b287efc8-9f52-4fdc-850c-d4760ceb663c}" locklevel="0" colspan="1" rowspan="1">
                         <labels>
                           <label description="Total Amount Profiled" languagecode="1033" />
                         </labels>
@@ -194,24 +239,54 @@
           </NavBarArea>
         </NavBarAreas>
       </Navigation>
-      <formLibraries>
-        <Library name="north52_/javascript/n52.json2" libraryUniqueId="33eb9ca2-16fd-4298-aba2-02ebd6b80a63" />
-        <Library name="north52_/javascript/n52.rest" libraryUniqueId="ddd4836c-96f0-43aa-bc4f-1f27d5fcbf61" />
-        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0fb3f6a1-3a4f-43e6-9a08-054fd3ab2810" />
-      </formLibraries>
-      <events>
-        <event name="onchange" application="false" active="false" attribute="leidos_amount">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="13d9dcf3-2e84-4f32-aa47-f44a70bf695d" enabled="true" parameters="'hzE:*:Update::0:217890000:217890000:217890000:217890000','gHT:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
-        <event name="onload" application="false" active="false">
-          <Handlers>
-            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="11ee5bfe-d7c9-4640-8639-4358b26a88f9" enabled="true" parameters="'hzE:*:Update::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
-          </Handlers>
-        </event>
-      </events>
       <controlDescriptions>
+        <controlDescription forControl="{529e02ad-9a2e-15ca-ec30-510bed54351e}">
+          <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" formFactor="0">
+            <parameters />
+          </customControl>
+          <customControl formFactor="1" name="MscrmControls.Grid.GridControl">
+            <parameters>
+              <data-set name="Grid">
+                <ViewId>{BE23EDFE-77A3-EC11-983F-6045BD0E69D7}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>leidos_SpendProfileDetail_ParentRecovery_</RelationshipName>
+                <TargetEntityType>leidos_spendprofiledetail</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{059910DD-566C-4912-AC13-32EEA6B9F534},{BE23EDFE-77A3-EC11-983F-6045BD0E69D7}</FilteredViewIds>
+              </data-set>
+              <EnableGroupBy static="true" type="Enum">yes</EnableGroupBy>
+              <EnableEditing static="true" type="Enum">yes</EnableEditing>
+              <ReflowBehavior static="true" type="Enum">GridOnly</ReflowBehavior>
+              <ListLayoutDirection static="true" type="Enum">Vertical</ListLayoutDirection>
+              <EnableSubGridAutoCollapse static="true" type="Enum">false</EnableSubGridAutoCollapse>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <HideNestedGridColumnHeader static="true" type="Enum">no</HideNestedGridColumnHeader>
+              <EnableJumpBar static="true" type="Enum">yes</EnableJumpBar>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="MscrmControls.Grid.GridControl">
+            <parameters>
+              <data-set name="Grid">
+                <ViewId>{BE23EDFE-77A3-EC11-983F-6045BD0E69D7}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>leidos_SpendProfileDetail_ParentRecovery_</RelationshipName>
+                <TargetEntityType>leidos_spendprofiledetail</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{059910DD-566C-4912-AC13-32EEA6B9F534},{BE23EDFE-77A3-EC11-983F-6045BD0E69D7}</FilteredViewIds>
+              </data-set>
+              <EnableGroupBy static="true" type="Enum">yes</EnableGroupBy>
+              <EnableEditing static="true" type="Enum">yes</EnableEditing>
+              <ReflowBehavior static="true" type="Enum">GridOnly</ReflowBehavior>
+              <ListLayoutDirection static="true" type="Enum">Vertical</ListLayoutDirection>
+              <EnableSubGridAutoCollapse static="true" type="Enum">false</EnableSubGridAutoCollapse>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <HideNestedGridColumnHeader static="true" type="Enum">no</HideNestedGridColumnHeader>
+              <EnableJumpBar static="true" type="Enum">yes</EnableJumpBar>
+            </parameters>
+          </customControl>
+        </controlDescription>
         <controlDescription forControl="{60debb5a-44c5-de12-a9a1-cc7947807c63}">
           <customControl id="{E7A81278-8635-4D9E-8D4D-59480B391C5B}" formFactor="0">
             <parameters />
@@ -260,9 +335,32 @@
           </customControl>
         </controlDescription>
       </controlDescriptions>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="leidos_amount">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="13d9dcf3-2e84-4f32-aa47-f44a70bf695d" enabled="true" parameters="'hzE:*:Update::0:217890000:217890000:217890000:217890000','gHT:*:Create::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="11ee5bfe-d7c9-4640-8639-4358b26a88f9" enabled="true" parameters="'hzE:*:Update::0:217890000:217890000:217890000:217890000','sbI:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onrecordselect" application="false" active="false" relationship="" control="Subgrid_1">
+          <Handlers>
+            <Handler functionName="setPastFieldsDisabled" libraryName="leidos_SpendProfile" handlerUniqueId="{89e809c9-4cd1-a7cc-873e-49d56214154d}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
       <DisplayConditions Order="0" FallbackForm="true">
         <Everyone />
       </DisplayConditions>
+      <formLibraries>
+        <Library name="leidos_SpendProfile" libraryUniqueId="{8d4ee584-5cb0-ddc7-8257-6870e2ea0097}" />
+        <Library name="north52_/javascript/n52.json2" libraryUniqueId="049b0ed8-2974-4712-b893-559176efd341" />
+        <Library name="north52_/javascript/n52.rest" libraryUniqueId="8155e8c7-e6ab-4ef1-8f2b-65c7546686da" />
+        <Library name="north52_/javascript/n52.clientside" libraryUniqueId="b433cbdf-a458-42b6-b09a-dd31ca51de72" />
+      </formLibraries>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

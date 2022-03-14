@@ -50,7 +50,7 @@
               "subscriptionRequest/entityname": "leidos_transaction",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "statuscode",
-              "subscriptionRequest/filterexpression": "(_leidos_claimadjustment_value ne null)",
+              "subscriptionRequest/filterexpression": "(_leidos_claimadjustment_value ne null  and (statuscode eq 100000006 or statuscode eq 100000005))",
               "subscriptionRequest/runas": 3
             },
             "authentication": "@parameters('$authentication')"
@@ -186,7 +186,7 @@
                       "entityName": "emails",
                       "actionName": "Microsoft.Dynamics.CRM.SendEmail",
                       "recordId": "@outputs('Create_Email_Message_to_Primary_Contact')?['body/activityid']",
-                      "item/IssueSend": false
+                      "item/IssueSend": true
                     },
                     "authentication": "@parameters('$authentication')"
                   }
