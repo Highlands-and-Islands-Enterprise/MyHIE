@@ -26,6 +26,9 @@
       },
       "triggers": {
         "On_Create_or_Update_Email_Address": {
+          "metadata": {
+            "operationMetadataId": "31536c03-744b-4960-972a-d46b5701bbc6"
+          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
@@ -37,7 +40,8 @@
               "subscriptionRequest/message": 4,
               "subscriptionRequest/entityname": "leidos_enquiry",
               "subscriptionRequest/scope": 4,
-              "subscriptionRequest/filteringattributes": "leidos_emailaddress"
+              "subscriptionRequest/filteringattributes": "leidos_emailaddress",
+              "subscriptionRequest/name": "2d70f9b6-2b3c-ea11-a812-000d3a0bad17"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -48,6 +52,9 @@
           "actions": {
             "List_of_Contacts_with_Email_Address": {
               "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "535a52bc-bb74-42e0-8861-e74868b4465b"
+              },
               "type": "OpenApiConnection",
               "inputs": {
                 "host": {
@@ -67,6 +74,9 @@
                 "List_of_Contacts_with_Email_Address": [
                   "Succeeded"
                 ]
+              },
+              "metadata": {
+                "operationMetadataId": "e2d6d65f-2655-4cf1-884c-3a2bfcc89932"
               },
               "type": "Compose",
               "inputs": "@length(outputs('List_of_Contacts_with_Email_Address')?['body/value'])"
@@ -157,6 +167,9 @@
                 "actions": {}
               },
               "expression": "@outputs('CountofRows')",
+              "metadata": {
+                "operationMetadataId": "2442b9bc-5550-418f-adc4-bd57123394d0"
+              },
               "type": "Switch"
             }
           },
@@ -178,6 +191,9 @@
                 ]
               }
             ]
+          },
+          "metadata": {
+            "operationMetadataId": "da0bafd1-40f3-4205-a45b-8a7fd288927a"
           },
           "type": "If"
         }

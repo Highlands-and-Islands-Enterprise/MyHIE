@@ -26,6 +26,9 @@
       },
       "triggers": {
         "Enquiry_-_On_Progressed": {
+          "metadata": {
+            "operationMetadataId": "e19db129-549b-4cdf-a417-1f7d811e6258"
+          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
@@ -38,7 +41,8 @@
               "subscriptionRequest/entityname": "leidos_enquiry",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "statecode",
-              "subscriptionRequest/filterexpression": "statuscode eq 2 and _leidos_account_value ne null and _leidos_contact_value ne null"
+              "subscriptionRequest/filterexpression": "statuscode eq 2 and _leidos_account_value ne null and _leidos_contact_value ne null",
+              "subscriptionRequest/name": "53ab298d-1a3d-ea11-a812-000d3a0bad17"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -47,6 +51,9 @@
       "actions": {
         "Get_Account": {
           "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "c0124a00-f31e-43ee-84a9-bf3c89a48305"
+          },
           "type": "OpenApiConnection",
           "inputs": {
             "host": {
@@ -63,6 +70,9 @@
         },
         "Get_Contact": {
           "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "2ebeab6a-a85e-442a-9ddc-fcd052ac9df3"
+          },
           "type": "OpenApiConnection",
           "inputs": {
             "host": {
@@ -85,6 +95,9 @@
             "Get_Contact": [
               "Succeeded"
             ]
+          },
+          "metadata": {
+            "operationMetadataId": "4b97465c-755d-47b2-9e53-0682d28f68b7"
           },
           "type": "OpenApiConnection",
           "inputs": {

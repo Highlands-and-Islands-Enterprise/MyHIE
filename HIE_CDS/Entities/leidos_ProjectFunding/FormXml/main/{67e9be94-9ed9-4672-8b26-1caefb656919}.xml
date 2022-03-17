@@ -84,6 +84,7 @@
                             <DisableViewPicker>true</DisableViewPicker>
                             <DefaultViewId>{CD7B75A7-4890-4690-BAAA-0A3217C6814F}</DefaultViewId>
                             <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{CD7B75A7-4890-4690-BAAA-0A3217C6814F}</AvailableViewIds>
                           </parameters>
                         </control>
                       </cell>
@@ -110,6 +111,7 @@
                             <DependentAttributeName>leidos_projectfunding.leidos_fundingsource</DependentAttributeName>
                             <DependentAttributeType>leidos_fundingsource</DependentAttributeType>
                             <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{0EB65379-DFAB-45E3-9659-81DAB8665ACF}</AvailableViewIds>
                           </parameters>
                         </control>
                       </cell>
@@ -146,8 +148,8 @@
                         <control id="leidos_previousfunding" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="leidos_previousfunding" disabled="false" uniqueid="{32b145b7-d1b3-1820-dc97-6579e73348ae}">
                           <parameters>
                             <DisableViewPicker>true</DisableViewPicker>
-                            <DefaultViewId>{75AE1A55-5583-EC11-8D21-6045BD0F0663}</DefaultViewId>
-                            <AvailableViewIds>{9B89498C-2491-4BE5-997A-8197A61C3599}</AvailableViewIds>
+                            <DefaultViewId>{C797FC11-6CA4-EC11-983F-6045BD0E66DB}</DefaultViewId>
+                            <AvailableViewIds>{9B89498C-2491-4BE5-997A-8197A61C3599},{86057322-1F63-4210-8AFC-FA3456831189},{C797FC11-6CA4-EC11-983F-6045BD0E66DB}</AvailableViewIds>
                             <AutoResolve>true</AutoResolve>
                             <DisableMru>false</DisableMru>
                             <DisableQuickFind>false</DisableQuickFind>
@@ -358,7 +360,7 @@
         </rows>
       </footer>
       <Navigation>
-        <NavBar />
+        <NavBar></NavBar>
         <NavBarAreas>
           <NavBarArea Id="Info">
             <Titles>
@@ -392,6 +394,7 @@
         <event name="onchange" application="false" active="false" attribute="leidos_fundingsource">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="5edffad5-6c3f-4bd1-9edc-ee51fa518f2e" enabled="true" parameters="'53C:*:CreateUpdate::0:217890000:217890000:217890000:217890000','pfR:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.MigrateFromFilterview" libraryName="leidos_projectfunding.js" handlerUniqueId="{72de730c-53b1-9113-4220-5e2dcd4c2078}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_fundingamount">
@@ -403,11 +406,13 @@
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="875764f9-9054-4c89-bd41-0289cdb27815" enabled="true" parameters="'ptu:*:CreateUpdate::0:217890000:217890000:217890000:217890000','pfR:*:CreateUpdate::0:217890000:217890000:217890000:217890000','iOG:*:CreateUpdate::0:217890000:217890000:217890000:217890000','3Gn:*:CreateUpdate::0:217890000:217890000:217890000:217890000','GFh:*:CreateUpdate::0:217890000:217890000:217890000:217890000','pLu:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
             <Handler functionName="setValsForQuickCreate" libraryName="leidos_projectfunding.js" handlerUniqueId="{b449827c-122b-e103-1688-beec710ee1a3}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.MigrateFromFilterview" libraryName="leidos_projectfunding.js" handlerUniqueId="{75d19871-7e17-6102-7637-4c0d67116ea6}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_funddetails">
           <Handlers>
             <Handler functionName="N52.Clientside.ExecuteFormulas" libraryName="north52_/javascript/n52.clientside" handlerUniqueId="ddcd656d-dadb-4743-8e2b-035e6bb1277f" enabled="true" parameters="'53C:*:CreateUpdate::0:217890000:217890000:217890000:217890000','ptu:*:CreateUpdate::0:217890000:217890000:217890000:217890000','bFl:*:CreateUpdate::0:217890000:217890000:217890000:217890000'" passExecutionContext="true" />
+            <Handler functionName="Leidos.MigrateFromFilterview" libraryName="leidos_projectfunding.js" handlerUniqueId="{e5281a47-78dc-e738-dc4c-db7095576b76}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
         <event name="onchange" application="false" active="false" attribute="leidos_recoveryamount">
@@ -421,15 +426,15 @@
           </Handlers>
         </event>
       </events>
-      <DisplayConditions Order="0" FallbackForm="true">
-        <Everyone />
-      </DisplayConditions>
       <formLibraries>
         <Library name="leidos_projectfunding.js" libraryUniqueId="{e51a4cd3-08b1-654c-b755-ca0a01cb0386}" />
         <Library name="north52_/javascript/n52.json2" libraryUniqueId="b182fbe9-06ef-4b3d-9941-86f11dde2460" />
         <Library name="north52_/javascript/n52.rest" libraryUniqueId="242ff4ff-0cdd-47d1-9a0b-5d4e6b7d2365" />
         <Library name="north52_/javascript/n52.clientside" libraryUniqueId="0555775e-cb41-445a-9e0d-f6d27a7c005f" />
       </formLibraries>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

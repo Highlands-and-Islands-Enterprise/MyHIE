@@ -26,6 +26,9 @@
       },
       "triggers": {
         "Account_Change_of_Sic_Code": {
+          "metadata": {
+            "operationMetadataId": "dd55941d-dfcc-4cea-9f24-c09e5cff2ebe"
+          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
@@ -38,7 +41,8 @@
               "subscriptionRequest/entityname": "account",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "leidos_sic1,leidos_sic2",
-              "subscriptionRequest/filterexpression": "_leidos_sic1_value ne null and _leidos_sic2_value ne null"
+              "subscriptionRequest/filterexpression": "_leidos_sic1_value ne null and _leidos_sic2_value ne null",
+              "subscriptionRequest/name": "9f380ae8-80fd-ea11-a813-000d3a7f1bbb"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -47,6 +51,9 @@
       "actions": {
         "List_Project_without_SIC_Codes": {
           "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "5d1e1c47-40bb-4547-b257-4e36837b2fae"
+          },
           "type": "OpenApiConnection",
           "inputs": {
             "host": {
@@ -66,6 +73,9 @@
           "actions": {
             "Update_Projects": {
               "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "cd719923-929e-49d1-ae29-f8e2021f9cff"
+              },
               "type": "OpenApiConnection",
               "inputs": {
                 "host": {
@@ -87,6 +97,9 @@
             "List_Project_without_SIC_Codes": [
               "Succeeded"
             ]
+          },
+          "metadata": {
+            "operationMetadataId": "a12307b7-c2a9-4bc5-8090-f5f6ff0d9e94"
           },
           "type": "Foreach"
         }
