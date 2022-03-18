@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CI" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.5186</Version>
+    <Version>1.19.0.5189</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -99,6 +99,7 @@
       <RootComponent type="1" schemaName="leidos_applicationquestiontypes" behavior="2" />
       <RootComponent type="1" schemaName="leidos_areaoffice" behavior="2" />
       <RootComponent type="1" schemaName="leidos_bacscontrol" behavior="0" />
+      <RootComponent type="1" schemaName="leidos_bankdetails" behavior="2" />
       <RootComponent type="1" schemaName="leidos_bpfaccountprocess" behavior="0" />
       <RootComponent type="1" schemaName="leidos_bpfamrdirectcreation" behavior="2" />
       <RootComponent type="1" schemaName="leidos_bpfprogramme" behavior="0" />
@@ -488,7 +489,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_bankdetails" displayName="Bank Details" solution="Active" />
-        <Dependent type="80" schemaName="leidos_HIEAccountManagement" displayName="MyHIE" />
+        <Dependent type="1" schemaName="leidos_bankdetails" displayName="Bank Details" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_bpf_claim" displayName="BPF - Claim" solution="Active" />
@@ -1668,10 +1669,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="10" schemaName="bpf_leidos_claim_leidos_bpf_claim" displayName="bpf_leidos_claim_leidos_bpf_claim" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
-        <Dependent type="60" displayName=" Web - Claim" parentDisplayName="Claim" id="{341efd48-b625-eb11-a813-000d3a7fedbe}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="10" schemaName="leidos_BankDetails_ParentClaim_leidos_Cla" displayName="leidos_BankDetails_ParentClaim_leidos_Cla" parentSchemaName="leidos_claim" parentDisplayName="Claim" solution="Active" />
         <Dependent type="60" displayName=" Web - Claim" parentDisplayName="Claim" id="{341efd48-b625-eb11-a813-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
@@ -3323,6 +3320,54 @@
         <Dependent type="60" displayName="Information" parentDisplayName="Application Question Category" id="{232aa756-91c3-429a-8cdb-219e746bf103}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_accountname" displayName="Account Name" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Bank Details" id="{19f07f6b-800e-4dad-a06d-eeca3b56c0b2}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_accountname" displayName="Account Name" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Web - Bank Details" parentDisplayName="Bank Details" id="{f0d5ca1e-b6a6-ec11-9840-0022484260b0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_accountnumber" displayName="Account Number" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Bank Details" id="{19f07f6b-800e-4dad-a06d-eeca3b56c0b2}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_accountnumber" displayName="Account Number" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Web - Bank Details" parentDisplayName="Bank Details" id="{f0d5ca1e-b6a6-ec11-9840-0022484260b0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_bankaddress" displayName="Bank Address" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Bank Details" id="{19f07f6b-800e-4dad-a06d-eeca3b56c0b2}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_bankaddress" displayName="Bank Address" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Web - Bank Details" parentDisplayName="Bank Details" id="{f0d5ca1e-b6a6-ec11-9840-0022484260b0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Bank Name" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Bank Details" id="{19f07f6b-800e-4dad-a06d-eeca3b56c0b2}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Bank Name" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Web - Bank Details" parentDisplayName="Bank Details" id="{f0d5ca1e-b6a6-ec11-9840-0022484260b0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_sortcode" displayName="Sort Code" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Bank Details" id="{19f07f6b-800e-4dad-a06d-eeca3b56c0b2}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_sortcode" displayName="Sort Code" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Web - Bank Details" parentDisplayName="Bank Details" id="{f0d5ca1e-b6a6-ec11-9840-0022484260b0}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Information" parentDisplayName="Bank Details" id="{19f07f6b-800e-4dad-a06d-eeca3b56c0b2}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_bankdetails" parentDisplayName="Bank Details" solution="Active" />
+        <Dependent type="60" displayName="Web - Bank Details" parentDisplayName="Bank Details" id="{f0d5ca1e-b6a6-ec11-9840-0022484260b0}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_businessorsocialenterpriseid" displayName="Business or Social Enterprise" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" solution="Active" />
         <Dependent type="10" schemaName="leidos_AccountManagementRecord_Businessor" displayName="leidos_AccountManagementRecord_Businessor" parentSchemaName="leidos_businessorsocialenterprise" parentDisplayName="Business or Social Enterprise" />
       </MissingDependency>
@@ -4863,6 +4908,14 @@
         <Dependent type="60" displayName="HIE Information" parentDisplayName="Delegated Authority Approval Table" id="{c6d03a1e-ccdc-494f-a963-4ef929ba355b}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_application" displayName="Application" parentSchemaName="leidos_documentrequirement" parentDisplayName="Document Requirement" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_description" displayName="Description" parentSchemaName="leidos_documentrequirement" parentDisplayName="Document Requirement" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_description" displayName="Description" parentSchemaName="leidos_documentrequirement" parentDisplayName="Document Requirement" solution="Active" />
         <Dependent type="60" displayName="HIE Document Requirement" parentDisplayName="Document Requirement" id="{fb5da633-c4b1-4821-927a-beaabd49799d}" />
       </MissingDependency>
@@ -4873,6 +4926,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_documentrequirement" parentDisplayName="Document Requirement" solution="Active" />
         <Dependent type="29" displayName="DR - Set Name Field Attributes" id="{321aa7cc-794c-ec11-8f8e-000d3a7f952a}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_documentrequirement" parentDisplayName="Document Requirement" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_documentrequirement" parentDisplayName="Document Requirement" solution="Active" />
@@ -5655,6 +5712,10 @@
         <Dependent type="26" schemaName="Active Fund Details - Private" displayName="Active Fund Details - Private" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" id="{fbabd4f2-88f7-ea11-a815-000d3a7fedbe}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_funddetailid" displayName="Fund Detail" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_fundingsource" displayName="Funding Source" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" solution="Active" />
         <Dependent type="26" schemaName="Active Fund Details - Public" displayName="Active Fund Details - Public" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" id="{31cc91fe-88f7-ea11-a815-000d3a7fedbe}" />
       </MissingDependency>
@@ -5676,6 +5737,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_privatefund" displayName="Private Fund" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_privatefund" displayName="Private Fund" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" solution="Active" />
         <Dependent type="60" displayName="Information" parentDisplayName="Fund Detail" id="{d79d19c2-ad40-4460-9e58-42f00a7c566b}" />
       </MissingDependency>
       <MissingDependency>
@@ -5685,6 +5750,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_publicfund" displayName="Public Fund" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" solution="Active" />
         <Dependent type="26" schemaName="Active Fund Details - Private" displayName="Active Fund Details - Private" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" id="{fbabd4f2-88f7-ea11-a815-000d3a7fedbe}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_publicfund" displayName="Public Fund" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_publicfund" displayName="Public Fund" parentSchemaName="leidos_funddetail" parentDisplayName="Fund Detail" solution="Active" />
@@ -11240,6 +11309,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="31" displayName="(DEPRECATED) Subsidy Ctrl. - NFI Innovate" id="{aa8568b7-7dae-eb11-8236-000d3ad5c727}" />
       </MissingDependency>
       <MissingDependency>
@@ -11261,6 +11334,10 @@
       <MissingDependency>
         <Required type="2" schemaName="ownerid" displayName="Owner" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="60" displayName="HIE Project Form" parentDisplayName="Project" id="{dd8d1a8d-2392-4069-8324-d627f2d69f46}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="owninguser" displayName="Owning User" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statecode" displayName="Status" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -11704,7 +11781,15 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_clientfundingamount" displayName="Client Funding Amount" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_clientfundingamount" displayName="Client Funding Amount" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
         <Dependent type="60" displayName="HIE Cost Funding" parentDisplayName="Cost Funding" id="{67e9be94-9ed9-4672-8b26-1caefb656919}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_clientfundingsource" displayName="Client Funding Source" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_clientfundingsource" displayName="Client Funding Source" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
@@ -11741,6 +11826,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_funddetails" displayName="Fund Details" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
         <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_funddetails" displayName="Fund Details" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_funddetails" displayName="Fund Details" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
@@ -11815,6 +11904,10 @@
         <Dependent type="29" displayName="WES VAT Categoty" id="{97cc1248-0c9a-ec11-b400-00224842d1f6}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_name" displayName="Name" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_netthiefunding" displayName="Net HIE Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
         <Dependent type="60" displayName="HIE Cost Funding" parentDisplayName="Cost Funding" id="{67e9be94-9ed9-4672-8b26-1caefb656919}" />
       </MissingDependency>
@@ -11837,6 +11930,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
         <Dependent type="31" displayName="ISA" id="{7954a0f6-235c-ec11-8f8f-00224842ce81}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_parentproject" displayName="Parent Project" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
@@ -11881,6 +11978,10 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectfundingid" displayName="Project Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
         <Dependent type="29" displayName="WES VAT Categoty" id="{97cc1248-0c9a-ec11-b400-00224842d1f6}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_projectfundingid" displayName="Project Funding" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
+        <Dependent type="31" displayName="Application Form" id="{9f46d6a3-107d-ec11-8d21-6045bd0e661e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectfundingreference" displayName="Project Funding Reference" parentSchemaName="leidos_projectfunding" parentDisplayName="Cost Funding" solution="Active" />
