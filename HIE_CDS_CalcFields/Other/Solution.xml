@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_CalcFields" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.5194</Version>
+    <Version>1.19.0.5196</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -78,6 +78,7 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="1" schemaName="leidos_anticipatedspendprofile" behavior="2" />
       <RootComponent type="1" schemaName="leidos_clientladder" behavior="2" />
       <RootComponent type="1" schemaName="leidos_ownhandinvoicedetail" behavior="2" />
       <RootComponent type="1" schemaName="leidos_programme" behavior="2" />
@@ -89,7 +90,7 @@
     <MissingDependencies>
       <MissingDependency>
         <Required type="1" schemaName="leidos_anticipatedspendprofile" displayName="Spend \ Recovery  Profile" solution="Active" />
-        <Dependent type="2" schemaName="leidos_totalspendprofile" displayName="Total Spend Profile" parentSchemaName="leidos_project" parentDisplayName="Project" />
+        <Dependent type="1" schemaName="leidos_anticipatedspendprofile" displayName="Spend \ Recovery  Profile" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_clientladder" displayName="Client Ladder" solution="Active" />
@@ -209,11 +210,35 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_anticipatedspendprofileid" displayName="Anticipated Spend Profile" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" />
+        <Dependent type="2" schemaName="leidos_deprecatedbalanceslippage" displayName="(DEPRECATED) balanceslippage" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_anticipatedspendprofileid" displayName="Anticipated Spend Profile" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" />
+        <Dependent type="2" schemaName="leidos_deprecatedbalanceslippage_base" displayName="(DEPRECATED) balanceslippage (Base)" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_anticipatedspendprofileid" displayName="Anticipated Spend Profile" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" />
         <Dependent type="2" schemaName="leidos_totalspendprofile" displayName="Total Spend Profile" parentSchemaName="leidos_project" parentDisplayName="Project" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_spendprofileamount" displayName="Spend Profile Amount" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" />
+        <Dependent type="2" schemaName="leidos_deprecatedbalanceslippage" displayName="(DEPRECATED) balanceslippage" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_spendprofileamount" displayName="Spend Profile Amount" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" />
+        <Dependent type="2" schemaName="leidos_deprecatedbalanceslippage_base" displayName="(DEPRECATED) balanceslippage (Base)" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_spendprofileamount" displayName="Spend Profile Amount" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" />
         <Dependent type="2" schemaName="leidos_totalspendprofile" displayName="Total Spend Profile" parentSchemaName="leidos_project" parentDisplayName="Project" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalamountprofiled" displayName="Total Amount Profiled" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" />
+        <Dependent type="2" schemaName="leidos_deprecatedbalanceslippage" displayName="(DEPRECATED) balanceslippage" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_totalamountprofiled" displayName="Total Amount Profiled" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" />
+        <Dependent type="2" schemaName="leidos_deprecatedbalanceslippage_base" displayName="(DEPRECATED) balanceslippage (Base)" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="statuscode" displayName="Status Reason" parentSchemaName="leidos_anticipatedspendprofile" parentDisplayName="Spend \ Recovery  Profile" solution="Active" />
@@ -245,14 +270,6 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_netinvoice" displayName="Line Net Invoice Value" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
-        <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
-        <Dependent type="2" schemaName="leidos_vatvalue" displayName="Line VAT Value Calculated" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_ownhandinvoicedetailid" displayName="Own Hand Invoice Detail" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" solution="Active" />
         <Dependent type="2" schemaName="leidos_vatvalue_base" displayName="VAT Value (Base)" parentSchemaName="leidos_ownhandinvoicedetail" parentDisplayName="Own Hand Invoice Detail" />
       </MissingDependency>
       <MissingDependency>
@@ -782,6 +799,10 @@
       <MissingDependency>
         <Required type="61" schemaName="leidos_discover.svg" displayName="leidos_discover.svg" solution="Active" />
         <Dependent type="1" schemaName="leidos_projectmeasure" displayName="Measure" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="61" schemaName="leidos_money.svg" displayName="leidos_money.svg" solution="Active" />
+        <Dependent type="1" schemaName="leidos_anticipatedspendprofile" displayName="Spend \ Recovery  Profile" />
       </MissingDependency>
       <MissingDependency>
         <Required type="61" schemaName="leidos_money-bag.svg" displayName="leidos_money-bag.svg" solution="Active" />
