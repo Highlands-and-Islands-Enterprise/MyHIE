@@ -6,7 +6,7 @@
       <LocalizedName description="HIE_CDS_C" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.19.0.5206</Version>
+    <Version>1.19.0.5211</Version>
     <Managed>0</Managed>
     <Publisher>
       <UniqueName>leidos</UniqueName>
@@ -292,6 +292,10 @@
       <MissingDependency>
         <Required type="1" schemaName="leidos_ownhandrecordtype" displayName="Own Hand Record Type" solution="Active" />
         <Dependent type="29" displayName="Own Hand Summary - Flow - Generate Report " id="{5073398f-c2be-eb11-bacc-000d3ad6a017}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="1" schemaName="leidos_payment" displayName="Payment" solution="Active" />
+        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="leidos_pipelineproject" displayName="Pipeline Project" solution="Active" />
@@ -596,10 +600,6 @@
       <MissingDependency>
         <Required type="2" schemaName="leidos_segmentation" displayName="Segmentation" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
         <Dependent type="31" displayName="Appraisal - Child Appraisal" id="{db1c941d-10f9-eb11-94ef-000d3ad67b58}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_suppliercode" displayName="Supplier Code" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
-        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_tradingas" displayName="Trading as" parentSchemaName="account" parentDisplayName="Account" solution="Active" />
@@ -1940,6 +1940,14 @@
         <Dependent type="31" displayName="Own Hand Summary Report" id="{1a959438-2cbd-eb11-bacc-000d3ad6a8e8}" />
       </MissingDependency>
       <MissingDependency>
+        <Required type="2" schemaName="leidos_payeename" displayName="Payee Name" parentSchemaName="leidos_payment" parentDisplayName="Payment" solution="Active" />
+        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_paymentid" displayName="Payment" parentSchemaName="leidos_payment" parentDisplayName="Payment" solution="Active" />
+        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+      </MissingDependency>
+      <MissingDependency>
         <Required type="2" schemaName="leidos_isaapprovaldelegatedauthority" displayName="ISA Approval Delegated Authority" parentSchemaName="leidos_pipelineproject" parentDisplayName="Pipeline Project" solution="Active" />
         <Dependent type="31" displayName="(DEPRECATED) - ISA" id="{217fcc1f-14e6-eb11-bacb-00224840be43}" />
       </MissingDependency>
@@ -2264,10 +2272,6 @@
         <Dependent type="31" displayName="Appraisal - Child Appraisal" id="{db1c941d-10f9-eb11-94ef-000d3ad67b58}" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="2" schemaName="leidos_investment" displayName="Investment" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
-        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="2" schemaName="leidos_name" displayName="Project Title" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="31" displayName="Appraisal Paper" id="{0d2613d3-ac93-eb11-b1ac-000d3a7ea4b5}" />
       </MissingDependency>
@@ -2409,15 +2413,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_primarytheme" displayName="Primary Theme" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
-        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_primarytheme" displayName="Primary Theme" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
         <Dependent type="31" displayName="Appraisal - Child Appraisal" id="{db1c941d-10f9-eb11-94ef-000d3ad67b58}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="2" schemaName="leidos_programme" displayName="Programme" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
-        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_projectdescription" displayName="Project Description" parentSchemaName="leidos_project" parentDisplayName="Project" solution="Active" />
@@ -3337,6 +3333,10 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="2" schemaName="leidos_netamount_base" displayName="NET amount (Base)" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
+        <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="2" schemaName="leidos_payment" displayName="Payment" parentSchemaName="leidos_transaction" parentDisplayName="Transaction" solution="Active" />
         <Dependent type="31" displayName="Payments and Claims Report" id="{8990c597-42d0-eb11-bacc-000d3ad59935}" />
       </MissingDependency>
       <MissingDependency>
