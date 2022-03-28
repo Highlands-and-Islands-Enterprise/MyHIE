@@ -122,7 +122,7 @@
                   </labels>
                   <rows>
                     <row>
-                      <cell locklevel="0" id="{53a8e0b0-16a8-4793-8cc9-eb74edb4a8ed}" rowspan="1" colspan="1" showlabel="false" auto="false">
+                      <cell locklevel="0" id="{53a8e0b0-16a8-4793-8cc9-eb74edb4a8ed}" rowspan="6" colspan="1" showlabel="false" auto="false">
                         <labels>
                           <label description="Spend Profile Details Open" languagecode="1033" />
                         </labels>
@@ -147,6 +147,11 @@
                         </control>
                       </cell>
                     </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
                   </rows>
                 </section>
               </sections>
@@ -391,6 +396,13 @@
         <event name="onrecordselect" application="false" active="false" relationship="" control="SpendProfileDetailsLocked">
           <Handlers>
             <Handler functionName="setPastFieldsDisabled" libraryName="leidos_SpendProfile" handlerUniqueId="{51195a1e-8b5d-764a-b170-89c2c0cbd1a2}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.gridRowSelectedDisableNonSpendAmount" libraryName="leidos_SpendProfile" handlerUniqueId="{0acb533a-844b-3d88-8c00-3b7e5385b668}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="Leidos.disableFieldEdit" libraryName="leidos_SpendProfile" handlerUniqueId="{b8d23e5e-2bab-76cb-4e08-34813168e7cd}" enabled="true" parameters="&quot;leidos_totalforfy&quot;" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onrecordselect" application="false" active="false" relationship="" control="SpendProfileDetailsOpen">
+          <Handlers>
+            <Handler functionName="Leidos.gridRowSelectedDisableNonSpendAmount" libraryName="leidos_SpendProfile" handlerUniqueId="{c614d757-2b03-a8c0-e39b-792254230695}" enabled="true" parameters="" passExecutionContext="true" />
           </Handlers>
         </event>
       </events>

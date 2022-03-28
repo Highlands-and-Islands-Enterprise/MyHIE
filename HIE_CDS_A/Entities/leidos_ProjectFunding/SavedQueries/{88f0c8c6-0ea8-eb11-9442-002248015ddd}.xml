@@ -18,7 +18,7 @@
     </layoutxml>
     <querytype>0</querytype>
     <fetchxml>
-      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
         <entity name="leidos_projectfunding">
           <attribute name="leidos_name" />
           <attribute name="leidos_projectfundingid" />
@@ -26,6 +26,7 @@
           <attribute name="leidos_parentproject" />
           <filter type="and">
             <condition attribute="statuscode" operator="ne" value="2" />
+            <condition attribute="leidos_fundingsource" operator="ne" value="{6f7ab9f8-485a-ea11-a811-000d3a0bad17}" uiname="Private" uitype="leidos_fundingsource" />
           </filter>
         </entity>
       </fetch>
