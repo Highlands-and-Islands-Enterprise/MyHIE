@@ -23,7 +23,7 @@
           "defaultValue": {},
           "type": "SecureObject"
         },
-        "ClientPortalUrl": {
+        "ClientPortalUrl (leidos_ClientPortalUrl)": {
           "defaultValue": "https://hienpdevclientportal.powerappsportals.com",
           "type": "String",
           "metadata": {
@@ -33,6 +33,9 @@
       },
       "triggers": {
         "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "d08952a6-2b2b-41af-b404-6df951648b56"
+          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
@@ -45,7 +48,8 @@
               "subscriptionRequest/entityname": "adx_webpage",
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "adx_copy",
-              "subscriptionRequest/filterexpression": "adx_partialurl eq 'terms-hie' or adx_partialurl eq 'terms-Innovate' or adx_partialurl eq 'terms-NIH'"
+              "subscriptionRequest/filterexpression": "adx_partialurl eq 'terms-hie' or adx_partialurl eq 'terms-Innovate' or adx_partialurl eq 'terms-NIH'",
+              "subscriptionRequest/name": "c404b0e0-77e4-eb11-bacb-00224840bbb4"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -57,6 +61,9 @@
             "Scope": [
               "Succeeded"
             ]
+          },
+          "metadata": {
+            "operationMetadataId": "fdbabe2a-47dd-40e7-8c22-d30bacc75207"
           },
           "type": "OpenApiConnection",
           "inputs": {
@@ -88,6 +95,9 @@
           "actions": {
             "Archive": {
               "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "33747367-b3b6-478a-a2f7-cc4a55898463"
+              },
               "type": "Compose",
               "inputs": "7a0434a4-6d6c-4dfa-870d-e57bc6cb53ad"
             },
@@ -97,6 +107,9 @@
                   "Succeeded"
                 ]
               },
+              "metadata": {
+                "operationMetadataId": "5272fa20-4b92-4356-b622-6137b8bbbc54"
+              },
               "type": "Compose",
               "inputs": "@triggerOutputs()?['body/_adx_rootwebpageid_value']"
             },
@@ -105,6 +118,9 @@
                 "FormatedDate": [
                   "Succeeded"
                 ]
+              },
+              "metadata": {
+                "operationMetadataId": "bd01e2c7-187d-4182-8fcd-0577cfa6c0ed"
               },
               "type": "OpenApiConnection",
               "inputs": {
@@ -126,6 +142,9 @@
                   "Succeeded"
                 ]
               },
+              "metadata": {
+                "operationMetadataId": "98184432-c0c4-4dec-9776-932400f43bde"
+              },
               "type": "Compose",
               "inputs": "@utcNow()"
             }
@@ -135,6 +154,9 @@
               "Succeeded"
             ]
           },
+          "metadata": {
+            "operationMetadataId": "dd467002-192c-4abe-a467-dcf726e28d88"
+          },
           "type": "Scope"
         },
         "Create_Local_Copy": {
@@ -142,6 +164,9 @@
             "Create_New_Root_Page_-_Archive_Copy": [
               "Succeeded"
             ]
+          },
+          "metadata": {
+            "operationMetadataId": "61b158af-cfb2-4324-b2db-d5b31b7447c1"
           },
           "type": "OpenApiConnection",
           "inputs": {
@@ -173,6 +198,9 @@
           "actions": {
             "Terminate": {
               "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "de6a5602-3d09-48f8-954e-7ef0ce439af3"
+              },
               "type": "Terminate",
               "inputs": {
                 "runStatus": "Failed",
@@ -186,9 +214,12 @@
           "runAfter": {},
           "expression": {
             "contains": [
-              "@parameters('ClientPortalUrl')",
+              "@parameters('ClientPortalUrl (leidos_ClientPortalUrl)')",
               "hienpdevclientportal.powerappsportals.com"
             ]
+          },
+          "metadata": {
+            "operationMetadataId": "fd5cb75e-d120-4500-af19-bb4f84d78474"
           },
           "type": "If"
         }

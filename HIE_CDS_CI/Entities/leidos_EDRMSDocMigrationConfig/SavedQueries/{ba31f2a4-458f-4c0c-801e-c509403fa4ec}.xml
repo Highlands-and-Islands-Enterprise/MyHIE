@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{ba31f2a4-458f-4c0c-801e-c509403fa4ec}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="leidos_name" select="1" icon="1" preview="1">
+        <row name="result" id="leidos_edrmsdocmigrationconfigid">
+          <cell name="leidos_name" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="leidos_edrmsdocmigrationconfig">
+          <attribute name="leidos_edrmsdocmigrationconfigid" />
+          <attribute name="leidos_name" />
+          <attribute name="createdon" />
+          <order attribute="leidos_name" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="leidos_name" operator="like" value="{0}" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.15.0.1730</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active EDRMS Document Migration Configs" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
