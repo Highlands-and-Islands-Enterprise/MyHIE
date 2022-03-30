@@ -26,6 +26,9 @@
       },
       "triggers": {
         "When_a_Ladder_is_validated": {
+          "metadata": {
+            "operationMetadataId": "950082cb-62df-44d0-879d-10e616c960c7"
+          },
           "type": "OpenApiConnectionWebhook",
           "inputs": {
             "host": {
@@ -39,7 +42,8 @@
               "subscriptionRequest/scope": 4,
               "subscriptionRequest/filteringattributes": "leidos_validateclientladder",
               "subscriptionRequest/filterexpression": "(leidos_validateclientladder eq true)",
-              "subscriptionRequest/runas": 3
+              "subscriptionRequest/runas": 3,
+              "subscriptionRequest/name": "3f070435-377b-eb11-a812-00224840506e"
             },
             "authentication": "@parameters('$authentication')"
           }
@@ -48,6 +52,9 @@
       "actions": {
         "Update_Client_Ladder": {
           "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "22aa588e-92a8-4d2a-9d3b-289474fe0b4f"
+          },
           "type": "OpenApiConnection",
           "inputs": {
             "host": {
