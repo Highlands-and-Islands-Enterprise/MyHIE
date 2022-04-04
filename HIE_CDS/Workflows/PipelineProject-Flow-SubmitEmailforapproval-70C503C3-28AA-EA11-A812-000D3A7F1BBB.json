@@ -514,6 +514,20 @@
                 },
                 "authentication": "@parameters('$authentication')"
               }
+            },
+            "Terminate": {
+              "runAfter": {
+                "Send_an_email_(V2)_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "597d1ddb-467a-4f54-a226-feb7596eef51"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
             }
           },
           "runAfter": {

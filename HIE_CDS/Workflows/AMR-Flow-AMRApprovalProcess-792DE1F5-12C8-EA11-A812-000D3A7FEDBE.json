@@ -86,7 +86,7 @@
             }
           }
         },
-        "Start_and_wait_for_an_approval_from_Area_Office_Manager_7_Day_Timeout": {
+        "Start_and_wait_for_an_approval_from_Area_Office_Manager_3_Day_Timeout": {
           "runAfter": {
             "Run_a_Child_Flow": [
               "Succeeded"
@@ -126,7 +126,7 @@
         },
         "Switch": {
           "runAfter": {
-            "Start_and_wait_for_an_approval_from_Area_Office_Manager_7_Day_Timeout": [
+            "Start_and_wait_for_an_approval_from_Area_Office_Manager_3_Day_Timeout": [
               "Succeeded"
             ]
           },
@@ -284,14 +284,14 @@
           "default": {
             "actions": {}
           },
-          "expression": "@outputs('Start_and_wait_for_an_approval_from_Area_Office_Manager_7_Day_Timeout')?['body/outcome']",
+          "expression": "@outputs('Start_and_wait_for_an_approval_from_Area_Office_Manager_3_Day_Timeout')?['body/outcome']",
           "metadata": {
             "operationMetadataId": "ab6d9156-9c35-425f-b9ba-66e5ce12ca64"
           },
           "type": "Switch"
         },
         "Create_Task": {
-          "foreach": "@outputs('Start_and_wait_for_an_approval_from_Area_Office_Manager_7_Day_Timeout')?['body/responses']",
+          "foreach": "@outputs('Start_and_wait_for_an_approval_from_Area_Office_Manager_3_Day_Timeout')?['body/responses']",
           "actions": {
             "Create_a_new_record": {
               "runAfter": {},
@@ -308,7 +308,7 @@
                 "parameters": {
                   "entityName": "tasks",
                   "item/subject": "Decision made on Client Engagement recommendation",
-                  "item/description": "Delegated Authority: @{items('Create_Task')?['responder/displayName']}\nDelegated Authority Decision: @{outputs('Start_and_wait_for_an_approval_from_Area_Office_Manager_7_Day_Timeout')?['body/outcome']}\nDelagated Authority Comments: @{items('Create_Task')?['comments']}\nDecision Date : @{formatDateTime(utcNow(), 'dd/MM/yyyy')}\n\nProposed Segmantation:  @{outputs('Get_Proposed_Segmentation')?['body/leidos_name']}  \nAreas of Intervention : @{triggerOutputs()?['body/leidos_areasforpotentialhieintervention']} \nAssesment: @{triggerOutputs()?['body/leidos_accountmanagementassessment']}",
+                  "item/description": "Delegated Authority: @{items('Create_Task')?['responder/displayName']}\nDelegated Authority Decision: @{outputs('Start_and_wait_for_an_approval_from_Area_Office_Manager_3_Day_Timeout')?['body/outcome']}\nDelagated Authority Comments: @{items('Create_Task')?['comments']}\nDecision Date : @{formatDateTime(utcNow(), 'dd/MM/yyyy')}\n\nProposed Segmantation:  @{outputs('Get_Proposed_Segmentation')?['body/leidos_name']}  \nAreas of Intervention : @{triggerOutputs()?['body/leidos_areasforpotentialhieintervention']} \nAssesment: @{triggerOutputs()?['body/leidos_accountmanagementassessment']}",
                   "item/regardingobjectid_account_task@odata.bind": "/accounts(@{outputs('Get_Account')?['body/accountid']})"
                 },
                 "authentication": "@parameters('$authentication')"
@@ -326,7 +326,7 @@
           "type": "Foreach"
         },
         "Create_Email": {
-          "foreach": "@outputs('Start_and_wait_for_an_approval_from_Area_Office_Manager_7_Day_Timeout')?['body/responses']",
+          "foreach": "@outputs('Start_and_wait_for_an_approval_from_Area_Office_Manager_3_Day_Timeout')?['body/responses']",
           "actions": {
             "Send_an_email_(V2)": {
               "runAfter": {},
@@ -343,7 +343,7 @@
                 "parameters": {
                   "emailMessage/To": "@variables('owner Email Address')",
                   "emailMessage/Subject": "Decision made on Client Engagement recommendation",
-                  "emailMessage/Body": "<p>Delegated Authority Name: @{items('Create_Email')?['responder/displayName']}<br>\nDelegated Authority Decision: @{outputs('Start_and_wait_for_an_approval_from_Area_Office_Manager_7_Day_Timeout')?['body/outcome']}<br>\nDelegated Authority Comments: @{items('Create_Email')?['comments']}<br>\n<br>\n <a href=\"@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}\">Client Engagement Record Link</a>"
+                  "emailMessage/Body": "<p>Delegated Authority Name: @{items('Create_Email')?['responder/displayName']}<br>\nDelegated Authority Decision: @{outputs('Start_and_wait_for_an_approval_from_Area_Office_Manager_3_Day_Timeout')?['body/outcome']}<br>\nDelegated Authority Comments: @{items('Create_Email')?['comments']}<br>\n<br>\n <a href=\"@{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}\">Client Engagement Record Link</a>"
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -668,12 +668,12 @@
               },
               "type": "Terminate",
               "inputs": {
-                "runStatus": "Cancelled"
+                "runStatus": "Succeeded"
               }
             }
           },
           "runAfter": {
-            "Start_and_wait_for_an_approval_from_Area_Office_Manager_7_Day_Timeout": [
+            "Start_and_wait_for_an_approval_from_Area_Office_Manager_3_Day_Timeout": [
               "TimedOut"
             ]
           },
@@ -749,6 +749,20 @@
                   "emailMessage/Body": "<p>The process to Submit an AMR for Approval has failed. &nbsp;Please check for the completeness of the data, and contact support if necessary.</p>"
                 },
                 "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate_2": {
+              "runAfter": {
+                "Send_an_email_(V2)_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7aaaeb75-c32c-4630-b2b1-7dc384244b72"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Cancelled"
               }
             }
           },

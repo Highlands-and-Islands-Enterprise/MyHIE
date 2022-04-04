@@ -708,9 +708,23 @@
                 "parameters": {
                   "emailMessage/To": "@outputs('Get_Requested_By')?['body/internalemailaddress']",
                   "emailMessage/Subject": "Proigramme Approval Timed Out:@{triggerOutputs()?['body/leidos_programmereference']}",
-                  "emailMessage/Body": "<p>The Approcal Process for @{triggerOutputs()?['body/leidos_programmereference']} has timed out, please resubmit.<br>\n<br>\n@{body('Run_a_Child_Flow')?['entityurl']}</p>"
+                  "emailMessage/Body": "<p>The Approval Process for @{triggerOutputs()?['body/leidos_programmereference']} has timed out, please resubmit.<br>\n<br>\n@{body('Run_a_Child_Flow')?['entityurl']}</p>"
                 },
                 "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate": {
+              "runAfter": {
+                "Send_an_email_(V2)_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "219b2ceb-1640-43a0-b569-cba6ee2e5eaa"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
               }
             }
           },

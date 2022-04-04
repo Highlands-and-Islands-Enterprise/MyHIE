@@ -608,15 +608,30 @@
                 "parameters": {
                   "emailMessage/To": "@outputs('Get_Submitted_By')?['body/internalemailaddress']",
                   "emailMessage/Subject": "Pipeline Project Approval Submission failed",
-                  "emailMessage/Body": "<p>Request for approal has times out: @{triggerOutputs()?['body/leidos_pipelineprojectreference']}</p>"
+                  "emailMessage/Body": "<p>Request for approval has timed out: @{triggerOutputs()?['body/leidos_pipelineprojectreference']}</p>"
                 },
                 "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate": {
+              "runAfter": {
+                "Send_an_email_(V2)_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "7a042aaf-f649-4ce3-97a3-cf4d024d50ec"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
               }
             }
           },
           "runAfter": {
             "Start_and_wait_for_an_approval": [
-              "Succeeded"
+              "TimedOut",
+              "Failed"
             ]
           },
           "metadata": {

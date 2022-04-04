@@ -489,7 +489,11 @@
                 },
                 "parameters": {
                   "entityName": "leidos_pipelineprojects",
-                  "recordId": "@triggerOutputs()?['body/leidos_pipelineprojectid']"
+                  "recordId": "@triggerOutputs()?['body/leidos_pipelineprojectid']",
+                  "item/statecode": 0,
+                  "item/statuscode": 1,
+                  "item/leidos_submitisa": false,
+                  "item/leidos_submitnfiisaforapproval": false
                 },
                 "authentication": "@parameters('$authentication')"
               }
@@ -516,6 +520,20 @@
                   "emailMessage/Body": "<p>ISA Approval for &nbsp;@{triggerOutputs()?['body/leidos_pipelineprojectreference']} has timed out, please resubmit</p>"
                 },
                 "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate": {
+              "runAfter": {
+                "Send_an_email_(V2)": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "56227ea9-b285-4a8e-9a72-1e3ac052dca9"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
               }
             }
           },
@@ -600,6 +618,20 @@
                   "item/leidos_submitnfiisaforapproval": false
                 },
                 "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate_2": {
+              "runAfter": {
+                "Update_Pipeline,_reset_submit": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "70521efc-7981-49dd-a19f-21afe884c17b"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Cancelled"
               }
             }
           },

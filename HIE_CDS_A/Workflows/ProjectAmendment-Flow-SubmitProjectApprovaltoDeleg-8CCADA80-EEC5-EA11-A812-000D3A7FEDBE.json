@@ -376,7 +376,7 @@
                     },
                     "Send_an_email_(V2)_5": {
                       "runAfter": {
-                        "Update__Project_Amendment_to_reset": [
+                        "Reset_Project_to_Active_Budget_type": [
                           "Succeeded"
                         ]
                       },
@@ -391,6 +391,39 @@
                           "emailMessage/To": "@outputs('Get_Submitted_By_Record')?['body/internalemailaddress']",
                           "emailMessage/Subject": "Project Amendment Approval Timed Out: @{triggerOutputs()?['body/leidos_projectamendmentreference']}",
                           "emailMessage/Body": "<p>The Project Amendment Approval process for @{triggerOutputs()?['body/leidos_projectamendmentreference']} has timed out, please resubmit.<br>\n<br>\n@{body('Run_a_Child_Flow_-_Get_PA_URL')?['entityurl']}</p>"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Terminate": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_5": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "Terminate",
+                      "inputs": {
+                        "runStatus": "Succeeded"
+                      }
+                    },
+                    "Reset_Project_to_Active_Budget_type": {
+                      "runAfter": {
+                        "Update__Project_Amendment_to_reset": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_2",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_projects",
+                          "recordId": "@triggerOutputs()?['body/_leidos_project_value']",
+                          "item/statecode": 0,
+                          "item/statuscode": 445260006
                         },
                         "authentication": "@parameters('$authentication')"
                       }
@@ -702,7 +735,7 @@
                     },
                     "Send_an_email_(V2)_6": {
                       "runAfter": {
-                        "Update__Project_Amendment_to_reset_2": [
+                        "Reset_Project_to_Active_Project": [
                           "Succeeded"
                         ]
                       },
@@ -717,6 +750,39 @@
                           "emailMessage/To": "@outputs('Get_Submitted_By_Record')?['body/internalemailaddress']",
                           "emailMessage/Subject": "Project Amendment Approval Timed Out: @{triggerOutputs()?['body/leidos_projectamendmentreference']}",
                           "emailMessage/Body": "<p>The Project Amendment Approval process for @{triggerOutputs()?['body/leidos_projectamendmentreference']} has timed out, please resubmit.<br>\n<br>\n@{body('Run_a_Child_Flow_-_Get_PA_URL')?['entityurl']}</p>"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Terminate_2": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_6": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "Terminate",
+                      "inputs": {
+                        "runStatus": "Succeeded"
+                      }
+                    },
+                    "Reset_Project_to_Active_Project": {
+                      "runAfter": {
+                        "Update__Project_Amendment_to_reset_2": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_2",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_projects",
+                          "recordId": "@triggerOutputs()?['body/_leidos_project_value']",
+                          "item/statecode": 0,
+                          "item/statuscode": 445260006
                         },
                         "authentication": "@parameters('$authentication')"
                       }
@@ -1321,7 +1387,7 @@
                     },
                     "Send_an_email_(V2)_7": {
                       "runAfter": {
-                        "Update__Project_Amendment_to_reset_3": [
+                        "Reset_Project_to_Active_Budget_type_2": [
                           "Succeeded"
                         ]
                       },
@@ -1336,6 +1402,39 @@
                           "emailMessage/To": "@outputs('Get_Submitted_By_Record')?['body/internalemailaddress']",
                           "emailMessage/Subject": "Project Amendment Approval Timed Out: @{triggerOutputs()?['body/leidos_projectamendmentreference']}",
                           "emailMessage/Body": "<p>The Project Amendment Approval process for @{triggerOutputs()?['body/leidos_projectamendmentreference']} has timed out, please resubmit.<br>\n<br>\n@{body('Run_a_Child_Flow_-_Get_PA_URL')?['entityurl']}</p>"
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Terminate_3": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_7": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "Terminate",
+                      "inputs": {
+                        "runStatus": "Succeeded"
+                      }
+                    },
+                    "Reset_Project_to_Active_Budget_type_2": {
+                      "runAfter": {
+                        "Update__Project_Amendment_to_reset_3": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_2",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_projects",
+                          "recordId": "@triggerOutputs()?['body/_leidos_project_value']",
+                          "item/statecode": 0,
+                          "item/statuscode": 445260006
                         },
                         "authentication": "@parameters('$authentication')"
                       }
@@ -1700,7 +1799,7 @@
                     },
                     "Send_an_email_(V2)_8": {
                       "runAfter": {
-                        "Update__Project_Amendment_to_reset_4": [
+                        "Reset_Project_to_Active_revert_to_CTP": [
                           "Succeeded"
                         ]
                       },
@@ -1718,11 +1817,44 @@
                         },
                         "authentication": "@parameters('$authentication')"
                       }
+                    },
+                    "Terminate_4": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_8": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "Terminate",
+                      "inputs": {
+                        "runStatus": "Succeeded"
+                      }
+                    },
+                    "Reset_Project_to_Active_revert_to_CTP": {
+                      "runAfter": {
+                        "Update__Project_Amendment_to_reset_4": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "OpenApiConnection",
+                      "inputs": {
+                        "host": {
+                          "connectionName": "shared_commondataserviceforapps_2",
+                          "operationId": "UpdateRecord",
+                          "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                        },
+                        "parameters": {
+                          "entityName": "leidos_projects",
+                          "recordId": "@triggerOutputs()?['body/_leidos_project_value']",
+                          "item/statecode": 0,
+                          "item/statuscode": 445260006
+                        },
+                        "authentication": "@parameters('$authentication')"
+                      }
                     }
                   },
                   "runAfter": {
                     "Start_and_wait_for_an_approval_-_Revert_to_clear_to_pay": [
-                      "Succeeded"
+                      "TimedOut"
                     ]
                   },
                   "type": "Scope"

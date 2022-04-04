@@ -325,6 +325,20 @@
                 },
                 "authentication": "@parameters('$authentication')"
               }
+            },
+            "Terminate_2": {
+              "runAfter": {
+                "Send_an_email_(V2)_-_Data_Failure": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "b7970f5f-7cb1-4882-9c79-54d11f606699"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Cancelled"
+              }
             }
           },
           "runAfter": {
@@ -380,9 +394,23 @@
                 "parameters": {
                   "emailMessage/To": "@outputs('Get_Requested_By')?['body/internalemailaddress']",
                   "emailMessage/Subject": "Loan Drawdown @{triggerOutputs()?['body/leidos_loandrawdownreference']}",
-                  "emailMessage/Body": "<p>The Flow for the apporval process for @{triggerOutputs()?['body/leidos_loandrawdownreference']} has timed out as the Approver has not apporved the response within the time limit.<br>\n<br>\nPlease check the availibility of a suitable Authoriser and resubmit.<br>\n<br>\nRecord link: @{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}</p>"
+                  "emailMessage/Body": "<p>The Flow for the approval process for @{triggerOutputs()?['body/leidos_loandrawdownreference']} has timed out as the Approver has not approved the response within the time limit.<br>\n<br>\nPlease check the availability of a suitable Authoriser and resubmit.<br>\n<br>\nRecord link: @{outputs('Run_a_Child_Flow')?['Body']?['entityurl']}</p>"
                 },
                 "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate": {
+              "runAfter": {
+                "Send_an_email_(V2)_on_Timeout": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "3a7dc652-4b11-4b0a-9004-ee4ef9b98c85"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
               }
             }
           },

@@ -383,6 +383,20 @@
                 },
                 "authentication": "@parameters('$authentication')"
               }
+            },
+            "Terminate_3": {
+              "runAfter": {
+                "Send_an_email_(V2)": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "2b60fd64-7999-4adf-97ba-b05fe52d4085"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Cancelled"
+              }
             }
           },
           "runAfter": {
@@ -443,6 +457,20 @@
                       "item/leidos_submitclaimforapproval": false
                     },
                     "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Terminate_2": {
+                  "runAfter": {
+                    "Send_an_email_(V2)_2": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "3aa8a8a2-271a-473c-bb9f-ce0432b97ee9"
+                  },
+                  "type": "Terminate",
+                  "inputs": {
+                    "runStatus": "Succeeded"
                   }
                 }
               },

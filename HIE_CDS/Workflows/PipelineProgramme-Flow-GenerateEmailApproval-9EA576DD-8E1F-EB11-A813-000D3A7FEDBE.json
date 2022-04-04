@@ -455,11 +455,25 @@
                 },
                 "authentication": "@parameters('$authentication')"
               }
+            },
+            "Terminate": {
+              "runAfter": {
+                "Send_an_email_(V2)_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "4435c72f-a742-4665-ba63-56cf13023f07"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
             }
           },
           "runAfter": {
             "Start_and_wait_for_an_approval": [
-              "Succeeded"
+              "TimedOut"
             ]
           },
           "metadata": {

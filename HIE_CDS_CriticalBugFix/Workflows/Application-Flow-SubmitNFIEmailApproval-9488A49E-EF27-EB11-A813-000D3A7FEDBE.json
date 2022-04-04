@@ -1077,6 +1077,20 @@
                 },
                 "authentication": "@parameters('$authentication')"
               }
+            },
+            "Terminate_3": {
+              "runAfter": {
+                "Send_an_email_(V2)_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "9a1b7315-a005-4ca2-a557-a3448f9a9798"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Cancelled"
+              }
             }
           },
           "runAfter": {
@@ -1117,7 +1131,7 @@
             },
             "Send_an_email_(V2)_3": {
               "runAfter": {
-                "Update_Application_to_reset": [
+                "Update_Project_to_Unlock_post_approval_": [
                   "Succeeded"
                 ]
               },
@@ -1134,7 +1148,46 @@
                 "parameters": {
                   "emailMessage/To": "@outputs('Get_Submitted_by')?['body/internalemailaddress']",
                   "emailMessage/Subject": "Application Approval Timed Out: @{triggerOutputs()?['body/leidos_applicationreference']}",
-                  "emailMessage/Body": "<p>Request for Aproval of Applicaiton: @{triggerOutputs()?['body/leidos_applicationreference']} timed out, please resubmit.<br>\n<br>\n@{body('Get_BPF_Project''s_entity_url')?['entityurl']}</p>"
+                  "emailMessage/Body": "<p>Request for Approval of Application: @{triggerOutputs()?['body/leidos_applicationreference']} timed out, please resubmit.<br>\n<br>\n@{body('Get_BPF_Project''s_entity_url')?['entityurl']}</p>"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate_2": {
+              "runAfter": {
+                "Send_an_email_(V2)_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "912cf71e-afa3-49cd-bf9c-353aacd206e6"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
+              }
+            },
+            "Update_Project_to_Unlock_post_approval_": {
+              "runAfter": {
+                "Update_Application_to_reset": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "35515c14-7155-4813-b026-321b9435bd1b"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "UpdateRecord",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "leidos_projects",
+                  "recordId": "@outputs('Get_BPF_Project')?['body/leidos_projectid']",
+                  "item/statecode": 0,
+                  "item/statuscode": 445260004
                 },
                 "authentication": "@parameters('$authentication')"
               }

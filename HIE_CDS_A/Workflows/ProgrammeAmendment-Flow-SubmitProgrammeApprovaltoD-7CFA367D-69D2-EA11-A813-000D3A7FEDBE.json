@@ -1318,11 +1318,22 @@
                         },
                         "authentication": "@parameters('$authentication')"
                       }
+                    },
+                    "Terminate": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_5": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "Terminate",
+                      "inputs": {
+                        "runStatus": "Succeeded"
+                      }
                     }
                   },
                   "runAfter": {
                     "Start_and_wait_for_an_approval_-_CT": [
-                      "Succeeded"
+                      "TimedOut"
                     ]
                   },
                   "type": "Scope"
@@ -1644,11 +1655,22 @@
                         },
                         "authentication": "@parameters('$authentication')"
                       }
+                    },
+                    "Terminate_2": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_6": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "Terminate",
+                      "inputs": {
+                        "runStatus": "Succeeded"
+                      }
                     }
                   },
                   "runAfter": {
                     "Start_and_wait_for_an_approval_-_Programme": [
-                      "Succeeded"
+                      "TimedOut"
                     ]
                   },
                   "type": "Scope"
@@ -1905,6 +1927,17 @@
                           "emailMessage/Body": "<p>The approval process for &nbsp;@{triggerOutputs()?['body/leidos_programmeamendmentreference']} has timed out. &nbsp;Please resubmit.<br>\n<br>\n@{body('Run_a_Child_Flow_-_Get_PA_URL')?['entityurl']}</p>"
                         },
                         "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Terminate_3": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_7": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "Terminate",
+                      "inputs": {
+                        "runStatus": "Succeeded"
                       }
                     }
                   },
@@ -2166,6 +2199,17 @@
                           "emailMessage/Body": "<p>The approval process for &nbsp;@{triggerOutputs()?['body/leidos_programmeamendmentreference']} has timed out. &nbsp;Please resubmit.<br>\n<br>\n@{body('Run_a_Child_Flow_-_Get_PA_URL')?['entityurl']}</p>"
                         },
                         "authentication": "@parameters('$authentication')"
+                      }
+                    },
+                    "Terminate_4": {
+                      "runAfter": {
+                        "Send_an_email_(V2)_8": [
+                          "Succeeded"
+                        ]
+                      },
+                      "type": "Terminate",
+                      "inputs": {
+                        "runStatus": "Succeeded"
                       }
                     }
                   },

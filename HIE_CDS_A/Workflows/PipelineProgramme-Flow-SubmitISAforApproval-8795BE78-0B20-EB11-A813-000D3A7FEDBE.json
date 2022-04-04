@@ -562,6 +562,20 @@
                 },
                 "authentication": "@parameters('$authentication')"
               }
+            },
+            "Terminate_2": {
+              "runAfter": {
+                "Update_Pipeline_Programme_to_reset_submit": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "efd1fb59-0e03-4dcf-b620-cb96ca0f899d"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Cancelled"
+              }
             }
           },
           "runAfter": {
@@ -621,6 +635,20 @@
                   "emailMessage/Body": "<p>The Approval Process for &nbsp;@{triggerOutputs()?['body/leidos_pipelineprogrammereference']} has timed out. &nbsp;Please resubmit.<br>\n<br>\n@{body('Get_Entity_URL')?['entityurl']}</p>"
                 },
                 "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Terminate": {
+              "runAfter": {
+                "Send_an_email_(V2)_3": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "e36e732c-84d9-4df0-bcaa-7c13d29c1c2c"
+              },
+              "type": "Terminate",
+              "inputs": {
+                "runStatus": "Succeeded"
               }
             }
           },
